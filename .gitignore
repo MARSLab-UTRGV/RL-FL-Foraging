@@ -1,0 +1,77 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+*.manifest
+*.spec
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# PyCharm
+.idea/
+
+# VS Code
+.vscode/
+
+# Webots
+worlds/.*.wbproj
+*.wbproj
+core
+
+# Logs (optional - uncomment to exclude logs from git)
+# logs/*.log
+# logs/*.txt
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*~
+.DS_Store
+
+# Training artifacts (large files)
+# Uncomment if models are too large for GitHub
+# models/*/*.zip
+# Keep only the best model
+# !models/epuck_top5_baseline2M/
+
+# TensorBoard logs (can be large)
+tensorboard_logs/
+runs/
+
+# Testing outputs
+test_results/
+screenshots/
+
+# OS
+Thumbs.db
+
+# Setup/instruction files
+GIT_COMMANDS.md

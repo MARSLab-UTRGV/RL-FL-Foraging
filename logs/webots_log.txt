@@ -1,0 +1,44 @@
+WARNING: DEF APRILTAG_1 Solid > Shape  > PBRAppearance "PBRAppearance" > ImageTexture : Unable to find resource at '/home/andres2020/Dev/deepbots_test/deepbots-tutorials/emitterReceiverSchemeTutorial/full_project/worlds/textures/real_tag36h11_id0.png'.
+WARNING: DEF APRILTAG_2 Solid > Shape  > PBRAppearance "PBRAppearance" > ImageTexture : Unable to find resource at '/home/andres2020/Dev/deepbots_test/deepbots-tutorials/emitterReceiverSchemeTutorial/full_project/worlds/textures/real_tag36h11_id0.png'.
+WARNING: DEF APRILTAG_3 Solid > Shape  > PBRAppearance "PBRAppearance" > ImageTexture : Unable to find resource at '/home/andres2020/Dev/deepbots_test/deepbots-tutorials/emitterReceiverSchemeTutorial/full_project/worlds/textures/real_tag36h11_id0.png'.
+WARNING: DEF APRILTAG_4 Solid > Shape  > PBRAppearance "PBRAppearance" > ImageTexture : Unable to find resource at '/home/andres2020/Dev/deepbots_test/deepbots-tutorials/emitterReceiverSchemeTutorial/full_project/worlds/textures/real_tag36h11_id0.png'.
+WARNING: DEF APRILTAG_5 Solid > Shape  > PBRAppearance "PBRAppearance" > ImageTexture : Unable to find resource at '/home/andres2020/Dev/deepbots_test/deepbots-tutorials/emitterReceiverSchemeTutorial/full_project/worlds/textures/real_tag36h11_id0.png'.
+WARNING: DEF APRILTAG_6 Solid > Shape  > PBRAppearance "PBRAppearance" > ImageTexture : Unable to find resource at '/home/andres2020/Dev/deepbots_test/deepbots-tutorials/emitterReceiverSchemeTutorial/full_project/worlds/textures/real_tag36h11_id0.png'.
+WARNING: DEF APRILTAG_7 Solid > Shape  > PBRAppearance "PBRAppearance" > ImageTexture : Unable to find resource at '/home/andres2020/Dev/deepbots_test/deepbots-tutorials/emitterReceiverSchemeTutorial/full_project/worlds/textures/real_tag36h11_id0.png'.
+WARNING: DEF APRILTAG_8 Solid > Shape  > PBRAppearance "PBRAppearance" > ImageTexture : Unable to find resource at '/home/andres2020/Dev/deepbots_test/deepbots-tutorials/emitterReceiverSchemeTutorial/full_project/worlds/textures/real_tag36h11_id0.png'.
+WARNING: DEF APRILTAG_9 Solid > Shape  > PBRAppearance "PBRAppearance" > ImageTexture : Unable to find resource at '/home/andres2020/Dev/deepbots_test/deepbots-tutorials/emitterReceiverSchemeTutorial/full_project/worlds/textures/real_tag36h11_id0.png'.
+WARNING: DEF APRILTAG_10 Solid > Shape  > PBRAppearance "PBRAppearance" > ImageTexture : Unable to find resource at '/home/andres2020/Dev/deepbots_test/deepbots-tutorials/emitterReceiverSchemeTutorial/full_project/worlds/textures/real_tag36h11_id0.png'.
+WARNING: DEF APRILTAG_11 Solid > Shape  > PBRAppearance "PBRAppearance" > ImageTexture : Unable to find resource at '/home/andres2020/Dev/deepbots_test/deepbots-tutorials/emitterReceiverSchemeTutorial/full_project/worlds/textures/real_tag36h11_id0.png'.
+WARNING: DEF APRILTAG_12 Solid > Shape  > PBRAppearance "PBRAppearance" > ImageTexture : Unable to find resource at '/home/andres2020/Dev/deepbots_test/deepbots-tutorials/emitterReceiverSchemeTutorial/full_project/worlds/textures/real_tag36h11_id0.png'.
+WARNING: DEF APRILTAG_13 Solid > Shape  > PBRAppearance "PBRAppearance" > ImageTexture : Unable to find resource at '/home/andres2020/Dev/deepbots_test/deepbots-tutorials/emitterReceiverSchemeTutorial/full_project/worlds/textures/real_tag36h11_id0.png'.
+WARNING: DEF APRILTAG_14 Solid > Shape  > PBRAppearance "PBRAppearance" > ImageTexture : Unable to find resource at '/home/andres2020/Dev/deepbots_test/deepbots-tutorials/emitterReceiverSchemeTutorial/full_project/worlds/textures/real_tag36h11_id0.png'.
+WARNING: DEF APRILTAG_15 Solid > Shape  > PBRAppearance "PBRAppearance" > ImageTexture : Unable to find resource at '/home/andres2020/Dev/deepbots_test/deepbots-tutorials/emitterReceiverSchemeTutorial/full_project/worlds/textures/real_tag36h11_id0.png'.
+WARNING: DEF APRILTAG_16 Solid > Shape  > PBRAppearance "PBRAppearance" > ImageTexture : Unable to find resource at '/home/andres2020/Dev/deepbots_test/deepbots-tutorials/emitterReceiverSchemeTutorial/full_project/worlds/textures/real_tag36h11_id0.png'.
+WARNING: DEF APRILTAG_17 Solid > Shape  > PBRAppearance "PBRAppearance" > ImageTexture : Unable to find resource at '/home/andres2020/Dev/deepbots_test/deepbots-tutorials/emitterReceiverSchemeTutorial/full_project/worlds/textures/real_tag36h11_id0.png'.
+WARNING: DEF APRILTAG_18 Solid > Shape  > PBRAppearance "PBRAppearance" > ImageTexture : Unable to find resource at '/home/andres2020/Dev/deepbots_test/deepbots-tutorials/emitterReceiverSchemeTutorial/full_project/worlds/textures/real_tag36h11_id0.png'.
+WARNING: DEF APRILTAG_19 Solid > Shape  > PBRAppearance "PBRAppearance" > ImageTexture : Unable to find resource at '/home/andres2020/Dev/deepbots_test/deepbots-tutorials/emitterReceiverSchemeTutorial/full_project/worlds/textures/real_tag36h11_id0.png'.
+WARNING: DEF APRILTAG_20 Solid > Shape  > PBRAppearance "PBRAppearance" > ImageTexture : Unable to find resource at '/home/andres2020/Dev/deepbots_test/deepbots-tutorials/emitterReceiverSchemeTutorial/full_project/worlds/textures/real_tag36h11_id0.png'.
+INFO: epuck_driver: Starting controller: python3 -u epuck_driver.py
+INFO: epuck_driver: Starting controller: python3 -u epuck_driver.py
+INFO: epuck_driver: Starting controller: python3 -u epuck_driver.py
+INFO: epuck_driver: Starting controller: python3 -u epuck_driver.py
+INFO: epuck_foraging_supervisor: Starting controller: python3 -u epuck_foraging_supervisor.py
+Traceback (most recent call last):
+  File "/home/andres2020/Dev/deepbots_test/deepbots-tutorials/emitterReceiverSchemeTutorial/full_project/controllers/epuck_foraging_supervisor/epuck_foraging_supervisor.py", line 226, in <module>
+    env = EpuckForagingSupervisor()
+  File "/home/andres2020/Dev/deepbots_test/deepbots-tutorials/emitterReceiverSchemeTutorial/full_project/controllers/epuck_foraging_supervisor/epuck_foraging_supervisor.py", line 35, in __init__
+    self.receivers[i].enable(self.timestep)
+AttributeError: 'EpuckForagingSupervisor' object has no attribute 'timestep'
+WARNING: 'epuck_foraging_supervisor' controller exited with status: 1.
+INFO: epuck_driver: Terminating.
+INFO: epuck_driver: Terminating.
+INFO: epuck_driver: Terminating.
+INFO: epuck_driver: Terminating.
+WARNING: epuck_driver: The process crashed some time after starting successfully.
+WARNING: 'epuck_driver' controller crashed.
+WARNING: epuck_driver: The process crashed some time after starting successfully.
+WARNING: 'epuck_driver' controller crashed.
+WARNING: epuck_driver: The process crashed some time after starting successfully.
+WARNING: 'epuck_driver' controller crashed.
+WARNING: epuck_driver: The process crashed some time after starting successfully.
+WARNING: 'epuck_driver' controller crashed.
