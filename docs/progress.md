@@ -84,3 +84,43 @@ These configurations were generated but crashed or were cancelled before complet
 All models are stored in: `/home/andres2020/Dev/deepbots_test/deepbots-tutorials/emitterReceiverSchemeTutorial/full_project/controllers/`
 
 Example path: `.../controllers/epuck_top5_baseline2M/ppo_epuck_top5_baseline2M.zip`
+
+## 7 Parallel Models (Dec 3-5, 2025)
+
+We are addressing the limitations found in previous runs (slow speed, collisions, easy task difficulty).
+
+### Environment Updates
+1. **Robot Speed:** Increased motor command scaling by 6x (using full speed range).
+2. **Collision Penalty:** Increased from -0.01 to -0.1 (10x penalty for bumping).
+3. **Vision Range:** Reduced from 2.0m to 0.8m (forcing exploration).
+4. **Deposit Range:** Reduced from 0.3m to 0.15m (precision required).
+5. **World Changes:** Base station radius reduced (0.2 -> 0.1), AprilTags reduced (0.0275 -> 0.02).
+
+### Trained Models (Awaiting Testing)
+Training completed Dec 3-5, 2025. All models saved to project root as `.zip` files. These models have not been tested yet.
+
+| Model ID | Timesteps | Batch Size | LR | Ent. Coef | Description | Status |
+|----------|-----------|------------|----|-----------|-------------|--------|
+| `ppo_5models_baseline` | 2M | 4096 | 3e-4 | 0.01 | Baseline with new hard environment. | Trained, not tested |
+| `ppo_5models_high_ent` | 2M | 4096 | 3e-4 | 0.05 | High Entropy (0.05) to force exploration. | Trained, not tested |
+| `ppo_5models_high_lr` | 2M | 4096 | 5e-4 | 0.01 | Higher Learning Rate. | Trained, not tested |
+| `ppo_5models_small_batch` | 2M | 2048 | 3e-4 | 0.01 | Small Batch (2048). | Trained, not tested |
+| `ppo_5models_verysmall_batch` | 2M | 1024 | 3e-4 | 0.01 | Very Small Batch (1024). | Trained, not tested |
+| `ppo_5models_long_5M` | 5M | 4096 | 3e-4 | 0.01 | Long Run: 5 million steps for convergence. | Trained, not tested |
+| `ppo_5models_extralong_10M` | 10M | 4096 | 3e-4 | 0.01 | Extra Long Run: 10 million steps. | Trained, not tested |
+
+### How to Test These Models
+
+For full instructions, see TESTING_GUIDE.md.
+
+### File Locations
+Models saved to: `/home/andres2020/Dev/deepbots_test/RL-FL-Foraging/`
+- `ppo_5models_baseline.zip`
+- `ppo_5models_high_ent.zip`
+- `ppo_5models_high_lr.zip`
+- `ppo_5models_small_batch.zip`
+- `ppo_5models_verysmall_batch.zip`
+- `ppo_5models_long_5M.zip`
+- `ppo_5models_extralong_10M.zip`
+
+Checkpoints in `logs/ppo_5models_*/` directories.

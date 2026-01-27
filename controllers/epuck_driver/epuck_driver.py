@@ -48,8 +48,13 @@ class EpuckDriver(CSVRobot):
                 
                 # Clip speeds to max velocity (approx 6.28 rad/s for e-puck)
                 max_speed = 6.28
-                left_speed = max(min(left_speed, max_speed), -max_speed)
-                right_speed = max(min(right_speed, max_speed), -max_speed)
+                
+                # Scale input [-1, 1] to [-max_speed, max_speed]
+                # User requested faster movement.
+                scale_factor = 6.0
+                
+                left_speed = max(min(left_speed * scale_factor, max_speed), -max_speed)
+                right_speed = max(min(right_speed * scale_factor, max_speed), -max_speed)
                 
                 self.left_motor.setVelocity(left_speed)
                 self.right_motor.setVelocity(right_speed)

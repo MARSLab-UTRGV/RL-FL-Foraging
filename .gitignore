@@ -57,10 +57,14 @@ core
 .DS_Store
 
 # Training artifacts (large files)
-# Uncomment if models are too large for GitHub
-# models/*/*.zip
-# Keep only the best model
-# !models/epuck_top5_baseline2M/
+# Ignore checkpoint models (intermediate saves during training)
+models/**/logs_*/*.zip
+logs/**/ppo_*/*.zip
+
+# Ignore TensorBoard logs inside model folders (can be large)
+models/**/tb_*/
+
+# Keep final models (top-level .zip in each model folder)
 
 # TensorBoard logs (can be large)
 tensorboard_logs/

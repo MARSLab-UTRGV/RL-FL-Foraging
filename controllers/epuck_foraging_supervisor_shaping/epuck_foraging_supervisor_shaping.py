@@ -1,6 +1,7 @@
 import math
 import random
 import numpy as np
+import argparse
 from deepbots.supervisor.controllers.deepbots_supervisor_env import DeepbotsSupervisorEnv
 from controller import Supervisor
 from stable_baselines3 import PPO
@@ -24,7 +25,21 @@ class EpuckForagingSupervisor(DeepbotsSupervisorEnv):
         
         self.robot_nodes = []
         for i in range(self.num_robots):
-            self.robot_nodes.append(self.getFromDef(f"ROBOT{i+1}"))
+            node_name = f"ROBOT{i+1}"
+            node = self.getFromDef(node_name)
+            timeout = 0
+            while node is None and timeout < 20:
+                print(f"[WAITING] Waiting for {node_name}...")
+                # Call Webots internal step to advance simulation
+                Supervisor.step(self, self.timestep)
+                # import time; time.sleep(0.5) # Not needed if we step
+                node = self.getFromDef(node_name)
+                timeout += 1
+            
+            if node is None:
+                print(f"[ERROR] Could not find {node_name} after timeout!")
+                exit(1)
+            self.robot_nodes.append(node)
             
         self.tag_nodes = []
         for i in range(self.num_tags):
@@ -115,7 +130,8 @@ class EpuckForagingSupervisor(DeepbotsSupervisorEnv):
                     dy = tag_pos[1] - robot_pos[1]
                     dist = math.sqrt(dx*dx + dy*dy)
                     
-                    if dist < 2.0:
+                    # UPDATED: Decreased vision range from 2.0 to 0.8 to force exploration
+                    if dist < 0.8:
                         tag_vec_norm = [dx/dist, dy/dist, 0]
                         dot = forward_vec[0]*tag_vec_norm[0] + forward_vec[1]*tag_vec_norm[1]
                         dot = max(min(dot, 1.0), -1.0)
@@ -185,7 +201,8 @@ class EpuckForagingSupervisor(DeepbotsSupervisorEnv):
             # Collision Penalty (if prox sensors are high)
             prox = self.robot_states[i]
             if max(prox) > 0.1: # Threshold for "close to something"
-                total_reward -= 0.01
+                # UPDATED: Increased penalty from -0.01 to -0.1
+                total_reward -= 0.1
             
             if not self.carrying_state[i]:
                 # FINDING TAGS
@@ -233,7 +250,8 @@ class EpuckForagingSupervisor(DeepbotsSupervisorEnv):
                     dx = tag_pos[0] - robot_pos[0]
                     dy = tag_pos[1] - robot_pos[1]
                     dist = math.sqrt(dx*dx + dy*dy)
-                    if dist < 2.0 and dist < min_dist:
+                    # UPDATED: Match vision range (0.8)
+                    if dist < 0.8 and dist < min_dist:
                         min_dist = dist
                         closest_tag = tag_node
                 
@@ -260,7 +278,8 @@ class EpuckForagingSupervisor(DeepbotsSupervisorEnv):
                 dy = base_pos[1] - robot_pos[1]
                 dist_to_base = math.sqrt(dx*dx + dy*dy)
                 
-                if dist_to_base < 0.3:
+                # UPDATED: Deposit distance from 0.3 to 0.15
+                if dist_to_base < 0.15:
                     self.carrying_state[i] = False
                     total_reward += 10.0 # Huge reward for deposit
                     self.total_deposits += 1
@@ -319,11 +338,21 @@ class EpuckForagingSupervisor(DeepbotsSupervisorEnv):
             self.robot_nodes[i].resetPhysics()
 
 if __name__ == "__main__":
+    # Parse arguments
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--run_name', type=str, default='ppo_epuck_shaping', help='Name of the run')
+    parser.add_argument('--lr', type=float, default=3e-4, help='Learning rate')
+    parser.add_argument('--ent_coef', type=float, default=0.01, help='Entropy coefficient')
+    parser.add_argument('--batch_size', type=int, default=4096, help='Batch size')
+    parser.add_argument('--total_timesteps', type=int, default=2000000, help='Total timesteps to train')
+    args = parser.parse_args()
+    
     env = EpuckForagingSupervisor()
     
     # GPU Training Setup
     device = 'cuda' if torch.cuda.is_available() else 'cpu'
     print(f"[TRAINING] Starting on {device}")
+    print(f"[PARAMS] Name: {args.run_name}, LR: {args.lr}, Ent: {args.ent_coef}, Batch: {args.batch_size}, Steps: {args.total_timesteps}")
     
     # Hyperparameters
     policy_kwargs = dict(
@@ -336,22 +365,22 @@ if __name__ == "__main__":
         env,
         verbose=1,
         device=device,
-        batch_size=4096,
+        batch_size=args.batch_size,
         n_steps=4096,
-        learning_rate=3e-4,
-        ent_coef=0.01,
+        learning_rate=args.lr,
+        ent_coef=args.ent_coef,
         policy_kwargs=policy_kwargs,
-        tensorboard_log="./ppo_epuck_shaping_tensorboard/"
+        tensorboard_log=f"./tensorboard/{args.run_name}"
     )
     
     checkpoint_callback = CheckpointCallback(
         save_freq=100000,
-        save_path='./logs_shaping/',
-        name_prefix='ppo_shaping'
+        save_path=f'./logs/{args.run_name}/',
+        name_prefix=args.run_name
     )
     
-    print("[TRAINING] Starting PPO Training with Reward Shaping...")
-    model.learn(total_timesteps=2000000, callback=checkpoint_callback)
+    print(f"[TRAINING] Starting PPO Training: {args.run_name}")
+    model.learn(total_timesteps=args.total_timesteps, callback=checkpoint_callback)
     
-    model.save("ppo_epuck_shaping")
+    model.save(args.run_name)
     print("[COMPLETE] Training finished. Model saved.")
