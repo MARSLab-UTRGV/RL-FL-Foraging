@@ -1,217 +1,245 @@
-# Training a Model
+# Training Guide — Multi-Agent E-puck Foraging
 
-This guide explains how to train a new PPO model and then test it.
+This project supports two training modes:
+- **Centralized** — single shared PPO policy, 80D stacked obs, supervisor-side pheromone grid
+- **Decentralized (Option A / CTDE)** — single shared PPO policy with parameter sharing, 18D per-robot obs, robot-side GPS/IMU/pheromone (CoRL 2026)
+
+---
 
 ## Prerequisites
 
+Add to `~/.bashrc` (or run before each session):
+
 ```bash
-# Set environment variables (add to ~/.bashrc for permanence)
 export WEBOTS_HOME=/usr/local/webots
 export PYTHONPATH=$PYTHONPATH:$WEBOTS_HOME/lib/controller/python
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$WEBOTS_HOME/lib/controller
-
-# Install dependencies
-pip install stable-baselines3 deepbots torch numpy gym
 ```
 
-## Quick Start: Train a Single Model
-
-**Step 1: Start Webots in fast mode**
+Install dependencies (system Python, no venv needed):
 
 ```bash
-webots --mode=fast --minimize --no-rendering worlds/epuck_5models.wbt &
+pip install "stable-baselines3" "numpy<2" deepbots torch gym
+```
+
+---
+
+## Files Overview
+
+### Centralized
+
+| File | Role |
+|------|------|
+| `worlds/epuck_foraging_shaping.wbt` | Training world (DO NOT modify) |
+| `controllers/epuck_foraging_supervisor_shaping/epuck_foraging_supervisor_shaping.py` | Extern supervisor — PPO training loop |
+| `controllers/epuck_driver/epuck_driver.py` | Robot controller (runs inside Webots) |
+
+### Decentralized (Option A)
+
+| File | Role |
+|------|------|
+| `worlds/epuck_foraging_decentralized.wbt` | Training world with GPS/IMU/phero on each robot |
+| `controllers/decentralized_supervisor/decentralized_supervisor.py` | Extern supervisor — PPO training loop (SB3 VecEnv, n_envs=4) |
+| `controllers/epuck_decentralized/epuck_decentralized.py` | Robot controller — computes GPS/IMU/pheromone obs onboard |
+
+---
+
+## Centralized Training
+
+**Step 1: Launch Webots in fast mode**
+
+```bash
+webots --mode=fast worlds/epuck_foraging_shaping.wbt &
 sleep 10
 ```
 
-**Step 2: Run training**
+**Step 2: Run the extern supervisor**
 
 ```bash
-python3 controllers/epuck_foraging_supervisor_shaping/epuck_foraging_supervisor_shaping.py \
-    --run_name my_model \
-    --total_timesteps 2000000
+cd controllers/epuck_foraging_supervisor_shaping
+python3 epuck_foraging_supervisor_shaping.py \
+    --run_name ppo_v16_retrain \
+    --total_timesteps 7000000 \
+    --lr 3e-4 \
+    --ent_coef 0.10
 ```
 
-**Step 3: Wait for training to complete**
-
-Training 2M steps takes approximately 12-24 hours depending on hardware.
-
-**Step 4: Test the trained model**
+**Resume from checkpoint:**
 
 ```bash
-# Kill the training Webots instance
-pkill -f webots
-
-# Start Webots in GUI mode
-webots worlds/eval_best.wbt &
-sleep 10
-
-# Run evaluation with your new model
-python3 controllers/eval_best_model/eval_best_model.py my_model.zip
+python3 epuck_foraging_supervisor_shaping.py \
+    --run_name ppo_v16_retrain \
+    --total_timesteps 7000000 \
+    --resume ../../ppo_v16_retrain.zip
 ```
 
-## Training Parameters
+### Centralized Parameters
 
 | Parameter | Default | Description |
 |-----------|---------|-------------|
-| `--run_name` | `ppo_epuck_shaping` | Name for this training run |
+| `--run_name` | `ppo_v16_retrain` | Output model name |
 | `--lr` | `3e-4` | Learning rate |
-| `--ent_coef` | `0.01` | Entropy coefficient (exploration) |
-| `--batch_size` | `4096` | PPO batch size |
-| `--total_timesteps` | `2000000` | Total training steps |
+| `--ent_coef` | `0.10` | Entropy coefficient |
+| `--batch_size` | `4096` | PPO minibatch size |
+| `--total_timesteps` | `7000000` | Total training steps |
+| `--resume` | None | Path to `.zip` to resume from |
 
-### Example Configurations
+### Centralized Obs Space (20D per robot, 80D total)
 
-**Baseline (recommended for first run):**
+```
+[0:8]  proximity sensors (÷4096)
+[8]    tag_visible       (supervisor camera sim)
+[9]    tag_dist_norm     (÷ 1.0)
+[10]   tag_angle_norm    (÷ π)
+[11]   carrying          (0/1)
+[12]   base_dist_norm    (÷ 3.5)
+[13]   base_angle_norm   (÷ π)
+[14]   cluster_known     (pheromone grid hotspot exists)
+[15]   cluster_dist_norm (÷ 3.5)
+[16]   cluster_angle_norm(÷ π)
+[17]   phero_front_norm  (local grid ahead ÷ 10)
+[18]   phero_left_norm
+[19]   phero_right_norm
+```
+
+---
+
+## Decentralized Training (Option A / CTDE)
+
+**Step 1: Launch Webots in fast mode**
+
 ```bash
-python3 controllers/epuck_foraging_supervisor_shaping/epuck_foraging_supervisor_shaping.py \
-    --run_name baseline \
+webots --mode=fast worlds/epuck_foraging_decentralized.wbt &
+sleep 10
+```
+
+**Step 2: Run the extern supervisor**
+
+```bash
+cd controllers/decentralized_supervisor
+python3 decentralized_supervisor.py \
+    --run_name decentralized_optA_v1 \
+    --total_timesteps 7000000 \
     --lr 3e-4 \
-    --ent_coef 0.01 \
-    --batch_size 4096 \
-    --total_timesteps 2000000
+    --ent_coef 0.10
 ```
 
-**High exploration (if robots aren't exploring enough):**
+**Resume from checkpoint:**
+
 ```bash
-python3 controllers/epuck_foraging_supervisor_shaping/epuck_foraging_supervisor_shaping.py \
-    --run_name high_exploration \
-    --lr 3e-4 \
-    --ent_coef 0.05 \
-    --batch_size 4096 \
-    --total_timesteps 2000000
+python3 decentralized_supervisor.py \
+    --run_name decentralized_optA_v1 \
+    --total_timesteps 7000000 \
+    --resume ./logs/decentralized_optA_v1/decentralized_optA_v1_200000_steps.zip
 ```
 
-**Quick test (100k steps, ~1-2 hours):**
-```bash
-python3 controllers/epuck_foraging_supervisor_shaping/epuck_foraging_supervisor_shaping.py \
-    --run_name quick_test \
-    --lr 5e-4 \
-    --ent_coef 0.02 \
-    --batch_size 2048 \
-    --total_timesteps 100000
+### Decentralized Parameters
+
+| Parameter | Default | Description |
+|-----------|---------|-------------|
+| `--run_name` | `decentralized_optA_v1` | Output model name |
+| `--lr` | `3e-4` | Learning rate |
+| `--ent_coef` | `0.10` | Entropy coefficient |
+| `--total_timesteps` | `7000000` | Total training steps |
+| `--resume` | None | Path to `.zip` to resume from |
+
+### Decentralized Obs Space (18D per robot — CTDE)
+
 ```
+[0:8]  proximity sensors (÷4096)          ← robot onboard
+[8]    tag_visible                         ← supervisor (camera sim)
+[9]    tag_dist_norm     (÷ 1.0)           ← supervisor
+[10]   tag_angle_norm    (÷ π)             ← supervisor
+[11]   carrying          (0/1)             ← robot onboard
+[12]   base_dist_norm    (GPS ÷ 3.5)       ← robot GPS
+[13]   base_angle_norm   (GPS+IMU ÷ π)    ← robot GPS + InertialUnit
+[14]   phero_known       (1 if hotspot)    ← robot P2P receiver
+[15]   phero_dist_norm   (÷ 3.5)          ← robot P2P receiver
+[16]   phero_angle_norm  (÷ π)            ← robot P2P receiver
+[17]   phero_strength    (0–1)             ← robot P2P receiver
+```
+
+14/18 dims computed onboard → true CTDE. Supervisor only provides tag obs [8-10] + pickup mechanics.
+
+### How Parameter Sharing Works
+
+One policy is shared across all 4 robots (`n_envs=4`). Each Webots step:
+1. All 4 robots send their individual 18D obs to the supervisor
+2. Supervisor runs the shared policy on all 4 obs as a batch
+3. Each robot receives its own 2D motor action independently
+4. All 4 `(obs, action, reward)` tuples go into the shared rollout buffer
+5. PPO updates the single shared policy from all 4 robots' experience
+
+### Pheromone in Decentralized Mode
+
+- **No supervisor pheromone grid** — fully peer-to-peer
+- Each robot broadcasts its hotspot via Webots Emitter (channel 10, range 2 m)
+- On tag pickup: supervisor sends pheromone strength (0.2–1.0) based on local cluster density
+- Robot creates hotspot at its GPS position and broadcasts to neighbors
+- Robots within 2 m receive and follow the hotspot signal autonomously
+
+---
 
 ## Output Files
 
-Training creates:
+Both modes produce the same output structure:
 
 ```
 ./
-├── {run_name}.zip                    # Final trained model
-├── logs/{run_name}/                  # Checkpoints (every 100k steps)
-│   ├── {run_name}_100000_steps.zip
-│   ├── {run_name}_200000_steps.zip
-│   └── ...
-└── tensorboard/{run_name}/           # Training metrics
+├── {run_name}.zip                         # Final trained model (SB3 format)
+└── logs/{run_name}/
+    ├── {run_name}_200000_steps.zip        # Checkpoint every 200k env steps
+    ├── {run_name}_400000_steps.zip
+    └── ...
 ```
+
+---
 
 ## Monitoring Training
 
-### View TensorBoard logs
+SB3 prints a table every rollout. Key metrics to watch:
 
-```bash
-tensorboard --logdir=tensorboard/
-```
+| Metric | Early training | Healthy training |
+|--------|---------------|------------------|
+| `ep_rew_mean` | negative | increasing toward positive |
+| `explained_variance` | near 0 | climbing toward 0.8+ |
+| `entropy_loss` | high (−2.8) | gradually decreasing |
+| `value_loss` | high | stabilizing then decreasing |
+| `std` | ~1.0 | decreasing as policy focuses |
 
-Open http://localhost:6006 in your browser.
+Also watch for `[PICKUP]` and `[DEPOSIT]` print lines — deposits per episode should increase over training.
 
-### Watch training output
-
-Training prints progress every episode:
-```
-[TRAINING] Starting PPO Training: my_model
-| rollout/                |           |
-|    ep_len_mean          | 4096      |
-|    ep_rew_mean          | -2.34     |
-| time/                   |           |
-|    fps                  | 312       |
-|    iterations           | 1         |
-|    time_elapsed         | 13        |
-|    total_timesteps      | 4096      |
-```
-
-The `ep_rew_mean` should increase over time. Positive rewards indicate successful foraging.
-
-## GPU Training
-
-Training automatically uses GPU if available. To specify a GPU:
-
-```bash
-CUDA_VISIBLE_DEVICES=0 python3 controllers/epuck_foraging_supervisor_shaping/epuck_foraging_supervisor_shaping.py \
-    --run_name my_model \
-    --total_timesteps 2000000
-```
-
-## Training Multiple Models
-
-### Sequential (one at a time)
-
-```bash
-./scripts/run_5_models.sh
-```
-
-### Parallel (multiple GPUs)
-
-```bash
-./scripts/run_5_models_parallel.sh
-```
-
-This launches 7 training runs with different hyperparameters on ports 4001-4007.
-
-## Full Workflow Example
-
-```bash
-# 1. Setup
-export WEBOTS_HOME=/usr/local/webots
-export PYTHONPATH=$PYTHONPATH:$WEBOTS_HOME/lib/controller/python
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$WEBOTS_HOME/lib/controller
-
-# 2. Start Webots for training
-webots --mode=fast --minimize --no-rendering worlds/epuck_5models.wbt &
-WEBOTS_PID=$!
-sleep 10
-
-# 3. Train (this will take hours)
-python3 controllers/epuck_foraging_supervisor_shaping/epuck_foraging_supervisor_shaping.py \
-    --run_name my_experiment \
-    --total_timesteps 500000
-
-# 4. Stop training Webots
-kill $WEBOTS_PID
-
-# 5. Start Webots for visualization
-webots worlds/eval_best.wbt &
-sleep 10
-
-# 6. Test the model
-python3 controllers/eval_best_model/eval_best_model.py my_experiment.zip
-```
-
-## Troubleshooting
-
-**Training stuck at 0 reward:**
-- Increase entropy coefficient (`--ent_coef 0.05`)
-- Try smaller batch size (`--batch_size 2048`)
-- Ensure robots are moving (check Webots visualization)
-
-**Out of GPU memory:**
-- Reduce batch size (`--batch_size 2048` or `--batch_size 1024`)
-
-**Webots crashes:**
-- Ensure only one Webots instance is running on that port
-- Check system memory usage
-
-**Model not improving:**
-- Train longer (2M+ steps)
-- Check TensorBoard for loss trends
-- Try different learning rates
+---
 
 ## Recommended Training Steps
 
-| Goal | Timesteps | Time Estimate |
-|------|-----------|---------------|
-| Quick validation | 100,000 | 1-2 hours |
-| Short experiment | 250,000 | 3-5 hours |
-| Standard training | 2,000,000 | 12-24 hours |
-| Extended training | 5,000,000 | 2-3 days |
-| Full convergence | 10,000,000 | 5-7 days |
+| Goal | Timesteps |
+|------|-----------|
+| Quick sanity check | 200,000 |
+| Short experiment | 1,000,000 |
+| Standard training | 7,000,000 |
+| Full convergence | 10,000,000+ |
+
+---
+
+## Trained Models (Current)
+
+| Model | Type | Notes |
+|-------|------|-------|
+| `ppo_v16_phero.zip` | Centralized | Best centralized baseline (~11 tags/min) |
+| `ppo_v16_retrain.zip` | Centralized | Re-run with Fix 1 (post-deposit pheromone gradient) |
+| `decentralized_optA_v1.zip` | Decentralized | Option A — in training |
+
+---
+
+## Troubleshooting
+
+**`Device "gps" was not found`** — The E-puck PROTO uses `turretSlot`, not `extensionSlot`. Verify `worlds/epuck_foraging_decentralized.wbt` uses `turretSlot [...]`.
+
+**`numpy.dtype size changed`** — NumPy 2.x conflicts with system packages. Fix: `pip install "numpy<2"`.
+
+**Robots not moving** — Webots simulation must be running (press Play). The extern supervisor connects after Webots loads.
+
+**Training stuck at low reward** — Increase `--ent_coef 0.15` for more exploration. Check that `[PICKUP]` events appear in the first few minutes.
+
+**Out of GPU memory** — Reduce batch size with `--batch_size 2048`.

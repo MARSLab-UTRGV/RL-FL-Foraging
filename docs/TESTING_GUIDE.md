@@ -1,99 +1,202 @@
-# Testing a Trained Model
+# Testing Guide — Multi-Agent E-puck Foraging
 
-This guide explains how to evaluate and visualize a trained PPO model.
+This guide covers evaluating trained models for both the **centralized** and **decentralized** versions.
+
+---
 
 ## Prerequisites
 
 ```bash
-# Set environment variables (add to ~/.bashrc for permanence)
 export WEBOTS_HOME=/usr/local/webots
 export PYTHONPATH=$PYTHONPATH:$WEBOTS_HOME/lib/controller/python
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$WEBOTS_HOME/lib/controller
 ```
 
-## Quick Start
+---
 
-### Option 1: Use the Visualization Script (Recommended)
+## Files Overview
 
-```bash
-./scripts/run_viz.sh
-```
+### Centralized Evaluation
 
-This launches Webots and runs the best model automatically.
+| File | Role |
+|------|------|
+| `worlds/eval_best.wbt` | Evaluation world (4 robots, 70 tags, no training hooks) |
+| `controllers/eval_best_model/eval_best_model.py` | Extern eval script — loads model and runs episodes |
+| `controllers/epuck_driver/epuck_driver.py` | Robot controller (runs inside Webots, unchanged) |
 
-To change which model is visualized, edit `scripts/run_viz.sh` and change the `MODEL` variable.
+### Decentralized Evaluation
 
-### Option 2: Manual Steps
+| File | Role |
+|------|------|
+| `worlds/epuck_foraging_decentralized.wbt` | World with GPS/IMU/phero on each robot |
+| `controllers/decentralized_supervisor/decentralized_supervisor.py` | Supervisor (used for training; evaluation uses the same world) |
+| `controllers/epuck_decentralized/epuck_decentralized.py` | Robot controller — runs autonomously with onboard sensors |
 
-**Step 1: Start Webots**
+---
+
+## Centralized Evaluation
+
+**Step 1: Launch Webots with the eval world**
 
 ```bash
 webots worlds/eval_best.wbt &
+sleep 10
 ```
 
-Wait for Webots to fully load (~10 seconds).
-
-**Step 2: Run the evaluation controller**
+**Step 2: Run the evaluation script**
 
 ```bash
-python3 controllers/eval_best_model/eval_best_model.py models/epuck_top5_baseline2M/ppo_epuck_top5_baseline2M.zip
+cd controllers/eval_best_model
+python3 eval_best_model.py ../../ppo_v16_phero.zip
 ```
 
-Replace the path with any trained model `.zip` file.
+Pass any `.zip` model path as the argument:
 
-## Available Trained Models
+```bash
+# Best centralized model
+python3 eval_best_model.py ../../ppo_v16_phero.zip
 
-All models are in the project root directory:
+# Retrained model
+python3 eval_best_model.py ../../ppo_v16_retrain.zip
+```
 
-| Model | Description |
-|-------|-------------|
-| `ppo_5models_baseline.zip` | Standard config (2M steps) |
-| `ppo_5models_high_ent.zip` | High exploration (entropy=0.05) |
-| `ppo_5models_high_lr.zip` | High learning rate |
-| `ppo_5models_small_batch.zip` | Batch size 2048 |
-| `ppo_5models_verysmall_batch.zip` | Batch size 1024 |
-| `ppo_5models_long_5M.zip` | Extended training (5M steps) |
-| `ppo_5models_extralong_10M.zip` | Extended training (10M steps) |
+### What to Expect
 
-Older models are in `models/epuck_top5_*/` directories.
+```
+[EVAL] Model: ppo_v16_phero.zip
+[EVAL] Step 100 | Deposits: 3 | Reward: 142.5
+[EVAL] Step 200 | Deposits: 7 | Reward: 289.0
+...
+[PICKUP] Robot 2 picked up tag. Total: 8
+[DEPOSIT] Robot 2 deposited! Total: 8
+```
 
-## What to Expect
+- Robots navigate toward tag clusters
+- On tag pickup: robot carries it back to base (centre of arena)
+- Deposit increases the total count
 
-When the model runs, you should see:
-- 4 e-puck robots moving in the arena
-- Robots navigating toward yellow AprilTag boxes
-- Robots picking up boxes (tags disappear)
-- Robots returning to the red base station at center
-- Robots depositing boxes (score increases)
 
-The terminal shows step count and cumulative reward every 100 steps.
+### Centralized Obs Space (20D per robot, 80D stacked total)
 
-## Changing Simulation Speed
+The eval script expects the same 20D obs as training:
 
-In Webots GUI:
-1. Click the speed slider in the toolbar
-2. Drag to increase speed (up to 10x or more)
-3. Or use `--mode=fast` when launching Webots for maximum speed
+```
+[0:8]  proximity sensors
+[8]    tag_visible
+[9]    tag_dist_norm
+[10]   tag_angle_norm
+[11]   carrying
+[12]   base_dist_norm
+[13]   base_angle_norm
+[14]   cluster_known     (supervisor pheromone grid)
+[15]   cluster_dist_norm
+[16]   cluster_angle_norm
+[17]   phero_front_norm
+[18]   phero_left_norm
+[19]   phero_right_norm
+```
+
+**Note:** The `eval_best_model.py` script is compatible with both v16 and v16_retrain models — both use the same 20D obs layout.
+
+---
+
+## Decentralized Evaluation
+
+The decentralized model (`decentralized_optA_v1.zip`) is an SB3 PPO model trained with parameter sharing. To evaluate it, launch the decentralized world and load the model.
+
+**Step 1: Launch Webots with the decentralized world**
+
+```bash
+webots worlds/epuck_foraging_decentralized.wbt &
+sleep 10
+```
+
+**Step 2: Run a quick eval using the supervisor in eval mode**
+
+Create a short eval script or modify `decentralized_supervisor.py`'s `__main__` block. Alternatively, load the model directly:
+
+```python
+from stable_baselines3 import PPO
+import numpy as np
+
+model = PPO.load("decentralized_optA_v1.zip")
+
+# In your step loop:
+obs = env.reset()                           # (4, 18) array
+actions, _ = model.predict(obs, deterministic=True)   # (4, 2) array
+obs, rewards, dones, infos = env.step(actions)
+```
+
+The decentralized world uses:
+- `controllers/epuck_decentralized/epuck_decentralized.py` — robot controller (runs inside Webots)
+- `controllers/decentralized_supervisor/decentralized_supervisor.py` — handles tag mechanics and obs assembly
+
+### Decentralized Obs Space (18D per robot)
+
+```
+[0:8]  proximity sensors        ← robot onboard
+[8]    tag_visible              ← supervisor (camera sim / real camera at deployment)
+[9]    tag_dist_norm
+[10]   tag_angle_norm
+[11]   carrying                 ← robot onboard
+[12]   base_dist_norm           ← robot GPS
+[13]   base_angle_norm          ← robot GPS + InertialUnit
+[14]   phero_known              ← robot P2P pheromone receiver
+[15]   phero_dist_norm
+[16]   phero_angle_norm
+[17]   phero_strength
+```
+
+### CTDE Deployment Note
+
+At deployment on real robots:
+- Dims [0:8], [11:18] — already computed onboard (no supervisor needed)
+- Dims [8:11] — replace supervisor camera sim with onboard camera + AprilTag detector
+- Each robot loads the same `decentralized_optA_v1.zip` policy and runs inference locally
+- Robots coordinate only via P2P pheromone broadcasts (channel 10, 2 m range)
+
+---
+
+## Comparing Centralized vs Decentralized
+
+Run both in identical arena configurations and measure:
+
+| Metric | Centralized | Decentralized |
+|--------|-------------|---------------|
+| Tags/min | ~11 (v16) | TBD after training |
+| Obs computed onboard | 0/20 | 14/18 |
+| Supervisor at execution | Required | Not required |
+| Pheromone type | Global grid (supervisor) | P2P broadcast (robot) |
+| CPFA baseline | 5.94 tags/min | 5.94 tags/min |
+
+For statistical significance, run at least **5 evaluation seeds** of 30 minutes each and report mean ± std.
+
+---
 
 ## Headless Evaluation (No GUI)
 
 ```bash
 webots --mode=fast --minimize --no-rendering worlds/eval_best.wbt &
 sleep 10
-python3 controllers/eval_best_model/eval_best_model.py ppo_5models_baseline.zip
+python3 controllers/eval_best_model/eval_best_model.py ppo_v16_phero.zip
 ```
+
+---
+
+## Changing Simulation Speed
+
+In Webots GUI: drag the speed slider in the toolbar, or launch with `--mode=fast` for maximum speed (no rendering).
+
+---
 
 ## Troubleshooting
 
-**Webots not found:**
-- Verify `WEBOTS_HOME` points to your Webots installation
+**`Device "gps" was not found`** — The decentralized world must use `turretSlot` (not `extensionSlot`) in each E-puck node. Check `worlds/epuck_foraging_decentralized.wbt`.
 
-**Model file not found:**
-- Check the path is correct and the `.zip` file exists
+**Robots not moving** — Press Play in Webots before running the eval script. The extern controller connects after Webots loads.
 
-**Robots not moving:**
-- Ensure Webots simulation is running (click play button)
-- Check that the controller is connected (look for print output)
+**Wrong obs size error** — Centralized models expect 80D input; decentralized models expect 18D per robot. Do not mix worlds and models.
 
-**Import errors:**
-- Run `pip install stable-baselines3 deepbots torch numpy`
+**`numpy.dtype size changed`** — Run `pip install "numpy<2"` to fix NumPy 2.x binary incompatibility.
+
+**Model file not found** — All trained models are `.zip` files in the project root. Pass the full or relative path as argument.

@@ -1,126 +1,103 @@
-# Training Progress & Model Registry
-This document tracks all PPO models trained for the Multi-Agent e-puck Foraging task.
+# Project Progress — Multi-Agent E-puck Foraging (CoRL 2026)
 
-## System Architecture (CTDE)
-We use **Centralized Training, Decentralized Execution**.
+**Last updated:** 2026-05-01
 
-- **The "Brain" (PPO Agent):** A single neural network controls ALL 4 robots. It receives all their observations combined and outputs all their actions combined.
-- **The "Server" (Supervisor):** The Webots Supervisor acts as the central hub. It collects data from all robots, feeds it to the PPO brain, and sends actions back to the robots.
-- **Is it Cheating?:** No. Even though the training is centralized, each robot's portion of the input only contains its own local sensor data. It does NOT see what other robots see.
+---
 
-## Observation Space (Input)
-Each robot sees **15 numbers**. The total input to the brain is **15 * 4 = 60 numbers**.
+## Project Goal
 
-- **Proximity (8):** Distance to obstacles around the robot.
-- **Tag Visible (1):** 1.0 if a tag is seen, 0.0 otherwise.
-- **Tag Distance (1):** Distance to the closest visible tag (max 2m).
-- **Tag Angle (1):** Angle to the closest visible tag.
-- **Carrying (1):** 1.0 if holding a box, 0.0 otherwise.
-- **Pheromones (3):** Smell of "food trail" in front/left/right.
+Train 4 e-puck robots to autonomously forage 70 AprilTags scattered in 6 clusters inside a 5×5 m Webots arena, simulating a **rescue mission** where robots must find and collect items from unknown cluster locations.
 
-## Action Space (Output)
-The brain outputs **2 numbers per robot**. Total output is **2 * 4 = 8 numbers**.
+The core research question is: **can a decentralized RL policy — where each robot acts using only its own onboard sensors — match or outperform a fully centralized RL policy that has access to global information?**
 
-- **Left Wheel Speed:** -1.0 to +1.0
-- **Right Wheel Speed:** -1.0 to +1.0
+The centralized version serves as the performance upper bound. The decentralized version must demonstrate comparable or better foraging performance while requiring no central supervisor at execution time. The **CPFA baseline (5.94 tags/min)** is a secondary reference point showing both RL models improve over classical swarm methods.
 
-## Reward Function (The Goal)
-How we teach them what to do:
+The research contribution for **CoRL 2026** is a **Centralized Training, Decentralized Execution (CTDE)** architecture where robots learn to coordinate using **peer-to-peer pheromone signals** without any central brain at execution time — and where 14/18 observation dimensions are computed entirely onboard, making the policy directly deployable on physical robots.
 
-- **Pickup:** +1.0 (Big reward!)
-- **Deposit:** +10.0 (Huge reward!)
-- **Shaping (Approaching Tag):** +10 * (OldDist - NewDist) (Points for getting closer)
-- **Shaping (Approaching Base):** +10 * (OldDist - NewDist) (Points for getting closer)
-- **Collision:** -0.01 (Don't crash)
-- **Time Penalty:** -0.001 per step (Hurry up!)
+---
 
-## Current Best Model
-**Model ID:** `epuck_top5_baseline2M`
-**File Path:** `.../epuck_top5_baseline2M/ppo_epuck_top5_baseline2M.zip`
-**Status:** Verified Working (Robots approach tags and forage)
+## Two Versions
 
-### Run Command
-Run this from the project root (You need to have webots open already with the world loaded, this world:/home/andres2020/Dev/deepbots_test/deepbots-tutorials/emitterReceiverSchemeTutorial/full_project/worlds/eval_best.wbt):
+### 1. Centralized (Baseline)
+Robots are controlled by a single shared PPO policy trained and executed with full supervisor involvement. The supervisor maintains a global pheromone grid and provides all observations. This serves as the **research baseline**.
 
-```bash
-cd /home/andres2020/Dev/deepbots_test/deepbots-tutorials/emitterReceiverSchemeTutorial/full_project && \
-export WEBOTS_HOME=/usr/local/webots && \
-export PYTHONPATH=$PYTHONPATH:$WEBOTS_HOME/lib/controller/python && \
-export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$WEBOTS_HOME/lib/controller && \
-python3 controllers/eval_best_model/eval_best_model.py controllers/epuck_top5_baseline2M/ppo_epuck_top5_baseline2M.zip
-```
+### 2. Decentralized — Hybrid Option A (CoRL Contribution)
+Robots are trained with a shared PPO policy but each robot computes most of its own observations autonomously using onboard sensors (GPS, InertialUnit, peer-to-peer pheromone radio). At execution time, each robot runs the policy locally with no central supervisor — robots coordinate only by broadcasting pheromone signals to neighbors within 2 m.
 
-## Latest Models (With Reward Shaping)
-Trained on Nov 21, 2025. These models use dense rewards for approaching tags and collision penalties.
+This is the novel contribution: **14 out of 18 observation dimensions are computed onboard**, making the policy deployable on physical robots with no architectural change.
 
-| Model ID | Timesteps | Batch Size | Learning Rate | Ent. Coef | Description | Status | Observations |
-|----------|-----------|------------|---------------|-----------|-------------|--------|--------------|
-| `epuck_top5_quick100k` | 100,000 | 2048 | 5e-4 | 0.02 | Quick Test: Fast learning rate, small batch for rapid feedback. | Ready | To be tested |
-| `epuck_top5_short250k` | 250,000 | 4096 | 3e-4 | 0.01 | Short Baseline: Standard params, short duration. | Ready | To be tested |
-| `epuck_top5_baseline2M` | 2,000,000 | 4096 | 3e-4 | 0.01 | Baseline 2M: The standard "Gold" configuration. Long training. | Ready | Working! Robots approach tags directly. |
-| `epuck_top5_smallbatch2M` | 2,000,000 | 2048 | 3e-4 | 0.01 | Small Batch: More frequent updates (2x more updates per epoch). | Ready | To be tested |
-| `epuck_top5_highent2M` | 2,000,000 | 4096 | 3e-4 | 0.05 | High Entropy: Encourages 5x more exploration. Good for escaping local optima. | Ready | To be tested |
+---
 
-## Legacy Models (No Reward Shaping)
-Trained previously. These models struggled with the sparse reward signal (spinning behavior).
+## How It Works
 
-| Model ID | Timesteps | Batch Size | Description | Status |
-|----------|-----------|------------|-------------|--------|
-| `ppo_epuck_heavy` | 100,000 | 4096 | Initial GUI test run. | Suboptimal |
-| `ppo_epuck_FAST` | 200,000 | 4096 | Fast mode test. | Suboptimal |
-| `ppo_epuck_HEADLESS` | 300,000 | 4096 | Headless mode test. | Suboptimal |
-| `ppo_epuck_2M` | 2,000,000 | 4096 | Long run (failed to converge due to sparse rewards). | Suboptimal |
-| `ppo_2048` | 2,000,000 | 2048 | Small batch variant. | Suboptimal |
-| `ppo_1024` | 2,000,000 | 1024 | Tiny batch variant. | Suboptimal |
-| `ppo_epuck_foraging_centralized` | 100,000 | 4096 | Very first test run. | Suboptimal |
+**Exploration:** Robots explore the arena. When no pheromone signal is known, they are rewarded for moving outward from the base.
 
-## Cancelled Models
-These configurations were generated but crashed or were cancelled before completion.
+**Pheromone:** When a robot picks up a tag from a cluster, it broadcasts a pheromone signal encoding the cluster location and density. Nearby robots receive this signal and navigate toward the cluster. The stronger the signal (denser the cluster), the more robots are attracted.
 
-- `epuck_shaping_1_baseline` to `epuck_shaping_7_aggressive`: Cancelled due to crash. Replaced by "Top 5" run.
-- `epuck_shaping_8_quick100k` to `epuck_shaping_11_long1M`: Cancelled/Merged into "Top 5" run.
+**Foraging loop:** Robot finds cluster → picks up tag → returns to base (centre of arena) → deposits → goes back to cluster (guided by pheromone memory).
 
-## File Locations
-All models are stored in: `/home/andres2020/Dev/deepbots_test/deepbots-tutorials/emitterReceiverSchemeTutorial/full_project/controllers/`
+**Curriculum:** Training starts with clusters close to the base and gradually expands to the full arena as the robots improve.
 
-Example path: `.../controllers/epuck_top5_baseline2M/ppo_epuck_top5_baseline2M.zip`
+---
 
-## 7 Parallel Models (Dec 3-5, 2025)
+## Current Status
 
-We are addressing the limitations found in previous runs (slow speed, collisions, easy task difficulty).
+### Centralized Version ✅ Complete
 
-### Environment Updates
-1. **Robot Speed:** Increased motor command scaling by 6x (using full speed range).
-2. **Collision Penalty:** Increased from -0.01 to -0.1 (10x penalty for bumping).
-3. **Vision Range:** Reduced from 2.0m to 0.8m (forcing exploration).
-4. **Deposit Range:** Reduced from 0.3m to 0.15m (precision required).
-5. **World Changes:** Base station radius reduced (0.2 -> 0.1), AprilTags reduced (0.0275 -> 0.02).
+- Training complete (7 million steps)
+- **Best model: `ppo_v16_phero.zip`**
+- Performance: ~11 tags/min — nearly **2× the CPFA baseline**
+- Serves as the centralized baseline for comparison with the decentralized version
 
-### Trained Models (Awaiting Testing)
-Training completed Dec 3-5, 2025. All models saved to project root as `.zip` files. These models have not been tested yet.
+A refined retrain (`ppo_v16_retrain.zip`) is currently running with an improved reward shaping that fixes a gradient blind spot after each deposit. This is expected to perform at least as well as v16.
 
-| Model ID | Timesteps | Batch Size | LR | Ent. Coef | Description | Status |
-|----------|-----------|------------|----|-----------|-------------|--------|
-| `ppo_5models_baseline` | 2M | 4096 | 3e-4 | 0.01 | Baseline with new hard environment. | Trained, not tested |
-| `ppo_5models_high_ent` | 2M | 4096 | 3e-4 | 0.05 | High Entropy (0.05) to force exploration. | Trained, not tested |
-| `ppo_5models_high_lr` | 2M | 4096 | 5e-4 | 0.01 | Higher Learning Rate. | Trained, not tested |
-| `ppo_5models_small_batch` | 2M | 2048 | 3e-4 | 0.01 | Small Batch (2048). | Trained, not tested |
-| `ppo_5models_verysmall_batch` | 2M | 1024 | 3e-4 | 0.01 | Very Small Batch (1024). | Trained, not tested |
-| `ppo_5models_long_5M` | 5M | 4096 | 3e-4 | 0.01 | Long Run: 5 million steps for convergence. | Trained, not tested |
-| `ppo_5models_extralong_10M` | 10M | 4096 | 3e-4 | 0.01 | Extra Long Run: 10 million steps. | Trained, not tested |
+### Decentralized Version 🔄 In Training
 
-### How to Test These Models
+- All code is complete and verified running
+- Training in progress simultaneously on two machines (LD39052 and DL39053)
+- Model: `decentralized_optA_v1.zip`
+- Expected to complete in ~7–8 hours per machine
+- Early training shows all 4 robots picking up and depositing tags from the first episode
 
-For full instructions, see TESTING_GUIDE.md.
+---
 
-### File Locations
-Models saved to: `/home/andres2020/Dev/deepbots_test/RL-FL-Foraging/`
-- `ppo_5models_baseline.zip`
-- `ppo_5models_high_ent.zip`
-- `ppo_5models_high_lr.zip`
-- `ppo_5models_small_batch.zip`
-- `ppo_5models_verysmall_batch.zip`
-- `ppo_5models_long_5M.zip`
-- `ppo_5models_extralong_10M.zip`
+## What Remains
 
-Checkpoints in `logs/ppo_5models_*/` directories.
+### Immediate (once training completes)
+- [ ] Evaluate `ppo_v16_retrain.zip` — compare with v16 baseline
+- [ ] Evaluate `decentralized_optA_v1.zip` — measure tags/min
+- [ ] Run 5+ evaluation seeds (30 min each) per model for statistical significance
+- [ ] Report mean ± std tags/min for all models
+
+### Analysis
+- [ ] Ablation study: pheromone ON vs pheromone OFF — to show pheromone's contribution
+- [ ] Create a dedicated evaluation script for the decentralized model
+
+### Paper (CoRL 2026)
+- [ ] Results section: centralized vs decentralized vs CPFA baseline table
+- [ ] Ablation table: with and without pheromone
+- [ ] Architecture diagram showing the CTDE obs flow
+- [ ] Demo video: 4 robots coordinating via P2P pheromone with no central supervisor
+
+### Future / Optional
+- [ ] Further decentralized training if v1 underperforms (tune reward scales)
+- [ ] Physical robot deployment test (replace simulated GPS/camera with real sensors)
+
+---
+
+## Key Files
+
+| Purpose | File |
+|---------|------|
+| Centralized training | `controllers/epuck_foraging_supervisor_shaping/epuck_foraging_supervisor_shaping.py` |
+| Centralized evaluation | `controllers/eval_best_model/eval_best_model.py` |
+| Centralized robot | `controllers/epuck_driver/epuck_driver.py` |
+| Decentralized training | `controllers/decentralized_supervisor/decentralized_supervisor.py` |
+| Decentralized robot | `controllers/epuck_decentralized/epuck_decentralized.py` |
+| Centralized training world | `worlds/epuck_foraging_shaping.wbt` |
+| Centralized eval world | `worlds/eval_best.wbt` |
+| Decentralized world | `worlds/epuck_foraging_decentralized.wbt` |
+| Best centralized model | `ppo_v16_phero.zip` |
+| Decentralized model (in training) | `decentralized_optA_v1.zip` |
+
+For how to run training and evaluation, see `TRAINING_GUIDE.md` and `TESTING_GUIDE.md`.
