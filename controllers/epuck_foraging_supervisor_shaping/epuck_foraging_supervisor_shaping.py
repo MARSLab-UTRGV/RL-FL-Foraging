@@ -438,24 +438,14 @@ class EpuckForagingSupervisor(DeepbotsSupervisorEnv):
                             total_reward += avg_speed * 0.01  # max +0.01/step
 
                     # Pheromone-approach reward: approach shaping toward pheromone peak.
-                    # Fix 3: ×15 (was ×10) — stronger gradient so PPO prioritises cluster nav.
-                    # Fix 2: cluster-facing reward — trains PPO to orient toward cluster,
-                    #         not just approach it. Solves random wandering when signal exists.
                     if self.pheromone_grid.max() > 0.1:
                         peak = np.unravel_index(self.pheromone_grid.argmax(), self.pheromone_grid.shape)
                         cx = peak[0] * self.grid_res - 2.5
                         cy = peak[1] * self.grid_res - 2.5
                         curr_cd = math.sqrt((cx - robot_pos[0])**2 + (cy - robot_pos[1])**2)
                         if self.prev_cluster_dists[i] is not None:
-                            total_reward += (self.prev_cluster_dists[i] - curr_cd) * 15.0
+                            total_reward += (self.prev_cluster_dists[i] - curr_cd) * 10.0
                         self.prev_cluster_dists[i] = curr_cd
-                        # Fix 2: reward facing toward cluster (dot=+1) / penalise facing away (dot=-1)
-                        if curr_cd > 0.001:
-                            robot_rot = self.robot_nodes[i].getOrientation()
-                            fwd = [robot_rot[0], robot_rot[3], robot_rot[6]]
-                            c_norm = [(cx - robot_pos[0]) / curr_cd, (cy - robot_pos[1]) / curr_cd]
-                            c_dot = max(min(fwd[0]*c_norm[0] + fwd[1]*c_norm[1], 1.0), -1.0)
-                            total_reward += c_dot * 0.3
                     else:
                         # No pheromone signal — teach PPO to spread outward and search.
                         # When obs[14]=cluster_known=0, the right action is to cover the arena.
@@ -476,10 +466,7 @@ class EpuckForagingSupervisor(DeepbotsSupervisorEnv):
                     total_reward          += 20.0
                     self.total_deposits   += 1
                     print(f"[DEPOSIT] Robot {i+1} deposited! Total: {self.total_deposits}")
-                    # Fix 1: pre-initialize cluster dist at the deposit moment so the
-                    # pheromone approach gradient is active from step 1 post-deposit.
-                    # Without this, prev_cluster_dists is None on the first exploring step
-                    # and PPO gets zero gradient exactly when it most needs direction.
+                    # Pre-seed cluster dist so pheromone gradient fires from step 1 post-deposit
                     if self.pheromone_grid.max() > 0.1:
                         peak = np.unravel_index(self.pheromone_grid.argmax(), self.pheromone_grid.shape)
                         cx = peak[0] * self.grid_res - 2.5
@@ -502,9 +489,7 @@ class EpuckForagingSupervisor(DeepbotsSupervisorEnv):
                     b_dot     = max(min(fwd[0]*b_norm[0] + fwd[1]*b_norm[1], 1.0), -1.0)
                     total_reward += b_dot * 0.5
 
-                # Fix 1: only reset to None if STILL carrying after this step.
-                # If deposit happened above, carrying_state is now False and
-                # prev_cluster_dists was pre-initialized — must NOT overwrite with None.
+                # Only reset when still carrying (deposit already pre-seeded it above)
                 if self.carrying_state[i]:
                     self.prev_cluster_dists[i] = None
 
@@ -727,7 +712,7 @@ class EpuckForagingSupervisor(DeepbotsSupervisorEnv):
 # =============================================================================
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('--run_name',        type=str,   default='ppo_v17_phero2')
+    parser.add_argument('--run_name',        type=str,   default='ppo_v16_retrain')
     parser.add_argument('--lr',              type=float, default=3e-4)
     parser.add_argument('--ent_coef',        type=float, default=0.10)
     parser.add_argument('--batch_size',      type=int,   default=1024)

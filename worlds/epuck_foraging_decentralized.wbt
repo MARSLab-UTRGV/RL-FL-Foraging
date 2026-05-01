@@ -220,6 +220,25 @@ DEF ROBOT1 E-puck {
   camera_fieldOfView 1
   camera_width 512
   camera_height 512
+  turretSlot [
+    GPS {
+      name "gps"
+      accuracy 0
+    }
+    InertialUnit {
+      name "inertial_unit"
+    }
+    Emitter {
+      name "phero_emitter"
+      range 2.0
+      channel 10
+    }
+    Receiver {
+      name "phero_receiver"
+      channel 10
+      bufferSize 1024
+    }
+  ]
 }
 
 DEF ROBOT2 E-puck {
@@ -231,6 +250,25 @@ DEF ROBOT2 E-puck {
   camera_fieldOfView 1
   camera_width 512
   camera_height 512
+  turretSlot [
+    GPS {
+      name "gps"
+      accuracy 0
+    }
+    InertialUnit {
+      name "inertial_unit"
+    }
+    Emitter {
+      name "phero_emitter"
+      range 2.0
+      channel 10
+    }
+    Receiver {
+      name "phero_receiver"
+      channel 10
+      bufferSize 1024
+    }
+  ]
 }
 
 DEF ROBOT3 E-puck {
@@ -242,6 +280,25 @@ DEF ROBOT3 E-puck {
   camera_fieldOfView 1
   camera_width 512
   camera_height 512
+  turretSlot [
+    GPS {
+      name "gps"
+      accuracy 0
+    }
+    InertialUnit {
+      name "inertial_unit"
+    }
+    Emitter {
+      name "phero_emitter"
+      range 2.0
+      channel 10
+    }
+    Receiver {
+      name "phero_receiver"
+      channel 10
+      bufferSize 1024
+    }
+  ]
 }
 
 DEF ROBOT4 E-puck {
@@ -253,6 +310,25 @@ DEF ROBOT4 E-puck {
   camera_fieldOfView 1
   camera_width 512
   camera_height 512
+  turretSlot [
+    GPS {
+      name "gps"
+      accuracy 0
+    }
+    InertialUnit {
+      name "inertial_unit"
+    }
+    Emitter {
+      name "phero_emitter"
+      range 2.0
+      channel 10
+    }
+    Receiver {
+      name "phero_receiver"
+      channel 10
+      bufferSize 1024
+    }
+  ]
 }
 
 Robot {

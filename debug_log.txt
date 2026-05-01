@@ -222155,3 +222155,1643 @@ R1[PPO]: L=1.00 R=-0.21 | carry=0 | base_dist=0.32 base_ang=0.89 | tag_vis=0 tag
 R2[PPO]: L=0.34 R=0.78 | carry=0 | base_dist=0.31 base_ang=-1.00 | tag_vis=0 tag_dist=0.00 | wall=1.44
 R3[PPO]: L=0.36 R=1.00 | carry=0 | base_dist=0.23 base_ang=-0.61 | tag_vis=0 tag_dist=0.00 | wall=1.77
 R4[PPO]: L=0.30 R=0.53 | carry=0 | base_dist=0.57 base_ang=-0.54 | tag_vis=0 tag_dist=0.00 | wall=0.54
+
+============================================================
+Step 500 | Pickups: 2 | Deposits: 0
+============================================================
+R1[PPO]: L=0.87 R=-0.58 | carry=0 | base_dist=0.19 base_ang=0.54 | tag_vis=0 tag_dist=0.00 | wall=1.85
+R2[BASE_AVOID]: L=0.38 R=1.00 | carry=0 | base_dist=0.14 base_ang=0.77 | tag_vis=0 tag_dist=0.00 | wall=2.04
+R3[RTB]: L=1.00 R=-0.26 | carry=1 | base_dist=0.21 base_ang=0.00 | tag_vis=0 tag_dist=0.00 | wall=1.77
+R4[RTB]: L=-0.47 R=0.26 | carry=1 | base_dist=0.38 base_ang=-0.28 | tag_vis=0 tag_dist=0.00 | wall=1.18
+
+============================================================
+Step 1000 | Pickups: 2 | Deposits: 2
+============================================================
+R1[PPO]: L=-0.38 R=-0.52 | carry=0 | base_dist=0.25 base_ang=0.26 | tag_vis=0 tag_dist=0.00 | wall=1.61
+R2[TAG_SEEK]: L=0.26 R=0.95 | carry=0 | base_dist=0.15 base_ang=0.78 | tag_vis=1 tag_dist=0.95 | wall=2.02
+R3[TAG_SEEK]: L=-0.15 R=1.00 | carry=0 | base_dist=0.34 base_ang=-0.93 | tag_vis=1 tag_dist=0.21 | wall=1.30
+R4[TAG_SEEK]: L=-0.11 R=1.00 | carry=0 | base_dist=0.16 base_ang=0.89 | tag_vis=1 tag_dist=0.93 | wall=1.97
+
+============================================================
+Step 1500 | Pickups: 5 | Deposits: 3
+============================================================
+R1[PPO]: L=0.41 R=-0.54 | carry=0 | base_dist=0.28 base_ang=-0.16 | tag_vis=0 tag_dist=0.00 | wall=1.62
+R2[RTB]: L=-0.18 R=0.85 | carry=1 | base_dist=0.16 base_ang=0.00 | tag_vis=0 tag_dist=0.00 | wall=1.94
+R3[BASE_AVOID]: L=-0.47 R=0.56 | carry=0 | base_dist=0.07 base_ang=-0.85 | tag_vis=0 tag_dist=0.00 | wall=2.26
+R4[RTB]: L=0.04 R=0.21 | carry=1 | base_dist=0.17 base_ang=0.00 | tag_vis=0 tag_dist=0.00 | wall=1.89
+
+============================================================
+Step 2000 | Pickups: 6 | Deposits: 5
+============================================================
+R1[TAG_SEEK]: L=0.46 R=-1.00 | carry=0 | base_dist=0.49 base_ang=-0.91 | tag_vis=1 tag_dist=0.21 | wall=1.26
+R2[PPO]: L=0.11 R=1.00 | carry=0 | base_dist=0.15 base_ang=0.90 | tag_vis=0 tag_dist=0.00 | wall=2.03
+R3[RTB]: L=0.68 R=0.46 | carry=1 | base_dist=0.35 base_ang=0.04 | tag_vis=0 tag_dist=0.00 | wall=1.26
+R4[PPO]: L=-0.55 R=0.28 | carry=0 | base_dist=0.15 base_ang=0.79 | tag_vis=0 tag_dist=0.00 | wall=2.02
+
+============================================================
+Step 2500 | Pickups: 7 | Deposits: 6
+============================================================
+R1[RTB]: L=-0.19 R=-0.29 | carry=1 | base_dist=0.09 base_ang=-0.00 | tag_vis=0 tag_dist=0.00 | wall=2.26
+R2[PPO]: L=0.35 R=0.89 | carry=0 | base_dist=0.15 base_ang=0.71 | tag_vis=0 tag_dist=0.00 | wall=1.99
+R3[BASE_AVOID]: L=0.05 R=0.83 | carry=0 | base_dist=0.14 base_ang=0.15 | tag_vis=0 tag_dist=0.00 | wall=2.04
+R4[PPO]: L=-0.33 R=0.33 | carry=0 | base_dist=0.15 base_ang=-0.42 | tag_vis=0 tag_dist=0.00 | wall=2.00
+
+============================================================
+Step 3000 | Pickups: 7 | Deposits: 7
+============================================================
+R1[PPO]: L=-0.55 R=-0.90 | carry=0 | base_dist=0.17 base_ang=-0.41 | tag_vis=0 tag_dist=0.00 | wall=2.06
+R2[PPO]: L=0.21 R=0.86 | carry=0 | base_dist=0.16 base_ang=0.41 | tag_vis=0 tag_dist=0.00 | wall=2.09
+R3[BASE_AVOID]: L=0.28 R=1.00 | carry=0 | base_dist=0.14 base_ang=0.44 | tag_vis=0 tag_dist=0.00 | wall=2.15
+R4[TAG_SEEK]: L=-0.35 R=0.75 | carry=0 | base_dist=0.26 base_ang=0.99 | tag_vis=1 tag_dist=0.65 | wall=1.60
+
+============================================================
+Step 3500 | Pickups: 8 | Deposits: 7
+============================================================
+R1[PPO]: L=1.00 R=-1.00 | carry=0 | base_dist=0.27 base_ang=-0.42 | tag_vis=0 tag_dist=0.00 | wall=1.69
+R2[PPO]: L=0.18 R=0.65 | carry=0 | base_dist=0.14 base_ang=0.21 | tag_vis=0 tag_dist=0.00 | wall=2.00
+R3[PPO]: L=-0.26 R=0.80 | carry=0 | base_dist=0.14 base_ang=0.23 | tag_vis=0 tag_dist=0.00 | wall=1.99
+R4[RTB]: L=-0.26 R=0.48 | carry=1 | base_dist=0.16 base_ang=0.06 | tag_vis=0 tag_dist=0.00 | wall=1.94
+
+============================================================
+Step 4000 | Pickups: 8 | Deposits: 8
+============================================================
+R1[PPO]: L=-0.36 R=-0.61 | carry=0 | base_dist=0.21 base_ang=0.69 | tag_vis=0 tag_dist=0.00 | wall=1.86
+R2[PPO]: L=0.20 R=0.95 | carry=0 | base_dist=0.14 base_ang=-0.83 | tag_vis=0 tag_dist=0.00 | wall=2.12
+R3[PPO]: L=-0.48 R=0.44 | carry=0 | base_dist=0.14 base_ang=0.92 | tag_vis=0 tag_dist=0.00 | wall=2.00
+R4[PPO]: L=-0.52 R=1.00 | carry=0 | base_dist=0.16 base_ang=0.26 | tag_vis=0 tag_dist=0.00 | wall=2.05
+
+============================================================
+Step 4500 | Pickups: 9 | Deposits: 8
+============================================================
+R1[RTB]: L=-0.04 R=-1.00 | carry=1 | base_dist=0.39 base_ang=-0.84 | tag_vis=0 tag_dist=0.00 | wall=1.14
+R2[PPO]: L=-0.02 R=0.42 | carry=0 | base_dist=0.16 base_ang=-0.24 | tag_vis=0 tag_dist=0.00 | wall=2.09
+R3[BASE_AVOID]: L=-0.77 R=0.73 | carry=0 | base_dist=0.14 base_ang=0.59 | tag_vis=0 tag_dist=0.00 | wall=2.09
+R4[PPO]: L=0.07 R=0.86 | carry=0 | base_dist=0.19 base_ang=0.21 | tag_vis=0 tag_dist=0.00 | wall=2.02
+
+============================================================
+Step 5000 | Pickups: 9 | Deposits: 9
+============================================================
+R1[BASE_AVOID]: L=-0.23 R=-1.00 | carry=0 | base_dist=0.07 base_ang=-0.80 | tag_vis=0 tag_dist=0.00 | wall=2.27
+R2[TAG_SEEK]: L=0.57 R=0.38 | carry=0 | base_dist=0.31 base_ang=-0.84 | tag_vis=1 tag_dist=0.51 | wall=1.43
+R3[PPO]: L=-0.51 R=0.53 | carry=0 | base_dist=0.17 base_ang=0.71 | tag_vis=0 tag_dist=0.00 | wall=1.96
+R4[PPO]: L=-0.56 R=1.00 | carry=0 | base_dist=0.18 base_ang=0.66 | tag_vis=0 tag_dist=0.00 | wall=2.02
+
+============================================================
+Step 5500 | Pickups: 10 | Deposits: 9
+============================================================
+R1[TAG_SEEK]: L=-0.19 R=-0.51 | carry=0 | base_dist=0.24 base_ang=0.28 | tag_vis=1 tag_dist=0.98 | wall=1.83
+R2[RTB]: L=-0.11 R=1.00 | carry=1 | base_dist=0.07 base_ang=-0.00 | tag_vis=0 tag_dist=0.00 | wall=2.25
+R3[PPO]: L=-0.20 R=1.00 | carry=0 | base_dist=0.16 base_ang=0.34 | tag_vis=0 tag_dist=0.00 | wall=2.00
+R4[PPO]: L=-0.57 R=0.19 | carry=0 | base_dist=0.17 base_ang=-0.53 | tag_vis=0 tag_dist=0.00 | wall=1.97
+
+============================================================
+Step 6000 | Pickups: 11 | Deposits: 10
+============================================================
+R1[RTB]: L=-0.12 R=-0.22 | carry=1 | base_dist=0.21 base_ang=0.00 | tag_vis=0 tag_dist=0.00 | wall=1.75
+R2[PPO]: L=-0.04 R=0.78 | carry=0 | base_dist=0.18 base_ang=0.50 | tag_vis=0 tag_dist=0.00 | wall=1.94
+R3[PPO]: L=-0.21 R=1.00 | carry=0 | base_dist=0.18 base_ang=-0.19 | tag_vis=0 tag_dist=0.00 | wall=1.93
+R4[PPO]: L=0.08 R=0.40 | carry=0 | base_dist=0.16 base_ang=-0.51 | tag_vis=0 tag_dist=0.00 | wall=1.98
+
+============================================================
+Step 6500 | Pickups: 11 | Deposits: 11
+============================================================
+R1[BASE_AVOID]: L=0.08 R=-0.95 | carry=0 | base_dist=0.14 base_ang=-0.58 | tag_vis=0 tag_dist=0.00 | wall=2.04
+R2[PPO]: L=-0.12 R=1.00 | carry=0 | base_dist=0.16 base_ang=0.51 | tag_vis=0 tag_dist=0.00 | wall=2.08
+R3[PPO]: L=-0.11 R=1.00 | carry=0 | base_dist=0.19 base_ang=-0.60 | tag_vis=0 tag_dist=0.00 | wall=1.88
+R4[PPO]: L=-0.22 R=0.42 | carry=0 | base_dist=0.16 base_ang=-0.70 | tag_vis=0 tag_dist=0.00 | wall=1.94
+
+============================================================
+Step 7000 | Pickups: 11 | Deposits: 11
+============================================================
+R1[TAG_SEEK]: L=0.44 R=-1.00 | carry=0 | base_dist=0.28 base_ang=-0.93 | tag_vis=1 tag_dist=0.87 | wall=1.66
+R2[PPO]: L=-0.20 R=1.00 | carry=0 | base_dist=0.15 base_ang=0.46 | tag_vis=0 tag_dist=0.00 | wall=1.99
+R3[PPO]: L=-0.10 R=1.00 | carry=0 | base_dist=0.19 base_ang=-0.62 | tag_vis=0 tag_dist=0.00 | wall=1.84
+R4[PPO]: L=-0.27 R=0.15 | carry=0 | base_dist=0.17 base_ang=-0.56 | tag_vis=0 tag_dist=0.00 | wall=1.90
+
+============================================================
+Step 7500 | Pickups: 12 | Deposits: 11
+============================================================
+R1[RTB]: L=-0.62 R=-0.12 | carry=1 | base_dist=0.20 base_ang=-0.00 | tag_vis=0 tag_dist=0.00 | wall=1.81
+R2[PPO]: L=0.20 R=0.84 | carry=0 | base_dist=0.15 base_ang=0.40 | tag_vis=0 tag_dist=0.00 | wall=2.04
+R3[PPO]: L=0.08 R=1.00 | carry=0 | base_dist=0.23 base_ang=-0.91 | tag_vis=0 tag_dist=0.00 | wall=1.71
+R4[PPO]: L=-0.06 R=0.09 | carry=0 | base_dist=0.17 base_ang=0.99 | tag_vis=0 tag_dist=0.00 | wall=1.90
+
+============================================================
+Step 8000 | Pickups: 12 | Deposits: 12
+============================================================
+R1[BASE_AVOID]: L=-0.03 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.68 | tag_vis=0 tag_dist=0.00 | wall=2.02
+R2[PPO]: L=-0.13 R=1.00 | carry=0 | base_dist=0.15 base_ang=0.51 | tag_vis=0 tag_dist=0.00 | wall=2.06
+R3[PPO]: L=-0.25 R=1.00 | carry=0 | base_dist=0.27 base_ang=-0.08 | tag_vis=0 tag_dist=0.00 | wall=1.56
+R4[PPO]: L=-0.27 R=0.73 | carry=0 | base_dist=0.16 base_ang=-0.45 | tag_vis=0 tag_dist=0.00 | wall=1.95
+
+============================================================
+Step 8500 | Pickups: 12 | Deposits: 12
+============================================================
+R1[BASE_AVOID]: L=-0.18 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.75 | tag_vis=0 tag_dist=0.00 | wall=2.02
+R2[BASE_AVOID]: L=0.04 R=1.00 | carry=0 | base_dist=0.14 base_ang=0.39 | tag_vis=0 tag_dist=0.00 | wall=2.04
+R3[PPO]: L=-0.24 R=1.00 | carry=0 | base_dist=0.29 base_ang=-0.53 | tag_vis=0 tag_dist=0.00 | wall=1.48
+R4[PPO]: L=-0.37 R=0.75 | carry=0 | base_dist=0.18 base_ang=-0.10 | tag_vis=0 tag_dist=0.00 | wall=1.93
+
+============================================================
+Step 9000 | Pickups: 12 | Deposits: 12
+============================================================
+R1[BASE_AVOID]: L=-0.18 R=-0.99 | carry=0 | base_dist=0.14 base_ang=-0.79 | tag_vis=0 tag_dist=0.00 | wall=2.01
+R2[PPO]: L=0.19 R=1.00 | carry=0 | base_dist=0.15 base_ang=0.73 | tag_vis=0 tag_dist=0.00 | wall=1.99
+R3[PPO]: L=-0.07 R=0.97 | carry=0 | base_dist=0.33 base_ang=0.86 | tag_vis=0 tag_dist=0.00 | wall=1.35
+R4[PPO]: L=-0.58 R=0.81 | carry=0 | base_dist=0.19 base_ang=0.08 | tag_vis=0 tag_dist=0.00 | wall=1.91
+
+============================================================
+Step 9500 | Pickups: 13 | Deposits: 12
+============================================================
+R1[RTB]: L=-0.01 R=-1.00 | carry=1 | base_dist=0.42 base_ang=-0.81 | tag_vis=0 tag_dist=0.00 | wall=1.03
+R2[BASE_AVOID]: L=-0.20 R=0.15 | carry=0 | base_dist=0.14 base_ang=-0.78 | tag_vis=0 tag_dist=0.00 | wall=2.02
+R3[PPO]: L=-0.83 R=0.82 | carry=0 | base_dist=0.33 base_ang=0.23 | tag_vis=0 tag_dist=0.00 | wall=1.34
+R4[PPO]: L=0.32 R=0.81 | carry=0 | base_dist=0.20 base_ang=-0.42 | tag_vis=0 tag_dist=0.00 | wall=1.96
+
+============================================================
+Step 10000 | Pickups: 13 | Deposits: 13
+============================================================
+R1[BASE_AVOID]: L=-0.47 R=-0.86 | carry=0 | base_dist=0.06 base_ang=-0.70 | tag_vis=0 tag_dist=0.00 | wall=2.28
+R2[PPO]: L=0.16 R=1.00 | carry=0 | base_dist=0.15 base_ang=0.70 | tag_vis=0 tag_dist=0.00 | wall=2.04
+R3[PPO]: L=-0.23 R=0.75 | carry=0 | base_dist=0.36 base_ang=-0.52 | tag_vis=0 tag_dist=0.00 | wall=1.25
+R4[PPO]: L=-0.46 R=0.99 | carry=0 | base_dist=0.21 base_ang=0.74 | tag_vis=0 tag_dist=0.00 | wall=1.97
+
+============================================================
+Step 500 | Pickups: 2 | Deposits: 0
+============================================================
+R1[PPO]: L=0.87 R=-0.58 | carry=0 | base_dist=0.19 base_ang=0.54 | tag_vis=0 tag_dist=0.00 | wall=1.85
+R2[BASE_AVOID]: L=0.38 R=1.00 | carry=0 | base_dist=0.14 base_ang=0.77 | tag_vis=0 tag_dist=0.00 | wall=2.04
+R3[RTB]: L=1.00 R=-0.26 | carry=1 | base_dist=0.21 base_ang=0.00 | tag_vis=0 tag_dist=0.00 | wall=1.77
+R4[RTB]: L=-0.47 R=0.26 | carry=1 | base_dist=0.38 base_ang=-0.28 | tag_vis=0 tag_dist=0.00 | wall=1.18
+
+============================================================
+Step 1000 | Pickups: 2 | Deposits: 2
+============================================================
+R1[PPO]: L=-0.38 R=-0.52 | carry=0 | base_dist=0.25 base_ang=0.26 | tag_vis=0 tag_dist=0.00 | wall=1.61
+R2[TAG_SEEK]: L=0.26 R=0.95 | carry=0 | base_dist=0.15 base_ang=0.78 | tag_vis=1 tag_dist=0.95 | wall=2.02
+R3[TAG_SEEK]: L=-0.15 R=1.00 | carry=0 | base_dist=0.34 base_ang=-0.93 | tag_vis=1 tag_dist=0.21 | wall=1.30
+R4[TAG_SEEK]: L=-0.11 R=1.00 | carry=0 | base_dist=0.16 base_ang=0.89 | tag_vis=1 tag_dist=0.93 | wall=1.97
+
+============================================================
+Step 1500 | Pickups: 5 | Deposits: 3
+============================================================
+R1[PPO]: L=0.41 R=-0.54 | carry=0 | base_dist=0.28 base_ang=-0.16 | tag_vis=0 tag_dist=0.00 | wall=1.62
+R2[RTB]: L=-0.18 R=0.85 | carry=1 | base_dist=0.16 base_ang=0.00 | tag_vis=0 tag_dist=0.00 | wall=1.94
+R3[BASE_AVOID]: L=-0.47 R=0.56 | carry=0 | base_dist=0.07 base_ang=-0.85 | tag_vis=0 tag_dist=0.00 | wall=2.26
+R4[RTB]: L=0.04 R=0.21 | carry=1 | base_dist=0.17 base_ang=0.00 | tag_vis=0 tag_dist=0.00 | wall=1.89
+
+============================================================
+Step 2000 | Pickups: 6 | Deposits: 5
+============================================================
+R1[TAG_SEEK]: L=0.46 R=-1.00 | carry=0 | base_dist=0.49 base_ang=-0.91 | tag_vis=1 tag_dist=0.21 | wall=1.26
+R2[PPO]: L=0.11 R=1.00 | carry=0 | base_dist=0.15 base_ang=0.90 | tag_vis=0 tag_dist=0.00 | wall=2.03
+R3[RTB]: L=0.68 R=0.46 | carry=1 | base_dist=0.35 base_ang=0.04 | tag_vis=0 tag_dist=0.00 | wall=1.26
+R4[PPO]: L=-0.55 R=0.28 | carry=0 | base_dist=0.15 base_ang=0.79 | tag_vis=0 tag_dist=0.00 | wall=2.02
+
+============================================================
+Step 2500 | Pickups: 7 | Deposits: 6
+============================================================
+R1[RTB]: L=-0.19 R=-0.29 | carry=1 | base_dist=0.09 base_ang=-0.00 | tag_vis=0 tag_dist=0.00 | wall=2.26
+R2[PPO]: L=0.35 R=0.89 | carry=0 | base_dist=0.15 base_ang=0.71 | tag_vis=0 tag_dist=0.00 | wall=1.99
+R3[BASE_AVOID]: L=0.05 R=0.83 | carry=0 | base_dist=0.14 base_ang=0.15 | tag_vis=0 tag_dist=0.00 | wall=2.04
+R4[PPO]: L=-0.33 R=0.33 | carry=0 | base_dist=0.15 base_ang=-0.42 | tag_vis=0 tag_dist=0.00 | wall=2.00
+
+============================================================
+Step 3000 | Pickups: 7 | Deposits: 7
+============================================================
+R1[PPO]: L=-0.55 R=-0.90 | carry=0 | base_dist=0.17 base_ang=-0.41 | tag_vis=0 tag_dist=0.00 | wall=2.06
+R2[PPO]: L=0.21 R=0.86 | carry=0 | base_dist=0.16 base_ang=0.41 | tag_vis=0 tag_dist=0.00 | wall=2.09
+R3[BASE_AVOID]: L=0.28 R=1.00 | carry=0 | base_dist=0.14 base_ang=0.44 | tag_vis=0 tag_dist=0.00 | wall=2.15
+R4[TAG_SEEK]: L=-0.35 R=0.75 | carry=0 | base_dist=0.26 base_ang=0.99 | tag_vis=1 tag_dist=0.65 | wall=1.60
+
+============================================================
+Step 3500 | Pickups: 8 | Deposits: 7
+============================================================
+R1[PPO]: L=1.00 R=-1.00 | carry=0 | base_dist=0.27 base_ang=-0.42 | tag_vis=0 tag_dist=0.00 | wall=1.69
+R2[PPO]: L=0.18 R=0.65 | carry=0 | base_dist=0.14 base_ang=0.21 | tag_vis=0 tag_dist=0.00 | wall=2.00
+R3[PPO]: L=-0.26 R=0.80 | carry=0 | base_dist=0.14 base_ang=0.23 | tag_vis=0 tag_dist=0.00 | wall=1.99
+R4[RTB]: L=-0.26 R=0.48 | carry=1 | base_dist=0.16 base_ang=0.06 | tag_vis=0 tag_dist=0.00 | wall=1.94
+
+============================================================
+Step 4000 | Pickups: 8 | Deposits: 8
+============================================================
+R1[PPO]: L=-0.36 R=-0.61 | carry=0 | base_dist=0.21 base_ang=0.69 | tag_vis=0 tag_dist=0.00 | wall=1.86
+R2[PPO]: L=0.20 R=0.95 | carry=0 | base_dist=0.14 base_ang=-0.83 | tag_vis=0 tag_dist=0.00 | wall=2.12
+R3[PPO]: L=-0.48 R=0.44 | carry=0 | base_dist=0.14 base_ang=0.92 | tag_vis=0 tag_dist=0.00 | wall=2.00
+R4[PPO]: L=-0.52 R=1.00 | carry=0 | base_dist=0.16 base_ang=0.26 | tag_vis=0 tag_dist=0.00 | wall=2.05
+
+============================================================
+Step 4500 | Pickups: 9 | Deposits: 8
+============================================================
+R1[RTB]: L=-0.04 R=-1.00 | carry=1 | base_dist=0.39 base_ang=-0.84 | tag_vis=0 tag_dist=0.00 | wall=1.14
+R2[PPO]: L=-0.02 R=0.42 | carry=0 | base_dist=0.16 base_ang=-0.24 | tag_vis=0 tag_dist=0.00 | wall=2.09
+R3[BASE_AVOID]: L=-0.77 R=0.73 | carry=0 | base_dist=0.14 base_ang=0.59 | tag_vis=0 tag_dist=0.00 | wall=2.09
+R4[PPO]: L=0.07 R=0.86 | carry=0 | base_dist=0.19 base_ang=0.21 | tag_vis=0 tag_dist=0.00 | wall=2.02
+
+============================================================
+Step 5000 | Pickups: 9 | Deposits: 9
+============================================================
+R1[BASE_AVOID]: L=-0.23 R=-1.00 | carry=0 | base_dist=0.07 base_ang=-0.80 | tag_vis=0 tag_dist=0.00 | wall=2.27
+R2[TAG_SEEK]: L=0.57 R=0.38 | carry=0 | base_dist=0.31 base_ang=-0.84 | tag_vis=1 tag_dist=0.51 | wall=1.43
+R3[PPO]: L=-0.51 R=0.53 | carry=0 | base_dist=0.17 base_ang=0.71 | tag_vis=0 tag_dist=0.00 | wall=1.96
+R4[PPO]: L=-0.56 R=1.00 | carry=0 | base_dist=0.18 base_ang=0.66 | tag_vis=0 tag_dist=0.00 | wall=2.02
+
+============================================================
+Step 5500 | Pickups: 10 | Deposits: 9
+============================================================
+R1[TAG_SEEK]: L=-0.19 R=-0.51 | carry=0 | base_dist=0.24 base_ang=0.28 | tag_vis=1 tag_dist=0.98 | wall=1.83
+R2[RTB]: L=-0.11 R=1.00 | carry=1 | base_dist=0.07 base_ang=-0.00 | tag_vis=0 tag_dist=0.00 | wall=2.25
+R3[PPO]: L=-0.20 R=1.00 | carry=0 | base_dist=0.16 base_ang=0.34 | tag_vis=0 tag_dist=0.00 | wall=2.00
+R4[PPO]: L=-0.57 R=0.19 | carry=0 | base_dist=0.17 base_ang=-0.53 | tag_vis=0 tag_dist=0.00 | wall=1.97
+
+============================================================
+Step 6000 | Pickups: 11 | Deposits: 10
+============================================================
+R1[RTB]: L=-0.12 R=-0.22 | carry=1 | base_dist=0.21 base_ang=0.00 | tag_vis=0 tag_dist=0.00 | wall=1.75
+R2[PPO]: L=-0.04 R=0.78 | carry=0 | base_dist=0.18 base_ang=0.50 | tag_vis=0 tag_dist=0.00 | wall=1.94
+R3[PPO]: L=-0.21 R=1.00 | carry=0 | base_dist=0.18 base_ang=-0.19 | tag_vis=0 tag_dist=0.00 | wall=1.93
+R4[PPO]: L=0.08 R=0.40 | carry=0 | base_dist=0.16 base_ang=-0.51 | tag_vis=0 tag_dist=0.00 | wall=1.98
+
+============================================================
+Step 6500 | Pickups: 11 | Deposits: 11
+============================================================
+R1[BASE_AVOID]: L=0.08 R=-0.95 | carry=0 | base_dist=0.14 base_ang=-0.58 | tag_vis=0 tag_dist=0.00 | wall=2.04
+R2[PPO]: L=-0.12 R=1.00 | carry=0 | base_dist=0.16 base_ang=0.51 | tag_vis=0 tag_dist=0.00 | wall=2.08
+R3[PPO]: L=-0.11 R=1.00 | carry=0 | base_dist=0.19 base_ang=-0.60 | tag_vis=0 tag_dist=0.00 | wall=1.88
+R4[PPO]: L=-0.22 R=0.42 | carry=0 | base_dist=0.16 base_ang=-0.70 | tag_vis=0 tag_dist=0.00 | wall=1.94
+
+============================================================
+Step 7000 | Pickups: 11 | Deposits: 11
+============================================================
+R1[TAG_SEEK]: L=0.44 R=-1.00 | carry=0 | base_dist=0.28 base_ang=-0.93 | tag_vis=1 tag_dist=0.87 | wall=1.66
+R2[PPO]: L=-0.20 R=1.00 | carry=0 | base_dist=0.15 base_ang=0.46 | tag_vis=0 tag_dist=0.00 | wall=1.99
+R3[PPO]: L=-0.10 R=1.00 | carry=0 | base_dist=0.19 base_ang=-0.62 | tag_vis=0 tag_dist=0.00 | wall=1.84
+R4[PPO]: L=-0.27 R=0.15 | carry=0 | base_dist=0.17 base_ang=-0.56 | tag_vis=0 tag_dist=0.00 | wall=1.90
+
+============================================================
+Step 7500 | Pickups: 12 | Deposits: 11
+============================================================
+R1[RTB]: L=-0.62 R=-0.12 | carry=1 | base_dist=0.20 base_ang=-0.00 | tag_vis=0 tag_dist=0.00 | wall=1.81
+R2[PPO]: L=0.20 R=0.84 | carry=0 | base_dist=0.15 base_ang=0.40 | tag_vis=0 tag_dist=0.00 | wall=2.04
+R3[PPO]: L=0.08 R=1.00 | carry=0 | base_dist=0.23 base_ang=-0.91 | tag_vis=0 tag_dist=0.00 | wall=1.71
+R4[PPO]: L=-0.06 R=0.09 | carry=0 | base_dist=0.17 base_ang=0.99 | tag_vis=0 tag_dist=0.00 | wall=1.90
+
+============================================================
+Step 8000 | Pickups: 12 | Deposits: 12
+============================================================
+R1[BASE_AVOID]: L=-0.03 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.68 | tag_vis=0 tag_dist=0.00 | wall=2.02
+R2[PPO]: L=-0.13 R=1.00 | carry=0 | base_dist=0.15 base_ang=0.51 | tag_vis=0 tag_dist=0.00 | wall=2.06
+R3[PPO]: L=-0.25 R=1.00 | carry=0 | base_dist=0.27 base_ang=-0.08 | tag_vis=0 tag_dist=0.00 | wall=1.56
+R4[PPO]: L=-0.27 R=0.73 | carry=0 | base_dist=0.16 base_ang=-0.45 | tag_vis=0 tag_dist=0.00 | wall=1.95
+
+============================================================
+Step 8500 | Pickups: 12 | Deposits: 12
+============================================================
+R1[BASE_AVOID]: L=-0.18 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.75 | tag_vis=0 tag_dist=0.00 | wall=2.02
+R2[BASE_AVOID]: L=0.04 R=1.00 | carry=0 | base_dist=0.14 base_ang=0.39 | tag_vis=0 tag_dist=0.00 | wall=2.04
+R3[PPO]: L=-0.24 R=1.00 | carry=0 | base_dist=0.29 base_ang=-0.53 | tag_vis=0 tag_dist=0.00 | wall=1.48
+R4[PPO]: L=-0.37 R=0.75 | carry=0 | base_dist=0.18 base_ang=-0.10 | tag_vis=0 tag_dist=0.00 | wall=1.93
+
+============================================================
+Step 9000 | Pickups: 12 | Deposits: 12
+============================================================
+R1[BASE_AVOID]: L=-0.18 R=-0.99 | carry=0 | base_dist=0.14 base_ang=-0.79 | tag_vis=0 tag_dist=0.00 | wall=2.01
+R2[PPO]: L=0.19 R=1.00 | carry=0 | base_dist=0.15 base_ang=0.73 | tag_vis=0 tag_dist=0.00 | wall=1.99
+R3[PPO]: L=-0.07 R=0.97 | carry=0 | base_dist=0.33 base_ang=0.86 | tag_vis=0 tag_dist=0.00 | wall=1.35
+R4[PPO]: L=-0.58 R=0.81 | carry=0 | base_dist=0.19 base_ang=0.08 | tag_vis=0 tag_dist=0.00 | wall=1.91
+
+============================================================
+Step 9500 | Pickups: 13 | Deposits: 12
+============================================================
+R1[RTB]: L=-0.01 R=-1.00 | carry=1 | base_dist=0.42 base_ang=-0.81 | tag_vis=0 tag_dist=0.00 | wall=1.03
+R2[BASE_AVOID]: L=-0.20 R=0.15 | carry=0 | base_dist=0.14 base_ang=-0.78 | tag_vis=0 tag_dist=0.00 | wall=2.02
+R3[PPO]: L=-0.83 R=0.82 | carry=0 | base_dist=0.33 base_ang=0.23 | tag_vis=0 tag_dist=0.00 | wall=1.34
+R4[PPO]: L=0.32 R=0.81 | carry=0 | base_dist=0.20 base_ang=-0.42 | tag_vis=0 tag_dist=0.00 | wall=1.96
+
+============================================================
+Step 10000 | Pickups: 13 | Deposits: 13
+============================================================
+R1[BASE_AVOID]: L=-0.47 R=-0.86 | carry=0 | base_dist=0.06 base_ang=-0.70 | tag_vis=0 tag_dist=0.00 | wall=2.28
+R2[PPO]: L=0.16 R=1.00 | carry=0 | base_dist=0.15 base_ang=0.70 | tag_vis=0 tag_dist=0.00 | wall=2.04
+R3[PPO]: L=-0.23 R=0.75 | carry=0 | base_dist=0.36 base_ang=-0.52 | tag_vis=0 tag_dist=0.00 | wall=1.25
+R4[PPO]: L=-0.46 R=0.99 | carry=0 | base_dist=0.21 base_ang=0.74 | tag_vis=0 tag_dist=0.00 | wall=1.97
+
+============================================================
+Step 10500 | Pickups: 13 | Deposits: 13
+============================================================
+R1[PPO]: L=-0.36 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.84 | tag_vis=0 tag_dist=0.00 | wall=2.03
+R2[BASE_AVOID]: L=0.21 R=0.56 | carry=0 | base_dist=0.14 base_ang=-0.59 | tag_vis=0 tag_dist=0.00 | wall=2.10
+R3[PPO]: L=-0.48 R=0.65 | carry=0 | base_dist=0.38 base_ang=0.96 | tag_vis=0 tag_dist=0.00 | wall=1.18
+R4[PPO]: L=-0.46 R=1.00 | carry=0 | base_dist=0.24 base_ang=0.51 | tag_vis=0 tag_dist=0.00 | wall=1.85
+
+============================================================
+Step 11000 | Pickups: 13 | Deposits: 13
+============================================================
+R1[PPO]: L=0.17 R=-0.73 | carry=0 | base_dist=0.21 base_ang=0.56 | tag_vis=0 tag_dist=0.00 | wall=1.77
+R2[PPO]: L=0.12 R=1.00 | carry=0 | base_dist=0.15 base_ang=0.03 | tag_vis=0 tag_dist=0.00 | wall=1.99
+R3[PPO]: L=-0.33 R=0.90 | carry=0 | base_dist=0.41 base_ang=0.30 | tag_vis=0 tag_dist=0.00 | wall=1.09
+R4[PPO]: L=-0.49 R=0.82 | carry=0 | base_dist=0.26 base_ang=0.53 | tag_vis=0 tag_dist=0.00 | wall=1.74
+
+============================================================
+Step 11500 | Pickups: 14 | Deposits: 13
+============================================================
+R1[RTB]: L=-0.57 R=-0.41 | carry=1 | base_dist=0.25 base_ang=-0.00 | tag_vis=0 tag_dist=0.00 | wall=1.65
+R2[BASE_AVOID]: L=0.43 R=0.91 | carry=0 | base_dist=0.14 base_ang=0.12 | tag_vis=0 tag_dist=0.00 | wall=2.01
+R3[PPO]: L=-0.31 R=0.37 | carry=0 | base_dist=0.43 base_ang=-0.52 | tag_vis=0 tag_dist=0.00 | wall=1.04
+R4[PPO]: L=-0.30 R=0.77 | carry=0 | base_dist=0.26 base_ang=0.71 | tag_vis=0 tag_dist=0.00 | wall=1.72
+
+============================================================
+Step 12000 | Pickups: 15 | Deposits: 14
+============================================================
+R1[BASE_AVOID]: L=-0.05 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.88 | tag_vis=0 tag_dist=0.00 | wall=2.01
+R2[PPO]: L=0.23 R=0.97 | carry=0 | base_dist=0.15 base_ang=0.22 | tag_vis=0 tag_dist=0.00 | wall=1.98
+R3[RTB]: L=0.46 R=-0.13 | carry=1 | base_dist=0.53 base_ang=-0.26 | tag_vis=0 tag_dist=0.00 | wall=1.10
+R4[PPO]: L=-0.54 R=0.79 | carry=0 | base_dist=0.26 base_ang=0.34 | tag_vis=0 tag_dist=0.00 | wall=1.67
+
+============================================================
+Step 12500 | Pickups: 15 | Deposits: 15
+============================================================
+R1[PPO]: L=-0.03 R=-0.19 | carry=0 | base_dist=0.15 base_ang=0.89 | tag_vis=0 tag_dist=0.00 | wall=2.09
+R2[BASE_AVOID]: L=-0.02 R=1.00 | carry=0 | base_dist=0.13 base_ang=0.59 | tag_vis=0 tag_dist=0.00 | wall=2.13
+R3[BASE_AVOID]: L=0.19 R=1.00 | carry=0 | base_dist=0.06 base_ang=-0.54 | tag_vis=0 tag_dist=0.00 | wall=2.33
+R4[PPO]: L=-0.35 R=0.15 | carry=0 | base_dist=0.26 base_ang=0.51 | tag_vis=0 tag_dist=0.00 | wall=1.67
+
+============================================================
+Step 13000 | Pickups: 15 | Deposits: 15
+============================================================
+R1[PPO]: L=-0.54 R=-0.84 | carry=0 | base_dist=0.21 base_ang=0.03 | tag_vis=0 tag_dist=0.00 | wall=1.86
+R2[BASE_AVOID]: L=0.25 R=0.87 | carry=0 | base_dist=0.14 base_ang=-0.70 | tag_vis=0 tag_dist=0.00 | wall=2.08
+R3[BASE_AVOID]: L=-0.29 R=0.55 | carry=0 | base_dist=0.14 base_ang=0.64 | tag_vis=0 tag_dist=0.00 | wall=2.12
+R4[PPO]: L=-0.55 R=1.00 | carry=0 | base_dist=0.27 base_ang=-0.23 | tag_vis=0 tag_dist=0.00 | wall=1.62
+
+============================================================
+Step 13500 | Pickups: 15 | Deposits: 15
+============================================================
+R1[PPO]: L=-0.21 R=-1.00 | carry=0 | base_dist=0.26 base_ang=-0.54 | tag_vis=0 tag_dist=0.00 | wall=1.66
+R2[PPO]: L=0.28 R=1.00 | carry=0 | base_dist=0.17 base_ang=0.47 | tag_vis=0 tag_dist=0.00 | wall=1.93
+R3[PPO]: L=0.11 R=1.00 | carry=0 | base_dist=0.17 base_ang=0.57 | tag_vis=0 tag_dist=0.00 | wall=1.95
+R4[PPO]: L=-0.66 R=0.40 | carry=0 | base_dist=0.29 base_ang=0.80 | tag_vis=0 tag_dist=0.00 | wall=1.52
+
+============================================================
+Step 14000 | Pickups: 15 | Deposits: 15
+============================================================
+R1[PPO]: L=0.68 R=-0.61 | carry=0 | base_dist=0.41 base_ang=0.60 | tag_vis=0 tag_dist=0.00 | wall=1.14
+R2[PPO]: L=-0.08 R=1.00 | carry=0 | base_dist=0.16 base_ang=0.98 | tag_vis=0 tag_dist=0.00 | wall=1.97
+R3[PPO]: L=0.18 R=1.00 | carry=0 | base_dist=0.18 base_ang=-0.27 | tag_vis=0 tag_dist=0.00 | wall=1.87
+R4[TAG_SEEK]: L=-0.18 R=0.50 | carry=0 | base_dist=0.32 base_ang=-0.93 | tag_vis=1 tag_dist=0.99 | wall=1.48
+
+============================================================
+Step 14500 | Pickups: 17 | Deposits: 15
+============================================================
+R1[RTB]: L=0.39 R=-0.61 | carry=1 | base_dist=0.38 base_ang=-0.00 | tag_vis=0 tag_dist=0.00 | wall=1.49
+R2[PPO]: L=0.30 R=0.05 | carry=0 | base_dist=0.15 base_ang=-0.59 | tag_vis=0 tag_dist=0.00 | wall=2.02
+R3[PPO]: L=-0.41 R=0.18 | carry=0 | base_dist=0.21 base_ang=0.90 | tag_vis=0 tag_dist=0.00 | wall=1.79
+R4[RTB]: L=0.13 R=0.73 | carry=1 | base_dist=0.33 base_ang=0.00 | tag_vis=0 tag_dist=0.00 | wall=1.66
+
+============================================================
+Step 15000 | Pickups: 17 | Deposits: 17
+============================================================
+R1[PPO]: L=-0.06 R=-0.10 | carry=0 | base_dist=0.14 base_ang=0.99 | tag_vis=0 tag_dist=0.00 | wall=2.03
+R2[PPO]: L=-0.06 R=1.00 | carry=0 | base_dist=0.15 base_ang=-0.23 | tag_vis=0 tag_dist=0.00 | wall=2.08
+R3[PPO]: L=-0.24 R=1.00 | carry=0 | base_dist=0.21 base_ang=-0.46 | tag_vis=0 tag_dist=0.00 | wall=1.78
+R4[PPO]: L=-0.24 R=0.74 | carry=0 | base_dist=0.15 base_ang=-0.11 | tag_vis=0 tag_dist=0.00 | wall=2.04
+
+============================================================
+Step 15500 | Pickups: 17 | Deposits: 17
+============================================================
+R1[PPO]: L=-0.23 R=-1.00 | carry=0 | base_dist=0.23 base_ang=-0.39 | tag_vis=0 tag_dist=0.00 | wall=1.71
+R2[PPO]: L=0.43 R=1.00 | carry=0 | base_dist=0.16 base_ang=0.14 | tag_vis=0 tag_dist=0.00 | wall=2.03
+R3[PPO]: L=-0.06 R=0.71 | carry=0 | base_dist=0.22 base_ang=0.44 | tag_vis=0 tag_dist=0.00 | wall=1.73
+R4[PPO]: L=-0.80 R=0.80 | carry=0 | base_dist=0.16 base_ang=0.04 | tag_vis=0 tag_dist=0.00 | wall=2.00
+
+============================================================
+Step 16000 | Pickups: 17 | Deposits: 17
+============================================================
+R1[PPO]: L=0.08 R=-0.16 | carry=0 | base_dist=0.33 base_ang=0.99 | tag_vis=0 tag_dist=0.00 | wall=1.35
+R2[PPO]: L=0.02 R=1.00 | carry=0 | base_dist=0.17 base_ang=0.62 | tag_vis=0 tag_dist=0.00 | wall=1.97
+R3[PPO]: L=0.24 R=1.00 | carry=0 | base_dist=0.25 base_ang=-0.22 | tag_vis=0 tag_dist=0.00 | wall=1.63
+R4[PPO]: L=-0.42 R=0.07 | carry=0 | base_dist=0.17 base_ang=0.64 | tag_vis=0 tag_dist=0.00 | wall=1.97
+
+============================================================
+Step 16500 | Pickups: 17 | Deposits: 17
+============================================================
+R1[PPO]: L=-0.51 R=-0.83 | carry=0 | base_dist=0.52 base_ang=0.29 | tag_vis=0 tag_dist=0.00 | wall=0.81
+R2[PPO]: L=-0.07 R=0.92 | carry=0 | base_dist=0.16 base_ang=-0.69 | tag_vis=0 tag_dist=0.00 | wall=2.01
+R3[PPO]: L=-0.27 R=1.00 | carry=0 | base_dist=0.27 base_ang=0.38 | tag_vis=0 tag_dist=0.00 | wall=1.60
+R4[PPO]: L=-0.25 R=0.75 | carry=0 | base_dist=0.21 base_ang=0.78 | tag_vis=0 tag_dist=0.00 | wall=1.90
+
+============================================================
+Step 17000 | Pickups: 18 | Deposits: 17
+============================================================
+R1[RTB]: L=-0.07 R=-0.20 | carry=1 | base_dist=0.62 base_ang=0.08 | tag_vis=0 tag_dist=0.00 | wall=0.73
+R2[PPO]: L=-0.11 R=0.68 | carry=0 | base_dist=0.19 base_ang=0.08 | tag_vis=0 tag_dist=0.00 | wall=1.85
+R3[PPO]: L=-0.30 R=1.00 | carry=0 | base_dist=0.32 base_ang=-0.44 | tag_vis=0 tag_dist=0.00 | wall=1.43
+R4[PPO]: L=0.18 R=0.42 | carry=0 | base_dist=0.24 base_ang=-0.98 | tag_vis=0 tag_dist=0.00 | wall=1.82
+
+============================================================
+Step 17500 | Pickups: 18 | Deposits: 18
+============================================================
+R1[BASE_AVOID]: L=-0.84 R=-0.66 | carry=0 | base_dist=0.07 base_ang=0.00 | tag_vis=0 tag_dist=0.00 | wall=2.30
+R2[PPO]: L=0.43 R=1.00 | carry=0 | base_dist=0.20 base_ang=0.28 | tag_vis=0 tag_dist=0.00 | wall=1.79
+R3[TAG_SEEK]: L=-0.43 R=0.77 | carry=0 | base_dist=0.34 base_ang=0.67 | tag_vis=1 tag_dist=0.96 | wall=1.40
+R4[PPO]: L=-0.89 R=1.00 | carry=0 | base_dist=0.23 base_ang=0.33 | tag_vis=0 tag_dist=0.00 | wall=1.86
+
+============================================================
+Step 18000 | Pickups: 19 | Deposits: 18
+============================================================
+R1[BASE_AVOID]: L=-0.19 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.69 | tag_vis=0 tag_dist=0.00 | wall=2.01
+R2[PPO]: L=0.23 R=1.00 | carry=0 | base_dist=0.21 base_ang=0.56 | tag_vis=0 tag_dist=0.00 | wall=1.76
+R3[RTB]: L=0.55 R=-0.21 | carry=1 | base_dist=0.32 base_ang=0.00 | tag_vis=0 tag_dist=0.00 | wall=1.70
+R4[PPO]: L=-0.56 R=0.89 | carry=0 | base_dist=0.24 base_ang=0.05 | tag_vis=0 tag_dist=0.00 | wall=1.81
+
+============================================================
+Step 18500 | Pickups: 19 | Deposits: 19
+============================================================
+R1[PPO]: L=-0.23 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.80 | tag_vis=0 tag_dist=0.00 | wall=2.01
+R2[PPO]: L=0.22 R=1.00 | carry=0 | base_dist=0.19 base_ang=0.78 | tag_vis=0 tag_dist=0.00 | wall=1.82
+R3[BASE_AVOID]: L=-0.17 R=0.73 | carry=0 | base_dist=0.14 base_ang=0.62 | tag_vis=0 tag_dist=0.00 | wall=2.05
+R4[PPO]: L=-0.60 R=1.00 | carry=0 | base_dist=0.25 base_ang=-0.09 | tag_vis=0 tag_dist=0.00 | wall=1.73
+
+============================================================
+Step 19000 | Pickups: 19 | Deposits: 19
+============================================================
+R1[BASE_AVOID]: L=-0.35 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.79 | tag_vis=0 tag_dist=0.00 | wall=2.01
+R2[PPO]: L=0.15 R=0.49 | carry=0 | base_dist=0.16 base_ang=-0.85 | tag_vis=0 tag_dist=0.00 | wall=1.97
+R3[PPO]: L=-0.32 R=1.00 | carry=0 | base_dist=0.15 base_ang=0.72 | tag_vis=0 tag_dist=0.00 | wall=2.00
+R4[PPO]: L=-0.41 R=0.74 | carry=0 | base_dist=0.26 base_ang=0.57 | tag_vis=0 tag_dist=0.00 | wall=1.66
+
+============================================================
+Step 19500 | Pickups: 19 | Deposits: 19
+============================================================
+R1[PPO]: L=-0.14 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.73 | tag_vis=0 tag_dist=0.00 | wall=2.00
+R2[PPO]: L=-0.13 R=0.90 | carry=0 | base_dist=0.18 base_ang=-0.12 | tag_vis=0 tag_dist=0.00 | wall=2.00
+R3[PPO]: L=-0.44 R=0.95 | carry=0 | base_dist=0.15 base_ang=-0.61 | tag_vis=0 tag_dist=0.00 | wall=1.97
+R4[PPO]: L=-0.14 R=0.89 | carry=0 | base_dist=0.28 base_ang=-0.71 | tag_vis=0 tag_dist=0.00 | wall=1.55
+
+============================================================
+Step 20000 | Pickups: 19 | Deposits: 19
+============================================================
+R1[BASE_AVOID]: L=0.07 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.67 | tag_vis=0 tag_dist=0.00 | wall=2.00
+R2[PPO]: L=-0.01 R=1.00 | carry=0 | base_dist=0.16 base_ang=0.10 | tag_vis=0 tag_dist=0.00 | wall=2.10
+R3[PPO]: L=-0.50 R=0.80 | carry=0 | base_dist=0.17 base_ang=0.26 | tag_vis=0 tag_dist=0.00 | wall=1.93
+R4[PPO]: L=-0.40 R=0.97 | carry=0 | base_dist=0.31 base_ang=-0.46 | tag_vis=0 tag_dist=0.00 | wall=1.44
+
+============================================================
+Step 20500 | Pickups: 19 | Deposits: 19
+============================================================
+R1[PPO]: L=-0.34 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.78 | tag_vis=0 tag_dist=0.00 | wall=2.00
+R2[PPO]: L=0.27 R=1.00 | carry=0 | base_dist=0.17 base_ang=0.23 | tag_vis=0 tag_dist=0.00 | wall=2.06
+R3[PPO]: L=-0.26 R=0.63 | carry=0 | base_dist=0.20 base_ang=-0.93 | tag_vis=0 tag_dist=0.00 | wall=1.83
+R4[PPO]: L=-0.56 R=0.88 | carry=0 | base_dist=0.34 base_ang=0.09 | tag_vis=0 tag_dist=0.00 | wall=1.34
+
+============================================================
+Step 21000 | Pickups: 19 | Deposits: 19
+============================================================
+R1[BASE_AVOID]: L=-0.43 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.60 | tag_vis=0 tag_dist=0.00 | wall=2.00
+R2[PPO]: L=0.15 R=1.00 | carry=0 | base_dist=0.18 base_ang=0.38 | tag_vis=0 tag_dist=0.00 | wall=1.97
+R3[PPO]: L=-0.06 R=1.00 | carry=0 | base_dist=0.24 base_ang=-0.30 | tag_vis=0 tag_dist=0.00 | wall=1.67
+R4[PPO]: L=-0.49 R=0.58 | carry=0 | base_dist=0.36 base_ang=0.94 | tag_vis=0 tag_dist=0.00 | wall=1.24
+
+============================================================
+Step 21500 | Pickups: 19 | Deposits: 19
+============================================================
+R1[BASE_AVOID]: L=0.04 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.64 | tag_vis=0 tag_dist=0.00 | wall=2.00
+R2[PPO]: L=-0.04 R=1.00 | carry=0 | base_dist=0.19 base_ang=0.53 | tag_vis=0 tag_dist=0.00 | wall=1.88
+R3[PPO]: L=-0.35 R=0.90 | carry=0 | base_dist=0.27 base_ang=0.28 | tag_vis=0 tag_dist=0.00 | wall=1.57
+R4[PPO]: L=-0.41 R=0.90 | carry=0 | base_dist=0.40 base_ang=-0.44 | tag_vis=0 tag_dist=0.00 | wall=1.11
+
+============================================================
+Step 22000 | Pickups: 19 | Deposits: 19
+============================================================
+R1[PPO]: L=0.24 R=0.24 | carry=0 | base_dist=0.15 base_ang=0.60 | tag_vis=0 tag_dist=0.00 | wall=1.99
+R2[PPO]: L=0.01 R=-0.01 | carry=0 | base_dist=0.18 base_ang=-0.30 | tag_vis=0 tag_dist=0.00 | wall=1.93
+R3[PPO]: L=0.07 R=-0.09 | carry=0 | base_dist=0.28 base_ang=0.85 | tag_vis=0 tag_dist=0.00 | wall=1.53
+R4[PPO]: L=-0.11 R=0.09 | carry=0 | base_dist=0.40 base_ang=-0.99 | tag_vis=0 tag_dist=0.00 | wall=1.11
+
+============================================================
+Step 22500 | Pickups: 19 | Deposits: 19
+============================================================
+R1[PPO]: L=-0.14 R=-0.04 | carry=0 | base_dist=0.18 base_ang=0.20 | tag_vis=0 tag_dist=0.00 | wall=1.87
+R2[PPO]: L=-0.01 R=0.03 | carry=0 | base_dist=0.17 base_ang=-0.77 | tag_vis=0 tag_dist=0.00 | wall=1.96
+R3[PPO]: L=-0.07 R=-0.08 | carry=0 | base_dist=0.26 base_ang=-1.00 | tag_vis=0 tag_dist=0.00 | wall=1.62
+R4[PPO]: L=0.10 R=-0.03 | carry=0 | base_dist=0.40 base_ang=-0.11 | tag_vis=0 tag_dist=0.00 | wall=1.13
+
+============================================================
+Step 23000 | Pickups: 19 | Deposits: 19
+============================================================
+R1[PPO]: L=-0.03 R=-0.28 | carry=0 | base_dist=0.25 base_ang=-0.00 | tag_vis=0 tag_dist=0.00 | wall=1.62
+R2[PPO]: L=0.07 R=-0.19 | carry=0 | base_dist=0.17 base_ang=-0.48 | tag_vis=0 tag_dist=0.00 | wall=1.97
+R3[PPO]: L=-0.04 R=-0.05 | carry=0 | base_dist=0.23 base_ang=1.00 | tag_vis=0 tag_dist=0.00 | wall=1.72
+R4[PPO]: L=-0.10 R=0.16 | carry=0 | base_dist=0.39 base_ang=0.29 | tag_vis=0 tag_dist=0.00 | wall=1.17
+
+============================================================
+Step 23500 | Pickups: 19 | Deposits: 19
+============================================================
+R1[PPO]: L=-0.25 R=-0.10 | carry=0 | base_dist=0.34 base_ang=-0.07 | tag_vis=0 tag_dist=0.00 | wall=1.31
+R2[PPO]: L=0.00 R=0.12 | carry=0 | base_dist=0.16 base_ang=-0.37 | tag_vis=0 tag_dist=0.00 | wall=1.99
+R3[PPO]: L=0.00 R=0.01 | carry=0 | base_dist=0.22 base_ang=-1.00 | tag_vis=0 tag_dist=0.00 | wall=1.75
+R4[PPO]: L=0.08 R=-0.08 | carry=0 | base_dist=0.38 base_ang=0.43 | tag_vis=0 tag_dist=0.00 | wall=1.17
+
+============================================================
+Step 24000 | Pickups: 19 | Deposits: 19
+============================================================
+R1[PPO]: L=-0.27 R=-0.12 | carry=0 | base_dist=0.44 base_ang=-0.12 | tag_vis=0 tag_dist=0.00 | wall=1.01
+R2[PPO]: L=0.01 R=0.13 | carry=0 | base_dist=0.16 base_ang=-0.33 | tag_vis=0 tag_dist=0.00 | wall=2.04
+R3[PPO]: L=0.01 R=0.02 | carry=0 | base_dist=0.22 base_ang=1.00 | tag_vis=0 tag_dist=0.00 | wall=1.76
+R4[PPO]: L=0.07 R=-0.08 | carry=0 | base_dist=0.38 base_ang=0.52 | tag_vis=0 tag_dist=0.00 | wall=1.17
+
+============================================================
+Step 24500 | Pickups: 19 | Deposits: 19
+============================================================
+R1[PPO]: L=-0.10 R=-0.34 | carry=0 | base_dist=0.54 base_ang=-0.16 | tag_vis=0 tag_dist=0.00 | wall=0.72
+R2[PPO]: L=0.08 R=-0.14 | carry=0 | base_dist=0.15 base_ang=-0.31 | tag_vis=0 tag_dist=0.00 | wall=2.10
+R3[PPO]: L=-0.01 R=-0.02 | carry=0 | base_dist=0.22 base_ang=-1.00 | tag_vis=0 tag_dist=0.00 | wall=1.75
+R4[PPO]: L=-0.11 R=0.13 | carry=0 | base_dist=0.38 base_ang=0.60 | tag_vis=0 tag_dist=0.00 | wall=1.17
+
+============================================================
+Step 25000 | Pickups: 20 | Deposits: 19
+============================================================
+R1[RTB]: L=-0.51 R=-0.35 | carry=1 | base_dist=0.55 base_ang=0.04 | tag_vis=0 tag_dist=0.00 | wall=0.97
+R2[BASE_AVOID]: L=0.40 R=0.45 | carry=0 | base_dist=0.14 base_ang=-0.49 | tag_vis=0 tag_dist=0.00 | wall=2.14
+R3[PPO]: L=-0.38 R=0.39 | carry=0 | base_dist=0.26 base_ang=0.57 | tag_vis=0 tag_dist=0.00 | wall=1.58
+R4[PPO]: L=-0.24 R=0.90 | carry=0 | base_dist=0.38 base_ang=0.15 | tag_vis=0 tag_dist=0.00 | wall=1.21
+
+============================================================
+Step 25500 | Pickups: 20 | Deposits: 20
+============================================================
+R1[BASE_AVOID]: L=0.62 R=-0.67 | carry=0 | base_dist=0.06 base_ang=0.54 | tag_vis=0 tag_dist=0.00 | wall=2.34
+R2[PPO]: L=-0.08 R=1.00 | carry=0 | base_dist=0.18 base_ang=0.83 | tag_vis=0 tag_dist=0.00 | wall=2.01
+R3[PPO]: L=-0.02 R=1.00 | carry=0 | base_dist=0.28 base_ang=0.27 | tag_vis=0 tag_dist=0.00 | wall=1.52
+R4[TAG_SEEK]: L=-0.20 R=0.65 | carry=0 | base_dist=0.52 base_ang=-0.80 | tag_vis=1 tag_dist=0.18 | wall=1.09
+
+============================================================
+Step 26000 | Pickups: 21 | Deposits: 20
+============================================================
+R1[PPO]: L=0.30 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.45 | tag_vis=0 tag_dist=0.00 | wall=2.09
+R2[PPO]: L=0.13 R=0.57 | carry=0 | base_dist=0.16 base_ang=-0.70 | tag_vis=0 tag_dist=0.00 | wall=2.00
+R3[PPO]: L=-0.41 R=0.34 | carry=0 | base_dist=0.30 base_ang=-0.60 | tag_vis=0 tag_dist=0.00 | wall=1.45
+R4[RTB]: L=-0.07 R=0.88 | carry=1 | base_dist=0.09 base_ang=0.00 | tag_vis=0 tag_dist=0.00 | wall=2.27
+
+============================================================
+Step 26500 | Pickups: 21 | Deposits: 21
+============================================================
+R1[PPO]: L=-0.13 R=-0.29 | carry=0 | base_dist=0.20 base_ang=0.67 | tag_vis=0 tag_dist=0.00 | wall=1.95
+R2[PPO]: L=0.14 R=0.90 | carry=0 | base_dist=0.20 base_ang=-0.05 | tag_vis=0 tag_dist=0.00 | wall=1.82
+R3[PPO]: L=0.02 R=1.00 | carry=0 | base_dist=0.32 base_ang=0.91 | tag_vis=0 tag_dist=0.00 | wall=1.38
+R4[PPO]: L=-0.46 R=0.51 | carry=0 | base_dist=0.16 base_ang=0.90 | tag_vis=0 tag_dist=0.00 | wall=1.97
+
+============================================================
+Step 27000 | Pickups: 21 | Deposits: 21
+============================================================
+R1[PPO]: L=-0.22 R=-1.00 | carry=0 | base_dist=0.25 base_ang=-0.17 | tag_vis=0 tag_dist=0.00 | wall=1.75
+R2[PPO]: L=0.02 R=1.00 | carry=0 | base_dist=0.22 base_ang=0.42 | tag_vis=0 tag_dist=0.00 | wall=1.74
+R3[PPO]: L=-0.09 R=1.00 | carry=0 | base_dist=0.36 base_ang=0.35 | tag_vis=0 tag_dist=0.00 | wall=1.24
+R4[PPO]: L=-0.46 R=0.60 | carry=0 | base_dist=0.18 base_ang=0.53 | tag_vis=0 tag_dist=0.00 | wall=1.90
+
+============================================================
+Step 27500 | Pickups: 22 | Deposits: 21
+============================================================
+R1[RTB]: L=-0.32 R=-0.60 | carry=1 | base_dist=0.55 base_ang=-0.39 | tag_vis=0 tag_dist=0.00 | wall=1.03
+R2[PPO]: L=0.17 R=0.91 | carry=0 | base_dist=0.21 base_ang=0.71 | tag_vis=0 tag_dist=0.00 | wall=1.77
+R3[PPO]: L=-0.09 R=1.00 | carry=0 | base_dist=0.36 base_ang=-0.50 | tag_vis=0 tag_dist=0.00 | wall=1.23
+R4[PPO]: L=-0.12 R=0.23 | carry=0 | base_dist=0.19 base_ang=0.64 | tag_vis=0 tag_dist=0.00 | wall=1.86
+
+============================================================
+Step 28000 | Pickups: 22 | Deposits: 22
+============================================================
+R1[BASE_AVOID]: L=-0.39 R=-0.51 | carry=0 | base_dist=0.06 base_ang=-0.24 | tag_vis=0 tag_dist=0.00 | wall=2.34
+R2[PPO]: L=0.21 R=1.00 | carry=0 | base_dist=0.22 base_ang=0.98 | tag_vis=0 tag_dist=0.00 | wall=1.71
+R3[PPO]: L=0.07 R=0.76 | carry=0 | base_dist=0.38 base_ang=-0.90 | tag_vis=0 tag_dist=0.00 | wall=1.15
+R4[PPO]: L=-0.58 R=0.73 | carry=0 | base_dist=0.17 base_ang=-0.39 | tag_vis=0 tag_dist=0.00 | wall=1.92
+
+============================================================
+Step 28500 | Pickups: 22 | Deposits: 22
+============================================================
+R1[BASE_AVOID]: L=-0.08 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.71 | tag_vis=0 tag_dist=0.00 | wall=2.07
+R2[PPO]: L=-0.04 R=0.72 | carry=0 | base_dist=0.27 base_ang=-0.87 | tag_vis=0 tag_dist=0.00 | wall=1.57
+R3[PPO]: L=-0.83 R=0.57 | carry=0 | base_dist=0.39 base_ang=0.37 | tag_vis=0 tag_dist=0.00 | wall=1.13
+R4[PPO]: L=-0.27 R=1.00 | carry=0 | base_dist=0.18 base_ang=0.12 | tag_vis=0 tag_dist=0.00 | wall=1.88
+
+============================================================
+Step 29000 | Pickups: 22 | Deposits: 22
+============================================================
+R1[PPO]: L=-0.56 R=-1.00 | carry=0 | base_dist=0.16 base_ang=-0.11 | tag_vis=0 tag_dist=0.00 | wall=2.06
+R2[PPO]: L=0.11 R=0.92 | carry=0 | base_dist=0.26 base_ang=-0.78 | tag_vis=0 tag_dist=0.00 | wall=1.59
+R3[PPO]: L=-0.15 R=0.97 | carry=0 | base_dist=0.41 base_ang=-0.40 | tag_vis=0 tag_dist=0.00 | wall=1.05
+R4[PPO]: L=-0.39 R=0.60 | carry=0 | base_dist=0.20 base_ang=0.42 | tag_vis=0 tag_dist=0.00 | wall=1.79
+
+============================================================
+Step 29500 | Pickups: 22 | Deposits: 22
+============================================================
+R1[PPO]: L=-0.21 R=-0.12 | carry=0 | base_dist=0.19 base_ang=0.89 | tag_vis=0 tag_dist=0.00 | wall=1.95
+R2[PPO]: L=0.15 R=1.00 | carry=0 | base_dist=0.32 base_ang=-0.19 | tag_vis=0 tag_dist=0.00 | wall=1.42
+R3[PPO]: L=-0.20 R=0.80 | carry=0 | base_dist=0.48 base_ang=-0.55 | tag_vis=0 tag_dist=0.00 | wall=0.85
+R4[PPO]: L=-0.42 R=0.84 | carry=0 | base_dist=0.22 base_ang=0.18 | tag_vis=0 tag_dist=0.00 | wall=1.73
+
+============================================================
+Step 30000 | Pickups: 22 | Deposits: 22
+============================================================
+R1[PPO]: L=0.00 R=0.09 | carry=0 | base_dist=0.28 base_ang=0.83 | tag_vis=0 tag_dist=0.00 | wall=1.61
+R2[PPO]: L=0.19 R=1.00 | carry=0 | base_dist=0.34 base_ang=0.38 | tag_vis=0 tag_dist=0.00 | wall=1.37
+R3[PPO]: L=0.09 R=1.00 | carry=0 | base_dist=0.53 base_ang=0.66 | tag_vis=0 tag_dist=0.00 | wall=0.67
+R4[PPO]: L=-0.54 R=0.62 | carry=0 | base_dist=0.24 base_ang=-0.25 | tag_vis=0 tag_dist=0.00 | wall=1.68
+
+============================================================
+Step 30500 | Pickups: 22 | Deposits: 22
+============================================================
+R1[PPO]: L=0.23 R=-1.00 | carry=0 | base_dist=0.37 base_ang=-0.79 | tag_vis=0 tag_dist=0.00 | wall=1.28
+R2[PPO]: L=0.08 R=1.00 | carry=0 | base_dist=0.36 base_ang=0.61 | tag_vis=0 tag_dist=0.00 | wall=1.26
+R3[PPO]: L=-0.30 R=0.96 | carry=0 | base_dist=0.54 base_ang=-0.31 | tag_vis=0 tag_dist=0.00 | wall=0.63
+R4[PPO]: L=-0.48 R=0.71 | carry=0 | base_dist=0.25 base_ang=-0.17 | tag_vis=0 tag_dist=0.00 | wall=1.61
+
+============================================================
+Step 31000 | Pickups: 23 | Deposits: 22
+============================================================
+R1[RTB]: L=-0.02 R=-1.00 | carry=1 | base_dist=0.58 base_ang=-0.59 | tag_vis=0 tag_dist=0.00 | wall=0.87
+R2[PPO]: L=0.29 R=0.16 | carry=0 | base_dist=0.38 base_ang=-0.77 | tag_vis=0 tag_dist=0.00 | wall=1.16
+R3[PPO]: L=-0.41 R=0.58 | carry=0 | base_dist=0.57 base_ang=0.76 | tag_vis=0 tag_dist=0.00 | wall=0.51
+R4[PPO]: L=-0.21 R=0.61 | carry=0 | base_dist=0.27 base_ang=-0.85 | tag_vis=0 tag_dist=0.00 | wall=1.54
+
+============================================================
+Step 31500 | Pickups: 23 | Deposits: 22
+============================================================
+R1[RTB]: L=-0.29 R=-0.69 | carry=1 | base_dist=0.10 base_ang=-0.00 | tag_vis=0 tag_dist=0.00 | wall=2.22
+R2[PPO]: L=0.43 R=0.33 | carry=0 | base_dist=0.43 base_ang=-0.79 | tag_vis=0 tag_dist=0.00 | wall=1.01
+R3[PPO]: L=-0.34 R=0.44 | carry=0 | base_dist=0.60 base_ang=0.69 | tag_vis=0 tag_dist=0.00 | wall=0.39
+R4[PPO]: L=-0.32 R=0.72 | carry=0 | base_dist=0.28 base_ang=-0.34 | tag_vis=0 tag_dist=0.00 | wall=1.53
+
+============================================================
+Step 32000 | Pickups: 23 | Deposits: 23
+============================================================
+R1[BASE_AVOID]: L=-0.10 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.68 | tag_vis=0 tag_dist=0.00 | wall=2.08
+R2[PPO]: L=0.06 R=0.73 | carry=0 | base_dist=0.43 base_ang=-0.99 | tag_vis=0 tag_dist=0.00 | wall=1.00
+R3[PPO]: L=-0.68 R=0.64 | carry=0 | base_dist=0.58 base_ang=-0.09 | tag_vis=0 tag_dist=0.00 | wall=0.48
+R4[PPO]: L=-0.36 R=1.00 | carry=0 | base_dist=0.30 base_ang=-0.11 | tag_vis=0 tag_dist=0.00 | wall=1.45
+
+============================================================
+Step 32500 | Pickups: 23 | Deposits: 23
+============================================================
+R1[PPO]: L=-0.20 R=-0.29 | carry=0 | base_dist=0.18 base_ang=0.97 | tag_vis=0 tag_dist=0.00 | wall=2.03
+R2[PPO]: L=0.21 R=1.00 | carry=0 | base_dist=0.47 base_ang=-0.63 | tag_vis=0 tag_dist=0.00 | wall=0.89
+R3[PPO]: L=-0.17 R=0.77 | carry=0 | base_dist=0.61 base_ang=-0.61 | tag_vis=0 tag_dist=0.00 | wall=0.36
+R4[PPO]: L=-0.49 R=0.73 | carry=0 | base_dist=0.33 base_ang=-0.13 | tag_vis=0 tag_dist=0.00 | wall=1.36
+
+============================================================
+Step 33000 | Pickups: 23 | Deposits: 23
+============================================================
+R1[PPO]: L=-0.49 R=-0.71 | carry=0 | base_dist=0.25 base_ang=-0.15 | tag_vis=0 tag_dist=0.00 | wall=1.70
+R2[PPO]: L=0.15 R=1.00 | carry=0 | base_dist=0.50 base_ang=-0.15 | tag_vis=0 tag_dist=0.00 | wall=0.80
+R3[WALL_ESC]: L=-0.19 R=0.71 | carry=0 | base_dist=0.62 base_ang=-0.73 | tag_vis=0 tag_dist=0.00 | wall=0.34
+R4[PPO]: L=-0.43 R=0.89 | carry=0 | base_dist=0.37 base_ang=-0.17 | tag_vis=0 tag_dist=0.00 | wall=1.25
+
+============================================================
+Step 33500 | Pickups: 23 | Deposits: 23
+============================================================
+R1[PPO]: L=-0.80 R=-0.32 | carry=0 | base_dist=0.30 base_ang=0.06 | tag_vis=0 tag_dist=0.00 | wall=1.52
+R2[PPO]: L=0.11 R=1.00 | carry=0 | base_dist=0.52 base_ang=0.29 | tag_vis=0 tag_dist=0.00 | wall=0.71
+R3[PPO]: L=0.15 R=1.00 | carry=0 | base_dist=0.61 base_ang=-0.65 | tag_vis=0 tag_dist=0.00 | wall=0.38
+R4[PPO]: L=-0.39 R=0.55 | carry=0 | base_dist=0.39 base_ang=0.98 | tag_vis=0 tag_dist=0.00 | wall=1.18
+
+============================================================
+Step 34000 | Pickups: 23 | Deposits: 23
+============================================================
+R1[PPO]: L=0.03 R=-0.20 | carry=0 | base_dist=0.44 base_ang=0.79 | tag_vis=0 tag_dist=0.00 | wall=1.04
+R2[PPO]: L=0.37 R=1.00 | carry=0 | base_dist=0.51 base_ang=0.78 | tag_vis=0 tag_dist=0.00 | wall=0.72
+R3[WALL_ESC]: L=0.51 R=1.00 | carry=0 | base_dist=0.62 base_ang=0.61 | tag_vis=0 tag_dist=0.00 | wall=0.35
+R4[PPO]: L=-0.77 R=-0.02 | carry=0 | base_dist=0.41 base_ang=0.73 | tag_vis=0 tag_dist=0.00 | wall=1.09
+
+============================================================
+Step 34500 | Pickups: 24 | Deposits: 23
+============================================================
+R1[RTB]: L=-0.17 R=-0.40 | carry=1 | base_dist=0.41 base_ang=-0.00 | tag_vis=0 tag_dist=0.00 | wall=1.46
+R2[PPO]: L=0.07 R=0.99 | carry=0 | base_dist=0.54 base_ang=0.93 | tag_vis=0 tag_dist=0.00 | wall=0.61
+R3[WALL_ESC]: L=0.00 R=1.00 | carry=0 | base_dist=0.62 base_ang=0.20 | tag_vis=0 tag_dist=0.00 | wall=0.34
+R4[PPO]: L=-0.12 R=0.15 | carry=0 | base_dist=0.43 base_ang=0.58 | tag_vis=0 tag_dist=0.00 | wall=1.04
+
+============================================================
+Step 35000 | Pickups: 24 | Deposits: 24
+============================================================
+R1[PPO]: L=-0.02 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.89 | tag_vis=0 tag_dist=0.00 | wall=2.05
+R2[PPO]: L=-0.04 R=1.00 | carry=0 | base_dist=0.55 base_ang=0.94 | tag_vis=0 tag_dist=0.00 | wall=0.59
+R3[PPO]: L=-0.09 R=1.00 | carry=0 | base_dist=0.61 base_ang=0.27 | tag_vis=0 tag_dist=0.00 | wall=0.38
+R4[PPO]: L=-0.40 R=0.49 | carry=0 | base_dist=0.44 base_ang=0.98 | tag_vis=0 tag_dist=0.00 | wall=0.99
+
+============================================================
+Step 35500 | Pickups: 24 | Deposits: 24
+============================================================
+R1[BASE_AVOID]: L=0.04 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.62 | tag_vis=0 tag_dist=0.00 | wall=2.07
+R2[PPO]: L=0.06 R=1.00 | carry=0 | base_dist=0.55 base_ang=0.96 | tag_vis=0 tag_dist=0.00 | wall=0.59
+R3[PPO]: L=-0.00 R=1.00 | carry=0 | base_dist=0.61 base_ang=-0.46 | tag_vis=0 tag_dist=0.00 | wall=0.35
+R4[PPO]: L=-0.49 R=0.52 | carry=0 | base_dist=0.48 base_ang=-0.72 | tag_vis=0 tag_dist=0.00 | wall=0.87
+
+============================================================
+Step 36000 | Pickups: 24 | Deposits: 24
+============================================================
+R1[BASE_AVOID]: L=-0.05 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.63 | tag_vis=0 tag_dist=0.00 | wall=2.08
+R2[PPO]: L=0.08 R=0.75 | carry=0 | base_dist=0.55 base_ang=-0.98 | tag_vis=0 tag_dist=0.00 | wall=0.58
+R3[PPO]: L=-0.48 R=0.78 | carry=0 | base_dist=0.61 base_ang=-0.34 | tag_vis=0 tag_dist=0.00 | wall=0.35
+R4[PPO]: L=-0.37 R=0.82 | carry=0 | base_dist=0.51 base_ang=-0.59 | tag_vis=0 tag_dist=0.00 | wall=0.77
+
+============================================================
+Step 36500 | Pickups: 24 | Deposits: 24
+============================================================
+R1[PPO]: L=-0.78 R=-0.90 | carry=0 | base_dist=0.25 base_ang=-0.02 | tag_vis=0 tag_dist=0.00 | wall=1.85
+R2[PPO]: L=0.35 R=1.00 | carry=0 | base_dist=0.53 base_ang=-0.45 | tag_vis=0 tag_dist=0.00 | wall=0.63
+R3[WALL_ESC]: L=-0.10 R=0.31 | carry=0 | base_dist=0.62 base_ang=-0.38 | tag_vis=0 tag_dist=0.00 | wall=0.34
+R4[TAG_SEEK]: L=-0.43 R=1.00 | carry=0 | base_dist=0.55 base_ang=0.54 | tag_vis=1 tag_dist=0.66 | wall=0.73
+
+============================================================
+Step 37000 | Pickups: 25 | Deposits: 24
+============================================================
+R1[PPO]: L=0.03 R=-0.03 | carry=0 | base_dist=0.28 base_ang=0.79 | tag_vis=0 tag_dist=0.00 | wall=1.81
+R2[PPO]: L=0.31 R=1.00 | carry=0 | base_dist=0.50 base_ang=0.17 | tag_vis=0 tag_dist=0.00 | wall=0.75
+R3[TAG_SEEK]: L=-0.24 R=0.77 | carry=0 | base_dist=0.59 base_ang=-0.46 | tag_vis=1 tag_dist=0.87 | wall=0.54
+R4[RTB]: L=-0.43 R=0.86 | carry=1 | base_dist=0.25 base_ang=0.00 | tag_vis=0 tag_dist=0.00 | wall=1.82
+
+============================================================
+Step 37500 | Pickups: 26 | Deposits: 25
+============================================================
+R1[PPO]: L=0.07 R=-1.00 | carry=0 | base_dist=0.28 base_ang=-0.73 | tag_vis=0 tag_dist=0.00 | wall=1.71
+R2[PPO]: L=0.20 R=0.99 | carry=0 | base_dist=0.50 base_ang=0.59 | tag_vis=0 tag_dist=0.00 | wall=0.77
+R3[RTB]: L=0.85 R=0.51 | carry=1 | base_dist=0.33 base_ang=-0.00 | tag_vis=0 tag_dist=0.00 | wall=1.62
+R4[PPO]: L=-0.56 R=0.10 | carry=0 | base_dist=0.14 base_ang=0.80 | tag_vis=0 tag_dist=0.00 | wall=2.07
+
+============================================================
+Step 38000 | Pickups: 26 | Deposits: 26
+============================================================
+R1[PPO]: L=-0.09 R=-0.14 | carry=0 | base_dist=0.39 base_ang=0.77 | tag_vis=0 tag_dist=0.00 | wall=1.27
+R2[PPO]: L=0.31 R=1.00 | carry=0 | base_dist=0.52 base_ang=0.83 | tag_vis=0 tag_dist=0.00 | wall=0.68
+R3[BASE_AVOID]: L=0.41 R=1.00 | carry=0 | base_dist=0.14 base_ang=0.22 | tag_vis=0 tag_dist=0.00 | wall=2.08
+R4[PPO]: L=-0.69 R=0.08 | carry=0 | base_dist=0.16 base_ang=0.92 | tag_vis=0 tag_dist=0.00 | wall=2.06
+
+============================================================
+Step 38500 | Pickups: 27 | Deposits: 26
+============================================================
+R1[RTB]: L=-0.40 R=-0.68 | carry=1 | base_dist=0.39 base_ang=-0.00 | tag_vis=0 tag_dist=0.00 | wall=1.51
+R2[PPO]: L=0.11 R=0.64 | carry=0 | base_dist=0.52 base_ang=-0.59 | tag_vis=0 tag_dist=0.00 | wall=0.67
+R3[PPO]: L=-0.73 R=0.45 | carry=0 | base_dist=0.15 base_ang=-0.36 | tag_vis=0 tag_dist=0.00 | wall=2.12
+R4[PPO]: L=0.05 R=0.99 | carry=0 | base_dist=0.17 base_ang=0.42 | tag_vis=0 tag_dist=0.00 | wall=2.01
+
+============================================================
+Step 39000 | Pickups: 27 | Deposits: 27
+============================================================
+R1[PPO]: L=-0.09 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.81 | tag_vis=0 tag_dist=0.00 | wall=2.04
+R2[PPO]: L=-0.15 R=0.92 | carry=0 | base_dist=0.54 base_ang=-0.21 | tag_vis=0 tag_dist=0.00 | wall=0.62
+R3[PPO]: L=-0.71 R=0.84 | carry=0 | base_dist=0.15 base_ang=-0.01 | tag_vis=0 tag_dist=0.00 | wall=2.03
+R4[PPO]: L=-0.18 R=1.00 | carry=0 | base_dist=0.18 base_ang=0.20 | tag_vis=0 tag_dist=0.00 | wall=2.01
+
+============================================================
+Step 39500 | Pickups: 27 | Deposits: 27
+============================================================
+R1[PPO]: L=-0.00 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.70 | tag_vis=0 tag_dist=0.00 | wall=2.05
+R2[PPO]: L=-0.15 R=1.00 | carry=0 | base_dist=0.59 base_ang=0.21 | tag_vis=0 tag_dist=0.00 | wall=0.44
+R3[PPO]: L=-0.26 R=1.00 | carry=0 | base_dist=0.16 base_ang=-0.77 | tag_vis=0 tag_dist=0.00 | wall=1.94
+R4[PPO]: L=-0.18 R=0.61 | carry=0 | base_dist=0.20 base_ang=-0.92 | tag_vis=0 tag_dist=0.00 | wall=1.97
+
+============================================================
+Step 40000 | Pickups: 27 | Deposits: 27
+============================================================
+R1[BASE_AVOID]: L=-0.00 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.67 | tag_vis=0 tag_dist=0.00 | wall=2.06
+R2[PPO]: L=0.04 R=0.85 | carry=0 | base_dist=0.58 base_ang=0.21 | tag_vis=0 tag_dist=0.00 | wall=0.47
+R3[PPO]: L=-0.17 R=1.00 | carry=0 | base_dist=0.17 base_ang=0.63 | tag_vis=0 tag_dist=0.00 | wall=1.92
+R4[PPO]: L=-0.42 R=0.72 | carry=0 | base_dist=0.25 base_ang=-0.72 | tag_vis=0 tag_dist=0.00 | wall=1.84
+
+============================================================
+Step 40500 | Pickups: 27 | Deposits: 27
+============================================================
+R1[PPO]: L=-0.10 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.71 | tag_vis=0 tag_dist=0.00 | wall=2.07
+R2[WALL_ESC]: L=-0.20 R=1.00 | carry=0 | base_dist=0.62 base_ang=0.55 | tag_vis=0 tag_dist=0.00 | wall=0.33
+R3[PPO]: L=-0.44 R=1.00 | carry=0 | base_dist=0.18 base_ang=-0.17 | tag_vis=0 tag_dist=0.00 | wall=1.87
+R4[PPO]: L=-0.15 R=0.98 | carry=0 | base_dist=0.27 base_ang=0.00 | tag_vis=0 tag_dist=0.00 | wall=1.82
+
+============================================================
+Step 41000 | Pickups: 28 | Deposits: 27
+============================================================
+R1[BASE_AVOID]: L=-0.06 R=-0.70 | carry=0 | base_dist=0.14 base_ang=-0.72 | tag_vis=0 tag_dist=0.00 | wall=2.09
+R2[PPO]: L=0.32 R=0.94 | carry=0 | base_dist=0.60 base_ang=0.80 | tag_vis=0 tag_dist=0.00 | wall=0.40
+R3[PPO]: L=0.13 R=0.45 | carry=0 | base_dist=0.20 base_ang=-0.13 | tag_vis=0 tag_dist=0.00 | wall=1.81
+R4[RTB]: L=-0.32 R=0.68 | carry=1 | base_dist=0.53 base_ang=0.82 | tag_vis=0 tag_dist=0.00 | wall=1.19
+
+============================================================
+Step 41500 | Pickups: 28 | Deposits: 27
+============================================================
+R1[PPO]: L=0.24 R=0.32 | carry=0 | base_dist=0.17 base_ang=0.83 | tag_vis=0 tag_dist=0.00 | wall=2.04
+R2[WALL_ESC]: L=0.33 R=1.00 | carry=0 | base_dist=0.62 base_ang=0.80 | tag_vis=0 tag_dist=0.00 | wall=0.35
+R3[PPO]: L=0.33 R=0.56 | carry=0 | base_dist=0.18 base_ang=0.04 | tag_vis=0 tag_dist=0.00 | wall=1.89
+R4[RTB]: L=-0.39 R=0.53 | carry=1 | base_dist=0.10 base_ang=0.00 | tag_vis=0 tag_dist=0.00 | wall=2.25
+
+============================================================
+Step 42000 | Pickups: 28 | Deposits: 28
+============================================================
+R1[BASE_AVOID]: L=-0.07 R=-0.51 | carry=0 | base_dist=0.14 base_ang=0.92 | tag_vis=0 tag_dist=0.00 | wall=2.04
+R2[PPO]: L=0.02 R=1.00 | carry=0 | base_dist=0.58 base_ang=-0.46 | tag_vis=0 tag_dist=0.00 | wall=0.50
+R3[PPO]: L=-0.30 R=0.76 | carry=0 | base_dist=0.16 base_ang=-0.34 | tag_vis=0 tag_dist=0.00 | wall=1.96
+R4[PPO]: L=-0.41 R=0.81 | carry=0 | base_dist=0.16 base_ang=-0.81 | tag_vis=0 tag_dist=0.00 | wall=1.99
+
+============================================================
+Step 42500 | Pickups: 28 | Deposits: 28
+============================================================
+R1[PPO]: L=-0.50 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.80 | tag_vis=0 tag_dist=0.00 | wall=2.04
+R2[PPO]: L=0.37 R=0.99 | carry=0 | base_dist=0.56 base_ang=-0.12 | tag_vis=0 tag_dist=0.00 | wall=0.56
+R3[PPO]: L=-0.29 R=0.46 | carry=0 | base_dist=0.15 base_ang=0.18 | tag_vis=0 tag_dist=0.00 | wall=2.02
+R4[PPO]: L=-0.68 R=1.00 | carry=0 | base_dist=0.17 base_ang=0.03 | tag_vis=0 tag_dist=0.00 | wall=1.93
+
+============================================================
+Step 43000 | Pickups: 28 | Deposits: 28
+============================================================
+R1[PPO]: L=-0.49 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.86 | tag_vis=0 tag_dist=0.00 | wall=2.05
+R2[PPO]: L=0.21 R=0.96 | carry=0 | base_dist=0.56 base_ang=0.29 | tag_vis=0 tag_dist=0.00 | wall=0.56
+R3[BASE_AVOID]: L=-0.03 R=1.00 | carry=0 | base_dist=0.14 base_ang=0.55 | tag_vis=0 tag_dist=0.00 | wall=2.16
+R4[PPO]: L=-0.56 R=0.66 | carry=0 | base_dist=0.18 base_ang=0.77 | tag_vis=0 tag_dist=0.00 | wall=1.87
+
+============================================================
+Step 43500 | Pickups: 28 | Deposits: 28
+============================================================
+R1[PPO]: L=-0.25 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.80 | tag_vis=0 tag_dist=0.00 | wall=2.06
+R2[PPO]: L=-0.05 R=1.00 | carry=0 | base_dist=0.52 base_ang=0.51 | tag_vis=0 tag_dist=0.00 | wall=0.74
+R3[BASE_AVOID]: L=-0.34 R=0.86 | carry=0 | base_dist=0.14 base_ang=-0.48 | tag_vis=0 tag_dist=0.00 | wall=2.07
+R4[PPO]: L=-0.32 R=0.95 | carry=0 | base_dist=0.20 base_ang=-0.37 | tag_vis=0 tag_dist=0.00 | wall=1.80
+
+============================================================
+Step 44000 | Pickups: 28 | Deposits: 28
+============================================================
+R1[PPO]: L=-0.31 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.85 | tag_vis=0 tag_dist=0.00 | wall=2.06
+R2[PPO]: L=-0.11 R=1.00 | carry=0 | base_dist=0.49 base_ang=0.82 | tag_vis=0 tag_dist=0.00 | wall=0.86
+R3[BASE_AVOID]: L=-0.48 R=0.74 | carry=0 | base_dist=0.14 base_ang=0.06 | tag_vis=0 tag_dist=0.00 | wall=2.04
+R4[PPO]: L=-0.26 R=1.00 | carry=0 | base_dist=0.20 base_ang=0.31 | tag_vis=0 tag_dist=0.00 | wall=1.80
+
+============================================================
+Step 44500 | Pickups: 28 | Deposits: 28
+============================================================
+R1[BASE_AVOID]: L=-0.28 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.70 | tag_vis=0 tag_dist=0.00 | wall=2.07
+R2[PPO]: L=0.06 R=0.58 | carry=0 | base_dist=0.43 base_ang=-0.72 | tag_vis=0 tag_dist=0.00 | wall=1.05
+R3[PPO]: L=-0.42 R=0.75 | carry=0 | base_dist=0.15 base_ang=0.77 | tag_vis=0 tag_dist=0.00 | wall=2.01
+R4[PPO]: L=-0.36 R=1.00 | carry=0 | base_dist=0.22 base_ang=-0.66 | tag_vis=0 tag_dist=0.00 | wall=1.74
+
+============================================================
+Step 45000 | Pickups: 28 | Deposits: 28
+============================================================
+R1[PPO]: L=0.05 R=-0.08 | carry=0 | base_dist=0.14 base_ang=-0.08 | tag_vis=0 tag_dist=0.00 | wall=2.07
+R2[PPO]: L=-0.07 R=0.13 | carry=0 | base_dist=0.45 base_ang=-0.16 | tag_vis=0 tag_dist=0.00 | wall=0.98
+R3[PPO]: L=-0.02 R=0.01 | carry=0 | base_dist=0.16 base_ang=-0.79 | tag_vis=0 tag_dist=0.00 | wall=1.94
+R4[PPO]: L=0.08 R=-0.06 | carry=0 | base_dist=0.24 base_ang=-0.50 | tag_vis=0 tag_dist=0.00 | wall=1.69
+
+============================================================
+Step 45500 | Pickups: 28 | Deposits: 28
+============================================================
+R1[PPO]: L=-0.16 R=0.00 | carry=0 | base_dist=0.20 base_ang=0.09 | tag_vis=0 tag_dist=0.00 | wall=1.90
+R2[PPO]: L=-0.01 R=0.12 | carry=0 | base_dist=0.45 base_ang=-0.43 | tag_vis=0 tag_dist=0.00 | wall=0.99
+R3[PPO]: L=-0.02 R=-0.01 | carry=0 | base_dist=0.14 base_ang=-1.00 | tag_vis=0 tag_dist=0.00 | wall=2.00
+R4[PPO]: L=0.08 R=-0.07 | carry=0 | base_dist=0.23 base_ang=0.01 | tag_vis=0 tag_dist=0.00 | wall=1.73
+
+============================================================
+Step 46000 | Pickups: 28 | Deposits: 28
+============================================================
+R1[PPO]: L=0.04 R=-0.20 | carry=0 | base_dist=0.24 base_ang=0.09 | tag_vis=0 tag_dist=0.00 | wall=1.75
+R2[PPO]: L=0.05 R=-0.16 | carry=0 | base_dist=0.45 base_ang=-0.44 | tag_vis=0 tag_dist=0.00 | wall=1.00
+R3[PPO]: L=-0.04 R=-0.05 | carry=0 | base_dist=0.14 base_ang=-1.00 | tag_vis=0 tag_dist=0.00 | wall=2.00
+R4[PPO]: L=-0.10 R=0.15 | carry=0 | base_dist=0.22 base_ang=-0.02 | tag_vis=0 tag_dist=0.00 | wall=1.75
+
+============================================================
+Step 46500 | Pickups: 28 | Deposits: 28
+============================================================
+R1[PPO]: L=-0.15 R=-0.01 | carry=0 | base_dist=0.28 base_ang=0.10 | tag_vis=0 tag_dist=0.00 | wall=1.60
+R2[PPO]: L=-0.01 R=0.12 | carry=0 | base_dist=0.44 base_ang=-0.44 | tag_vis=0 tag_dist=0.00 | wall=1.01
+R3[PPO]: L=-0.02 R=-0.02 | carry=0 | base_dist=0.14 base_ang=-1.00 | tag_vis=0 tag_dist=0.00 | wall=2.00
+R4[PPO]: L=0.08 R=-0.07 | carry=0 | base_dist=0.21 base_ang=-0.02 | tag_vis=0 tag_dist=0.00 | wall=1.78
+
+============================================================
+Step 47000 | Pickups: 28 | Deposits: 28
+============================================================
+R1[PPO]: L=-0.16 R=-0.02 | carry=0 | base_dist=0.33 base_ang=0.07 | tag_vis=0 tag_dist=0.00 | wall=1.44
+R2[PPO]: L=-0.01 R=0.11 | carry=0 | base_dist=0.44 base_ang=-0.46 | tag_vis=0 tag_dist=0.00 | wall=1.01
+R3[BASE_AVOID]: L=-0.03 R=-0.02 | carry=0 | base_dist=0.14 base_ang=1.00 | tag_vis=0 tag_dist=0.00 | wall=2.00
+R4[PPO]: L=0.08 R=-0.07 | carry=0 | base_dist=0.21 base_ang=0.01 | tag_vis=0 tag_dist=0.00 | wall=1.80
+
+============================================================
+Step 47500 | Pickups: 28 | Deposits: 28
+============================================================
+R1[PPO]: L=-0.16 R=-0.02 | carry=0 | base_dist=0.37 base_ang=0.07 | tag_vis=0 tag_dist=0.00 | wall=1.27
+R2[PPO]: L=-0.01 R=0.11 | carry=0 | base_dist=0.44 base_ang=-0.45 | tag_vis=0 tag_dist=0.00 | wall=1.02
+R3[PPO]: L=-0.02 R=-0.02 | carry=0 | base_dist=0.14 base_ang=-1.00 | tag_vis=0 tag_dist=0.00 | wall=2.00
+R4[PPO]: L=0.08 R=-0.07 | carry=0 | base_dist=0.20 base_ang=0.02 | tag_vis=0 tag_dist=0.00 | wall=1.83
+
+============================================================
+Step 48000 | Pickups: 28 | Deposits: 28
+============================================================
+R1[PPO]: L=0.02 R=-0.22 | carry=0 | base_dist=0.42 base_ang=0.06 | tag_vis=0 tag_dist=0.00 | wall=1.09
+R2[PPO]: L=0.06 R=-0.17 | carry=0 | base_dist=0.44 base_ang=-0.45 | tag_vis=0 tag_dist=0.00 | wall=1.03
+R3[PPO]: L=-0.05 R=-0.05 | carry=0 | base_dist=0.14 base_ang=-0.99 | tag_vis=0 tag_dist=0.00 | wall=1.99
+R4[PPO]: L=-0.10 R=0.15 | carry=0 | base_dist=0.19 base_ang=0.05 | tag_vis=0 tag_dist=0.00 | wall=1.85
+
+============================================================
+Step 48500 | Pickups: 28 | Deposits: 28
+============================================================
+R1[PPO]: L=0.01 R=-0.23 | carry=0 | base_dist=0.48 base_ang=0.04 | tag_vis=0 tag_dist=0.00 | wall=0.90
+R2[PPO]: L=0.06 R=-0.16 | carry=0 | base_dist=0.44 base_ang=-0.44 | tag_vis=0 tag_dist=0.00 | wall=1.05
+R3[PPO]: L=-0.04 R=-0.05 | carry=0 | base_dist=0.14 base_ang=-1.00 | tag_vis=0 tag_dist=0.00 | wall=2.00
+R4[PPO]: L=-0.10 R=0.15 | carry=0 | base_dist=0.19 base_ang=0.08 | tag_vis=0 tag_dist=0.00 | wall=1.87
+
+============================================================
+Step 49000 | Pickups: 28 | Deposits: 28
+============================================================
+R1[PPO]: L=-0.18 R=-0.04 | carry=0 | base_dist=0.54 base_ang=0.02 | tag_vis=0 tag_dist=0.00 | wall=0.70
+R2[PPO]: L=-0.01 R=0.11 | carry=0 | base_dist=0.44 base_ang=-0.44 | tag_vis=0 tag_dist=0.00 | wall=1.06
+R3[PPO]: L=-0.02 R=-0.01 | carry=0 | base_dist=0.14 base_ang=1.00 | tag_vis=0 tag_dist=0.00 | wall=2.00
+R4[PPO]: L=0.08 R=-0.07 | carry=0 | base_dist=0.18 base_ang=0.12 | tag_vis=0 tag_dist=0.00 | wall=1.89
+
+============================================================
+Step 49500 | Pickups: 30 | Deposits: 28
+============================================================
+R1[RTB]: L=-0.48 R=-0.02 | carry=1 | base_dist=0.57 base_ang=0.27 | tag_vis=0 tag_dist=0.00 | wall=0.93
+R2[RTB]: L=-0.09 R=0.65 | carry=1 | base_dist=0.58 base_ang=-0.47 | tag_vis=0 tag_dist=0.00 | wall=1.07
+R3[PPO]: L=-0.64 R=0.75 | carry=0 | base_dist=0.15 base_ang=-0.11 | tag_vis=0 tag_dist=0.00 | wall=1.99
+R4[PPO]: L=0.03 R=0.21 | carry=0 | base_dist=0.17 base_ang=-0.16 | tag_vis=0 tag_dist=0.00 | wall=1.93
+
+============================================================
+Step 50000 | Pickups: 30 | Deposits: 29
+============================================================
+R1[BASE_AVOID]: L=0.20 R=-0.32 | carry=0 | base_dist=0.06 base_ang=0.26 | tag_vis=0 tag_dist=0.00 | wall=2.34
+R2[RTB]: L=-0.16 R=1.00 | carry=1 | base_dist=0.08 base_ang=-0.01 | tag_vis=0 tag_dist=0.00 | wall=2.29
+R3[PPO]: L=-0.26 R=1.00 | carry=0 | base_dist=0.16 base_ang=-0.97 | tag_vis=0 tag_dist=0.00 | wall=1.96
+R4[PPO]: L=-0.29 R=-0.20 | carry=0 | base_dist=0.17 base_ang=-0.57 | tag_vis=0 tag_dist=0.00 | wall=1.91
+
+============================================================
+Step 50500 | Pickups: 30 | Deposits: 30
+============================================================
+R1[PPO]: L=-0.36 R=-0.44 | carry=0 | base_dist=0.23 base_ang=0.11 | tag_vis=0 tag_dist=0.00 | wall=1.74
+R2[PPO]: L=0.05 R=1.00 | carry=0 | base_dist=0.15 base_ang=0.81 | tag_vis=0 tag_dist=0.00 | wall=2.02
+R3[PPO]: L=-0.07 R=0.96 | carry=0 | base_dist=0.19 base_ang=0.19 | tag_vis=0 tag_dist=0.00 | wall=1.84
+R4[PPO]: L=-0.49 R=0.87 | carry=0 | base_dist=0.20 base_ang=-0.11 | tag_vis=0 tag_dist=0.00 | wall=1.82
+
+============================================================
+Step 51000 | Pickups: 30 | Deposits: 30
+============================================================
+R1[PPO]: L=0.33 R=-0.24 | carry=0 | base_dist=0.33 base_ang=0.86 | tag_vis=0 tag_dist=0.00 | wall=1.40
+R2[PPO]: L=-0.19 R=1.00 | carry=0 | base_dist=0.15 base_ang=0.00 | tag_vis=0 tag_dist=0.00 | wall=2.00
+R3[PPO]: L=-0.18 R=1.00 | carry=0 | base_dist=0.22 base_ang=-0.02 | tag_vis=0 tag_dist=0.00 | wall=1.77
+R4[PPO]: L=-0.18 R=0.46 | carry=0 | base_dist=0.22 base_ang=-0.68 | tag_vis=0 tag_dist=0.00 | wall=1.74
+
+============================================================
+Step 51500 | Pickups: 30 | Deposits: 30
+============================================================
+R1[PPO]: L=-0.40 R=-0.55 | carry=0 | base_dist=0.41 base_ang=0.26 | tag_vis=0 tag_dist=0.00 | wall=1.09
+R2[PPO]: L=0.27 R=1.00 | carry=0 | base_dist=0.18 base_ang=0.30 | tag_vis=0 tag_dist=0.00 | wall=1.91
+R3[PPO]: L=0.07 R=0.86 | carry=0 | base_dist=0.19 base_ang=-0.43 | tag_vis=0 tag_dist=0.00 | wall=1.83
+R4[PPO]: L=-0.65 R=0.62 | carry=0 | base_dist=0.24 base_ang=-0.45 | tag_vis=0 tag_dist=0.00 | wall=1.67
+
+============================================================
+Step 52000 | Pickups: 30 | Deposits: 30
+============================================================
+R1[PPO]: L=-0.55 R=-0.73 | carry=0 | base_dist=0.62 base_ang=0.40 | tag_vis=0 tag_dist=0.00 | wall=0.63
+R2[PPO]: L=0.17 R=1.00 | carry=0 | base_dist=0.18 base_ang=-0.97 | tag_vis=0 tag_dist=0.00 | wall=1.92
+R3[PPO]: L=-0.37 R=0.63 | carry=0 | base_dist=0.23 base_ang=-0.08 | tag_vis=0 tag_dist=0.00 | wall=1.74
+R4[PPO]: L=-0.45 R=1.00 | carry=0 | base_dist=0.27 base_ang=-0.04 | tag_vis=0 tag_dist=0.00 | wall=1.56
+
+============================================================
+Step 52500 | Pickups: 31 | Deposits: 30
+============================================================
+R1[RTB]: L=-0.34 R=-0.28 | carry=1 | base_dist=0.66 base_ang=0.05 | tag_vis=0 tag_dist=0.00 | wall=0.74
+R2[PPO]: L=0.28 R=0.52 | carry=0 | base_dist=0.19 base_ang=-0.15 | tag_vis=0 tag_dist=0.00 | wall=1.84
+R3[PPO]: L=-0.24 R=0.75 | carry=0 | base_dist=0.24 base_ang=0.89 | tag_vis=0 tag_dist=0.00 | wall=1.76
+R4[PPO]: L=-0.20 R=0.67 | carry=0 | base_dist=0.28 base_ang=-0.23 | tag_vis=0 tag_dist=0.00 | wall=1.53
+
+============================================================
+Step 53000 | Pickups: 31 | Deposits: 30
+============================================================
+R1[RTB]: L=-0.48 R=-0.33 | carry=1 | base_dist=0.11 base_ang=0.00 | tag_vis=0 tag_dist=0.00 | wall=2.20
+R2[PPO]: L=0.35 R=0.53 | carry=0 | base_dist=0.20 base_ang=-0.18 | tag_vis=0 tag_dist=0.00 | wall=1.78
+R3[PPO]: L=-0.33 R=0.61 | carry=0 | base_dist=0.26 base_ang=0.87 | tag_vis=0 tag_dist=0.00 | wall=1.74
+R4[PPO]: L=-0.24 R=0.85 | carry=0 | base_dist=0.30 base_ang=0.26 | tag_vis=0 tag_dist=0.00 | wall=1.45
+
+============================================================
+Step 53500 | Pickups: 31 | Deposits: 31
+============================================================
+R1[PPO]: L=-0.18 R=-0.88 | carry=0 | base_dist=0.19 base_ang=-0.08 | tag_vis=0 tag_dist=0.00 | wall=1.85
+R2[PPO]: L=-0.17 R=1.00 | carry=0 | base_dist=0.18 base_ang=-0.00 | tag_vis=0 tag_dist=0.00 | wall=1.89
+R3[PPO]: L=-0.50 R=0.98 | carry=0 | base_dist=0.28 base_ang=0.61 | tag_vis=0 tag_dist=0.00 | wall=1.76
+R4[PPO]: L=-0.23 R=1.00 | carry=0 | base_dist=0.30 base_ang=-0.05 | tag_vis=0 tag_dist=0.00 | wall=1.47
+
+============================================================
+Step 54000 | Pickups: 32 | Deposits: 31
+============================================================
+R1[PPO]: L=0.11 R=-0.53 | carry=0 | base_dist=0.34 base_ang=0.51 | tag_vis=0 tag_dist=0.00 | wall=1.30
+R2[PPO]: L=0.12 R=1.00 | carry=0 | base_dist=0.20 base_ang=0.58 | tag_vis=0 tag_dist=0.00 | wall=1.81
+R3[RTB]: L=1.00 R=0.61 | carry=1 | base_dist=0.55 base_ang=-0.67 | tag_vis=0 tag_dist=0.00 | wall=1.09
+R4[PPO]: L=-0.45 R=-0.12 | carry=0 | base_dist=0.32 base_ang=0.37 | tag_vis=0 tag_dist=0.00 | wall=1.42
+
+============================================================
+Step 54500 | Pickups: 32 | Deposits: 31
+============================================================
+R1[PPO]: L=-0.01 R=-0.38 | carry=0 | base_dist=0.29 base_ang=0.66 | tag_vis=0 tag_dist=0.00 | wall=1.50
+R2[PPO]: L=0.21 R=1.00 | carry=0 | base_dist=0.17 base_ang=0.73 | tag_vis=0 tag_dist=0.00 | wall=1.97
+R3[RTB]: L=1.00 R=0.49 | carry=1 | base_dist=0.08 base_ang=-0.00 | tag_vis=0 tag_dist=0.00 | wall=2.29
+R4[PPO]: L=-0.55 R=0.08 | carry=0 | base_dist=0.30 base_ang=0.66 | tag_vis=0 tag_dist=0.00 | wall=1.52
+
+============================================================
+Step 55000 | Pickups: 32 | Deposits: 32
+============================================================
+R1[PPO]: L=-0.26 R=-0.19 | carry=0 | base_dist=0.20 base_ang=0.72 | tag_vis=0 tag_dist=0.00 | wall=1.80
+R2[PPO]: L=0.17 R=1.00 | carry=0 | base_dist=0.15 base_ang=-0.20 | tag_vis=0 tag_dist=0.00 | wall=2.12
+R3[BASE_AVOID]: L=-0.24 R=0.73 | carry=0 | base_dist=0.14 base_ang=0.70 | tag_vis=0 tag_dist=0.00 | wall=2.13
+R4[PPO]: L=-0.46 R=1.00 | carry=0 | base_dist=0.32 base_ang=0.11 | tag_vis=0 tag_dist=0.00 | wall=1.43
+
+============================================================
+Step 55500 | Pickups: 32 | Deposits: 32
+============================================================
+R1[PPO]: L=-0.08 R=-0.05 | carry=0 | base_dist=0.14 base_ang=0.73 | tag_vis=0 tag_dist=0.00 | wall=2.00
+R2[PPO]: L=0.31 R=1.00 | carry=0 | base_dist=0.20 base_ang=0.75 | tag_vis=0 tag_dist=0.00 | wall=1.98
+R3[BASE_AVOID]: L=0.16 R=0.89 | carry=0 | base_dist=0.14 base_ang=0.60 | tag_vis=0 tag_dist=0.00 | wall=2.06
+R4[PPO]: L=-0.71 R=0.67 | carry=0 | base_dist=0.33 base_ang=-0.27 | tag_vis=0 tag_dist=0.00 | wall=1.38
+
+============================================================
+Step 56000 | Pickups: 32 | Deposits: 32
+============================================================
+R1[PPO]: L=-0.42 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.85 | tag_vis=0 tag_dist=0.00 | wall=2.00
+R2[PPO]: L=0.13 R=0.83 | carry=0 | base_dist=0.16 base_ang=-0.70 | tag_vis=0 tag_dist=0.00 | wall=1.98
+R3[PPO]: L=-0.60 R=0.54 | carry=0 | base_dist=0.17 base_ang=-0.90 | tag_vis=0 tag_dist=0.00 | wall=1.91
+R4[PPO]: L=-0.31 R=1.00 | carry=0 | base_dist=0.37 base_ang=0.24 | tag_vis=0 tag_dist=0.00 | wall=1.25
+
+============================================================
+Step 56500 | Pickups: 32 | Deposits: 32
+============================================================
+R1[PPO]: L=-0.41 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.74 | tag_vis=0 tag_dist=0.00 | wall=2.00
+R2[PPO]: L=-0.02 R=0.79 | carry=0 | base_dist=0.16 base_ang=-0.59 | tag_vis=0 tag_dist=0.00 | wall=1.98
+R3[PPO]: L=-0.38 R=1.00 | carry=0 | base_dist=0.20 base_ang=-0.43 | tag_vis=0 tag_dist=0.00 | wall=1.81
+R4[PPO]: L=-0.22 R=0.71 | carry=0 | base_dist=0.40 base_ang=0.81 | tag_vis=0 tag_dist=0.00 | wall=1.13
+
+============================================================
+Step 57000 | Pickups: 32 | Deposits: 32
+============================================================
+R1[PPO]: L=0.05 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.69 | tag_vis=0 tag_dist=0.00 | wall=2.00
+R2[PPO]: L=-0.20 R=0.78 | carry=0 | base_dist=0.16 base_ang=-0.49 | tag_vis=0 tag_dist=0.00 | wall=1.94
+R3[PPO]: L=-0.66 R=0.90 | carry=0 | base_dist=0.22 base_ang=0.14 | tag_vis=0 tag_dist=0.00 | wall=1.74
+R4[PPO]: L=-0.14 R=1.00 | carry=0 | base_dist=0.44 base_ang=-0.58 | tag_vis=0 tag_dist=0.00 | wall=0.99
+
+============================================================
+Step 57500 | Pickups: 32 | Deposits: 32
+============================================================
+R1[BASE_AVOID]: L=-0.29 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.77 | tag_vis=0 tag_dist=0.00 | wall=2.00
+R2[PPO]: L=0.24 R=0.73 | carry=0 | base_dist=0.18 base_ang=-0.36 | tag_vis=0 tag_dist=0.00 | wall=1.89
+R3[PPO]: L=-0.34 R=0.68 | carry=0 | base_dist=0.24 base_ang=0.57 | tag_vis=0 tag_dist=0.00 | wall=1.65
+R4[PPO]: L=-0.52 R=1.00 | carry=0 | base_dist=0.47 base_ang=-0.07 | tag_vis=0 tag_dist=0.00 | wall=0.87
+
+============================================================
+Step 58000 | Pickups: 32 | Deposits: 32
+============================================================
+R1[BASE_AVOID]: L=0.24 R=-0.48 | carry=0 | base_dist=0.14 base_ang=-0.59 | tag_vis=0 tag_dist=0.00 | wall=2.01
+R2[PPO]: L=-0.06 R=-0.01 | carry=0 | base_dist=0.19 base_ang=0.32 | tag_vis=0 tag_dist=0.00 | wall=1.82
+R3[PPO]: L=-0.01 R=0.07 | carry=0 | base_dist=0.28 base_ang=0.64 | tag_vis=0 tag_dist=0.00 | wall=1.52
+R4[PPO]: L=-0.03 R=0.06 | carry=0 | base_dist=0.51 base_ang=-0.38 | tag_vis=0 tag_dist=0.00 | wall=0.76
+
+============================================================
+Step 58500 | Pickups: 32 | Deposits: 32
+============================================================
+R1[BASE_AVOID]: L=0.11 R=0.29 | carry=0 | base_dist=0.14 base_ang=0.56 | tag_vis=0 tag_dist=0.00 | wall=2.02
+R2[PPO]: L=0.00 R=0.10 | carry=0 | base_dist=0.22 base_ang=-0.32 | tag_vis=0 tag_dist=0.00 | wall=1.75
+R3[PPO]: L=0.08 R=-0.07 | carry=0 | base_dist=0.29 base_ang=0.06 | tag_vis=0 tag_dist=0.00 | wall=1.50
+R4[PPO]: L=-0.04 R=-0.00 | carry=0 | base_dist=0.51 base_ang=-0.77 | tag_vis=0 tag_dist=0.00 | wall=0.74
+
+============================================================
+Step 59000 | Pickups: 32 | Deposits: 32
+============================================================
+R1[PPO]: L=-0.24 R=-0.20 | carry=0 | base_dist=0.19 base_ang=-0.15 | tag_vis=0 tag_dist=0.00 | wall=1.83
+R2[PPO]: L=-0.00 R=0.08 | carry=0 | base_dist=0.20 base_ang=-0.44 | tag_vis=0 tag_dist=0.00 | wall=1.81
+R3[PPO]: L=-0.03 R=0.00 | carry=0 | base_dist=0.30 base_ang=-0.98 | tag_vis=0 tag_dist=0.00 | wall=1.45
+R4[PPO]: L=0.09 R=-0.06 | carry=0 | base_dist=0.51 base_ang=0.43 | tag_vis=0 tag_dist=0.00 | wall=0.74
+
+============================================================
+Step 59500 | Pickups: 32 | Deposits: 32
+============================================================
+R1[PPO]: L=-0.29 R=-0.14 | carry=0 | base_dist=0.30 base_ang=-0.13 | tag_vis=0 tag_dist=0.00 | wall=1.48
+R2[PPO]: L=0.01 R=0.13 | carry=0 | base_dist=0.19 base_ang=-0.34 | tag_vis=0 tag_dist=0.00 | wall=1.83
+R3[PPO]: L=0.01 R=0.02 | carry=0 | base_dist=0.30 base_ang=-1.00 | tag_vis=0 tag_dist=0.00 | wall=1.46
+R4[PPO]: L=0.08 R=-0.08 | carry=0 | base_dist=0.51 base_ang=0.61 | tag_vis=0 tag_dist=0.00 | wall=0.74
+
+============================================================
+Step 60000 | Pickups: 32 | Deposits: 32
+============================================================
+R1[PPO]: L=-0.31 R=-0.15 | carry=0 | base_dist=0.40 base_ang=-0.19 | tag_vis=0 tag_dist=0.00 | wall=1.19
+R2[PPO]: L=0.02 R=0.14 | carry=0 | base_dist=0.18 base_ang=-0.29 | tag_vis=0 tag_dist=0.00 | wall=1.88
+R3[PPO]: L=0.03 R=0.03 | carry=0 | base_dist=0.30 base_ang=-1.00 | tag_vis=0 tag_dist=0.00 | wall=1.44
+R4[PPO]: L=0.07 R=-0.09 | carry=0 | base_dist=0.51 base_ang=0.73 | tag_vis=0 tag_dist=0.00 | wall=0.74
+
+============================================================
+Step 60500 | Pickups: 32 | Deposits: 32
+============================================================
+R1[PPO]: L=-0.15 R=-0.38 | carry=0 | base_dist=0.51 base_ang=-0.24 | tag_vis=0 tag_dist=0.00 | wall=1.01
+R2[PPO]: L=0.09 R=-0.13 | carry=0 | base_dist=0.17 base_ang=-0.26 | tag_vis=0 tag_dist=0.00 | wall=1.94
+R3[PPO]: L=0.01 R=0.00 | carry=0 | base_dist=0.31 base_ang=-1.00 | tag_vis=0 tag_dist=0.00 | wall=1.40
+R4[PPO]: L=-0.11 R=0.12 | carry=0 | base_dist=0.51 base_ang=0.84 | tag_vis=0 tag_dist=0.00 | wall=0.74
+
+============================================================
+Step 61000 | Pickups: 33 | Deposits: 32
+============================================================
+R1[RTB]: L=-0.48 R=-0.35 | carry=1 | base_dist=0.34 base_ang=-0.00 | tag_vis=0 tag_dist=0.00 | wall=1.56
+R2[PPO]: L=0.62 R=0.81 | carry=0 | base_dist=0.17 base_ang=0.34 | tag_vis=0 tag_dist=0.00 | wall=1.92
+R3[PPO]: L=-0.11 R=0.32 | carry=0 | base_dist=0.33 base_ang=0.59 | tag_vis=0 tag_dist=0.00 | wall=1.33
+R4[PPO]: L=-0.54 R=0.75 | carry=0 | base_dist=0.50 base_ang=0.48 | tag_vis=0 tag_dist=0.00 | wall=0.80
+
+============================================================
+Step 61500 | Pickups: 33 | Deposits: 33
+============================================================
+R1[PPO]: L=-0.14 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.74 | tag_vis=0 tag_dist=0.00 | wall=2.02
+R2[PPO]: L=0.29 R=0.96 | carry=0 | base_dist=0.19 base_ang=0.50 | tag_vis=0 tag_dist=0.00 | wall=1.82
+R3[PPO]: L=0.13 R=1.00 | carry=0 | base_dist=0.37 base_ang=0.84 | tag_vis=0 tag_dist=0.00 | wall=1.21
+R4[PPO]: L=-0.69 R=0.35 | carry=0 | base_dist=0.49 base_ang=0.61 | tag_vis=0 tag_dist=0.00 | wall=0.80
+
+============================================================
+Step 62000 | Pickups: 33 | Deposits: 33
+============================================================
+R1[PPO]: L=0.08 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.60 | tag_vis=0 tag_dist=0.00 | wall=2.03
+R2[PPO]: L=-0.00 R=1.00 | carry=0 | base_dist=0.23 base_ang=0.69 | tag_vis=0 tag_dist=0.00 | wall=1.71
+R3[PPO]: L=-0.20 R=1.00 | carry=0 | base_dist=0.40 base_ang=0.00 | tag_vis=0 tag_dist=0.00 | wall=1.10
+R4[PPO]: L=-0.45 R=0.71 | carry=0 | base_dist=0.53 base_ang=-0.57 | tag_vis=0 tag_dist=0.00 | wall=0.68
+
+============================================================
+Step 62500 | Pickups: 33 | Deposits: 33
+============================================================
+R1[PPO]: L=-0.16 R=-1.00 | carry=0 | base_dist=0.18 base_ang=-0.30 | tag_vis=0 tag_dist=0.00 | wall=2.02
+R2[PPO]: L=0.12 R=0.81 | carry=0 | base_dist=0.22 base_ang=-0.99 | tag_vis=0 tag_dist=0.00 | wall=1.75
+R3[PPO]: L=-0.34 R=0.80 | carry=0 | base_dist=0.46 base_ang=-0.61 | tag_vis=0 tag_dist=0.00 | wall=0.88
+R4[PPO]: L=-0.39 R=0.71 | carry=0 | base_dist=0.55 base_ang=-0.84 | tag_vis=0 tag_dist=0.00 | wall=0.63
+
+============================================================
+Step 63000 | Pickups: 33 | Deposits: 33
+============================================================
+R1[PPO]: L=-0.31 R=-0.59 | carry=0 | base_dist=0.30 base_ang=0.14 | tag_vis=0 tag_dist=0.00 | wall=1.66
+R2[PPO]: L=0.22 R=0.93 | carry=0 | base_dist=0.25 base_ang=-0.20 | tag_vis=0 tag_dist=0.00 | wall=1.65
+R3[PPO]: L=0.07 R=0.84 | carry=0 | base_dist=0.50 base_ang=0.83 | tag_vis=0 tag_dist=0.00 | wall=0.76
+R4[PPO]: L=-0.60 R=0.69 | carry=0 | base_dist=0.56 base_ang=1.00 | tag_vis=0 tag_dist=0.00 | wall=0.58
+
+============================================================
+Step 63500 | Pickups: 34 | Deposits: 33
+============================================================
+R1[RTB]: L=0.07 R=-0.50 | carry=1 | base_dist=0.50 base_ang=-0.01 | tag_vis=0 tag_dist=0.00 | wall=1.23
+R2[PPO]: L=0.14 R=0.91 | carry=0 | base_dist=0.30 base_ang=0.57 | tag_vis=0 tag_dist=0.00 | wall=1.47
+R3[PPO]: L=-0.13 R=0.86 | carry=0 | base_dist=0.54 base_ang=-0.26 | tag_vis=0 tag_dist=0.00 | wall=0.60
+R4[PPO]: L=-0.15 R=0.29 | carry=0 | base_dist=0.55 base_ang=-0.86 | tag_vis=0 tag_dist=0.00 | wall=0.61
+
+============================================================
+Step 64000 | Pickups: 34 | Deposits: 34
+============================================================
+R1[BASE_AVOID]: L=-0.07 R=-1.00 | carry=0 | base_dist=0.07 base_ang=-0.86 | tag_vis=0 tag_dist=0.00 | wall=2.28
+R2[PPO]: L=0.17 R=1.00 | carry=0 | base_dist=0.30 base_ang=0.59 | tag_vis=0 tag_dist=0.00 | wall=1.45
+R3[PPO]: L=-0.26 R=0.78 | carry=0 | base_dist=0.56 base_ang=-0.36 | tag_vis=0 tag_dist=0.00 | wall=0.53
+R4[PPO]: L=-0.53 R=0.85 | carry=0 | base_dist=0.54 base_ang=0.25 | tag_vis=0 tag_dist=0.00 | wall=0.66
+
+============================================================
+Step 64500 | Pickups: 34 | Deposits: 34
+============================================================
+R1[PPO]: L=-0.10 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.75 | tag_vis=0 tag_dist=0.00 | wall=2.06
+R2[PPO]: L=0.39 R=1.00 | carry=0 | base_dist=0.31 base_ang=0.56 | tag_vis=0 tag_dist=0.00 | wall=1.43
+R3[PPO]: L=-0.07 R=0.70 | carry=0 | base_dist=0.58 base_ang=0.89 | tag_vis=0 tag_dist=0.00 | wall=0.47
+R4[PPO]: L=-0.79 R=0.82 | carry=0 | base_dist=0.57 base_ang=0.14 | tag_vis=0 tag_dist=0.00 | wall=0.57
+
+============================================================
+Step 65000 | Pickups: 34 | Deposits: 34
+============================================================
+R1[PPO]: L=-0.09 R=-0.11 | carry=0 | base_dist=0.20 base_ang=0.76 | tag_vis=0 tag_dist=0.00 | wall=1.99
+R2[PPO]: L=0.28 R=1.00 | carry=0 | base_dist=0.32 base_ang=0.76 | tag_vis=0 tag_dist=0.00 | wall=1.40
+R3[PPO]: L=0.11 R=0.85 | carry=0 | base_dist=0.61 base_ang=-0.52 | tag_vis=0 tag_dist=0.00 | wall=0.39
+R4[PPO]: L=-0.63 R=0.57 | carry=0 | base_dist=0.60 base_ang=0.37 | tag_vis=0 tag_dist=0.00 | wall=0.49
+
+============================================================
+Step 65500 | Pickups: 34 | Deposits: 34
+============================================================
+R1[PPO]: L=-0.58 R=-0.79 | carry=0 | base_dist=0.31 base_ang=0.11 | tag_vis=0 tag_dist=0.00 | wall=1.57
+R2[PPO]: L=0.19 R=1.00 | carry=0 | base_dist=0.31 base_ang=-0.66 | tag_vis=0 tag_dist=0.00 | wall=1.43
+R3[PPO]: L=-0.26 R=0.52 | carry=0 | base_dist=0.63 base_ang=-0.30 | tag_vis=0 tag_dist=0.00 | wall=0.35
+R4[PPO]: L=-0.47 R=1.00 | carry=0 | base_dist=0.61 base_ang=-0.05 | tag_vis=0 tag_dist=0.00 | wall=0.44
+
+============================================================
+Step 66000 | Pickups: 35 | Deposits: 34
+============================================================
+R1[TAG_SEEK]: L=0.74 R=-1.00 | carry=0 | base_dist=0.37 base_ang=-0.97 | tag_vis=1 tag_dist=0.95 | wall=1.35
+R2[PPO]: L=-0.14 R=0.80 | carry=0 | base_dist=0.33 base_ang=-0.65 | tag_vis=0 tag_dist=0.00 | wall=1.39
+R3[TAG_SEEK]: L=-0.66 R=0.96 | carry=0 | base_dist=0.61 base_ang=-0.49 | tag_vis=1 tag_dist=0.19 | wall=0.87
+R4[RTB]: L=-0.03 R=0.72 | carry=1 | base_dist=0.57 base_ang=-0.03 | tag_vis=0 tag_dist=0.00 | wall=1.03
+
+============================================================
+Step 66500 | Pickups: 37 | Deposits: 35
+============================================================
+R1[PPO]: L=0.11 R=-0.02 | carry=0 | base_dist=0.36 base_ang=0.90 | tag_vis=0 tag_dist=0.00 | wall=1.41
+R2[RTB]: L=-0.04 R=1.00 | carry=1 | base_dist=0.50 base_ang=0.14 | tag_vis=0 tag_dist=0.00 | wall=1.25
+R3[RTB]: L=0.52 R=0.08 | carry=1 | base_dist=0.11 base_ang=-0.00 | tag_vis=0 tag_dist=0.00 | wall=2.21
+R4[BASE_AVOID]: L=-0.46 R=0.09 | carry=0 | base_dist=0.06 base_ang=-0.43 | tag_vis=0 tag_dist=0.00 | wall=2.34
+
+============================================================
+Step 67000 | Pickups: 37 | Deposits: 37
+============================================================
+R1[PPO]: L=-0.51 R=-0.43 | carry=0 | base_dist=0.54 base_ang=0.09 | tag_vis=0 tag_dist=0.00 | wall=0.71
+R2[BASE_AVOID]: L=0.45 R=1.00 | carry=0 | base_dist=0.07 base_ang=0.82 | tag_vis=0 tag_dist=0.00 | wall=2.29
+R3[PPO]: L=0.36 R=0.96 | carry=0 | base_dist=0.15 base_ang=0.27 | tag_vis=0 tag_dist=0.00 | wall=2.00
+R4[BASE_AVOID]: L=-0.84 R=0.46 | carry=0 | base_dist=0.14 base_ang=0.52 | tag_vis=0 tag_dist=0.00 | wall=2.05
+
+============================================================
+Step 67500 | Pickups: 37 | Deposits: 37
+============================================================
+R1[PPO]: L=-0.23 R=-0.30 | carry=0 | base_dist=0.70 base_ang=0.37 | tag_vis=0 tag_dist=0.00 | wall=0.46
+R2[PPO]: L=-0.03 R=1.00 | carry=0 | base_dist=0.21 base_ang=0.20 | tag_vis=0 tag_dist=0.00 | wall=1.82
+R3[PPO]: L=-0.22 R=0.84 | carry=0 | base_dist=0.17 base_ang=-0.36 | tag_vis=0 tag_dist=0.00 | wall=1.94
+R4[BASE_AVOID]: L=-0.33 R=0.91 | carry=0 | base_dist=0.13 base_ang=-0.75 | tag_vis=0 tag_dist=0.00 | wall=2.15
+
+============================================================
+Step 68000 | Pickups: 37 | Deposits: 37
+============================================================
+R1[PPO]: L=-0.35 R=-0.15 | carry=0 | base_dist=0.70 base_ang=0.60 | tag_vis=0 tag_dist=0.00 | wall=0.69
+R2[PPO]: L=0.36 R=1.00 | carry=0 | base_dist=0.23 base_ang=0.94 | tag_vis=0 tag_dist=0.00 | wall=1.81
+R3[PPO]: L=0.36 R=1.00 | carry=0 | base_dist=0.21 base_ang=0.99 | tag_vis=0 tag_dist=0.00 | wall=1.77
+R4[BASE_AVOID]: L=-0.81 R=0.46 | carry=0 | base_dist=0.14 base_ang=0.67 | tag_vis=0 tag_dist=0.00 | wall=2.14
+
+============================================================
+Step 68500 | Pickups: 38 | Deposits: 37
+============================================================
+R1[RTB]: L=-0.38 R=-0.07 | carry=1 | base_dist=0.21 base_ang=0.00 | tag_vis=0 tag_dist=0.00 | wall=1.97
+R2[PPO]: L=0.16 R=0.67 | carry=0 | base_dist=0.29 base_ang=0.65 | tag_vis=0 tag_dist=0.00 | wall=1.56
+R3[PPO]: L=0.01 R=1.00 | carry=0 | base_dist=0.30 base_ang=0.95 | tag_vis=0 tag_dist=0.00 | wall=1.48
+R4[BASE_AVOID]: L=-0.14 R=0.38 | carry=0 | base_dist=0.14 base_ang=0.54 | tag_vis=0 tag_dist=0.00 | wall=2.03
+
+============================================================
+Step 69000 | Pickups: 38 | Deposits: 38
+============================================================
+R1[PPO]: L=-0.58 R=-0.48 | carry=0 | base_dist=0.20 base_ang=-0.10 | tag_vis=0 tag_dist=0.00 | wall=1.85
+R2[PPO]: L=-0.03 R=1.00 | carry=0 | base_dist=0.30 base_ang=0.68 | tag_vis=0 tag_dist=0.00 | wall=1.50
+R3[TAG_SEEK]: L=-0.31 R=1.00 | carry=0 | base_dist=0.38 base_ang=0.97 | tag_vis=1 tag_dist=0.98 | wall=1.21
+R4[BASE_AVOID]: L=-0.46 R=0.89 | carry=0 | base_dist=0.14 base_ang=0.40 | tag_vis=0 tag_dist=0.00 | wall=2.00
+
+============================================================
+Step 69500 | Pickups: 39 | Deposits: 38
+============================================================
+R1[PPO]: L=0.33 R=-1.00 | carry=0 | base_dist=0.32 base_ang=0.25 | tag_vis=0 tag_dist=0.00 | wall=1.44
+R2[PPO]: L=0.21 R=0.66 | carry=0 | base_dist=0.30 base_ang=-0.97 | tag_vis=0 tag_dist=0.00 | wall=1.49
+R3[RTB]: L=0.29 R=-0.17 | carry=1 | base_dist=0.35 base_ang=0.00 | tag_vis=0 tag_dist=0.00 | wall=1.62
+R4[PPO]: L=-0.46 R=0.77 | carry=0 | base_dist=0.17 base_ang=-0.41 | tag_vis=0 tag_dist=0.00 | wall=1.91
+
+============================================================
+Step 70000 | Pickups: 39 | Deposits: 39
+============================================================
+R1[PPO]: L=-0.34 R=-0.33 | carry=0 | base_dist=0.23 base_ang=0.57 | tag_vis=0 tag_dist=0.00 | wall=1.74
+R2[PPO]: L=0.28 R=1.00 | carry=0 | base_dist=0.31 base_ang=-0.20 | tag_vis=0 tag_dist=0.00 | wall=1.45
+R3[PPO]: L=0.08 R=1.00 | carry=0 | base_dist=0.15 base_ang=0.35 | tag_vis=0 tag_dist=0.00 | wall=2.03
+R4[PPO]: L=-0.57 R=0.54 | carry=0 | base_dist=0.16 base_ang=0.51 | tag_vis=0 tag_dist=0.00 | wall=1.96
+
+============================================================
+Step 70500 | Pickups: 39 | Deposits: 39
+============================================================
+R1[PPO]: L=-0.03 R=-1.00 | carry=0 | base_dist=0.15 base_ang=-0.61 | tag_vis=0 tag_dist=0.00 | wall=2.12
+R2[TAG_SEEK]: L=0.11 R=0.59 | carry=0 | base_dist=0.41 base_ang=-0.69 | tag_vis=1 tag_dist=0.81 | wall=1.18
+R3[PPO]: L=-0.74 R=0.58 | carry=0 | base_dist=0.15 base_ang=-0.39 | tag_vis=0 tag_dist=0.00 | wall=1.98
+R4[PPO]: L=-0.12 R=1.00 | carry=0 | base_dist=0.16 base_ang=-0.94 | tag_vis=0 tag_dist=0.00 | wall=1.99
+
+============================================================
+Step 71000 | Pickups: 40 | Deposits: 39
+============================================================
+R1[PPO]: L=-0.48 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.90 | tag_vis=0 tag_dist=0.00 | wall=2.09
+R2[RTB]: L=-0.01 R=0.82 | carry=1 | base_dist=0.26 base_ang=-0.00 | tag_vis=0 tag_dist=0.00 | wall=1.83
+R3[BASE_AVOID]: L=-0.26 R=1.00 | carry=0 | base_dist=0.14 base_ang=0.73 | tag_vis=0 tag_dist=0.00 | wall=2.05
+R4[PPO]: L=-0.50 R=0.23 | carry=0 | base_dist=0.18 base_ang=0.07 | tag_vis=0 tag_dist=0.00 | wall=1.94
+
+============================================================
+Step 71500 | Pickups: 40 | Deposits: 40
+============================================================
+R1[BASE_AVOID]: L=-0.46 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.78 | tag_vis=0 tag_dist=0.00 | wall=2.10
+R2[BASE_AVOID]: L=0.34 R=1.00 | carry=0 | base_dist=0.14 base_ang=0.42 | tag_vis=0 tag_dist=0.00 | wall=2.12
+R3[PPO]: L=0.03 R=0.90 | carry=0 | base_dist=0.15 base_ang=0.81 | tag_vis=0 tag_dist=0.00 | wall=2.06
+R4[PPO]: L=-0.73 R=0.71 | carry=0 | base_dist=0.17 base_ang=0.48 | tag_vis=0 tag_dist=0.00 | wall=1.95
+
+============================================================
+Step 72000 | Pickups: 40 | Deposits: 40
+============================================================
+R1[PPO]: L=-0.52 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.83 | tag_vis=0 tag_dist=0.00 | wall=2.10
+R2[BASE_AVOID]: L=0.28 R=1.00 | carry=0 | base_dist=0.14 base_ang=0.30 | tag_vis=0 tag_dist=0.00 | wall=2.02
+R3[PPO]: L=-0.05 R=0.90 | carry=0 | base_dist=0.19 base_ang=-0.83 | tag_vis=0 tag_dist=0.00 | wall=1.98
+R4[PPO]: L=-0.58 R=0.59 | carry=0 | base_dist=0.14 base_ang=0.68 | tag_vis=0 tag_dist=0.00 | wall=2.13
+
+============================================================
+Step 72500 | Pickups: 40 | Deposits: 40
+============================================================
+R1[BASE_AVOID]: L=-0.34 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.81 | tag_vis=0 tag_dist=0.00 | wall=2.11
+R2[PPO]: L=0.28 R=0.53 | carry=0 | base_dist=0.15 base_ang=-0.90 | tag_vis=0 tag_dist=0.00 | wall=1.98
+R3[PPO]: L=-0.21 R=0.92 | carry=0 | base_dist=0.22 base_ang=0.77 | tag_vis=0 tag_dist=0.00 | wall=1.95
+R4[PPO]: L=-0.58 R=0.67 | carry=0 | base_dist=0.15 base_ang=0.08 | tag_vis=0 tag_dist=0.00 | wall=2.13
+
+============================================================
+Step 73000 | Pickups: 40 | Deposits: 40
+============================================================
+R1[PPO]: L=-0.32 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.79 | tag_vis=0 tag_dist=0.00 | wall=2.12
+R2[PPO]: L=-0.01 R=0.80 | carry=0 | base_dist=0.17 base_ang=-0.52 | tag_vis=0 tag_dist=0.00 | wall=1.95
+R3[PPO]: L=-0.32 R=1.00 | carry=0 | base_dist=0.26 base_ang=-0.25 | tag_vis=0 tag_dist=0.00 | wall=1.86
+R4[PPO]: L=-0.30 R=0.65 | carry=0 | base_dist=0.14 base_ang=0.15 | tag_vis=0 tag_dist=0.00 | wall=2.05
+
+============================================================
+Step 73500 | Pickups: 40 | Deposits: 40
+============================================================
+R1[BASE_AVOID]: L=-0.25 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.73 | tag_vis=0 tag_dist=0.00 | wall=2.13
+R2[PPO]: L=-0.10 R=0.94 | carry=0 | base_dist=0.19 base_ang=-0.17 | tag_vis=0 tag_dist=0.00 | wall=1.88
+R3[PPO]: L=-0.65 R=0.68 | carry=0 | base_dist=0.26 base_ang=0.40 | tag_vis=0 tag_dist=0.00 | wall=1.86
+R4[PPO]: L=-0.26 R=1.00 | carry=0 | base_dist=0.16 base_ang=-0.15 | tag_vis=0 tag_dist=0.00 | wall=1.96
+
+============================================================
+Step 74000 | Pickups: 40 | Deposits: 40
+============================================================
+R1[BASE_AVOID]: L=-0.63 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.74 | tag_vis=0 tag_dist=0.00 | wall=2.14
+R2[PPO]: L=0.23 R=0.85 | carry=0 | base_dist=0.22 base_ang=0.13 | tag_vis=0 tag_dist=0.00 | wall=1.78
+R3[PPO]: L=-0.04 R=1.00 | carry=0 | base_dist=0.28 base_ang=0.84 | tag_vis=0 tag_dist=0.00 | wall=1.78
+R4[PPO]: L=-0.54 R=0.76 | carry=0 | base_dist=0.16 base_ang=0.89 | tag_vis=0 tag_dist=0.00 | wall=1.93
+
+============================================================
+Step 74500 | Pickups: 40 | Deposits: 40
+============================================================
+R1[BASE_AVOID]: L=-0.53 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.91 | tag_vis=0 tag_dist=0.00 | wall=2.15
+R2[PPO]: L=0.21 R=1.00 | carry=0 | base_dist=0.25 base_ang=0.53 | tag_vis=0 tag_dist=0.00 | wall=1.68
+R3[TAG_SEEK]: L=-0.47 R=0.90 | carry=0 | base_dist=0.48 base_ang=-0.98 | tag_vis=1 tag_dist=0.30 | wall=1.28
+R4[PPO]: L=-0.60 R=1.00 | carry=0 | base_dist=0.17 base_ang=-0.05 | tag_vis=0 tag_dist=0.00 | wall=1.90
+
+============================================================
+Step 75000 | Pickups: 41 | Deposits: 40
+============================================================
+R1[PPO]: L=0.55 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.42 | tag_vis=0 tag_dist=0.00 | wall=2.04
+R2[PPO]: L=0.24 R=0.82 | carry=0 | base_dist=0.22 base_ang=-0.09 | tag_vis=0 tag_dist=0.00 | wall=1.80
+R3[RTB]: L=0.33 R=-0.05 | carry=1 | base_dist=0.15 base_ang=-0.00 | tag_vis=0 tag_dist=0.00 | wall=2.10
+R4[PPO]: L=-0.55 R=0.70 | carry=0 | base_dist=0.19 base_ang=-0.35 | tag_vis=0 tag_dist=0.00 | wall=1.83
+
+============================================================
+Step 75500 | Pickups: 41 | Deposits: 41
+============================================================
+R1[PPO]: L=-0.78 R=-0.36 | carry=0 | base_dist=0.16 base_ang=0.66 | tag_vis=0 tag_dist=0.00 | wall=1.93
+R2[PPO]: L=0.53 R=1.00 | carry=0 | base_dist=0.20 base_ang=-0.18 | tag_vis=0 tag_dist=0.00 | wall=1.84
+R3[PPO]: L=0.13 R=0.57 | carry=0 | base_dist=0.15 base_ang=0.34 | tag_vis=0 tag_dist=0.00 | wall=2.00
+R4[PPO]: L=-0.85 R=0.80 | carry=0 | base_dist=0.18 base_ang=0.93 | tag_vis=0 tag_dist=0.00 | wall=1.88
+
+============================================================
+Step 76000 | Pickups: 41 | Deposits: 41
+============================================================
+R1[PPO]: L=-0.29 R=-0.33 | carry=0 | base_dist=0.27 base_ang=0.19 | tag_vis=0 tag_dist=0.00 | wall=1.67
+R2[PPO]: L=0.35 R=1.00 | carry=0 | base_dist=0.21 base_ang=0.60 | tag_vis=0 tag_dist=0.00 | wall=1.81
+R3[BASE_AVOID]: L=0.11 R=0.67 | carry=0 | base_dist=0.14 base_ang=0.21 | tag_vis=0 tag_dist=0.00 | wall=2.09
+R4[PPO]: L=-0.74 R=0.79 | carry=0 | base_dist=0.15 base_ang=-0.74 | tag_vis=0 tag_dist=0.00 | wall=1.97
+
+============================================================
+Step 76500 | Pickups: 41 | Deposits: 41
+============================================================
+R1[PPO]: L=-0.40 R=-0.47 | carry=0 | base_dist=0.42 base_ang=0.31 | tag_vis=0 tag_dist=0.00 | wall=1.04
+R2[PPO]: L=0.25 R=0.89 | carry=0 | base_dist=0.17 base_ang=-0.61 | tag_vis=0 tag_dist=0.00 | wall=1.97
+R3[PPO]: L=-0.14 R=0.61 | carry=0 | base_dist=0.15 base_ang=0.33 | tag_vis=0 tag_dist=0.00 | wall=2.01
+R4[PPO]: L=-0.56 R=0.91 | carry=0 | base_dist=0.14 base_ang=-0.98 | tag_vis=0 tag_dist=0.00 | wall=2.06
+
+============================================================
+Step 77000 | Pickups: 41 | Deposits: 41
+============================================================
+R1[PPO]: L=-0.66 R=-0.43 | carry=0 | base_dist=0.57 base_ang=0.40 | tag_vis=0 tag_dist=0.00 | wall=0.70
+R2[PPO]: L=0.28 R=1.00 | carry=0 | base_dist=0.19 base_ang=0.18 | tag_vis=0 tag_dist=0.00 | wall=2.01
+R3[PPO]: L=0.08 R=0.80 | carry=0 | base_dist=0.16 base_ang=-0.63 | tag_vis=0 tag_dist=0.00 | wall=1.95
+R4[PPO]: L=-0.59 R=0.62 | carry=0 | base_dist=0.14 base_ang=0.77 | tag_vis=0 tag_dist=0.00 | wall=2.07
+
+============================================================
+Step 77500 | Pickups: 42 | Deposits: 41
+============================================================
+R1[RTB]: L=-0.27 R=-0.31 | carry=1 | base_dist=0.50 base_ang=0.00 | tag_vis=0 tag_dist=0.00 | wall=1.09
+R2[PPO]: L=0.13 R=0.93 | carry=0 | base_dist=0.16 base_ang=0.51 | tag_vis=0 tag_dist=0.00 | wall=2.07
+R3[PPO]: L=-0.01 R=1.00 | carry=0 | base_dist=0.21 base_ang=-0.85 | tag_vis=0 tag_dist=0.00 | wall=1.77
+R4[PPO]: L=-0.07 R=0.09 | carry=0 | base_dist=0.15 base_ang=0.09 | tag_vis=0 tag_dist=0.00 | wall=2.06
+
+============================================================
+Step 78000 | Pickups: 42 | Deposits: 42
+============================================================
+R1[BASE_AVOID]: L=-0.09 R=-0.23 | carry=0 | base_dist=0.08 base_ang=0.89 | tag_vis=0 tag_dist=0.00 | wall=2.25
+R2[PPO]: L=0.40 R=1.00 | carry=0 | base_dist=0.15 base_ang=0.44 | tag_vis=0 tag_dist=0.00 | wall=1.98
+R3[PPO]: L=0.33 R=1.00 | carry=0 | base_dist=0.25 base_ang=0.59 | tag_vis=0 tag_dist=0.00 | wall=1.63
+R4[PPO]: L=-0.79 R=0.29 | carry=0 | base_dist=0.19 base_ang=0.68 | tag_vis=0 tag_dist=0.00 | wall=1.90
+
+============================================================
+Step 78500 | Pickups: 42 | Deposits: 42
+============================================================
+R1[PPO]: L=-0.40 R=-1.00 | carry=0 | base_dist=0.22 base_ang=-0.47 | tag_vis=0 tag_dist=0.00 | wall=1.76
+R2[PPO]: L=0.36 R=0.60 | carry=0 | base_dist=0.16 base_ang=-0.98 | tag_vis=0 tag_dist=0.00 | wall=1.95
+R3[PPO]: L=-0.24 R=0.88 | carry=0 | base_dist=0.26 base_ang=0.46 | tag_vis=0 tag_dist=0.00 | wall=1.58
+R4[PPO]: L=-0.61 R=0.72 | carry=0 | base_dist=0.18 base_ang=0.88 | tag_vis=0 tag_dist=0.00 | wall=1.87
+
+============================================================
+Step 79000 | Pickups: 42 | Deposits: 42
+============================================================
+R1[PPO]: L=-0.25 R=-0.82 | carry=0 | base_dist=0.35 base_ang=-0.11 | tag_vis=0 tag_dist=0.00 | wall=1.31
+R2[PPO]: L=0.02 R=1.00 | carry=0 | base_dist=0.18 base_ang=-0.23 | tag_vis=0 tag_dist=0.00 | wall=1.95
+R3[PPO]: L=-0.33 R=0.82 | carry=0 | base_dist=0.30 base_ang=-0.56 | tag_vis=0 tag_dist=0.00 | wall=1.49
+R4[PPO]: L=-0.33 R=0.91 | carry=0 | base_dist=0.19 base_ang=-0.63 | tag_vis=0 tag_dist=0.00 | wall=1.83
+
+============================================================
+Step 79500 | Pickups: 42 | Deposits: 42
+============================================================
+R1[TAG_SEEK]: L=0.29 R=-1.00 | carry=0 | base_dist=0.56 base_ang=-0.63 | tag_vis=1 tag_dist=0.60 | wall=0.76
+R2[PPO]: L=-0.31 R=1.00 | carry=0 | base_dist=0.22 base_ang=0.33 | tag_vis=0 tag_dist=0.00 | wall=1.79
+R3[PPO]: L=-0.34 R=1.00 | carry=0 | base_dist=0.33 base_ang=-0.05 | tag_vis=0 tag_dist=0.00 | wall=1.40
+R4[PPO]: L=-0.18 R=0.64 | carry=0 | base_dist=0.21 base_ang=-0.65 | tag_vis=0 tag_dist=0.00 | wall=1.78
+
+============================================================
+Step 80000 | Pickups: 43 | Deposits: 42
+============================================================
+R1[RTB]: L=-0.30 R=-0.29 | carry=1 | base_dist=0.24 base_ang=-0.00 | tag_vis=0 tag_dist=0.00 | wall=1.88
+R2[PPO]: L=0.54 R=0.86 | carry=0 | base_dist=0.26 base_ang=0.61 | tag_vis=0 tag_dist=0.00 | wall=1.66
+R3[PPO]: L=-0.05 R=0.46 | carry=0 | base_dist=0.35 base_ang=0.63 | tag_vis=0 tag_dist=0.00 | wall=1.33
+R4[PPO]: L=-0.51 R=0.66 | carry=0 | base_dist=0.25 base_ang=-0.08 | tag_vis=0 tag_dist=0.00 | wall=1.65
+
+============================================================
+Step 80500 | Pickups: 43 | Deposits: 43
+============================================================
+R1[PPO]: L=-0.58 R=-0.51 | carry=0 | base_dist=0.15 base_ang=-0.29 | tag_vis=0 tag_dist=0.00 | wall=2.08
+R2[PPO]: L=0.03 R=1.00 | carry=0 | base_dist=0.30 base_ang=0.43 | tag_vis=0 tag_dist=0.00 | wall=1.51
+R3[PPO]: L=-0.30 R=0.66 | carry=0 | base_dist=0.38 base_ang=-0.38 | tag_vis=0 tag_dist=0.00 | wall=1.28
+R4[PPO]: L=-0.33 R=1.00 | carry=0 | base_dist=0.28 base_ang=0.23 | tag_vis=0 tag_dist=0.00 | wall=1.53
+
+============================================================
+Step 81000 | Pickups: 43 | Deposits: 43
+============================================================
+R1[PPO]: L=-0.36 R=0.17 | carry=0 | base_dist=0.14 base_ang=0.90 | tag_vis=0 tag_dist=0.00 | wall=2.11
+R2[PPO]: L=0.35 R=1.00 | carry=0 | base_dist=0.30 base_ang=0.94 | tag_vis=0 tag_dist=0.00 | wall=1.51
+R3[TAG_SEEK]: L=-0.07 R=1.00 | carry=0 | base_dist=0.56 base_ang=0.78 | tag_vis=1 tag_dist=0.29 | wall=0.92
+R4[PPO]: L=-0.83 R=0.98 | carry=0 | base_dist=0.30 base_ang=0.14 | tag_vis=0 tag_dist=0.00 | wall=1.46
+
+============================================================
+Step 81500 | Pickups: 44 | Deposits: 43
+============================================================
+R1[PPO]: L=-0.10 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.73 | tag_vis=0 tag_dist=0.00 | wall=2.12
+R2[PPO]: L=0.15 R=0.58 | carry=0 | base_dist=0.29 base_ang=-0.95 | tag_vis=0 tag_dist=0.00 | wall=1.61
+R3[RTB]: L=0.18 R=-0.34 | carry=1 | base_dist=0.18 base_ang=0.00 | tag_vis=0 tag_dist=0.00 | wall=2.03
+R4[PPO]: L=-0.40 R=1.00 | carry=0 | base_dist=0.27 base_ang=-0.68 | tag_vis=0 tag_dist=0.00 | wall=1.54
+
+============================================================
+Step 82000 | Pickups: 44 | Deposits: 44
+============================================================
+R1[PPO]: L=-0.33 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.80 | tag_vis=0 tag_dist=0.00 | wall=2.13
+R2[PPO]: L=0.24 R=0.66 | carry=0 | base_dist=0.28 base_ang=-0.78 | tag_vis=0 tag_dist=0.00 | wall=1.70
+R3[PPO]: L=-0.55 R=0.42 | carry=0 | base_dist=0.15 base_ang=0.56 | tag_vis=0 tag_dist=0.00 | wall=2.03
+R4[PPO]: L=-0.51 R=1.00 | carry=0 | base_dist=0.26 base_ang=-0.41 | tag_vis=0 tag_dist=0.00 | wall=1.61
+
+============================================================
+Step 82500 | Pickups: 44 | Deposits: 44
+============================================================
+R1[BASE_AVOID]: L=-0.37 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.81 | tag_vis=0 tag_dist=0.00 | wall=2.14
+R2[PPO]: L=0.10 R=0.68 | carry=0 | base_dist=0.27 base_ang=-0.37 | tag_vis=0 tag_dist=0.00 | wall=1.81
+R3[PPO]: L=-0.32 R=0.97 | carry=0 | base_dist=0.16 base_ang=0.90 | tag_vis=0 tag_dist=0.00 | wall=1.97
+R4[PPO]: L=-0.41 R=0.88 | carry=0 | base_dist=0.23 base_ang=0.37 | tag_vis=0 tag_dist=0.00 | wall=1.71
+
+============================================================
+Step 83000 | Pickups: 44 | Deposits: 44
+============================================================
+R1[PPO]: L=-0.69 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.76 | tag_vis=0 tag_dist=0.00 | wall=2.14
+R2[PPO]: L=0.03 R=1.00 | carry=0 | base_dist=0.27 base_ang=-0.12 | tag_vis=0 tag_dist=0.00 | wall=1.75
+R3[PPO]: L=-0.36 R=0.85 | carry=0 | base_dist=0.17 base_ang=-0.66 | tag_vis=0 tag_dist=0.00 | wall=1.91
+R4[PPO]: L=-0.25 R=0.96 | carry=0 | base_dist=0.21 base_ang=0.97 | tag_vis=0 tag_dist=0.00 | wall=1.77
+
+============================================================
+Step 83500 | Pickups: 44 | Deposits: 44
+============================================================
+R1[BASE_AVOID]: L=-0.11 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.73 | tag_vis=0 tag_dist=0.00 | wall=2.14
+R2[PPO]: L=-0.24 R=0.98 | carry=0 | base_dist=0.27 base_ang=0.09 | tag_vis=0 tag_dist=0.00 | wall=1.73
+R3[PPO]: L=-0.66 R=0.78 | carry=0 | base_dist=0.17 base_ang=0.12 | tag_vis=0 tag_dist=0.00 | wall=1.93
+R4[PPO]: L=-0.11 R=1.00 | carry=0 | base_dist=0.20 base_ang=-0.60 | tag_vis=0 tag_dist=0.00 | wall=1.81
+
+============================================================
+Step 84000 | Pickups: 44 | Deposits: 44
+============================================================
+R1[PPO]: L=-0.29 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.83 | tag_vis=0 tag_dist=0.00 | wall=2.13
+R2[PPO]: L=0.17 R=1.00 | carry=0 | base_dist=0.29 base_ang=0.31 | tag_vis=0 tag_dist=0.00 | wall=1.65
+R3[PPO]: L=-0.05 R=1.00 | carry=0 | base_dist=0.16 base_ang=-0.91 | tag_vis=0 tag_dist=0.00 | wall=1.93
+R4[PPO]: L=-0.49 R=0.43 | carry=0 | base_dist=0.18 base_ang=0.09 | tag_vis=0 tag_dist=0.00 | wall=1.88
+
+============================================================
+Step 84500 | Pickups: 44 | Deposits: 44
+============================================================
+R1[BASE_AVOID]: L=-0.53 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.71 | tag_vis=0 tag_dist=0.00 | wall=2.12
+R2[PPO]: L=0.17 R=1.00 | carry=0 | base_dist=0.31 base_ang=0.58 | tag_vis=0 tag_dist=0.00 | wall=1.59
+R3[PPO]: L=-0.13 R=0.91 | carry=0 | base_dist=0.18 base_ang=-0.41 | tag_vis=0 tag_dist=0.00 | wall=1.89
+R4[PPO]: L=-0.52 R=0.76 | carry=0 | base_dist=0.17 base_ang=0.90 | tag_vis=0 tag_dist=0.00 | wall=1.98
+
+============================================================
+Step 85000 | Pickups: 44 | Deposits: 44
+============================================================
+R1[PPO]: L=0.15 R=-0.50 | carry=0 | base_dist=0.14 base_ang=-0.31 | tag_vis=0 tag_dist=0.00 | wall=2.10
+R2[PPO]: L=-0.04 R=-0.19 | carry=0 | base_dist=0.30 base_ang=-0.43 | tag_vis=0 tag_dist=0.00 | wall=1.55
+R3[PPO]: L=-0.16 R=-0.04 | carry=0 | base_dist=0.19 base_ang=0.35 | tag_vis=0 tag_dist=0.00 | wall=1.83
+R4[PPO]: L=0.01 R=0.13 | carry=0 | base_dist=0.16 base_ang=-0.38 | tag_vis=0 tag_dist=0.00 | wall=2.04
+
+============================================================
+Step 85500 | Pickups: 44 | Deposits: 44
+============================================================
+R1[PPO]: L=-0.20 R=-0.11 | carry=0 | base_dist=0.17 base_ang=-0.15 | tag_vis=0 tag_dist=0.00 | wall=1.98
+R2[PPO]: L=-0.02 R=0.14 | carry=0 | base_dist=0.29 base_ang=-0.23 | tag_vis=0 tag_dist=0.00 | wall=1.59
+R3[PPO]: L=-0.00 R=0.03 | carry=0 | base_dist=0.21 base_ang=-1.00 | tag_vis=0 tag_dist=0.00 | wall=1.77
+R4[PPO]: L=0.08 R=-0.08 | carry=0 | base_dist=0.15 base_ang=0.30 | tag_vis=0 tag_dist=0.00 | wall=2.04
+
+============================================================
+Step 86000 | Pickups: 44 | Deposits: 44
+============================================================
+R1[PPO]: L=-0.17 R=-0.02 | carry=0 | base_dist=0.22 base_ang=0.02 | tag_vis=0 tag_dist=0.00 | wall=1.80
+R2[PPO]: L=-0.02 R=0.13 | carry=0 | base_dist=0.28 base_ang=-0.36 | tag_vis=0 tag_dist=0.00 | wall=1.62
+R3[PPO]: L=-0.00 R=0.00 | carry=0 | base_dist=0.21 base_ang=1.00 | tag_vis=0 tag_dist=0.00 | wall=1.78
+R4[PPO]: L=0.08 R=-0.08 | carry=0 | base_dist=0.15 base_ang=0.11 | tag_vis=0 tag_dist=0.00 | wall=2.04
+
+============================================================
+Step 86500 | Pickups: 44 | Deposits: 44
+============================================================
+R1[PPO]: L=0.02 R=-0.22 | carry=0 | base_dist=0.28 base_ang=0.04 | tag_vis=0 tag_dist=0.00 | wall=1.64
+R2[PPO]: L=0.05 R=-0.16 | carry=0 | base_dist=0.28 base_ang=-0.40 | tag_vis=0 tag_dist=0.00 | wall=1.64
+R3[PPO]: L=-0.04 R=-0.05 | carry=0 | base_dist=0.20 base_ang=-1.00 | tag_vis=0 tag_dist=0.00 | wall=1.81
+R4[PPO]: L=-0.10 R=0.15 | carry=0 | base_dist=0.15 base_ang=0.08 | tag_vis=0 tag_dist=0.00 | wall=2.06
+
+============================================================
+Step 87000 | Pickups: 44 | Deposits: 44
+============================================================
+R1[PPO]: L=0.02 R=-0.23 | carry=0 | base_dist=0.33 base_ang=0.04 | tag_vis=0 tag_dist=0.00 | wall=1.49
+R2[PPO]: L=0.06 R=-0.17 | carry=0 | base_dist=0.28 base_ang=-0.41 | tag_vis=0 tag_dist=0.00 | wall=1.66
+R3[PPO]: L=-0.04 R=-0.05 | carry=0 | base_dist=0.18 base_ang=1.00 | tag_vis=0 tag_dist=0.00 | wall=1.86
+R4[PPO]: L=-0.10 R=0.15 | carry=0 | base_dist=0.14 base_ang=0.08 | tag_vis=0 tag_dist=0.00 | wall=2.08
+
+============================================================
+Step 87500 | Pickups: 44 | Deposits: 44
+============================================================
+R1[PPO]: L=-0.22 R=-0.05 | carry=0 | base_dist=0.41 base_ang=-0.10 | tag_vis=0 tag_dist=0.00 | wall=1.18
+R2[PPO]: L=-0.01 R=0.17 | carry=0 | base_dist=0.27 base_ang=-0.20 | tag_vis=0 tag_dist=0.00 | wall=1.71
+R3[PPO]: L=0.03 R=0.03 | carry=0 | base_dist=0.19 base_ang=-1.00 | tag_vis=0 tag_dist=0.00 | wall=1.83
+R4[PPO]: L=0.07 R=-0.10 | carry=0 | base_dist=0.14 base_ang=0.37 | tag_vis=0 tag_dist=0.00 | wall=2.10
+
+============================================================
+Step 88000 | Pickups: 44 | Deposits: 44
+============================================================
+R1[PPO]: L=-0.21 R=-0.05 | carry=0 | base_dist=0.49 base_ang=-0.05 | tag_vis=0 tag_dist=0.00 | wall=0.93
+R2[PPO]: L=-0.01 R=0.14 | carry=0 | base_dist=0.26 base_ang=-0.33 | tag_vis=0 tag_dist=0.00 | wall=1.76
+R3[PPO]: L=0.00 R=0.01 | carry=0 | base_dist=0.19 base_ang=-1.00 | tag_vis=0 tag_dist=0.00 | wall=1.83
+R4[PPO]: L=0.07 R=-0.08 | carry=0 | base_dist=0.14 base_ang=0.26 | tag_vis=0 tag_dist=0.00 | wall=2.10
+
+============================================================
+Step 88500 | Pickups: 44 | Deposits: 44
+============================================================
+R1[TAG_SEEK]: L=-0.09 R=-0.85 | carry=0 | base_dist=0.53 base_ang=-0.54 | tag_vis=1 tag_dist=0.61 | wall=0.85
+R2[PPO]: L=0.03 R=0.09 | carry=0 | base_dist=0.25 base_ang=-0.57 | tag_vis=0 tag_dist=0.00 | wall=1.81
+R3[PPO]: L=0.00 R=0.18 | carry=0 | base_dist=0.20 base_ang=0.76 | tag_vis=0 tag_dist=0.00 | wall=1.81
+R4[PPO]: L=-0.14 R=-0.04 | carry=0 | base_dist=0.14 base_ang=0.80 | tag_vis=0 tag_dist=0.00 | wall=2.13
+
+============================================================
+Step 89000 | Pickups: 45 | Deposits: 44
+============================================================
+R1[RTB]: L=0.05 R=-0.45 | carry=1 | base_dist=0.22 base_ang=-0.00 | tag_vis=0 tag_dist=0.00 | wall=1.95
+R2[PPO]: L=0.19 R=0.94 | carry=0 | base_dist=0.31 base_ang=0.69 | tag_vis=0 tag_dist=0.00 | wall=1.71
+R3[PPO]: L=-0.12 R=0.93 | carry=0 | base_dist=0.21 base_ang=-0.19 | tag_vis=0 tag_dist=0.00 | wall=1.78
+R4[PPO]: L=-0.22 R=0.31 | carry=0 | base_dist=0.16 base_ang=-0.92 | tag_vis=0 tag_dist=0.00 | wall=2.08
+
+============================================================
+Step 89500 | Pickups: 45 | Deposits: 45
+============================================================
+R1[PPO]: L=0.06 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.76 | tag_vis=0 tag_dist=0.00 | wall=2.05
+R2[TAG_SEEK]: L=0.48 R=0.80 | carry=0 | base_dist=0.35 base_ang=0.84 | tag_vis=1 tag_dist=0.97 | wall=1.62
+R3[PPO]: L=-0.23 R=0.79 | carry=0 | base_dist=0.24 base_ang=0.94 | tag_vis=0 tag_dist=0.00 | wall=1.67
+R4[PPO]: L=-0.61 R=0.89 | carry=0 | base_dist=0.18 base_ang=-0.03 | tag_vis=0 tag_dist=0.00 | wall=2.05
+
+============================================================
+Step 90000 | Pickups: 46 | Deposits: 45
+============================================================
+R1[BASE_AVOID]: L=-0.41 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.82 | tag_vis=0 tag_dist=0.00 | wall=2.09
+R2[RTB]: L=-0.27 R=0.98 | carry=1 | base_dist=0.41 base_ang=-0.00 | tag_vis=0 tag_dist=0.00 | wall=1.43
+R3[PPO]: L=-0.40 R=1.00 | carry=0 | base_dist=0.25 base_ang=-0.33 | tag_vis=0 tag_dist=0.00 | wall=1.67
+R4[PPO]: L=-0.24 R=0.14 | carry=0 | base_dist=0.22 base_ang=0.08 | tag_vis=0 tag_dist=0.00 | wall=1.93
+
+============================================================
+Step 90500 | Pickups: 46 | Deposits: 46
+============================================================
+R1[PPO]: L=-0.15 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.80 | tag_vis=0 tag_dist=0.00 | wall=2.09
+R2[PPO]: L=-0.07 R=1.00 | carry=0 | base_dist=0.15 base_ang=0.86 | tag_vis=0 tag_dist=0.00 | wall=2.03
+R3[PPO]: L=-0.49 R=0.70 | carry=0 | base_dist=0.22 base_ang=0.38 | tag_vis=0 tag_dist=0.00 | wall=1.77
+R4[PPO]: L=-0.35 R=1.00 | carry=0 | base_dist=0.22 base_ang=-0.05 | tag_vis=0 tag_dist=0.00 | wall=1.93
+
+============================================================
+Step 91000 | Pickups: 46 | Deposits: 46
+============================================================
+R1[PPO]: L=-0.29 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.85 | tag_vis=0 tag_dist=0.00 | wall=2.10
+R2[BASE_AVOID]: L=0.33 R=1.00 | carry=0 | base_dist=0.14 base_ang=0.70 | tag_vis=0 tag_dist=0.00 | wall=2.07
+R3[PPO]: L=-0.19 R=0.58 | carry=0 | base_dist=0.27 base_ang=0.96 | tag_vis=0 tag_dist=0.00 | wall=1.62
+R4[PPO]: L=-0.74 R=1.00 | carry=0 | base_dist=0.21 base_ang=-0.01 | tag_vis=0 tag_dist=0.00 | wall=1.91
+
+============================================================
+Step 91500 | Pickups: 46 | Deposits: 46
+============================================================
+R1[BASE_AVOID]: L=-0.50 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.85 | tag_vis=0 tag_dist=0.00 | wall=2.11
+R2[PPO]: L=-0.01 R=0.98 | carry=0 | base_dist=0.14 base_ang=0.03 | tag_vis=0 tag_dist=0.00 | wall=2.00
+R3[PPO]: L=-0.25 R=1.00 | carry=0 | base_dist=0.31 base_ang=-0.50 | tag_vis=0 tag_dist=0.00 | wall=1.50
+R4[PPO]: L=-0.27 R=0.73 | carry=0 | base_dist=0.20 base_ang=0.68 | tag_vis=0 tag_dist=0.00 | wall=1.87
+
+============================================================
+Step 92000 | Pickups: 46 | Deposits: 46
+============================================================
+R1[BASE_AVOID]: L=-0.08 R=-0.96 | carry=0 | base_dist=0.14 base_ang=-0.67 | tag_vis=0 tag_dist=0.00 | wall=2.12
+R2[BASE_AVOID]: L=-0.26 R=1.00 | carry=0 | base_dist=0.14 base_ang=0.54 | tag_vis=0 tag_dist=0.00 | wall=2.15
+R3[PPO]: L=-0.42 R=0.99 | carry=0 | base_dist=0.32 base_ang=0.29 | tag_vis=0 tag_dist=0.00 | wall=1.46
+R4[PPO]: L=-0.17 R=1.00 | carry=0 | base_dist=0.21 base_ang=-0.79 | tag_vis=0 tag_dist=0.00 | wall=1.78
+
+============================================================
+Step 92500 | Pickups: 46 | Deposits: 46
+============================================================
+R1[BASE_AVOID]: L=-0.43 R=-1.00 | carry=0 | base_dist=0.14 base_ang=-0.79 | tag_vis=0 tag_dist=0.00 | wall=2.13
+R2[BASE_AVOID]: L=0.08 R=1.00 | carry=0 | base_dist=0.14 base_ang=0.14 | tag_vis=0 tag_dist=0.00 | wall=2.03
+R3[PPO]: L=-0.40 R=0.70 | carry=0 | base_dist=0.33 base_ang=-0.57 | tag_vis=0 tag_dist=0.00 | wall=1.42
+R4[PPO]: L=-0.38 R=1.00 | carry=0 | base_dist=0.22 base_ang=-0.02 | tag_vis=0 tag_dist=0.00 | wall=1.72
