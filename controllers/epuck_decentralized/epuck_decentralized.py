@@ -35,7 +35,7 @@ import math
 
 PHEROMONE_MIN   = 0.01
 PHEROMONE_DECAY = math.exp(-0.003)   # half-life ~230 steps
-INITIAL_TTL     = 400
+INITIAL_TTL     = 2000
 BASE_X          = 0.0
 BASE_Y          = 0.0                # base station at arena origin
 

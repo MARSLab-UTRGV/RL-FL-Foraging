@@ -118,6 +118,9 @@ class DecentralizedForagingEnv(VecEnv):
         self.total_pickups  = 0
         self.total_deposits = 0
 
+        self._ep_start_deposits = 0
+        self._ep_start_pickups  = 0
+
         # Actions stored between step_async and step_wait
         self._actions = np.zeros((self.num_robots, 2), dtype=np.float32)
 
@@ -187,6 +190,38 @@ class DecentralizedForagingEnv(VecEnv):
         if done_flag:
             for i in range(self.num_robots):
                 infos[i]["terminal_observation"] = obs[i]
+
+            ep_deps = self.total_deposits - self._ep_start_deposits
+            ep_pics = self.total_pickups  - self._ep_start_pickups
+            sim_min = self.steps_per_episode * self.timestep / 1000.0 / 60.0
+            rate    = ep_deps / sim_min if sim_min > 0 else 0.0
+            ep_log  = (
+                f"\n{'='*60}\n"
+                f"[EP {self.total_episodes + 1}] "
+                f"Picks: {ep_pics} | Deps: {ep_deps} | "
+                f"Rate: {rate:.1f} tags/min (sim) | TotalDeps: {self.total_deposits}\n"
+            )
+            for i, aid in enumerate(self.agents):
+                rs     = self.robot_states[aid]
+                rpos   = self.robot_nodes[i].getPosition()
+                wall_d = 2.5 - max(abs(rpos[0]), abs(rpos[1]))
+                d2base = math.sqrt(rpos[0]**2 + rpos[1]**2)
+                carry  = self.carrying_state[aid]
+                if wall_d < 0.6:   mode = "WALL_ESC"
+                elif carry:        mode = "RTB"
+                elif d2base < 0.3: mode = "BASE_AVOID"
+                else:              mode = "PPO"
+                ep_log += (
+                    f"  R{i+1}[{mode}]: carry={1 if carry else 0} | "
+                    f"base={d2base:.2f} | "
+                    f"phero={rs['phero_known']:.0f} str={rs['phero_strength']:.2f} | "
+                    f"wall={wall_d:.2f}\n"
+                )
+            ep_log += f"{'='*60}"
+            print(ep_log)
+            self._ep_start_deposits = self.total_deposits
+            self._ep_start_pickups  = self.total_pickups
+
             obs = self.reset()
 
         return obs, rewards, dones, infos
@@ -353,9 +388,9 @@ class DecentralizedForagingEnv(VecEnv):
                     if 0.8 < dist_from_base < 2.4:
                         reward_arr[i] += 0.10
 
-                    # Near-base penalty
+                    # Near-base penalty (strengthened to push policy away from base after deposit)
                     if dist_from_base < 0.8:
-                        reward_arr[i] -= (0.8 - dist_from_base) * 2.0
+                        reward_arr[i] -= (0.8 - dist_from_base) * 4.0
 
                     # Forward motion bias
                     if wall_dist >= 0.35:
@@ -367,7 +402,7 @@ class DecentralizedForagingEnv(VecEnv):
                     if rs["phero_known"] > 0.5:
                         curr_hd = rs["phero_dist_norm"] * 3.5
                         if self.prev_hotspot_dists[aid] is not None:
-                            reward_arr[i] += (self.prev_hotspot_dists[aid] - curr_hd) * 3.0
+                            reward_arr[i] += (self.prev_hotspot_dists[aid] - curr_hd) * 5.0
                         self.prev_hotspot_dists[aid] = curr_hd
 
                         # Facing toward pheromone reward
@@ -457,8 +492,9 @@ class DecentralizedForagingEnv(VecEnv):
         prox      = rs["prox"]
         wall_dist = 2.5 - max(abs(robot_pos[0]), abs(robot_pos[1]))
 
-        # P1: wall / collision escape
-        if wall_dist < 0.35 or max(prox) > 0.55:
+        # P1: wall escape — 0.6m threshold catches backward-driving robots before
+        # they physically reach the wall (confirmed fix for Phase-2 wall hugging).
+        if wall_dist < 0.6 or max(prox) > 0.55:
             return self._steer_to(robot_pos, fwd, [0.0, 0.0, 0.0], gain=4.0)
 
         # P2: return to base when carrying
@@ -466,9 +502,12 @@ class DecentralizedForagingEnv(VecEnv):
             return self._steer_to(robot_pos, fwd, [0.0, 0.0, 0.0], gain=2.5)
 
         # P3: base avoidance when not carrying
+        # 0.3m threshold — just above deposit zone (0.25m).
+        # Multiplier 5.0 pushes robot to 1.2m (inside active exploration zone 0.8–2.4m),
+        # ensuring policy experiences the exploration zone during training.
         dist_to_base = math.sqrt(robot_pos[0]**2 + robot_pos[1]**2)
-        if dist_to_base < 0.5:
-            target = [robot_pos[0] * 3.0, robot_pos[1] * 3.0, 0.0]
+        if dist_to_base < 0.3:
+            target = [robot_pos[0] * 5.0, robot_pos[1] * 5.0, 0.0]
             return self._steer_to(robot_pos, fwd, target, gain=3.0)
 
         # P4: tag-seek within TAG_SEEK_RANGE and FOV

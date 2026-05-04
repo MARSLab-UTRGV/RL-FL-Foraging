@@ -53,12 +53,12 @@ webots --mode=fast worlds/epuck_foraging_shaping.wbt &
 sleep 10
 ```
 
-**Step 2: Run the extern supervisor**
+**Step 2: Run the extern supervisor** (from project root)
 
 ```bash
 cd controllers/epuck_foraging_supervisor_shaping
 python3 epuck_foraging_supervisor_shaping.py \
-    --run_name ppo_v16_retrain \
+    --run_name ppo_v17_phero2 \
     --total_timesteps 7000000 \
     --lr 3e-4 \
     --ent_coef 0.10
@@ -68,16 +68,16 @@ python3 epuck_foraging_supervisor_shaping.py \
 
 ```bash
 python3 epuck_foraging_supervisor_shaping.py \
-    --run_name ppo_v16_retrain \
+    --run_name ppo_v17_phero2 \
     --total_timesteps 7000000 \
-    --resume ../../ppo_v16_retrain.zip
+    --resume ../../ppo_v17_phero2.zip
 ```
 
 ### Centralized Parameters
 
 | Parameter | Default | Description |
 |-----------|---------|-------------|
-| `--run_name` | `ppo_v16_retrain` | Output model name |
+| `--run_name` | `ppo_v17_phero2` | Output model name |
 | `--lr` | `3e-4` | Learning rate |
 | `--ent_coef` | `0.10` | Entropy coefficient |
 | `--batch_size` | `4096` | PPO minibatch size |
@@ -113,12 +113,12 @@ webots --mode=fast worlds/epuck_foraging_decentralized.wbt &
 sleep 10
 ```
 
-**Step 2: Run the extern supervisor**
+**Step 2: Run the extern supervisor** (from project root)
 
 ```bash
 cd controllers/decentralized_supervisor
 python3 decentralized_supervisor.py \
-    --run_name decentralized_optA_v1 \
+    --run_name decentralized_optA_v4 \
     --total_timesteps 7000000 \
     --lr 3e-4 \
     --ent_coef 0.10
@@ -128,16 +128,16 @@ python3 decentralized_supervisor.py \
 
 ```bash
 python3 decentralized_supervisor.py \
-    --run_name decentralized_optA_v1 \
+    --run_name decentralized_optA_v4 \
     --total_timesteps 7000000 \
-    --resume ./logs/decentralized_optA_v1/decentralized_optA_v1_200000_steps.zip
+    --resume ../../logs/decentralized_optA_v4/decentralized_optA_v4_200000_steps.zip
 ```
 
 ### Decentralized Parameters
 
 | Parameter | Default | Description |
 |-----------|---------|-------------|
-| `--run_name` | `decentralized_optA_v1` | Output model name |
+| `--run_name` | `decentralized_optA_v4` | Output model name |
 | `--lr` | `3e-4` | Learning rate |
 | `--ent_coef` | `0.10` | Entropy coefficient |
 | `--total_timesteps` | `7000000` | Total training steps |
@@ -176,7 +176,57 @@ One policy is shared across all 4 robots (`n_envs=4`). Each Webots step:
 - Each robot broadcasts its hotspot via Webots Emitter (channel 10, range 2 m)
 - On tag pickup: supervisor sends pheromone strength (0.2–1.0) based on local cluster density
 - Robot creates hotspot at its GPS position and broadcasts to neighbors
-- Robots within 2 m receive and follow the hotspot signal autonomously
+- `INITIAL_TTL=2000` (~64 sec sim time, ~5-10 round trips per cluster) — prevents premature forgetting
+- Decays ×exp(−0.003) per step; deleted when strength < 0.01
+
+### P1–P4 Override Hierarchy (training and eval)
+
+These are hard-coded motor overrides applied after PPO outputs an action. Rewards fire normally regardless of which override is active.
+
+| Override | Condition | Action |
+|----------|-----------|--------|
+| **P1 Wall escape** | wall_dist < 0.6m | Steer to arena centre (gain=4.0) |
+| **P2 Return to base** | carrying=True | Steer to arena centre (gain=2.5) |
+| **P3 Base avoidance** | dist_to_base < 0.3m | Steer to target at 1.2m (gain=3.0) |
+| **P4 Tag seek** | tag_visible > 0.5 | Differential turn toward tag angle |
+
+**P3 note (v4 fix):** Target = `pos × 5.0` → puts robot at 1.2m. Previous v1-v3 used multiplier 3.0 → 0.72m, which is below the active exploration zone (0.8–2.4m). PPO never received zone rewards while learning pheromone following → pheromone behaviour not learned. v4 corrects this.
+
+### v4 Reward Changes vs v1–v3
+
+| Reward component | v1–v3 | v4 |
+|-----------------|-------|----|
+| Near-base penalty | ×2.0 | ×4.0 |
+| Pheromone approach | ×3.0 | ×5.0 |
+| P3 push target | 0.72m | 1.2m |
+| INITIAL_TTL | 400 | 2000 |
+
+---
+
+## Per-Episode Monitoring
+
+v4 training prints a summary at each episode end:
+
+```
+============================================================
+[EP N] Picks: X | Deps: Y | Rate: Z.Z tags/min (sim) | TotalDeps: T
+  R1[MODE]: carry=0 | base=1.23 | phero=1 str=0.45 | wall=2.10
+  R2[MODE]: carry=1 | base=0.82 | phero=0 str=0.00 | wall=1.94
+  ...
+============================================================
+```
+
+**MODE** values:
+- `WALL_ESC` — P1 active (robot too close to wall)
+- `RTB` — P2 active (robot carrying, returning to base)
+- `BASE_AVOID` — P3 active (robot too close to base)
+- `PPO` — raw policy output
+
+What to look for:
+- `Rate` should increase over episodes (target: > 5.94 tags/min = CPFA baseline)
+- Robots should spend most time in `PPO` mode, not `BASE_AVOID`
+- `phero=1` more often over training = pheromone following improving
+- No robots stuck in `WALL_ESC` for entire episodes
 
 ---
 
@@ -207,7 +257,20 @@ SB3 prints a table every rollout. Key metrics to watch:
 | `value_loss` | high | stabilizing then decreasing |
 | `std` | ~1.0 | decreasing as policy focuses |
 
-Also watch for `[PICKUP]` and `[DEPOSIT]` print lines — deposits per episode should increase over training.
+Also watch `[PICKUP]` and `[DEPOSIT]` lines — deposits per episode should increase over training.
+
+---
+
+## Trained Models (Current)
+
+| Model | Type | Status | Notes |
+|-------|------|--------|-------|
+| `ppo_v16_phero.zip` | Centralized | Complete | Best centralized baseline (~11 tags/min) |
+| `ppo_v17_phero2.zip` | Centralized | In progress | v17 reward fixes |
+| `decentralized_optA_v1.zip` | Decentralized | Complete | 3.1 tags/min — base-orbit + wall-stuck failure |
+| `decentralized_optA_v2.zip` | Decentralized | Complete | Old P1/P3 thresholds — wall-hugging |
+| `decentralized_optA_v3.zip` | Decentralized | Complete | P3 at 0.72m (below zone) — phero not learned |
+| `decentralized_optA_v4.zip` | Decentralized | In training | P3 at 1.2m, TTL=2000, phero ×5.0 |
 
 ---
 
@@ -222,16 +285,6 @@ Also watch for `[PICKUP]` and `[DEPOSIT]` print lines — deposits per episode s
 
 ---
 
-## Trained Models (Current)
-
-| Model | Type | Notes |
-|-------|------|-------|
-| `ppo_v16_phero.zip` | Centralized | Best centralized baseline (~11 tags/min) |
-| `ppo_v16_retrain.zip` | Centralized | Re-run with Fix 1 (post-deposit pheromone gradient) |
-| `decentralized_optA_v1.zip` | Decentralized | Option A — in training |
-
----
-
 ## Troubleshooting
 
 **`Device "gps" was not found`** — The E-puck PROTO uses `turretSlot`, not `extensionSlot`. Verify `worlds/epuck_foraging_decentralized.wbt` uses `turretSlot [...]`.
@@ -241,5 +294,9 @@ Also watch for `[PICKUP]` and `[DEPOSIT]` print lines — deposits per episode s
 **Robots not moving** — Webots simulation must be running (press Play). The extern supervisor connects after Webots loads.
 
 **Training stuck at low reward** — Increase `--ent_coef 0.15` for more exploration. Check that `[PICKUP]` events appear in the first few minutes.
+
+**All robots show BASE_AVOID in episode summary** — P3 is keeping robots near base. Check P3 multiplier: should push to 1.2m (multiplier=5.0).
+
+**Pheromone not followed after training** — Check INITIAL_TTL in `epuck_decentralized.py`. Must be 2000, not 400.
 
 **Out of GPU memory** — Reduce batch size with `--batch_size 2048`.
