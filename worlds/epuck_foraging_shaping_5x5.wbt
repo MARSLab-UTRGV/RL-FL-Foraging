@@ -46,59 +46,59 @@ Solid {
         metalness 0
       }
       geometry Box {
-        size 8 8 0.001
+        size 5 5 0.001
       }
     }
   ]
   name "floor"
   boundingObject Box {
-    size 8 8 0.001
+    size 5 5 0.001
   }
 }
 
 Solid {
-  translation 0 4.0 0.05
+  translation 0 2.5 0.05
   children [
     Shape {
       appearance PBRAppearance { baseColor 0.3 0.3 0.3 roughness 1 metalness 0 }
-      geometry Box { size 8.1 0.04 0.1 }
+      geometry Box { size 5.1 0.04 0.1 }
     }
   ]
   name "wall_north"
-  boundingObject Box { size 8.1 0.04 0.1 }
+  boundingObject Box { size 5.1 0.04 0.1 }
 }
 Solid {
-  translation 0 -4.0 0.05
+  translation 0 -2.5 0.05
   children [
     Shape {
       appearance PBRAppearance { baseColor 0.3 0.3 0.3 roughness 1 metalness 0 }
-      geometry Box { size 8.1 0.04 0.1 }
+      geometry Box { size 5.1 0.04 0.1 }
     }
   ]
   name "wall_south"
-  boundingObject Box { size 8.1 0.04 0.1 }
+  boundingObject Box { size 5.1 0.04 0.1 }
 }
 Solid {
-  translation 4.0 0 0.05
+  translation 2.5 0 0.05
   children [
     Shape {
       appearance PBRAppearance { baseColor 0.3 0.3 0.3 roughness 1 metalness 0 }
-      geometry Box { size 0.04 8.1 0.1 }
+      geometry Box { size 0.04 5.1 0.1 }
     }
   ]
   name "wall_east"
-  boundingObject Box { size 0.04 8.1 0.1 }
+  boundingObject Box { size 0.04 5.1 0.1 }
 }
 Solid {
-  translation -4.0 0 0.05
+  translation -2.5 0 0.05
   children [
     Shape {
       appearance PBRAppearance { baseColor 0.3 0.3 0.3 roughness 1 metalness 0 }
-      geometry Box { size 0.04 8.1 0.1 }
+      geometry Box { size 0.04 5.1 0.1 }
     }
   ]
   name "wall_west"
-  boundingObject Box { size 0.04 8.1 0.1 }
+  boundingObject Box { size 0.04 5.1 0.1 }
 }
 
 # Base Station (Red Cylinder)
@@ -119,6 +119,10 @@ DEF BASE_STATION Solid {
     }
   ]
   name "base_station"
+  boundingObject Cylinder {
+    height 0.002
+    radius 0.1
+  }
 }
 
 # ---------------------------------------------------------

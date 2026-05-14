@@ -6,6 +6,7 @@ EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/project
 
 WorldInfo {
   title "Multi-Agent AprilTag Foraging - FAST MODE"
+  basicTimeStep 32
 }
 Viewpoint {
   orientation -0.5773502691896258 0.5773502691896258 0.5773502691896258 2.0944
@@ -41,58 +42,58 @@ Solid {
         metalness 0
       }
       geometry Box {
-        size 5 5 0.001
+        size 8 8 0.001
       }
     }
   ]
   name "floor"
   boundingObject Box {
-    size 5 5 0.001
+    size 8 8 0.001
   }
 }
 Solid {
-  translation 0 2.5 0.05
+  translation 0 4.0 0.05
   children [
     Shape {
       appearance PBRAppearance { baseColor 0.3 0.3 0.3 roughness 1 metalness 0 }
-      geometry Box { size 5.1 0.04 0.1 }
+      geometry Box { size 8.1 0.04 0.1 }
     }
   ]
   name "wall_north"
-  boundingObject Box { size 5.1 0.04 0.1 }
+  boundingObject Box { size 8.1 0.04 0.1 }
 }
 Solid {
-  translation 0 -2.5 0.05
+  translation 0 -4.0 0.05
   children [
     Shape {
       appearance PBRAppearance { baseColor 0.3 0.3 0.3 roughness 1 metalness 0 }
-      geometry Box { size 5.1 0.04 0.1 }
+      geometry Box { size 8.1 0.04 0.1 }
     }
   ]
   name "wall_south"
-  boundingObject Box { size 5.1 0.04 0.1 }
+  boundingObject Box { size 8.1 0.04 0.1 }
 }
 Solid {
-  translation 2.5 0 0.05
+  translation 4.0 0 0.05
   children [
     Shape {
       appearance PBRAppearance { baseColor 0.3 0.3 0.3 roughness 1 metalness 0 }
-      geometry Box { size 0.04 5.1 0.1 }
+      geometry Box { size 0.04 8.1 0.1 }
     }
   ]
   name "wall_east"
-  boundingObject Box { size 0.04 5.1 0.1 }
+  boundingObject Box { size 0.04 8.1 0.1 }
 }
 Solid {
-  translation -2.5 0 0.05
+  translation -4.0 0 0.05
   children [
     Shape {
       appearance PBRAppearance { baseColor 0.3 0.3 0.3 roughness 1 metalness 0 }
-      geometry Box { size 0.04 5.1 0.1 }
+      geometry Box { size 0.04 8.1 0.1 }
     }
   ]
   name "wall_west"
-  boundingObject Box { size 0.04 5.1 0.1 }
+  boundingObject Box { size 0.04 8.1 0.1 }
 }
 DEF BASE_STATION Solid {
   translation 0 0 0.001
@@ -1391,130 +1392,12 @@ DEF APRILTAG_64 Solid {
   ]
   name "apriltag_64"
 }
-DEF APRILTAG_65 Solid {
-  translation 0 1.4 0.01375
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColorMap ImageTexture {
-          url [
-            "textures/real_tag36h11_id0.png"
-          ]
-        }
-        roughness 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.0275 0.0275 0.0275
-      }
-    }
-  ]
-  name "apriltag_65"
-}
-DEF APRILTAG_66 Solid {
-  translation -0.1 1.4 0.01375
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColorMap ImageTexture {
-          url [
-            "textures/real_tag36h11_id0.png"
-          ]
-        }
-        roughness 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.0275 0.0275 0.0275
-      }
-    }
-  ]
-  name "apriltag_66"
-}
-DEF APRILTAG_67 Solid {
-  translation 0.05 -1.55 0.01375
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColorMap ImageTexture {
-          url [
-            "textures/real_tag36h11_id0.png"
-          ]
-        }
-        roughness 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.0275 0.0275 0.0275
-      }
-    }
-  ]
-  name "apriltag_67"
-}
-DEF APRILTAG_68 Solid {
-  translation -0.05 -1.55 0.01375
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColorMap ImageTexture {
-          url [
-            "textures/real_tag36h11_id0.png"
-          ]
-        }
-        roughness 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.0275 0.0275 0.0275
-      }
-    }
-  ]
-  name "apriltag_68"
-}
-DEF APRILTAG_69 Solid {
-  translation 0.05 -1.45 0.01375
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColorMap ImageTexture {
-          url [
-            "textures/real_tag36h11_id0.png"
-          ]
-        }
-        roughness 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.0275 0.0275 0.0275
-      }
-    }
-  ]
-  name "apriltag_69"
-}
-DEF APRILTAG_70 Solid {
-  translation -0.05 -1.45 0.01375
-  children [
-    Shape {
-      appearance PBRAppearance {
-        baseColorMap ImageTexture {
-          url [
-            "textures/real_tag36h11_id0.png"
-          ]
-        }
-        roughness 1
-        metalness 0
-      }
-      geometry Box {
-        size 0.0275 0.0275 0.0275
-      }
-    }
-  ]
-  name "apriltag_70"
-}
 DEF ROBOT1 E-puck {
   translation -0.5 0 0
   name "robot1"
   controller "epuck_driver"
+  emitter_channel 1
+  receiver_channel 1
   camera_fieldOfView 1
   camera_width 512
   camera_height 512

@@ -4,7 +4,7 @@ import sys
 from deepbots.supervisor.controllers.deepbots_supervisor_env import DeepbotsSupervisorEnv
 from controller import Supervisor
 from stable_baselines3 import PPO
-import gym
+import gymnasium as gym
 
 # =============================================================================
 # EVALUATION SUPERVISOR
@@ -13,13 +13,13 @@ import gym
 #
 #  [0:8]  Proximity sensors
 #  [8]    tag_visible
-#  [9]    tag_dist_norm       (/ 2.5)
+#  [9]    tag_dist_norm       (/ 0.5)
 #  [10]   tag_angle_norm      (/ pi)
 #  [11]   carrying
-#  [12]   dist_to_base_norm   (/ 3.5)   NEW
+#  [12]   dist_to_base_norm   (/ 5.7)   NEW
 #  [13]   angle_to_base_norm  (/ pi)    NEW
 #  [14]   cluster_known                 NEW
-#  [15]   cluster_dist_norm   (/ 3.5)   NEW
+#  [15]   cluster_dist_norm   (/ 5.7)   NEW
 #  [16]   cluster_angle_norm  (/ pi)    NEW
 #  [17]   phero_front_norm    (/ 10)
 #  [18]   phero_left_norm     (/ 10)
@@ -29,7 +29,7 @@ import gym
 class EpuckForagingSupervisor(DeepbotsSupervisorEnv):
     def __init__(self):
         self.num_robots   = 4
-        self.num_tags     = 70
+        self.num_tags     = 64
         self.obs_per_robot = 20
         self.observation_space_dim = self.obs_per_robot * self.num_robots
         self.action_space_dim = 2 * self.num_robots
@@ -70,8 +70,8 @@ class EpuckForagingSupervisor(DeepbotsSupervisorEnv):
 
         # (v11: CPFA state and stuck detection removed — matches training overrides exactly)
 
-        self.grid_size = 50
-        self.grid_res  = 5.0 / self.grid_size
+        self.grid_size = 80
+        self.grid_res  = 8.0 / self.grid_size
         self.pheromone_grid = np.zeros((self.grid_size, self.grid_size))
 
         self.steps_per_episode = 4096
@@ -105,7 +105,7 @@ class EpuckForagingSupervisor(DeepbotsSupervisorEnv):
                 if self.robot_states[i] is None:
                     self.robot_states[i] = [0.0] * 8
 
-        self.pheromone_grid *= 0.999
+        self.pheromone_grid *= 0.9995
 
         # Same order as training: reward first, then observations
         reward = self.get_reward(action)
@@ -141,10 +141,10 @@ class EpuckForagingSupervisor(DeepbotsSupervisorEnv):
                     dist = math.sqrt(dx*dx + dy*dy)
 
                     # Track omnidirectional nearest (no FOV restriction)
-                    if dist < 1.0 and dist < omni_min_dist:
+                    if dist < 0.5 and dist < omni_min_dist:
                         omni_min_dist = dist
 
-                    if dist < 1.0 and dist > 0.001:
+                    if dist < 0.5 and dist > 0.001:
                         tag_vec_norm = [dx/dist, dy/dist]
                         dot   = forward_vec[0]*tag_vec_norm[0] + forward_vec[1]*tag_vec_norm[1]
                         dot   = max(min(dot, 1.0), -1.0)
@@ -178,8 +178,8 @@ class EpuckForagingSupervisor(DeepbotsSupervisorEnv):
             cluster_angle_norm = 0.0
             if not self.carrying_state[i] and self.pheromone_grid.max() > 0.1:
                 peak_idx  = np.unravel_index(self.pheromone_grid.argmax(), self.pheromone_grid.shape)
-                cluster_x = peak_idx[0] * self.grid_res - 2.5
-                cluster_y = peak_idx[1] * self.grid_res - 2.5
+                cluster_x = peak_idx[0] * self.grid_res - 4.0
+                cluster_y = peak_idx[1] * self.grid_res - 4.0
                 cdx       = cluster_x - robot_pos[0]
                 cdy       = cluster_y - robot_pos[1]
                 c_dist    = math.sqrt(cdx*cdx + cdy*cdy)
@@ -190,13 +190,13 @@ class EpuckForagingSupervisor(DeepbotsSupervisorEnv):
                     c_cross = forward_vec[0]*c_norm[1] - forward_vec[1]*c_norm[0]
                     c_angle = c_angle if c_cross > 0 else -c_angle
                     cluster_known      = 1.0
-                    cluster_dist_norm  = min(c_dist / 3.5, 1.0)
+                    cluster_dist_norm  = min(c_dist / 5.7, 1.0)
                     cluster_angle_norm = c_angle / math.pi
 
             # Local pheromone gradient
             def grid_val(wx, wy):
-                gx = int((wx + 2.5) / self.grid_res)
-                gy = int((wy + 2.5) / self.grid_res)
+                gx = int((wx + 4.0) / self.grid_res)
+                gy = int((wy + 4.0) / self.grid_res)
                 if 0 <= gx < self.grid_size and 0 <= gy < self.grid_size:
                     return self.pheromone_grid[gx, gy]
                 return 0.0
@@ -210,9 +210,9 @@ class EpuckForagingSupervisor(DeepbotsSupervisorEnv):
 
             obs = []
             obs.extend(prox)
-            obs.extend([tag_visible, tag_dist/1.0, tag_angle/math.pi])
+            obs.extend([tag_visible, tag_dist/0.5, tag_angle/math.pi])
             obs.append(1.0 if self.carrying_state[i] else 0.0)
-            obs.append(dist_to_base / 3.5)
+            obs.append(dist_to_base / 5.7)
             obs.append(angle_to_base / math.pi)
             obs.extend([cluster_known, cluster_dist_norm, cluster_angle_norm])
             obs.extend([grid_val(fx,fy)/10.0, grid_val(lx,ly)/10.0, grid_val(rx,ry)/10.0])
@@ -236,7 +236,7 @@ class EpuckForagingSupervisor(DeepbotsSupervisorEnv):
             if max_prox > 0.1:
                 total_reward -= max_prox * 0.5
 
-            wall_dist = 2.5 - max(abs(robot_pos[0]), abs(robot_pos[1]))
+            wall_dist = 4.0 - max(abs(robot_pos[0]), abs(robot_pos[1]))
             if wall_dist < 0.35:
                 total_reward -= (0.35 - wall_dist) * 0.5
 
@@ -257,11 +257,11 @@ class EpuckForagingSupervisor(DeepbotsSupervisorEnv):
                         picked_up = True
                         print(f"[+] Robot {i+1} picked up tag! Total pickups: {self.total_pickups}")
                         # Mark pickup location for other robots
-                        pgx = int((robot_pos[0] + 2.5) / self.grid_res)
-                        pgy = int((robot_pos[1] + 2.5) / self.grid_res)
+                        pgx = int((robot_pos[0] + 4.0) / self.grid_res)
+                        pgy = int((robot_pos[1] + 4.0) / self.grid_res)
                         if 0 <= pgx < self.grid_size and 0 <= pgy < self.grid_size:
                             self.pheromone_grid[pgx, pgy] = min(
-                                self.pheromone_grid[pgx, pgy] + 5.0, 10.0
+                                self.pheromone_grid[pgx, pgy] + 8.0, 10.0
                             )
                         break
 
@@ -273,7 +273,7 @@ class EpuckForagingSupervisor(DeepbotsSupervisorEnv):
                         dx   = tag_pos[0] - robot_pos[0]
                         dy   = tag_pos[1] - robot_pos[1]
                         dist = math.sqrt(dx*dx + dy*dy)
-                        if dist < 1.0 and dist < curr_min:
+                        if dist < 0.5 and dist < curr_min:
                             curr_min = dist
                     if self.prev_tag_dists[i] is not None and curr_min < float('inf'):
                         total_reward += (self.prev_tag_dists[i] - curr_min) * 8.0
@@ -288,7 +288,7 @@ class EpuckForagingSupervisor(DeepbotsSupervisorEnv):
                         tdx = tag_pos[0] - robot_pos[0]
                         tdy = tag_pos[1] - robot_pos[1]
                         td  = math.sqrt(tdx*tdx + tdy*tdy)
-                        if td < 1.0 and td > 0.001:
+                        if td < 0.5 and td > 0.001:
                             dot = fwd[0]*(tdx/td) + fwd[1]*(tdy/td)
                             if math.acos(max(min(dot, 1.0), -1.0)) < 1.2:
                                 total_reward += 0.2
@@ -296,7 +296,7 @@ class EpuckForagingSupervisor(DeepbotsSupervisorEnv):
 
                     # Zone reward: matches training supervisor exactly
                     dist_from_base = math.sqrt(robot_pos[0]**2 + robot_pos[1]**2)
-                    if 0.8 < dist_from_base < 2.4:
+                    if 0.8 < dist_from_base < 3.5:
                         total_reward += 0.05
 
             else:
@@ -351,7 +351,7 @@ class EpuckForagingSupervisor(DeepbotsSupervisorEnv):
         return [left, right]
 
     def _apply_overrides(self, action):
-        """Matches v17 training exactly: P1 wall/collision, P2 RTB, P3 base avoid, P4 tag-seek (1.0m).
+        """Matches v18 training exactly: P1 wall/collision, P2 RTB, P3 base avoid (0.8m), P4 tag-seek (0.5m).
            PPO handles global exploration + pheromone-following."""
         final = list(action)
         base_pos = self.base_node.getPosition()
@@ -360,7 +360,7 @@ class EpuckForagingSupervisor(DeepbotsSupervisorEnv):
             robot_rot = self.robot_nodes[i].getOrientation()
             fwd  = [robot_rot[0], robot_rot[3], robot_rot[6]]
             prox = (self.robot_states[i] or [0.0]*8)[:8]
-            wall_dist = 2.5 - max(abs(robot_pos[0]), abs(robot_pos[1]))
+            wall_dist = 4.0 - max(abs(robot_pos[0]), abs(robot_pos[1]))
 
             # P1: Wall / collision escape
             if wall_dist < 0.35 or max(prox) > 0.55:
@@ -376,7 +376,7 @@ class EpuckForagingSupervisor(DeepbotsSupervisorEnv):
 
             # P3: Base avoidance when not carrying (steer radially away)
             dist_to_base = math.sqrt(robot_pos[0]**2 + robot_pos[1]**2)
-            if dist_to_base < 0.5:
+            if dist_to_base < 0.8:
                 away = [robot_pos[0] - base_pos[0], robot_pos[1] - base_pos[1]]
                 target = [robot_pos[0] + away[0] * 2.0,
                           robot_pos[1] + away[1] * 2.0]
@@ -395,7 +395,7 @@ class EpuckForagingSupervisor(DeepbotsSupervisorEnv):
                     tdx = tag_pos[0] - robot_pos[0]
                     tdy = tag_pos[1] - robot_pos[1]
                     td  = math.sqrt(tdx*tdx + tdy*tdy)
-                    if td < 1.0 and td > 0.001 and td < best_dist:
+                    if td < 0.5 and td > 0.001 and td < best_dist:
                         dot   = fwd[0]*(tdx/td) + fwd[1]*(tdy/td)
                         angle = math.acos(max(min(dot, 1.0), -1.0))
                         if angle < 1.2:
@@ -450,12 +450,19 @@ if __name__ == "__main__":
         model_path = sys.argv[1]
     else:
         model_path = "ppo_v17_phero2.zip"
+    # SB3 appends .zip automatically — strip it if already present
+    if model_path.endswith('.zip'):
+        model_path = model_path[:-4]
 
     print(f"\nLoading model: {model_path}")
     print(f"Obs space: {env.observation_space_dim} ({env.obs_per_robot} per robot)\n")
 
     try:
-        model = PPO.load(model_path, env=env)
+        custom_objects = {
+            "lr_schedule": lambda _: 3e-4,
+            "clip_range": lambda _: 0.2,
+        }
+        model = PPO.load(model_path, custom_objects=custom_objects)
     except Exception as e:
         print(f"[ERROR] {e}")
         print("Make sure you trained with the new supervisor (obs_per_robot=20).")
@@ -481,7 +488,7 @@ if __name__ == "__main__":
                 ra_l = action[ri*2]
                 ra_r = action[ri*2+1]
                 rpos = env.robot_nodes[ri].getPosition()
-                wall_d = 2.5 - max(abs(rpos[0]), abs(rpos[1]))
+                wall_d = 4.0 - max(abs(rpos[0]), abs(rpos[1]))
                 # Show which mode is active
                 base_p = env.base_node.getPosition()
                 d2base = math.sqrt((rpos[0]-base_p[0])**2 + (rpos[1]-base_p[1])**2)

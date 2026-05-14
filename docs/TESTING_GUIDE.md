@@ -1,6 +1,6 @@
-# Testing Guide — Multi-Agent E-puck Foraging
+# Testing Guide — CPFA-RL Centralized (CoRL 2026)
 
-This guide covers evaluating trained models for both the **centralized** and **decentralized** versions.
+This guide covers evaluating the trained PPO model and the hand-coded CPFA baseline for comparison.
 
 ---
 
@@ -16,222 +16,180 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$WEBOTS_HOME/lib/controller
 
 ## Files Overview
 
-### Centralized Evaluation
-
 | File | Role |
 |------|------|
-| `worlds/eval_best.wbt` | Evaluation world (4 robots, 70 tags, no training hooks) |
-| `controllers/eval_best_model/eval_best_model.py` | Extern eval script — loads model and runs episodes |
-| `controllers/epuck_driver/epuck_driver.py` | Robot controller (runs inside Webots, unchanged) |
+| `worlds/eval_best_5x5.wbt` | Shared evaluation world — 5×5m, 4 robots, 64 tags at fixed positions |
+| `controllers/eval_best_model/eval_best_model_5x5.py` | Extern eval supervisor — loads PPO model, runs deterministic inference |
+| `controllers/cpfa_baseline/cpfa_baseline.py` | Extern CPFA supervisor — hand-coded CPFA state machine, no PPO |
+| `controllers/epuck_driver/epuck_driver.py` | Robot controller — unchanged, runs inside Webots for both evaluations |
 
-### Decentralized Evaluation
-
-| File | Role |
-|------|------|
-| `worlds/eval_decentralized.wbt` | Eval world — fixed 6-cluster layout, base radius 0.1, decentralized robots |
-| `controllers/eval_decentralized/eval_decentralized.py` | Lightweight extern supervisor — tag mechanics + camera sim only (no PPO) |
-| `controllers/epuck_decentralized_eval/epuck_decentralized_eval.py` | Robot controller — loads PPO, runs inference locally, drives own motors |
-| `controllers/epuck_decentralized/epuck_decentralized.py` | Base robot controller (sensor/pheromone infrastructure, imported by eval robot) |
+Both the RL eval and CPFA baseline run in the **same world** (`eval_best_5x5.wbt`) with the same fixed tag layout and same 4 robots. This ensures a direct, fair comparison.
 
 ---
 
-## Centralized Evaluation
+## Evaluating the Trained PPO Model
 
 **Step 1: Launch Webots with the eval world**
 
 ```bash
-webots worlds/eval_best.wbt &
+webots worlds/eval_best_5x5.wbt &
 sleep 10
 ```
 
-**Step 2: Run the evaluation script** (from project root)
+**Step 2: Run the eval supervisor**
 
 ```bash
-python3 controllers/eval_best_model/eval_best_model.py ppo_v16_phero.zip
+python3 controllers/eval_best_model/eval_best_model_5x5.py ppo_cpfa_5x5.zip
 ```
 
-Or pass any `.zip` model path:
+Or pass any checkpoint:
 
 ```bash
-# Best centralized model
-python3 controllers/eval_best_model/eval_best_model.py ppo_v16_phero.zip
-
-# v17 model
-python3 controllers/eval_best_model/eval_best_model.py ppo_v17_phero2.zip
+python3 controllers/eval_best_model/eval_best_model_5x5.py \
+    logs/ppo_cpfa_5x5/ppo_cpfa_5x5_2000000_steps.zip
 ```
+
+The model is loaded with `deterministic=True` — no action sampling noise.
 
 ### What to Expect
 
 ```
-[EVAL] Model: ppo_v16_phero.zip
-[EVAL] Step 100 | Deposits: 3 | Reward: 142.5
-[EVAL] Step 200 | Deposits: 7 | Reward: 289.0
-...
-[PICKUP] Robot 2 picked up tag. Total: 8
-[DEPOSIT] Robot 2 deposited! Total: 8
+[PICKUP] Robot 2 picked up tag (density=6) | Total: 1
+  [TARGET] Robot 2 → SITE (1.54, -1.61)
+[DEPOSIT] Robot 2 deposited! Total: 1
+  [PHERO] Laid at (1.54, -1.61) density=6 prob=0.97 total_entries=1
+  [TARGET] Robot 2 → SITE (1.54, -1.61)
 ```
 
-- Robots navigate toward tag clusters
-- On tag pickup: robot carries it back to base (centre of arena)
-- Deposit increases the total count
-- Target: > 5.94 tags/min (CPFA baseline)
-
-### Centralized Obs Space (20D per robot, 80D stacked total)
+**Logged every 500 steps to console and `eval_cpfa_log.txt`:**
 
 ```
-[0:8]  proximity sensors
-[8]    tag_visible
-[9]    tag_dist_norm
-[10]   tag_angle_norm
-[11]   carrying
-[12]   base_dist_norm
-[13]   base_angle_norm
-[14]   cluster_known     (supervisor pheromone grid)
-[15]   cluster_dist_norm
-[16]   cluster_angle_norm
-[17]   phero_front_norm
-[18]   phero_left_norm
-[19]   phero_right_norm
+======================================================================
+Step 500 (0.3 min) | Pickups: 4 | Deposits: 3 | Rate: 10.00 tags/min
+phero_entries=2 phero_max=0.984
+R1[SITE      ]: L=+0.98 R=+0.82 | carry=0 | tag_vis=0 td=0.00 | base=1.12 ba=+0.31
+               | site=1 sd=0.89 sa=-0.12 | phero=0 pd=0.00 pa=+0.00 | srch=0.04 | wall=1.23
 ```
+
+**MODE values in log:**
+- `WALL_ESC` — P1 override active
+- `RTB` — P2 override active (carrying, returning to nest)
+- `SITE` — PPO navigating toward site fidelity target
+- `PHERO` — PPO navigating toward pheromone roulette target
+- `EXPLORE` — PPO in free exploration
+- `GIVE_UP` — search_duration_norm near 1.0, PPO heading back empty-handed
+
+### Healthy Behaviour
+
+- Robots cycle: SITE/PHERO → (find tags) → RTB → SITE/PHERO
+- `phero_entries` grows after first few deposits
+- Rate should exceed CPFA baseline (see below)
+- `srch` values near 0.7–1.0 trigger give-up returns (robots don't stay lost forever)
 
 ---
 
-## Decentralized Evaluation
+## Running the CPFA Baseline
 
-The decentralized eval uses **CTDE (Centralized Training, Decentralized Execution)**:
-- Each robot loads the PPO model and runs inference locally
-- The supervisor only provides tag observations (simulating a camera) and handles pickup/deposit mechanics
-- No motor commands are sent from the supervisor — all P1-P4 overrides run onboard
-
-**Step 1: Launch Webots with the decentralized eval world**
+**Step 1: Same eval world (reload Webots to reset tags)**
 
 ```bash
-webots worlds/eval_decentralized.wbt &
+webots worlds/eval_best_5x5.wbt &
 sleep 10
 ```
 
-**Step 2: Run the lightweight supervisor** (from project root)
+**Step 2: Run the CPFA supervisor**
 
 ```bash
-python3 controllers/eval_decentralized/eval_decentralized.py
+python3 controllers/cpfa_baseline/cpfa_baseline.py
 ```
 
-The robot controller (`epuck_decentralized_eval`) automatically loads the model specified in `current_eval_model.txt`, or falls back to `decentralized_optA_v1` if that file doesn't exist.
-
-**To run a specific model:**
-
-```bash
-# Write model path to config file, then launch supervisor
-echo "/home/sara/Documents/Centralized Learning/RL-FL-Foraging/decentralized_optA_v4.zip" \
-    > current_eval_model.txt
-python3 controllers/eval_decentralized/eval_decentralized.py
-```
+No model path needed — CPFA is fully hand-coded.
 
 ### What to Expect
 
 ```
-[ROBOT] Loading model: decentralized_optA_v4.zip
-[ROBOT] Model loaded. Running inference locally.
-[PICKUP] Robot 1 picked up tag at (1.23, 0.45). Strength: 0.60
-[DEPOSIT] Robot 1 deposited. Total: 1
+[PICKUP] R1 picked up tag (density=5) | Total: 1
+  [PHERO] Laid at (1.55, -1.58) density=5 prob=0.93 entries=1
+  [TARGET] R1 → SITE (1.55, -1.58)
+[GIVE-UP] R3 returned empty after 312 searching steps
+  [TARGET] R3 → PHERO (1.55, -1.58)
 ```
 
-Each robot prints its own model load message at startup. Pickups and deposits are logged by the supervisor.
-
-### Decentralized Obs Space (18D per robot)
+**Logged every 500 steps to console and `cpfa_baseline_log.txt`:**
 
 ```
-[0:8]  proximity sensors        ← robot onboard
-[8]    tag_visible              ← supervisor (camera sim / real camera at deployment)
-[9]    tag_dist_norm
-[10]   tag_angle_norm
-[11]   carrying                 ← robot onboard
-[12]   base_dist_norm           ← robot GPS
-[13]   base_angle_norm          ← robot GPS + InertialUnit
-[14]   phero_known              ← robot P2P pheromone receiver
-[15]   phero_dist_norm
-[16]   phero_angle_norm
-[17]   phero_strength
+======================================================================
+Step 500 (0.3 min) | Pickups: 3 | Deposits: 2 | Rate: 6.67 tags/min
+phero_entries=1 max_w=0.984
+R1[SITE      ]: carry=0 | base=1.18 | wall=1.32 | search= 47 | target=site(1.55,-1.58)
+R2[RTB       ]: carry=1 | base=0.61 | wall=2.11 | search=  0 | target=none
 ```
 
-### P1–P4 Override Modes (fully onboard at eval)
+**MODE values in log:**
+- `WALL_ESC` — P1 override active
+- `RTB` — carrying, returning to nest
+- `GIVE_UP` — returning empty (give-up triggered)
+- `SITE` — DEPARTING toward site fidelity target
+- `PHERO` — DEPARTING toward pheromone roulette target
+- `TAG_SEEK` — tag detected in FOV during local search
+- `SEARCH` — CRW random walk (uninformed or informed)
 
-The eval robot applies these overrides in priority order after PPO inference. All run locally using GPS + IMU — no supervisor dependency.
+### CPFA Parameters
 
-| Mode label | Condition | Action |
-|-----------|-----------|--------|
-| `WALL_ESC` | wall_dist < 0.6m | Steer to centre (gain 4.0) |
-| `RTB` | carrying=True | Steer to centre (gain 2.5) |
-| `BASE_AVOID` | dist_to_base < 0.3m | Steer to 1.2m target (gain 3.0) |
-| `PPO` | otherwise | Raw PPO output |
-
-### Interpreting Eval Logs
-
-**Healthy behaviour:**
-- Robots spend most time in `PPO` mode, with brief `RTB` periods when carrying
-- `phero=1` appears frequently after first deposits (robots following pheromone)
-- Rate increases as robots learn cluster locations
-- No robots stuck in `WALL_ESC` for extended periods
-
-**Failure patterns seen in v1–v3:**
-- All robots in `BASE_AVOID` for entire episodes → P3 not pushing far enough (multiplier too low)
-- All robots in `WALL_ESC` after phase 1 → wall-stuck collapse (P1 working but too late)
-- `phero=0 str=0.00` always → pheromone not being followed (TTL too short or reward too weak)
-
-### CTDE Deployment Note
-
-At deployment on real robots:
-- Dims [0:8], [11:18] — already computed onboard (no supervisor needed)
-- Dims [8:11] — replace supervisor camera sim with onboard camera + AprilTag detector
-- Each robot loads `decentralized_optA_v4.zip` and runs inference locally (no central supervisor)
-- Robots coordinate only via P2P pheromone broadcasts (channel 10, 2 m range)
+| Parameter | Value |
+|-----------|-------|
+| `RATE_OF_LAYING_PHEROMONE` | 3.0 |
+| `RATE_OF_SITE_FIDELITY` | 3.0 |
+| `RATE_OF_PHEROMONE_DECAY` | 0.01 /sec |
+| `ProbabilityOfReturningToNest` | 0.1 (checked every 5 sim-sec) |
+| `UninformedSearchVariation` | 30° Gaussian CRW |
+| `RateOfInformedSearchDecay` | 0.0002 /step |
 
 ---
 
-## Comparing Centralized vs Decentralized
+## Comparing the Two
 
-Run both in identical arena configurations and measure:
+Both supervisors run in `eval_best_5x5.wbt` with the same fixed tag positions. The key metric is **tags deposited per simulated minute**.
 
-| Metric | Centralized | Decentralized |
-|--------|-------------|---------------|
-| Tags/min | ~11 (v16) | TBD (v4 in training) |
-| Obs computed onboard | 0/20 | 14/18 |
-| Supervisor at execution | Required | Not required |
-| Pheromone type | Global grid (supervisor) | P2P broadcast (robot) |
-| CPFA baseline | 5.94 tags/min | 5.94 tags/min |
+| Component | CPFA Baseline | PPO-CPFA (trained) |
+|-----------|--------------|---------------------|
+| Pheromone model | list, Poisson CDF, roulette-wheel | **identical** |
+| Site fidelity | Poisson CDF priority | **identical** |
+| Nest-only info | yes | **identical** |
+| Pheromone decay | exp(-0.01 × dt) | **identical** |
+| Navigation/search | hand-coded state machine + CRW | PPO (learned) |
+| Tag seek | hard-coded FOV seek | PPO (learned from obs[8-10]) |
+| Give-up | probabilistic (P=0.1 / 5 sec) | learned (obs[20] signal) |
+| Exploration | CRW with informed-search decay | learned |
 
-For statistical significance, run at least **5 evaluation seeds** of 30 minutes each and report mean ± std.
+The pheromone infrastructure is held constant. Any performance difference is **purely attributable to the learned policy vs. the hand-coded state machine** — which is the paper's core claim.
+
+### Reading the Logs Side by Side
+
+Both log `Rate: X tags/min` every 500 steps (≈16 sim-seconds apart). To compare at the same evaluation time point, check the step number column. Both use `basicTimeStep 32ms` in the same world.
+
+**Target:** PPO-CPFA rate should exceed CPFA baseline rate across a sustained evaluation window.
 
 ---
 
 ## Headless Evaluation (No GUI)
 
 ```bash
-webots --mode=fast --minimize --no-rendering worlds/eval_best.wbt &
+webots --mode=fast --minimize --no-rendering worlds/eval_best_5x5.wbt &
 sleep 10
-python3 controllers/eval_best_model/eval_best_model.py ppo_v16_phero.zip
+python3 controllers/eval_best_model/eval_best_model_5x5.py ppo_cpfa_5x5.zip
 ```
-
----
-
-## Changing Simulation Speed
-
-In Webots GUI: drag the speed slider in the toolbar, or launch with `--mode=fast` for maximum speed (no rendering).
 
 ---
 
 ## Troubleshooting
 
-**`Device "gps" was not found`** — The decentralized world must use `turretSlot` (not `extensionSlot`) in each E-puck node. Check `worlds/epuck_foraging_decentralized.wbt`.
+**`[ERROR] Model was trained on obs size X, but env has Y`** — The model must match `obs_per_robot=21` (84D total). Do not load old models trained with 20D obs.
 
-**Robots not moving** — Press Play in Webots before running the eval script. The extern controller connects after Webots loads.
+**Robots not moving** — Press Play in Webots before running the supervisor. The extern controller connects after Webots loads.
 
-**Wrong obs size error** — Centralized models expect 80D input; decentralized models expect 18D per robot. Do not mix worlds and models.
+**`numpy.dtype size changed`** — Run `pip install "numpy<2"`.
 
-**`numpy.dtype size changed`** — Run `pip install "numpy<2"` to fix NumPy 2.x binary incompatibility.
+**Rate drops to 0 after a while** — All 64 tags in the world have been collected. Reload Webots to reset the world for a new run.
 
-**Model file not found** — All trained models are `.zip` files in the project root. Pass the full or relative path, or write the path to `current_eval_model.txt`.
-
-**Robots stuck at wall immediately** — Check that `INITIAL_TTL=2000` in `controllers/epuck_decentralized/epuck_decentralized.py`. Old value of 400 causes pheromone to expire after 1-2 trips.
-
-**Low deposit rate despite robots moving** — If all robots orbit near base, P3 is not pushing far enough. Verify P3 multiplier=5.0 in `_apply_overrides` in the eval robot.
+**CPFA robots stuck exploring same area repeatedly** — Normal after cluster depletion. The give-up mechanic (`PROB_RETURN_TO_NEST`) will eventually redirect them.

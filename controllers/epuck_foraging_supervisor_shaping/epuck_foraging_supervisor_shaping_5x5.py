@@ -13,13 +13,13 @@ import torch
 #
 #  [0:8]  Proximity sensors (8)   - obstacle avoidance
 #  [8]    tag_visible              - is a tag in the FOV?
-#  [9]    tag_dist_norm            - distance to nearest visible tag (/ 0.5)
+#  [9]    tag_dist_norm            - distance to nearest visible tag (/ 1.0)
 #  [10]   tag_angle_norm           - angle to nearest visible tag (/ pi)
 #  [11]   carrying                 - 1 if holding a tag, 0 if not
-#  [12]   dist_to_base_norm        - distance to nest (/ 5.7)  *** NEW ***
+#  [12]   dist_to_base_norm        - distance to nest (/ 3.5)  *** NEW ***
 #  [13]   angle_to_base_norm       - angle to nest relative to heading (/ pi) *** NEW ***
 #  [14]   cluster_known            - 1 if pheromone hotspot exists (communication) *** NEW ***
-#  [15]   cluster_dist_norm        - distance to hotspot (/ 5.7) *** NEW ***
+#  [15]   cluster_dist_norm        - distance to hotspot (/ 3.5) *** NEW ***
 #  [16]   cluster_angle_norm       - angle to hotspot (/ pi) *** NEW ***
 #  [17]   phero_front_norm         - local pheromone ahead (/ 10)
 #  [18]   phero_left_norm          - local pheromone left (/ 10)
@@ -89,12 +89,12 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
         self.prev_cluster_dists = [None] * self.num_robots
 
         # --- Pheromone grid (marks pickup locations for communication) ---
-        self.grid_size = 80
-        self.grid_res  = 8.0 / self.grid_size
+        self.grid_size = 50
+        self.grid_res  = 5.0 / self.grid_size
         self.pheromone_grid = np.zeros((self.grid_size, self.grid_size))
 
-        self.steps_per_episode = 12000  # 12000 steps × 64ms = ~12.8 min sim time per episode
-        # larger 8×8m arena needs more steps: gives ~5-6 cluster trips per robot
+        self.steps_per_episode = 8192  # 8192 steps × 64ms = ~8.7 min sim time per episode
+        # larger 5×5m arena needs more steps: gives ~5-6 cluster trips per robot
         # and enough time to traverse the full arena and back multiple times
         self.episode_step  = 0
         self.total_episodes = 0
@@ -210,10 +210,10 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
                     dist = math.sqrt(dx*dx + dy*dy)
 
                     # Track omnidirectional nearest (no FOV restriction)
-                    if dist < 0.5 and dist < omni_min_dist:
+                    if dist < 1.0 and dist < omni_min_dist:
                         omni_min_dist = dist
 
-                    if dist < 0.5 and dist > 0.001:
+                    if dist < 1.0 and dist > 0.001:
                         tag_vec_norm = [dx / dist, dy / dist]
                         dot   = forward_vec[0]*tag_vec_norm[0] + forward_vec[1]*tag_vec_norm[1]
                         dot   = max(min(dot, 1.0), -1.0)
@@ -261,8 +261,8 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
 
             if not self.carrying_state[i] and self.pheromone_grid.max() > 0.1:
                 peak_idx   = np.unravel_index(self.pheromone_grid.argmax(), self.pheromone_grid.shape)
-                cluster_x  = peak_idx[0] * self.grid_res - 4.0
-                cluster_y  = peak_idx[1] * self.grid_res - 4.0
+                cluster_x  = peak_idx[0] * self.grid_res - 2.5
+                cluster_y  = peak_idx[1] * self.grid_res - 2.5
                 cdx        = cluster_x - robot_pos[0]
                 cdy        = cluster_y - robot_pos[1]
                 c_dist     = math.sqrt(cdx*cdx + cdy*cdy)
@@ -276,7 +276,7 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
                     c_angle  = c_angle if c_cross > 0 else -c_angle
 
                     cluster_known      = 1.0
-                    cluster_dist_norm  = min(c_dist / 5.7, 1.0)
+                    cluster_dist_norm  = min(c_dist / 3.5, 1.0)
                     cluster_angle_norm = c_angle / math.pi
 
             # ------------------------------------------------------------------
@@ -285,8 +285,8 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
             # Now marks cluster locations (pickup spots), not return paths.
             # ------------------------------------------------------------------
             def grid_val(wx, wy):
-                gx = int((wx + 4.0) / self.grid_res)
-                gy = int((wy + 4.0) / self.grid_res)
+                gx = int((wx + 2.5) / self.grid_res)
+                gy = int((wy + 2.5) / self.grid_res)
                 if 0 <= gx < self.grid_size and 0 <= gy < self.grid_size:
                     return self.pheromone_grid[gx, gy]
                 return 0.0
@@ -311,11 +311,11 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
             obs.extend(prox)                                    # [0:8]
             obs.extend([
                 tag_visible,                                    # [8]
-                tag_dist / 0.5,                                 # [9]  normalized (max range 0.5m)
+                tag_dist / 1.0,                                 # [9]  normalized (max range 0.5m)
                 tag_angle / math.pi,                            # [10] normalized
             ])
             obs.append(1.0 if self.carrying_state[i] else 0.0) # [11]
-            obs.append(dist_to_base / 5.7)                     # [12] NEW
+            obs.append(dist_to_base / 3.5)                     # [12] NEW
             obs.append(angle_to_base / math.pi)                # [13] NEW
             obs.extend([
                 cluster_known,                                  # [14] NEW
@@ -360,7 +360,7 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
             # Wall penalty — position-based gradient.
             # REDUCED ×0.5 (was ×5.0): max -0.175/step vs old -1.75/step.
             # Small enough that positive rewards dominate, still a clear signal.
-            wall_dist = 4.0 - max(abs(robot_pos[0]), abs(robot_pos[1]))
+            wall_dist = 2.5 - max(abs(robot_pos[0]), abs(robot_pos[1]))
             if wall_dist < 0.35:
                 total_reward -= (0.35 - wall_dist) * 0.5
 
@@ -391,8 +391,8 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
                         # navigate here. Deposit increased to 8.0 (was 5.0) so the
                         # signal is stronger and persists across multiple RTB trips,
                         # giving PPO a clear gradient to learn cluster exploitation.
-                        pgx = int((robot_pos[0] + 4.0) / self.grid_res)
-                        pgy = int((robot_pos[1] + 4.0) / self.grid_res)
+                        pgx = int((robot_pos[0] + 2.5) / self.grid_res)
+                        pgy = int((robot_pos[1] + 2.5) / self.grid_res)
                         if 0 <= pgx < self.grid_size and 0 <= pgy < self.grid_size:
                             self.pheromone_grid[pgx, pgy] = min(
                                 self.pheromone_grid[pgx, pgy] + 8.0, 10.0
@@ -412,7 +412,7 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
                         dx   = tag_pos[0] - robot_pos[0]
                         dy   = tag_pos[1] - robot_pos[1]
                         dist = math.sqrt(dx*dx + dy*dy)
-                        if dist < 0.5 and dist < curr_min:
+                        if dist < 1.0 and dist < curr_min:
                             curr_min = dist
 
                     if self.prev_tag_dists[i] is not None and curr_min < float('inf'):
@@ -431,16 +431,16 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
                         tdx = tag_pos[0] - robot_pos[0]
                         tdy = tag_pos[1] - robot_pos[1]
                         td  = math.sqrt(tdx*tdx + tdy*tdy)
-                        if td < 0.5 and td > 0.001:
+                        if td < 1.0 and td > 0.001:
                             dot = fwd[0]*(tdx/td) + fwd[1]*(tdy/td)
                             if math.acos(max(min(dot, 1.0), -1.0)) < 1.2:
                                 total_reward += 0.2
                                 break
 
                     # Zone reward: bonus for being in the cluster zone (0.8–3.5m from base).
-                    # Corner clusters are at ~3.4m from base; walls are at 4.0m.
+                    # Corner clusters are at ~2.33m from base; walls are at 2.5m.
                     dist_from_base = math.sqrt(robot_pos[0]**2 + robot_pos[1]**2)
-                    if 0.8 < dist_from_base < 3.5:
+                    if 0.8 < dist_from_base < 2.4:
                         total_reward += 0.10
 
                     # Near-base penalty: extended to cover the 0.35–0.8m orbit dead zone.
@@ -464,18 +464,18 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
                     # prefers returning to a known cluster over random wandering.
                     if self.pheromone_grid.max() > 0.1:
                         peak = np.unravel_index(self.pheromone_grid.argmax(), self.pheromone_grid.shape)
-                        cx = peak[0] * self.grid_res - 4.0
-                        cy = peak[1] * self.grid_res - 4.0
+                        cx = peak[0] * self.grid_res - 2.5
+                        cy = peak[1] * self.grid_res - 2.5
                         curr_cd = math.sqrt((cx - robot_pos[0])**2 + (cy - robot_pos[1])**2)
                         if self.prev_cluster_dists[i] is not None:
-                            total_reward += (self.prev_cluster_dists[i] - curr_cd) * 20.0
+                            total_reward += (self.prev_cluster_dists[i] - curr_cd) * 15.0
                         self.prev_cluster_dists[i] = curr_cd
                     else:
                         # No pheromone signal — teach PPO to spread outward and search.
                         # When obs[14]=cluster_known=0, the right action is to cover the arena.
                         # Reward is proportional to distance from base (capped at arena edge).
                         if dist_from_base > 0.8:
-                            total_reward += min(dist_from_base / 3.5, 1.0) * 0.15
+                            total_reward += min(dist_from_base / 2.3, 1.0) * 0.15
                         self.prev_cluster_dists[i] = None
 
             else:
@@ -494,8 +494,8 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
                     # Pre-seed cluster dist so pheromone gradient fires from step 1 post-deposit
                     if self.pheromone_grid.max() > 0.1:
                         peak = np.unravel_index(self.pheromone_grid.argmax(), self.pheromone_grid.shape)
-                        cx = peak[0] * self.grid_res - 4.0
-                        cy = peak[1] * self.grid_res - 4.0
+                        cx = peak[0] * self.grid_res - 2.5
+                        cy = peak[1] * self.grid_res - 2.5
                         self.prev_cluster_dists[i] = math.sqrt(
                             (cx - robot_pos[0])**2 + (cy - robot_pos[1])**2)
 
@@ -524,7 +524,7 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
         # Inter-robot separation penalty: discourages robots from clustering
         # near the BASE only. Robots should converge on a tag cluster freely —
         # penalising that convergence was the root cause of failed pheromone-following.
-        # Only fires when BOTH robots are within 1.5m of base (nest-orbit prevention).
+        # Only fires when BOTH robots are within 1.0m of base (nest-orbit prevention).
         robot_positions = [self.robot_nodes[k].getPosition() for k in range(self.num_robots)]
         for i in range(self.num_robots):
             for j in range(i + 1, self.num_robots):
@@ -550,31 +550,31 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
         following rather than memorising fixed locations.
         Curriculum controls how far from base clusters can appear.
         """
-        # 8×8m arena curriculum — 3M test run has ~250 episodes total
-        # Phase 1 (ep  0-29):  2 clusters  ≤1.5m — bootstraps pickup/deposit loop
-        # Phase 2 (ep 30-99):  3-5 clusters ≤2.5m — intermediate range
-        # Phase 3 (ep 100+):   6-8 clusters ≤3.5m — matches eval world orientation
+        # 5×5m arena curriculum
+        # Phase 1 (ep  0-29):  2 clusters   ≤1.0m — bootstraps pickup/deposit loop
+        # Phase 2 (ep 30-99):  3-5 clusters ≤1.8m — intermediate range
+        # Phase 3 (ep 100+):   6-8 clusters ≤2.3m — matches eval world orientation
         if self.total_episodes < 30:
-            max_dist, n_clusters = 1.5, 2
+            max_dist, n_clusters = 1.0, 2
         elif self.total_episodes < 100:
-            max_dist, n_clusters = 2.5, random.randint(3, 5)
+            max_dist, n_clusters = 1.8, random.randint(3, 5)
         else:
-            max_dist, n_clusters = 3.5, random.randint(6, 8)
+            max_dist, n_clusters = 2.3, random.randint(6, 8)
 
         centers = []
         for _ in range(n_clusters):
             for _ in range(60):   # max placement attempts
                 angle = random.uniform(0, 2 * math.pi)
-                dist  = random.uniform(1.0, max_dist)
+                dist  = random.uniform(0.7, max_dist)
                 cx    = dist * math.cos(angle)
                 cy    = dist * math.sin(angle)
                 # Keep clusters at least 1.2m apart from each other (larger arena)
-                if all(math.sqrt((cx - c[0])**2 + (cy - c[1])**2) > 1.2
+                if all(math.sqrt((cx - c[0])**2 + (cy - c[1])**2) > 0.8
                        for c in centers):
                     centers.append((cx, cy))
                     break
 
-        return centers if centers else [(2.0, 0.0)]  # safe fallback
+        return centers if centers else [(1.5, 0.0)]  # safe fallback
 
     # =========================================================================
     # HARD-CODED BEHAVIOR OVERRIDES  (Problems 1, 2, 3)
@@ -601,15 +601,11 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
         return [left, right]
 
     def _apply_overrides(self, action):
-        """Hard-coded overrides — PPO learns global exploration + pheromone-following.
+        """Hard-coded overrides — PPO learns ALL foraging behavior including local tag seek.
            P1: Wall / obstacle escape (wall < 0.35m or prox > 0.55)
            P2: Return-to-base when carrying
            P3: Base avoidance when not carrying (prevents clustering at nest)
-               Threshold raised to 0.8m to exactly match the near-base penalty zone.
-               PPO only gets control at >0.8m where zone/exploration rewards fire —
-               eliminates the spinning dead zone at 0.5-0.8m seen in v17.
-           P4: Tag-seek — steer toward nearest visible tag in FOV (< 1.2 rad)
-               Reactive local behaviour; frees PPO to focus on global navigation.
+           NO P4: tag-seek is fully learned by PPO from tag_visible/tag_dist/tag_angle obs.
         """
         final = list(action)
         base_pos = self.base_node.getPosition()
@@ -618,7 +614,7 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
             robot_rot = self.robot_nodes[i].getOrientation()
             fwd  = [robot_rot[0], robot_rot[3], robot_rot[6]]
             prox = (self.robot_states[i] or [0.0]*8)[:8]
-            wall_dist = 4.0 - max(abs(robot_pos[0]), abs(robot_pos[1]))
+            wall_dist = 2.5 - max(abs(robot_pos[0]), abs(robot_pos[1]))
 
             # P1: Wall / collision escape
             if wall_dist < 0.35 or max(prox) > 0.55:
@@ -642,29 +638,7 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
                 final[i*2], final[i*2+1] = ov[0], ov[1]
                 continue
 
-            # P4: Tag-seek — steer toward nearest visible tag in FOV
-            if not self.carrying_state[i]:
-                best_tag_pos = None
-                best_dist    = float('inf')
-                for tag_node in self.tag_nodes:
-                    tag_pos = tag_node.getPosition()
-                    if tag_pos[2] < 0:
-                        continue
-                    tdx = tag_pos[0] - robot_pos[0]
-                    tdy = tag_pos[1] - robot_pos[1]
-                    td  = math.sqrt(tdx*tdx + tdy*tdy)
-                    if td < 0.5 and td > 0.001 and td < best_dist:
-                        dot   = fwd[0]*(tdx/td) + fwd[1]*(tdy/td)
-                        angle = math.acos(max(min(dot, 1.0), -1.0))
-                        if angle < 1.2:
-                            best_dist    = td
-                            best_tag_pos = tag_pos
-                if best_tag_pos is not None:
-                    ov = self._steer_to(robot_pos, fwd, best_tag_pos, gain=3.0)
-                    final[i*2], final[i*2+1] = ov[0], ov[1]
-                    continue
-
-            # PPO controls global exploration (pheromone-following, site search)
+            # PPO controls everything: tag seek, pheromone-following, exploration
 
         return np.array(final, dtype=np.float32)
 
@@ -678,17 +652,15 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
     # LOGGING HELPERS
     # =========================================================================
 
-    def _get_mode(self, i, robot_pos, wall_dist, obs_i):
+    def _get_mode(self, i, robot_pos, wall_dist):
         """Return the active control mode label for robot i."""
         d2base = math.sqrt(robot_pos[0]**2 + robot_pos[1]**2)
         if wall_dist < 0.35:
             return "WALL_ESC"
         elif self.carrying_state[i]:
             return "RTB"
-        elif d2base < 0.8:
+        elif d2base < 0.8:   # matches P3 threshold in _apply_overrides
             return "BASE_AVOID"
-        elif obs_i[8] > 0.5:
-            return "TAG_SEEK"
         else:
             return "PPO"
 
@@ -705,11 +677,11 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
 
         for ri in range(self.num_robots):
             rpos   = self.robot_nodes[ri].getPosition()
-            wall_d = 4.0 - max(abs(rpos[0]), abs(rpos[1]))
+            wall_d = 2.5 - max(abs(rpos[0]), abs(rpos[1]))
             obs_i  = obs[ri * self.obs_per_robot : (ri + 1) * self.obs_per_robot]
             ra_l   = float(action[ri * 2])
             ra_r   = float(action[ri * 2 + 1])
-            mode   = self._get_mode(ri, rpos, wall_d, obs_i)
+            mode   = self._get_mode(ri, rpos, wall_d)
 
             lines.append(
                 f"  R{ri+1}[{mode:8s}]: L={ra_l:+.2f} R={ra_r:+.2f} | "
@@ -730,11 +702,11 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
         rate = self.ep_deposits / sim_minutes if sim_minutes > 0 else 0.0
 
         if self.total_episodes < 30:
-            phase = "CLOSE   (2 clusters,  max_dist=1.5m)"
+            phase = "CLOSE   (2 clusters,  max_dist=1.0m)"
         elif self.total_episodes < 100:
-            phase = "MEDIUM  (3-5 clusters, max_dist=2.5m)"
+            phase = "MEDIUM  (3-5 clusters, max_dist=1.8m)"
         else:
-            phase = "FULL    (6-8 clusters, max_dist=3.5m)"
+            phase = "FULL    (6-8 clusters, max_dist=2.3m)"
 
         phero_max    = float(self.pheromone_grid.max())
         active_cells = int((self.pheromone_grid > 0.1).sum())
@@ -753,7 +725,7 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
         robot_lines = []
         for ri in range(self.num_robots):
             rpos   = self.robot_nodes[ri].getPosition()
-            wall_d = 4.0 - max(abs(rpos[0]), abs(rpos[1]))
+            wall_d = 2.5 - max(abs(rpos[0]), abs(rpos[1]))
             prox   = (self.robot_states[ri] or [0.0] * 8)[:8]
             d2base = math.sqrt(rpos[0]**2 + rpos[1]**2)
 
@@ -761,14 +733,14 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
                 mode = "WALL_ESC"
             elif self.carrying_state[ri]:
                 mode = "RTB"
-            elif d2base < 0.5:
+            elif d2base < 0.8:   # matches P3 threshold
                 mode = "BASE_AVOID"
             else:
                 mode = "PPO"
 
             # Local pheromone at robot's current grid cell
-            gx = max(0, min(self.grid_size - 1, int((rpos[0] + 4.0) / self.grid_res)))
-            gy = max(0, min(self.grid_size - 1, int((rpos[1] + 4.0) / self.grid_res)))
+            gx = max(0, min(self.grid_size - 1, int((rpos[0] + 2.5) / self.grid_res)))
+            gy = max(0, min(self.grid_size - 1, int((rpos[1] + 2.5) / self.grid_res)))
             phero_local = float(self.pheromone_grid[gx, gy])
 
             robot_lines.append(
@@ -828,17 +800,17 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
         Rescue mission spawning: tags always in clusters, cluster locations
         randomised every episode (different rescue site each time).
         Curriculum controls how far clusters can be from the base.
-          Episode   0-30:   clusters within 1.5m — bootstraps pickup/deposit loop
-          Episode  31-100:  clusters within 2.5m — medium range exploration
-          Episode  100+:    clusters anywhere in arena (up to 3.5m) — full 8×8m task
+          Episode   0-30:   clusters within 1.0m — bootstraps pickup/deposit loop
+          Episode  31-100:  clusters within 1.8m — medium range exploration
+          Episode  100+:    clusters anywhere in arena (up to 2.3m) — full 5×5m task
         """
         centers = self._generate_cluster_centers()
         for idx, tag_node in enumerate(self.tag_nodes):
             cx, cy = centers[idx % len(centers)]
             tx = cx + random.gauss(0, 0.20)
             ty = cy + random.gauss(0, 0.20)
-            tx = max(-3.7, min(3.7, tx))
-            ty = max(-3.7, min(3.7, ty))
+            tx = max(-2.3, min(2.3, tx))
+            ty = max(-2.3, min(2.3, ty))
             tag_node.getField("translation").setSFVec3f([tx, ty, 0.01375])
 
 
@@ -853,10 +825,10 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
 # =============================================================================
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('--run_name',        type=str,   default='ppo_v18')
+    parser.add_argument('--run_name',        type=str,   default='ppo_v18_5x5')
     parser.add_argument('--lr',              type=float, default=3e-4)
     parser.add_argument('--ent_coef',        type=float, default=0.15)
-    parser.add_argument('--batch_size',      type=int,   default=1200)
+    parser.add_argument('--batch_size',      type=int,   default=1024)
     parser.add_argument('--total_timesteps', type=int,   default=3000000)
     parser.add_argument('--resume',          type=str,   default=None,
                         help='Path to checkpoint .zip to resume from')
@@ -896,7 +868,7 @@ if __name__ == "__main__":
             env,
             verbose=1,
             device=device,
-            n_steps=12000,  # matches steps_per_episode so each rollout = 1 complete episode
+            n_steps=8192,  # matches steps_per_episode so each rollout = 1 complete episode
             batch_size=args.batch_size,
             learning_rate=args.lr,
             ent_coef=args.ent_coef,
