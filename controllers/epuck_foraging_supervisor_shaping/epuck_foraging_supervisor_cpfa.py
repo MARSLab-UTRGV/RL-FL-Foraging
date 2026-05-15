@@ -898,13 +898,47 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
             self.robot_nodes[i].resetPhysics()
 
     def respawn_all_tags(self):
-        """Curriculum-based cluster spawning — same as v18_5x5."""
+        """Curriculum-based cluster spawning with rotated grid placement.
+        Tags within each cluster are arranged on a 0.10m grid (randomly rotated)
+        rather than Gaussian scatter, matching the eval world layout.
+        This makes site fidelity and pheromone targets reliably point to a
+        structured patch, not a noisy cloud.
+        """
         centers = self._generate_cluster_centers()
-        for idx, tag_node in enumerate(self.tag_nodes):
-            cx, cy = centers[idx % len(centers)]
-            tx = max(-2.3, min(2.3, cx + random.gauss(0, 0.20)))
-            ty = max(-2.3, min(2.3, cy + random.gauss(0, 0.20)))
-            tag_node.getField("translation").setSFVec3f([tx, ty, 0.01375])
+        n_clusters = len(centers)
+
+        # Distribute tags as evenly as possible across clusters
+        base_count = self.num_tags // n_clusters
+        remainder  = self.num_tags % n_clusters
+        # cluster_sizes[i] = how many tags in cluster i
+        cluster_sizes = [base_count + (1 if i < remainder else 0)
+                         for i in range(n_clusters)]
+
+        GRID_SPACING = 0.10
+        tag_idx = 0
+        for ci, (cx, cy) in enumerate(centers):
+            count = cluster_sizes[ci]
+            cols  = math.ceil(math.sqrt(count))
+            rows  = math.ceil(count / cols)
+            rot   = random.uniform(0, math.pi / 2)
+            cos_r = math.cos(rot)
+            sin_r = math.sin(rot)
+
+            placed = 0
+            for row in range(rows):
+                for col in range(cols):
+                    if placed >= count:
+                        break
+                    dx = (col - (cols - 1) / 2.0) * GRID_SPACING
+                    dy = (row - (rows - 1) / 2.0) * GRID_SPACING
+                    tx = cx + dx * cos_r - dy * sin_r
+                    ty = cy + dx * sin_r + dy * cos_r
+                    tx = max(-2.3, min(2.3, tx))
+                    ty = max(-2.3, min(2.3, ty))
+                    self.tag_nodes[tag_idx].getField("translation").setSFVec3f(
+                        [tx, ty, 0.01375])
+                    tag_idx += 1
+                    placed  += 1
 
     def _generate_cluster_centers(self):
         """Curriculum: close clusters early, full arena later.
