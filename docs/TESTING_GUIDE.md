@@ -1,6 +1,6 @@
 # Testing Guide — Multi-Agent E-puck Foraging
 
-This guide covers evaluating trained models for both the **centralized** and **decentralized** versions.
+This guide covers evaluating trained models for both the **centralized** and **fully decentralized independent** versions.
 
 ---
 
@@ -20,18 +20,18 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$WEBOTS_HOME/lib/controller
 
 | File | Role |
 |------|------|
-| `worlds/eval_best.wbt` | Evaluation world (4 robots, 70 tags, no training hooks) |
-| `controllers/eval_best_model/eval_best_model.py` | Extern eval script — loads model and runs episodes |
+| `worlds/eval_best_5x5.wbt` | Eval world — fixed 6-cluster layout, 64 tags |
+| `controllers/eval_best_model/eval_best_model_5x5.py` | Extern eval script — loads shared model, runs episodes |
 | `controllers/epuck_driver/epuck_driver.py` | Robot controller (runs inside Webots, unchanged) |
 
 ### Decentralized Evaluation
 
 | File | Role |
 |------|------|
-| `worlds/eval_decentralized.wbt` | Eval world — fixed 6-cluster layout, base radius 0.1, decentralized robots |
-| `controllers/eval_decentralized/eval_decentralized.py` | Lightweight extern supervisor — tag mechanics + camera sim only (no PPO) |
-| `controllers/epuck_decentralized_eval/epuck_decentralized_eval.py` | Robot controller — loads PPO, runs inference locally, drives own motors |
-| `controllers/epuck_decentralized/epuck_decentralized.py` | Base robot controller (sensor/pheromone infrastructure, imported by eval robot) |
+| `worlds/eval_decentralized.wbt` | Eval world — fixed 6-cluster layout, 64 tags |
+| `controllers/eval_decentralized/eval_decentralized.py` | Lightweight extern supervisor — tag mechanics + camera sim only |
+| `controllers/epuck_decentralized_eval/epuck_decentralized_eval.py` | Robot controller — loads own PPO, runs inference locally |
+| `controllers/epuck_decentralized/epuck_decentralized_v4.py` | Base class — sensors, CPFA pheromone, P2P broadcast (imported by eval robot) |
 
 ---
 
@@ -40,198 +40,228 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$WEBOTS_HOME/lib/controller
 **Step 1: Launch Webots with the eval world**
 
 ```bash
-webots worlds/eval_best.wbt &
+webots worlds/eval_best_5x5.wbt &
 sleep 10
 ```
 
 **Step 2: Run the evaluation script** (from project root)
 
 ```bash
-python3 controllers/eval_best_model/eval_best_model.py ppo_v16_phero.zip
-```
-
-Or pass any `.zip` model path:
-
-```bash
-# Best centralized model
-python3 controllers/eval_best_model/eval_best_model.py ppo_v16_phero.zip
-
-# v17 model
-python3 controllers/eval_best_model/eval_best_model.py ppo_v17_phero2.zip
+python3 controllers/eval_best_model/eval_best_model_5x5.py ppo_cpfa_5x5.zip
 ```
 
 ### What to Expect
 
 ```
-[EVAL] Model: ppo_v16_phero.zip
-[EVAL] Step 100 | Deposits: 3 | Reward: 142.5
-[EVAL] Step 200 | Deposits: 7 | Reward: 289.0
-...
-[PICKUP] Robot 2 picked up tag. Total: 8
+[EVAL] Model: ppo_cpfa_5x5.zip
+[PICKUP] Robot 2 picked up tag (density=3) | Total: 8
 [DEPOSIT] Robot 2 deposited! Total: 8
+  [PHERO] Laid at (1.23, -0.45) density=3 prob=0.65 total_entries=2
+  [TARGET] Robot 2 → SITE (1.23,-0.45)
+[EP 1] Picks: 47 | Deps: 38 | Rate: 2.19 tags/min (sim) | TotalDeps: 38
 ```
 
-- Robots navigate toward tag clusters
-- On tag pickup: robot carries it back to base (centre of arena)
-- Deposit increases the total count
-- Target: > 5.94 tags/min (CPFA baseline)
+Target: > 5.94 tags/min (CPFA baseline). Best centralized model achieves ~11 tags/min.
 
-### Centralized Obs Space (20D per robot, 80D stacked total)
+### Centralized Obs Space (21D per robot, 84D total)
 
 ```
 [0:8]  proximity sensors
 [8]    tag_visible
-[9]    tag_dist_norm
-[10]   tag_angle_norm
+[9]    tag_dist_norm      (÷ 1.0m)
+[10]   tag_angle_norm     (÷ π)
 [11]   carrying
-[12]   base_dist_norm
-[13]   base_angle_norm
-[14]   cluster_known     (supervisor pheromone grid)
-[15]   cluster_dist_norm
-[16]   cluster_angle_norm
-[17]   phero_front_norm
-[18]   phero_left_norm
-[19]   phero_right_norm
+[12]   base_dist_norm     (÷ 3.5m)
+[13]   base_angle_norm    (÷ π)
+[14]   site_known         (CPFA site fidelity target)
+[15]   site_dist_norm
+[16]   site_angle_norm
+[17]   phero_known        (CPFA roulette pheromone target)
+[18]   phero_dist_norm
+[19]   phero_angle_norm
+[20]   search_duration_norm (give-up timer ÷ 700)
 ```
 
 ---
 
 ## Decentralized Evaluation
 
-The decentralized eval uses **CTDE (Centralized Training, Decentralized Execution)**:
-- Each robot loads the PPO model and runs inference locally
-- The supervisor only provides tag observations (simulating a camera) and handles pickup/deposit mechanics
-- No motor commands are sent from the supervisor — all P1-P4 overrides run onboard
+Each robot loads its own per-robot PPO model and runs inference locally. The supervisor only provides camera simulation (tag obs [8–10]) and handles pickup/deposit mechanics.
 
-**Step 1: Launch Webots with the decentralized eval world**
+### Model Loading Priority (eval robot)
+
+1. `current_eval_run.txt` exists → loads `robot{N}_{run_name}.zip` (per-robot independent models)
+2. `current_eval_model.txt` exists → loads shared model path (CTDE / fallback)
+3. Hard-coded fallback: `decentralized_optA_v1`
+
+**Step 1: Write the run name**
+
+```bash
+# For independent models (one per robot)
+echo "decentralized_indep_v4" > current_eval_run.txt
+
+# OR for a shared CTDE model
+echo "/full/path/to/decentralized_optA_v4.zip" > current_eval_model.txt
+```
+
+**Step 2: Launch Webots with the decentralized eval world**
 
 ```bash
 webots worlds/eval_decentralized.wbt &
 sleep 10
 ```
 
-**Step 2: Run the lightweight supervisor** (from project root)
+**Step 3: Run the lightweight supervisor** (from project root)
 
 ```bash
-python3 controllers/eval_decentralized/eval_decentralized.py
-```
-
-The robot controller (`epuck_decentralized_eval`) automatically loads the model specified in `current_eval_model.txt`, or falls back to `decentralized_optA_v1` if that file doesn't exist.
-
-**To run a specific model:**
-
-```bash
-# Write model path to config file, then launch supervisor
-echo "/home/sara/Documents/Centralized Learning/RL-FL-Foraging/decentralized_optA_v4.zip" \
-    > current_eval_model.txt
 python3 controllers/eval_decentralized/eval_decentralized.py
 ```
 
 ### What to Expect
 
 ```
-[ROBOT] Loading model: decentralized_optA_v4.zip
-[ROBOT] Model loaded. Running inference locally.
-[PICKUP] Robot 1 picked up tag at (1.23, 0.45). Strength: 0.60
-[DEPOSIT] Robot 1 deposited. Total: 1
+[robot1] Loading model: robot1_decentralized_indep_v4.zip
+[robot2] Loading model: robot2_decentralized_indep_v4.zip
+[robot3] Loading model: robot3_decentralized_indep_v4.zip
+[robot4] Loading model: robot4_decentralized_indep_v4.zip
+
+[PICKUP] robot1 at (1.23,-0.45) | strength=0.68 approx_density~3
+  [PHERO] Added (1.23,-0.45) weight=0.68 | list_size=1
+[DEPOSIT] robot1 | Total deps: 1
+  [SITE_FID] last_pickup=(1.23,-0.45) weight=0.68
+  [TARGET]   → SITE (1.23,-0.45)
+
+=================================================================
+[EP 1] Picks: 12 | Deps: 9 | Rate: 1.04 tags/min (sim) | TotalDeps: 9
+  Curriculum: N/A (eval — fixed layout)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=1.43 | wall=1.87
+  R2[RTB     ]: carry=1 | base=0.82 | wall=2.11
+  R3[PPO     ]: carry=0 | base=1.67 | wall=1.23
+  R4[BASE_ESC]: carry=0 | base=0.18 | wall=2.31
+=================================================================
 ```
 
-Each robot prints its own model load message at startup. Pickups and deposits are logged by the supervisor.
-
-### Decentralized Obs Space (18D per robot)
+### Decentralized Obs Space (20D per robot)
 
 ```
-[0:8]  proximity sensors        ← robot onboard
-[8]    tag_visible              ← supervisor (camera sim / real camera at deployment)
-[9]    tag_dist_norm
-[10]   tag_angle_norm
-[11]   carrying                 ← robot onboard
-[12]   base_dist_norm           ← robot GPS
-[13]   base_angle_norm          ← robot GPS + InertialUnit
-[14]   phero_known              ← robot P2P pheromone receiver
-[15]   phero_dist_norm
-[16]   phero_angle_norm
-[17]   phero_strength
+[0:8]  proximity sensors (÷4096)          ← robot onboard
+[8]    tag_visible                         ← supervisor (camera sim / real camera at deploy)
+[9]    tag_dist_norm     (÷ 1.0m)          ← supervisor
+[10]   tag_angle_norm    (÷ π)             ← supervisor
+[11]   carrying          (0/1)             ← robot onboard
+[12]   base_dist_norm    (GPS ÷ 3.5m)      ← robot GPS
+[13]   base_angle_norm   (GPS+IMU ÷ π)     ← robot GPS + InertialUnit
+[14]   site_known        (own last pickup) ← robot onboard
+[15]   site_dist_norm    (÷ 3.5m)          ← robot onboard
+[16]   site_angle_norm   (÷ π)             ← robot onboard
+[17]   phero_known       (roulette target) ← robot P2P receiver
+[18]   phero_dist_norm   (÷ 3.5m)          ← robot P2P receiver
+[19]   phero_angle_norm  (÷ π)             ← robot P2P receiver
 ```
 
-### P1–P4 Override Modes (fully onboard at eval)
+14/20 dims computed fully onboard — no supervisor needed at execution.
 
-The eval robot applies these overrides in priority order after PPO inference. All run locally using GPS + IMU — no supervisor dependency.
+### Override Modes (fully onboard at eval)
 
 | Mode label | Condition | Action |
 |-----------|-----------|--------|
-| `WALL_ESC` | wall_dist < 0.6m | Steer to centre (gain 4.0) |
-| `RTB` | carrying=True | Steer to centre (gain 2.5) |
-| `BASE_AVOID` | dist_to_base < 0.3m | Steer to 1.2m target (gain 3.0) |
+| `WALL_ESC` | wall_dist < 0.35 m or max(prox) > 0.55 | Steer to centre (gain=4.0) |
+| `BASE_ESC` | not carrying and dist_to_base < 0.25 m | Nudge outward 0.5 m (gain=4.0) |
+| `RTB` | carrying=True | Steer to centre (gain=2.5) |
 | `PPO` | otherwise | Raw PPO output |
 
 ### Interpreting Eval Logs
 
 **Healthy behaviour:**
-- Robots spend most time in `PPO` mode, with brief `RTB` periods when carrying
-- `phero=1` appears frequently after first deposits (robots following pheromone)
-- Rate increases as robots learn cluster locations
-- No robots stuck in `WALL_ESC` for extended periods
+- `[TARGET] → SITE/PHERO` appearing after every deposit → coordination working
+- `RTB` mode when carrying, brief `BASE_ESC` after deposit, mostly `PPO` mode
+- `list_size` growing within an episode → pheromone broadcast working
+- Deposit rate increasing over the first 5–10 minutes of eval
 
-**Failure patterns seen in v1–v3:**
-- All robots in `BASE_AVOID` for entire episodes → P3 not pushing far enough (multiplier too low)
-- All robots in `WALL_ESC` after phase 1 → wall-stuck collapse (P1 working but too late)
-- `phero=0 str=0.00` always → pheromone not being followed (TTL too short or reward too weak)
+**Failure patterns:**
+- `[TARGET] → EXPLORE` always → pheromone list empty, P2P broadcast not working
+- All robots in `WALL_ESC` for extended periods → obstacle avoidance collapse
+- `[TARGET] → SITE` always, same location → site fidelity stuck, cluster fully depleted
 
-### CTDE Deployment Note
+### Verifying Pheromone and Site Fidelity
 
-At deployment on real robots:
-- Dims [0:8], [11:18] — already computed onboard (no supervisor needed)
-- Dims [8:11] — replace supervisor camera sim with onboard camera + AprilTag detector
-- Each robot loads `decentralized_optA_v4.zip` and runs inference locally (no central supervisor)
-- Robots coordinate only via P2P pheromone broadcasts (channel 10, 2 m range)
+Check per-robot logs or terminal for:
+```
+[PHERO] Added (X,Y) weight=W | list_size=N       # Pheromone created at pickup ✓
+[SITE_FID] last_pickup=(X,Y) weight=W             # Site fidelity stored ✓
+[TARGET] → SITE (X,Y)                             # Site fidelity used ✓
+[TARGET] → PHERO (X,Y)                            # Pheromone roulette used ✓
+[TARGET] → EXPLORE                                # Free exploration ✓
+```
+
+---
+
+## Statistical Evaluation Protocol
+
+For CoRL results, run at least **5 seeds × 30 minutes** per model and report mean ± std tags/min.
+
+```bash
+for seed in 1 2 3 4 5; do
+    echo "decentralized_indep_v4" > current_eval_run.txt
+    webots --mode=fast worlds/eval_decentralized.wbt &
+    sleep 10
+    timeout 1800 python3 controllers/eval_decentralized/eval_decentralized.py \
+        2>&1 | tee logs/eval_seed${seed}.txt
+    pkill -f webots
+    sleep 5
+done
+```
 
 ---
 
 ## Comparing Centralized vs Decentralized
 
-Run both in identical arena configurations and measure:
+Run both in the same fixed eval world and measure:
 
-| Metric | Centralized | Decentralized |
-|--------|-------------|---------------|
-| Tags/min | ~11 (v16) | TBD (v4 in training) |
-| Obs computed onboard | 0/20 | 14/18 |
+| Metric | Centralized | Decentralized Independent |
+|--------|-------------|--------------------------|
+| Tags/min | ~11 (v16) | TBD (`decentralized_indep_v4`) |
+| Obs dims per robot | 21 | 20 |
+| Obs computed onboard | 0/21 (all supervisor) | 14/20 |
 | Supervisor at execution | Required | Not required |
-| Pheromone type | Global grid (supervisor) | P2P broadcast (robot) |
+| Pheromone type | Global list (supervisor) | P2P broadcast (robot) |
+| Models | 1 shared | 4 independent (+ optional gossip) |
 | CPFA baseline | 5.94 tags/min | 5.94 tags/min |
-
-For statistical significance, run at least **5 evaluation seeds** of 30 minutes each and report mean ± std.
 
 ---
 
 ## Headless Evaluation (No GUI)
 
 ```bash
-webots --mode=fast --minimize --no-rendering worlds/eval_best.wbt &
+webots --mode=fast --minimize --no-rendering worlds/eval_decentralized.wbt &
 sleep 10
-python3 controllers/eval_best_model/eval_best_model.py ppo_v16_phero.zip
+python3 controllers/eval_decentralized/eval_decentralized.py
 ```
 
 ---
 
-## Changing Simulation Speed
+## Physical Robot Deployment
 
-In Webots GUI: drag the speed slider in the toolbar, or launch with `--mode=fast` for maximum speed (no rendering).
+At deployment on real robots, only 3 obs dims require supervisor:
+- `[8] tag_visible`, `[9] tag_dist_norm`, `[10] tag_angle_norm` → replace with onboard camera + AprilTag detector
+
+All other 17 dims are already computed onboard. Load `robot{N}_{run_name}.zip` on each robot, point the camera at the arena, run inference locally.
 
 ---
 
 ## Troubleshooting
 
-**`Device "gps" was not found`** — The decentralized world must use `turretSlot` (not `extensionSlot`) in each E-puck node. Check `worlds/epuck_foraging_decentralized.wbt`.
+**`Device "gps" was not found`** — The decentralized world must use `turretSlot` (not `extensionSlot`) in each E-puck node. Check `worlds/eval_decentralized.wbt`.
 
-**Robots not moving** — Press Play in Webots before running the eval script. The extern controller connects after Webots loads.
+**Robots not moving** — Press Play in Webots before running the eval script.
 
-**Wrong obs size error** — Centralized models expect 80D input; decentralized models expect 18D per robot. Do not mix worlds and models.
+**Wrong obs size error** — Centralized models expect 84D input; decentralized models expect 20D per robot. Do not mix worlds and models.
 
-**`numpy.dtype size changed`** — Run `pip install "numpy<2"` to fix NumPy 2.x binary incompatibility.
+**`numpy.dtype size changed`** — Run `pip install "numpy<2"`.
 
-**Model file not found** — All trained models are `.zip` files in the project root. Pass the full or relative path, or write the path to `current_eval_model.txt`.
+**Model file not found** — Trained models are in the project root as `robot{N}_{run_name}.zip`. Verify `current_eval_run.txt` contains the correct run name (not a full path).
 
-**Robots stuck at wall immediately** — Check that `INITIAL_TTL=2000` in `controllers/epuck_decentralized/epuck_decentralized.py`. Old value of 400 causes pheromone to expire after 1-2 trips.
+**`[TARGET] → EXPLORE` always** — Pheromone list is empty. Either no pickups have occurred yet (normal in first few minutes) or P2P broadcast is not working (check phero_emitter/receiver in world file).
 
-**Low deposit rate despite robots moving** — If all robots orbit near base, P3 is not pushing far enough. Verify P3 multiplier=5.0 in `_apply_overrides` in the eval robot.
+**All robots `RTB` but deposit rate = 0** — Deposit detection threshold is 0.25 m from base centre. Check that base is at (0, 0, 0) in the eval world.

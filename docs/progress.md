@@ -1,131 +1,135 @@
 # Project Progress — Multi-Agent E-puck Foraging (CoRL 2026)
 
-**Last updated:** 2026-05-04
+**Last updated:** 2026-05-15
 
 ---
 
 ## Project Goal
 
-Train 4 e-puck robots to autonomously forage 70 AprilTags scattered in 6 clusters inside a 5×5 m Webots arena, simulating a **rescue mission** where robots must find and collect items from unknown cluster locations.
+Train 4 e-puck robots to autonomously forage 64 AprilTags scattered in clusters inside a 5×5 m Webots arena, simulating a **rescue mission** where robots must find and collect items from unknown cluster locations.
 
-The core research question is: **can a decentralized RL policy — where each robot acts using only its own onboard sensors — match or outperform a fully centralized RL policy that has access to global information?**
+The core research question: **can fully decentralized RL — where each robot trains its own independent policy from local experience only — match or outperform centralized RL and the CPFA baseline?**
 
-The centralized version serves as the performance upper bound. The decentralized version must demonstrate comparable or better foraging performance while requiring no central supervisor at execution time. The **CPFA baseline (5.94 tags/min)** is a secondary reference showing where classical swarm methods sit.
+The **CPFA baseline (5.94 tags/min)** represents classical swarm performance. The centralized version (~11 tags/min) is the upper-bound reference. The decentralized version must coordinate exclusively via peer-to-peer pheromone with no shared model, no global information, and no central supervisor.
 
-The research contribution for **CoRL 2026** is a **Centralized Training, Decentralized Execution (CTDE)** architecture where robots learn to coordinate using **peer-to-peer pheromone signals** without any central brain at execution time — and where 14/18 observation dimensions are computed entirely onboard, making the policy directly deployable on physical robots.
+The **CoRL 2026 contribution** is a **fully decentralized independent PPO** architecture where 4 robots each train their own policy from their own experience, coordinate via P2P pheromone (2 m range), and optionally share model weights via gossip federated learning. 14/20 observation dimensions are computed entirely onboard — the policy is deployable on physical robots without architectural change.
 
 ---
 
-## Two Versions
+## Three Versions
 
-### 1. Centralized (Baseline)
-Robots are controlled by a single shared PPO policy trained and executed with full supervisor involvement. The supervisor maintains a global pheromone grid and provides all observations. This serves as the **research baseline**.
+### 1. Centralized (Performance Upper Bound)
+Single shared PPO policy trained and run by the supervisor. The supervisor maintains a global pheromone list and provides all 21D observations per robot (84D total). Robots are simple sensor/actuator bridges.
 
-### 2. Decentralized — Hybrid Option A (CoRL Contribution)
-Robots are trained with a shared PPO policy but each robot computes most of its own observations autonomously using onboard sensors (GPS, InertialUnit, peer-to-peer pheromone radio). At execution time, each robot runs the policy locally with no central supervisor — robots coordinate only by broadcasting pheromone signals to neighbors within 2 m.
+**Status: Complete. Best model `ppo_cpfa_5x5.zip` (~11 tags/min).**
 
-This is the novel contribution: **14 out of 18 observation dimensions are computed onboard**, making the policy deployable on physical robots with no architectural change.
+### 2. CTDE — Centralized Training, Decentralized Execution (Archived)
+Single shared PPO trained centrally, deployed locally on each robot. Robots compute 18D observations onboard using GPS/IMU/P2P pheromone. Archived as `decentralized_optA_v1.zip` through `decentralized_optA_v4.zip`.
+
+**Status: Archived. v4 = best CTDE result.**
+
+### 3. Fully Decentralized Independent PPO (CoRL 2026 Contribution)
+Each robot trains its own independent PPO from its own local experience only. No shared rollout buffer, no parameter sharing during training except optional gossip FL after each update. Robots coordinate exclusively via P2P pheromone. The supervisor is a thin simulation shim — no PPO, no rewards.
+
+**Status: `decentralized_indep_v4` — IN TRAINING (7M steps, ~427 episodes).**
 
 ---
 
 ## How It Works
 
-**Exploration:** Robots explore the arena. When no pheromone signal is known, they are rewarded for moving outward from the base.
+**Exploration:** Each robot independently learns when and where to explore. When no target is known, PPO is rewarded for moving outward from base.
 
-**Pheromone:** When a robot picks up a tag from a cluster, it broadcasts a pheromone signal encoding the cluster location and density. Nearby robots receive this signal and navigate toward the cluster. The stronger the signal (denser the cluster), the more robots are attracted. Pheromone persists for `INITIAL_TTL=2000` steps (~64 sec sim time, 5-10 round trips).
+**Pheromone (CPFA-style, fully P2P):**
+- At tag pickup: robot adds cluster location to its pheromone list with a density-based weight (0.2–1.0)
+- Each step: broadcasts strongest known cluster to neighbors within 2 m (channel 10)
+- Each step: receives broadcasts from neighbors, merges by location (accept-if-stronger)
+- Decays exponentially (rate=0.01/sec), pruned when weight < 0.001
 
-**Foraging loop:** Robot finds cluster → picks up tag → returns to base (centre of arena) → deposits → goes back to cluster (guided by pheromone memory).
+**Target assignment (CPFA Poisson gate — at deposit):**
+1. **Site fidelity** — probabilistic return to own last pickup (probability = pickup_signal 0.2–1.0)
+2. **Pheromone roulette** — weighted random selection from received cluster list
+3. **Free exploration** — PPO learns efficient search (advantage over CPFA random walk)
 
-**P1-P4 Hard-coded overrides:** Applied after PPO inference, fully onboard. Rewards fire normally regardless.
-- P1: Wall escape (< 0.6 m from wall) — steer to centre
-- P2: Return to base when carrying
-- P3: Push away from base (< 0.3 m) to target at 1.2 m
-- P4: Steer toward tag when visible
+**Gossip FL (optional, channel 11, 2 m):** After each PPO update, robots broadcast their model weights and merge with any received neighbor weights (FedAvg, α=0.2).
+
+**Hard-coded overrides (after PPO inference, reward fires regardless):**
+- **P1:** wall_dist < 0.35 m or max(prox) > 0.55 → steer to centre (gain=4)
+- **BASE_ESC:** not carrying and dist_to_base < 0.25 m → nudge outward 0.5 m (gain=4)
+- **P2:** carrying → steer to centre (gain=2.5)
+- No P3, No P4
 
 ---
 
 ## Current Status
 
-### Centralized Version — Complete (baseline)
+### Centralized — Complete
+- 7M steps, `ppo_cpfa_5x5.zip`
+- Performance: ~11 tags/min (~+85% over CPFA baseline)
 
-- Training complete (7 million steps)
-- **Best model: `ppo_v16_phero.zip`**
-- Performance: ~11 tags/min — nearly **2× the CPFA baseline**
-- v17 retrain (`ppo_v17_phero2.zip`) in progress with improved reward shaping
+### CTDE (archived) — v1–v4 Complete
+- `decentralized_optA_v4.zip` — best CTDE model (7M steps), eval pending
 
-### Decentralized Version — v4 In Training
-
-- v1-v3 complete (see failure analysis below)
-- **v4 training in progress** with fixes for all identified failure modes
-- Model will be at `decentralized_optA_v4.zip`
-
----
-
-## Decentralized Training History
-
-### v1 — First Complete Run (7M steps)
-
-**Result:** 3.1 tags/min (below CPFA 5.94 tags/min)
-
-**Failure analysis from eval log:**
-- **Phase 1 (0–7 min sim):** All robots orbited at base=0.23-0.24m (`BASE_AVOID`). Tag visibility=1 at 0.77-0.96m. Rate peaked at 6.12 tags/min by fishing nearby tags via P4. This is a base-orbit local optimum.
-- **Phase 2 (8–15 min sim):** All 4 robots transitioned to `WALL_ESC` at wall=0.06m. Deposits frozen at 45. Rate dropped to 3.1 tags/min overall.
-- **Root cause:** P3 multiplier=3.0 pushed robots to 0.72m (below 0.8m exploration zone). PPO never received zone-entry rewards simultaneously with pheromone gradient → pheromone following not learned. When nearby tags depleted, robots had no learned strategy for navigating to distant clusters.
-
-### v2 — Old P1/P3 Thresholds
-
-**Result:** Wall-hugging confirmed (trained with P1=0.35m, P3=0.6m)
-
-Thresholds too permissive: robots learned to navigate near walls where P1 rarely triggered, resulting in wall-dependent movement patterns rather than open-field exploration.
-
-### v3 — Fixed P1/P3 Thresholds
-
-**Result:** Pheromone following still not learned
-
-P1=0.6m, P3=0.3m applied, but P3 target still 0.72m (multiplier=3.0). PPO trained almost entirely below the active exploration zone → zone rewards never fire during pheromone approach → policy never associates pheromone with reward.
-
-### v4 — All Fixes Applied (In Training)
-
-Changes from v3:
-- **P3 multiplier 5.0** → target 1.2m (inside active zone 0.8–2.4m)
-- **Near-base penalty ×4.0** (was ×2.0) — stronger discouragement from base-orbit
-- **Pheromone approach reward ×5.0** (was ×3.0) — direct incentive for following signal
-- **INITIAL_TTL=2000** (was 400) — pheromone persists ~64 sec sim = 5-10 round trips per cluster
-
-Also added per-episode monitoring to training supervisor for live debugging.
+### Independent Training — IN PROGRESS
+- `decentralized_indep_v1`, `v2` — completed earlier runs
+- **`decentralized_indep_v4` — currently training** (7M steps, ~427 episodes, STEPS_PER_EPISODE=16384)
+- Architecture: 4 independent PPOs (2×256 Tanh, lr=3e-4, ent=0.15, batch=256), 1 update per episode
+- Curriculum: ep<60 close, ep<201 medium, ep≥201 full arena
 
 ---
 
-## Pheromone TTL Bug (Fixed in v4)
+## Independent Training History
 
-The original `INITIAL_TTL=400` equates to ~12.8 seconds of sim time. A round trip (base to cluster at 1.5m and back) takes roughly 5-8 seconds. This means pheromone expired after only 1-2 trips to each cluster, causing robots to forget cluster locations entirely between return visits.
+### decentralized_indep_v1, v2
+Earlier independent training runs. Architecture not yet aligned with centralized version (old overrides, Gaussian tag scatter, 3M steps).
 
-Fix: `INITIAL_TTL=2000` in `controllers/epuck_decentralized/epuck_decentralized.py` — automatically propagates to the eval robot via import.
+### decentralized_indep_v4 (current)
+All design decisions aligned with centralized CPFA supervisor:
+- **BASE_ESC** (0.25 m, 0.5 m nudge) replaces old P3 wide push — matches centralized exactly
+- **No P3** — PPO controls all post-deposit navigation
+- **Rotated grid tag placement** (0.10 m uniform spacing, random orientation per episode) — matches eval world geometry, eliminates sim-to-eval tag distribution gap
+- **CPFA list-based pheromone** (one entry per cluster, roulette selection, site fidelity gate)
+- **Target depletion feedback** — failed arrival at cluster halves weight, accelerates natural decay
+- **Curriculum** calibrated to 427 episodes (14%/33%/53% = ep<60/ep<201/ep≥201)
+- **7M steps** — matches centralized total
+
+---
+
+## CTDE Failure Analysis (Archived)
+
+### CTDE v1 — 3.1 tags/min (below CPFA 5.94)
+- Robots orbited base at 0.23 m during early episodes (base-orbit optimum via P4)
+- All 4 robots transitioned to WALL_ESC after nearby tags depleted
+- Root cause: P3 multiplier=3.0 pushed to 0.72 m (below 0.8 m exploration zone) → pheromone following never learned
+
+### CTDE v2 — Wall-hugging
+- P1=0.35 m, P3=0.6 m — too permissive, robots navigated near walls
+
+### CTDE v3 — Pheromone not learned
+- P3 target 0.72 m (multiplier=3.0) still below active zone → same root cause as v1
+
+### CTDE v4 — Best CTDE (7M steps, eval pending)
+- P3 target 1.2 m (multiplier=5.0), INITIAL_TTL=2000, phero approach ×5.0, near-base ×4.0
 
 ---
 
 ## What Remains
 
 ### Immediate
-- [ ] Wait for v4 training to complete
-- [ ] Evaluate `decentralized_optA_v4.zip` — measure tags/min
+- [ ] Wait for `decentralized_indep_v4` training to complete (~427 episodes)
+- [ ] Evaluate `decentralized_indep_v4` — measure tags/min per robot and combined
+- [ ] Evaluate `decentralized_optA_v4.zip` — compare CTDE vs independent vs centralized
 - [ ] Run 5+ evaluation seeds (30 min each) for statistical significance
-- [ ] Evaluate `ppo_v17_phero2.zip` — compare with v16 centralized baseline
-- [ ] Report mean ± std tags/min for all models
 
 ### Analysis
-- [ ] Ablation study: pheromone ON vs pheromone OFF — shows pheromone's contribution
-- [ ] Compare v1-v4 learning curves to document reward shaping progression
+- [ ] Ablation: gossip FL ON vs OFF — quantify model sharing contribution
+- [ ] Ablation: pheromone ON vs OFF — quantify coordination contribution
+- [ ] Compare independent vs CTDE learning curves
 
 ### Paper (CoRL 2026)
-- [ ] Results section: centralized vs decentralized vs CPFA baseline table
-- [ ] Ablation table: with and without pheromone
-- [ ] Architecture diagram showing the CTDE obs flow
-- [ ] Demo video: 4 robots coordinating via P2P pheromone with no central supervisor
-
-### Future / Optional
-- [ ] Physical robot deployment test (replace simulated GPS/camera with real sensors)
-- [ ] If v4 underperforms: tune reward scales or increase training timesteps
+- [ ] Results table: centralized vs CTDE vs independent vs CPFA baseline
+- [ ] Architecture diagram: independent PPO + P2P pheromone + gossip FL
+- [ ] Deployment analysis: which obs dims require supervisor vs onboard only
+- [ ] Demo video: 4 robots coordinating via P2P pheromone, no central supervisor
 
 ---
 
@@ -134,12 +138,11 @@ Fix: `INITIAL_TTL=2000` in `controllers/epuck_decentralized/epuck_decentralized.
 | Model | Type | Tags/min | vs CPFA | Status |
 |-------|------|----------|---------|--------|
 | CPFA baseline | Classical | 5.94 | — | Reference |
-| `ppo_v16_phero.zip` | Centralized | ~11 | +85% | Complete |
-| `ppo_v17_phero2.zip` | Centralized | TBD | TBD | In training |
-| `decentralized_optA_v1.zip` | Decentralized | 3.1 | −48% | Failed |
-| `decentralized_optA_v2.zip` | Decentralized | — | — | Failed (wall-hugging) |
-| `decentralized_optA_v3.zip` | Decentralized | — | — | Failed (phero not learned) |
-| `decentralized_optA_v4.zip` | Decentralized | TBD | TBD | In training |
+| `ppo_cpfa_5x5.zip` | Centralized | ~11 | +85% | Complete |
+| `decentralized_optA_v4.zip` | CTDE | TBD | TBD | Eval pending |
+| `decentralized_indep_v1.zip` | Independent | TBD | TBD | Completed |
+| `decentralized_indep_v2.zip` | Independent | TBD | TBD | Completed |
+| `robot{1-4}_decentralized_indep_v4.zip` | Independent | TBD | TBD | **In training** |
 
 ---
 
@@ -147,16 +150,16 @@ Fix: `INITIAL_TTL=2000` in `controllers/epuck_decentralized/epuck_decentralized.
 
 | Purpose | File |
 |---------|------|
-| Centralized training | `controllers/epuck_foraging_supervisor_shaping/epuck_foraging_supervisor_shaping.py` |
-| Centralized evaluation | `controllers/eval_best_model/eval_best_model.py` |
+| Centralized training supervisor | `controllers/epuck_foraging_supervisor_shaping/epuck_foraging_supervisor_cpfa.py` |
 | Centralized robot | `controllers/epuck_driver/epuck_driver.py` |
-| Decentralized training supervisor | `controllers/decentralized_supervisor/decentralized_supervisor.py` |
-| Decentralized training robot | `controllers/epuck_decentralized/epuck_decentralized.py` |
+| Centralized eval | `controllers/eval_best_model/eval_best_model_5x5.py` |
+| Independent training supervisor (thin shim) | `controllers/decentralized_supervisor/decentralized_supervisor.py` |
+| Independent training robot | `controllers/epuck_decentralized_train_v4/epuck_decentralized_train_v4.py` |
+| Robot base class (sensors + pheromone) | `controllers/epuck_decentralized/epuck_decentralized_v4.py` |
 | Decentralized eval supervisor | `controllers/eval_decentralized/eval_decentralized.py` |
 | Decentralized eval robot | `controllers/epuck_decentralized_eval/epuck_decentralized_eval.py` |
-| Centralized training world | `worlds/epuck_foraging_shaping.wbt` |
-| Centralized eval world | `worlds/eval_best.wbt` |
-| Decentralized training world | `worlds/epuck_foraging_decentralized.wbt` |
+| Centralized training world | `worlds/epuck_foraging_shaping_5x5.wbt` |
+| Independent training world | `worlds/epuck_foraging_decentralized.wbt` |
 | Decentralized eval world | `worlds/eval_decentralized.wbt` |
 
 For how to run training and evaluation, see `TRAINING_GUIDE.md` and `TESTING_GUIDE.md`.

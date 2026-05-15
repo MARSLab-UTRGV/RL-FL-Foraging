@@ -36,7 +36,7 @@ FOV_HALF_ANGLE = 1.2
 DENSITY_RADIUS = 0.5
 DENSITY_MAX    = 5
 NUM_ROBOTS     = 4
-NUM_TAGS       = 70
+NUM_TAGS       = 64
 
 
 class DecentralizedEvalSupervisor:
@@ -89,7 +89,7 @@ class DecentralizedEvalSupervisor:
                     vals = [float(x) for x in msg.split(',')]
                     if len(vals) >= 17:
                         self.robot_gps[i]    = [vals[15], vals[16]]
-                        self._robot_phero[i] = [vals[11], vals[14]]  # phero_known, phero_strength
+                        self._robot_phero[i] = [vals[11], vals[12]]  # site_known, phero_known
                 except (ValueError, IndexError):
                     pass
 
@@ -219,20 +219,19 @@ class DecentralizedEvalSupervisor:
                     carry  = self.carrying[ri]
                     tag_vis, tag_dist_n, _ = self._tag_obs(ri)
 
-                    if wall_d < 0.6:       mode = "WALL_ESC"
-                    elif carry:            mode = "RTB"
-                    elif d2base < 0.3:     mode = "BASE_AVOID"
-                    elif tag_vis > 0.5:    mode = "TAG_SEEK"
-                    else:                  mode = "PPO"
+                    if wall_d < 0.35:              mode = "WALL_ESC"
+                    elif not carry and d2base < 0.25: mode = "BASE_ESC"
+                    elif carry:                    mode = "RTB"
+                    else:                          mode = "PPO"
 
-                    phero_k = self._robot_phero[ri][0]
-                    phero_s = self._robot_phero[ri][1]
+                    site_k  = self._robot_phero[ri][0]
+                    phero_k = self._robot_phero[ri][1]
                     log_msg += (
-                        f"R{ri+1}[{mode}]: "
+                        f"R{ri+1}[{mode:8s}]: "
                         f"carry={1 if carry else 0} | "
-                        f"base_dist={d2base:.2f} | "
-                        f"tag_vis={tag_vis:.0f} tag_dist={tag_dist_n:.2f} | "
-                        f"phero={phero_k:.0f} str={phero_s:.2f} | "
+                        f"base={d2base:.2f} | "
+                        f"tag_vis={tag_vis:.0f} td={tag_dist_n:.2f} | "
+                        f"site={site_k:.0f} phero={phero_k:.0f} | "
                         f"wall={wall_d:.2f}\n"
                     )
                 print(log_msg)

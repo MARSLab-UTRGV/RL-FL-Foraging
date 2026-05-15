@@ -114,15 +114,11 @@ DEF BASE_STATION Solid {
       }
       geometry Cylinder {
         height 0.002
-        radius 0.2
+        radius 0.1
       }
     }
   ]
   name "base_station"
-  boundingObject Cylinder {
-    height 0.002
-    radius 0.2
-  }
 }
 
 # ---------------------------------------------------------
@@ -202,19 +198,11 @@ DEF APRILTAG_61 Solid { translation 0.1 1.5 0.01375 children [ Shape { appearanc
 DEF APRILTAG_62 Solid { translation 0.0 1.5 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_62" }
 DEF APRILTAG_63 Solid { translation -0.1 1.5 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_63" }
 DEF APRILTAG_64 Solid { translation 0.1 1.4 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_64" }
-DEF APRILTAG_65 Solid { translation 0.0 1.4 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_65" }
-DEF APRILTAG_66 Solid { translation -0.1 1.4 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_66" }
-
-# Cluster 6 (2x2) - Bottom Center (0, -1.5) - Tags 67-70
-DEF APRILTAG_67 Solid { translation 0.05 -1.55 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_67" }
-DEF APRILTAG_68 Solid { translation -0.05 -1.55 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_68" }
-DEF APRILTAG_69 Solid { translation 0.05 -1.45 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_69" }
-DEF APRILTAG_70 Solid { translation -0.05 -1.45 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_70" }
 
 DEF ROBOT1 E-puck {
   translation -0.5 0 0
   name "robot1"
-  controller "epuck_decentralized"
+  controller "epuck_decentralized_train_v4"
   emitter_channel 1
   receiver_channel 1
   camera_fieldOfView 1
@@ -238,13 +226,23 @@ DEF ROBOT1 E-puck {
       channel 10
       bufferSize 1024
     }
+    Emitter {
+      name "model_emitter"
+      range 2.0
+      channel 11
+    }
+    Receiver {
+      name "model_receiver"
+      channel 11
+      bufferSize 1048576
+    }
   ]
 }
 
 DEF ROBOT2 E-puck {
   translation 0.5 0 0
   name "robot2"
-  controller "epuck_decentralized"
+  controller "epuck_decentralized_train_v4"
   emitter_channel 2
   receiver_channel 2
   camera_fieldOfView 1
@@ -268,13 +266,23 @@ DEF ROBOT2 E-puck {
       channel 10
       bufferSize 1024
     }
+    Emitter {
+      name "model_emitter"
+      range 2.0
+      channel 11
+    }
+    Receiver {
+      name "model_receiver"
+      channel 11
+      bufferSize 1048576
+    }
   ]
 }
 
 DEF ROBOT3 E-puck {
   translation 0 0.5 0
   name "robot3"
-  controller "epuck_decentralized"
+  controller "epuck_decentralized_train_v4"
   emitter_channel 3
   receiver_channel 3
   camera_fieldOfView 1
@@ -298,13 +306,23 @@ DEF ROBOT3 E-puck {
       channel 10
       bufferSize 1024
     }
+    Emitter {
+      name "model_emitter"
+      range 2.0
+      channel 11
+    }
+    Receiver {
+      name "model_receiver"
+      channel 11
+      bufferSize 1048576
+    }
   ]
 }
 
 DEF ROBOT4 E-puck {
   translation 0 -0.5 0
   name "robot4"
-  controller "epuck_decentralized"
+  controller "epuck_decentralized_train_v4"
   emitter_channel 4
   receiver_channel 4
   camera_fieldOfView 1
@@ -327,6 +345,16 @@ DEF ROBOT4 E-puck {
       name "phero_receiver"
       channel 10
       bufferSize 1024
+    }
+    Emitter {
+      name "model_emitter"
+      range 2.0
+      channel 11
+    }
+    Receiver {
+      name "model_receiver"
+      channel 11
+      bufferSize 1048576
     }
   ]
 }

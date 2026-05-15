@@ -1,0 +1,108 @@
+[robot2] EP END | Picks: 1 | Deps: 1 | Steps: 16384 | Updates: 0 | GossipMerges: 0
+[robot2] Update 1 | Step 16385
+[robot2] Gossip broadcast | 746 KB | Update 1
+[robot2] EP END | Picks: 1 | Deps: 1 | Steps: 32768 | Updates: 1 | GossipMerges: 0
+[robot2] Update 2 | Step 32769
+[robot2] Gossip merged 1 model(s) | Update 2
+[robot2] Gossip broadcast | 746 KB | Update 2
+[robot2] EP END | Picks: 1 | Deps: 1 | Steps: 49152 | Updates: 2 | GossipMerges: 1
+[robot2] Update 3 | Step 49153
+[robot2] Gossip merged 1 model(s) | Update 3
+[robot2] Gossip broadcast | 746 KB | Update 3
+[robot2] Saved checkpoint: /home/sara/Documents/Centralized Learning/RL-FL-Foraging/logs/robot2_decentralized_indep_v4/robot2_decentralized_indep_v4_50000_steps.zip
+[robot2] EP END | Picks: 2 | Deps: 2 | Steps: 65536 | Updates: 3 | GossipMerges: 1
+[robot2] Update 4 | Step 65537
+[robot2] Gossip merged 1 model(s) | Update 4
+[robot2] Gossip broadcast | 746 KB | Update 4
+[robot2] EP END | Picks: 0 | Deps: 0 | Steps: 81920 | Updates: 4 | GossipMerges: 1
+[robot2] Update 5 | Step 81921
+[robot2] Gossip merged 1 model(s) | Update 5
+[robot2] Gossip broadcast | 746 KB | Update 5
+[robot2] EP END | Picks: 0 | Deps: 0 | Steps: 98304 | Updates: 5 | GossipMerges: 1
+[robot2] Update 6 | Step 98305
+[robot2] Gossip merged 1 model(s) | Update 6
+[robot2] Gossip broadcast | 746 KB | Update 6
+[robot2] Saved checkpoint: /home/sara/Documents/Centralized Learning/RL-FL-Foraging/logs/robot2_decentralized_indep_v4/robot2_decentralized_indep_v4_100000_steps.zip
+[robot2] EP END | Picks: 1 | Deps: 1 | Steps: 114688 | Updates: 6 | GossipMerges: 1
+[robot2] Update 7 | Step 114689
+[robot2] Gossip merged 1 model(s) | Update 7
+[robot2] Gossip broadcast | 746 KB | Update 7
+[robot2] EP END | Picks: 0 | Deps: 0 | Steps: 131072 | Updates: 7 | GossipMerges: 1
+[robot2] Update 8 | Step 131073
+[robot2] Gossip merged 1 model(s) | Update 8
+[robot2] Gossip broadcast | 746 KB | Update 8
+[robot2] EP END | Picks: 0 | Deps: 0 | Steps: 147456 | Updates: 8 | GossipMerges: 1
+[robot2] Update 9 | Step 147457
+[robot2] Gossip merged 1 model(s) | Update 9
+[robot2] Gossip broadcast | 746 KB | Update 9
+[robot2] Saved checkpoint: /home/sara/Documents/Centralized Learning/RL-FL-Foraging/logs/robot2_decentralized_indep_v4/robot2_decentralized_indep_v4_150000_steps.zip
+[robot2] EP END | Picks: 2 | Deps: 2 | Steps: 163840 | Updates: 9 | GossipMerges: 1
+[robot2] Update 10 | Step 163841
+[robot2] Gossip merged 1 model(s) | Update 10
+[robot2] Gossip broadcast | 746 KB | Update 10
+[robot2] EP END | Picks: 0 | Deps: 0 | Steps: 180224 | Updates: 10 | GossipMerges: 1
+[robot2] Update 11 | Step 180225
+[robot2] Gossip merged 1 model(s) | Update 11
+[robot2] Gossip broadcast | 746 KB | Update 11
+[robot2] EP END | Picks: 1 | Deps: 1 | Steps: 196608 | Updates: 11 | GossipMerges: 1
+[robot2] Update 12 | Step 196609
+[robot2] Gossip merged 1 model(s) | Update 12
+[robot2] Gossip broadcast | 746 KB | Update 12
+[robot2] Saved checkpoint: /home/sara/Documents/Centralized Learning/RL-FL-Foraging/logs/robot2_decentralized_indep_v4/robot2_decentralized_indep_v4_200000_steps.zip
+[robot2] EP END | Picks: 1 | Deps: 1 | Steps: 212992 | Updates: 12 | GossipMerges: 1
+[robot2] Update 13 | Step 212993
+[robot2] Gossip merged 1 model(s) | Update 13
+[robot2] Gossip broadcast | 746 KB | Update 13
+[robot2] EP END | Picks: 0 | Deps: 0 | Steps: 229376 | Updates: 13 | GossipMerges: 1
+[robot2] Update 14 | Step 229377
+[robot2] Gossip merged 1 model(s) | Update 14
+[robot2] Gossip broadcast | 746 KB | Update 14
+[robot2] EP END | Picks: 0 | Deps: 0 | Steps: 245760 | Updates: 14 | GossipMerges: 1
+[robot2] Update 15 | Step 245761
+[robot2] Gossip merged 1 model(s) | Update 15
+[robot2] Gossip broadcast | 746 KB | Update 15
+[robot2] Saved checkpoint: /home/sara/Documents/Centralized Learning/RL-FL-Foraging/logs/robot2_decentralized_indep_v4/robot2_decentralized_indep_v4_250000_steps.zip
+[robot2] EP END | Picks: 3 | Deps: 3 | Steps: 262144 | Updates: 15 | GossipMerges: 1
+[robot2] Update 16 | Step 262145
+[robot2] Gossip merged 1 model(s) | Update 16
+[robot2] Gossip broadcast | 746 KB | Update 16
+[robot2] EP END | Picks: 0 | Deps: 0 | Steps: 278528 | Updates: 16 | GossipMerges: 1
+[robot2] Update 17 | Step 278529
+[robot2] Gossip merged 1 model(s) | Update 17
+[robot2] Gossip broadcast | 746 KB | Update 17
+[robot2] EP END | Picks: 0 | Deps: 0 | Steps: 294912 | Updates: 17 | GossipMerges: 1
+[robot2] Update 18 | Step 294913
+[robot2] Gossip merged 1 model(s) | Update 18
+[robot2] Gossip broadcast | 746 KB | Update 18
+[robot2] Saved checkpoint: /home/sara/Documents/Centralized Learning/RL-FL-Foraging/logs/robot2_decentralized_indep_v4/robot2_decentralized_indep_v4_300000_steps.zip
+[robot2] EP END | Picks: 0 | Deps: 0 | Steps: 311296 | Updates: 18 | GossipMerges: 1
+[robot2] Update 19 | Step 311297
+[robot2] Gossip merged 1 model(s) | Update 19
+[robot2] Gossip broadcast | 746 KB | Update 19
+[robot2] EP END | Picks: 0 | Deps: 0 | Steps: 327680 | Updates: 19 | GossipMerges: 1
+[robot2] Update 20 | Step 327681
+[robot2] Gossip merged 1 model(s) | Update 20
+[robot2] Gossip broadcast | 746 KB | Update 20
+[robot2] EP END | Picks: 0 | Deps: 0 | Steps: 344064 | Updates: 20 | GossipMerges: 1
+[robot2] Update 21 | Step 344065
+[robot2] Gossip merged 1 model(s) | Update 21
+[robot2] Gossip broadcast | 746 KB | Update 21
+[robot2] Saved checkpoint: /home/sara/Documents/Centralized Learning/RL-FL-Foraging/logs/robot2_decentralized_indep_v4/robot2_decentralized_indep_v4_350000_steps.zip
+[robot2] EP END | Picks: 0 | Deps: 0 | Steps: 360448 | Updates: 21 | GossipMerges: 1
+[robot2] Update 22 | Step 360449
+[robot2] Gossip merged 1 model(s) | Update 22
+[robot2] Gossip broadcast | 746 KB | Update 22
+[robot2] EP END | Picks: 4 | Deps: 4 | Steps: 376832 | Updates: 22 | GossipMerges: 1
+[robot2] Update 23 | Step 376833
+[robot2] Gossip merged 1 model(s) | Update 23
+[robot2] Gossip broadcast | 746 KB | Update 23
+[robot2] EP END | Picks: 2 | Deps: 2 | Steps: 393216 | Updates: 23 | GossipMerges: 1
+[robot2] Update 24 | Step 393217
+[robot2] Gossip merged 1 model(s) | Update 24
+[robot2] Gossip broadcast | 746 KB | Update 24
+[robot2] Saved checkpoint: /home/sara/Documents/Centralized Learning/RL-FL-Foraging/logs/robot2_decentralized_indep_v4/robot2_decentralized_indep_v4_400000_steps.zip
+[robot2] EP END | Picks: 2 | Deps: 2 | Steps: 409600 | Updates: 24 | GossipMerges: 1
+[robot2] Update 25 | Step 409601
+[robot2] Gossip merged 1 model(s) | Update 25
+[robot2] Gossip broadcast | 746 KB | Update 25
+[robot2] EP END | Picks: 1 | Deps: 1 | Steps: 425984 | Updates: 25 | GossipMerges: 1

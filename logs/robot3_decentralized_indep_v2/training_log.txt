@@ -1,0 +1,433 @@
+[robot3] EP END | Picks: 16 | Deps: 16 | Steps: 8192 | Updates: 0
+[robot3] Update 1 | Step 8193
+[robot3] EP END | Picks: 13 | Deps: 13 | Steps: 16384 | Updates: 1
+[robot3] Update 2 | Step 16385
+[robot3] EP END | Picks: 16 | Deps: 16 | Steps: 24576 | Updates: 2
+[robot3] Update 3 | Step 24577
+[robot3] EP END | Picks: 17 | Deps: 16 | Steps: 32768 | Updates: 3
+[robot3] Update 4 | Step 32769
+[robot3] EP END | Picks: 17 | Deps: 16 | Steps: 40960 | Updates: 4
+[robot3] Update 5 | Step 40961
+[robot3] EP END | Picks: 15 | Deps: 15 | Steps: 49152 | Updates: 5
+[robot3] Update 6 | Step 49153
+[robot3] Saved checkpoint: /home/sara/Documents/Centralized Learning/RL-FL-Foraging/logs/robot3_decentralized_indep_v2/robot3_decentralized_indep_v2_50000_steps.zip
+[robot3] EP END | Picks: 12 | Deps: 12 | Steps: 57344 | Updates: 6
+[robot3] Update 7 | Step 57345
+[robot3] EP END | Picks: 17 | Deps: 16 | Steps: 65536 | Updates: 7
+[robot3] Update 8 | Step 65537
+[robot3] EP END | Picks: 14 | Deps: 14 | Steps: 73728 | Updates: 8
+[robot3] Update 9 | Step 73729
+[robot3] EP END | Picks: 16 | Deps: 15 | Steps: 81920 | Updates: 9
+[robot3] Update 10 | Step 81921
+[robot3] EP END | Picks: 13 | Deps: 12 | Steps: 90112 | Updates: 10
+[robot3] Update 11 | Step 90113
+[robot3] EP END | Picks: 12 | Deps: 12 | Steps: 98304 | Updates: 11
+[robot3] Update 12 | Step 98305
+[robot3] Saved checkpoint: /home/sara/Documents/Centralized Learning/RL-FL-Foraging/logs/robot3_decentralized_indep_v2/robot3_decentralized_indep_v2_100000_steps.zip
+[robot3] EP END | Picks: 14 | Deps: 14 | Steps: 106496 | Updates: 12
+[robot3] Update 13 | Step 106497
+[robot3] EP END | Picks: 11 | Deps: 11 | Steps: 114688 | Updates: 13
+[robot3] Update 14 | Step 114689
+[robot3] EP END | Picks: 15 | Deps: 14 | Steps: 122880 | Updates: 14
+[robot3] Update 15 | Step 122881
+[robot3] EP END | Picks: 12 | Deps: 12 | Steps: 131072 | Updates: 15
+[robot3] Update 16 | Step 131073
+[robot3] EP END | Picks: 15 | Deps: 14 | Steps: 139264 | Updates: 16
+[robot3] Update 17 | Step 139265
+[robot3] EP END | Picks: 6 | Deps: 5 | Steps: 147456 | Updates: 17
+[robot3] Update 18 | Step 147457
+[robot3] Saved checkpoint: /home/sara/Documents/Centralized Learning/RL-FL-Foraging/logs/robot3_decentralized_indep_v2/robot3_decentralized_indep_v2_150000_steps.zip
+[robot3] EP END | Picks: 14 | Deps: 14 | Steps: 155648 | Updates: 18
+[robot3] Update 19 | Step 155649
+[robot3] EP END | Picks: 12 | Deps: 12 | Steps: 163840 | Updates: 19
+[robot3] Update 20 | Step 163841
+[robot3] EP END | Picks: 14 | Deps: 13 | Steps: 172032 | Updates: 20
+[robot3] Update 21 | Step 172033
+[robot3] EP END | Picks: 14 | Deps: 14 | Steps: 180224 | Updates: 21
+[robot3] Update 22 | Step 180225
+[robot3] EP END | Picks: 14 | Deps: 14 | Steps: 188416 | Updates: 22
+[robot3] Update 23 | Step 188417
+[robot3] EP END | Picks: 14 | Deps: 13 | Steps: 196608 | Updates: 23
+[robot3] Update 24 | Step 196609
+[robot3] Saved checkpoint: /home/sara/Documents/Centralized Learning/RL-FL-Foraging/logs/robot3_decentralized_indep_v2/robot3_decentralized_indep_v2_200000_steps.zip
+[robot3] EP END | Picks: 11 | Deps: 11 | Steps: 204800 | Updates: 24
+[robot3] Update 25 | Step 204801
+[robot3] EP END | Picks: 13 | Deps: 13 | Steps: 212992 | Updates: 25
+[robot3] Update 26 | Step 212993
+[robot3] EP END | Picks: 12 | Deps: 12 | Steps: 221184 | Updates: 26
+[robot3] Update 27 | Step 221185
+[robot3] EP END | Picks: 13 | Deps: 13 | Steps: 229376 | Updates: 27
+[robot3] Update 28 | Step 229377
+[robot3] EP END | Picks: 14 | Deps: 14 | Steps: 237568 | Updates: 28
+[robot3] Update 29 | Step 237569
+[robot3] EP END | Picks: 12 | Deps: 12 | Steps: 245760 | Updates: 29
+[robot3] Update 30 | Step 245761
+[robot3] Saved checkpoint: /home/sara/Documents/Centralized Learning/RL-FL-Foraging/logs/robot3_decentralized_indep_v2/robot3_decentralized_indep_v2_250000_steps.zip
+[robot3] EP END | Picks: 0 | Deps: 0 | Steps: 253952 | Updates: 30
+[robot3] Update 31 | Step 253953
+[robot3] EP END | Picks: 8 | Deps: 8 | Steps: 262144 | Updates: 31
+[robot3] Update 32 | Step 262145
+[robot3] EP END | Picks: 12 | Deps: 12 | Steps: 270336 | Updates: 32
+[robot3] Update 33 | Step 270337
+[robot3] EP END | Picks: 2 | Deps: 2 | Steps: 278528 | Updates: 33
+[robot3] Update 34 | Step 278529
+[robot3] EP END | Picks: 12 | Deps: 11 | Steps: 286720 | Updates: 34
+[robot3] Update 35 | Step 286721
+[robot3] EP END | Picks: 11 | Deps: 11 | Steps: 294912 | Updates: 35
+[robot3] Update 36 | Step 294913
+[robot3] Saved checkpoint: /home/sara/Documents/Centralized Learning/RL-FL-Foraging/logs/robot3_decentralized_indep_v2/robot3_decentralized_indep_v2_300000_steps.zip
+[robot3] EP END | Picks: 9 | Deps: 8 | Steps: 303104 | Updates: 36
+[robot3] Update 37 | Step 303105
+[robot3] EP END | Picks: 7 | Deps: 7 | Steps: 311296 | Updates: 37
+[robot3] Update 38 | Step 311297
+[robot3] EP END | Picks: 6 | Deps: 6 | Steps: 319488 | Updates: 38
+[robot3] Update 39 | Step 319489
+[robot3] EP END | Picks: 10 | Deps: 9 | Steps: 327680 | Updates: 39
+[robot3] Update 40 | Step 327681
+[robot3] EP END | Picks: 2 | Deps: 2 | Steps: 335872 | Updates: 40
+[robot3] Update 41 | Step 335873
+[robot3] EP END | Picks: 7 | Deps: 7 | Steps: 344064 | Updates: 41
+[robot3] Update 42 | Step 344065
+[robot3] Saved checkpoint: /home/sara/Documents/Centralized Learning/RL-FL-Foraging/logs/robot3_decentralized_indep_v2/robot3_decentralized_indep_v2_350000_steps.zip
+[robot3] EP END | Picks: 7 | Deps: 7 | Steps: 352256 | Updates: 42
+[robot3] Update 43 | Step 352257
+[robot3] EP END | Picks: 12 | Deps: 12 | Steps: 360448 | Updates: 43
+[robot3] Update 44 | Step 360449
+[robot3] EP END | Picks: 11 | Deps: 11 | Steps: 368640 | Updates: 44
+[robot3] Update 45 | Step 368641
+[robot3] EP END | Picks: 10 | Deps: 9 | Steps: 376832 | Updates: 45
+[robot3] Update 46 | Step 376833
+[robot3] EP END | Picks: 10 | Deps: 9 | Steps: 385024 | Updates: 46
+[robot3] Update 47 | Step 385025
+[robot3] EP END | Picks: 11 | Deps: 11 | Steps: 393216 | Updates: 47
+[robot3] Update 48 | Step 393217
+[robot3] Saved checkpoint: /home/sara/Documents/Centralized Learning/RL-FL-Foraging/logs/robot3_decentralized_indep_v2/robot3_decentralized_indep_v2_400000_steps.zip
+[robot3] EP END | Picks: 5 | Deps: 4 | Steps: 401408 | Updates: 48
+[robot3] Update 49 | Step 401409
+[robot3] EP END | Picks: 9 | Deps: 9 | Steps: 409600 | Updates: 49
+[robot3] Update 50 | Step 409601
+[robot3] EP END | Picks: 7 | Deps: 7 | Steps: 417792 | Updates: 50
+[robot3] Update 51 | Step 417793
+[robot3] EP END | Picks: 1 | Deps: 1 | Steps: 425984 | Updates: 51
+[robot3] Update 52 | Step 425985
+[robot3] EP END | Picks: 3 | Deps: 3 | Steps: 434176 | Updates: 52
+[robot3] Update 53 | Step 434177
+[robot3] EP END | Picks: 10 | Deps: 10 | Steps: 442368 | Updates: 53
+[robot3] Update 54 | Step 442369
+[robot3] Saved checkpoint: /home/sara/Documents/Centralized Learning/RL-FL-Foraging/logs/robot3_decentralized_indep_v2/robot3_decentralized_indep_v2_450000_steps.zip
+[robot3] EP END | Picks: 10 | Deps: 9 | Steps: 450560 | Updates: 54
+[robot3] Update 55 | Step 450561
+[robot3] EP END | Picks: 11 | Deps: 11 | Steps: 458752 | Updates: 55
+[robot3] Update 56 | Step 458753
+[robot3] EP END | Picks: 9 | Deps: 9 | Steps: 466944 | Updates: 56
+[robot3] Update 57 | Step 466945
+[robot3] EP END | Picks: 9 | Deps: 9 | Steps: 475136 | Updates: 57
+[robot3] Update 58 | Step 475137
+[robot3] EP END | Picks: 2 | Deps: 2 | Steps: 483328 | Updates: 58
+[robot3] Update 59 | Step 483329
+[robot3] EP END | Picks: 7 | Deps: 7 | Steps: 491520 | Updates: 59
+[robot3] Update 60 | Step 491521
+[robot3] EP END | Picks: 9 | Deps: 9 | Steps: 499712 | Updates: 60
+[robot3] Update 61 | Step 499713
+[robot3] Saved checkpoint: /home/sara/Documents/Centralized Learning/RL-FL-Foraging/logs/robot3_decentralized_indep_v2/robot3_decentralized_indep_v2_500000_steps.zip
+[robot3] EP END | Picks: 2 | Deps: 2 | Steps: 507904 | Updates: 61
+[robot3] Update 62 | Step 507905
+[robot3] EP END | Picks: 3 | Deps: 3 | Steps: 516096 | Updates: 62
+[robot3] Update 63 | Step 516097
+[robot3] EP END | Picks: 8 | Deps: 8 | Steps: 524288 | Updates: 63
+[robot3] Update 64 | Step 524289
+[robot3] EP END | Picks: 8 | Deps: 8 | Steps: 532480 | Updates: 64
+[robot3] Update 65 | Step 532481
+[robot3] EP END | Picks: 9 | Deps: 8 | Steps: 540672 | Updates: 65
+[robot3] Update 66 | Step 540673
+[robot3] EP END | Picks: 8 | Deps: 8 | Steps: 548864 | Updates: 66
+[robot3] Update 67 | Step 548865
+[robot3] Saved checkpoint: /home/sara/Documents/Centralized Learning/RL-FL-Foraging/logs/robot3_decentralized_indep_v2/robot3_decentralized_indep_v2_550000_steps.zip
+[robot3] EP END | Picks: 10 | Deps: 9 | Steps: 557056 | Updates: 67
+[robot3] Update 68 | Step 557057
+[robot3] EP END | Picks: 7 | Deps: 6 | Steps: 565248 | Updates: 68
+[robot3] Update 69 | Step 565249
+[robot3] EP END | Picks: 7 | Deps: 7 | Steps: 573440 | Updates: 69
+[robot3] Update 70 | Step 573441
+[robot3] EP END | Picks: 4 | Deps: 4 | Steps: 581632 | Updates: 70
+[robot3] Update 71 | Step 581633
+[robot3] EP END | Picks: 2 | Deps: 2 | Steps: 589824 | Updates: 71
+[robot3] Update 72 | Step 589825
+[robot3] EP END | Picks: 7 | Deps: 7 | Steps: 598016 | Updates: 72
+[robot3] Update 73 | Step 598017
+[robot3] Saved checkpoint: /home/sara/Documents/Centralized Learning/RL-FL-Foraging/logs/robot3_decentralized_indep_v2/robot3_decentralized_indep_v2_600000_steps.zip
+[robot3] EP END | Picks: 2 | Deps: 2 | Steps: 606208 | Updates: 73
+[robot3] Update 74 | Step 606209
+[robot3] EP END | Picks: 8 | Deps: 7 | Steps: 614400 | Updates: 74
+[robot3] Update 75 | Step 614401
+[robot3] EP END | Picks: 3 | Deps: 3 | Steps: 622592 | Updates: 75
+[robot3] Update 76 | Step 622593
+[robot3] EP END | Picks: 3 | Deps: 3 | Steps: 630784 | Updates: 76
+[robot3] Update 77 | Step 630785
+[robot3] EP END | Picks: 7 | Deps: 7 | Steps: 638976 | Updates: 77
+[robot3] Update 78 | Step 638977
+[robot3] EP END | Picks: 6 | Deps: 6 | Steps: 647168 | Updates: 78
+[robot3] Update 79 | Step 647169
+[robot3] Saved checkpoint: /home/sara/Documents/Centralized Learning/RL-FL-Foraging/logs/robot3_decentralized_indep_v2/robot3_decentralized_indep_v2_650000_steps.zip
+[robot3] EP END | Picks: 7 | Deps: 7 | Steps: 655360 | Updates: 79
+[robot3] Update 80 | Step 655361
+[robot3] EP END | Picks: 8 | Deps: 8 | Steps: 663552 | Updates: 80
+[robot3] Update 81 | Step 663553
+[robot3] EP END | Picks: 6 | Deps: 6 | Steps: 671744 | Updates: 81
+[robot3] Update 82 | Step 671745
+[robot3] EP END | Picks: 0 | Deps: 0 | Steps: 679936 | Updates: 82
+[robot3] Update 83 | Step 679937
+[robot3] EP END | Picks: 8 | Deps: 7 | Steps: 688128 | Updates: 83
+[robot3] Update 84 | Step 688129
+[robot3] EP END | Picks: 7 | Deps: 7 | Steps: 696320 | Updates: 84
+[robot3] Update 85 | Step 696321
+[robot3] Saved checkpoint: /home/sara/Documents/Centralized Learning/RL-FL-Foraging/logs/robot3_decentralized_indep_v2/robot3_decentralized_indep_v2_700000_steps.zip
+[robot3] EP END | Picks: 7 | Deps: 6 | Steps: 704512 | Updates: 85
+[robot3] Update 86 | Step 704513
+[robot3] EP END | Picks: 3 | Deps: 2 | Steps: 712704 | Updates: 86
+[robot3] Update 87 | Step 712705
+[robot3] EP END | Picks: 1 | Deps: 1 | Steps: 720896 | Updates: 87
+[robot3] Update 88 | Step 720897
+[robot3] EP END | Picks: 3 | Deps: 3 | Steps: 729088 | Updates: 88
+[robot3] Update 89 | Step 729089
+[robot3] EP END | Picks: 1 | Deps: 1 | Steps: 737280 | Updates: 89
+[robot3] Update 90 | Step 737281
+[robot3] EP END | Picks: 6 | Deps: 6 | Steps: 745472 | Updates: 90
+[robot3] Update 91 | Step 745473
+[robot3] Saved checkpoint: /home/sara/Documents/Centralized Learning/RL-FL-Foraging/logs/robot3_decentralized_indep_v2/robot3_decentralized_indep_v2_750000_steps.zip
+[robot3] EP END | Picks: 4 | Deps: 3 | Steps: 753664 | Updates: 91
+[robot3] Update 92 | Step 753665
+[robot3] EP END | Picks: 8 | Deps: 8 | Steps: 761856 | Updates: 92
+[robot3] Update 93 | Step 761857
+[robot3] EP END | Picks: 3 | Deps: 3 | Steps: 770048 | Updates: 93
+[robot3] Update 94 | Step 770049
+[robot3] EP END | Picks: 10 | Deps: 9 | Steps: 778240 | Updates: 94
+[robot3] Update 95 | Step 778241
+[robot3] EP END | Picks: 2 | Deps: 2 | Steps: 786432 | Updates: 95
+[robot3] Update 96 | Step 786433
+[robot3] EP END | Picks: 2 | Deps: 2 | Steps: 794624 | Updates: 96
+[robot3] Update 97 | Step 794625
+[robot3] Saved checkpoint: /home/sara/Documents/Centralized Learning/RL-FL-Foraging/logs/robot3_decentralized_indep_v2/robot3_decentralized_indep_v2_800000_steps.zip
+[robot3] EP END | Picks: 7 | Deps: 7 | Steps: 802816 | Updates: 97
+[robot3] Update 98 | Step 802817
+[robot3] EP END | Picks: 1 | Deps: 1 | Steps: 811008 | Updates: 98
+[robot3] Update 99 | Step 811009
+[robot3] EP END | Picks: 6 | Deps: 5 | Steps: 819200 | Updates: 99
+[robot3] Update 100 | Step 819201
+[robot3] EP END | Picks: 7 | Deps: 7 | Steps: 827392 | Updates: 100
+[robot3] Update 101 | Step 827393
+[robot3] EP END | Picks: 6 | Deps: 6 | Steps: 835584 | Updates: 101
+[robot3] Update 102 | Step 835585
+[robot3] EP END | Picks: 3 | Deps: 3 | Steps: 843776 | Updates: 102
+[robot3] Update 103 | Step 843777
+[robot3] Saved checkpoint: /home/sara/Documents/Centralized Learning/RL-FL-Foraging/logs/robot3_decentralized_indep_v2/robot3_decentralized_indep_v2_850000_steps.zip
+[robot3] EP END | Picks: 8 | Deps: 8 | Steps: 851968 | Updates: 103
+[robot3] Update 104 | Step 851969
+[robot3] EP END | Picks: 6 | Deps: 6 | Steps: 860160 | Updates: 104
+[robot3] Update 105 | Step 860161
+[robot3] EP END | Picks: 3 | Deps: 3 | Steps: 868352 | Updates: 105
+[robot3] Update 106 | Step 868353
+[robot3] EP END | Picks: 2 | Deps: 2 | Steps: 876544 | Updates: 106
+[robot3] Update 107 | Step 876545
+[robot3] EP END | Picks: 7 | Deps: 7 | Steps: 884736 | Updates: 107
+[robot3] Update 108 | Step 884737
+[robot3] EP END | Picks: 4 | Deps: 4 | Steps: 892928 | Updates: 108
+[robot3] Update 109 | Step 892929
+[robot3] Saved checkpoint: /home/sara/Documents/Centralized Learning/RL-FL-Foraging/logs/robot3_decentralized_indep_v2/robot3_decentralized_indep_v2_900000_steps.zip
+[robot3] EP END | Picks: 5 | Deps: 4 | Steps: 901120 | Updates: 109
+[robot3] Update 110 | Step 901121
+[robot3] EP END | Picks: 4 | Deps: 4 | Steps: 909312 | Updates: 110
+[robot3] Update 111 | Step 909313
+[robot3] EP END | Picks: 5 | Deps: 5 | Steps: 917504 | Updates: 111
+[robot3] Update 112 | Step 917505
+[robot3] EP END | Picks: 5 | Deps: 5 | Steps: 925696 | Updates: 112
+[robot3] Update 113 | Step 925697
+[robot3] EP END | Picks: 6 | Deps: 6 | Steps: 933888 | Updates: 113
+[robot3] Update 114 | Step 933889
+[robot3] EP END | Picks: 5 | Deps: 4 | Steps: 942080 | Updates: 114
+[robot3] Update 115 | Step 942081
+[robot3] Saved checkpoint: /home/sara/Documents/Centralized Learning/RL-FL-Foraging/logs/robot3_decentralized_indep_v2/robot3_decentralized_indep_v2_950000_steps.zip
+[robot3] EP END | Picks: 6 | Deps: 5 | Steps: 950272 | Updates: 115
+[robot3] Update 116 | Step 950273
+[robot3] EP END | Picks: 4 | Deps: 4 | Steps: 958464 | Updates: 116
+[robot3] Update 117 | Step 958465
+[robot3] EP END | Picks: 8 | Deps: 7 | Steps: 966656 | Updates: 117
+[robot3] Update 118 | Step 966657
+[robot3] EP END | Picks: 9 | Deps: 9 | Steps: 974848 | Updates: 118
+[robot3] Update 119 | Step 974849
+[robot3] EP END | Picks: 6 | Deps: 6 | Steps: 983040 | Updates: 119
+[robot3] Update 120 | Step 983041
+[robot3] EP END | Picks: 5 | Deps: 5 | Steps: 991232 | Updates: 120
+[robot3] Update 121 | Step 991233
+[robot3] EP END | Picks: 8 | Deps: 7 | Steps: 999424 | Updates: 121
+[robot3] Update 122 | Step 999425
+[robot3] Saved checkpoint: /home/sara/Documents/Centralized Learning/RL-FL-Foraging/logs/robot3_decentralized_indep_v2/robot3_decentralized_indep_v2_1000000_steps.zip
+[robot3] EP END | Picks: 5 | Deps: 5 | Steps: 1007616 | Updates: 122
+[robot3] Update 123 | Step 1007617
+[robot3] EP END | Picks: 6 | Deps: 6 | Steps: 1015808 | Updates: 123
+[robot3] Update 124 | Step 1015809
+[robot3] EP END | Picks: 4 | Deps: 4 | Steps: 1024000 | Updates: 124
+[robot3] Update 125 | Step 1024001
+[robot3] EP END | Picks: 4 | Deps: 4 | Steps: 1032192 | Updates: 125
+[robot3] Update 126 | Step 1032193
+[robot3] EP END | Picks: 4 | Deps: 4 | Steps: 1040384 | Updates: 126
+[robot3] Update 127 | Step 1040385
+[robot3] EP END | Picks: 7 | Deps: 7 | Steps: 1048576 | Updates: 127
+[robot3] Update 128 | Step 1048577
+[robot3] Saved checkpoint: /home/sara/Documents/Centralized Learning/RL-FL-Foraging/logs/robot3_decentralized_indep_v2/robot3_decentralized_indep_v2_1050000_steps.zip
+[robot3] EP END | Picks: 6 | Deps: 5 | Steps: 1056768 | Updates: 128
+[robot3] Update 129 | Step 1056769
+[robot3] EP END | Picks: 4 | Deps: 4 | Steps: 1064960 | Updates: 129
+[robot3] Update 130 | Step 1064961
+[robot3] EP END | Picks: 1 | Deps: 0 | Steps: 1073152 | Updates: 130
+[robot3] Update 131 | Step 1073153
+[robot3] EP END | Picks: 4 | Deps: 4 | Steps: 1081344 | Updates: 131
+[robot3] Update 132 | Step 1081345
+[robot3] EP END | Picks: 3 | Deps: 3 | Steps: 1089536 | Updates: 132
+[robot3] Update 133 | Step 1089537
+[robot3] EP END | Picks: 3 | Deps: 2 | Steps: 1097728 | Updates: 133
+[robot3] Update 134 | Step 1097729
+[robot3] Saved checkpoint: /home/sara/Documents/Centralized Learning/RL-FL-Foraging/logs/robot3_decentralized_indep_v2/robot3_decentralized_indep_v2_1100000_steps.zip
+[robot3] EP END | Picks: 4 | Deps: 4 | Steps: 1105920 | Updates: 134
+[robot3] Update 135 | Step 1105921
+[robot3] EP END | Picks: 5 | Deps: 5 | Steps: 1114112 | Updates: 135
+[robot3] Update 136 | Step 1114113
+[robot3] EP END | Picks: 7 | Deps: 7 | Steps: 1122304 | Updates: 136
+[robot3] Update 137 | Step 1122305
+[robot3] EP END | Picks: 8 | Deps: 7 | Steps: 1130496 | Updates: 137
+[robot3] Update 138 | Step 1130497
+[robot3] EP END | Picks: 7 | Deps: 7 | Steps: 1138688 | Updates: 138
+[robot3] Update 139 | Step 1138689
+[robot3] EP END | Picks: 7 | Deps: 7 | Steps: 1146880 | Updates: 139
+[robot3] Update 140 | Step 1146881
+[robot3] Saved checkpoint: /home/sara/Documents/Centralized Learning/RL-FL-Foraging/logs/robot3_decentralized_indep_v2/robot3_decentralized_indep_v2_1150000_steps.zip
+[robot3] EP END | Picks: 5 | Deps: 5 | Steps: 1155072 | Updates: 140
+[robot3] Update 141 | Step 1155073
+[robot3] EP END | Picks: 5 | Deps: 5 | Steps: 1163264 | Updates: 141
+[robot3] Update 142 | Step 1163265
+[robot3] EP END | Picks: 3 | Deps: 3 | Steps: 1171456 | Updates: 142
+[robot3] Update 143 | Step 1171457
+[robot3] EP END | Picks: 3 | Deps: 3 | Steps: 1179648 | Updates: 143
+[robot3] Update 144 | Step 1179649
+[robot3] EP END | Picks: 5 | Deps: 5 | Steps: 1187840 | Updates: 144
+[robot3] Update 145 | Step 1187841
+[robot3] EP END | Picks: 3 | Deps: 3 | Steps: 1196032 | Updates: 145
+[robot3] Update 146 | Step 1196033
+[robot3] Saved checkpoint: /home/sara/Documents/Centralized Learning/RL-FL-Foraging/logs/robot3_decentralized_indep_v2/robot3_decentralized_indep_v2_1200000_steps.zip
+[robot3] EP END | Picks: 5 | Deps: 5 | Steps: 1204224 | Updates: 146
+[robot3] Update 147 | Step 1204225
+[robot3] EP END | Picks: 4 | Deps: 4 | Steps: 1212416 | Updates: 147
+[robot3] Update 148 | Step 1212417
+[robot3] EP END | Picks: 6 | Deps: 6 | Steps: 1220608 | Updates: 148
+[robot3] Update 149 | Step 1220609
+[robot3] EP END | Picks: 0 | Deps: 0 | Steps: 1228800 | Updates: 149
+[robot3] Update 150 | Step 1228801
+[robot3] EP END | Picks: 5 | Deps: 4 | Steps: 1236992 | Updates: 150
+[robot3] Update 151 | Step 1236993
+[robot3] EP END | Picks: 2 | Deps: 2 | Steps: 1245184 | Updates: 151
+[robot3] Update 152 | Step 1245185
+[robot3] Saved checkpoint: /home/sara/Documents/Centralized Learning/RL-FL-Foraging/logs/robot3_decentralized_indep_v2/robot3_decentralized_indep_v2_1250000_steps.zip
+[robot3] EP END | Picks: 1 | Deps: 1 | Steps: 1253376 | Updates: 152
+[robot3] Update 153 | Step 1253377
+[robot3] EP END | Picks: 6 | Deps: 6 | Steps: 1261568 | Updates: 153
+[robot3] Update 154 | Step 1261569
+[robot3] EP END | Picks: 1 | Deps: 1 | Steps: 1269760 | Updates: 154
+[robot3] Update 155 | Step 1269761
+[robot3] EP END | Picks: 2 | Deps: 2 | Steps: 1277952 | Updates: 155
+[robot3] Update 156 | Step 1277953
+[robot3] EP END | Picks: 8 | Deps: 7 | Steps: 1286144 | Updates: 156
+[robot3] Update 157 | Step 1286145
+[robot3] EP END | Picks: 6 | Deps: 6 | Steps: 1294336 | Updates: 157
+[robot3] Update 158 | Step 1294337
+[robot3] Saved checkpoint: /home/sara/Documents/Centralized Learning/RL-FL-Foraging/logs/robot3_decentralized_indep_v2/robot3_decentralized_indep_v2_1300000_steps.zip
+[robot3] EP END | Picks: 7 | Deps: 7 | Steps: 1302528 | Updates: 158
+[robot3] Update 159 | Step 1302529
+[robot3] EP END | Picks: 7 | Deps: 6 | Steps: 1310720 | Updates: 159
+[robot3] Update 160 | Step 1310721
+[robot3] EP END | Picks: 2 | Deps: 2 | Steps: 1318912 | Updates: 160
+[robot3] Update 161 | Step 1318913
+[robot3] EP END | Picks: 6 | Deps: 6 | Steps: 1327104 | Updates: 161
+[robot3] Update 162 | Step 1327105
+[robot3] EP END | Picks: 4 | Deps: 4 | Steps: 1335296 | Updates: 162
+[robot3] Update 163 | Step 1335297
+[robot3] EP END | Picks: 0 | Deps: 0 | Steps: 1343488 | Updates: 163
+[robot3] Update 164 | Step 1343489
+[robot3] Saved checkpoint: /home/sara/Documents/Centralized Learning/RL-FL-Foraging/logs/robot3_decentralized_indep_v2/robot3_decentralized_indep_v2_1350000_steps.zip
+[robot3] EP END | Picks: 4 | Deps: 4 | Steps: 1351680 | Updates: 164
+[robot3] Update 165 | Step 1351681
+[robot3] EP END | Picks: 2 | Deps: 2 | Steps: 1359872 | Updates: 165
+[robot3] Update 166 | Step 1359873
+[robot3] EP END | Picks: 2 | Deps: 2 | Steps: 1368064 | Updates: 166
+[robot3] Update 167 | Step 1368065
+[robot3] EP END | Picks: 5 | Deps: 5 | Steps: 1376256 | Updates: 167
+[robot3] Update 168 | Step 1376257
+[robot3] EP END | Picks: 7 | Deps: 7 | Steps: 1384448 | Updates: 168
+[robot3] Update 169 | Step 1384449
+[robot3] EP END | Picks: 3 | Deps: 3 | Steps: 1392640 | Updates: 169
+[robot3] Update 170 | Step 1392641
+[robot3] Saved checkpoint: /home/sara/Documents/Centralized Learning/RL-FL-Foraging/logs/robot3_decentralized_indep_v2/robot3_decentralized_indep_v2_1400000_steps.zip
+[robot3] EP END | Picks: 6 | Deps: 6 | Steps: 1400832 | Updates: 170
+[robot3] Update 171 | Step 1400833
+[robot3] EP END | Picks: 1 | Deps: 1 | Steps: 1409024 | Updates: 171
+[robot3] Update 172 | Step 1409025
+[robot3] EP END | Picks: 2 | Deps: 2 | Steps: 1417216 | Updates: 172
+[robot3] Update 173 | Step 1417217
+[robot3] EP END | Picks: 5 | Deps: 5 | Steps: 1425408 | Updates: 173
+[robot3] Update 174 | Step 1425409
+[robot3] EP END | Picks: 5 | Deps: 5 | Steps: 1433600 | Updates: 174
+[robot3] Update 175 | Step 1433601
+[robot3] EP END | Picks: 7 | Deps: 6 | Steps: 1441792 | Updates: 175
+[robot3] Update 176 | Step 1441793
+[robot3] EP END | Picks: 3 | Deps: 3 | Steps: 1449984 | Updates: 176
+[robot3] Update 177 | Step 1449985
+[robot3] Saved checkpoint: /home/sara/Documents/Centralized Learning/RL-FL-Foraging/logs/robot3_decentralized_indep_v2/robot3_decentralized_indep_v2_1450000_steps.zip
+[robot3] EP END | Picks: 6 | Deps: 6 | Steps: 1458176 | Updates: 177
+[robot3] Update 178 | Step 1458177
+[robot3] EP END | Picks: 4 | Deps: 4 | Steps: 1466368 | Updates: 178
+[robot3] Update 179 | Step 1466369
+[robot3] EP END | Picks: 1 | Deps: 1 | Steps: 1474560 | Updates: 179
+[robot3] Update 180 | Step 1474561
+[robot3] EP END | Picks: 2 | Deps: 2 | Steps: 1482752 | Updates: 180
+[robot3] Update 181 | Step 1482753
+[robot3] EP END | Picks: 2 | Deps: 2 | Steps: 1490944 | Updates: 181
+[robot3] Update 182 | Step 1490945
+[robot3] EP END | Picks: 4 | Deps: 3 | Steps: 1499136 | Updates: 182
+[robot3] Update 183 | Step 1499137
+[robot3] Saved checkpoint: /home/sara/Documents/Centralized Learning/RL-FL-Foraging/logs/robot3_decentralized_indep_v2/robot3_decentralized_indep_v2_1500000_steps.zip
+[robot3] EP END | Picks: 2 | Deps: 2 | Steps: 1507328 | Updates: 183
+[robot3] Update 184 | Step 1507329
+[robot3] EP END | Picks: 1 | Deps: 1 | Steps: 1515520 | Updates: 184
+[robot3] Update 185 | Step 1515521
+[robot3] EP END | Picks: 1 | Deps: 1 | Steps: 1523712 | Updates: 185
+[robot3] Update 186 | Step 1523713
+[robot3] EP END | Picks: 2 | Deps: 2 | Steps: 1531904 | Updates: 186
+[robot3] Update 187 | Step 1531905
+[robot3] EP END | Picks: 1 | Deps: 1 | Steps: 1540096 | Updates: 187
+[robot3] Update 188 | Step 1540097
+[robot3] EP END | Picks: 2 | Deps: 2 | Steps: 1548288 | Updates: 188
+[robot3] Update 189 | Step 1548289
+[robot3] Saved checkpoint: /home/sara/Documents/Centralized Learning/RL-FL-Foraging/logs/robot3_decentralized_indep_v2/robot3_decentralized_indep_v2_1550000_steps.zip
+[robot3] EP END | Picks: 6 | Deps: 6 | Steps: 1556480 | Updates: 189
+[robot3] Update 190 | Step 1556481
+[robot3] EP END | Picks: 3 | Deps: 2 | Steps: 1564672 | Updates: 190
+[robot3] Update 191 | Step 1564673
+[robot3] EP END | Picks: 4 | Deps: 4 | Steps: 1572864 | Updates: 191
+[robot3] Update 192 | Step 1572865
+[robot3] EP END | Picks: 5 | Deps: 4 | Steps: 1581056 | Updates: 192
+[robot3] Update 193 | Step 1581057
+[robot3] EP END | Picks: 3 | Deps: 3 | Steps: 1589248 | Updates: 193
+[robot3] Update 194 | Step 1589249
+[robot3] EP END | Picks: 6 | Deps: 6 | Steps: 1597440 | Updates: 194
+[robot3] Update 195 | Step 1597441
+[robot3] Saved checkpoint: /home/sara/Documents/Centralized Learning/RL-FL-Foraging/logs/robot3_decentralized_indep_v2/robot3_decentralized_indep_v2_1600000_steps.zip
+[robot3] EP END | Picks: 4 | Deps: 4 | Steps: 1605632 | Updates: 195
+[robot3] Update 196 | Step 1605633
+[robot3] EP END | Picks: 3 | Deps: 3 | Steps: 1613824 | Updates: 196
+[robot3] Update 197 | Step 1613825
+[robot3] EP END | Picks: 1 | Deps: 1 | Steps: 1622016 | Updates: 197
+[robot3] Update 198 | Step 1622017
+[robot3] EP END | Picks: 4 | Deps: 3 | Steps: 1630208 | Updates: 198
+[robot3] Update 199 | Step 1630209
+[robot3] EP END | Picks: 3 | Deps: 3 | Steps: 1638400 | Updates: 199
+[robot3] Update 200 | Step 1638401
+[robot3] EP END | Picks: 5 | Deps: 5 | Steps: 1646592 | Updates: 200

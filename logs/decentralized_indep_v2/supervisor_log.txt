@@ -1,0 +1,1608 @@
+
+============================================================
+[EP 1] Picks: 63 | Deps: 61 | Rate: 14.0 tags/min (sim) | TotalDeps: 61 | Wall: 1.5 min
+  R1[BASE_AVOID]: carry=0 | base=0.20 | wall=2.35
+  R2[RTB]: carry=1 | base=0.58 | wall=1.92
+  R3[PPO]: carry=0 | base=0.85 | wall=1.65
+  R4[RTB]: carry=1 | base=0.96 | wall=1.80
+============================================================
+
+============================================================
+[EP 2] Picks: 59 | Deps: 58 | Rate: 13.3 tags/min (sim) | TotalDeps: 119 | Wall: 5.8 min
+  R1[PPO]: carry=0 | base=0.34 | wall=2.17
+  R2[RTB]: carry=1 | base=0.53 | wall=2.09
+  R3[BASE_AVOID]: carry=0 | base=0.20 | wall=2.36
+  R4[PPO]: carry=0 | base=0.56 | wall=1.96
+============================================================
+
+============================================================
+[EP 3] Picks: 62 | Deps: 61 | Rate: 14.0 tags/min (sim) | TotalDeps: 180 | Wall: 5.7 min
+  R1[RTB]: carry=1 | base=1.00 | wall=1.75
+  R2[PPO]: carry=0 | base=0.60 | wall=2.06
+  R3[BASE_AVOID]: carry=0 | base=0.20 | wall=2.31
+  R4[PPO]: carry=0 | base=0.60 | wall=2.06
+============================================================
+
+============================================================
+[EP 4] Picks: 66 | Deps: 63 | Rate: 14.4 tags/min (sim) | TotalDeps: 243 | Wall: 5.7 min
+  R1[BASE_AVOID]: carry=0 | base=0.27 | wall=2.31
+  R2[RTB]: carry=1 | base=0.95 | wall=1.75
+  R3[RTB]: carry=1 | base=0.50 | wall=2.10
+  R4[RTB]: carry=1 | base=0.94 | wall=1.78
+============================================================
+
+============================================================
+[EP 5] Picks: 51 | Deps: 49 | Rate: 11.2 tags/min (sim) | TotalDeps: 292 | Wall: 6.1 min
+  R1[PPO]: carry=0 | base=0.79 | wall=1.78
+  R2[BASE_AVOID]: carry=0 | base=0.19 | wall=2.33
+  R3[RTB]: carry=1 | base=0.89 | wall=1.67
+  R4[RTB]: carry=1 | base=0.83 | wall=1.80
+============================================================
+
+============================================================
+[EP 6] Picks: 63 | Deps: 62 | Rate: 14.2 tags/min (sim) | TotalDeps: 354 | Wall: 5.6 min
+  R1[RTB]: carry=1 | base=0.58 | wall=2.08
+  R2[PPO]: carry=0 | base=0.50 | wall=2.13
+  R3[PPO]: carry=0 | base=0.76 | wall=1.79
+  R4[PPO]: carry=0 | base=0.45 | wall=2.10
+============================================================
+
+============================================================
+[EP 7] Picks: 54 | Deps: 53 | Rate: 12.1 tags/min (sim) | TotalDeps: 407 | Wall: 5.7 min
+  R1[PPO]: carry=0 | base=0.51 | wall=2.08
+  R2[PPO]: carry=0 | base=0.92 | wall=1.60
+  R3[PPO]: carry=0 | base=0.51 | wall=2.04
+  R4[RTB]: carry=1 | base=0.36 | wall=2.14
+============================================================
+
+============================================================
+[EP 8] Picks: 66 | Deps: 64 | Rate: 14.6 tags/min (sim) | TotalDeps: 471 | Wall: 5.6 min
+  R1[PPO]: carry=0 | base=0.53 | wall=2.00
+  R2[BASE_AVOID]: carry=0 | base=0.19 | wall=2.36
+  R3[RTB]: carry=1 | base=0.88 | wall=1.73
+  R4[RTB]: carry=1 | base=0.81 | wall=1.83
+============================================================
+
+============================================================
+[EP 9] Picks: 49 | Deps: 49 | Rate: 11.2 tags/min (sim) | TotalDeps: 520 | Wall: 5.7 min
+  R1[PPO]: carry=0 | base=0.38 | wall=2.17
+  R2[PPO]: carry=0 | base=0.46 | wall=2.16
+  R3[PPO]: carry=0 | base=0.55 | wall=2.03
+  R4[PPO]: carry=0 | base=0.31 | wall=2.23
+============================================================
+
+============================================================
+[EP 10] Picks: 63 | Deps: 60 | Rate: 13.7 tags/min (sim) | TotalDeps: 580 | Wall: 5.7 min
+  R1[RTB]: carry=1 | base=0.92 | wall=1.59
+  R2[RTB]: carry=1 | base=0.85 | wall=1.66
+  R3[RTB]: carry=1 | base=0.22 | wall=2.29
+  R4[BASE_AVOID]: carry=0 | base=0.17 | wall=2.35
+============================================================
+
+============================================================
+[EP 11] Picks: 55 | Deps: 52 | Rate: 11.9 tags/min (sim) | TotalDeps: 632 | Wall: 5.6 min
+  R1[RTB]: carry=1 | base=0.70 | wall=1.80
+  R2[RTB]: carry=1 | base=0.93 | wall=1.58
+  R3[RTB]: carry=1 | base=1.03 | wall=1.47
+  R4[PPO]: carry=0 | base=0.86 | wall=1.66
+============================================================
+
+============================================================
+[EP 12] Picks: 50 | Deps: 50 | Rate: 11.4 tags/min (sim) | TotalDeps: 682 | Wall: 5.6 min
+  R1[PPO]: carry=0 | base=0.35 | wall=2.20
+  R2[PPO]: carry=0 | base=0.51 | wall=2.00
+  R3[PPO]: carry=0 | base=0.48 | wall=2.08
+  R4[PPO]: carry=0 | base=0.50 | wall=2.10
+============================================================
+
+============================================================
+[EP 13] Picks: 58 | Deps: 57 | Rate: 13.0 tags/min (sim) | TotalDeps: 739 | Wall: 5.6 min
+  R1[PPO]: carry=0 | base=0.32 | wall=2.19
+  R2[RTB]: carry=1 | base=0.21 | wall=2.31
+  R3[PPO]: carry=0 | base=0.41 | wall=2.15
+  R4[PPO]: carry=0 | base=0.32 | wall=2.24
+============================================================
+
+============================================================
+[EP 14] Picks: 50 | Deps: 50 | Rate: 11.4 tags/min (sim) | TotalDeps: 789 | Wall: 5.6 min
+  R1[PPO]: carry=0 | base=0.66 | wall=1.89
+  R2[PPO]: carry=0 | base=0.31 | wall=2.21
+  R3[PPO]: carry=0 | base=0.44 | wall=2.17
+  R4[PPO]: carry=0 | base=0.31 | wall=2.21
+============================================================
+
+============================================================
+[EP 15] Picks: 42 | Deps: 41 | Rate: 9.4 tags/min (sim) | TotalDeps: 830 | Wall: 5.8 min
+  R1[BASE_AVOID]: carry=0 | base=0.17 | wall=2.33
+  R2[BASE_AVOID]: carry=0 | base=0.15 | wall=2.35
+  R3[RTB]: carry=1 | base=0.95 | wall=1.68
+  R4[PPO]: carry=0 | base=0.80 | wall=1.87
+============================================================
+
+============================================================
+[EP 16] Picks: 53 | Deps: 52 | Rate: 11.9 tags/min (sim) | TotalDeps: 882 | Wall: 5.6 min
+  R1[RTB]: carry=1 | base=0.79 | wall=1.78
+  R2[PPO]: carry=0 | base=0.31 | wall=2.19
+  R3[PPO]: carry=0 | base=1.09 | wall=1.72
+  R4[PPO]: carry=0 | base=1.02 | wall=1.63
+============================================================
+
+============================================================
+[EP 17] Picks: 56 | Deps: 54 | Rate: 12.4 tags/min (sim) | TotalDeps: 936 | Wall: 5.6 min
+  R1[BASE_AVOID]: carry=0 | base=0.15 | wall=2.35
+  R2[PPO]: carry=0 | base=0.54 | wall=2.09
+  R3[RTB]: carry=1 | base=0.97 | wall=1.56
+  R4[RTB]: carry=1 | base=0.46 | wall=2.17
+============================================================
+
+============================================================
+[EP 18] Picks: 51 | Deps: 47 | Rate: 10.8 tags/min (sim) | TotalDeps: 983 | Wall: 5.7 min
+  R1[RTB]: carry=1 | base=0.42 | wall=2.13
+  R2[RTB]: carry=1 | base=0.98 | wall=1.63
+  R3[RTB]: carry=1 | base=0.26 | wall=2.28
+  R4[RTB]: carry=1 | base=0.32 | wall=2.25
+============================================================
+
+============================================================
+[EP 19] Picks: 56 | Deps: 56 | Rate: 12.8 tags/min (sim) | TotalDeps: 1039 | Wall: 5.5 min
+  R1[PPO]: carry=0 | base=0.70 | wall=1.89
+  R2[PPO]: carry=0 | base=0.38 | wall=2.22
+  R3[PPO]: carry=0 | base=0.36 | wall=2.15
+  R4[PPO]: carry=0 | base=0.67 | wall=1.84
+============================================================
+
+============================================================
+[EP 20] Picks: 49 | Deps: 49 | Rate: 11.2 tags/min (sim) | TotalDeps: 1088 | Wall: 5.6 min
+  R1[PPO]: carry=0 | base=0.48 | wall=2.08
+  R2[PPO]: carry=0 | base=0.31 | wall=2.26
+  R3[PPO]: carry=0 | base=0.46 | wall=2.08
+  R4[PPO]: carry=0 | base=0.40 | wall=2.10
+============================================================
+
+============================================================
+[EP 21] Picks: 52 | Deps: 51 | Rate: 11.7 tags/min (sim) | TotalDeps: 1139 | Wall: 5.5 min
+  R1[BASE_AVOID]: carry=0 | base=0.17 | wall=2.37
+  R2[PPO]: carry=0 | base=0.86 | wall=1.78
+  R3[RTB]: carry=1 | base=0.37 | wall=2.15
+  R4[BASE_AVOID]: carry=0 | base=0.18 | wall=2.32
+============================================================
+
+============================================================
+[EP 22] Picks: 57 | Deps: 56 | Rate: 12.8 tags/min (sim) | TotalDeps: 1195 | Wall: 5.5 min
+  R1[RTB]: carry=1 | base=0.72 | wall=1.79
+  R2[PPO]: carry=0 | base=0.38 | wall=2.15
+  R3[BASE_AVOID]: carry=0 | base=0.27 | wall=2.28
+  R4[BASE_AVOID]: carry=0 | base=0.24 | wall=2.32
+============================================================
+
+============================================================
+[EP 23] Picks: 55 | Deps: 54 | Rate: 12.4 tags/min (sim) | TotalDeps: 1249 | Wall: 5.6 min
+  R1[BASE_AVOID]: carry=0 | base=0.10 | wall=2.41
+  R2[PPO]: carry=0 | base=0.81 | wall=1.70
+  R3[BASE_AVOID]: carry=0 | base=0.13 | wall=2.38
+  R4[RTB]: carry=1 | base=0.24 | wall=2.28
+============================================================
+
+============================================================
+[EP 24] Picks: 57 | Deps: 56 | Rate: 12.8 tags/min (sim) | TotalDeps: 1305 | Wall: 5.5 min
+  R1[PPO]: carry=0 | base=0.90 | wall=1.86
+  R2[PPO]: carry=0 | base=0.81 | wall=1.69
+  R3[RTB]: carry=1 | base=0.97 | wall=1.81
+  R4[BASE_AVOID]: carry=0 | base=0.26 | wall=2.31
+============================================================
+
+============================================================
+[EP 25] Picks: 50 | Deps: 49 | Rate: 11.2 tags/min (sim) | TotalDeps: 1354 | Wall: 5.6 min
+  R1[PPO]: carry=0 | base=0.32 | wall=2.18
+  R2[RTB]: carry=1 | base=0.70 | wall=1.88
+  R3[PPO]: carry=0 | base=0.47 | wall=2.08
+  R4[PPO]: carry=0 | base=0.45 | wall=2.13
+============================================================
+
+============================================================
+[EP 26] Picks: 40 | Deps: 40 | Rate: 9.2 tags/min (sim) | TotalDeps: 1394 | Wall: 5.7 min
+  R1[PPO]: carry=0 | base=0.34 | wall=2.16
+  R2[BASE_AVOID]: carry=0 | base=0.12 | wall=2.39
+  R3[PPO]: carry=0 | base=0.64 | wall=2.02
+  R4[PPO]: carry=0 | base=1.51 | wall=1.04
+============================================================
+
+============================================================
+[EP 27] Picks: 49 | Deps: 48 | Rate: 11.0 tags/min (sim) | TotalDeps: 1442 | Wall: 5.6 min
+  R1[PPO]: carry=0 | base=0.37 | wall=2.21
+  R2[PPO]: carry=0 | base=0.98 | wall=1.52
+  R3[PPO]: carry=0 | base=0.77 | wall=1.75
+  R4[RTB]: carry=1 | base=0.95 | wall=1.74
+============================================================
+
+============================================================
+[EP 28] Picks: 57 | Deps: 55 | Rate: 12.6 tags/min (sim) | TotalDeps: 1497 | Wall: 5.6 min
+  R1[BASE_AVOID]: carry=0 | base=0.11 | wall=2.40
+  R2[RTB]: carry=1 | base=0.79 | wall=1.83
+  R3[PPO]: carry=0 | base=0.90 | wall=1.72
+  R4[RTB]: carry=1 | base=0.80 | wall=1.77
+============================================================
+
+============================================================
+[EP 29] Picks: 46 | Deps: 44 | Rate: 10.1 tags/min (sim) | TotalDeps: 1541 | Wall: 5.7 min
+  R1[RTB]: carry=1 | base=0.89 | wall=1.63
+  R2[PPO]: carry=0 | base=0.63 | wall=1.97
+  R3[BASE_AVOID]: carry=0 | base=0.14 | wall=2.37
+  R4[RTB]: carry=1 | base=0.59 | wall=1.95
+============================================================
+
+============================================================
+[EP 30] Picks: 49 | Deps: 49 | Rate: 11.2 tags/min (sim) | TotalDeps: 1590 | Wall: 5.5 min
+  R1[PPO]: carry=0 | base=0.83 | wall=1.79
+  R2[BASE_AVOID]: carry=0 | base=0.10 | wall=2.42
+  R3[PPO]: carry=0 | base=0.67 | wall=1.92
+  R4[PPO]: carry=0 | base=0.90 | wall=1.63
+============================================================
+
+============================================================
+[EP 31] Picks: 19 | Deps: 19 | Rate: 4.3 tags/min (sim) | TotalDeps: 1609 | Wall: 6.0 min
+  R1[PPO]: carry=0 | base=0.36 | wall=2.15
+  R2[PPO]: carry=0 | base=0.38 | wall=2.19
+  R3[PPO]: carry=0 | base=1.67 | wall=0.83
+  R4[PPO]: carry=0 | base=0.45 | wall=2.11
+============================================================
+
+============================================================
+[EP 32] Picks: 33 | Deps: 32 | Rate: 7.3 tags/min (sim) | TotalDeps: 1641 | Wall: 5.7 min
+  R1[PPO]: carry=0 | base=0.32 | wall=2.27
+  R2[RTB]: carry=1 | base=1.15 | wall=1.40
+  R3[PPO]: carry=0 | base=0.55 | wall=2.04
+  R4[PPO]: carry=0 | base=0.33 | wall=2.20
+============================================================
+
+============================================================
+[EP 33] Picks: 49 | Deps: 48 | Rate: 11.0 tags/min (sim) | TotalDeps: 1689 | Wall: 5.7 min
+  R1[RTB]: carry=1 | base=1.15 | wall=1.43
+  R2[BASE_AVOID]: carry=0 | base=0.14 | wall=2.37
+  R3[PPO]: carry=0 | base=0.38 | wall=2.19
+  R4[PPO]: carry=0 | base=0.32 | wall=2.18
+============================================================
+
+============================================================
+[EP 34] Picks: 26 | Deps: 25 | Rate: 5.7 tags/min (sim) | TotalDeps: 1714 | Wall: 5.9 min
+  R1[RTB]: carry=1 | base=0.57 | wall=1.95
+  R2[PPO]: carry=0 | base=0.31 | wall=2.20
+  R3[PPO]: carry=0 | base=0.87 | wall=1.81
+  R4[PPO]: carry=0 | base=0.61 | wall=1.89
+============================================================
+
+============================================================
+[EP 35] Picks: 44 | Deps: 42 | Rate: 9.6 tags/min (sim) | TotalDeps: 1756 | Wall: 5.7 min
+  R1[BASE_AVOID]: carry=0 | base=0.08 | wall=2.42
+  R2[RTB]: carry=1 | base=0.90 | wall=1.65
+  R3[RTB]: carry=1 | base=1.20 | wall=1.55
+  R4[PPO]: carry=0 | base=1.24 | wall=1.37
+============================================================
+
+============================================================
+[EP 36] Picks: 44 | Deps: 43 | Rate: 9.8 tags/min (sim) | TotalDeps: 1799 | Wall: 5.7 min
+  R1[BASE_AVOID]: carry=0 | base=0.14 | wall=2.39
+  R2[RTB]: carry=1 | base=0.41 | wall=2.10
+  R3[PPO]: carry=0 | base=1.02 | wall=1.50
+  R4[PPO]: carry=0 | base=0.94 | wall=1.56
+============================================================
+
+============================================================
+[EP 37] Picks: 33 | Deps: 32 | Rate: 7.3 tags/min (sim) | TotalDeps: 1831 | Wall: 5.8 min
+  R1[PPO]: carry=0 | base=0.36 | wall=2.18
+  R2[PPO]: carry=0 | base=0.44 | wall=2.07
+  R3[RTB]: carry=1 | base=0.56 | wall=1.98
+  R4[PPO]: carry=0 | base=0.39 | wall=2.17
+============================================================
+
+============================================================
+[EP 38] Picks: 19 | Deps: 18 | Rate: 4.1 tags/min (sim) | TotalDeps: 1849 | Wall: 6.0 min
+  R1[PPO]: carry=0 | base=1.55 | wall=1.36
+  R2[RTB]: carry=1 | base=0.71 | wall=1.89
+  R3[PPO]: carry=0 | base=0.97 | wall=1.81
+  R4[PPO]: carry=0 | base=1.34 | wall=1.53
+============================================================
+
+============================================================
+[EP 39] Picks: 19 | Deps: 19 | Rate: 4.3 tags/min (sim) | TotalDeps: 1868 | Wall: 6.0 min
+  R1[PPO]: carry=0 | base=0.43 | wall=2.11
+  R2[PPO]: carry=0 | base=0.77 | wall=1.75
+  R3[PPO]: carry=0 | base=0.78 | wall=1.73
+  R4[PPO]: carry=0 | base=0.36 | wall=2.15
+============================================================
+
+============================================================
+[EP 40] Picks: 39 | Deps: 37 | Rate: 8.5 tags/min (sim) | TotalDeps: 1905 | Wall: 5.6 min
+  R1[PPO]: carry=0 | base=0.34 | wall=2.16
+  R2[RTB]: carry=1 | base=0.40 | wall=2.11
+  R3[RTB]: carry=1 | base=1.41 | wall=1.18
+  R4[PPO]: carry=0 | base=0.32 | wall=2.26
+============================================================
+
+============================================================
+[EP 41] Picks: 19 | Deps: 18 | Rate: 4.1 tags/min (sim) | TotalDeps: 1923 | Wall: 6.0 min
+  R1[PPO]: carry=0 | base=1.51 | wall=1.00
+  R2[PPO]: carry=0 | base=0.72 | wall=1.87
+  R3[PPO]: carry=0 | base=1.02 | wall=1.57
+  R4[RTB]: carry=1 | base=0.45 | wall=2.06
+============================================================
+
+============================================================
+[EP 42] Picks: 31 | Deps: 31 | Rate: 7.1 tags/min (sim) | TotalDeps: 1954 | Wall: 5.8 min
+  R1[PPO]: carry=0 | base=0.38 | wall=2.18
+  R2[PPO]: carry=0 | base=1.42 | wall=1.26
+  R3[PPO]: carry=0 | base=0.31 | wall=2.19
+  R4[PPO]: carry=0 | base=0.40 | wall=2.18
+============================================================
+
+============================================================
+[EP 43] Picks: 29 | Deps: 29 | Rate: 6.6 tags/min (sim) | TotalDeps: 1983 | Wall: 5.7 min
+  R1[PPO]: carry=0 | base=0.39 | wall=2.11
+  R2[PPO]: carry=0 | base=1.14 | wall=1.41
+  R3[BASE_AVOID]: carry=0 | base=0.27 | wall=2.28
+  R4[PPO]: carry=0 | base=0.48 | wall=2.03
+============================================================
+
+============================================================
+[EP 44] Picks: 45 | Deps: 43 | Rate: 9.8 tags/min (sim) | TotalDeps: 2026 | Wall: 5.5 min
+  R1[RTB]: carry=1 | base=0.46 | wall=2.16
+  R2[BASE_AVOID]: carry=0 | base=0.06 | wall=2.45
+  R3[PPO]: carry=0 | base=0.58 | wall=1.92
+  R4[RTB]: carry=1 | base=0.81 | wall=1.69
+============================================================
+
+============================================================
+[EP 45] Picks: 41 | Deps: 40 | Rate: 9.2 tags/min (sim) | TotalDeps: 2066 | Wall: 5.6 min
+  R1[RTB]: carry=1 | base=0.61 | wall=1.94
+  R2[BASE_AVOID]: carry=0 | base=0.06 | wall=2.45
+  R3[BASE_AVOID]: carry=0 | base=0.10 | wall=2.40
+  R4[BASE_AVOID]: carry=0 | base=0.04 | wall=2.47
+============================================================
+
+============================================================
+[EP 46] Picks: 31 | Deps: 30 | Rate: 6.9 tags/min (sim) | TotalDeps: 2096 | Wall: 5.7 min
+  R1[PPO]: carry=0 | base=0.48 | wall=2.08
+  R2[PPO]: carry=0 | base=0.82 | wall=1.70
+  R3[RTB]: carry=1 | base=0.38 | wall=2.15
+  R4[PPO]: carry=0 | base=0.38 | wall=2.22
+============================================================
+
+============================================================
+[EP 47] Picks: 38 | Deps: 37 | Rate: 8.5 tags/min (sim) | TotalDeps: 2133 | Wall: 5.5 min
+  R1[PPO]: carry=0 | base=0.47 | wall=2.06
+  R2[PPO]: carry=0 | base=0.65 | wall=1.86
+  R3[RTB]: carry=1 | base=0.32 | wall=2.21
+  R4[PPO]: carry=0 | base=0.72 | wall=1.84
+============================================================
+
+============================================================
+[EP 48] Picks: 45 | Deps: 45 | Rate: 10.3 tags/min (sim) | TotalDeps: 2178 | Wall: 5.5 min
+  R1[PPO]: carry=0 | base=0.69 | wall=1.95
+  R2[BASE_AVOID]: carry=0 | base=0.17 | wall=2.37
+  R3[BASE_AVOID]: carry=0 | base=0.20 | wall=2.31
+  R4[BASE_AVOID]: carry=0 | base=0.28 | wall=2.25
+============================================================
+
+============================================================
+[EP 49] Picks: 21 | Deps: 19 | Rate: 4.3 tags/min (sim) | TotalDeps: 2197 | Wall: 5.9 min
+  R1[RTB]: carry=1 | base=0.14 | wall=2.39
+  R2[PPO]: carry=0 | base=1.45 | wall=1.19
+  R3[RTB]: carry=1 | base=0.49 | wall=2.10
+  R4[PPO]: carry=0 | base=1.10 | wall=1.51
+============================================================
+
+============================================================
+[EP 50] Picks: 39 | Deps: 36 | Rate: 8.2 tags/min (sim) | TotalDeps: 2233 | Wall: 5.6 min
+  R1[RTB]: carry=1 | base=0.44 | wall=2.09
+  R2[RTB]: carry=1 | base=0.84 | wall=1.83
+  R3[PPO]: carry=0 | base=0.55 | wall=2.04
+  R4[RTB]: carry=1 | base=0.19 | wall=2.31
+============================================================
+
+============================================================
+[EP 51] Picks: 21 | Deps: 21 | Rate: 4.8 tags/min (sim) | TotalDeps: 2254 | Wall: 5.9 min
+  R1[PPO]: carry=0 | base=1.78 | wall=0.73
+  R2[BASE_AVOID]: carry=0 | base=0.02 | wall=2.48
+  R3[PPO]: carry=0 | base=0.53 | wall=1.97
+  R4[PPO]: carry=0 | base=0.94 | wall=1.57
+============================================================
+
+============================================================
+[EP 52] Picks: 11 | Deps: 11 | Rate: 2.5 tags/min (sim) | TotalDeps: 2265 | Wall: 6.1 min
+  R1[PPO]: carry=0 | base=0.74 | wall=1.76
+  R2[PPO]: carry=0 | base=0.40 | wall=2.13
+  R3[PPO]: carry=0 | base=0.31 | wall=2.19
+  R4[PPO]: carry=0 | base=0.70 | wall=1.81
+============================================================
+
+============================================================
+[EP 53] Picks: 7 | Deps: 7 | Rate: 1.6 tags/min (sim) | TotalDeps: 2272 | Wall: 6.1 min
+  R1[PPO]: carry=0 | base=1.23 | wall=1.51
+  R2[PPO]: carry=0 | base=0.55 | wall=2.02
+  R3[PPO]: carry=0 | base=0.50 | wall=2.14
+  R4[PPO]: carry=0 | base=1.79 | wall=0.78
+============================================================
+
+============================================================
+[EP 54] Picks: 39 | Deps: 37 | Rate: 8.5 tags/min (sim) | TotalDeps: 2309 | Wall: 5.6 min
+  R1[RTB]: carry=1 | base=1.05 | wall=1.48
+  R2[RTB]: carry=1 | base=0.67 | wall=1.95
+  R3[PPO]: carry=0 | base=0.68 | wall=1.97
+  R4[BASE_AVOID]: carry=0 | base=0.19 | wall=2.31
+============================================================
+
+============================================================
+[EP 55] Picks: 41 | Deps: 39 | Rate: 8.9 tags/min (sim) | TotalDeps: 2348 | Wall: 5.5 min
+  R1[PPO]: carry=0 | base=0.35 | wall=2.23
+  R2[PPO]: carry=0 | base=0.40 | wall=2.10
+  R3[RTB]: carry=1 | base=0.23 | wall=2.28
+  R4[RTB]: carry=1 | base=0.42 | wall=2.11
+============================================================
+
+============================================================
+[EP 56] Picks: 43 | Deps: 40 | Rate: 9.2 tags/min (sim) | TotalDeps: 2388 | Wall: 5.5 min
+  R1[RTB]: carry=1 | base=0.47 | wall=2.16
+  R2[RTB]: carry=1 | base=1.13 | wall=1.59
+  R3[PPO]: carry=0 | base=0.44 | wall=2.06
+  R4[RTB]: carry=1 | base=0.94 | wall=1.82
+============================================================
+
+============================================================
+[EP 57] Picks: 38 | Deps: 38 | Rate: 8.7 tags/min (sim) | TotalDeps: 2426 | Wall: 5.5 min
+  R1[BASE_AVOID]: carry=0 | base=0.09 | wall=2.43
+  R2[PPO]: carry=0 | base=0.38 | wall=2.13
+  R3[PPO]: carry=0 | base=0.33 | wall=2.24
+  R4[PPO]: carry=0 | base=1.35 | wall=1.24
+============================================================
+
+============================================================
+[EP 58] Picks: 35 | Deps: 33 | Rate: 7.6 tags/min (sim) | TotalDeps: 2459 | Wall: 5.6 min
+  R1[RTB]: carry=1 | base=1.15 | wall=1.49
+  R2[RTB]: carry=1 | base=0.90 | wall=1.63
+  R3[BASE_AVOID]: carry=0 | base=0.05 | wall=2.46
+  R4[BASE_AVOID]: carry=0 | base=0.23 | wall=2.28
+============================================================
+
+============================================================
+[EP 59] Picks: 12 | Deps: 12 | Rate: 2.7 tags/min (sim) | TotalDeps: 2471 | Wall: 6.1 min
+  R1[PPO]: carry=0 | base=0.53 | wall=2.01
+  R2[PPO]: carry=0 | base=1.76 | wall=0.84
+  R3[PPO]: carry=0 | base=1.85 | wall=0.79
+  R4[PPO]: carry=0 | base=0.70 | wall=1.80
+============================================================
+
+============================================================
+[EP 60] Picks: 33 | Deps: 32 | Rate: 7.3 tags/min (sim) | TotalDeps: 2503 | Wall: 5.7 min
+  R1[PPO]: carry=0 | base=0.44 | wall=2.14
+  R2[RTB]: carry=1 | base=1.15 | wall=1.57
+  R3[PPO]: carry=0 | base=0.51 | wall=2.02
+  R4[PPO]: carry=0 | base=0.55 | wall=1.95
+============================================================
+
+============================================================
+[EP 61] Picks: 33 | Deps: 30 | Rate: 6.9 tags/min (sim) | TotalDeps: 2533 | Wall: 5.7 min
+  R1[RTB]: carry=1 | base=0.47 | wall=2.04
+  R2[RTB]: carry=1 | base=1.50 | wall=1.06
+  R3[PPO]: carry=0 | base=0.66 | wall=2.01
+  R4[RTB]: carry=1 | base=1.09 | wall=1.43
+============================================================
+
+============================================================
+[EP 62] Picks: 10 | Deps: 10 | Rate: 2.3 tags/min (sim) | TotalDeps: 2543 | Wall: 6.1 min
+  R1[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R2[PPO]: carry=0 | base=0.97 | wall=1.53
+  R3[PPO]: carry=0 | base=0.44 | wall=2.06
+  R4[PPO]: carry=0 | base=1.13 | wall=1.39
+============================================================
+
+============================================================
+[EP 63] Picks: 11 | Deps: 11 | Rate: 2.5 tags/min (sim) | TotalDeps: 2554 | Wall: 6.0 min
+  R1[PPO]: carry=0 | base=0.35 | wall=2.24
+  R2[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R3[PPO]: carry=0 | base=0.44 | wall=2.07
+  R4[PPO]: carry=0 | base=0.55 | wall=1.97
+============================================================
+
+============================================================
+[EP 64] Picks: 28 | Deps: 28 | Rate: 6.4 tags/min (sim) | TotalDeps: 2582 | Wall: 5.7 min
+  R1[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R2[PPO]: carry=0 | base=0.33 | wall=2.18
+  R3[PPO]: carry=0 | base=0.40 | wall=2.13
+  R4[PPO]: carry=0 | base=1.32 | wall=1.48
+============================================================
+
+============================================================
+[EP 65] Picks: 33 | Deps: 33 | Rate: 7.6 tags/min (sim) | TotalDeps: 2615 | Wall: 5.6 min
+  R1[PPO]: carry=0 | base=0.68 | wall=1.82
+  R2[PPO]: carry=0 | base=0.47 | wall=2.06
+  R3[PPO]: carry=0 | base=1.36 | wall=1.48
+  R4[PPO]: carry=0 | base=0.33 | wall=2.19
+============================================================
+
+============================================================
+[EP 66] Picks: 35 | Deps: 32 | Rate: 7.3 tags/min (sim) | TotalDeps: 2647 | Wall: 5.7 min
+  R1[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R2[RTB]: carry=1 | base=0.51 | wall=2.01
+  R3[RTB]: carry=1 | base=1.55 | wall=1.25
+  R4[RTB]: carry=1 | base=0.86 | wall=1.72
+============================================================
+
+============================================================
+[EP 67] Picks: 29 | Deps: 28 | Rate: 6.4 tags/min (sim) | TotalDeps: 2675 | Wall: 5.8 min
+  R1[RTB]: carry=1 | base=0.00 | wall=2.50
+  R2[PPO]: carry=0 | base=0.41 | wall=2.18
+  R3[PPO]: carry=0 | base=0.66 | wall=1.98
+  R4[PPO]: carry=0 | base=1.25 | wall=1.49
+============================================================
+
+============================================================
+[EP 68] Picks: 37 | Deps: 33 | Rate: 7.6 tags/min (sim) | TotalDeps: 2708 | Wall: 5.5 min
+  R1[RTB]: carry=1 | base=0.30 | wall=2.20
+  R2[RTB]: carry=1 | base=1.03 | wall=1.47
+  R3[RTB]: carry=1 | base=1.26 | wall=1.56
+  R4[RTB]: carry=1 | base=1.21 | wall=1.57
+============================================================
+
+============================================================
+[EP 69] Picks: 29 | Deps: 28 | Rate: 6.4 tags/min (sim) | TotalDeps: 2736 | Wall: 5.7 min
+  R1[PPO]: carry=0 | base=1.02 | wall=1.76
+  R2[PPO]: carry=0 | base=0.52 | wall=2.00
+  R3[RTB]: carry=1 | base=0.13 | wall=2.40
+  R4[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+============================================================
+
+============================================================
+[EP 70] Picks: 28 | Deps: 25 | Rate: 5.7 tags/min (sim) | TotalDeps: 2761 | Wall: 5.7 min
+  R1[RTB]: carry=1 | base=1.18 | wall=1.38
+  R2[RTB]: carry=1 | base=0.30 | wall=2.21
+  R3[PPO]: carry=0 | base=0.76 | wall=1.80
+  R4[RTB]: carry=1 | base=0.67 | wall=1.85
+============================================================
+
+============================================================
+[EP 71] Picks: 13 | Deps: 12 | Rate: 2.7 tags/min (sim) | TotalDeps: 2773 | Wall: 6.0 min
+  R1[PPO]: carry=0 | base=0.30 | wall=2.24
+  R2[RTB]: carry=1 | base=0.35 | wall=2.16
+  R3[PPO]: carry=0 | base=0.33 | wall=2.23
+  R4[PPO]: carry=0 | base=0.31 | wall=2.21
+============================================================
+
+============================================================
+[EP 72] Picks: 8 | Deps: 8 | Rate: 1.8 tags/min (sim) | TotalDeps: 2781 | Wall: 6.1 min
+  R1[PPO]: carry=0 | base=0.61 | wall=1.98
+  R2[PPO]: carry=0 | base=0.40 | wall=2.16
+  R3[PPO]: carry=0 | base=1.49 | wall=1.30
+  R4[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+============================================================
+
+============================================================
+[EP 73] Picks: 32 | Deps: 31 | Rate: 7.1 tags/min (sim) | TotalDeps: 2812 | Wall: 5.6 min
+  R1[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R2[PPO]: carry=0 | base=0.35 | wall=2.16
+  R3[PPO]: carry=0 | base=0.41 | wall=2.14
+  R4[RTB]: carry=1 | base=0.37 | wall=2.15
+============================================================
+
+============================================================
+[EP 74] Picks: 7 | Deps: 7 | Rate: 1.6 tags/min (sim) | TotalDeps: 2819 | Wall: 6.1 min
+  R1[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R2[PPO]: carry=0 | base=1.22 | wall=1.62
+  R3[PPO]: carry=0 | base=1.17 | wall=1.41
+  R4[PPO]: carry=0 | base=0.42 | wall=2.09
+============================================================
+
+============================================================
+[EP 75] Picks: 31 | Deps: 28 | Rate: 6.4 tags/min (sim) | TotalDeps: 2847 | Wall: 5.5 min
+  R1[RTB]: carry=1 | base=0.72 | wall=1.87
+  R2[RTB]: carry=1 | base=0.29 | wall=2.24
+  R3[RTB]: carry=1 | base=0.18 | wall=2.32
+  R4[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+============================================================
+
+============================================================
+[EP 76] Picks: 14 | Deps: 14 | Rate: 3.2 tags/min (sim) | TotalDeps: 2861 | Wall: 6.0 min
+  R1[PPO]: carry=0 | base=0.39 | wall=2.11
+  R2[PPO]: carry=0 | base=0.98 | wall=1.52
+  R3[PPO]: carry=0 | base=0.41 | wall=2.14
+  R4[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+============================================================
+
+============================================================
+[EP 77] Picks: 10 | Deps: 9 | Rate: 2.1 tags/min (sim) | TotalDeps: 2870 | Wall: 6.1 min
+  R1[PPO]: carry=0 | base=0.80 | wall=1.70
+  R2[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R3[BASE_AVOID]: carry=0 | base=0.28 | wall=2.24
+  R4[RTB]: carry=1 | base=0.65 | wall=1.85
+============================================================
+
+============================================================
+[EP 78] Picks: 27 | Deps: 25 | Rate: 5.7 tags/min (sim) | TotalDeps: 2895 | Wall: 5.7 min
+  R1[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R2[RTB]: carry=1 | base=1.50 | wall=1.01
+  R3[PPO]: carry=0 | base=1.17 | wall=1.35
+  R4[RTB]: carry=1 | base=1.04 | wall=1.61
+============================================================
+
+============================================================
+[EP 79] Picks: 20 | Deps: 20 | Rate: 4.6 tags/min (sim) | TotalDeps: 2915 | Wall: 5.8 min
+  R1[PPO]: carry=0 | base=0.87 | wall=1.65
+  R2[PPO]: carry=0 | base=0.78 | wall=1.73
+  R3[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R4[PPO]: carry=0 | base=0.60 | wall=1.93
+============================================================
+
+============================================================
+[EP 80] Picks: 28 | Deps: 28 | Rate: 6.4 tags/min (sim) | TotalDeps: 2943 | Wall: 5.6 min
+  R1[PPO]: carry=0 | base=0.40 | wall=2.11
+  R2[PPO]: carry=0 | base=1.00 | wall=1.71
+  R3[BASE_AVOID]: carry=0 | base=0.23 | wall=2.33
+  R4[PPO]: carry=0 | base=0.34 | wall=2.18
+============================================================
+
+============================================================
+[EP 81] Picks: 31 | Deps: 31 | Rate: 7.1 tags/min (sim) | TotalDeps: 2974 | Wall: 5.7 min
+  R1[PPO]: carry=0 | base=0.37 | wall=2.20
+  R2[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R3[PPO]: carry=0 | base=0.51 | wall=2.13
+  R4[PPO]: carry=0 | base=0.62 | wall=1.93
+============================================================
+
+============================================================
+[EP 82] Picks: 25 | Deps: 25 | Rate: 5.7 tags/min (sim) | TotalDeps: 2999 | Wall: 5.7 min
+  R1[PPO]: carry=0 | base=0.31 | wall=2.25
+  R2[PPO]: carry=0 | base=0.96 | wall=1.68
+  R3[PPO]: carry=0 | base=0.38 | wall=2.17
+  R4[PPO]: carry=0 | base=0.35 | wall=2.24
+============================================================
+
+============================================================
+[EP 83] Picks: 4 | Deps: 4 | Rate: 0.9 tags/min (sim) | TotalDeps: 3003 | Wall: 6.2 min
+  R1[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R2[PPO]: carry=0 | base=0.32 | wall=2.19
+  R3[PPO]: carry=0 | base=2.03 | wall=0.93
+  R4[PPO]: carry=0 | base=1.85 | wall=0.65
+============================================================
+
+============================================================
+[EP 84] Picks: 35 | Deps: 33 | Rate: 7.6 tags/min (sim) | TotalDeps: 3036 | Wall: 5.6 min
+  R1[PPO]: carry=0 | base=0.61 | wall=2.01
+  R2[RTB]: carry=1 | base=0.00 | wall=2.50
+  R3[RTB]: carry=1 | base=0.93 | wall=1.67
+  R4[PPO]: carry=0 | base=0.44 | wall=2.15
+============================================================
+
+============================================================
+[EP 85] Picks: 27 | Deps: 27 | Rate: 6.2 tags/min (sim) | TotalDeps: 3063 | Wall: 5.6 min
+  R1[PPO]: carry=0 | base=1.20 | wall=1.35
+  R2[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R3[PPO]: carry=0 | base=0.53 | wall=2.00
+  R4[PPO]: carry=0 | base=0.53 | wall=2.07
+============================================================
+
+============================================================
+[EP 86] Picks: 31 | Deps: 29 | Rate: 6.6 tags/min (sim) | TotalDeps: 3092 | Wall: 5.7 min
+  R1[BASE_AVOID]: carry=0 | base=0.19 | wall=2.35
+  R2[RTB]: carry=1 | base=0.08 | wall=2.43
+  R3[RTB]: carry=1 | base=0.28 | wall=2.24
+  R4[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+============================================================
+
+============================================================
+[EP 87] Picks: 14 | Deps: 12 | Rate: 2.7 tags/min (sim) | TotalDeps: 3104 | Wall: 6.0 min
+  R1[RTB]: carry=1 | base=1.66 | wall=0.85
+  R2[PPO]: carry=0 | base=0.50 | wall=2.01
+  R3[RTB]: carry=1 | base=0.05 | wall=2.45
+  R4[BASE_AVOID]: carry=0 | base=0.04 | wall=2.47
+============================================================
+
+============================================================
+[EP 88] Picks: 5 | Deps: 5 | Rate: 1.1 tags/min (sim) | TotalDeps: 3109 | Wall: 6.2 min
+  R1[PPO]: carry=0 | base=0.64 | wall=1.86
+  R2[PPO]: carry=0 | base=0.40 | wall=2.20
+  R3[PPO]: carry=0 | base=1.12 | wall=1.50
+  R4[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+============================================================
+
+============================================================
+[EP 89] Picks: 16 | Deps: 16 | Rate: 3.7 tags/min (sim) | TotalDeps: 3125 | Wall: 6.0 min
+  R1[PPO]: carry=0 | base=0.57 | wall=1.94
+  R2[PPO]: carry=0 | base=0.61 | wall=2.06
+  R3[PPO]: carry=0 | base=1.10 | wall=1.40
+  R4[PPO]: carry=0 | base=0.48 | wall=2.02
+============================================================
+
+============================================================
+[EP 90] Picks: 11 | Deps: 11 | Rate: 2.5 tags/min (sim) | TotalDeps: 3136 | Wall: 6.0 min
+  R1[PPO]: carry=0 | base=0.69 | wall=2.00
+  R2[PPO]: carry=0 | base=0.35 | wall=2.19
+  R3[PPO]: carry=0 | base=0.97 | wall=1.53
+  R4[BASE_AVOID]: carry=0 | base=0.17 | wall=2.34
+============================================================
+
+============================================================
+[EP 91] Picks: 24 | Deps: 24 | Rate: 5.5 tags/min (sim) | TotalDeps: 3160 | Wall: 5.7 min
+  R1[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R2[PPO]: carry=0 | base=0.66 | wall=1.89
+  R3[PPO]: carry=0 | base=0.32 | wall=2.19
+  R4[PPO]: carry=0 | base=0.48 | wall=2.15
+============================================================
+
+============================================================
+[EP 92] Picks: 20 | Deps: 19 | Rate: 4.3 tags/min (sim) | TotalDeps: 3179 | Wall: 5.8 min
+  R1[PPO]: carry=0 | base=0.36 | wall=2.23
+  R2[PPO]: carry=0 | base=0.44 | wall=2.14
+  R3[RTB]: carry=1 | base=0.55 | wall=1.98
+  R4[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+============================================================
+
+============================================================
+[EP 93] Picks: 29 | Deps: 28 | Rate: 6.4 tags/min (sim) | TotalDeps: 3207 | Wall: 5.6 min
+  R1[PPO]: carry=0 | base=1.08 | wall=1.65
+  R2[PPO]: carry=0 | base=0.67 | wall=1.83
+  R3[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R4[RTB]: carry=1 | base=0.80 | wall=1.78
+============================================================
+
+============================================================
+[EP 94] Picks: 11 | Deps: 11 | Rate: 2.5 tags/min (sim) | TotalDeps: 3218 | Wall: 6.0 min
+  R1[PPO]: carry=0 | base=1.11 | wall=1.48
+  R2[PPO]: carry=0 | base=0.74 | wall=1.76
+  R3[PPO]: carry=0 | base=1.50 | wall=1.00
+  R4[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+============================================================
+
+============================================================
+[EP 95] Picks: 33 | Deps: 30 | Rate: 6.9 tags/min (sim) | TotalDeps: 3248 | Wall: 5.5 min
+  R1[RTB]: carry=1 | base=0.52 | wall=2.00
+  R2[RTB]: carry=1 | base=1.04 | wall=1.46
+  R3[RTB]: carry=1 | base=0.90 | wall=1.63
+  R4[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+============================================================
+
+============================================================
+[EP 96] Picks: 8 | Deps: 8 | Rate: 1.8 tags/min (sim) | TotalDeps: 3256 | Wall: 6.0 min
+  R1[PPO]: carry=0 | base=1.27 | wall=1.35
+  R2[PPO]: carry=0 | base=0.33 | wall=2.21
+  R3[PPO]: carry=0 | base=0.39 | wall=2.11
+  R4[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+============================================================
+
+============================================================
+[EP 97] Picks: 7 | Deps: 7 | Rate: 1.6 tags/min (sim) | TotalDeps: 3263 | Wall: 6.2 min
+  R1[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R2[PPO]: carry=0 | base=0.33 | wall=2.18
+  R3[PPO]: carry=0 | base=2.52 | wall=0.69
+  R4[PPO]: carry=0 | base=0.67 | wall=1.94
+============================================================
+
+============================================================
+[EP 98] Picks: 24 | Deps: 22 | Rate: 5.0 tags/min (sim) | TotalDeps: 3285 | Wall: 5.7 min
+  R1[RTB]: carry=1 | base=1.23 | wall=1.30
+  R2[RTB]: carry=1 | base=0.73 | wall=1.79
+  R3[PPO]: carry=0 | base=0.44 | wall=2.07
+  R4[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+============================================================
+
+============================================================
+[EP 99] Picks: 5 | Deps: 4 | Rate: 0.9 tags/min (sim) | TotalDeps: 3289 | Wall: 6.1 min
+  R1[RTB]: carry=1 | base=1.25 | wall=1.60
+  R2[PPO]: carry=0 | base=1.49 | wall=1.05
+  R3[PPO]: carry=0 | base=1.73 | wall=1.19
+  R4[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+============================================================
+
+============================================================
+[EP 100] Picks: 25 | Deps: 23 | Rate: 5.3 tags/min (sim) | TotalDeps: 3312 | Wall: 5.7 min
+  R1[RTB]: carry=1 | base=0.74 | wall=1.76
+  R2[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R3[RTB]: carry=1 | base=0.37 | wall=2.18
+  R4[PPO]: carry=0 | base=0.92 | wall=1.58
+============================================================
+
+============================================================
+[EP 101] Picks: 21 | Deps: 19 | Rate: 4.3 tags/min (sim) | TotalDeps: 3331 | Wall: 5.9 min
+  R1[PPO]: carry=0 | base=0.78 | wall=1.72
+  R2[RTB]: carry=1 | base=0.53 | wall=2.01
+  R3[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R4[RTB]: carry=1 | base=1.03 | wall=1.48
+============================================================
+
+============================================================
+[EP 102] Picks: 24 | Deps: 22 | Rate: 5.0 tags/min (sim) | TotalDeps: 3353 | Wall: 5.7 min
+  R1[RTB]: carry=1 | base=1.04 | wall=1.68
+  R2[RTB]: carry=1 | base=0.53 | wall=2.07
+  R3[PPO]: carry=0 | base=0.36 | wall=2.18
+  R4[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+============================================================
+
+============================================================
+[EP 103] Picks: 14 | Deps: 14 | Rate: 3.2 tags/min (sim) | TotalDeps: 3367 | Wall: 5.9 min
+  R1[PPO]: carry=0 | base=0.33 | wall=2.21
+  R2[PPO]: carry=0 | base=0.49 | wall=2.13
+  R3[PPO]: carry=0 | base=0.72 | wall=1.88
+  R4[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+============================================================
+
+============================================================
+[EP 104] Picks: 29 | Deps: 28 | Rate: 6.4 tags/min (sim) | TotalDeps: 3395 | Wall: 5.6 min
+  R1[PPO]: carry=0 | base=1.74 | wall=1.04
+  R2[RTB]: carry=1 | base=0.78 | wall=1.93
+  R3[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R4[PPO]: carry=0 | base=1.33 | wall=1.47
+============================================================
+
+============================================================
+[EP 105] Picks: 28 | Deps: 28 | Rate: 6.4 tags/min (sim) | TotalDeps: 3423 | Wall: 5.6 min
+  R1[PPO]: carry=0 | base=0.76 | wall=1.83
+  R2[PPO]: carry=0 | base=1.64 | wall=0.89
+  R3[PPO]: carry=0 | base=0.39 | wall=2.15
+  R4[PPO]: carry=0 | base=0.38 | wall=2.12
+============================================================
+
+============================================================
+[EP 106] Picks: 9 | Deps: 9 | Rate: 2.1 tags/min (sim) | TotalDeps: 3432 | Wall: 6.1 min
+  R1[PPO]: carry=0 | base=1.76 | wall=0.83
+  R2[PPO]: carry=0 | base=1.53 | wall=1.37
+  R3[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R4[PPO]: carry=0 | base=0.69 | wall=1.97
+============================================================
+
+============================================================
+[EP 107] Picks: 13 | Deps: 13 | Rate: 3.0 tags/min (sim) | TotalDeps: 3445 | Wall: 6.0 min
+  R1[PPO]: carry=0 | base=0.36 | wall=2.16
+  R2[PPO]: carry=0 | base=0.86 | wall=1.87
+  R3[PPO]: carry=0 | base=0.56 | wall=2.04
+  R4[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+============================================================
+
+============================================================
+[EP 108] Picks: 30 | Deps: 29 | Rate: 6.6 tags/min (sim) | TotalDeps: 3474 | Wall: 5.6 min
+  R1[RTB]: carry=1 | base=1.06 | wall=1.46
+  R2[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R3[PPO]: carry=0 | base=1.45 | wall=1.12
+  R4[PPO]: carry=0 | base=0.43 | wall=2.18
+============================================================
+
+============================================================
+[EP 109] Picks: 20 | Deps: 20 | Rate: 4.6 tags/min (sim) | TotalDeps: 3494 | Wall: 5.8 min
+  R1[PPO]: carry=0 | base=0.34 | wall=2.16
+  R2[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R3[PPO]: carry=0 | base=0.51 | wall=2.09
+  R4[PPO]: carry=0 | base=0.57 | wall=1.94
+============================================================
+
+============================================================
+[EP 110] Picks: 23 | Deps: 20 | Rate: 4.6 tags/min (sim) | TotalDeps: 3514 | Wall: 5.7 min
+  R1[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R2[RTB]: carry=1 | base=1.52 | wall=1.03
+  R3[RTB]: carry=1 | base=0.64 | wall=1.87
+  R4[RTB]: carry=1 | base=0.24 | wall=2.26
+============================================================
+
+============================================================
+[EP 111] Picks: 15 | Deps: 15 | Rate: 3.4 tags/min (sim) | TotalDeps: 3529 | Wall: 5.9 min
+  R1[PPO]: carry=0 | base=0.35 | wall=2.15
+  R2[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R3[PPO]: carry=0 | base=1.28 | wall=1.35
+  R4[BASE_AVOID]: carry=0 | base=0.29 | wall=2.23
+============================================================
+
+============================================================
+[EP 112] Picks: 23 | Deps: 23 | Rate: 5.3 tags/min (sim) | TotalDeps: 3552 | Wall: 5.6 min
+  R1[PPO]: carry=0 | base=0.51 | wall=2.04
+  R2[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R3[PPO]: carry=0 | base=1.66 | wall=1.03
+  R4[PPO]: carry=0 | base=0.67 | wall=1.94
+============================================================
+
+============================================================
+[EP 113] Picks: 21 | Deps: 21 | Rate: 4.8 tags/min (sim) | TotalDeps: 3573 | Wall: 5.7 min
+  R1[PPO]: carry=0 | base=0.41 | wall=2.20
+  R2[PPO]: carry=0 | base=0.45 | wall=2.13
+  R3[PPO]: carry=0 | base=0.42 | wall=2.09
+  R4[PPO]: carry=0 | base=0.42 | wall=2.13
+============================================================
+
+============================================================
+[EP 114] Picks: 24 | Deps: 24 | Rate: 5.5 tags/min (sim) | TotalDeps: 3597 | Wall: 5.7 min
+  R1[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R2[PPO]: carry=0 | base=0.53 | wall=2.09
+  R3[PPO]: carry=0 | base=0.31 | wall=2.23
+  R4[PPO]: carry=0 | base=0.81 | wall=1.74
+============================================================
+
+============================================================
+[EP 115] Picks: 16 | Deps: 15 | Rate: 3.4 tags/min (sim) | TotalDeps: 3612 | Wall: 5.9 min
+  R1[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R2[PPO]: carry=0 | base=1.23 | wall=1.42
+  R3[RTB]: carry=1 | base=0.51 | wall=2.09
+  R4[PPO]: carry=0 | base=0.64 | wall=1.93
+============================================================
+
+============================================================
+[EP 116] Picks: 26 | Deps: 23 | Rate: 5.3 tags/min (sim) | TotalDeps: 3635 | Wall: 5.6 min
+  R1[PPO]: carry=0 | base=1.64 | wall=1.30
+  R2[RTB]: carry=1 | base=0.04 | wall=2.46
+  R3[RTB]: carry=1 | base=0.21 | wall=2.35
+  R4[RTB]: carry=1 | base=1.38 | wall=1.41
+============================================================
+
+============================================================
+[EP 117] Picks: 20 | Deps: 20 | Rate: 4.6 tags/min (sim) | TotalDeps: 3655 | Wall: 5.8 min
+  R1[PPO]: carry=0 | base=1.07 | wall=1.47
+  R2[PPO]: carry=0 | base=1.59 | wall=0.92
+  R3[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R4[PPO]: carry=0 | base=1.22 | wall=1.57
+============================================================
+
+============================================================
+[EP 118] Picks: 34 | Deps: 31 | Rate: 7.1 tags/min (sim) | TotalDeps: 3686 | Wall: 5.5 min
+  R1[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R2[RTB]: carry=1 | base=1.03 | wall=1.50
+  R3[RTB]: carry=1 | base=1.04 | wall=1.75
+  R4[RTB]: carry=1 | base=1.02 | wall=1.63
+============================================================
+
+============================================================
+[EP 119] Picks: 37 | Deps: 34 | Rate: 7.8 tags/min (sim) | TotalDeps: 3720 | Wall: 5.4 min
+  R1[RTB]: carry=1 | base=0.23 | wall=2.30
+  R2[RTB]: carry=1 | base=0.32 | wall=2.19
+  R3[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R4[RTB]: carry=1 | base=0.54 | wall=2.00
+============================================================
+
+============================================================
+[EP 120] Picks: 25 | Deps: 24 | Rate: 5.5 tags/min (sim) | TotalDeps: 3744 | Wall: 5.7 min
+  R1[PPO]: carry=0 | base=0.48 | wall=2.09
+  R2[RTB]: carry=1 | base=1.40 | wall=1.10
+  R3[PPO]: carry=0 | base=1.77 | wall=0.76
+  R4[PPO]: carry=0 | base=1.34 | wall=1.55
+============================================================
+
+============================================================
+[EP 121] Picks: 23 | Deps: 21 | Rate: 4.8 tags/min (sim) | TotalDeps: 3765 | Wall: 5.8 min
+  R1[RTB]: carry=1 | base=1.21 | wall=1.33
+  R2[PPO]: carry=0 | base=1.21 | wall=1.45
+  R3[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R4[RTB]: carry=1 | base=1.64 | wall=0.92
+============================================================
+
+============================================================
+[EP 122] Picks: 28 | Deps: 26 | Rate: 6.0 tags/min (sim) | TotalDeps: 3791 | Wall: 5.6 min
+  R1[PPO]: carry=0 | base=0.48 | wall=2.10
+  R2[RTB]: carry=1 | base=0.66 | wall=1.86
+  R3[RTB]: carry=1 | base=1.11 | wall=1.55
+  R4[PPO]: carry=0 | base=0.53 | wall=2.07
+============================================================
+
+============================================================
+[EP 123] Picks: 21 | Deps: 19 | Rate: 4.3 tags/min (sim) | TotalDeps: 3810 | Wall: 5.8 min
+  R1[RTB]: carry=1 | base=1.22 | wall=1.28
+  R2[PPO]: carry=0 | base=0.88 | wall=1.63
+  R3[PPO]: carry=0 | base=0.35 | wall=2.19
+  R4[RTB]: carry=1 | base=1.42 | wall=1.09
+============================================================
+
+============================================================
+[EP 124] Picks: 23 | Deps: 23 | Rate: 5.3 tags/min (sim) | TotalDeps: 3833 | Wall: 5.7 min
+  R1[PPO]: carry=0 | base=0.48 | wall=2.03
+  R2[PPO]: carry=0 | base=0.44 | wall=2.06
+  R3[PPO]: carry=0 | base=0.51 | wall=2.04
+  R4[PPO]: carry=0 | base=1.39 | wall=1.12
+============================================================
+
+============================================================
+[EP 125] Picks: 12 | Deps: 11 | Rate: 2.5 tags/min (sim) | TotalDeps: 3844 | Wall: 5.9 min
+  R1[PPO]: carry=0 | base=0.37 | wall=2.13
+  R2[RTB]: carry=1 | base=0.52 | wall=2.05
+  R3[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R4[PPO]: carry=0 | base=0.36 | wall=2.16
+============================================================
+
+============================================================
+[EP 126] Picks: 18 | Deps: 18 | Rate: 4.1 tags/min (sim) | TotalDeps: 3862 | Wall: 5.8 min
+  R1[PPO]: carry=0 | base=0.32 | wall=2.26
+  R2[PPO]: carry=0 | base=0.36 | wall=2.14
+  R3[PPO]: carry=0 | base=0.35 | wall=2.17
+  R4[PPO]: carry=0 | base=0.80 | wall=1.73
+============================================================
+
+============================================================
+[EP 127] Picks: 18 | Deps: 18 | Rate: 4.1 tags/min (sim) | TotalDeps: 3880 | Wall: 5.8 min
+  R1[PPO]: carry=0 | base=1.25 | wall=1.26
+  R2[PPO]: carry=0 | base=0.33 | wall=2.18
+  R3[PPO]: carry=0 | base=1.34 | wall=1.17
+  R4[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+============================================================
+
+============================================================
+[EP 128] Picks: 24 | Deps: 24 | Rate: 5.5 tags/min (sim) | TotalDeps: 3904 | Wall: 5.7 min
+  R1[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R2[PPO]: carry=0 | base=0.53 | wall=1.97
+  R3[PPO]: carry=0 | base=0.39 | wall=2.12
+  R4[PPO]: carry=0 | base=1.04 | wall=1.53
+============================================================
+
+============================================================
+[EP 129] Picks: 20 | Deps: 19 | Rate: 4.3 tags/min (sim) | TotalDeps: 3923 | Wall: 5.8 min
+  R1[PPO]: carry=0 | base=0.44 | wall=2.15
+  R2[BASE_AVOID]: carry=0 | base=0.24 | wall=2.27
+  R3[RTB]: carry=1 | base=0.00 | wall=2.50
+  R4[PPO]: carry=0 | base=0.51 | wall=2.07
+============================================================
+
+============================================================
+[EP 130] Picks: 15 | Deps: 15 | Rate: 3.4 tags/min (sim) | TotalDeps: 3938 | Wall: 5.8 min
+  R1[PPO]: carry=0 | base=0.68 | wall=1.82
+  R2[PPO]: carry=0 | base=0.43 | wall=2.18
+  R3[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R4[PPO]: carry=0 | base=0.36 | wall=2.21
+============================================================
+
+============================================================
+[EP 131] Picks: 3 | Deps: 2 | Rate: 0.5 tags/min (sim) | TotalDeps: 3940 | Wall: 6.2 min
+  R1[PPO]: carry=0 | base=0.64 | wall=1.90
+  R2[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R3[RTB]: carry=1 | base=1.25 | wall=1.61
+  R4[PPO]: carry=0 | base=0.75 | wall=1.78
+============================================================
+
+============================================================
+[EP 132] Picks: 22 | Deps: 22 | Rate: 5.0 tags/min (sim) | TotalDeps: 3962 | Wall: 5.8 min
+  R1[PPO]: carry=0 | base=0.43 | wall=2.07
+  R2[PPO]: carry=0 | base=0.46 | wall=2.05
+  R3[PPO]: carry=0 | base=0.40 | wall=2.10
+  R4[PPO]: carry=0 | base=0.35 | wall=2.23
+============================================================
+
+============================================================
+[EP 133] Picks: 8 | Deps: 8 | Rate: 1.8 tags/min (sim) | TotalDeps: 3970 | Wall: 6.1 min
+  R1[PPO]: carry=0 | base=0.76 | wall=1.78
+  R2[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R3[PPO]: carry=0 | base=0.40 | wall=2.10
+  R4[PPO]: carry=0 | base=0.55 | wall=2.11
+============================================================
+
+============================================================
+[EP 134] Picks: 17 | Deps: 16 | Rate: 3.7 tags/min (sim) | TotalDeps: 3986 | Wall: 5.8 min
+  R1[PPO]: carry=0 | base=0.31 | wall=2.20
+  R2[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R3[RTB]: carry=1 | base=1.09 | wall=1.70
+  R4[PPO]: carry=0 | base=0.71 | wall=1.88
+============================================================
+
+============================================================
+[EP 135] Picks: 25 | Deps: 25 | Rate: 5.7 tags/min (sim) | TotalDeps: 4011 | Wall: 5.6 min
+  R1[PPO]: carry=0 | base=0.40 | wall=2.11
+  R2[PPO]: carry=0 | base=0.41 | wall=2.11
+  R3[PPO]: carry=0 | base=1.21 | wall=1.45
+  R4[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+============================================================
+
+============================================================
+[EP 136] Picks: 13 | Deps: 13 | Rate: 3.0 tags/min (sim) | TotalDeps: 4024 | Wall: 5.9 min
+  R1[PPO]: carry=0 | base=1.54 | wall=1.09
+  R2[PPO]: carry=0 | base=0.39 | wall=2.14
+  R3[PPO]: carry=0 | base=0.32 | wall=2.18
+  R4[PPO]: carry=0 | base=0.40 | wall=2.10
+============================================================
+
+============================================================
+[EP 137] Picks: 28 | Deps: 26 | Rate: 6.0 tags/min (sim) | TotalDeps: 4050 | Wall: 5.6 min
+  R1[PPO]: carry=0 | base=1.40 | wall=1.28
+  R2[RTB]: carry=1 | base=1.39 | wall=1.24
+  R3[PPO]: carry=0 | base=1.06 | wall=1.45
+  R4[RTB]: carry=1 | base=1.17 | wall=1.36
+============================================================
+
+============================================================
+[EP 138] Picks: 30 | Deps: 28 | Rate: 6.4 tags/min (sim) | TotalDeps: 4078 | Wall: 5.5 min
+  R1[PPO]: carry=0 | base=1.04 | wall=1.54
+  R2[RTB]: carry=1 | base=1.42 | wall=1.26
+  R3[RTB]: carry=1 | base=0.93 | wall=1.81
+  R4[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+============================================================
+
+============================================================
+[EP 139] Picks: 22 | Deps: 22 | Rate: 5.0 tags/min (sim) | TotalDeps: 4100 | Wall: 5.6 min
+  R1[PPO]: carry=0 | base=0.32 | wall=2.21
+  R2[PPO]: carry=0 | base=0.38 | wall=2.17
+  R3[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R4[PPO]: carry=0 | base=1.75 | wall=0.96
+============================================================
+
+============================================================
+[EP 140] Picks: 27 | Deps: 26 | Rate: 6.0 tags/min (sim) | TotalDeps: 4126 | Wall: 5.5 min
+  R1[PPO]: carry=0 | base=0.35 | wall=2.16
+  R2[BASE_AVOID]: carry=0 | base=0.17 | wall=2.33
+  R3[PPO]: carry=0 | base=0.32 | wall=2.20
+  R4[RTB]: carry=1 | base=0.05 | wall=2.46
+============================================================
+
+============================================================
+[EP 141] Picks: 19 | Deps: 19 | Rate: 4.3 tags/min (sim) | TotalDeps: 4145 | Wall: 5.7 min
+  R1[PPO]: carry=0 | base=0.34 | wall=2.20
+  R2[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R3[PPO]: carry=0 | base=0.39 | wall=2.14
+  R4[PPO]: carry=0 | base=0.60 | wall=1.97
+============================================================
+
+============================================================
+[EP 142] Picks: 18 | Deps: 18 | Rate: 4.1 tags/min (sim) | TotalDeps: 4163 | Wall: 5.8 min
+  R1[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R2[PPO]: carry=0 | base=0.38 | wall=2.17
+  R3[PPO]: carry=0 | base=0.34 | wall=2.17
+  R4[PPO]: carry=0 | base=0.58 | wall=2.01
+============================================================
+
+============================================================
+[EP 143] Picks: 10 | Deps: 9 | Rate: 2.1 tags/min (sim) | TotalDeps: 4172 | Wall: 6.0 min
+  R1[RTB]: carry=1 | base=0.31 | wall=2.19
+  R2[PPO]: carry=0 | base=0.60 | wall=2.05
+  R3[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R4[PPO]: carry=0 | base=0.48 | wall=2.15
+============================================================
+
+============================================================
+[EP 144] Picks: 12 | Deps: 11 | Rate: 2.5 tags/min (sim) | TotalDeps: 4183 | Wall: 5.8 min
+  R1[PPO]: carry=0 | base=0.43 | wall=2.14
+  R2[PPO]: carry=0 | base=0.44 | wall=2.06
+  R3[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R4[RTB]: carry=1 | base=1.96 | wall=1.04
+============================================================
+
+============================================================
+[EP 145] Picks: 19 | Deps: 19 | Rate: 4.3 tags/min (sim) | TotalDeps: 4202 | Wall: 5.8 min
+  R1[PPO]: carry=0 | base=0.49 | wall=2.04
+  R2[PPO]: carry=0 | base=0.49 | wall=2.15
+  R3[PPO]: carry=0 | base=0.64 | wall=1.87
+  R4[PPO]: carry=0 | base=0.44 | wall=2.13
+============================================================
+
+============================================================
+[EP 146] Picks: 11 | Deps: 11 | Rate: 2.5 tags/min (sim) | TotalDeps: 4213 | Wall: 5.9 min
+  R1[PPO]: carry=0 | base=0.33 | wall=2.23
+  R2[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R3[PPO]: carry=0 | base=0.46 | wall=2.17
+  R4[PPO]: carry=0 | base=0.63 | wall=1.99
+============================================================
+
+============================================================
+[EP 147] Picks: 21 | Deps: 21 | Rate: 4.8 tags/min (sim) | TotalDeps: 4234 | Wall: 5.7 min
+  R1[PPO]: carry=0 | base=0.43 | wall=2.09
+  R2[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R3[PPO]: carry=0 | base=0.38 | wall=2.18
+  R4[PPO]: carry=0 | base=0.36 | wall=2.19
+============================================================
+
+============================================================
+[EP 148] Picks: 17 | Deps: 17 | Rate: 3.9 tags/min (sim) | TotalDeps: 4251 | Wall: 5.7 min
+  R1[PPO]: carry=0 | base=1.11 | wall=1.39
+  R2[PPO]: carry=0 | base=0.35 | wall=2.16
+  R3[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R4[PPO]: carry=0 | base=0.38 | wall=2.13
+============================================================
+
+============================================================
+[EP 149] Picks: 22 | Deps: 20 | Rate: 4.6 tags/min (sim) | TotalDeps: 4271 | Wall: 5.7 min
+  R1[RTB]: carry=1 | base=1.57 | wall=1.04
+  R2[BASE_AVOID]: carry=0 | base=0.11 | wall=2.42
+  R3[PPO]: carry=0 | base=0.31 | wall=2.21
+  R4[RTB]: carry=1 | base=0.01 | wall=2.49
+============================================================
+
+============================================================
+[EP 150] Picks: 4 | Deps: 4 | Rate: 0.9 tags/min (sim) | TotalDeps: 4275 | Wall: 6.1 min
+  R1[PPO]: carry=0 | base=0.32 | wall=2.27
+  R2[PPO]: carry=0 | base=0.47 | wall=2.14
+  R3[PPO]: carry=0 | base=0.40 | wall=2.16
+  R4[PPO]: carry=0 | base=0.47 | wall=2.08
+============================================================
+
+============================================================
+[EP 151] Picks: 22 | Deps: 21 | Rate: 4.8 tags/min (sim) | TotalDeps: 4296 | Wall: 5.6 min
+  R1[PPO]: carry=0 | base=0.42 | wall=2.18
+  R2[PPO]: carry=0 | base=1.62 | wall=0.94
+  R3[RTB]: carry=1 | base=1.38 | wall=1.12
+  R4[PPO]: carry=0 | base=1.78 | wall=0.78
+============================================================
+
+============================================================
+[EP 152] Picks: 9 | Deps: 9 | Rate: 2.1 tags/min (sim) | TotalDeps: 4305 | Wall: 6.0 min
+  R1[BASE_AVOID]: carry=0 | base=0.28 | wall=2.30
+  R2[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R3[PPO]: carry=0 | base=0.39 | wall=2.19
+  R4[BASE_AVOID]: carry=0 | base=0.20 | wall=2.34
+============================================================
+
+============================================================
+[EP 153] Picks: 4 | Deps: 3 | Rate: 0.7 tags/min (sim) | TotalDeps: 4308 | Wall: 6.1 min
+  R1[PPO]: carry=0 | base=0.51 | wall=1.99
+  R2[RTB]: carry=1 | base=0.30 | wall=2.20
+  R3[PPO]: carry=0 | base=0.37 | wall=2.15
+  R4[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+============================================================
+
+============================================================
+[EP 154] Picks: 24 | Deps: 24 | Rate: 5.5 tags/min (sim) | TotalDeps: 4332 | Wall: 5.5 min
+  R1[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R2[PPO]: carry=0 | base=0.38 | wall=2.12
+  R3[PPO]: carry=0 | base=0.35 | wall=2.25
+  R4[PPO]: carry=0 | base=1.30 | wall=1.27
+============================================================
+
+============================================================
+[EP 155] Picks: 11 | Deps: 11 | Rate: 2.5 tags/min (sim) | TotalDeps: 4343 | Wall: 5.9 min
+  R1[PPO]: carry=0 | base=1.47 | wall=1.19
+  R2[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R3[PPO]: carry=0 | base=1.41 | wall=1.39
+  R4[PPO]: carry=0 | base=0.90 | wall=1.60
+============================================================
+
+============================================================
+[EP 156] Picks: 13 | Deps: 13 | Rate: 3.0 tags/min (sim) | TotalDeps: 4356 | Wall: 5.9 min
+  R1[PPO]: carry=0 | base=0.59 | wall=1.97
+  R2[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R3[PPO]: carry=0 | base=0.62 | wall=1.90
+  R4[PPO]: carry=0 | base=0.42 | wall=2.13
+============================================================
+
+============================================================
+[EP 157] Picks: 29 | Deps: 28 | Rate: 6.4 tags/min (sim) | TotalDeps: 4384 | Wall: 5.5 min
+  R1[PPO]: carry=0 | base=1.05 | wall=1.47
+  R2[PPO]: carry=0 | base=0.32 | wall=2.19
+  R3[RTB]: carry=1 | base=1.42 | wall=1.14
+  R4[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+============================================================
+
+============================================================
+[EP 158] Picks: 22 | Deps: 22 | Rate: 5.0 tags/min (sim) | TotalDeps: 4406 | Wall: 5.5 min
+  R1[PPO]: carry=0 | base=0.43 | wall=2.12
+  R2[BASE_AVOID]: carry=0 | base=0.27 | wall=2.25
+  R3[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R4[PPO]: carry=0 | base=0.31 | wall=2.20
+============================================================
+
+============================================================
+[EP 159] Picks: 27 | Deps: 26 | Rate: 6.0 tags/min (sim) | TotalDeps: 4432 | Wall: 5.3 min
+  R1[PPO]: carry=0 | base=0.40 | wall=2.11
+  R2[PPO]: carry=0 | base=0.51 | wall=2.04
+  R3[PPO]: carry=0 | base=1.47 | wall=1.05
+  R4[RTB]: carry=1 | base=1.36 | wall=1.36
+============================================================
+
+============================================================
+[EP 160] Picks: 21 | Deps: 19 | Rate: 4.3 tags/min (sim) | TotalDeps: 4451 | Wall: 5.7 min
+  R1[PPO]: carry=0 | base=0.34 | wall=2.22
+  R2[RTB]: carry=1 | base=0.78 | wall=1.74
+  R3[RTB]: carry=1 | base=0.55 | wall=1.96
+  R4[PPO]: carry=0 | base=0.33 | wall=2.21
+============================================================
+
+============================================================
+[EP 161] Picks: 5 | Deps: 5 | Rate: 1.1 tags/min (sim) | TotalDeps: 4456 | Wall: 6.1 min
+  R1[PPO]: carry=0 | base=0.42 | wall=2.14
+  R2[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R3[PPO]: carry=0 | base=0.48 | wall=2.08
+  R4[PPO]: carry=0 | base=0.54 | wall=2.04
+============================================================
+
+============================================================
+[EP 162] Picks: 25 | Deps: 23 | Rate: 5.3 tags/min (sim) | TotalDeps: 4479 | Wall: 5.5 min
+  R1[RTB]: carry=1 | base=0.12 | wall=2.40
+  R2[BASE_AVOID]: carry=0 | base=0.03 | wall=2.47
+  R3[PPO]: carry=0 | base=1.40 | wall=1.20
+  R4[RTB]: carry=1 | base=0.05 | wall=2.46
+============================================================
+
+============================================================
+[EP 163] Picks: 14 | Deps: 14 | Rate: 3.2 tags/min (sim) | TotalDeps: 4493 | Wall: 5.9 min
+  R1[PPO]: carry=0 | base=0.35 | wall=2.17
+  R2[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R3[PPO]: carry=0 | base=0.43 | wall=2.15
+  R4[PPO]: carry=0 | base=0.52 | wall=2.11
+============================================================
+
+============================================================
+[EP 164] Picks: 3 | Deps: 3 | Rate: 0.7 tags/min (sim) | TotalDeps: 4496 | Wall: 6.1 min
+  R1[PPO]: carry=0 | base=0.43 | wall=2.09
+  R2[PPO]: carry=0 | base=0.50 | wall=2.02
+  R3[PPO]: carry=0 | base=0.36 | wall=2.14
+  R4[PPO]: carry=0 | base=0.38 | wall=2.15
+============================================================
+
+============================================================
+[EP 165] Picks: 16 | Deps: 16 | Rate: 3.7 tags/min (sim) | TotalDeps: 4512 | Wall: 5.8 min
+  R1[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R2[PPO]: carry=0 | base=0.31 | wall=2.24
+  R3[PPO]: carry=0 | base=0.35 | wall=2.15
+  R4[PPO]: carry=0 | base=0.37 | wall=2.18
+============================================================
+
+============================================================
+[EP 166] Picks: 4 | Deps: 4 | Rate: 0.9 tags/min (sim) | TotalDeps: 4516 | Wall: 6.1 min
+  R1[PPO]: carry=0 | base=0.35 | wall=2.15
+  R2[PPO]: carry=0 | base=0.34 | wall=2.16
+  R3[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R4[PPO]: carry=0 | base=0.36 | wall=2.16
+============================================================
+
+============================================================
+[EP 167] Picks: 8 | Deps: 8 | Rate: 1.8 tags/min (sim) | TotalDeps: 4524 | Wall: 5.9 min
+  R1[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R2[PPO]: carry=0 | base=0.55 | wall=1.97
+  R3[PPO]: carry=0 | base=0.31 | wall=2.24
+  R4[PPO]: carry=0 | base=0.32 | wall=2.26
+============================================================
+
+============================================================
+[EP 168] Picks: 18 | Deps: 18 | Rate: 4.1 tags/min (sim) | TotalDeps: 4542 | Wall: 5.7 min
+  R1[PPO]: carry=0 | base=0.32 | wall=2.18
+  R2[PPO]: carry=0 | base=0.50 | wall=2.00
+  R3[PPO]: carry=0 | base=1.44 | wall=1.08
+  R4[PPO]: carry=0 | base=0.69 | wall=1.89
+============================================================
+
+============================================================
+[EP 169] Picks: 26 | Deps: 24 | Rate: 5.5 tags/min (sim) | TotalDeps: 4566 | Wall: 5.6 min
+  R1[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R2[RTB]: carry=1 | base=1.14 | wall=1.39
+  R3[PPO]: carry=0 | base=0.33 | wall=2.17
+  R4[RTB]: carry=1 | base=1.39 | wall=1.40
+============================================================
+
+============================================================
+[EP 170] Picks: 15 | Deps: 15 | Rate: 3.4 tags/min (sim) | TotalDeps: 4581 | Wall: 5.7 min
+  R1[PPO]: carry=0 | base=1.35 | wall=1.19
+  R2[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R3[PPO]: carry=0 | base=0.49 | wall=2.03
+  R4[PPO]: carry=0 | base=0.32 | wall=2.23
+============================================================
+
+============================================================
+[EP 171] Picks: 17 | Deps: 17 | Rate: 3.9 tags/min (sim) | TotalDeps: 4598 | Wall: 5.7 min
+  R1[PPO]: carry=0 | base=1.11 | wall=1.49
+  R2[PPO]: carry=0 | base=0.59 | wall=2.00
+  R3[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R4[PPO]: carry=0 | base=1.05 | wall=1.45
+============================================================
+
+============================================================
+[EP 172] Picks: 6 | Deps: 6 | Rate: 1.4 tags/min (sim) | TotalDeps: 4604 | Wall: 6.0 min
+  R1[PPO]: carry=0 | base=0.40 | wall=2.14
+  R2[PPO]: carry=0 | base=0.42 | wall=2.08
+  R3[PPO]: carry=0 | base=0.48 | wall=2.07
+  R4[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+============================================================
+
+============================================================
+[EP 173] Picks: 7 | Deps: 7 | Rate: 1.6 tags/min (sim) | TotalDeps: 4611 | Wall: 6.0 min
+  R1[PPO]: carry=0 | base=0.50 | wall=2.09
+  R2[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R3[PPO]: carry=0 | base=0.38 | wall=2.12
+  R4[PPO]: carry=0 | base=0.42 | wall=2.17
+============================================================
+
+============================================================
+[EP 174] Picks: 15 | Deps: 14 | Rate: 3.2 tags/min (sim) | TotalDeps: 4625 | Wall: 5.8 min
+  R1[PPO]: carry=0 | base=0.37 | wall=2.23
+  R2[RTB]: carry=1 | base=0.00 | wall=2.50
+  R3[PPO]: carry=0 | base=1.69 | wall=0.86
+  R4[PPO]: carry=0 | base=1.43 | wall=1.07
+============================================================
+
+============================================================
+[EP 175] Picks: 24 | Deps: 22 | Rate: 5.0 tags/min (sim) | TotalDeps: 4647 | Wall: 5.6 min
+  R1[PPO]: carry=0 | base=0.31 | wall=2.25
+  R2[RTB]: carry=1 | base=0.39 | wall=2.19
+  R3[PPO]: carry=0 | base=0.36 | wall=2.15
+  R4[RTB]: carry=1 | base=0.00 | wall=2.50
+============================================================
+
+============================================================
+[EP 176] Picks: 27 | Deps: 24 | Rate: 5.5 tags/min (sim) | TotalDeps: 4671 | Wall: 5.4 min
+  R1[RTB]: carry=1 | base=1.29 | wall=1.21
+  R2[RTB]: carry=1 | base=0.99 | wall=1.51
+  R3[RTB]: carry=1 | base=0.16 | wall=2.34
+  R4[PPO]: carry=0 | base=1.24 | wall=1.26
+============================================================
+
+============================================================
+[EP 177] Picks: 14 | Deps: 14 | Rate: 3.2 tags/min (sim) | TotalDeps: 4685 | Wall: 5.9 min
+  R1[PPO]: carry=0 | base=0.34 | wall=2.17
+  R2[PPO]: carry=0 | base=0.35 | wall=2.19
+  R3[PPO]: carry=0 | base=0.35 | wall=2.18
+  R4[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+============================================================
+
+============================================================
+[EP 178] Picks: 11 | Deps: 11 | Rate: 2.5 tags/min (sim) | TotalDeps: 4696 | Wall: 6.0 min
+  R1[PPO]: carry=0 | base=1.32 | wall=1.39
+  R2[PPO]: carry=0 | base=1.22 | wall=1.53
+  R3[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R4[PPO]: carry=0 | base=1.39 | wall=1.32
+============================================================
+
+============================================================
+[EP 179] Picks: 11 | Deps: 11 | Rate: 2.5 tags/min (sim) | TotalDeps: 4707 | Wall: 5.9 min
+  R1[PPO]: carry=0 | base=0.31 | wall=2.19
+  R2[PPO]: carry=0 | base=0.32 | wall=2.24
+  R3[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R4[PPO]: carry=0 | base=0.50 | wall=2.00
+============================================================
+
+============================================================
+[EP 180] Picks: 11 | Deps: 11 | Rate: 2.5 tags/min (sim) | TotalDeps: 4718 | Wall: 5.8 min
+  R1[PPO]: carry=0 | base=0.32 | wall=2.19
+  R2[PPO]: carry=0 | base=0.34 | wall=2.21
+  R3[PPO]: carry=0 | base=0.42 | wall=2.14
+  R4[BASE_AVOID]: carry=0 | base=0.03 | wall=2.47
+============================================================
+
+============================================================
+[EP 181] Picks: 5 | Deps: 4 | Rate: 0.9 tags/min (sim) | TotalDeps: 4722 | Wall: 6.1 min
+  R1[PPO]: carry=0 | base=0.36 | wall=2.14
+  R2[RTB]: carry=1 | base=1.01 | wall=1.57
+  R3[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R4[PPO]: carry=0 | base=0.42 | wall=2.14
+============================================================
+
+============================================================
+[EP 182] Picks: 8 | Deps: 8 | Rate: 1.8 tags/min (sim) | TotalDeps: 4730 | Wall: 6.0 min
+  R1[PPO]: carry=0 | base=0.42 | wall=2.20
+  R2[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R3[PPO]: carry=0 | base=0.46 | wall=2.07
+  R4[PPO]: carry=0 | base=0.43 | wall=2.08
+============================================================
+
+============================================================
+[EP 183] Picks: 13 | Deps: 12 | Rate: 2.7 tags/min (sim) | TotalDeps: 4742 | Wall: 5.8 min
+  R1[PPO]: carry=0 | base=0.48 | wall=2.13
+  R2[PPO]: carry=0 | base=0.40 | wall=2.20
+  R3[WALL_ESC]: carry=1 | base=1.91 | wall=0.59
+  R4[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+============================================================
+
+============================================================
+[EP 184] Picks: 16 | Deps: 16 | Rate: 3.7 tags/min (sim) | TotalDeps: 4758 | Wall: 5.8 min
+  R1[PPO]: carry=0 | base=1.72 | wall=1.25
+  R2[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R3[PPO]: carry=0 | base=0.79 | wall=1.90
+  R4[PPO]: carry=0 | base=0.48 | wall=2.10
+============================================================
+
+============================================================
+[EP 185] Picks: 5 | Deps: 5 | Rate: 1.1 tags/min (sim) | TotalDeps: 4763 | Wall: 6.1 min
+  R1[PPO]: carry=0 | base=0.45 | wall=2.09
+  R2[PPO]: carry=0 | base=0.33 | wall=2.21
+  R3[PPO]: carry=0 | base=0.60 | wall=2.06
+  R4[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+============================================================
+
+============================================================
+[EP 186] Picks: 9 | Deps: 9 | Rate: 2.1 tags/min (sim) | TotalDeps: 4772 | Wall: 5.9 min
+  R1[PPO]: carry=0 | base=1.23 | wall=1.50
+  R2[PPO]: carry=0 | base=0.35 | wall=2.16
+  R3[PPO]: carry=0 | base=0.49 | wall=2.07
+  R4[PPO]: carry=0 | base=0.31 | wall=2.19
+============================================================
+
+============================================================
+[EP 187] Picks: 7 | Deps: 7 | Rate: 1.6 tags/min (sim) | TotalDeps: 4779 | Wall: 6.0 min
+  R1[PPO]: carry=0 | base=0.52 | wall=1.98
+  R2[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R3[PPO]: carry=0 | base=0.45 | wall=2.11
+  R4[PPO]: carry=0 | base=0.39 | wall=2.12
+============================================================
+
+============================================================
+[EP 188] Picks: 6 | Deps: 6 | Rate: 1.4 tags/min (sim) | TotalDeps: 4785 | Wall: 6.0 min
+  R1[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R2[PPO]: carry=0 | base=0.39 | wall=2.13
+  R3[PPO]: carry=0 | base=0.54 | wall=1.98
+  R4[PPO]: carry=0 | base=0.35 | wall=2.15
+============================================================
+
+============================================================
+[EP 189] Picks: 19 | Deps: 19 | Rate: 4.3 tags/min (sim) | TotalDeps: 4804 | Wall: 5.7 min
+  R1[PPO]: carry=0 | base=1.39 | wall=1.13
+  R2[PPO]: carry=0 | base=0.52 | wall=2.02
+  R3[PPO]: carry=0 | base=1.52 | wall=1.38
+  R4[PPO]: carry=0 | base=0.84 | wall=1.76
+============================================================
+
+============================================================
+[EP 190] Picks: 22 | Deps: 22 | Rate: 5.0 tags/min (sim) | TotalDeps: 4826 | Wall: 5.6 min
+  R1[PPO]: carry=0 | base=0.33 | wall=2.26
+  R2[PPO]: carry=0 | base=0.33 | wall=2.22
+  R3[PPO]: carry=0 | base=1.39 | wall=1.28
+  R4[PPO]: carry=0 | base=0.36 | wall=2.15
+============================================================
+
+============================================================
+[EP 191] Picks: 7 | Deps: 6 | Rate: 1.4 tags/min (sim) | TotalDeps: 4832 | Wall: 6.0 min
+  R1[PPO]: carry=0 | base=0.37 | wall=2.17
+  R2[PPO]: carry=0 | base=0.36 | wall=2.16
+  R3[RTB]: carry=1 | base=1.68 | wall=0.87
+  R4[PPO]: carry=0 | base=0.59 | wall=1.93
+============================================================
+
+============================================================
+[EP 192] Picks: 14 | Deps: 14 | Rate: 3.2 tags/min (sim) | TotalDeps: 4846 | Wall: 5.7 min
+  R1[PPO]: carry=0 | base=0.62 | wall=2.00
+  R2[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R3[PPO]: carry=0 | base=0.35 | wall=2.19
+  R4[PPO]: carry=0 | base=0.32 | wall=2.18
+============================================================
+
+============================================================
+[EP 193] Picks: 17 | Deps: 16 | Rate: 3.7 tags/min (sim) | TotalDeps: 4862 | Wall: 5.7 min
+  R1[PPO]: carry=0 | base=1.51 | wall=1.04
+  R2[PPO]: carry=0 | base=1.63 | wall=1.30
+  R3[RTB]: carry=1 | base=0.00 | wall=2.50
+  R4[PPO]: carry=0 | base=0.34 | wall=2.18
+============================================================
+
+============================================================
+[EP 194] Picks: 11 | Deps: 11 | Rate: 2.5 tags/min (sim) | TotalDeps: 4873 | Wall: 5.9 min
+  R1[PPO]: carry=0 | base=0.36 | wall=2.21
+  R2[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R3[PPO]: carry=0 | base=0.39 | wall=2.16
+  R4[PPO]: carry=0 | base=1.80 | wall=0.70
+============================================================
+
+============================================================
+[EP 195] Picks: 18 | Deps: 17 | Rate: 3.9 tags/min (sim) | TotalDeps: 4890 | Wall: 5.8 min
+  R1[PPO]: carry=0 | base=1.86 | wall=0.83
+  R2[WALL_ESC]: carry=0 | base=1.96 | wall=0.58
+  R3[PPO]: carry=0 | base=0.32 | wall=2.26
+  R4[RTB]: carry=1 | base=1.04 | wall=1.51
+============================================================
+
+============================================================
+[EP 196] Picks: 22 | Deps: 22 | Rate: 5.0 tags/min (sim) | TotalDeps: 4912 | Wall: 5.6 min
+  R1[PPO]: carry=0 | base=0.31 | wall=2.27
+  R2[PPO]: carry=0 | base=0.35 | wall=2.18
+  R3[PPO]: carry=0 | base=0.33 | wall=2.18
+  R4[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+============================================================
+
+============================================================
+[EP 197] Picks: 12 | Deps: 12 | Rate: 2.7 tags/min (sim) | TotalDeps: 4924 | Wall: 6.0 min
+  R1[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R2[PPO]: carry=0 | base=0.40 | wall=2.21
+  R3[PPO]: carry=0 | base=0.35 | wall=2.21
+  R4[BASE_AVOID]: carry=0 | base=0.28 | wall=2.22
+============================================================
+
+============================================================
+[EP 198] Picks: 3 | Deps: 3 | Rate: 0.7 tags/min (sim) | TotalDeps: 4927 | Wall: 6.1 min
+  R1[PPO]: carry=0 | base=0.31 | wall=2.19
+  R2[PPO]: carry=0 | base=0.39 | wall=2.11
+  R3[PPO]: carry=0 | base=0.35 | wall=2.16
+  R4[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+============================================================
+
+============================================================
+[EP 199] Picks: 18 | Deps: 17 | Rate: 3.9 tags/min (sim) | TotalDeps: 4944 | Wall: 5.6 min
+  R1[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R2[PPO]: carry=0 | base=0.33 | wall=2.19
+  R3[RTB]: carry=1 | base=0.41 | wall=2.09
+  R4[PPO]: carry=0 | base=0.33 | wall=2.17
+============================================================
+
+============================================================
+[EP 200] Picks: 15 | Deps: 15 | Rate: 3.4 tags/min (sim) | TotalDeps: 4959 | Wall: 5.8 min
+  R1[PPO]: carry=0 | base=0.36 | wall=2.14
+  R2[PPO]: carry=0 | base=0.33 | wall=2.19
+  R3[PPO]: carry=0 | base=1.18 | wall=1.32
+  R4[PPO]: carry=0 | base=1.81 | wall=0.75
+============================================================
+
+============================================================
+[EP 201] Picks: 21 | Deps: 21 | Rate: 4.8 tags/min (sim) | TotalDeps: 4980 | Wall: 5.6 min
+  R1[PPO]: carry=0 | base=1.10 | wall=1.64
+  R2[BASE_AVOID]: carry=0 | base=0.01 | wall=2.49
+  R3[PPO]: carry=0 | base=0.49 | wall=2.15
+  R4[PPO]: carry=0 | base=0.93 | wall=1.64
+============================================================
