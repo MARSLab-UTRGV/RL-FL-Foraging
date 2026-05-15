@@ -31,10 +31,10 @@ import gymnasium as gym
 #
 # Hard-coded overrides (identical to training supervisor):
 #   P1: Wall / obstacle escape
+#   BASE_ESC: steer away from nest when not carrying and dist_to_base < 0.25m
 #   P2: Return-to-base when carrying  (= CPFA RETURNING state)
-#   P3: REMOVED — reward penalty used during training, not needed in eval
-#   PPO controls everything else: tag seek, site fidelity, pheromone following,
-#                                 exploration, give-up
+#   PPO controls everything else: DEPARTING, local search, tag approach,
+#                                 give-up, exploration
 # =============================================================================
 
 class EpuckForagingSupervisor(Supervisor, gym.Env):
@@ -473,9 +473,9 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
         return [left, right]
 
     def _apply_overrides(self, action):
-        """P1: Wall escape  |  P2: RTB when carrying  (= CPFA RETURNING state)
-        P3 removed — reward penalty used in training, not needed here.
-        PPO controls everything else."""
+        """P1: Wall escape  |  BASE_ESC: leave nest when not carrying
+        P2: RTB when carrying (= CPFA RETURNING state)
+        PPO controls everything else: DEPARTING, local search, tag seek, give-up."""
         final    = list(action)
         base_pos = self.base_node.getPosition()
         for i in range(self.num_robots):
@@ -485,9 +485,27 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
             prox      = (self.robot_states[i] or [0.0]*8)[:8]
             wall_dist = 2.5 - max(abs(robot_pos[0]), abs(robot_pos[1]))
 
+            bdx          = base_pos[0] - robot_pos[0]
+            bdy          = base_pos[1] - robot_pos[1]
+            dist_to_base = math.sqrt(bdx*bdx + bdy*bdy)
+
             # P1: Wall / obstacle escape
             if wall_dist < 0.35 or max(prox) > 0.55:
                 ov = self._steer_to(robot_pos, fwd, [0.0, 0.0], gain=4.0)
+                final[i*2], final[i*2+1] = ov[0], ov[1]
+                continue
+
+            # BASE_ESC: steer away from nest when not carrying and within 0.25m.
+            # Base station is a 0.1m radius cylinder — robots get stuck against it
+            # after deposit. Same 0.25m threshold used in cpfa_baseline for a
+            # fair comparison.
+            if not self.carrying_state[i] and dist_to_base < 0.25:
+                if dist_to_base > 0.001:
+                    esc_x = robot_pos[0] + (robot_pos[0] / dist_to_base) * 0.5
+                    esc_y = robot_pos[1] + (robot_pos[1] / dist_to_base) * 0.5
+                else:
+                    esc_x, esc_y = 0.5, 0.0
+                ov = self._steer_to(robot_pos, fwd, [esc_x, esc_y], gain=4.0)
                 final[i*2], final[i*2+1] = ov[0], ov[1]
                 continue
 
@@ -502,12 +520,17 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
         return np.array(final, dtype=np.float32)
 
     def _get_mode(self, i, wall_dist):
+        base_pos = self.base_node.getPosition()
+        rpos     = self.robot_nodes[i].getPosition()
+        d2base   = math.sqrt((rpos[0]-base_pos[0])**2 + (rpos[1]-base_pos[1])**2)
         if wall_dist < 0.35:
             return "WALL_ESC"
+        elif not self.carrying_state[i] and d2base < 0.25:
+            return "BASE_ESC"
         elif self.carrying_state[i]:
             return "RTB"
         elif self.nest_target[i] is not None:
-            return self.nest_target[i][0].upper()  # SITE or PHERO
+            return self.nest_target[i][0].upper()  # SITE or PHERO — PPO navigating
         else:
             if self.steps_without_pickup[i] >= self.SEARCH_GIVE_UP_STEPS:
                 return "GIVE_UP"

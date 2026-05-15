@@ -27,9 +27,9 @@ import torch
 #
 # Hard-coded overrides:
 #   P1: Wall / obstacle escape
+#   BASE_ESC: steer away from nest when not carrying and dist_to_base < 0.25m
 #   P2: Return-to-base when carrying  (= CPFA RETURNING state)
-#   P3: REMOVED — small reward penalty used instead
-#   P4: Not present — PPO learns tag seek from obs
+#   PPO controls everything else: DEPARTING, local search, tag seek, give-up
 #
 # OBSERVATION SPACE: 21 values per robot, 84 total
 #  [0:8]  proximity sensors (8)
@@ -141,7 +141,7 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
         #                                      a gradient before saturation kicks in
 
         # --- Episode control ---
-        self.steps_per_episode = 8192   # 8192 × 64ms ≈ 8.7 min sim time
+        self.steps_per_episode = 16384  # 16384 × 64ms ≈ 17.5 min sim time
         self.episode_step      = 0
         self.total_episodes    = 0
 
@@ -449,11 +449,6 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
                 # ---- EXPLORING ----
                 dist_from_base = math.sqrt(robot_pos[0]**2 + robot_pos[1]**2)
 
-                # Near-base penalty (replaces P3 hard override — CPFA robots
-                # naturally leave the nest because they have a target assigned)
-                if dist_from_base < 0.5:
-                    total_reward -= (0.5 - dist_from_base) * 1.0
-
                 # Check for pickup — count resource density BEFORE hiding tag
                 picked_up = False
                 for tag_node in self.tag_nodes:
@@ -542,7 +537,7 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
                         if td < 1.0 and td > 0.001:
                             dot = fwd[0]*(tdx/td) + fwd[1]*(tdy/td)
                             if math.acos(max(min(dot, 1.0), -1.0)) < 1.2:
-                                total_reward += 0.2
+                                total_reward += 0.2 + max(dot, 0.0) * 0.3
                                 break
 
                     # Forward motion bias — prevents backward policy collapse
@@ -563,6 +558,14 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
                             total_reward += (self.prev_site_dists[i] - curr_sd) * 15.0
                         self.prev_site_dists[i]  = curr_sd
                         self.prev_phero_dists[i] = None
+                        # Orientation reward — dense per-step gradient toward site target
+                        if curr_sd > 0.001:
+                            robot_rot_i = self.robot_nodes[i].getOrientation()
+                            fwd_i  = [robot_rot_i[0], robot_rot_i[3], robot_rot_i[6]]
+                            t_norm = [(sx - robot_pos[0]) / curr_sd,
+                                      (sy - robot_pos[1]) / curr_sd]
+                            dot_s  = max(min(fwd_i[0]*t_norm[0] + fwd_i[1]*t_norm[1], 1.0), -1.0)
+                            total_reward += dot_s * 0.5
 
                     elif target is not None and target[0] == 'phero':
                         # Pheromone approach shaping
@@ -572,6 +575,14 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
                             total_reward += (self.prev_phero_dists[i] - curr_pd) * 15.0
                         self.prev_phero_dists[i] = curr_pd
                         self.prev_site_dists[i]  = None
+                        # Orientation reward — dense per-step gradient toward pheromone target
+                        if curr_pd > 0.001:
+                            robot_rot_i = self.robot_nodes[i].getOrientation()
+                            fwd_i  = [robot_rot_i[0], robot_rot_i[3], robot_rot_i[6]]
+                            t_norm = [(px - robot_pos[0]) / curr_pd,
+                                      (py - robot_pos[1]) / curr_pd]
+                            dot_p  = max(min(fwd_i[0]*t_norm[0] + fwd_i[1]*t_norm[1], 1.0), -1.0)
+                            total_reward += dot_p * 0.5
 
                     else:
                         # No target — random search mode
@@ -698,9 +709,9 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
         return [left, right]
 
     def _apply_overrides(self, action):
-        """P1: Wall escape  |  P2: RTB when carrying (= CPFA RETURNING state)
-        P3 removed — reward penalty used instead.
-        PPO controls: tag seek, site fidelity, pheromone following, exploration."""
+        """P1: Wall escape  |  BASE_ESC: leave nest when not carrying
+        P2: RTB when carrying (= CPFA RETURNING state)
+        PPO controls everything else: DEPARTING, local search, tag seek, give-up."""
         final    = list(action)
         base_pos = self.base_node.getPosition()
         for i in range(self.num_robots):
@@ -710,9 +721,27 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
             prox      = (self.robot_states[i] or [0.0]*8)[:8]
             wall_dist = 2.5 - max(abs(robot_pos[0]), abs(robot_pos[1]))
 
+            bdx          = base_pos[0] - robot_pos[0]
+            bdy          = base_pos[1] - robot_pos[1]
+            dist_to_base = math.sqrt(bdx*bdx + bdy*bdy)
+
             # P1: Wall / obstacle escape
             if wall_dist < 0.35 or max(prox) > 0.55:
                 ov = self._steer_to(robot_pos, fwd, [0.0, 0.0], gain=4.0)
+                final[i*2], final[i*2+1] = ov[0], ov[1]
+                continue
+
+            # BASE_ESC: steer away from nest when not carrying and within 0.25m.
+            # Base station is a 0.1m radius cylinder — robots get stuck against it
+            # after deposit. Same 0.25m threshold used in cpfa_baseline for a
+            # fair comparison.
+            if not self.carrying_state[i] and dist_to_base < 0.25:
+                if dist_to_base > 0.001:
+                    esc_x = robot_pos[0] + (robot_pos[0] / dist_to_base) * 0.5
+                    esc_y = robot_pos[1] + (robot_pos[1] / dist_to_base) * 0.5
+                else:
+                    esc_x, esc_y = 0.5, 0.0
+                ov = self._steer_to(robot_pos, fwd, [esc_x, esc_y], gain=4.0)
                 final[i*2], final[i*2+1] = ov[0], ov[1]
                 continue
 
@@ -737,12 +766,17 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
     # =========================================================================
 
     def _get_mode(self, i, wall_dist):
+        base_pos = self.base_node.getPosition()
+        rpos     = self.robot_nodes[i].getPosition()
+        d2base   = math.sqrt((rpos[0]-base_pos[0])**2 + (rpos[1]-base_pos[1])**2)
         if wall_dist < 0.35:
             return "WALL_ESC"
+        elif not self.carrying_state[i] and d2base < 0.25:
+            return "BASE_ESC"
         elif self.carrying_state[i]:
             return "RTB"
         elif self.nest_target[i] is not None:
-            return self.nest_target[i][0].upper()  # SITE or PHERO
+            return self.nest_target[i][0].upper()  # SITE or PHERO — PPO navigating
         else:
             return "EXPLORE"
 
@@ -874,11 +908,11 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
 
     def _generate_cluster_centers(self):
         """Curriculum: close clusters early, full arena later.
-        With 3M timesteps / 8192 steps per episode ≈ 366 total episodes:
-          Phase 1 (ep   1-59 ):  59 eps = 16% — bootstraps basic pickup/deposit
-          Phase 2 (ep  60-199): 140 eps = 38% — consolidates medium-range pheromone following
-          Phase 3 (ep 200+   ): 167 eps = 46% — full arena with 6-8 clusters
-        Roughly equal learning events per phase (~5900 / ~7840 / ~7350 pickup cycles).
+        With 7M timesteps / 16384 steps per episode ≈ 427 total episodes:
+          Phase 1 (ep   1-59 ):  59 eps = 14% — bootstraps basic pickup/deposit
+          Phase 2 (ep  60-199): 140 eps = 33% — consolidates medium-range pheromone following
+          Phase 3 (ep 200+   ): 227 eps = 53% — full arena with 6-8 clusters
+        Each 16384-step episode gives ~10-15 pheromone exploitation cycles per robot.
         """
         if self.total_episodes < 60:
             max_dist, n_clusters = 1.0, 2
@@ -911,7 +945,7 @@ if __name__ == "__main__":
     parser.add_argument('--lr',              type=float, default=3e-4)
     parser.add_argument('--ent_coef',        type=float, default=0.15)
     parser.add_argument('--batch_size',      type=int,   default=1024)
-    parser.add_argument('--total_timesteps', type=int,   default=3000000)
+    parser.add_argument('--total_timesteps', type=int,   default=7000000)
     parser.add_argument('--resume',          type=str,   default=None,
                         help='Path to checkpoint .zip to resume from')
     args = parser.parse_args()
@@ -944,7 +978,7 @@ if __name__ == "__main__":
     else:
         model = PPO(
             "MlpPolicy", env, verbose=1, device=device,
-            n_steps=8192, batch_size=args.batch_size,
+            n_steps=16384, batch_size=args.batch_size,
             learning_rate=args.lr, ent_coef=args.ent_coef,
             gamma=0.99, gae_lambda=0.95, clip_range=0.2,
             vf_coef=0.5, max_grad_norm=0.5,

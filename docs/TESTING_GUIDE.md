@@ -73,10 +73,11 @@ R1[SITE      ]: L=+0.98 R=+0.82 | carry=0 | tag_vis=0 td=0.00 | base=1.12 ba=+0.
 
 **MODE values in log:**
 - `WALL_ESC` — P1 override active
+- `BASE_ESC` — escaping nest (not carrying, dist_to_base < 0.25m) — same in both systems
 - `RTB` — P2 override active (carrying, returning to nest)
-- `SITE` — PPO navigating toward site fidelity target
-- `PHERO` — PPO navigating toward pheromone roulette target
-- `EXPLORE` — PPO in free exploration
+- `SITE` — PPO navigating toward site fidelity target (full trip, nest to cluster)
+- `PHERO` — PPO navigating toward pheromone target (full trip, nest to cluster)
+- `EXPLORE` — PPO in free exploration (no target assigned)
 - `GIVE_UP` — search_duration_norm near 1.0, PPO heading back empty-handed
 
 ### Healthy Behaviour
@@ -157,10 +158,12 @@ Both supervisors run in `eval_best_5x5.wbt` with the same fixed tag positions. T
 | Site fidelity | Poisson CDF priority | **identical** |
 | Nest-only info | yes | **identical** |
 | Pheromone decay | exp(-0.01 × dt) | **identical** |
-| Navigation/search | hand-coded state machine + CRW | PPO (learned) |
+| Nest escape after deposit | BASE_ESC (dist<0.25m → steer away) | identical |
+| Departure + navigation to target | DEPARTING state (deterministic heading) | PPO (learned from obs[14-19]) |
+| Local search at target | SEARCHING state (CRW) | PPO (learned) |
 | Tag seek | hard-coded FOV seek | PPO (learned from obs[8-10]) |
 | Give-up | probabilistic (P=0.1 / 5 sec) | learned (obs[20] signal) |
-| Exploration | CRW with informed-search decay | learned |
+| Exploration (no target) | CRW with informed-search decay | PPO (learned) |
 
 The pheromone infrastructure is held constant. Any performance difference is **purely attributable to the learned policy vs. the hand-coded state machine** — which is the paper's core claim.
 

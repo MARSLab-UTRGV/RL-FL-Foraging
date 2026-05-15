@@ -26,19 +26,19 @@ Show that a learned PPO policy, using **CPFA's exact pheromone infrastructure**,
 
 ## Current Status
 
-### CPFA-RL Centralized Supervisor — Ready to Train
+### CPFA-RL Centralized Supervisor — Retrain Required
 
 **File:** `controllers/epuck_foraging_supervisor_shaping/epuck_foraging_supervisor_cpfa.py`
 **World:** `worlds/epuck_foraging_shaping_5x5.wbt`
-**Status:** Implementation complete. Pre-training audit passed. Training not yet started.
+**Status:** P3 (DEPARTING) restored. First 3M-step run failed (policy didn't learn steering). Retrain with updated supervisor.
 
 Key design:
 - Obs space: 21D per robot × 4 robots = **84D total**
 - CPFA pheromone model identical to baseline (list, Poisson CDF, roulette-wheel, site fidelity)
 - Pheromone information assigned **only at nest return** (matches CPFA exactly)
-- PPO replaces DEPARTING + SEARCHING + SURVEYING states
+- PPO replaces DEPARTING + SEARCHING states (full navigation + local search)
+- BASE_ESC override: steer away from nest when not carrying and dist < 0.25m (identical in both systems)
 - P2 override (RTB when carrying) preserved = CPFA RETURNING state
-- P3 override removed; replaced with reward penalty at dist < 0.5m
 - 3-phase distance curriculum: 1.0m → 1.8m → 2.3m cluster distance
 - Give-up behaviour: obs[20] `search_duration_norm` + two-phase reward (explore outward, then reward nest approach after 500 steps without food)
 

@@ -46,7 +46,7 @@ sleep 10
 ```bash
 python3 controllers/epuck_foraging_supervisor_shaping/epuck_foraging_supervisor_cpfa.py \
     --run_name ppo_cpfa_5x5 \
-    --total_timesteps 3000000
+    --total_timesteps 7000000
 ```
 
 **Resume from checkpoint:**
@@ -54,7 +54,7 @@ python3 controllers/epuck_foraging_supervisor_shaping/epuck_foraging_supervisor_
 ```bash
 python3 controllers/epuck_foraging_supervisor_shaping/epuck_foraging_supervisor_cpfa.py \
     --run_name ppo_cpfa_5x5 \
-    --total_timesteps 3000000 \
+    --total_timesteps 7000000 \
     --resume logs/ppo_cpfa_5x5/ppo_cpfa_5x5_1000000_steps.zip
 ```
 
@@ -66,7 +66,7 @@ python3 controllers/epuck_foraging_supervisor_shaping/epuck_foraging_supervisor_
 | `--lr` | `3e-4` | Learning rate |
 | `--ent_coef` | `0.15` | Entropy coefficient |
 | `--batch_size` | `1024` | PPO minibatch size |
-| `--total_timesteps` | `3000000` | Total training steps (~366 episodes at 8192 steps/ep) |
+| `--total_timesteps` | `7000000` | Total training steps (~427 episodes at 16384 steps/ep) |
 | `--resume` | None | Path to `.zip` checkpoint to resume from |
 
 ### PPO Architecture
@@ -74,7 +74,7 @@ python3 controllers/epuck_foraging_supervisor_shaping/epuck_foraging_supervisor_
 ```
 net_arch   = [256, 256]
 activation = Tanh
-n_steps    = 8192          # one full episode per rollout
+n_steps    = 16384         # one full episode per rollout
 gamma      = 0.99
 gae_lambda = 0.95
 clip_range = 0.2
@@ -127,10 +127,10 @@ Pheromone is a **list** of `{x, y, weight, resource_density}` entries. Created a
 | Override | Condition | Action | CPFA Equivalent |
 |----------|-----------|--------|-----------------|
 | **P1 Wall escape** | `wall < 0.35m` or `max(prox) > 0.55` | Steer to centre, gain 4.0 | Collision avoidance |
+| **BASE_ESC** | `not carrying` + `dist_to_base < 0.25m` | Steer directly away from nest, gain 4.0 | Implicit departure after deposit |
 | **P2 Return to base** | `carrying = True` | Steer to nest, gain 2.5 | CPFA RETURNING state |
-| P3 Base avoidance | **Removed** — reward penalty used instead | — | — |
 
-PPO learns everything else: tag approach, site fidelity navigation, pheromone following, arena exploration, and give-up timing.
+**BASE_ESC** is identical in both the RL supervisor and `cpfa_baseline.py`, ensuring a fair comparison. PPO learns everything else: DEPARTING (navigate to site/phero target), local search, tag seek, give-up timing, and exploration.
 
 ---
 
@@ -164,9 +164,10 @@ The supervisor prints a summary at each episode end and every 500 steps to `trai
 
 **MODE values:**
 - `WALL_ESC` — P1 active
+- `BASE_ESC` — escaping nest area (not carrying, dist_to_base < 0.25m)
 - `RTB` — P2 active (carrying, returning to nest)
-- `SITE` — PPO navigating toward site fidelity target
-- `PHERO` — PPO navigating toward pheromone roulette target
+- `SITE` — PPO navigating toward site fidelity target (full trip, nest to cluster)
+- `PHERO` — PPO navigating toward pheromone target (full trip, nest to cluster)
 - `EXPLORE` — PPO in free exploration (no nest target assigned)
 
 **What to watch:**

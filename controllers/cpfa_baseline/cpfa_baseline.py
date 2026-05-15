@@ -358,10 +358,11 @@ class CPFABaseline(Supervisor):
                 # ==============================================================
                 # NEST ARRIVAL DETECTION  (carrying or gave-up, within 0.25m)
                 # ==============================================================
+                dx_base      = base_pos[0] - robot_pos[0]
+                dy_base      = base_pos[1] - robot_pos[1]
+                dist_to_base = math.sqrt(dx_base*dx_base + dy_base*dy_base)
+
                 if self.robot_mode[i] == RETURNING:
-                    dx_base      = base_pos[0] - robot_pos[0]
-                    dy_base      = base_pos[1] - robot_pos[1]
-                    dist_to_base = math.sqrt(dx_base*dx_base + dy_base*dy_base)
                     if dist_to_base < 0.25:
                         self._handle_nest_arrival(i, robot_pos)
 
@@ -399,6 +400,22 @@ class CPFABaseline(Supervisor):
                 if wall_dist < 0.35 or max(prox) > 0.55:
                     action    = self._steer_to(robot_pos, fwd, [0.0, 0.0], gain=4.0)
                     modes[i]  = "WALL_ESC"
+
+                # --- BASE_ESC: push away from nest when not carrying (not RETURNING)
+                # The base station is a 0.1m radius cylinder. Robots can get physically
+                # stuck against it after deposit. Both CPFA and RL use this same 0.25m
+                # threshold (matches deposit radius) for a fair comparison.
+                elif (not self.carrying_state[i]
+                        and self.robot_mode[i] != RETURNING
+                        and dist_to_base < 0.25):
+                    if dist_to_base > 0.001:
+                        # Steer to a point 0.5m directly away from the base center
+                        esc_x = robot_pos[0] + (robot_pos[0] / dist_to_base) * 0.5
+                        esc_y = robot_pos[1] + (robot_pos[1] / dist_to_base) * 0.5
+                    else:
+                        esc_x, esc_y = 0.5, 0.0  # exact-center fallback
+                    action   = self._steer_to(robot_pos, fwd, [esc_x, esc_y], gain=4.0)
+                    modes[i] = "BASE_ESC"
 
                 # --- P2: Return to nest (RETURNING state) ---
                 elif self.robot_mode[i] == RETURNING:
