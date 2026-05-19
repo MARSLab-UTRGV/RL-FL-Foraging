@@ -10,38 +10,35 @@ import gymnasium as gym
 # EVALUATION SUPERVISOR — CPFA-RL  (5×5m arena)
 #
 # Observation space matches epuck_foraging_supervisor_cpfa.py exactly:
-#   21 values per robot × 4 robots = 84 total
+#   18 values per robot × 4 robots = 72 total
 #
 #  [0:8]  Proximity sensors
-#  [8]    tag_visible
-#  [9]    tag_dist_norm          (/ 1.0m)
-#  [10]   tag_angle_norm         (/ pi)
-#  [11]   carrying
-#  [12]   dist_to_base_norm      (/ 3.5m)
-#  [13]   angle_to_base_norm     (/ pi)
-#  [14]   site_known             CPFA site fidelity target (assigned at nest)
-#  [15]   site_dist_norm         (/ 3.5m)
-#  [16]   site_angle_norm        (/ pi)
-#  [17]   phero_known            CPFA pheromone target (roulette-wheel, at nest)
-#  [18]   phero_dist_norm        (/ 3.5m)
-#  [19]   phero_angle_norm       (/ pi)
-#  [20]   search_duration_norm   steps_without_pickup / 700  (give-up signal)
+#  [8]    carrying
+#  [9]    dist_to_base_norm      (/ 3.5m)
+#  [10]   angle_to_base_norm     (/ pi)
+#  [11]   site_known             CPFA site fidelity target (assigned at nest)
+#  [12]   site_dist_norm         (/ 3.5m)
+#  [13]   site_angle_norm        (/ pi)
+#  [14]   phero_known            CPFA pheromone target (roulette-wheel, at nest)
+#  [15]   phero_dist_norm        (/ 3.5m)
+#  [16]   phero_angle_norm       (/ pi)
+#  [17]   search_duration_norm   steps_without_pickup / 4000  (give-up signal)
+#                                saturates near E[give-up]=264s (P=0.0189 per 5s check)
 #
-#  obs[14-20] zeroed when carrying=True
+#  obs[11-17] zeroed when carrying=True
 #
 # Hard-coded overrides (identical to training supervisor):
 #   P1: Wall / obstacle escape
-#   BASE_ESC: steer away from nest when not carrying and dist_to_base < 0.25m
-#   P2: Return-to-base when carrying  (= CPFA RETURNING state)
-#   PPO controls everything else: DEPARTING, local search, tag approach,
-#                                 give-up, exploration
+#   BASE_ESC: steer away from nest when not carrying, not gave_up, dist_to_base < 0.25m
+#   P2: Return-to-base when carrying OR gave_up  (= CPFA RETURNING state)
+#   PPO controls everything else: DEPARTING, local search, exploration
 # =============================================================================
 
 class EpuckForagingSupervisor(Supervisor, gym.Env):
     def __init__(self):
         self.num_robots            = 4
         self.num_tags              = 64
-        self.obs_per_robot         = 21
+        self.obs_per_robot         = 18
         self.observation_space_dim = self.obs_per_robot * self.num_robots
         self.action_space_dim      = 2 * self.num_robots
 
@@ -82,7 +79,6 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
         self.robot_states    = [None]  * self.num_robots
         self.carrying_state  = [False] * self.num_robots
         self.prev_base_dists = [None]  * self.num_robots
-        self.prev_tag_dists  = [None]  * self.num_robots
 
         # --- CPFA pheromone list ---
         # Each entry: {x, y, weight, resource_density}
@@ -91,8 +87,8 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
 
         # --- CPFA parameters (must match training supervisor exactly) ---
         self.RATE_OF_LAYING_PHEROMONE = 3.0
-        self.RATE_OF_SITE_FIDELITY    = 3.0
-        self.RATE_OF_PHEROMONE_DECAY  = 0.01  # exponential decay per second
+        self.RATE_OF_SITE_FIDELITY    = 1.376  # ARGoS evolved value
+        self.RATE_OF_PHEROMONE_DECAY  = 0.05   # τ≈20s — matches training + baseline
         self.PHEROMONE_MIN            = 0.001
 
         # --- Per-robot CPFA state ---
@@ -107,15 +103,21 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
         self.prev_site_dists  = [None] * self.num_robots
         self.prev_phero_dists = [None] * self.num_robots
 
-        # --- Search duration counter (matches training) ---
-        self.steps_without_pickup = [0] * self.num_robots
-        self.SEARCH_GIVE_UP_STEPS = 500
-        self.SEARCH_DURATION_NORM = 700.0
+        # --- Probabilistic give-up (identical to training + baseline) ---
+        self.steps_without_pickup = [0]    * self.num_robots
+        self.give_up_timer        = [0]    * self.num_robots
+        self.PROB_RETURN_TO_NEST  = 0.0189  # P per 5s check — E[give-up]=264s
+        self.GIVE_UP_CHECK_STEPS  = 78      # 5s at 64ms/step
+        self.SEARCH_DURATION_NORM = 4000.0  # obs[20] saturates near E[give-up]
+
+        # gave_up[i]: suppresses stale site fidelity after give-up (matches training + baseline)
+        self.gave_up              = [False] * self.num_robots
 
         # --- Stats ---
-        self.step_count     = 0
+        self.step_count  = 0
         self.total_pickups  = 0
         self.total_deposits = 0
+        self.last_action = np.zeros(self.action_space_dim, dtype=np.float32)
 
     # =========================================================================
     # CPFA HELPERS (identical to training supervisor)
@@ -152,7 +154,8 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
         Priority 1: site fidelity  (Poisson CDF gate)
         Priority 2: pheromone      (roulette-wheel)
         Priority 3: random search  (None)"""
-        if self.site_fidelity_pos[i] is not None:
+        # Priority 1: site fidelity — skipped if gave_up (stale target after failed trip)
+        if self.site_fidelity_pos[i] is not None and not self.gave_up[i]:
             sf_prob = self._poisson_cdf(self.resource_density[i], self.RATE_OF_SITE_FIDELITY)
             if random.random() < sf_prob:
                 sx, sy = self.site_fidelity_pos[i]
@@ -168,11 +171,12 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
     def step(self, action):
         self.step_count += 1
 
-        action = self._apply_overrides(action)
+        final_action = self._apply_overrides(action)
+        self.last_action = final_action  # store for logging (overridden, not raw PPO)
 
         # Send motor commands
         for i in range(self.num_robots):
-            robot_action = action[i*2 : (i+1)*2]
+            robot_action = final_action[i*2 : (i+1)*2]
             msg = f"{robot_action[0]},{robot_action[1]}".encode('utf-8')
             self.emitters[i].send(msg)
 
@@ -214,12 +218,12 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
             robot_pos = self.robot_nodes[i].getPosition()
 
             if not self.carrying_state[i]:
-                # Fix 1: clear stale target on arrival
+                # Clear stale target on cluster arrival — matches ARGoS TargetDistanceTolerance=0.05m
                 target = self.nest_target[i]
                 if target is not None:
                     tx, ty      = target[1], target[2]
                     dist_to_tgt = math.sqrt((tx - robot_pos[0])**2 + (ty - robot_pos[1])**2)
-                    if dist_to_tgt < 0.18:
+                    if dist_to_tgt < 0.05:
                         self.nest_target[i]      = None
                         self.prev_site_dists[i]  = None
                         self.prev_phero_dists[i] = None
@@ -249,6 +253,8 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
                         self.prev_site_dists[i]      = None
                         self.prev_phero_dists[i]     = None
                         self.steps_without_pickup[i] = 0
+                        self.give_up_timer[i]        = 0
+                        self.gave_up[i]              = False  # re-enable site fidelity
                         picked_up                    = True
                         self.total_pickups          += 1
                         print(f"[PICKUP] Robot {i+1} picked up tag "
@@ -257,6 +263,43 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
 
                 if not picked_up:
                     self.steps_without_pickup[i] += 1
+
+                    # Probabilistic give-up — EXPLORE mode only (no active target).
+                    # Matches training: timer only runs when nest_target is None.
+                    # If timer fires while robot has a site/phero target, gave_up=True
+                    # but nest_target!=None → empty-return reset never fires → stuck at nest.
+                    if self.nest_target[i] is None:
+                        self.give_up_timer[i] += 1
+                    if self.give_up_timer[i] >= self.GIVE_UP_CHECK_STEPS:
+                        self.give_up_timer[i] = 0
+                        if random.random() < self.PROB_RETURN_TO_NEST:
+                            self.gave_up[i] = True
+                            print(f"[GIVE-UP] R{i+1} giving up after "
+                                  f"{self.steps_without_pickup[i]} steps")
+
+                    # Empty-return: gave_up and returned to nest without food
+                    dist_from_base = math.sqrt(
+                        (robot_pos[0] - base_pos[0])**2
+                        + (robot_pos[1] - base_pos[1])**2
+                    )
+                    if (self.gave_up[i] and dist_from_base < 0.25
+                            and self.nest_target[i] is None):
+                        self.steps_without_pickup[i] = 0
+                        self.give_up_timer[i]        = 0
+                        self.nest_target[i]          = self._assign_target(i)
+                        self.gave_up[i]              = False
+                        t = self.nest_target[i]
+                        if t is not None:
+                            tx, ty = t[1], t[2]
+                            d = math.sqrt((tx - robot_pos[0])**2 + (ty - robot_pos[1])**2)
+                            if t[0] == 'site':
+                                self.prev_site_dists[i]  = d
+                                self.prev_phero_dists[i] = None
+                            else:
+                                self.prev_phero_dists[i] = d
+                                self.prev_site_dists[i]  = None
+                        print(f"[EMPTY_RTN] R{i+1} → "
+                              f"{t[0]+'('+f'{t[1]:.2f},{t[2]:.2f}'+')' if t else 'EXPLORE'}")
 
             else:
                 # Carrying — check for deposit
@@ -294,7 +337,7 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
                           f"{t[0].upper() + ' (' + f'{t[1]:.2f},{t[2]:.2f}' + ')' if t else 'EXPLORE'}")
 
     # =========================================================================
-    # OBSERVATIONS (21 per robot — identical to training supervisor)
+    # OBSERVATIONS (18 per robot — identical to training supervisor)
     # =========================================================================
     def get_observations(self):
         global_obs = []
@@ -306,39 +349,6 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
             robot_pos   = self.robot_nodes[i].getPosition()
             robot_rot   = self.robot_nodes[i].getOrientation()
             forward_vec = [robot_rot[0], robot_rot[3], robot_rot[6]]
-
-            # ------------------------------------------------------------------
-            # TAG SENSING
-            # ------------------------------------------------------------------
-            tag_visible   = 0.0
-            tag_dist      = 0.0
-            tag_angle     = 0.0
-            min_dist      = float('inf')
-            omni_min_dist = float('inf')
-
-            if not self.carrying_state[i]:
-                for tag_node in self.tag_nodes:
-                    tag_pos = tag_node.getPosition()
-                    if tag_pos[2] < 0:
-                        continue
-                    dx   = tag_pos[0] - robot_pos[0]
-                    dy   = tag_pos[1] - robot_pos[1]
-                    dist = math.sqrt(dx*dx + dy*dy)
-
-                    if dist < 1.0 and dist < omni_min_dist:
-                        omni_min_dist = dist
-
-                    if dist < 1.0 and dist > 0.001:
-                        tag_vec_norm = [dx / dist, dy / dist]
-                        dot          = max(min(forward_vec[0]*tag_vec_norm[0]
-                                              + forward_vec[1]*tag_vec_norm[1], 1.0), -1.0)
-                        angle        = math.acos(dot)
-                        if angle < 1.2 and dist < min_dist:
-                            min_dist    = dist
-                            cross       = forward_vec[0]*tag_vec_norm[1] - forward_vec[1]*tag_vec_norm[0]
-                            tag_angle   = angle if cross > 0 else -angle
-                            tag_visible = 1.0
-                            tag_dist    = dist
 
             # ------------------------------------------------------------------
             # BASE NAVIGATION
@@ -358,7 +368,7 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
                 angle_to_base = 0.0
 
             # ------------------------------------------------------------------
-            # CPFA SITE FIDELITY SIGNAL  [14-16]
+            # CPFA SITE FIDELITY SIGNAL  [11-13]
             # ------------------------------------------------------------------
             site_known      = 0.0
             site_dist_norm  = 0.0
@@ -384,7 +394,7 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
                     site_angle_norm = s_angle / math.pi
 
             # ------------------------------------------------------------------
-            # CPFA PHEROMONE SIGNAL  [17-19]
+            # CPFA PHEROMONE SIGNAL  [14-16]
             # ------------------------------------------------------------------
             phero_known      = 0.0
             phero_dist_norm  = 0.0
@@ -410,7 +420,7 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
                     phero_angle_norm = p_angle / math.pi
 
             # ------------------------------------------------------------------
-            # SEARCH DURATION  [20]
+            # SEARCH DURATION  [17]
             # ------------------------------------------------------------------
             if self.carrying_state[i]:
                 search_duration_norm = 0.0
@@ -420,32 +430,26 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
                 )
 
             # ------------------------------------------------------------------
-            # ASSEMBLE 21-VALUE OBSERVATION
+            # ASSEMBLE 18-VALUE OBSERVATION
             # ------------------------------------------------------------------
             obs = []
             obs.extend(prox)                                     # [0:8]
+            obs.append(1.0 if self.carrying_state[i] else 0.0)  # [8]
+            obs.append(dist_to_base / 3.5)                      # [9]
+            obs.append(angle_to_base / math.pi)                  # [10]
             obs.extend([
-                tag_visible,                                     # [8]
-                tag_dist / 1.0,                                  # [9]
-                tag_angle / math.pi,                             # [10]
-            ])
-            obs.append(1.0 if self.carrying_state[i] else 0.0)  # [11]
-            obs.append(dist_to_base / 3.5)                      # [12]
-            obs.append(angle_to_base / math.pi)                  # [13]
-            obs.extend([
-                site_known,                                      # [14]
-                site_dist_norm,                                  # [15]
-                site_angle_norm,                                 # [16]
+                site_known,                                      # [11]
+                site_dist_norm,                                  # [12]
+                site_angle_norm,                                 # [13]
             ])
             obs.extend([
-                phero_known,                                     # [17]
-                phero_dist_norm,                                 # [18]
-                phero_angle_norm,                                # [19]
+                phero_known,                                     # [14]
+                phero_dist_norm,                                 # [15]
+                phero_angle_norm,                                # [16]
             ])
-            obs.append(search_duration_norm)                     # [20]
+            obs.append(search_duration_norm)                     # [17]
 
             global_obs.extend(obs)
-            self.prev_tag_dists[i] = omni_min_dist if omni_min_dist < float('inf') else None
 
         return np.array(global_obs, dtype=np.float32)
 
@@ -473,9 +477,9 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
         return [left, right]
 
     def _apply_overrides(self, action):
-        """P1: Wall escape  |  BASE_ESC: leave nest when not carrying
-        P2: RTB when carrying (= CPFA RETURNING state)
-        PPO controls everything else: DEPARTING, local search, tag seek, give-up."""
+        """P1: Wall escape  |  BASE_ESC: leave nest when not carrying and not gave_up
+        P2: RTB when carrying OR gave_up (= CPFA RETURNING state)
+        PPO controls everything else: SITE/PHERO navigation, local search, exploration."""
         final    = list(action)
         base_pos = self.base_node.getPosition()
         for i in range(self.num_robots):
@@ -495,11 +499,9 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
                 final[i*2], final[i*2+1] = ov[0], ov[1]
                 continue
 
-            # BASE_ESC: steer away from nest when not carrying and within 0.25m.
-            # Base station is a 0.1m radius cylinder — robots get stuck against it
-            # after deposit. Same 0.25m threshold used in cpfa_baseline for a
-            # fair comparison.
-            if not self.carrying_state[i] and dist_to_base < 0.25:
+            # BASE_ESC: steer away from nest when not carrying and not gave_up.
+            # gave_up robots are handled by P2 (they need to return to nest).
+            if not self.carrying_state[i] and not self.gave_up[i] and dist_to_base < 0.25:
                 if dist_to_base > 0.001:
                     esc_x = robot_pos[0] + (robot_pos[0] / dist_to_base) * 0.5
                     esc_y = robot_pos[1] + (robot_pos[1] / dist_to_base) * 0.5
@@ -509,8 +511,8 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
                 final[i*2], final[i*2+1] = ov[0], ov[1]
                 continue
 
-            # P2: Return to base when carrying
-            if self.carrying_state[i]:
+            # P2: Return to base when carrying OR gave_up (= CPFA RETURNING state)
+            if self.carrying_state[i] or self.gave_up[i]:
                 ov = self._steer_to(robot_pos, fwd, base_pos, gain=2.5)
                 final[i*2], final[i*2+1] = ov[0], ov[1]
                 continue
@@ -525,15 +527,15 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
         d2base   = math.sqrt((rpos[0]-base_pos[0])**2 + (rpos[1]-base_pos[1])**2)
         if wall_dist < 0.35:
             return "WALL_ESC"
-        elif not self.carrying_state[i] and d2base < 0.25:
-            return "BASE_ESC"
         elif self.carrying_state[i]:
             return "RTB"
+        elif self.gave_up[i]:
+            return "GIVE_UP"
+        elif not self.carrying_state[i] and d2base < 0.25:
+            return "BASE_ESC"
         elif self.nest_target[i] is not None:
-            return self.nest_target[i][0].upper()  # SITE or PHERO — PPO navigating
+            return self.nest_target[i][0].upper()
         else:
-            if self.steps_without_pickup[i] >= self.SEARCH_GIVE_UP_STEPS:
-                return "GIVE_UP"
             return "EXPLORE"
 
     def reset(self):
@@ -546,7 +548,6 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
         self.robot_states         = [None]  * self.num_robots
         self.carrying_state       = [False] * self.num_robots
         self.prev_base_dists      = [None]  * self.num_robots
-        self.prev_tag_dists       = [None]  * self.num_robots
         self.pheromone_list       = []
         self.carried_from         = [None]  * self.num_robots
         self.resource_density     = [0]     * self.num_robots
@@ -555,6 +556,8 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
         self.prev_site_dists      = [None]  * self.num_robots
         self.prev_phero_dists     = [None]  * self.num_robots
         self.steps_without_pickup = [0]     * self.num_robots
+        self.give_up_timer        = [0]     * self.num_robots
+        self.gave_up              = [False] * self.num_robots
 
         return self.get_observations()
 
@@ -565,7 +568,7 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
 if __name__ == "__main__":
     print("=" * 60)
     print("EVALUATION MODE — CPFA-RL Trained Model")
-    print("Obs space: 21 per robot × 4 robots = 84 total")
+    print("Obs space: 18 per robot × 4 robots = 72 total")
     print("=" * 60)
 
     env = EpuckForagingSupervisor()
@@ -573,7 +576,7 @@ if __name__ == "__main__":
     if len(sys.argv) > 1:
         model_path = sys.argv[1]
     else:
-        model_path = "ppo_cpfa_5x5"
+        model_path = "logs/ppo_cpfa_v5/ppo_cpfa_v5_600000_steps"
     if model_path.endswith('.zip'):
         model_path = model_path[:-4]
 
@@ -588,7 +591,7 @@ if __name__ == "__main__":
     except Exception as e:
         print(f"[ERROR] {e}")
         print("Make sure you trained with epuck_foraging_supervisor_cpfa.py "
-              "(obs_per_robot=21, CPFA pheromone list).")
+              "(obs_per_robot=18, CPFA pheromone list).")
         sys.exit(1)
 
     print("Model loaded. Starting evaluation...\n")
@@ -621,9 +624,9 @@ if __name__ == "__main__":
 
             base_pos = env.base_node.getPosition()
             for ri in range(4):
-                ro     = obs[ri*21 : (ri+1)*21]
-                ra_l   = action[ri*2]
-                ra_r   = action[ri*2+1]
+                ro     = obs[ri*18 : (ri+1)*18]
+                ra_l   = env.last_action[ri*2]    # overridden action sent to robot
+                ra_r   = env.last_action[ri*2+1]
                 rpos   = env.robot_nodes[ri].getPosition()
                 wall_d = 2.5 - max(abs(rpos[0]), abs(rpos[1]))
                 d2base = math.sqrt((rpos[0]-base_pos[0])**2 + (rpos[1]-base_pos[1])**2)
@@ -631,12 +634,11 @@ if __name__ == "__main__":
 
                 log_msg += (
                     f"R{ri+1}[{mode:10s}]: L={ra_l:+.2f} R={ra_r:+.2f} | "
-                    f"carry={ro[11]:.0f} | "
-                    f"tag_vis={ro[8]:.0f} td={ro[9]:.2f} ta={ro[10]:+.2f} | "
-                    f"base={ro[12]:.2f} ba={ro[13]:+.2f} | "
-                    f"site={ro[14]:.0f} sd={ro[15]:.2f} sa={ro[16]:+.2f} | "
-                    f"phero={ro[17]:.0f} pd={ro[18]:.2f} pa={ro[19]:+.2f} | "
-                    f"srch={ro[20]:.2f} | wall={wall_d:.2f}\n"
+                    f"carry={ro[8]:.0f} | "
+                    f"base={ro[9]:.2f} ba={ro[10]:+.2f} | "
+                    f"site={ro[11]:.0f} sd={ro[12]:.2f} sa={ro[13]:+.2f} | "
+                    f"phero={ro[14]:.0f} pd={ro[15]:.2f} pa={ro[16]:+.2f} | "
+                    f"srch={ro[17]:.2f} | wall={wall_d:.2f}\n"
                 )
 
             print(log_msg)

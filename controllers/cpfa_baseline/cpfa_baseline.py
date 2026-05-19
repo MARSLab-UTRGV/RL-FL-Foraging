@@ -9,20 +9,19 @@ from controller import Supervisor
 # It implements CPFA's 4-state machine with the IDENTICAL pheromone model
 # used in the RL training supervisor (epuck_foraging_supervisor_cpfa.py):
 #
-#   Pheromone model (matches training exactly):
+#   Pheromone model (ARGoS-calibrated):
 #     - List-based: each entry = {x, y, weight, resource_density}
 #     - Created at NEST DEPOSIT (not at pickup) via Poisson CDF gate
 #     - Roulette-wheel selection weighted by weight
 #     - Site fidelity: robot's own last pickup location (Poisson CDF priority)
-#     - Exponential decay: exp(-0.01 * dt_sec) per step
+#     - Exponential decay: exp(-0.05 * dt_sec) per step — lifetime ~20s (scaled from ARGoS 0.337)
 #     - Pruned when weight < 0.001
-#     - Parameters: RATE_OF_LAYING=3.0, RATE_OF_SITE_FIDELITY=3.0
+#     - Parameters: RATE_OF_LAYING=3.0 (scaled from 14.44), RATE_OF_SITE_FIDELITY=1.376
 #
 #   State machine (replaces PPO — CPFA's original 4-state machine):
-#     SEARCHING  → random walk. If a nest target was assigned, walk near that
-#                  target. If none, explore the arena with a random walk.
+#     SEARCHING  → correlated random walk (CRW) toward cluster or arena.
 #                  Switch to RETURNING immediately on food pickup.
-#                  After SEARCH_GIVE_UP_STEPS without food → RETURNING empty.
+#                  After probabilistic give-up (P=0.0189 per 5s) → RETURNING empty.
 #
 #     DEPARTING  → drive directly toward the nest-assigned target
 #                  (site fidelity location or pheromone roulette location).
@@ -39,9 +38,6 @@ from controller import Supervisor
 #     P2: RTB when carrying → steer to nest, gain 2.5
 #     (P3 removed — matching the RL supervisor)
 #
-#   Tag seek during SEARCHING:
-#     When not carrying and a tag is within 1.0m in FOV (±1.2 rad), steer toward it.
-#     This matches CPFA's local detection during the uninformed/informed search phase.
 #
 # Run:
 #   webots worlds/eval_best_5x5.wbt
@@ -51,6 +47,7 @@ from controller import Supervisor
 SEARCHING  = "SEARCHING"
 DEPARTING  = "DEPARTING"
 RETURNING  = "RETURNING"
+SURVEYING  = "SURVEYING"
 
 
 class CPFABaseline(Supervisor):
@@ -77,7 +74,7 @@ class CPFABaseline(Supervisor):
         self.carrying_state = [False] * self.num_robots
 
         # --- CPFA per-robot state machine ---
-        self.robot_mode            = [SEARCHING] * self.num_robots  # current state
+        self.robot_mode            = [DEPARTING] * self.num_robots  # ARGoS starts in DEPARTING
         # nest_target: None | ('site', x, y) | ('phero', x, y)
         # Assigned ONLY at nest return — identical to training supervisor
         self.nest_target           = [None] * self.num_robots
@@ -85,6 +82,11 @@ class CPFABaseline(Supervisor):
         self.search_wp             = [None] * self.num_robots
         # steps_without_pickup: give-up counter (matches training obs[20])
         self.steps_without_pickup  = [0]    * self.num_robots  # incremented each searching step
+        # survey_count: which of the 5 heading targets (0,90,180,270,360°) we are on
+        # ARGoS Surveying(): robot_count * π/2 → 0, π/2, π, 3π/2, 2π → then RETURNING
+        self.survey_count          = [0]    * self.num_robots
+        # survey_steps: guard against physical obstruction — force RETURNING after timeout
+        self.survey_steps          = [0]    * self.num_robots
 
         # --- CPFA pheromone state ---
         self.carried_from      = [None] * self.num_robots  # (x,y) pickup location
@@ -94,26 +96,44 @@ class CPFABaseline(Supervisor):
         # --- CPFA pheromone list (identical to training supervisor) ---
         self.pheromone_list = []
 
-        # --- CPFA parameters (must match training supervisor exactly) ---
+        # --- CPFA parameters — scaled for Webots (4 robots, 5x5m, 16 items/cluster, no respawn)
+        # ARGoS source: Clustered_CPFA_r64_tag512_16by16.xml
+        # RATE_OF_LAYING_PHEROMONE: ARGoS=14.44 (32 items/cluster → density 8-16 → P(lay)≈1).
+        #   Webots: 16 items/cluster → density 1-3 → P(lay|λ=14.44)≈0 always. Scaled to 3.0
+        #   so P(lay|density=2, λ=3.0)≈0.42.
         self.RATE_OF_LAYING_PHEROMONE = 3.0
-        self.RATE_OF_SITE_FIDELITY    = 3.0
-        self.RATE_OF_PHEROMONE_DECAY  = 0.01   # per second
+        self.RATE_OF_SITE_FIDELITY    = 1.376   # unchanged — already works in Webots
+        # RATE_OF_PHEROMONE_DECAY: ARGoS=0.337/s (τ≈3s) with 64 robots constantly reinforcing.
+        #   Webots: 4 robots → trail not reinforced for ~4+ min → fully decayed. Scaled to 0.05/s (τ≈20s).
+        self.RATE_OF_PHEROMONE_DECAY  = 0.05
         self.PHEROMONE_MIN            = 0.001
 
-        # Give-up: CPFA checks ProbabilityOfReturningToNest every 5 sim-seconds.
-        # At 32ms/step → 5 sec = 156 steps. Probability 0.1 → E[give-up] ≈ 50 sec.
-        # Matches training supervisor's SEARCH_GIVE_UP_STEPS=500 (16 sec) roughly.
-        self.PROB_RETURN_TO_NEST       = 0.1    # per 5-second check (CPFA default)
-        self.GIVE_UP_CHECK_STEPS       = 156    # 5 seconds at 32ms/step
-        self.give_up_timer             = [0] * self.num_robots  # steps since last check
+        # Give-up / uninformed-switch: both checked every 5 sim-seconds.
+        # At 32ms/step → 5 sec = 156 steps.
+        self.PROB_RETURN_TO_NEST      = 0.0189  # per 5-sec check in SEARCHING  → E[give-up] ~265s
+        self.PROB_SWITCH_TO_SEARCHING = 0.765   # per 5-sec check in uninformed DEPARTING
+        self.GIVE_UP_CHECK_STEPS      = 156     # 5 seconds at 32ms/step
+        self.give_up_timer            = [0]     * self.num_robots
+        # Per-robot DEPARTING timer — ARGoS each robot checks independently (not global step_count)
+        self.departing_timer          = [0]     * self.num_robots
+
+        # uninformed_wall_target[i]: wall-edge position assigned when nest_target=None.
+        # ARGoS SetRandomSearchLocation() — robot heads to a random wall, switches
+        # to SEARCHING probabilistically before arriving (ProbabilityOfSwitchingToSearching).
+        # Initialized at startup because robots start in uninformed DEPARTING (matches ARGoS).
+        self.uninformed_wall_target   = [self._random_wall_target() for _ in range(self.num_robots)]
+
+        # gave_up[i]: True after give-up until next successful pickup.
+        # Suppresses stale site fidelity at next nest return (ARGoS: updateFidelity=False).
+        self.gave_up              = [False] * self.num_robots
 
         # CRW parameters (CPFA uninformed/informed search)
-        # Uninformed: Gaussian heading variation σ = UninformedSearchVariation
-        self.UNINFORMED_SEARCH_VARIATION = math.radians(30.0)  # σ = 30° (CPFA default)
-        # Informed search decay: correlation = w + (2π-w)*exp(-λ*t), λ=RateOfInformedSearchDecay
-        self.RATE_OF_INFORMED_SEARCH_DECAY = 0.0002   # per step (CPFA default ~0.01/sec)
-        self.search_heading            = [0.0] * self.num_robots  # current CRW heading (radians)
-        self.informed_search_steps     = [0]   * self.num_robots  # steps since became informed
+        # ARGoS UninformedSearchVariation = 3.67 rad (was math.radians(30°) = 0.524 rad)
+        self.UNINFORMED_SEARCH_VARIATION   = 3.67    # rad — matches ARGoS evolved value
+        # ARGoS RateOfInformedSearchDecay = 0.346/waypoint (formula overhaul in Gap 4)
+        self.RATE_OF_INFORMED_SEARCH_DECAY = 0.346   # /waypoint (was 0.0002/step)
+        self.search_heading            = [0.0] * self.num_robots
+        self.informed_search_steps     = [0]   * self.num_robots  # waypoints since informed
 
         # --- Metrics ---
         self.total_pickups  = 0
@@ -121,13 +141,13 @@ class CPFABaseline(Supervisor):
         self.step_count     = 0
 
         print("=" * 65)
-        print("CPFA BASELINE — Hand-coded CPFA state machine")
-        print(f"  RateOfLayingPheromone      = {self.RATE_OF_LAYING_PHEROMONE}")
-        print(f"  RateOfSiteFidelity         = {self.RATE_OF_SITE_FIDELITY}")
-        print(f"  RateOfPheromoneDecay       = {self.RATE_OF_PHEROMONE_DECAY}")
-        print(f"  ProbabilityOfReturningToNest = {self.PROB_RETURN_TO_NEST} (every 5 sec)")
-        print(f"  UninformedSearchVariation  = {math.degrees(self.UNINFORMED_SEARCH_VARIATION):.0f}°")
-        print(f"  RateOfInformedSearchDecay  = {self.RATE_OF_INFORMED_SEARCH_DECAY}")
+        print("CPFA BASELINE — ARGoS-calibrated parameters")
+        print(f"  RateOfLayingPheromone        = {self.RATE_OF_LAYING_PHEROMONE}")
+        print(f"  RateOfSiteFidelity           = {self.RATE_OF_SITE_FIDELITY}")
+        print(f"  RateOfPheromoneDecay         = {self.RATE_OF_PHEROMONE_DECAY} /s  (lifetime ~{-math.log(0.001)/self.RATE_OF_PHEROMONE_DECAY:.0f}s)")
+        print(f"  ProbabilityOfReturningToNest = {self.PROB_RETURN_TO_NEST} (every 5 sec → E[give-up] ~{5/self.PROB_RETURN_TO_NEST:.0f}s)")
+        print(f"  UninformedSearchVariation    = {self.UNINFORMED_SEARCH_VARIATION:.2f} rad ({math.degrees(self.UNINFORMED_SEARCH_VARIATION):.1f}°)")
+        print(f"  RateOfInformedSearchDecay    = {self.RATE_OF_INFORMED_SEARCH_DECAY} /waypoint")
         print("=" * 65 + "\n")
 
     # =========================================================================
@@ -165,7 +185,8 @@ class CPFABaseline(Supervisor):
         Priority 1: site fidelity  (Poisson CDF gate on resource_density)
         Priority 2: pheromone      (roulette-wheel selection)
         Priority 3: None           (random search — SEARCHING mode)"""
-        if self.site_fidelity_pos[i] is not None:
+        # Priority 1: site fidelity — skipped if gave_up (stale target after failed trip)
+        if self.site_fidelity_pos[i] is not None and not self.gave_up[i]:
             sf_prob = self._poisson_cdf(self.resource_density[i], self.RATE_OF_SITE_FIDELITY)
             if random.random() < sf_prob:
                 sx, sy = self.site_fidelity_pos[i]
@@ -174,6 +195,20 @@ class CPFABaseline(Supervisor):
         if selected is not None:
             return ('phero', selected[0], selected[1])
         return None
+
+    def _random_wall_target(self):
+        """ARGoS SetRandomSearchLocation(): random point on one of the 4 arena walls.
+        Robot heads toward the wall; switches to SEARCHING before arriving (prob 0.765)."""
+        r      = random.random()
+        lo, hi = -2.415, 2.415   # ±(2.5m - 0.085m robot radius)
+        if r < 0.25:
+            return (random.uniform(lo, hi), hi)   # north wall
+        elif r < 0.50:
+            return (random.uniform(lo, hi), lo)   # south wall
+        elif r < 0.75:
+            return (hi,  random.uniform(lo, hi))  # east wall
+        else:
+            return (lo,  random.uniform(lo, hi))  # west wall
 
     # =========================================================================
     # NAVIGATION HELPER
@@ -199,32 +234,29 @@ class CPFABaseline(Supervisor):
         return [left, right]
 
     def _crw_step(self, i, robot_pos, informed=False):
-        """Correlated Random Walk step — matches CPFA's search locomotion.
+        """Correlated Random Walk step — ARGoS CPFA search locomotion.
 
-        Uninformed (no nest target):
-          New heading = current + Gaussian(0, UNINFORMED_SEARCH_VARIATION)
-          Constant correlation width — pure CRW.
+        Uninformed: rotation = Gaussian(0, USV) — constant heading variation.
 
-        Informed (has nest target, searching near cluster):
-          Correlation width decays exponentially with search time:
-            w(t) = w0 + (2π - w0) × exp(-RateOfInformedSearchDecay × t)
-          Early: tight spiral near cluster.  Late: broad random walk.
-          This matches CPFA's RateOfInformedSearchDecay parameter.
+        Informed (ARGoS formula):
+          rand = Gaussian(0, USV)  — fresh draw each waypoint
+          rotation = rand + (2π - rand) × exp(-RateOfInformedSearchDecay × t)
+          At t=0: rotation≈2π (broad random spin).
+          As t→∞: rotation→rand (converges to a fixed bias direction).
 
-        Returns a waypoint 0.4m ahead along the new heading."""
+        Returns a waypoint 0.08m (SearchStepSize) ahead along the new heading."""
         if informed:
-            # Exponential decay of correlation: starts tight (σ≈0), widens to 2π
-            w0    = self.UNINFORMED_SEARCH_VARIATION
-            t     = self.informed_search_steps[i]
-            sigma = w0 + (2 * math.pi - w0) * (1.0 - math.exp(
-                        -self.RATE_OF_INFORMED_SEARCH_DECAY * t))
+            rand     = random.gauss(0, self.UNINFORMED_SEARCH_VARIATION)
+            t        = self.informed_search_steps[i]
+            rotation = rand + (2 * math.pi - rand) * math.exp(
+                           -self.RATE_OF_INFORMED_SEARCH_DECAY * t)
+            # Wrap to [-π, π] so heading change stays in a sensible range
+            rotation = (rotation + math.pi) % (2 * math.pi) - math.pi
         else:
-            sigma = self.UNINFORMED_SEARCH_VARIATION
+            rotation = random.gauss(0, self.UNINFORMED_SEARCH_VARIATION)
 
-        # Sample new heading from Gaussian centred on current heading
-        self.search_heading[i] = (self.search_heading[i]
-                                  + random.gauss(0, sigma)) % (2 * math.pi)
-        step_dist = 0.4   # metres per CRW step
+        self.search_heading[i] = (self.search_heading[i] + rotation) % (2 * math.pi)
+        step_dist = 0.08  # metres — ARGoS SearchStepSize=0.08m scaled to 5×5m arena
         tx = robot_pos[0] + math.cos(self.search_heading[i]) * step_dist
         ty = robot_pos[1] + math.sin(self.search_heading[i]) * step_dist
         # Clamp to safe arena bounds (walls at ±2.5m, keep 0.3m margin)
@@ -264,22 +296,27 @@ class CPFABaseline(Supervisor):
             print(f"  [GIVE-UP] R{i+1} returned empty after {self.steps_without_pickup[i]} searching steps")
 
         # CPFA target assignment
-        self.nest_target[i]           = self._assign_target(i)
-        self.steps_without_pickup[i]  = 0
-        self.give_up_timer[i]         = 0
-        self.informed_search_steps[i] = 0
-        self.search_wp[i]             = None
-        # Initialise CRW heading to a random direction when leaving nest
+        self.nest_target[i]             = self._assign_target(i)
+        self.steps_without_pickup[i]    = 0
+        self.give_up_timer[i]           = 0
+        self.departing_timer[i]         = 0
+        self.informed_search_steps[i]   = 0
+        self.search_wp[i]               = None
+        self.uninformed_wall_target[i]  = None
         self.search_heading[i] = random.uniform(0, 2 * math.pi)
 
         t = self.nest_target[i]
         if t is not None:
+            # Informed DEPARTING — drive to site fidelity or pheromone cluster
             self.robot_mode[i] = DEPARTING
-            print(f"  [TARGET] R{i+1} → "
-                  f"{t[0].upper()} ({t[1]:.2f}, {t[2]:.2f})")
+            print(f"  [TARGET] R{i+1} → {t[0].upper()} ({t[1]:.2f}, {t[2]:.2f})")
         else:
-            self.robot_mode[i] = SEARCHING
-            print(f"  [TARGET] R{i+1} → EXPLORE (no target)")
+            # Uninformed DEPARTING — head to a random wall position.
+            # ARGoS: SetRandomSearchLocation() + ProbabilityOfSwitchingToSearching check.
+            self.robot_mode[i]              = DEPARTING
+            self.uninformed_wall_target[i]  = self._random_wall_target()
+            wx, wy = self.uninformed_wall_target[i]
+            print(f"  [TARGET] R{i+1} → WALL ({wx:.2f}, {wy:.2f})")
 
     # =========================================================================
     # MAIN CONTROL LOOP
@@ -349,7 +386,10 @@ class CPFABaseline(Supervisor):
                             self.steps_without_pickup[i]  = 0
                             self.give_up_timer[i]         = 0
                             self.informed_search_steps[i] = 0
-                            self.robot_mode[i]            = RETURNING
+                            self.gave_up[i]               = False  # successful pickup — re-enable site fidelity
+                            self.robot_mode[i]            = SURVEYING  # ARGoS: rotate 360° before RETURNING
+                            self.survey_count[i]          = 0
+                            self.survey_steps[i]          = 0
                             self.total_pickups          += 1
                             print(f"[PICKUP] R{i+1} picked up tag "
                                   f"(density={density}) | Total: {self.total_pickups}")
@@ -372,7 +412,7 @@ class CPFABaseline(Supervisor):
                 if self.robot_mode[i] == DEPARTING and self.nest_target[i] is not None:
                     tx, ty      = self.nest_target[i][1], self.nest_target[i][2]
                     dist_to_tgt = math.sqrt((tx - robot_pos[0])**2 + (ty - robot_pos[1])**2)
-                    if dist_to_tgt < 0.18:
+                    if dist_to_tgt < 0.05:
                         # Arrived at cluster — switch to local search
                         self.robot_mode[i] = SEARCHING
                         self.search_wp[i]  = None
@@ -391,6 +431,7 @@ class CPFABaseline(Supervisor):
                             self.robot_mode[i]  = RETURNING
                             self.nest_target[i] = None
                             self.search_wp[i]   = None
+                            self.gave_up[i]     = True  # suppress site fidelity at next nest return
 
                 # ==============================================================
                 # ACTION SELECTION
@@ -416,64 +457,105 @@ class CPFABaseline(Supervisor):
                         esc_x, esc_y = 0.5, 0.0  # exact-center fallback
                     action   = self._steer_to(robot_pos, fwd, [esc_x, esc_y], gain=4.0)
                     modes[i] = "BASE_ESC"
+                    # Reset stale CRW waypoint — if it was inside the nest zone, the robot
+                    # would oscillate forever (BASE_ESC pushes out, steer_to pulls back in).
+                    if self.robot_mode[i] == SEARCHING:
+                        self.search_wp[i] = None
 
                 # --- P2: Return to nest (RETURNING state) ---
                 elif self.robot_mode[i] == RETURNING:
                     action   = self._steer_to(robot_pos, fwd, base_pos, gain=2.5)
                     modes[i] = "RTB" if self.carrying_state[i] else "GIVE_UP"
 
-                # --- DEPARTING: drive toward assigned cluster target ---
+                # --- DEPARTING: informed → drive to cluster; uninformed → drive to wall ---
                 elif self.robot_mode[i] == DEPARTING:
-                    t        = self.nest_target[i]
-                    action   = self._steer_to(robot_pos, fwd, [t[1], t[2]], gain=2.5)
-                    modes[i] = t[0].upper()  # "SITE" or "PHERO"
-
-                # --- SEARCHING: local tag seek or random walk ---
-                else:
-                    # Tag seek — nearest tag within 1.0m in FOV (±1.2 rad)
-                    # This is CPFA's local detection during uninformed/informed search
-                    best_tag  = None
-                    best_dist = float('inf')
-                    for tag_node in self.tag_nodes:
-                        tag_pos = tag_node.getPosition()
-                        if tag_pos[2] < 0:
-                            continue
-                        tdx = tag_pos[0] - robot_pos[0]
-                        tdy = tag_pos[1] - robot_pos[1]
-                        td  = math.sqrt(tdx*tdx + tdy*tdy)
-                        if td < 1.0 and td > 0.001 and td < best_dist:
-                            dot   = fwd[0]*(tdx/td) + fwd[1]*(tdy/td)
-                            angle = math.acos(max(min(dot, 1.0), -1.0))
-                            if angle < 1.2:
-                                best_dist = td
-                                best_tag  = tag_pos
-
-                    if best_tag is not None:
-                        action   = self._steer_to(robot_pos, fwd, best_tag, gain=3.0)
-                        modes[i] = "TAG_SEEK"
+                    if self.nest_target[i] is not None:
+                        # Informed: steer to site-fidelity or pheromone location
+                        t        = self.nest_target[i]
+                        action   = self._steer_to(robot_pos, fwd, [t[1], t[2]], gain=2.5)
+                        modes[i] = t[0].upper()  # "SITE" or "PHERO"
                     else:
-                        # CRW (Correlated Random Walk) — CPFA's search locomotion.
-                        # Informed = has a pheromone/site target → tight early, broad later.
-                        # Uninformed = no target → constant Gaussian heading variation.
-                        informed = (self.nest_target[i] is not None)
+                        # Uninformed: head toward wall, switch to SEARCHING probabilistically.
+                        # ARGoS: every 5 sec check ProbabilityOfSwitchingToSearching=0.765.
+                        if self.uninformed_wall_target[i] is None:
+                            self.uninformed_wall_target[i] = self._random_wall_target()
+
+                        switched = False
+                        self.departing_timer[i] += 1
+                        if self.departing_timer[i] >= self.GIVE_UP_CHECK_STEPS:
+                            self.departing_timer[i] = 0
+                            if random.random() < self.PROB_SWITCH_TO_SEARCHING:
+                                # Switch to SEARCHING at current location
+                                self.robot_mode[i]             = SEARCHING
+                                self.uninformed_wall_target[i] = None
+                                # ARGoS: new heading = current + Gaussian(USV)
+                                self.search_heading[i] = (
+                                    math.atan2(fwd[1], fwd[0])
+                                    + random.gauss(0, self.UNINFORMED_SEARCH_VARIATION)
+                                ) % (2 * math.pi)
+                                self.search_wp[i] = None
+                                switched = True
+
+                        if switched:
+                            action   = [0.8, 0.8]
+                            modes[i] = "SEARCH"
+                        else:
+                            wx, wy = self.uninformed_wall_target[i]
+                            # Near the wall — pick a new wall target before wall-escape fires
+                            if wall_dist < 0.4:
+                                self.uninformed_wall_target[i] = self._random_wall_target()
+                                wx, wy = self.uninformed_wall_target[i]
+                            action   = self._steer_to(robot_pos, fwd, [wx, wy], gain=2.5)
+                            modes[i] = "DEPART"
+
+                # --- SURVEYING: rotate through 0°,90°,180°,270°,360° then RETURNING ---
+                # Mirrors ARGoS Surveying(): survey_count * π/2 target headings.
+                # TargetAngleTolerance = 0.1 rad (from ARGoS XML).
+                elif self.robot_mode[i] == SURVEYING:
+                    self.survey_steps[i] += 1
+                    # Timeout: if physically blocked (e.g. by food cluster), force RETURNING
+                    # 500 steps = 16s — generous enough for 5 quarter-turns at any speed
+                    if self.survey_steps[i] > 500:
+                        self.survey_count[i] = 0
+                        self.survey_steps[i] = 0
+                        self.robot_mode[i]   = RETURNING
+                        modes[i] = "SURVEY"
+                    else:
+                        heading        = math.atan2(fwd[1], fwd[0])
+                        target_heading = self.survey_count[i] * math.pi / 2
+                        # Wrap error to [-π, π]
+                        error = (target_heading - heading + math.pi) % (2 * math.pi) - math.pi
+                        if abs(error) < 0.1:
+                            self.survey_count[i] += 1
+                            if self.survey_count[i] > 4:
+                                self.survey_count[i] = 0
+                                self.survey_steps[i] = 0
+                                self.robot_mode[i]   = RETURNING
+                        # Proportional in-place rotation toward target heading
+                        turn   = max(-1.0, min(1.0, error * 3.0 / math.pi))
+                        action = [-turn, turn]
+                        modes[i] = "SURVEY"
+
+                # --- SEARCHING: Correlated Random Walk ---
+                else:
+                    informed = (self.nest_target[i] is not None)
+                    if not informed:
+                        self.informed_search_steps[i] = 0
+
+                    if self.search_wp[i] is None:
+                        self.search_wp[i] = self._crw_step(i, robot_pos, informed)
+
+                    tx, ty = self.search_wp[i]
+                    tdx    = tx - robot_pos[0]
+                    tdy    = ty - robot_pos[1]
+                    if math.sqrt(tdx*tdx + tdy*tdy) < 0.05:
                         if informed:
                             self.informed_search_steps[i] += 1
-                        else:
-                            self.informed_search_steps[i] = 0
-
-                        if self.search_wp[i] is None:
-                            self.search_wp[i] = self._crw_step(i, robot_pos, informed)
-
-                        tx, ty = self.search_wp[i]
-                        tdx    = tx - robot_pos[0]
-                        tdy    = ty - robot_pos[1]
-                        if math.sqrt(tdx*tdx + tdy*tdy) < 0.15:
-                            # Reached waypoint — sample next CRW step
-                            self.search_wp[i] = self._crw_step(i, robot_pos, informed)
-                            action = [0.8, 0.8]
-                        else:
-                            action = self._steer_to(robot_pos, fwd, [tx, ty], gain=2.5)
-                        modes[i] = "SEARCH"
+                        self.search_wp[i] = self._crw_step(i, robot_pos, informed)
+                        action = [0.8, 0.8]
+                    else:
+                        action = self._steer_to(robot_pos, fwd, [tx, ty], gain=2.5)
+                    modes[i] = "SEARCH"
 
                 # --- Send motor command ---
                 msg = f"{action[0]},{action[1]}".encode('utf-8')

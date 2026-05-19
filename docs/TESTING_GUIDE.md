@@ -1,6 +1,8 @@
 # Testing Guide — CPFA-RL Centralized (CoRL 2026)
 
-This guide covers evaluating the trained PPO model and the hand-coded CPFA baseline for comparison.
+Evaluate the trained PPO model and compare against the hand-coded CPFA baseline.
+Both systems run in the same world with the same fixed tag layout. Any performance
+difference is attributable solely to learned vs. hand-coded navigation strategy.
 
 ---
 
@@ -19,180 +21,215 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$WEBOTS_HOME/lib/controller
 | File | Role |
 |------|------|
 | `worlds/eval_best_5x5.wbt` | Shared evaluation world — 5×5m, 4 robots, 64 tags at fixed positions |
-| `controllers/eval_best_model/eval_best_model_5x5.py` | Extern eval supervisor — loads PPO model, runs deterministic inference |
-| `controllers/cpfa_baseline/cpfa_baseline.py` | Extern CPFA supervisor — hand-coded CPFA state machine, no PPO |
-| `controllers/epuck_driver/epuck_driver.py` | Robot controller — unchanged, runs inside Webots for both evaluations |
-
-Both the RL eval and CPFA baseline run in the **same world** (`eval_best_5x5.wbt`) with the same fixed tag layout and same 4 robots. This ensures a direct, fair comparison.
+| `controllers/eval_best_model/eval_best_model_5x5.py` | Extern eval supervisor — loads PPO model, deterministic inference |
+| `controllers/cpfa_baseline/cpfa_baseline.py` | Extern CPFA supervisor — hand-coded state machine, no PPO |
+| `controllers/epuck_driver/epuck_driver.py` | Robot controller — shared by both, unchanged |
 
 ---
 
 ## Evaluating the Trained PPO Model
 
-**Step 1: Launch Webots with the eval world**
+**Step 1: Launch Webots with the eval world (separate instance from training)**
 
 ```bash
 webots worlds/eval_best_5x5.wbt &
 sleep 10
 ```
 
-**Step 2: Run the eval supervisor**
+**Step 2: Run the eval supervisor** (use port 1235 if training is running on 1234)
 
 ```bash
-python3 controllers/eval_best_model/eval_best_model_5x5.py ppo_cpfa_5x5.zip
+WEBOTS_PORT=1235 python3 controllers/eval_best_model/eval_best_model_5x5.py \
+    logs/ppo_cpfa_v5/ppo_cpfa_v5_4000000_steps
 ```
 
-Or pass any checkpoint:
+Pass any checkpoint without `.zip` extension. Default path if none given:
+`logs/ppo_cpfa_v5/ppo_cpfa_v5_200000_steps`
 
-```bash
-python3 controllers/eval_best_model/eval_best_model_5x5.py \
-    logs/ppo_cpfa_5x5/ppo_cpfa_5x5_2000000_steps.zip
-```
+The model runs with `deterministic=True` — no action sampling noise during eval.
 
-The model is loaded with `deterministic=True` — no action sampling noise.
-
-### What to Expect
+### Observation Space (must match training exactly)
 
 ```
-[PICKUP] Robot 2 picked up tag (density=6) | Total: 1
-  [TARGET] Robot 2 → SITE (1.54, -1.61)
-[DEPOSIT] Robot 2 deposited! Total: 1
-  [PHERO] Laid at (1.54, -1.61) density=6 prob=0.97 total_entries=1
-  [TARGET] Robot 2 → SITE (1.54, -1.61)
+18 values per robot × 4 robots = 72 total
+
+[0:8]   proximity sensors (÷ 4096)
+[8]     carrying
+[9]     dist_to_base_norm    (÷ 3.5m)
+[10]    angle_to_base_norm   (÷ π)
+[11]    site_known
+[12]    site_dist_norm       (÷ 3.5m)
+[13]    site_angle_norm      (÷ π)
+[14]    phero_known
+[15]    phero_dist_norm      (÷ 3.5m)
+[16]    phero_angle_norm     (÷ π)
+[17]    search_duration_norm (steps_without_pickup ÷ 4000)
+
+obs[11–17] zeroed when carrying=True
 ```
 
-**Logged every 500 steps to console and `eval_cpfa_log.txt`:**
+Tag sensing is **not** included — removed to ensure a fair comparison with CPFA baseline
+which has no equivalent sensing advantage.
+
+### Eval Log Format
+
+Logged to console and `eval_cpfa_log.txt` every 500 steps:
 
 ```
 ======================================================================
-Step 500 (0.3 min) | Pickups: 4 | Deposits: 3 | Rate: 10.00 tags/min
-phero_entries=2 phero_max=0.984
-R1[SITE      ]: L=+0.98 R=+0.82 | carry=0 | tag_vis=0 td=0.00 | base=1.12 ba=+0.31
-               | site=1 sd=0.89 sa=-0.12 | phero=0 pd=0.00 pa=+0.00 | srch=0.04 | wall=1.23
+Step 3500 (1.9 min) | Pickups: 3 | Deposits: 3 | Rate: 1.61 tags/min
+phero_entries=3 phero_max=0.994
+======================================================================
+R1[BASE_ESC  ]: L=+1.00 R=+0.00 | carry=0 | base=0.07 ba=+0.17 |
+               site=1 sd=0.04 sa=+0.83 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=2.29
+R2[SITE      ]: L=-0.95 R=-0.19 | carry=0 | base=0.08 ba=+0.78 |
+               site=1 sd=0.09 sa=+0.05 | phero=0 pd=0.00 pa=+0.00 | srch=0.08 | wall=2.24
+R3[GIVE_UP   ]: L=+1.00 R=+0.88 | carry=0 | base=0.08 ba=-0.05 |
+               site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.76 | wall=2.20
+R4[BASE_ESC  ]: L=+1.00 R=+0.00 | carry=0 | base=0.07 ba=+0.09 |
+               site=0 sd=0.00 sa=+0.00 | phero=1 pd=0.09 pa=+0.41 | srch=0.10 | wall=2.27
 ```
 
-**MODE values in log:**
-- `WALL_ESC` — P1 override active
-- `BASE_ESC` — escaping nest (not carrying, dist_to_base < 0.25m) — same in both systems
-- `RTB` — P2 override active (carrying, returning to nest)
-- `SITE` — PPO navigating toward site fidelity target (full trip, nest to cluster)
-- `PHERO` — PPO navigating toward pheromone target (full trip, nest to cluster)
+**Column meanings:**
+- `L=, R=` — left/right motor command sent to robot (overridden action, not raw PPO output)
+- `carry` — 1 if carrying food
+- `base=` — normalised distance to nest (÷ 3.5m)
+- `ba=` — signed angle to nest (÷ π)
+- `site=` / `phero=` — 1 if target assigned
+- `sd=, pd=` — normalised distance to site/phero target
+- `sa=, pa=` — signed angle to site/phero target
+- `srch=` — search_duration_norm (saturates at 1.0 near give-up)
+- `wall=` — absolute distance to nearest wall face
+
+**MODE values:**
+- `WALL_ESC` — P1 override active (wall proximity or obstacle)
+- `BASE_ESC` — BASE_ESC override (not carrying, not gave_up, dist < 0.25m)
+- `RTB` — P2 override (carrying, returning to nest)
+- `GIVE_UP` — gave_up=True, P2 steering robot home empty-handed
+- `SITE` — PPO navigating toward site fidelity target
+- `PHERO` — PPO navigating toward pheromone target
 - `EXPLORE` — PPO in free exploration (no target assigned)
-- `GIVE_UP` — search_duration_norm near 1.0, PPO heading back empty-handed
 
-### Healthy Behaviour
+### Healthy Behaviour Signs
 
-- Robots cycle: SITE/PHERO → (find tags) → RTB → SITE/PHERO
+- Actions are varied small floats (e.g. `+0.12, +0.07`) — NOT `+1.00 / -1.00` oscillation
+- Robots cycle: `SITE`/`PHERO` → (deposit) → `BASE_ESC` → `SITE`/`PHERO`
 - `phero_entries` grows after first few deposits
-- Rate should exceed CPFA baseline (see below)
-- `srch` values near 0.7–1.0 trigger give-up returns (robots don't stay lost forever)
+- `srch=` approaching 1.0 triggers give-up return (robots don't stay lost forever)
+- Rate should be stable or improving — not declining toward 0 after step 5000
+
+### Warning Signs
+
+- `L=+1.00 R=-1.00` or `L=-1.00 R=+1.00` repeating — entropy-diverged model (std too large)
+- All robots in `EXPLORE` with `base=0.07–0.15` — robots stuck near nest, model undertrained
+- Rate declining steeply after step 3000 — nearby clusters depleted, model not navigating farther
+
+### Meaningful Eval Checkpoints
+
+Early checkpoints (< 1M steps) show Phase 1 behaviour only — robots find nearby clusters
+but don't navigate confidently to farther ones. Meaningful comparison against CPFA requires
+training through Phase 3 or Phase 4:
+
+| Checkpoint | Training phase | What to expect |
+|------------|---------------|----------------|
+| 600K steps | Phase 1 (~ep 37) | Basic pickup/deposit at 0.4–1.2m range |
+| 1.5M steps | Phase 2 (~ep 92) | Learning navigation at 1.6m |
+| 3M steps | Phase 3 (~ep 183) | Developing mid-range navigation |
+| 6M+ steps | Phase 4 (~ep 366+) | Full arena, meaningful CPFA comparison |
 
 ---
 
 ## Running the CPFA Baseline
 
-**Step 1: Same eval world (reload Webots to reset tags)**
+**Step 1: Reload the eval world to reset all 64 tags**
 
 ```bash
 webots worlds/eval_best_5x5.wbt &
 sleep 10
 ```
 
-**Step 2: Run the CPFA supervisor**
+**Step 2: Run the CPFA supervisor** (no model path needed)
 
 ```bash
-python3 controllers/cpfa_baseline/cpfa_baseline.py
+WEBOTS_PORT=1235 python3 controllers/cpfa_baseline/cpfa_baseline.py
 ```
 
-No model path needed — CPFA is fully hand-coded.
-
-### What to Expect
-
-```
-[PICKUP] R1 picked up tag (density=5) | Total: 1
-  [PHERO] Laid at (1.55, -1.58) density=5 prob=0.93 entries=1
-  [TARGET] R1 → SITE (1.55, -1.58)
-[GIVE-UP] R3 returned empty after 312 searching steps
-  [TARGET] R3 → PHERO (1.55, -1.58)
-```
-
-**Logged every 500 steps to console and `cpfa_baseline_log.txt`:**
-
-```
-======================================================================
-Step 500 (0.3 min) | Pickups: 3 | Deposits: 2 | Rate: 6.67 tags/min
-phero_entries=1 max_w=0.984
-R1[SITE      ]: carry=0 | base=1.18 | wall=1.32 | search= 47 | target=site(1.55,-1.58)
-R2[RTB       ]: carry=1 | base=0.61 | wall=2.11 | search=  0 | target=none
-```
-
-**MODE values in log:**
-- `WALL_ESC` — P1 override active
-- `RTB` — carrying, returning to nest
-- `GIVE_UP` — returning empty (give-up triggered)
-- `SITE` — DEPARTING toward site fidelity target
-- `PHERO` — DEPARTING toward pheromone roulette target
-- `TAG_SEEK` — tag detected in FOV during local search
-- `SEARCH` — CRW random walk (uninformed or informed)
-
-### CPFA Parameters
+### CPFA Parameters (matched to RL training supervisor)
 
 | Parameter | Value |
 |-----------|-------|
 | `RATE_OF_LAYING_PHEROMONE` | 3.0 |
-| `RATE_OF_SITE_FIDELITY` | 3.0 |
-| `RATE_OF_PHEROMONE_DECAY` | 0.01 /sec |
-| `ProbabilityOfReturningToNest` | 0.1 (checked every 5 sim-sec) |
-| `UninformedSearchVariation` | 30° Gaussian CRW |
-| `RateOfInformedSearchDecay` | 0.0002 /step |
+| `RATE_OF_SITE_FIDELITY` | 1.376 (ARGoS-evolved) |
+| `RATE_OF_PHEROMONE_DECAY` | 0.05 /sec (τ ≈ 20s) |
+| `ProbabilityOfReturningToNest` | 0.0189 per 5-second check |
+| Local search | CRW (Correlated Random Walk), 30° Gaussian heading variation |
+| `RATE_OF_INFORMED_SEARCH_DECAY` | 0.0002 /step |
+
+**CPFA MODE values in log:**
+- `WALL_ESC` — collision avoidance
+- `RTB` — carrying, returning to nest
+- `GIVE_UP` — returning empty (give-up triggered)
+- `SITE` — DEPARTING toward site fidelity target
+- `PHERO` — DEPARTING toward pheromone roulette target
+- `SEARCH` — CRW random walk (uninformed or informed)
 
 ---
 
-## Comparing the Two
+## Comparing the Two Systems
 
-Both supervisors run in `eval_best_5x5.wbt` with the same fixed tag positions. The key metric is **tags deposited per simulated minute**.
+Both supervisors run in `eval_best_5x5.wbt` with the **same fixed tag positions**.
+Primary metric: **tags deposited per simulated minute** (printed every 500 steps).
 
-| Component | CPFA Baseline | PPO-CPFA (trained) |
-|-----------|--------------|---------------------|
-| Pheromone model | list, Poisson CDF, roulette-wheel | **identical** |
-| Site fidelity | Poisson CDF priority | **identical** |
-| Nest-only info | yes | **identical** |
-| Pheromone decay | exp(-0.01 × dt) | **identical** |
-| Nest escape after deposit | BASE_ESC (dist<0.25m → steer away) | identical |
-| Departure + navigation to target | DEPARTING state (deterministic heading) | PPO (learned from obs[14-19]) |
-| Local search at target | SEARCHING state (CRW) | PPO (learned) |
-| Tag seek | hard-coded FOV seek | PPO (learned from obs[8-10]) |
-| Give-up | probabilistic (P=0.1 / 5 sec) | learned (obs[20] signal) |
-| Exploration (no target) | CRW with informed-search decay | PPO (learned) |
+| Component | CPFA Baseline | PPO-CPFA v5 |
+|-----------|--------------|-------------|
+| Pheromone model (list, Poisson CDF, roulette-wheel) | hand-coded | **identical** |
+| Site fidelity (Poisson CDF priority) | hand-coded | **identical** |
+| Pheromone decay (τ ≈ 20s) | hand-coded | **identical** |
+| Nest-only information timing | yes | **identical** |
+| Give-up mechanism (P=0.0189 per 5s) | hand-coded | **identical** |
+| BASE_ESC (steer away, dist < 0.25m) | hand-coded | **identical** |
+| P1 wall escape | hard override | **identical** |
+| P2 RTB when carrying | hard override | **identical** |
+| DEPARTING to site/phero target | deterministic heading | **PPO (learned)** |
+| Local search at cluster | CRW random walk | **PPO (learned)** |
+| Tag seek | none (removed) | **none (removed)** |
+| Exploration strategy | CRW with informed decay | **PPO (learned)** |
 
-The pheromone infrastructure is held constant. Any performance difference is **purely attributable to the learned policy vs. the hand-coded state machine** — which is the paper's core claim.
+The pheromone infrastructure is held constant. Performance difference = learned vs. hand-coded
+navigation strategy. This is the paper's core claim.
 
-### Reading the Logs Side by Side
+### Procedure for Paper Results
 
-Both log `Rate: X tags/min` every 500 steps (≈16 sim-seconds apart). To compare at the same evaluation time point, check the step number column. Both use `basicTimeStep 32ms` in the same world.
-
-**Target:** PPO-CPFA rate should exceed CPFA baseline rate across a sustained evaluation window.
+1. Run 5+ trials of each system on the same eval world (reload Webots between trials)
+2. Each trial: let run for 30 simulated minutes (≈28,125 steps at 64ms/step)
+3. Record total deposits per trial → compute tags/min
+4. Report mean ± std for both systems
 
 ---
 
-## Headless Evaluation (No GUI)
+## Headless Evaluation
 
 ```bash
 webots --mode=fast --minimize --no-rendering worlds/eval_best_5x5.wbt &
 sleep 10
-python3 controllers/eval_best_model/eval_best_model_5x5.py ppo_cpfa_5x5.zip
+WEBOTS_PORT=1235 python3 controllers/eval_best_model/eval_best_model_5x5.py \
+    logs/ppo_cpfa_v5/ppo_cpfa_v5_6000000_steps
 ```
 
 ---
 
 ## Troubleshooting
 
-**`[ERROR] Model was trained on obs size X, but env has Y`** — The model must match `obs_per_robot=21` (84D total). Do not load old models trained with 20D obs.
+**`[ERROR]` on model load mentioning obs size mismatch** — Model must match `obs_per_robot=18`
+(72D total). Do not load v3 or earlier checkpoints trained with 21D (84D total).
 
-**Robots not moving** — Press Play in Webots before running the supervisor. The extern controller connects after Webots loads.
+**Port conflict** — If training is on port 1234, run eval on port 1235 with `WEBOTS_PORT=1235`.
+
+**Robots not moving** — Press Play in Webots before running the supervisor.
+
+**Rate drops to 0 after several minutes** — All 64 tags collected. Reload Webots to reset.
+
+**CPFA robots repeatedly exploring depleted areas** — Normal. Give-up will redirect them.
+Expected behaviour after dense cluster depletion.
 
 **`numpy.dtype size changed`** — Run `pip install "numpy<2"`.
-
-**Rate drops to 0 after a while** — All 64 tags in the world have been collected. Reload Webots to reset the world for a new run.
-
-**CPFA robots stuck exploring same area repeatedly** — Normal after cluster depletion. The give-up mechanic (`PROB_RETURN_TO_NEST`) will eventually redirect them.
