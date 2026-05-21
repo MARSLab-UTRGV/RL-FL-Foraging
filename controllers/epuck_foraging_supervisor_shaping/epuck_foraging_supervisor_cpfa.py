@@ -4,7 +4,7 @@ import numpy as np
 import argparse
 from controller import Supervisor
 from stable_baselines3 import PPO
-from stable_baselines3.common.callbacks import CheckpointCallback
+from stable_baselines3.common.callbacks import CheckpointCallback, BaseCallback, CallbackList
 import gymnasium as gym
 import torch
 
@@ -952,6 +952,21 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
 # =============================================================================
 # TRAINING ENTRY POINT
 # =============================================================================
+
+class EntropyScheduleCallback(BaseCallback):
+    """Linearly decay ent_coef from initial to final over total_timesteps."""
+    def __init__(self, initial, final, total_timesteps):
+        super().__init__()
+        self.initial          = initial
+        self.final            = final
+        self.total_timesteps  = total_timesteps
+
+    def _on_step(self) -> bool:
+        progress = max(0.0, 1.0 - self.model.num_timesteps / self.total_timesteps)
+        self.model.ent_coef = self.final + progress * (self.initial - self.final)
+        return True
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--run_name',        type=str,   default='ppo_cpfa_5x5')
@@ -989,6 +1004,7 @@ if __name__ == "__main__":
         remaining  = max(args.total_timesteps - steps_done, 0)
         print(f"[TRAINING] Steps done: {steps_done} | Remaining: {remaining}")
     else:
+        print(f"[TRAINING] Entropy schedule: {args.ent_coef:.4f} → {args.ent_coef * 0.1:.4f}")
         model = PPO(
             "MlpPolicy", env, verbose=1, device=device,
             n_steps=16384, batch_size=args.batch_size,
@@ -1004,11 +1020,12 @@ if __name__ == "__main__":
         save_path=f'./logs/{args.run_name}/',
         name_prefix=args.run_name
     )
+    entropy_callback = EntropyScheduleCallback(args.ent_coef, args.ent_coef * 0.1, remaining)
 
     print(f"[TRAINING] Starting: {args.run_name}")
     model.learn(
         total_timesteps=remaining,
-        callback=checkpoint_callback,
+        callback=CallbackList([checkpoint_callback, entropy_callback]),
         reset_num_timesteps=args.resume is None
     )
     model.save(args.run_name)

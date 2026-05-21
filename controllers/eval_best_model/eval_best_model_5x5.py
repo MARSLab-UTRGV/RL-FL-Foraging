@@ -576,7 +576,7 @@ if __name__ == "__main__":
     if len(sys.argv) > 1:
         model_path = sys.argv[1]
     else:
-        model_path = "logs/ppo_cpfa_v5/ppo_cpfa_v5_600000_steps"
+        model_path = "logs/ppo_cpfa_v6/ppo_cpfa_v6_5200000_steps"
     if model_path.endswith('.zip'):
         model_path = model_path[:-4]
 
