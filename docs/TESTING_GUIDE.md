@@ -194,7 +194,7 @@ Replace `<N>` with 1–20.
 | 5×5   | 64  | `2.5 − max\|pos\|` | ±2.2 m | ±2.415 m |
 | 7×7   | 128 | `3.5 − max\|pos\|` | ±3.2 m | ±3.415 m |
 | 9×9   | 208 | `4.5 − max\|pos\|` | ±4.2 m | ±4.415 m |
-| 12×12 | 370 | `6.0 − max\|pos\|` | ±5.7 m | ±5.915 m |
+| 12×12 | 368 | `6.0 − max\|pos\|` | ±5.7 m | ±5.915 m |
 
 ### CPFA Parameters (identical across all arena sizes)
 
@@ -277,7 +277,7 @@ so any performance change reflects distribution-shift robustness, not recalibrat
 | 5×5 m | `eval_best_model_5x5.py` | `eval_sample1_5x5.wbt` … `eval_sample20_5x5.wbt` | 64 | 6 | `eval_cpfa_log.txt` |
 | 7×7 m | `eval_best_model_7x7.py` | `eval_sample1_7x7.wbt` … `eval_sample20_7x7.wbt` | 128 | 11 | `eval_cpfa_log_7x7.txt` |
 | 9×9 m | `eval_best_model_9x9.py` | `eval_sample1_9x9.wbt` … `eval_sample20_9x9.wbt` | 208 | 14 | `eval_cpfa_log_9x9.txt` |
-| 12×12 m | `eval_best_model_12x12.py` | `eval_sample1_12x12.wbt` … `eval_sample20_12x12.wbt` | 370 | 19 | `eval_cpfa_log_12x12.txt` |
+| 12×12 m | `eval_best_model_12x12.py` | `eval_sample1_12x12.wbt` … `eval_sample20_12x12.wbt` | 368 | 19 | `eval_cpfa_log_12x12.txt` |
 
 Sample rotations: samples 1–10 at 36° intervals (0°, 36°, …, 324°);
 samples 11–20 interleaved at 18° offset (18°, 54°, …, 342°).
@@ -396,6 +396,92 @@ mean ± std over 20 samples
 A drop in rate from 5×5 → 12×12 is expected; the paper claim is that the PPO policy
 degrades more gracefully than the CPFA baseline under distribution shift, thanks to
 learned rather than hard-coded navigation.
+
+---
+
+## Distribution-Type Evaluation — 5×5 Arena (ppo_cpfa_c7)
+
+These 10 worlds hold the arena size **fixed at 5×5 m** and the tag count **fixed at 64**,
+but vary *how* tags are spatially distributed. They probe robustness to tag layout rather
+than arena scale.
+
+### World Files
+
+| Type | Files | Tags | Distribution |
+|------|-------|------|--------------|
+| Power-law clusters | `eval_powerlaw1_5x5.wbt` … `eval_powerlaw5_5x5.wbt` | 64 | Few large, many small clusters (sizes: 20, 12, 9, 9, 8, 6) |
+| Uniform random | `eval_random1_5x5.wbt` … `eval_random5_5x5.wbt` | 64 | No clustering — tags placed independently at random |
+
+**Power-law layout:** 6 clusters at 72° rotation intervals (samples 1–5 at 0°, 72°, 144°, 216°, 288°).
+`min_spacing=0.0775 m`, placement zone ±2.1 m (same safe zone as training).
+
+**Random layout:** Uniform random placement, no clusters. Seeds: 42, 137, 271, 512, 999.
+`min_spacing=0.08 m`, `nest_excl=0.35 m`, placement zone ±2.1 m.
+
+---
+
+### Run Commands
+
+**Power-law samples (same controller as 5×5 eval — use `eval_best_model_5x5.py`)**
+
+```bash
+webots --mode=fast --minimize --no-rendering worlds/eval_powerlaw<N>_5x5.wbt &
+sleep 10
+WEBOTS_PORT=1235 python3 controllers/eval_best_model/eval_best_model_5x5.py \
+    logs/ppo_cpfa_c7/ppo_cpfa_c7_5000000_steps
+```
+
+Replace `<N>` with 1–5.
+
+**Random samples**
+
+```bash
+webots --mode=fast --minimize --no-rendering worlds/eval_random<N>_5x5.wbt &
+sleep 10
+WEBOTS_PORT=1235 python3 controllers/eval_best_model/eval_best_model_5x5.py \
+    logs/ppo_cpfa_c7/ppo_cpfa_c7_5000000_steps
+```
+
+Replace `<N>` with 1–5.
+
+**CPFA baseline — same worlds, different controller**
+
+```bash
+webots --mode=fast --minimize --no-rendering worlds/eval_powerlaw<N>_5x5.wbt &
+sleep 10
+python3 controllers/cpfa_baseline/cpfa_baseline.py
+
+# or for random:
+webots --mode=fast --minimize --no-rendering worlds/eval_random<N>_5x5.wbt &
+sleep 10
+python3 controllers/cpfa_baseline/cpfa_baseline.py
+```
+
+---
+
+### What Each Distribution Tests
+
+| World set | What it probes |
+|-----------|---------------|
+| Power-law clusters | Biased density — one large dominant cluster; pheromone exploitation heavily rewarded |
+| Uniform random | No pheromone signal — site fidelity provides no advantage; CPFA degenerates to random walk |
+
+**Hypothesis:** PPO policy maintains higher collection rates on uniform random layouts
+because it learns a general spatial coverage strategy, while CPFA wastes time revisiting
+depleted cluster centres and site-fidelity shortcuts that don't exist.
+
+### Measurement Protocol
+
+Same 30-minute trials as the generalization suite. Record tags/min per sample.
+
+**Results table template:**
+
+| Distribution | System | Mean rate (tags/min) | Std | Min | Max |
+|-------------|--------|---------------------|-----|-----|-----|
+| Power-law   | PPO    |                     |     |     |     |
+| Power-law   | CPFA   |                     |     |     |     |
+| Random      | PPO    |                     |     |     |     |
+| Random      | CPFA   |                     |     |     |     |
 
 ---
 

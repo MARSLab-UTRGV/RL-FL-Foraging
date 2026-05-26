@@ -38,7 +38,7 @@ import gymnasium as gym
 class EpuckForagingSupervisor(Supervisor, gym.Env):
     def __init__(self):
         self.num_robots            = 4
-        self.num_tags              = 370
+        self.num_tags              = 368
         self.obs_per_robot         = 18
         self.observation_space_dim = self.obs_per_robot * self.num_robots
         self.action_space_dim      = 2 * self.num_robots

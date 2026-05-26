@@ -56,7 +56,7 @@ class CPFABaseline(Supervisor):
         self.timestep = int(self.getBasicTimeStep())
 
         self.num_robots = 4
-        self.num_tags   = 370
+        self.num_tags   = 368
 
         # --- World nodes ---
         self.robot_nodes = [self.getFromDef(f"ROBOT{i+1}") for i in range(self.num_robots)]
