@@ -141,20 +141,62 @@ training through Phase 3 or Phase 4:
 
 ## Running the CPFA Baseline
 
-**Step 1: Reload the eval world to reset all 64 tags**
+### Controller files
+
+| Arena | Controller | Log file |
+|-------|-----------|----------|
+| 5×5 m | `controllers/cpfa_baseline/cpfa_baseline.py` | `cpfa_baseline_log.txt` |
+| 7×7 m | `controllers/cpfa_baseline/cpfa_baseline_7x7.py` | `cpfa_baseline_log_7x7.txt` |
+| 9×9 m | `controllers/cpfa_baseline/cpfa_baseline_9x9.py` | `cpfa_baseline_log_9x9.txt` |
+| 12×12 m | `controllers/cpfa_baseline/cpfa_baseline_12x12.py` | `cpfa_baseline_log_12x12.txt` |
+
+All four controllers share identical CPFA logic and parameters — only `num_tags`, `wall_dist`,
+CRW clamp bounds, and wall-target bounds differ per arena.
+
+### 5×5 arena (single fixed world)
 
 ```bash
 webots worlds/eval_best_5x5.wbt &
 sleep 10
-```
-
-**Step 2: Run the CPFA supervisor** (no model path needed)
-
-```bash
 WEBOTS_PORT=1235 python3 controllers/cpfa_baseline/cpfa_baseline.py
 ```
 
-### CPFA Parameters (matched to RL training supervisor)
+### 20-sample runs — 7×7 arena
+
+```bash
+webots --mode=fast --minimize --no-rendering worlds/eval_sample<N>_7x7.wbt &
+sleep 10
+WEBOTS_PORT=1235 python3 controllers/cpfa_baseline/cpfa_baseline_7x7.py
+```
+
+### 20-sample runs — 9×9 arena
+
+```bash
+webots --mode=fast --minimize --no-rendering worlds/eval_sample<N>_9x9.wbt &
+sleep 10
+WEBOTS_PORT=1235 python3 controllers/cpfa_baseline/cpfa_baseline_9x9.py
+```
+
+### 20-sample runs — 12×12 arena
+
+```bash
+webots --mode=fast --minimize --no-rendering worlds/eval_sample<N>_12x12.wbt &
+sleep 10
+WEBOTS_PORT=1235 python3 controllers/cpfa_baseline/cpfa_baseline_12x12.py
+```
+
+Replace `<N>` with 1–20.
+
+### Per-arena controller differences
+
+| Arena | `num_tags` | `wall_dist` formula | CRW clamp | Wall target bounds |
+|-------|-----------|--------------------|-----------|--------------------|
+| 5×5   | 64  | `2.5 − max\|pos\|` | ±2.2 m | ±2.415 m |
+| 7×7   | 128 | `3.5 − max\|pos\|` | ±3.2 m | ±3.415 m |
+| 9×9   | 208 | `4.5 − max\|pos\|` | ±4.2 m | ±4.415 m |
+| 12×12 | 370 | `6.0 − max\|pos\|` | ±5.7 m | ±5.915 m |
+
+### CPFA Parameters (identical across all arena sizes)
 
 | Parameter | Value |
 |-----------|-------|
@@ -162,8 +204,9 @@ WEBOTS_PORT=1235 python3 controllers/cpfa_baseline/cpfa_baseline.py
 | `RATE_OF_SITE_FIDELITY` | 1.376 (ARGoS-evolved) |
 | `RATE_OF_PHEROMONE_DECAY` | 0.05 /sec (τ ≈ 20s) |
 | `ProbabilityOfReturningToNest` | 0.0189 per 5-second check |
-| Local search | CRW (Correlated Random Walk), 30° Gaussian heading variation |
-| `RATE_OF_INFORMED_SEARCH_DECAY` | 0.0002 /step |
+| `ProbabilityOfSwitchingToSearching` | 0.765 per 5-second check |
+| `UninformedSearchVariation` | 3.67 rad (≈ 210°) |
+| `RateOfInformedSearchDecay` | 0.346 /waypoint |
 
 **CPFA MODE values in log:**
 - `WALL_ESC` — collision avoidance
@@ -171,17 +214,18 @@ WEBOTS_PORT=1235 python3 controllers/cpfa_baseline/cpfa_baseline.py
 - `GIVE_UP` — returning empty (give-up triggered)
 - `SITE` — DEPARTING toward site fidelity target
 - `PHERO` — DEPARTING toward pheromone roulette target
+- `DEPART` — uninformed DEPARTING toward random wall position
 - `SEARCH` — CRW random walk (uninformed or informed)
+- `SURVEY` — post-pickup 360° rotation before returning
 
 ---
 
 ## Comparing the Two Systems
 
-Both supervisors run in `eval_best_5x5.wbt` with the **same fixed tag positions**.
-Primary metric: **tags deposited per simulated minute** (printed every 500 steps).
+Primary metric: **tags deposited per simulated minute** (printed every 500 steps in both logs).
 
-| Component | CPFA Baseline | PPO-CPFA v5 |
-|-----------|--------------|-------------|
+| Component | CPFA Baseline | PPO-CPFA (ppo_cpfa_c7) |
+|-----------|--------------|------------------------|
 | Pheromone model (list, Poisson CDF, roulette-wheel) | hand-coded | **identical** |
 | Site fidelity (Poisson CDF priority) | hand-coded | **identical** |
 | Pheromone decay (τ ≈ 20s) | hand-coded | **identical** |
@@ -195,15 +239,28 @@ Primary metric: **tags deposited per simulated minute** (printed every 500 steps
 | Tag seek | none (removed) | **none (removed)** |
 | Exploration strategy | CRW with informed decay | **PPO (learned)** |
 
-The pheromone infrastructure is held constant. Performance difference = learned vs. hand-coded
-navigation strategy. This is the paper's core claim.
+The pheromone infrastructure is held constant across both systems and all arena sizes.
+Performance difference = learned vs. hand-coded navigation strategy. This is the paper's core claim.
+
+### Paired Comparison — 20-Sample Suite
+
+Run both systems on the **same sample world** and compare rates directly.
+Each world has a fixed seed (rotation-based layout) so results are reproducible.
+
+| Arena | PPO controller | CPFA controller | World pattern |
+|-------|---------------|-----------------|---------------|
+| 5×5   | `eval_best_model_5x5.py` | `cpfa_baseline.py` | `eval_sample<N>_5x5.wbt` |
+| 7×7   | `eval_best_model_7x7.py` | `cpfa_baseline_7x7.py` | `eval_sample<N>_7x7.wbt` |
+| 9×9   | `eval_best_model_9x9.py` | `cpfa_baseline_9x9.py` | `eval_sample<N>_9x9.wbt` |
+| 12×12 | `eval_best_model_12x12.py` | `cpfa_baseline_12x12.py` | `eval_sample<N>_12x12.wbt` |
 
 ### Procedure for Paper Results
 
-1. Run 5+ trials of each system on the same eval world (reload Webots between trials)
-2. Each trial: let run for 30 simulated minutes (≈28,125 steps at 64ms/step)
+1. For each arena size, run both systems on all 20 sample worlds (reload Webots between runs)
+2. Each trial: let run for **30 simulated minutes** (≈ 28,125 steps at 64 ms/step)
 3. Record total deposits per trial → compute tags/min
-4. Report mean ± std for both systems
+4. Report mean ± std over 20 samples for both systems, per arena
+5. Plot PPO vs CPFA rate across arenas to show generalisation gap
 
 ---
 
