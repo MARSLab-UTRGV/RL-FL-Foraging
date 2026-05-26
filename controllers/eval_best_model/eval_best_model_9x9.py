@@ -7,7 +7,8 @@ from stable_baselines3 import PPO
 import gymnasium as gym
 
 # =============================================================================
-# EVALUATION SUPERVISOR — CPFA-RL  (5×5m arena)
+# EVALUATION SUPERVISOR — CPFA-RL  (9×9m arena — generalization test)
+# Obs normalizations kept at 3.5m (same as training) to test distribution shift.
 #
 # Observation space matches epuck_foraging_supervisor_cpfa.py exactly:
 #   18 values per robot × 4 robots = 72 total
@@ -37,7 +38,7 @@ import gymnasium as gym
 class EpuckForagingSupervisor(Supervisor, gym.Env):
     def __init__(self):
         self.num_robots            = 4
-        self.num_tags              = 64
+        self.num_tags              = 208
         self.obs_per_robot         = 18
         self.observation_space_dim = self.obs_per_robot * self.num_robots
         self.action_space_dim      = 2 * self.num_robots
@@ -487,7 +488,7 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
             robot_rot = self.robot_nodes[i].getOrientation()
             fwd       = [robot_rot[0], robot_rot[3], robot_rot[6]]
             prox      = (self.robot_states[i] or [0.0]*8)[:8]
-            wall_dist = 2.5 - max(abs(robot_pos[0]), abs(robot_pos[1]))
+            wall_dist = 4.5 - max(abs(robot_pos[0]), abs(robot_pos[1]))
 
             bdx          = base_pos[0] - robot_pos[0]
             bdy          = base_pos[1] - robot_pos[1]
@@ -568,7 +569,7 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
 if __name__ == "__main__":
     print("=" * 60)
     print("EVALUATION MODE — CPFA-RL Trained Model")
-    print("Obs space: 18 per robot × 4 robots = 72 total")
+    print("Arena: 9×9m  |  Obs space: 18 per robot × 4 robots = 72 total")
     print("=" * 60)
 
     env = EpuckForagingSupervisor()
@@ -576,7 +577,7 @@ if __name__ == "__main__":
     if len(sys.argv) > 1:
         model_path = sys.argv[1]
     else:
-        model_path = "logs/ppo_cpfa_v8/ppo_cpfa_v8_2000000_steps"
+        model_path = "logs/ppo_cpfa_v9/ppo_cpfa_v9_5000000_steps"
     if model_path.endswith('.zip'):
         model_path = model_path[:-4]
 
@@ -628,7 +629,7 @@ if __name__ == "__main__":
                 ra_l   = env.last_action[ri*2]    # overridden action sent to robot
                 ra_r   = env.last_action[ri*2+1]
                 rpos   = env.robot_nodes[ri].getPosition()
-                wall_d = 2.5 - max(abs(rpos[0]), abs(rpos[1]))
+                wall_d = 4.5 - max(abs(rpos[0]), abs(rpos[1]))
                 d2base = math.sqrt((rpos[0]-base_pos[0])**2 + (rpos[1]-base_pos[1])**2)
                 mode   = env._get_mode(ri, wall_d)
 
@@ -642,5 +643,5 @@ if __name__ == "__main__":
                 )
 
             print(log_msg)
-            with open("eval_cpfa_log.txt", "a") as f:
+            with open("eval_cpfa_log_9x9.txt", "a") as f:
                 f.write(log_msg)

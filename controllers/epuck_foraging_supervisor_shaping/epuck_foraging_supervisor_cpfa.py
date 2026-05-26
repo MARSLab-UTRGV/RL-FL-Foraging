@@ -506,7 +506,7 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
                         print(f"[EMPTY_RTN] R{i+1} → "
                               f"{t[0]+'('+f'{t[1]:.2f},{t[2]:.2f}'+')' if t else 'EXPLORE'}")
 
-                    # Forward motion bias — only reward for actual movement, no positional bonus
+                    # Forward motion bias — always active (unconditional).
                     if wall_dist >= 0.35:
                         action_i  = action[i*2 : i*2+2]
                         avg_speed = (action_i[0] + action_i[1]) / 2.0
@@ -521,7 +521,7 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
                         sx      = target[1]; sy = target[2]
                         curr_sd = math.sqrt((sx - robot_pos[0])**2 + (sy - robot_pos[1])**2)
                         if self.prev_site_dists[i] is not None:
-                            total_reward += (self.prev_site_dists[i] - curr_sd) * 15.0
+                            total_reward += (self.prev_site_dists[i] - curr_sd) * 30.0
                         self.prev_site_dists[i]  = curr_sd
                         self.prev_phero_dists[i] = None
                         # Orientation reward — dense per-step gradient toward site target
@@ -538,7 +538,7 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
                         px      = target[1]; py = target[2]
                         curr_pd = math.sqrt((px - robot_pos[0])**2 + (py - robot_pos[1])**2)
                         if self.prev_phero_dists[i] is not None:
-                            total_reward += (self.prev_phero_dists[i] - curr_pd) * 15.0
+                            total_reward += (self.prev_phero_dists[i] - curr_pd) * 30.0
                         self.prev_phero_dists[i] = curr_pd
                         self.prev_site_dists[i]  = None
                         # Orientation reward — dense per-step gradient toward pheromone target
@@ -787,11 +787,11 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
         sim_minutes = (self.episode_step * self.timestep) / 60000.0
         rate        = self.ep_deposits / sim_minutes if sim_minutes > 0 else 0.0
 
-        if self.total_episodes < 60:
+        if self.total_episodes < 30:
             phase = "NEAR    (11 clusters, max_dist=1.2m)"
-        elif self.total_episodes < 150:
+        elif self.total_episodes < 75:
             phase = "MEDIUM  (11 clusters, max_dist=1.6m)"
-        elif self.total_episodes < 300:
+        elif self.total_episodes < 150:
             phase = "FAR     (11 clusters, max_dist=2.0m)"
         else:
             phase = "FULL    (11 clusters, max_dist=2.3m)"
@@ -913,21 +913,21 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
 
     def _generate_cluster_centers(self):
         """Curriculum: 11 clusters fixed throughout, only max distance changes.
-        With 10M timesteps / 16384 steps per episode ≈ 610 total episodes:
-          Phase 1 (ep   1- 59):  59 eps (10%) — max_dist=1.2m, bootstrap pickup/deposit
-          Phase 2 (ep  60-149):  90 eps (15%) — max_dist=1.6m, develop pheromone use
-          Phase 3 (ep 150-299): 150 eps (25%) — max_dist=2.0m, mid-to-far range
-          Phase 4 (ep 300+   ): 310 eps (51%) — max_dist=2.3m, full arena consolidation
+        With 5M timesteps / 16384 steps per episode ≈ 305 total episodes:
+          Phase 1 (ep   1- 29):  29 eps (10%) — max_dist=1.2m, bootstrap pickup/deposit
+          Phase 2 (ep  30- 74):  45 eps (15%) — max_dist=1.6m, develop pheromone use
+          Phase 3 (ep  75-149):  75 eps (25%) — max_dist=2.0m, mid-to-far range
+          Phase 4 (ep 150+   ): 155 eps (51%) — max_dist=2.3m, full arena consolidation
         Wall at 2.5m; WALL_ESC fires at 2.15m on-axis → 2.3m is practical cluster max.
         Cluster layout: 5 × 8 tags + 6 × 4 tags = 64 tags total.
         """
-        if self.total_episodes < 60:
+        if self.total_episodes < 30:
             max_dist = 1.2
             min_sep  = 0.40  # tighter packing in small zone
-        elif self.total_episodes < 150:
+        elif self.total_episodes < 75:
             max_dist = 1.6
             min_sep  = 0.45
-        elif self.total_episodes < 300:
+        elif self.total_episodes < 150:
             max_dist = 2.0
             min_sep  = 0.50
         else:
@@ -971,9 +971,9 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument('--run_name',        type=str,   default='ppo_cpfa_5x5')
     parser.add_argument('--lr',              type=float, default=3e-4)
-    parser.add_argument('--ent_coef',        type=float, default=0.03)
+    parser.add_argument('--ent_coef',        type=float, default=0.01)
     parser.add_argument('--batch_size',      type=int,   default=1024)
-    parser.add_argument('--total_timesteps', type=int,   default=10000000)
+    parser.add_argument('--total_timesteps', type=int,   default=5000000)
     parser.add_argument('--resume',          type=str,   default=None,
                         help='Path to checkpoint .zip to resume from')
     args = parser.parse_args()

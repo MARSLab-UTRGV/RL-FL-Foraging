@@ -207,6 +207,141 @@ navigation strategy. This is the paper's core claim.
 
 ---
 
+## Generalization Evaluation — 20-Sample Suite (`ppo_cpfa_c7`)
+
+Tests how well the model trained on a 5×5 arena transfers to larger, unseen arenas.
+Obs normalizations are intentionally kept at 3.5 m (training value) in all eval controllers,
+so any performance change reflects distribution-shift robustness, not recalibration.
+
+### Arena Summary
+
+| Arena | Eval controller | World files | Tags | Clusters | Log file |
+|-------|----------------|-------------|------|----------|----------|
+| 5×5 m | `eval_best_model_5x5.py` | `eval_sample1_5x5.wbt` … `eval_sample20_5x5.wbt` | 64 | 6 | `eval_cpfa_log.txt` |
+| 7×7 m | `eval_best_model_7x7.py` | `eval_sample1_7x7.wbt` … `eval_sample20_7x7.wbt` | 128 | 11 | `eval_cpfa_log_7x7.txt` |
+| 9×9 m | `eval_best_model_9x9.py` | `eval_sample1_9x9.wbt` … `eval_sample20_9x9.wbt` | 208 | 14 | `eval_cpfa_log_9x9.txt` |
+| 12×12 m | `eval_best_model_12x12.py` | `eval_sample1_12x12.wbt` … `eval_sample20_12x12.wbt` | 370 | 19 | `eval_cpfa_log_12x12.txt` |
+
+Sample rotations: samples 1–10 at 36° intervals (0°, 36°, …, 324°);
+samples 11–20 interleaved at 18° offset (18°, 54°, …, 342°).
+
+---
+
+### Run Commands
+
+Replace `<N>` with sample number 1–20 and `<ARENA>` with the arena suffix.
+
+**5×5 arena (training distribution)**
+
+```bash
+webots --mode=fast --minimize --no-rendering worlds/eval_sample<N>_5x5.wbt &
+sleep 10
+WEBOTS_PORT=1235 python3 controllers/eval_best_model/eval_best_model_5x5.py \
+    logs/ppo_cpfa_c7/ppo_cpfa_c7_5000000_steps
+```
+
+**7×7 arena (1.96× area)**
+
+```bash
+webots --mode=fast --minimize --no-rendering worlds/eval_sample<N>_7x7.wbt &
+sleep 10
+WEBOTS_PORT=1235 python3 controllers/eval_best_model/eval_best_model_7x7.py \
+    logs/ppo_cpfa_c7/ppo_cpfa_c7_5000000_steps
+```
+
+**9×9 arena (3.24× area)**
+
+```bash
+webots --mode=fast --minimize --no-rendering worlds/eval_sample<N>_9x9.wbt &
+sleep 10
+WEBOTS_PORT=1235 python3 controllers/eval_best_model/eval_best_model_9x9.py \
+    logs/ppo_cpfa_c7/ppo_cpfa_c7_5000000_steps
+```
+
+**12×12 arena (5.76× area)**
+
+```bash
+webots --mode=fast --minimize --no-rendering worlds/eval_sample<N>_12x12.wbt &
+sleep 10
+WEBOTS_PORT=1235 python3 controllers/eval_best_model/eval_best_model_12x12.py \
+    logs/ppo_cpfa_c7/ppo_cpfa_c7_5000000_steps
+```
+
+> **Tip:** If port 1234 is in use by training, use `WEBOTS_PORT=1235`.
+> If running multiple evals in parallel, use 1235, 1236, 1237, … for each instance.
+
+---
+
+### Sample Index
+
+| Sample | Rotation | 5×5 world | 7×7 world | 9×9 world | 12×12 world |
+|--------|----------|-----------|-----------|-----------|-------------|
+| 1  | 0°   | eval_sample1_5x5.wbt  | eval_sample1_7x7.wbt  | eval_sample1_9x9.wbt  | eval_sample1_12x12.wbt  |
+| 2  | 36°  | eval_sample2_5x5.wbt  | eval_sample2_7x7.wbt  | eval_sample2_9x9.wbt  | eval_sample2_12x12.wbt  |
+| 3  | 72°  | eval_sample3_5x5.wbt  | eval_sample3_7x7.wbt  | eval_sample3_9x9.wbt  | eval_sample3_12x12.wbt  |
+| 4  | 108° | eval_sample4_5x5.wbt  | eval_sample4_7x7.wbt  | eval_sample4_9x9.wbt  | eval_sample4_12x12.wbt  |
+| 5  | 144° | eval_sample5_5x5.wbt  | eval_sample5_7x7.wbt  | eval_sample5_9x9.wbt  | eval_sample5_12x12.wbt  |
+| 6  | 180° | eval_sample6_5x5.wbt  | eval_sample6_7x7.wbt  | eval_sample6_9x9.wbt  | eval_sample6_12x12.wbt  |
+| 7  | 216° | eval_sample7_5x5.wbt  | eval_sample7_7x7.wbt  | eval_sample7_9x9.wbt  | eval_sample7_12x12.wbt  |
+| 8  | 252° | eval_sample8_5x5.wbt  | eval_sample8_7x7.wbt  | eval_sample8_9x9.wbt  | eval_sample8_12x12.wbt  |
+| 9  | 288° | eval_sample9_5x5.wbt  | eval_sample9_7x7.wbt  | eval_sample9_9x9.wbt  | eval_sample9_12x12.wbt  |
+| 10 | 324° | eval_sample10_5x5.wbt | eval_sample10_7x7.wbt | eval_sample10_9x9.wbt | eval_sample10_12x12.wbt |
+| 11 | 18°  | eval_sample11_5x5.wbt | eval_sample11_7x7.wbt | eval_sample11_9x9.wbt | eval_sample11_12x12.wbt |
+| 12 | 54°  | eval_sample12_5x5.wbt | eval_sample12_7x7.wbt | eval_sample12_9x9.wbt | eval_sample12_12x12.wbt |
+| 13 | 90°  | eval_sample13_5x5.wbt | eval_sample13_7x7.wbt | eval_sample13_9x9.wbt | eval_sample13_12x12.wbt |
+| 14 | 126° | eval_sample14_5x5.wbt | eval_sample14_7x7.wbt | eval_sample14_9x9.wbt | eval_sample14_12x12.wbt |
+| 15 | 162° | eval_sample15_5x5.wbt | eval_sample15_7x7.wbt | eval_sample15_9x9.wbt | eval_sample15_12x12.wbt |
+| 16 | 198° | eval_sample16_5x5.wbt | eval_sample16_7x7.wbt | eval_sample16_9x9.wbt | eval_sample16_12x12.wbt |
+| 17 | 234° | eval_sample17_5x5.wbt | eval_sample17_7x7.wbt | eval_sample17_9x9.wbt | eval_sample17_12x12.wbt |
+| 18 | 270° | eval_sample18_5x5.wbt | eval_sample18_7x7.wbt | eval_sample18_9x9.wbt | eval_sample18_12x12.wbt |
+| 19 | 306° | eval_sample19_5x5.wbt | eval_sample19_7x7.wbt | eval_sample19_9x9.wbt | eval_sample19_12x12.wbt |
+| 20 | 342° | eval_sample20_5x5.wbt | eval_sample20_7x7.wbt | eval_sample20_9x9.wbt | eval_sample20_12x12.wbt |
+
+---
+
+### Measurement Protocol
+
+Each trial: let run for **30 simulated minutes** (≈ 28,125 steps at 64 ms/step).
+Primary metric: **tags deposited per simulated minute** (printed every 500 steps in the log).
+
+**Record per sample:**
+
+```
+Arena | Sample | Deposits | Duration (min) | Rate (tags/min)
+```
+
+**Aggregate per arena:**
+
+```
+mean ± std over 20 samples
+```
+
+**Results table template:**
+
+| Arena | Mean rate (tags/min) | Std | Min | Max |
+|-------|---------------------|-----|-----|-----|
+| 5×5   |                     |     |     |     |
+| 7×7   |                     |     |     |     |
+| 9×9   |                     |     |     |     |
+| 12×12 |                     |     |     |     |
+
+---
+
+### What Each Arena Tests
+
+| Arena | What it probes |
+|-------|---------------|
+| 5×5   | In-distribution performance — clusters at trained distances (up to 2.1 m) |
+| 7×7   | Mild OOD shift — VFAR clusters at 3.0 m, obs normalised at 3.5 m (same as training) |
+| 9×9   | Moderate OOD — VFAR at 3.8 m, clusters at radii the policy never trained on |
+| 12×12 | Severe OOD — VFAR at 5.2 m, 5.76× training area; tests pheromone-guided extrapolation |
+
+A drop in rate from 5×5 → 12×12 is expected; the paper claim is that the PPO policy
+degrades more gracefully than the CPFA baseline under distribution shift, thanks to
+learned rather than hard-coded navigation.
+
+---
+
 ## Headless Evaluation
 
 ```bash
