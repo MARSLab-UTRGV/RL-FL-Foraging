@@ -1,0 +1,6 @@
+method,distribution,arena,sample,completed,status,completion_time_min,elapsed_time_min,steps,pickups,deposits
+cpfa_baseline,powerlaw,5x5,1,true,completed,42.4667,42.4667,79625,64,64
+cpfa_baseline,powerlaw,5x5,2,true,completed,51.3488,51.3488,96279,64,64
+cpfa_baseline,powerlaw,5x5,3,true,completed,44.8912,44.8912,84171,64,64
+cpfa_baseline,powerlaw,5x5,4,true,completed,44.6219,44.6219,83666,64,64
+cpfa_baseline,powerlaw,5x5,5,true,completed,32.2005,32.2005,60376,64,64
