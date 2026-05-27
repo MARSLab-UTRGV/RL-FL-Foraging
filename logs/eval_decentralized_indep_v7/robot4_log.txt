@@ -1,0 +1,65 @@
+[robot4] Loading per-robot model: /home/sara/Documents/Centralized Learning/RL-FL-Foraging/robot4_decentralized_indep_v7.zip
+[robot4] Model loaded (18D obs, independent PPO).
+[PHERO ADDED  ] robot4 [1]: (0.19,0.15) w=0.424
+[PHERO ADDED  ] robot4 [2]: (0.19,0.15) w=0.279 | (0.60,0.32) w=1.000
+[PICKUP]   robot4 at (0.60,0.32) | density=6
+  [PHERO]  Laid at (0.60,0.32) density=6 prob=0.97 total_entries=2
+[DEPOSIT]  robot4 | site=(0.60,0.32) density=6
+  [TARGET]   robot4 → SITE (0.60,0.32)
+[PHERO UPDATED] robot4 [2]: (0.19,0.15) w=1.000 | (0.60,0.32) w=0.653
+[PICKUP]   robot4 at (0.18,0.25) | density=5
+  [PHERO]  Laid at (0.18,0.25) density=5 prob=0.92 total_entries=2
+[DEPOSIT]  robot4 | site=(0.18,0.25) density=5
+  [TARGET]   robot4 → SITE (0.18,0.25)
+[PHERO ADDED  ] robot4 [3]: (0.19,0.15) w=0.167 | (0.60,0.32) w=0.109 | (-0.72,1.22) w=1.000
+[PICKUP]   robot4 at (-0.72,1.22) | density=12
+  [PHERO]  Laid at (-0.72,1.22) density=12 prob=1.00 total_entries=3
+[DEPOSIT]  robot4 | site=(-0.72,1.22) density=12
+  [TARGET]   robot4 → SITE (-0.72,1.22)
+[robot4] Loading per-robot model: /home/sara/Documents/Centralized Learning/RL-FL-Foraging/robot4_decentralized_indep_v7.zip
+[robot4] Model loaded (18D obs, independent PPO).
+[PHERO ADDED  ] robot4 [1]: (0.19,0.15) w=0.424
+[PHERO ADDED  ] robot4 [2]: (0.19,0.15) w=0.279 | (0.60,0.32) w=1.000
+[PICKUP]   robot4 at (0.60,0.32) | density=6
+  [PHERO]  Laid at (0.60,0.32) density=6 prob=0.97 total_entries=2
+[DEPOSIT]  robot4 | site=(0.60,0.32) density=6
+  [TARGET]   robot4 → SITE (0.60,0.32)
+[PICKUP]   robot4 at (0.18,0.25) | density=5
+[DEPOSIT]  robot4 | site=(0.18,0.25) density=5
+  [TARGET]   robot4 → SITE (0.18,0.25)
+[PHERO ADDED  ] robot4 [3]: (0.19,0.15) w=0.030 | (0.60,0.32) w=0.109 | (-0.72,1.22) w=1.000
+[PICKUP]   robot4 at (-0.72,1.22) | density=12
+  [PHERO]  Laid at (-0.72,1.22) density=12 prob=1.00 total_entries=3
+[DEPOSIT]  robot4 | site=(-0.72,1.22) density=12
+  [TARGET]   robot4 → SITE (-0.72,1.22)
+[PHERO ADDED  ] robot4 [4]: (0.19,0.15) w=0.001 | (0.60,0.32) w=0.004 | (-0.72,1.22) w=0.037 | (0.59,-0.79) w=1.000
+[PICKUP]   robot4 at (0.59,-0.79) | density=9
+  [PHERO]  Laid at (0.59,-0.79) density=9 prob=1.00 total_entries=4
+[PHERO EXPIRED] robot4 [3]: (0.60,0.32) w=0.004 | (-0.72,1.22) w=0.033 | (0.59,-0.79) w=0.883
+[DEPOSIT]  robot4 | site=(0.59,-0.79) density=9
+  [TARGET]   robot4 → SITE (0.59,-0.79)
+[PHERO UPDATED] robot4 [3]: (0.60,0.32) w=0.149 | (-0.72,1.22) w=0.015 | (0.59,-0.79) w=0.391
+[PHERO UPDATED] robot4 [3]: (0.60,0.32) w=0.142 | (-0.72,1.22) w=0.014 | (0.59,-0.79) w=0.374
+[PHERO UPDATED] robot4 [3]: (0.60,0.32) w=0.129 | (-0.72,1.22) w=0.013 | (0.59,-0.79) w=0.341
+[PHERO UPDATED] robot4 [3]: (0.60,0.32) w=0.117 | (-0.72,1.22) w=0.011 | (0.59,-0.79) w=0.310
+[PHERO UPDATED] robot4 [3]: (0.60,0.32) w=0.106 | (-0.72,1.22) w=0.010 | (0.59,-0.79) w=0.283
+[PHERO UPDATED] robot4 [3]: (0.60,0.32) w=0.101 | (-0.72,1.22) w=0.010 | (0.59,-0.79) w=0.997
+[PHERO UPDATED] robot4 [3]: (0.60,0.32) w=0.092 | (-0.72,1.22) w=0.009 | (0.59,-0.79) w=0.908
+[PHERO ADDED  ] robot4 [4]: (0.60,0.32) w=0.087 | (-0.72,1.22) w=0.008 | (0.59,-0.79) w=0.854 | (0.92,-0.78) w=1.000
+[PICKUP]   robot4 at (0.92,-0.78) | density=7
+  [PHERO]  Laid at (0.92,-0.78) density=7 prob=0.99 total_entries=4
+[PHERO UPDATED] robot4 [4]: (0.60,0.32) w=0.052 | (-0.72,1.22) w=0.005 | (0.59,-0.79) w=0.512 | (0.92,-0.78) w=0.598
+[PHERO UPDATED] robot4 [4]: (0.60,0.32) w=0.049 | (-0.72,1.22) w=0.005 | (0.59,-0.79) w=0.488 | (0.92,-0.78) w=0.572
+[DEPOSIT]  robot4 | site=(0.92,-0.78) density=7
+  [TARGET]   robot4 → SITE (0.92,-0.78)
+[PHERO EXPIRED] robot4 [3]: (0.60,0.32) w=0.010 | (0.59,-0.79) w=0.101 | (0.92,-0.78) w=0.119
+[PHERO UPDATED] robot4 [3]: (0.60,0.32) w=1.000 | (0.59,-0.79) w=0.069 | (0.92,-0.78) w=0.081
+[PICKUP]   robot4 at (0.49,0.49) | density=1
+  [PHERO]  Laid at (0.49,0.49) density=1 prob=0.20 total_entries=3
+[DEPOSIT]  robot4 | site=(0.49,0.49) density=1
+  [TARGET]   robot4 → SITE (0.49,0.49)
+[PHERO ADDED  ] robot4 [4]: (0.60,0.32) w=0.109 | (0.59,-0.79) w=0.008 | (0.92,-0.78) w=0.009 | (-0.60,0.77) w=0.447
+[PHERO ADDED  ] robot4 [5]: (0.60,0.32) w=0.044 | (0.59,-0.79) w=0.003 | (0.92,-0.78) w=0.004 | (-0.60,0.77) w=0.180 | (-0.22,-0.24) w=0.007
+[PHERO UPDATED] robot4 [5]: (0.60,0.32) w=0.042 | (0.59,-0.79) w=0.003 | (0.92,-0.78) w=0.003 | (-0.60,0.77) w=0.172 | (-0.22,-0.24) w=0.007
+[PHERO EXPIRED] robot4 [4]: (0.60,0.32) w=0.014 | (0.92,-0.78) w=0.001 | (-0.60,0.77) w=0.060 | (-0.22,-0.24) w=0.002
+[PHERO EXPIRED] robot4 [3]: (0.60,0.32) w=0.012 | (-0.60,0.77) w=0.051 | (-0.22,-0.24) w=0.002

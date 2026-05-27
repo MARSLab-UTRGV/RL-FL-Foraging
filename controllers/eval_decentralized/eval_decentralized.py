@@ -1,3 +1,4 @@
+import csv
 import os
 import math
 import time
@@ -34,14 +35,23 @@ from controller import Supervisor
 TAG_SEEK_RANGE = 1.0
 FOV_HALF_ANGLE = 1.2
 DENSITY_RADIUS = 0.5
-DENSITY_MAX    = 5
 NUM_ROBOTS     = 4
-NUM_TAGS       = 64
+
+# Arena size → (num_tags, arena_half_m)
+ARENA_CONFIGS = {
+    '5x5':   (64,  2.5),
+    '7x7':   (128, 3.5),
+    '9x9':   (208, 4.5),
+    '12x12': (368, 6.0),
+}
 
 
 class DecentralizedEvalSupervisor:
 
-    def __init__(self):
+    def __init__(self, arena_size='5x5'):
+        self.arena_size = arena_size
+        num_tags, self.arena_half = ARENA_CONFIGS.get(arena_size, ARENA_CONFIGS['5x5'])
+
         self.supervisor = Supervisor()
         self.timestep   = int(self.supervisor.getBasicTimeStep())
 
@@ -50,7 +60,7 @@ class DecentralizedEvalSupervisor:
             self.supervisor.getFromDef(f"ROBOT{i+1}") for i in range(NUM_ROBOTS)
         ]
         self.tag_nodes = [
-            self.supervisor.getFromDef(f"APRILTAG_{i+1}") for i in range(NUM_TAGS)
+            self.supervisor.getFromDef(f"APRILTAG_{i+1}") for i in range(num_tags)
         ]
 
         # Supervisor ↔ robot communication (channels 1-4)
@@ -63,7 +73,7 @@ class DecentralizedEvalSupervisor:
             self.receivers.append(recv)
 
         # Robot GPS and pheromone state parsed from messages
-        self.robot_gps   = [[0.0, 0.0] for _ in range(NUM_ROBOTS)]
+        self.robot_gps    = [[0.0, 0.0] for _ in range(NUM_ROBOTS)]
         self._robot_phero = [[0.0, 0.0] for _ in range(NUM_ROBOTS)]  # [phero_known, phero_strength]
 
         # Carrying state (supervisor is authoritative for pickup/deposit logic)
@@ -74,6 +84,15 @@ class DecentralizedEvalSupervisor:
         self.total_deposits = 0
         self.step           = 0
         self.start_time     = time.time()
+
+        # Supervisor log file
+        _project_root = os.path.abspath(
+            os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', '..'))
+        _run_cfg  = os.path.join(_project_root, 'current_eval_run.txt')
+        _run_name = open(_run_cfg).read().strip() if os.path.exists(_run_cfg) else 'eval'
+        _log_dir  = os.path.join(_project_root, 'logs', f'eval_{_run_name}_{arena_size}')
+        os.makedirs(_log_dir, exist_ok=True)
+        self._log_path = os.path.join(_log_dir, 'supervisor_log.txt')
 
     # =========================================================================
     # Communication
@@ -129,15 +148,14 @@ class DecentralizedEvalSupervisor:
 
         return tag_visible, tag_dist / TAG_SEEK_RANGE, tag_angle / math.pi
 
-    def _pickup_strength(self, pos):
-        """Pheromone strength based on tag density near pickup location."""
-        nearby = sum(
+    def _count_density(self, pos):
+        """Raw tag count within 0.5m — counted after hiding, reflects remaining tags."""
+        return sum(
             1 for t in self.tag_nodes
             if t.getPosition()[2] >= 0 and
                math.sqrt((t.getPosition()[0] - pos[0])**2 +
-                         (t.getPosition()[1] - pos[1])**2) <= DENSITY_RADIUS
+                         (t.getPosition()[1] - pos[1])**2) < 0.5
         )
-        return 0.2 + 0.8 * min(nearby / DENSITY_MAX, 1.0)
 
     # =========================================================================
     # Main loop
@@ -147,8 +165,13 @@ class DecentralizedEvalSupervisor:
         self._collect_robot_states()
 
         for i in range(NUM_ROBOTS):
-            gps_x, gps_y  = self.robot_gps[i]
+            # Use actual Webots position (not lagged robot-message GPS) for
+            # pickup/deposit detection — eliminates 1-step position lag.
+            rpos         = self.robot_nodes[i].getPosition()
+            gps_x, gps_y = rpos[0], rpos[1]
             pickup_signal = 0.0
+            pickup_tag_x  = 0.0
+            pickup_tag_y  = 0.0
 
             if not self.carrying[i]:
                 # Check for tag pickup (robot within 0.15 m of a tag)
@@ -160,10 +183,20 @@ class DecentralizedEvalSupervisor:
                     dy = tag_pos[1] - gps_y
                     if math.sqrt(dx * dx + dy * dy) < 0.15:
                         self.carrying[i] = True
+                        # Save exact tag position BEFORE hiding — sent to robot
+                        # so it stores pheromone at tag location, not robot GPS.
+                        pickup_tag_x = tag_pos[0]
+                        pickup_tag_y = tag_pos[1]
                         tag_node.getField("translation").setSFVec3f([0, 0, -10])
-                        pickup_signal      = self._pickup_strength([gps_x, gps_y])
+                        pickup_signal      = float(self._count_density([gps_x, gps_y]))
                         self.total_pickups += 1
-                        print(f"[PICKUP]  robot_{i+1} | Total: {self.total_pickups}")
+                        msg_ev = (f"[PICKUP]  robot{i+1} | "
+                                  f"tag=({pickup_tag_x:.2f},{pickup_tag_y:.2f}) | "
+                                  f"density={pickup_signal:.0f} | "
+                                  f"Total: {self.total_pickups}")
+                        print(msg_ev)
+                        with open(self._log_path, 'a') as _f:
+                            _f.write(msg_ev + '\n')
                         break
             else:
                 # Check for deposit (robot within 0.25 m of base while carrying)
@@ -171,58 +204,74 @@ class DecentralizedEvalSupervisor:
                     self.carrying[i] = False
                     pickup_signal      = -1.0
                     self.total_deposits += 1
-                    print(f"[DEPOSIT] robot_{i+1} | Total: {self.total_deposits}")
+                    msg_ev = f"[DEPOSIT] robot{i+1} | Total: {self.total_deposits}"
+                    print(msg_ev)
+                    with open(self._log_path, 'a') as _f:
+                        _f.write(msg_ev + '\n')
 
-            # Compute tag obs (camera simulation)
-            tag_vis, tag_dist_n, tag_angle_n = self._tag_obs(i)
-
-            # Send [tag_visible, tag_dist_norm, tag_angle_norm, pickup_signal]
-            msg = f"{tag_vis},{tag_dist_n},{tag_angle_n},{pickup_signal}".encode('utf-8')
+            if pickup_signal > 0:
+                # On pickup: send exact tag coordinates in [0:1] so robot stores
+                # pheromone at the tag's location (not its own GPS).
+                # Format: [tag_x, tag_y, 0.0, density]
+                msg = f"{pickup_tag_x},{pickup_tag_y},0.0,{pickup_signal}".encode('utf-8')
+            else:
+                # Normal step or deposit: send tag camera obs as usual.
+                tag_vis, tag_dist_n, tag_angle_n = self._tag_obs(i)
+                msg = f"{tag_vis},{tag_dist_n},{tag_angle_n},{pickup_signal}".encode('utf-8')
             self.emitters[i].send(msg)
 
         if self.supervisor.step(self.timestep) == -1:
             return False
         return True
 
-    def run(self):
+    def run(self, duration_sim_min=0.0, results_csv=None, sample_id=None):
         print("=" * 60)
-        print("DECENTRALIZED EVAL SUPERVISOR (lightweight)")
+        print(f"DECENTRALIZED EVAL SUPERVISOR  (arena: {self.arena_size})")
+        print(f"Tags: {len(self.tag_nodes)} | Arena half: {self.arena_half} m")
+        if duration_sim_min > 0:
+            print(f"Duration: {duration_sim_min} sim-min | Fast mode ON")
         print("Robots run PPO locally — supervisor handles tag mechanics only")
         print("=" * 60 + "\n")
+        print(f"[SUPERVISOR] Logging to: {self._log_path}\n")
 
-        log_path = os.path.join(os.path.dirname(os.path.abspath(__file__)),
-                                "eval_decentralized_log.txt")
+        if duration_sim_min > 0:
+            self.supervisor.simulationSetMode(self.supervisor.SIMULATION_MODE_FAST)
 
         while True:
             if not self.run_step():
                 break
             self.step += 1
 
+            sim_time_min = (self.step * self.timestep / 1000.0) / 60.0
+            if duration_sim_min > 0 and sim_time_min >= duration_sim_min:
+                break
+
             if self.step % 500 == 0:
-                elapsed_min      = (time.time() - self.start_time) / 60.0
-                deposits_per_min = (self.total_deposits / elapsed_min
-                                    if elapsed_min > 0.01 else 0.0)
-                sim_time_min     = (self.step * self.timestep / 1000.0) / 60.0
+                elapsed_min  = (time.time() - self.start_time) / 60.0
+                sim_rate     = (self.total_deposits / sim_time_min
+                                if sim_time_min > 0.01 else 0.0)
+                wall_rate    = (self.total_deposits / elapsed_min
+                                if elapsed_min > 0.01 else 0.0)
 
                 log_msg = (
                     f"\n{'='*60}\n"
                     f"Step {self.step} | Pickups: {self.total_pickups} | "
                     f"Deposits: {self.total_deposits}\n"
                     f"Sim: {sim_time_min:.1f} min | Wall: {elapsed_min:.1f} min | "
-                    f"Rate: {deposits_per_min:.2f} tags/min\n"
+                    f"SimRate: {sim_rate:.2f} tags/sim-min | WallRate: {wall_rate:.2f} tags/wall-min\n"
                     f"{'='*60}\n"
                 )
                 for ri in range(NUM_ROBOTS):
                     rpos   = self.robot_nodes[ri].getPosition()
-                    wall_d = 2.5 - max(abs(rpos[0]), abs(rpos[1]))
+                    wall_d = self.arena_half - max(abs(rpos[0]), abs(rpos[1]))
                     d2base = math.sqrt(rpos[0] ** 2 + rpos[1] ** 2)
                     carry  = self.carrying[ri]
                     tag_vis, tag_dist_n, _ = self._tag_obs(ri)
 
-                    if wall_d < 0.35:              mode = "WALL_ESC"
+                    if wall_d < 0.35:                 mode = "WALL_ESC"
                     elif not carry and d2base < 0.25: mode = "BASE_ESC"
-                    elif carry:                    mode = "RTB"
-                    else:                          mode = "PPO"
+                    elif carry:                       mode = "RTB"
+                    else:                             mode = "PPO"
 
                     site_k  = self._robot_phero[ri][0]
                     phero_k = self._robot_phero[ri][1]
@@ -235,28 +284,99 @@ class DecentralizedEvalSupervisor:
                         f"wall={wall_d:.2f}\n"
                     )
                 print(log_msg)
-                with open(log_path, "a") as f:
+                with open(self._log_path, "a") as f:
                     f.write(log_msg)
+
+        # ── Final stats ───────────────────────────────────────────────
+        elapsed_min  = (time.time() - self.start_time) / 60.0
+        sim_time_min = (self.step * self.timestep / 1000.0) / 60.0
+        sim_rate     = self.total_deposits / sim_time_min if sim_time_min > 0.01 else 0.0
+        wall_rate    = self.total_deposits / elapsed_min  if elapsed_min  > 0.01 else 0.0
+
+        final_msg = (
+            f"\n[FINAL] Sample={sample_id} | Arena={self.arena_size} | "
+            f"Pickups={self.total_pickups} | Deposits={self.total_deposits} | "
+            f"Sim={sim_time_min:.2f} min | SimRate={sim_rate:.4f} | "
+            f"Wall={elapsed_min:.2f} min | WallRate={wall_rate:.4f}\n"
+        )
+        print(final_msg)
+        with open(self._log_path, "a") as f:
+            f.write(final_msg)
+
+        # ── Write CSV row ──────────────────────────────────────────────
+        if results_csv:
+            write_header = not os.path.exists(results_csv)
+            with open(results_csv, 'a', newline='') as f:
+                w = csv.writer(f)
+                if write_header:
+                    w.writerow(['sample', 'arena', 'pickups', 'deposits',
+                                'sim_time_min', 'sim_rate', 'elapsed_min', 'wall_rate'])
+                w.writerow([sample_id, self.arena_size,
+                            self.total_pickups, self.total_deposits,
+                            round(sim_time_min, 2), round(sim_rate, 4),
+                            round(elapsed_min, 2), round(wall_rate, 4)])
+            print(f"[SUPERVISOR] Results appended to: {results_csv}")
+
+        if duration_sim_min > 0:
+            self.supervisor.simulationQuit(0)
 
 
 if __name__ == "__main__":
-    import sys
+    import argparse
 
-    # Resolve model path and write config file BEFORE connecting to Webots.
+    # Write config file BEFORE connecting to Webots.
     # Robot controllers load PPO lazily on first message, so the file is
     # guaranteed to exist by the time they read it.
     _project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
-    if len(sys.argv) > 1:
-        _model_path = os.path.abspath(sys.argv[1])
-        if _model_path.endswith('.zip'):
-            _model_path = _model_path[:-4]
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--run_name', type=str, default=None,
+                        help='Per-robot run name (e.g. decentralized_indep_v9). '
+                             'Each robot loads {robot_name}_{run_name}.zip')
+    parser.add_argument('--model', type=str, default=None,
+                        help='Shared model path .zip (CTDE / fallback)')
+    parser.add_argument('--arena_size', type=str, default='5x5',
+                        choices=list(ARENA_CONFIGS.keys()),
+                        help='Arena size: 5x5 (default) | 7x7 | 9x9 | 12x12')
+    parser.add_argument('--duration_sim_min', type=float, default=0.0,
+                        help='Stop after N simulation minutes and exit (0 = run forever)')
+    parser.add_argument('--results_csv', type=str, default=None,
+                        help='Append final stats row to this CSV file')
+    parser.add_argument('--sample_id', type=str, default=None,
+                        help='Sample label written into the CSV (e.g. "1")')
+    args = parser.parse_args()
+
+    # Write arena config BEFORE connecting to Webots — robots read this on startup.
+    _arena_cfg = os.path.join(_project_root, 'current_eval_arena.txt')
+    with open(_arena_cfg, 'w') as _f:
+        _f.write(args.arena_size)
+    print(f"[SUPERVISOR] Arena: {args.arena_size} "
+          f"(tags={ARENA_CONFIGS[args.arena_size][0]}, "
+          f"half={ARENA_CONFIGS[args.arena_size][1]} m)")
+
+    if args.run_name:
+        # Per-robot independent models
+        _cfg = os.path.join(_project_root, 'current_eval_run.txt')
+        with open(_cfg, 'w') as _f:
+            _f.write(args.run_name)
+        print(f"[SUPERVISOR] Per-robot eval | run_name: {args.run_name}")
+        print(f"[SUPERVISOR] Each robot loads {{robot_name}}_{args.run_name}.zip")
     else:
-        _model_path = os.path.join(_project_root, 'decentralized_optA_v1')
+        # Shared model (CTDE / legacy)
+        if args.model:
+            _model_path = os.path.abspath(args.model)
+            if _model_path.endswith('.zip'):
+                _model_path = _model_path[:-4]
+        else:
+            _model_path = os.path.join(_project_root, 'decentralized_optA_v1')
+        _cfg = os.path.join(_project_root, 'current_eval_model.txt')
+        with open(_cfg, 'w') as _f:
+            _f.write(_model_path)
+        print(f"[SUPERVISOR] Shared model eval | path: {_model_path}")
 
-    _config_path = os.path.join(_project_root, 'current_eval_model.txt')
-    with open(_config_path, 'w') as _f:
-        _f.write(_model_path)
-    print(f"[SUPERVISOR] Model path: {_model_path}")
-
-    sup = DecentralizedEvalSupervisor()
-    sup.run()
+    sup = DecentralizedEvalSupervisor(arena_size=args.arena_size)
+    sup.run(
+        duration_sim_min=args.duration_sim_min,
+        results_csv=args.results_csv,
+        sample_id=args.sample_id,
+    )

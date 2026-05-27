@@ -1,0 +1,2419 @@
+[robot1] Loading per-robot model: /home/sara/Documents/Centralized Learning/RL-FL-Foraging/robot1_decentralized_indep_v9_4000000_steps.zip
+[robot1] Model loaded (19D obs, independent PPO v8).
+[PHERO ADDED  ] robot1 [1]: (-0.38,-0.14) w=1.000 den=6
+[PICKUP]   robot1 at (-0.38,-0.14) | density=6
+  [PHERO]  Laid at (-0.38,-0.14) density=6 prob=0.97 total_entries=1
+[DEPOSIT]  robot1 | site=(-0.38,-0.14) density=6
+  [TARGET]   robot1 → SITE (-0.38,-0.14)
+[PHERO ADDED  ] robot1 [2]: (-0.38,-0.14) w=0.693 den=6 | (0.19,0.15) w=0.827 den=7
+[PHERO UPDATED] robot1 [2]: (-0.38,-0.14) w=1.000 den=5 | (0.19,0.15) w=0.753 den=7
+[PICKUP]   robot1 at (-0.16,-0.25) | density=5
+  [PHERO]  Laid at (-0.16,-0.25) density=5 prob=0.92 total_entries=2
+[PHERO UPDATED] robot1 [2]: (-0.38,-0.14) w=0.997 den=5 | (0.19,0.15) w=0.753 den=7
+[PHERO UPDATED] robot1 [2]: (-0.38,-0.14) w=0.953 den=5 | (0.19,0.15) w=0.718 den=7
+[PHERO UPDATED] robot1 [2]: (-0.38,-0.14) w=0.828 den=5 | (0.19,0.15) w=0.622 den=7
+[DEPOSIT]  robot1 | site=(-0.16,-0.25) density=5
+  [TARGET]   robot1 → SITE (-0.16,-0.25)
+[PHERO UPDATED] robot1 [2]: (-0.38,-0.14) w=0.755 den=5 | (0.19,0.15) w=0.565 den=7
+[PHERO UPDATED] robot1 [2]: (-0.38,-0.14) w=0.719 den=5 | (0.19,0.15) w=0.970 den=6
+[PHERO ADDED  ] robot1 [3]: (-0.38,-0.14) w=0.554 den=5 | (0.19,0.15) w=0.747 den=6 | (-0.16,-0.37) w=1.000 den=4
+[PICKUP]   robot1 at (-0.16,-0.37) | density=4
+  [PHERO]  Laid at (-0.16,-0.37) density=4 prob=0.82 total_entries=3
+[DEPOSIT]  robot1 | site=(-0.16,-0.37) density=4
+  [TARGET]   robot1 → SITE (-0.16,-0.37)
+[PHERO UPDATED] robot1 [3]: (-0.38,-0.14) w=1.000 den=3 | (0.19,0.15) w=0.469 den=6 | (-0.16,-0.37) w=0.628 den=4
+[PICKUP]   robot1 at (-0.31,-0.23) | density=3
+  [PHERO]  Laid at (-0.31,-0.23) density=3 prob=0.65 total_entries=3
+[DEPOSIT]  robot1 | site=(-0.31,-0.23) density=3
+  [TARGET]   robot1 → PHERO (0.19,0.15) density=6
+[PHERO ADDED  ] robot1 [4]: (-0.38,-0.14) w=0.831 den=3 | (0.19,0.15) w=0.390 den=6 | (-0.16,-0.37) w=0.521 den=4 | (0.60,0.32) w=0.782 den=4
+[PHERO UPDATED] robot1 [4]: (-0.38,-0.14) w=0.794 den=3 | (0.19,0.15) w=0.371 den=6 | (-0.16,-0.37) w=0.497 den=4 | (0.60,0.32) w=0.745 den=4
+[PHERO UPDATED] robot1 [4]: (-0.38,-0.14) w=0.723 den=3 | (0.19,0.15) w=0.337 den=6 | (-0.16,-0.37) w=0.451 den=4 | (0.60,0.32) w=0.677 den=4
+[PHERO UPDATED] robot1 [4]: (-0.38,-0.14) w=0.724 den=3 | (0.19,0.15) w=0.337 den=6 | (-0.16,-0.37) w=0.451 den=4 | (0.60,0.32) w=0.677 den=4
+[PHERO UPDATED] robot1 [4]: (-0.38,-0.14) w=0.691 den=3 | (0.19,0.15) w=0.322 den=6 | (-0.16,-0.37) w=0.430 den=4 | (0.60,0.32) w=0.645 den=4
+[PHERO UPDATED] robot1 [4]: (-0.38,-0.14) w=0.660 den=3 | (0.19,0.15) w=0.307 den=6 | (-0.16,-0.37) w=0.410 den=4 | (0.60,0.32) w=0.615 den=4
+[PHERO ADDED  ] robot1 [5]: (-0.38,-0.14) w=0.629 den=3 | (0.19,0.15) w=0.292 den=6 | (-0.16,-0.37) w=0.391 den=4 | (0.60,0.32) w=0.586 den=4 | (0.20,0.50) w=0.940 den=2
+[PHERO UPDATED] robot1 [5]: (-0.38,-0.14) w=0.571 den=3 | (0.19,0.15) w=0.265 den=6 | (-0.16,-0.37) w=0.355 den=4 | (0.60,0.32) w=0.532 den=4 | (0.20,0.50) w=0.856 den=2
+[PHERO UPDATED] robot1 [5]: (-0.38,-0.14) w=0.519 den=3 | (0.19,0.15) w=0.241 den=6 | (-0.16,-0.37) w=0.323 den=4 | (0.60,0.32) w=0.484 den=4 | (0.20,0.50) w=0.780 den=2
+[PHERO UPDATED] robot1 [5]: (-0.38,-0.14) w=0.471 den=3 | (0.19,0.15) w=0.219 den=6 | (-0.16,-0.37) w=0.293 den=4 | (0.60,0.32) w=0.439 den=4 | (0.20,0.50) w=0.711 den=2
+[PHERO UPDATED] robot1 [5]: (-0.38,-0.14) w=0.449 den=3 | (0.19,0.15) w=0.209 den=6 | (-0.16,-0.37) w=0.279 den=4 | (0.60,0.32) w=0.419 den=4 | (0.20,0.50) w=0.679 den=2
+[PHERO UPDATED] robot1 [5]: (-0.38,-0.14) w=0.428 den=3 | (0.19,0.15) w=0.199 den=6 | (-0.16,-0.37) w=0.266 den=4 | (0.60,0.32) w=0.399 den=4 | (0.20,0.50) w=0.648 den=2
+[PHERO UPDATED] robot1 [5]: (-0.38,-0.14) w=0.408 den=3 | (0.19,0.15) w=0.190 den=6 | (-0.16,-0.37) w=0.254 den=4 | (0.60,0.32) w=0.380 den=4 | (0.20,0.50) w=0.619 den=2
+[PHERO UPDATED] robot1 [5]: (-0.38,-0.14) w=0.389 den=3 | (0.19,0.15) w=0.181 den=6 | (-0.16,-0.37) w=0.242 den=4 | (0.60,0.32) w=0.363 den=4 | (0.20,0.50) w=0.591 den=2
+[PHERO UPDATED] robot1 [5]: (-0.38,-0.14) w=0.371 den=3 | (0.19,0.15) w=0.172 den=6 | (-0.16,-0.37) w=0.231 den=4 | (0.60,0.32) w=0.346 den=4 | (0.20,0.50) w=0.564 den=2
+[PHERO UPDATED] robot1 [5]: (-0.38,-0.14) w=0.353 den=3 | (0.19,0.15) w=0.164 den=6 | (-0.16,-0.37) w=0.220 den=4 | (0.60,0.32) w=0.329 den=4 | (0.20,0.50) w=0.538 den=2
+[PHERO UPDATED] robot1 [5]: (-0.38,-0.14) w=0.337 den=3 | (0.19,0.15) w=0.157 den=6 | (-0.16,-0.37) w=0.209 den=4 | (0.60,0.32) w=0.314 den=4 | (0.20,0.50) w=0.514 den=2
+[PHERO UPDATED] robot1 [5]: (-0.38,-0.14) w=0.321 den=3 | (0.19,0.15) w=0.149 den=6 | (-0.16,-0.37) w=0.200 den=4 | (0.60,0.32) w=0.299 den=4 | (0.20,0.50) w=0.491 den=2
+[PHERO UPDATED] robot1 [5]: (-0.38,-0.14) w=0.306 den=3 | (0.19,0.15) w=0.142 den=6 | (-0.16,-0.37) w=0.190 den=4 | (0.60,0.32) w=0.285 den=4 | (0.20,0.50) w=0.468 den=2
+[PHERO UPDATED] robot1 [5]: (-0.38,-0.14) w=0.135 den=3 | (0.19,0.15) w=0.063 den=6 | (-0.16,-0.37) w=0.084 den=4 | (0.60,0.32) w=0.126 den=4 | (0.20,0.50) w=0.207 den=2
+[PHERO UPDATED] robot1 [5]: (-0.38,-0.14) w=0.129 den=3 | (0.19,0.15) w=0.060 den=6 | (-0.16,-0.37) w=0.080 den=4 | (0.60,0.32) w=0.120 den=4 | (0.20,0.50) w=0.198 den=2
+[PHERO UPDATED] robot1 [5]: (-0.38,-0.14) w=0.123 den=3 | (0.19,0.15) w=0.057 den=6 | (-0.16,-0.37) w=0.076 den=4 | (0.60,0.32) w=0.115 den=4 | (0.20,0.50) w=0.189 den=2
+[PHERO UPDATED] robot1 [5]: (-0.38,-0.14) w=0.117 den=3 | (0.19,0.15) w=0.054 den=6 | (-0.16,-0.37) w=0.073 den=4 | (0.60,0.32) w=0.109 den=4 | (0.20,0.50) w=0.181 den=2
+[PHERO UPDATED] robot1 [5]: (-0.38,-0.14) w=0.112 den=3 | (0.19,0.15) w=0.052 den=6 | (-0.16,-0.37) w=0.069 den=4 | (0.60,0.32) w=0.104 den=4 | (0.20,0.50) w=0.172 den=2
+[PHERO UPDATED] robot1 [5]: (-0.38,-0.14) w=0.106 den=3 | (0.19,0.15) w=0.049 den=6 | (-0.16,-0.37) w=0.066 den=4 | (0.60,0.32) w=0.099 den=4 | (0.20,0.50) w=0.165 den=2
+[PHERO UPDATED] robot1 [5]: (-0.38,-0.14) w=0.101 den=3 | (0.19,0.15) w=0.047 den=6 | (-0.16,-0.37) w=0.063 den=4 | (0.60,0.32) w=0.095 den=4 | (0.20,0.50) w=0.157 den=2
+[PHERO UPDATED] robot1 [5]: (-0.38,-0.14) w=0.413 den=2 | (0.19,0.15) w=0.045 den=6 | (-0.16,-0.37) w=0.060 den=4 | (0.60,0.32) w=0.090 den=4 | (0.20,0.50) w=0.150 den=2
+[PHERO UPDATED] robot1 [5]: (-0.38,-0.14) w=0.413 den=2 | (0.19,0.15) w=0.045 den=6 | (-0.16,-0.37) w=0.060 den=4 | (0.60,0.32) w=0.998 den=1 | (0.20,0.50) w=0.150 den=2
+[PHERO UPDATED] robot1 [5]: (-0.38,-0.14) w=0.393 den=2 | (0.19,0.15) w=0.043 den=6 | (-0.16,-0.37) w=0.057 den=4 | (0.60,0.32) w=0.953 den=1 | (0.20,0.50) w=0.143 den=2
+[PHERO UPDATED] robot1 [5]: (-0.38,-0.14) w=0.375 den=2 | (0.19,0.15) w=0.041 den=6 | (-0.16,-0.37) w=0.055 den=4 | (0.60,0.32) w=0.910 den=1 | (0.20,0.50) w=0.136 den=2
+[PHERO UPDATED] robot1 [5]: (-0.38,-0.14) w=0.357 den=2 | (0.19,0.15) w=0.039 den=6 | (-0.16,-0.37) w=0.052 den=4 | (0.60,0.32) w=0.869 den=1 | (0.20,0.50) w=0.130 den=2
+[PHERO UPDATED] robot1 [5]: (-0.38,-0.14) w=0.341 den=2 | (0.19,0.15) w=0.037 den=6 | (-0.16,-0.37) w=0.050 den=4 | (0.60,0.32) w=0.829 den=1 | (0.20,0.50) w=0.124 den=2
+[PHERO UPDATED] robot1 [5]: (-0.38,-0.14) w=0.325 den=2 | (0.19,0.15) w=0.035 den=6 | (-0.16,-0.37) w=0.047 den=4 | (0.60,0.32) w=0.792 den=1 | (0.20,0.50) w=0.118 den=2
+[PHERO UPDATED] robot1 [5]: (-0.38,-0.14) w=0.309 den=2 | (0.19,0.15) w=0.034 den=6 | (-0.16,-0.37) w=0.045 den=4 | (0.60,0.32) w=0.756 den=1 | (0.20,0.50) w=0.112 den=2
+[PHERO UPDATED] robot1 [5]: (-0.38,-0.14) w=0.295 den=2 | (0.19,0.15) w=0.032 den=6 | (-0.16,-0.37) w=0.043 den=4 | (0.60,0.32) w=0.722 den=1 | (0.20,0.50) w=0.107 den=2
+[PHERO UPDATED] robot1 [5]: (-0.38,-0.14) w=0.281 den=2 | (0.19,0.15) w=0.031 den=6 | (-0.16,-0.37) w=0.041 den=4 | (0.60,0.32) w=0.689 den=1 | (0.20,0.50) w=0.102 den=2
+[PHERO UPDATED] robot1 [5]: (-0.38,-0.14) w=0.268 den=2 | (0.19,0.15) w=0.029 den=6 | (-0.16,-0.37) w=0.039 den=4 | (0.60,0.32) w=0.658 den=1 | (0.20,0.50) w=0.097 den=2
+[PHERO UPDATED] robot1 [5]: (-0.38,-0.14) w=0.255 den=2 | (0.19,0.15) w=0.028 den=6 | (-0.16,-0.37) w=0.037 den=4 | (0.60,0.32) w=0.628 den=1 | (0.20,0.50) w=0.093 den=2
+[PHERO UPDATED] robot1 [5]: (-0.38,-0.14) w=0.243 den=2 | (0.19,0.15) w=0.027 den=6 | (-0.16,-0.37) w=0.035 den=4 | (0.60,0.32) w=0.599 den=1 | (0.20,0.50) w=0.088 den=2
+[PHERO UPDATED] robot1 [5]: (-0.38,-0.14) w=0.232 den=2 | (0.19,0.15) w=0.025 den=6 | (-0.16,-0.37) w=0.034 den=4 | (0.60,0.32) w=0.572 den=1 | (0.20,0.50) w=0.084 den=2
+[PHERO UPDATED] robot1 [5]: (-0.38,-0.14) w=0.221 den=2 | (0.19,0.15) w=0.024 den=6 | (-0.16,-0.37) w=0.032 den=4 | (0.60,0.32) w=0.546 den=1 | (0.20,0.50) w=0.080 den=2
+[PHERO UPDATED] robot1 [5]: (-0.38,-0.14) w=0.211 den=2 | (0.19,0.15) w=0.023 den=6 | (-0.16,-0.37) w=0.031 den=4 | (0.60,0.32) w=0.521 den=1 | (0.20,0.50) w=0.076 den=2
+[PHERO UPDATED] robot1 [5]: (-0.38,-0.14) w=0.201 den=2 | (0.19,0.15) w=0.022 den=6 | (-0.16,-0.37) w=0.029 den=4 | (0.60,0.32) w=0.498 den=1 | (0.20,0.50) w=0.073 den=2
+[PHERO UPDATED] robot1 [5]: (-0.38,-0.14) w=0.073 den=2 | (0.19,0.15) w=0.004 den=6 | (-0.16,-0.37) w=0.011 den=4 | (0.60,0.32) w=0.182 den=1 | (0.20,0.50) w=0.027 den=2
+[PHERO EXPIRED] robot1 [4]: (-0.38,-0.14) w=0.018 den=2 | (-0.16,-0.37) w=0.003 den=4 | (0.60,0.32) w=0.046 den=1 | (0.20,0.50) w=0.007 den=2
+[GIVE-UP]  robot1 giving up after 3372 searching steps
+  [EMPTY_RTN] robot1 → PHERO (-0.38,-0.14) density=2
+[PHERO ADDED  ] robot1 [5]: (-0.38,-0.14) w=0.010 den=2 | (-0.16,-0.37) w=0.001 den=4 | (0.60,0.32) w=0.024 den=1 | (0.20,0.50) w=0.004 den=2 | (-0.77,0.71) w=0.655 den=12
+[PHERO UPDATED] robot1 [5]: (-0.38,-0.14) w=0.009 den=2 | (-0.16,-0.37) w=0.001 den=4 | (0.60,0.32) w=0.022 den=1 | (0.20,0.50) w=0.003 den=2 | (-0.77,0.71) w=0.597 den=12
+[PHERO UPDATED] robot1 [5]: (-0.38,-0.14) w=0.008 den=2 | (-0.16,-0.37) w=0.001 den=4 | (0.60,0.32) w=0.020 den=1 | (0.20,0.50) w=0.003 den=2 | (-0.77,0.71) w=0.544 den=12
+[PHERO UPDATED] robot1 [5]: (-0.38,-0.14) w=0.007 den=2 | (-0.16,-0.37) w=0.001 den=4 | (0.60,0.32) w=0.018 den=1 | (0.20,0.50) w=0.003 den=2 | (-0.77,0.71) w=0.496 den=12
+[PHERO EXPIRED] robot1 [4]: (-0.38,-0.14) w=0.007 den=2 | (0.60,0.32) w=0.017 den=1 | (0.20,0.50) w=0.002 den=2 | (-0.77,0.71) w=0.465 den=12
+[PHERO EXPIRED] robot1 [3]: (-0.38,-0.14) w=0.003 den=2 | (0.60,0.32) w=0.007 den=1 | (-0.77,0.71) w=0.187 den=12
+[PHERO UPDATED] robot1 [3]: (-0.38,-0.14) w=0.002 den=2 | (0.60,0.32) w=0.005 den=1 | (-0.77,0.71) w=1.000 den=10
+[PICKUP]   robot1 at (-0.96,0.73) | density=10
+  [PHERO]  Laid at (-0.96,0.73) density=10 prob=1.00 total_entries=3
+[PHERO ADDED  ] robot1 [4]: (-0.38,-0.14) w=0.002 den=2 | (0.60,0.32) w=0.004 den=1 | (-0.77,0.71) w=0.956 den=10 | (-0.58,1.09) w=0.415 den=11
+[PHERO UPDATED] robot1 [4]: (-0.38,-0.14) w=0.002 den=2 | (0.60,0.32) w=0.004 den=1 | (-0.77,0.71) w=0.914 den=10 | (-0.58,1.09) w=0.395 den=11
+[PHERO UPDATED] robot1 [4]: (-0.38,-0.14) w=0.002 den=2 | (0.60,0.32) w=0.004 den=1 | (-0.77,0.71) w=0.833 den=10 | (-0.58,1.09) w=0.359 den=11
+[DEPOSIT]  robot1 | site=(-0.96,0.73) density=10
+  [TARGET]   robot1 → SITE (-0.96,0.73)
+[PHERO EXPIRED] robot1 [3]: (0.60,0.32) w=0.002 den=1 | (-0.77,0.71) w=0.554 den=10 | (-0.58,1.09) w=0.239 den=11
+[PHERO UPDATED] robot1 [3]: (0.60,0.32) w=0.001 den=1 | (-0.77,0.71) w=0.312 den=10 | (-0.58,1.09) w=1.000 den=9
+[PICKUP]   robot1 at (-0.66,1.13) | density=9
+  [PHERO]  Laid at (-0.66,1.13) density=9 prob=1.00 total_entries=3
+[PHERO EXPIRED] robot1 [2]: (-0.77,0.71) w=0.223 den=10 | (-0.58,1.09) w=0.715 den=9
+[DEPOSIT]  robot1 | site=(-0.66,1.13) density=9
+  [TARGET]   robot1 → SITE (-0.66,1.13)
+[PHERO UPDATED] robot1 [2]: (-0.77,0.71) w=0.026 den=10 | (-0.58,1.09) w=0.460 den=8
+[PHERO UPDATED] robot1 [2]: (-0.77,0.71) w=0.024 den=10 | (-0.58,1.09) w=0.419 den=8
+[PHERO UPDATED] robot1 [2]: (-0.77,0.71) w=0.013 den=10 | (-0.58,1.09) w=1.000 den=7
+[PICKUP]   robot1 at (-0.68,1.14) | density=7
+  [PHERO]  Laid at (-0.68,1.14) density=7 prob=0.99 total_entries=2
+[DEPOSIT]  robot1 | site=(-0.68,1.14) density=7
+  [TARGET]   robot1 → SITE (-0.68,1.14)
+[PHERO UPDATED] robot1 [2]: (-0.77,0.71) w=0.005 den=10 | (-0.58,1.09) w=0.406 den=7
+[PHERO UPDATED] robot1 [2]: (-0.77,0.71) w=0.005 den=10 | (-0.58,1.09) w=0.370 den=7
+[PHERO UPDATED] robot1 [2]: (-0.77,0.71) w=0.436 den=6 | (-0.58,1.09) w=0.092 den=7
+[PHERO UPDATED] robot1 [2]: (-0.77,0.71) w=0.397 den=6 | (-0.58,1.09) w=0.084 den=7
+[PICKUP]   robot1 at (-0.72,1.11) | density=5
+[DEPOSIT]  robot1 | site=(-0.72,1.11) density=5
+  [TARGET]   robot1 → SITE (-0.72,1.11)
+[PHERO UPDATED] robot1 [2]: (-0.77,0.71) w=0.090 den=6 | (-0.58,1.09) w=0.019 den=7
+[PHERO UPDATED] robot1 [2]: (-0.77,0.71) w=0.082 den=6 | (-0.58,1.09) w=0.017 den=7
+[PHERO UPDATED] robot1 [2]: (-0.77,0.71) w=0.075 den=6 | (-0.58,1.09) w=0.016 den=7
+[PHERO UPDATED] robot1 [2]: (-0.77,0.71) w=0.018 den=6 | (-0.58,1.09) w=0.004 den=7
+[PHERO UPDATED] robot1 [2]: (-0.77,0.71) w=0.016 den=6 | (-0.58,1.09) w=0.003 den=7
+[PHERO UPDATED] robot1 [2]: (-0.77,0.71) w=0.015 den=6 | (-0.58,1.09) w=0.003 den=7
+[PICKUP]   robot1 at (-0.74,1.11) | density=2
+[PHERO UPDATED] robot1 [2]: (-0.77,0.71) w=0.419 den=3 | (-0.58,1.09) w=0.001 den=7
+[PHERO UPDATED] robot1 [2]: (-0.77,0.71) w=0.382 den=3 | (-0.58,1.09) w=0.001 den=7
+[PHERO EXPIRED] robot1 [1]: (-0.77,0.71) w=0.343 den=3
+[DEPOSIT]  robot1 | site=(-0.74,1.11) density=2
+  [TARGET]   robot1 → SITE (-0.74,1.11)
+[PHERO ADDED  ] robot1 [2]: (-0.77,0.71) w=0.273 den=3 | (0.58,-0.93) w=0.038 den=2
+[PHERO UPDATED] robot1 [2]: (-0.77,0.71) w=0.261 den=3 | (0.58,-0.93) w=0.036 den=2
+[PHERO ADDED  ] robot1 [3]: (-0.77,0.71) w=0.196 den=3 | (0.58,-0.93) w=0.027 den=2 | (-0.86,1.14) w=0.867 den=1
+[PHERO UPDATED] robot1 [3]: (-0.77,0.71) w=0.178 den=3 | (0.58,-0.93) w=0.025 den=2 | (-0.86,1.14) w=0.790 den=1
+[PHERO UPDATED] robot1 [3]: (-0.77,0.71) w=0.065 den=3 | (0.58,-0.93) w=0.009 den=2 | (-0.86,1.14) w=0.289 den=1
+[PHERO UPDATED] robot1 [3]: (-0.77,0.71) w=0.059 den=3 | (0.58,-0.93) w=0.008 den=2 | (-0.86,1.14) w=0.264 den=1
+[PHERO UPDATED] robot1 [3]: (-0.77,0.71) w=0.029 den=3 | (0.58,-0.93) w=0.004 den=2 | (-0.86,1.14) w=0.130 den=1
+[PHERO UPDATED] robot1 [3]: (-0.77,0.71) w=0.027 den=3 | (0.58,-0.93) w=0.004 den=2 | (-0.86,1.14) w=0.124 den=1
+[PHERO UPDATED] robot1 [3]: (-0.77,0.71) w=0.025 den=3 | (0.58,-0.93) w=0.003 den=2 | (-0.86,1.14) w=0.113 den=1
+[PHERO UPDATED] robot1 [3]: (-0.77,0.71) w=0.023 den=3 | (0.58,-0.93) w=0.003 den=2 | (-0.86,1.14) w=0.103 den=1
+[PHERO UPDATED] robot1 [3]: (-0.77,0.71) w=0.021 den=3 | (0.58,-0.93) w=0.003 den=2 | (-0.86,1.14) w=0.094 den=1
+[PHERO UPDATED] robot1 [3]: (-0.77,0.71) w=0.019 den=3 | (0.58,-0.93) w=0.003 den=2 | (-0.86,1.14) w=0.086 den=1
+[PHERO UPDATED] robot1 [3]: (-0.77,0.71) w=0.015 den=3 | (0.58,-0.93) w=0.002 den=2 | (-0.86,1.14) w=0.071 den=1
+[PHERO UPDATED] robot1 [3]: (-0.77,0.71) w=0.014 den=3 | (0.58,-0.93) w=0.002 den=2 | (-0.86,1.14) w=0.065 den=1
+[PHERO UPDATED] robot1 [3]: (-0.77,0.71) w=0.013 den=3 | (0.58,-0.93) w=0.002 den=2 | (-0.86,1.14) w=0.059 den=1
+[PHERO EXPIRED] robot1 [2]: (-0.77,0.71) w=0.007 den=3 | (-0.86,1.14) w=0.033 den=1
+[GIVE-UP]  robot1 giving up after 2896 searching steps
+  [EMPTY_RTN] robot1 → PHERO (-0.86,1.14) density=1
+[PHERO UPDATED] robot1 [2]: (-0.77,0.71) w=0.002 den=3 | (-0.86,1.14) w=0.008 den=1
+[PHERO EXPIRED] robot1 [1]: (-0.86,1.14) w=0.005 den=1
+[PHERO UPDATED] robot1 [1]: (-0.86,1.14) w=0.004 den=1
+[PHERO UPDATED] robot1 [1]: (-0.86,1.14) w=0.004 den=1
+[PHERO UPDATED] robot1 [1]: (-0.86,1.14) w=0.003 den=1
+[PHERO UPDATED] robot1 [1]: (-0.86,1.14) w=0.003 den=1
+[PHERO UPDATED] robot1 [1]: (-0.86,1.14) w=0.003 den=1
+[PHERO ADDED  ] robot1 [2]: (-0.86,1.14) w=0.002 den=1 | (1.83,0.94) w=0.370 den=16
+[PHERO UPDATED] robot1 [2]: (-0.86,1.14) w=0.002 den=1 | (1.83,0.94) w=0.337 den=16
+[PHERO UPDATED] robot1 [2]: (-0.86,1.14) w=0.001 den=1 | (1.83,0.94) w=0.307 den=16
+[PHERO UPDATED] robot1 [2]: (-0.86,1.14) w=0.001 den=1 | (1.83,0.94) w=0.280 den=16
+[PHERO UPDATED] robot1 [2]: (-0.86,1.14) w=0.001 den=1 | (1.83,0.94) w=0.255 den=16
+[PHERO UPDATED] robot1 [2]: (-0.86,1.14) w=0.001 den=1 | (1.83,0.94) w=0.232 den=16
+[PHERO EXPIRED] robot1 [1]: (1.83,0.94) w=0.218 den=16
+[PHERO UPDATED] robot1 [1]: (1.83,0.94) w=0.212 den=16
+[PHERO UPDATED] robot1 [1]: (1.83,0.94) w=0.193 den=16
+[PHERO UPDATED] robot1 [1]: (1.83,0.94) w=0.017 den=16
+[PHERO UPDATED] robot1 [1]: (1.83,0.94) w=0.015 den=16
+[PHERO UPDATED] robot1 [1]: (1.83,0.94) w=0.014 den=16
+[PHERO UPDATED] robot1 [1]: (1.83,0.94) w=0.013 den=16
+[PHERO ADDED  ] robot1 [2]: (1.83,0.94) w=0.012 den=16 | (1.62,0.52) w=0.314 den=13
+[PHERO UPDATED] robot1 [2]: (1.83,0.94) w=0.010 den=16 | (1.62,0.52) w=0.286 den=13
+[PHERO UPDATED] robot1 [2]: (1.83,0.94) w=0.010 den=16 | (1.62,0.52) w=0.261 den=13
+[PHERO UPDATED] robot1 [2]: (1.83,0.94) w=0.009 den=16 | (1.62,0.52) w=0.238 den=13
+[PHERO UPDATED] robot1 [2]: (1.83,0.94) w=0.008 den=16 | (1.62,0.52) w=0.217 den=13
+[PHERO UPDATED] robot1 [2]: (1.83,0.94) w=0.007 den=16 | (1.62,0.52) w=0.197 den=13
+[PHERO UPDATED] robot1 [2]: (1.83,0.94) w=0.006 den=16 | (1.62,0.52) w=0.180 den=13
+[PHERO UPDATED] robot1 [2]: (1.83,0.94) w=0.006 den=16 | (1.62,0.52) w=0.164 den=13
+[PHERO EXPIRED] robot1 [1]: (1.62,0.52) w=0.028 den=13
+[PHERO UPDATED] robot1 [1]: (1.62,0.52) w=0.026 den=11
+[GIVE-UP]  robot1 giving up after 10437 searching steps
+  [EMPTY_RTN] robot1 → PHERO (1.62,0.52) density=11
+[PHERO ADDED  ] robot1 [2]: (1.62,0.52) w=0.008 den=11 | (1.87,0.93) w=0.732 den=8
+[PHERO UPDATED] robot1 [2]: (1.62,0.52) w=1.000 den=7 | (1.87,0.93) w=0.701 den=8
+[PICKUP]   robot1 at (1.77,0.50) | density=7
+  [PHERO]  Laid at (1.77,0.50) density=7 prob=0.99 total_entries=2
+[PHERO UPDATED] robot1 [2]: (1.62,0.52) w=0.952 den=7 | (1.87,0.93) w=0.665 den=8
+[PHERO UPDATED] robot1 [2]: (1.62,0.52) w=0.867 den=7 | (1.87,0.93) w=0.604 den=8
+[PHERO UPDATED] robot1 [2]: (1.62,0.52) w=0.790 den=7 | (1.87,0.93) w=0.549 den=8
+[PHERO UPDATED] robot1 [2]: (1.62,0.52) w=0.720 den=7 | (1.87,0.93) w=0.499 den=8
+[PHERO UPDATED] robot1 [2]: (1.62,0.52) w=0.657 den=7 | (1.87,0.93) w=0.453 den=8
+[PHERO UPDATED] robot1 [2]: (1.62,0.52) w=0.598 den=7 | (1.87,0.93) w=0.411 den=8
+[PHERO UPDATED] robot1 [2]: (1.62,0.52) w=0.545 den=7 | (1.87,0.93) w=0.374 den=8
+[PHERO UPDATED] robot1 [2]: (1.62,0.52) w=0.497 den=7 | (1.87,0.93) w=0.340 den=8
+[DEPOSIT]  robot1 | site=(1.77,0.50) density=7
+  [TARGET]   robot1 → SITE (1.77,0.50)
+[PHERO UPDATED] robot1 [2]: (1.62,0.52) w=0.453 den=7 | (1.87,0.93) w=0.309 den=8
+[PHERO UPDATED] robot1 [2]: (1.62,0.52) w=0.628 den=6 | (1.87,0.93) w=0.210 den=8
+[PHERO UPDATED] robot1 [2]: (1.62,0.52) w=0.190 den=6 | (1.87,0.93) w=0.063 den=8
+[PHERO UPDATED] robot1 [2]: (1.62,0.52) w=0.173 den=6 | (1.87,0.93) w=0.057 den=8
+[PHERO UPDATED] robot1 [2]: (1.62,0.52) w=0.130 den=6 | (1.87,0.93) w=0.043 den=8
+[PHERO UPDATED] robot1 [2]: (1.62,0.52) w=0.124 den=6 | (1.87,0.93) w=0.041 den=8
+[PHERO UPDATED] robot1 [2]: (1.62,0.52) w=0.118 den=6 | (1.87,0.93) w=0.039 den=8
+[PHERO UPDATED] robot1 [2]: (1.62,0.52) w=0.113 den=6 | (1.87,0.93) w=0.037 den=8
+[PHERO UPDATED] robot1 [2]: (1.62,0.52) w=0.108 den=6 | (1.87,0.93) w=0.036 den=8
+[PHERO UPDATED] robot1 [2]: (1.62,0.52) w=0.103 den=6 | (1.87,0.93) w=0.034 den=8
+[PHERO EXPIRED] robot1 [1]: (1.62,0.52) w=0.003 den=6
+[PHERO UPDATED] robot1 [1]: (1.62,0.52) w=0.001 den=6
+[PHERO UPDATED] robot1 [1]: (1.62,0.52) w=0.001 den=6
+[PHERO EXPIRED] robot1 [0]: empty
+[PICKUP]   robot1 at (1.79,0.77) | density=4
+[DEPOSIT]  robot1 | site=(1.79,0.77) density=4
+  [TARGET]   robot1 → SITE (1.79,0.77)
+[PHERO ADDED  ] robot1 [1]: (1.91,0.91) w=0.162 den=3
+[PHERO UPDATED] robot1 [1]: (1.91,0.91) w=0.147 den=3
+[PHERO UPDATED] robot1 [1]: (1.91,0.91) w=0.134 den=3
+[PHERO UPDATED] robot1 [1]: (1.91,0.91) w=0.122 den=3
+[PHERO UPDATED] robot1 [1]: (1.91,0.91) w=0.112 den=3
+[PHERO UPDATED] robot1 [1]: (1.91,0.91) w=0.102 den=3
+[PHERO UPDATED] robot1 [1]: (1.91,0.91) w=0.093 den=3
+[PHERO UPDATED] robot1 [1]: (1.91,0.91) w=0.084 den=3
+[PHERO UPDATED] robot1 [1]: (1.91,0.91) w=0.077 den=3
+[PHERO UPDATED] robot1 [1]: (1.91,0.91) w=0.070 den=3
+[PHERO ADDED  ] robot1 [2]: (1.91,0.91) w=0.012 den=3 | (-1.81,-0.54) w=0.117 den=9
+[PHERO UPDATED] robot1 [2]: (1.91,0.91) w=0.011 den=3 | (-1.81,-0.54) w=0.106 den=9
+[PHERO UPDATED] robot1 [2]: (1.91,0.91) w=0.010 den=3 | (-1.81,-0.54) w=0.097 den=9
+[PHERO UPDATED] robot1 [2]: (1.91,0.91) w=0.009 den=3 | (-1.81,-0.54) w=0.088 den=9
+[PHERO UPDATED] robot1 [2]: (1.91,0.91) w=0.008 den=3 | (-1.81,-0.54) w=0.080 den=9
+[GIVE-UP]  robot1 giving up after 4276 searching steps
+  [EMPTY_RTN] robot1 → PHERO (-1.81,-0.54) density=9
+[PHERO UPDATED] robot1 [2]: (1.91,0.91) w=0.001 den=3 | (-1.81,-0.54) w=0.012 den=9
+[PHERO EXPIRED] robot1 [1]: (-1.81,-0.54) w=0.010 den=9
+[PHERO EXPIRED] robot1 [0]: empty
+[PHERO ADDED  ] robot1 [1]: (-1.81,-0.54) w=0.309 den=7
+[PHERO UPDATED] robot1 [1]: (-1.81,-0.54) w=0.281 den=7
+[PHERO UPDATED] robot1 [1]: (-1.81,-0.54) w=0.256 den=7
+[PHERO UPDATED] robot1 [1]: (-1.81,-0.54) w=0.234 den=7
+[PHERO UPDATED] robot1 [1]: (-1.81,-0.54) w=0.213 den=7
+[PHERO UPDATED] robot1 [1]: (-1.81,-0.54) w=1.000 den=6
+[PICKUP]   robot1 at (-1.84,-0.50) | density=6
+  [PHERO]  Laid at (-1.84,-0.50) density=6 prob=0.97 total_entries=1
+[DEPOSIT]  robot1 | site=(-1.84,-0.50) density=6
+  [TARGET]   robot1 → SITE (-1.84,-0.50)
+[PHERO UPDATED] robot1 [1]: (-1.81,-0.54) w=1.000 den=5
+[PICKUP]   robot1 at (-1.82,-0.34) | density=5
+  [PHERO]  Laid at (-1.82,-0.34) density=5 prob=0.92 total_entries=1
+[PHERO UPDATED] robot1 [1]: (-1.81,-0.54) w=0.922 den=5
+[PHERO UPDATED] robot1 [1]: (-1.81,-0.54) w=0.840 den=5
+[PHERO UPDATED] robot1 [1]: (-1.81,-0.54) w=0.983 den=4
+[DEPOSIT]  robot1 | site=(-1.82,-0.34) density=5
+  [TARGET]   robot1 → SITE (-1.82,-0.34)
+[PHERO UPDATED] robot1 [1]: (-1.81,-0.54) w=0.457 den=4
+[PHERO UPDATED] robot1 [1]: (-1.81,-0.54) w=0.417 den=4
+[PHERO UPDATED] robot1 [1]: (-1.81,-0.54) w=0.346 den=4
+[PHERO ADDED  ] robot1 [2]: (-1.81,-0.54) w=0.178 den=4 | (-1.96,-0.13) w=1.000 den=3
+[PICKUP]   robot1 at (-1.96,-0.13) | density=3
+  [PHERO]  Laid at (-1.96,-0.13) density=3 prob=0.65 total_entries=2
+[DEPOSIT]  robot1 | site=(-1.96,-0.13) density=3
+  [TARGET]   robot1 → SITE (-1.96,-0.13)
+[PHERO UPDATED] robot1 [2]: (-1.81,-0.54) w=0.040 den=4 | (-1.96,-0.13) w=0.225 den=3
+[PHERO UPDATED] robot1 [2]: (-1.81,-0.54) w=0.036 den=4 | (-1.96,-0.13) w=0.205 den=3
+[PHERO UPDATED] robot1 [2]: (-1.81,-0.54) w=0.005 den=4 | (-1.96,-0.13) w=1.000 den=2
+[PICKUP]   robot1 at (-1.96,-0.16) | density=2
+  [PHERO]  Laid at (-1.96,-0.16) density=2 prob=0.42 total_entries=2
+[DEPOSIT]  robot1 | site=(-1.96,-0.16) density=2
+  [TARGET]   robot1 → SITE (-1.96,-0.16)
+[PHERO UPDATED] robot1 [2]: (-1.81,-0.54) w=0.002 den=4 | (-1.96,-0.13) w=0.341 den=2
+[PHERO UPDATED] robot1 [2]: (-1.81,-0.54) w=0.002 den=4 | (-1.96,-0.13) w=0.311 den=2
+[PHERO UPDATED] robot1 [2]: (-1.81,-0.54) w=0.001 den=4 | (-1.96,-0.13) w=0.283 den=2
+[PHERO UPDATED] robot1 [2]: (-1.81,-0.54) w=0.001 den=4 | (-1.96,-0.13) w=0.258 den=2
+[PHERO EXPIRED] robot1 [1]: (-1.96,-0.13) w=0.205 den=2
+[PHERO UPDATED] robot1 [1]: (-1.96,-0.13) w=0.139 den=2
+[PHERO UPDATED] robot1 [1]: (-1.96,-0.13) w=0.121 den=2
+[PHERO UPDATED] robot1 [1]: (-1.96,-0.13) w=0.110 den=2
+[PHERO UPDATED] robot1 [1]: (-1.96,-0.13) w=0.083 den=2
+[PHERO UPDATED] robot1 [1]: (-1.96,-0.13) w=0.076 den=2
+[PHERO UPDATED] robot1 [1]: (-1.96,-0.13) w=0.069 den=2
+[PHERO UPDATED] robot1 [1]: (-1.96,-0.13) w=0.012 den=2
+[PHERO UPDATED] robot1 [1]: (-1.96,-0.13) w=0.011 den=2
+[PHERO UPDATED] robot1 [1]: (-1.96,-0.13) w=0.002 den=2
+[PHERO EXPIRED] robot1 [0]: empty
+[GIVE-UP]  robot1 giving up after 8037 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 14979 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 16773 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 25509 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 25899 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 26367 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 29565 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 40641 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 65367 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 68643 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 69345 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 71841 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 75273 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 75663 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 81279 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 81591 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 83541 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 84945 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 87129 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 96333 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 116457 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 117081 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 117471 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 119499 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 121215 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 121371 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 123009 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 124413 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 133695 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 146643 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 174801 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 175971 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 187125 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 197967 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 209043 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 209823 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 210603 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 212319 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 215907 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 221055 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 233145 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 233613 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 234627 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 235797 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 236811 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 242193 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 243441 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 248667 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 249603 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 249915 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 250305 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 251241 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 251631 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 251943 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 252411 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 254049 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 273315 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 273393 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 275811 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 278619 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 279711 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 291255 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 292269 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 298899 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 302487 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 304671 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 310443 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 311769 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 315669 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 318555 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 318945 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 328305 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 331971 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 334935 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 346245 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 352407 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 353421 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 353655 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 357633 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 358725 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 372687 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 374715 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 377835 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 379083 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 411375 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 412155 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 416133 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 417849 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 421983 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 422685 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 426741 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 427911 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 441327 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 445929 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 447255 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 451233 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 452247 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 454509 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 454821 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 461295 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 468315 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 471357 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 473151 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 474477 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 476583 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 478845 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 481809 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 483057 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 485709 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 487269 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 491793 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 491871 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 493353 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 496473 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 497643 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 497721 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 498657 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 499749 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 512697 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 514881 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 526971 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 528297 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 529545 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 530013 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 530403 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 554427 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 556143 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 557157 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 561759 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 562695 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 563241 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 582585 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 584067 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 598653 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 604191 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 606219 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 609729 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 611679 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 611991 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 614721 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 616515 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 619947 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 623301 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 629073 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 632895 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 640383 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 645765 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 647949 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 648495 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 658947 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 675249 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 675405 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 676263 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 683829 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 687261 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 690381 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 702783 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 704811 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 707619 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 724389 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 727977 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 728133 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 736713 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 736869 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 737493 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 740301 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 750909 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 751299 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 751845 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 755589 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 757773 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 759957 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 760113 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 760347 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 760503 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 760581 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 769005 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 769941 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 771111 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 781641 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 784059 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 784137 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 787803 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 788661 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 792093 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 810813 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 811671 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 812451 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 816585 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 817833 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 829455 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 832809 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 835617 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 836787 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 841623 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 842949 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 849813 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 851841 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 858159 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 858471 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 859485 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 866271 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 880311 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 885615 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 888423 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 892245 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 893259 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 894117 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 894663 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 895833 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 901371 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 905193 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 905271 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 911355 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 914475 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 916581 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 921105 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 921807 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 926331 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 926721 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 930699 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 931011 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 932181 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 939123 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 943413 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 946143 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 949887 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 958311 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 958389 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 970323 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 971727 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 975081 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 978201 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 982257 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 982725 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 988965 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 992475 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 995595 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 996765 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 999729 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1001211 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1005345 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1007997 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1008777 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1015563 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1018371 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1019697 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1022973 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1023519 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1026483 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1032567 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1032801 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1036233 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1037559 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1037715 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1037949 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1039509 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1043877 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1049805 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1053939 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1054797 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1056435 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1057605 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1057839 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1071723 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1072503 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1077495 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1084515 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1087167 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1100193 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1101753 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1102221 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1111035 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1116105 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1120395 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1120629 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1121955 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1123749 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1128819 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1133655 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1134357 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1135527 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1146837 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1149177 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1149645 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1150893 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1154325 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1158459 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1164933 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1165011 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1168053 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1170627 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1181859 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1181937 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1191921 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1200657 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1202295 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1207443 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1208067 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1209159 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1210407 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1210875 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1212123 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1214073 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1214619 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1221015 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1222575 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1222965 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1224213 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1247067 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1253229 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1255959 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1256739 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1260561 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1263681 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1269063 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1270155 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1270467 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1273197 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1274211 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1275225 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1276629 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1277175 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1277409 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1278813 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1279905 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1280217 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1285989 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1301121 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1306191 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1309779 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1315785 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1323507 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1330215 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1338717 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1340511 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1346985 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1355175 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1362039 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1364145 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1364379 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1365471 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1370229 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1370775 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1377015 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1377249 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1390275 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1393941 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1396203 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1397763 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1404549 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1407357 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1407825 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1412193 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1415625 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1416873 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1418277 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1429899 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1430523 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1432629 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1444251 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1452129 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1453143 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1457901 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1465779 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1488087 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1490193 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1490271 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1490505 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1504311 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1504623 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1505247 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1506261 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1514763 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1515699 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1517259 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1522563 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1523343 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1532859 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1533717 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1534341 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1541751 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1543233 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1545261 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1545495 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1548459 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1551267 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1553373 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1554855 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1556727 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1572795 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1572951 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1579347 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1584027 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1584651 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1589643 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1590579 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1593855 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1597209 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1599393 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1599861 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1600953 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1604931 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1616787 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1621779 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1623027 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1630437 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1636443 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1636911 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1647129 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1648299 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1649235 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1656021 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1663197 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1665537 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1684413 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1684569 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1687611 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1689873 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1693539 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1694163 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1695489 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1697985 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1699077 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1703133 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1706331 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1708905 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1710075 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1721385 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1725051 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1729107 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1731213 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1735425 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1744785 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1745799 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1747671 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1749699 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1750635 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1754301 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1760463 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1768887 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1770603 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1771305 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1776063 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1779729 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1780977 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1781835 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1784487 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1792131 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1796577 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1800633 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1801569 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1807965 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1814439 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1823799 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1825203 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1827153 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1835733 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1852893 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1855545 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1857729 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1858275 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1860303 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1864437 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1864671 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1865997 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1877853 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1881987 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1886511 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1887525 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1887681 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1891113 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1898055 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1898133 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1898991 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1904919 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1906245 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1915995 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1923717 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1925667 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1925901 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1929177 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1933545 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1937757 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1938459 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1943451 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1945245 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1953279 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1956867 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1964277 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1967865 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1974807 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1975821 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1977693 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1983231 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1985025 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1985259 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1986507 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1987599 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1991265 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 1996647 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2002575 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2007723 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2014587 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2016459 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2024727 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2027691 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2034945 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2049297 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2050701 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2053821 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2053899 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2055537 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2055693 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2056785 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2061075 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2067003 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2070903 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2081979 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2084553 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2096799 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2102103 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2104521 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2107251 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2110839 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2111307 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2114115 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2122695 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2123475 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2129013 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2132679 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2136111 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2136423 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2139699 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2144223 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2144535 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2147733 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2157639 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2159277 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2160993 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2165595 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2166765 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2172381 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2178855 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2181117 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2181585 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2191257 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2193285 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2193909 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2195781 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2203425 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2207793 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2208261 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2208729 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2212473 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2214891 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2220117 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2221443 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2235327 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2236965 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2239227 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2250771 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2253657 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2258571 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2268789 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2280411 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2291019 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2299365 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2299677 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2302095 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2304591 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2308335 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2311533 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2314809 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2317461 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2326431 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2331111 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2333607 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2335947 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2349753 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2350455 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2357241 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2361609 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2376819 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2378145 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2380329 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2382747 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2384229 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2386803 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2387973 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2389767 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2399205 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2402793 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2407785 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2411373 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2418315 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2420499 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2430951 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2432355 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2433057 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2436567 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2441949 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2444211 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2444601 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2446629 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2448111 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2452011 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2460357 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2462775 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2473149 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2474241 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2504271 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2504349 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2507235 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2510355 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2511525 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2519013 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2520183 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2522913 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2527125 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2530011 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2530167 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2534457 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2534535 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2536719 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2539059 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2540151 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2542179 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2545299 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2546235 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2547639 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2549199 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2566749 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2571117 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2571273 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2571819 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2572443 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2579385 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2580555 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2580945 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2581257 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2584143 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2592255 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2599509 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2600523 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2618073 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2621739 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2624391 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2626497 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2627355 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2633907 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2634921 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2659803 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2666199 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2667135 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2670333 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2675091 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2675247 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2678523 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2680395 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2684217 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2695137 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2696463 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2702547 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2712531 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2715963 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2722983 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2723217 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2723685 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2725791 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2726181 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2726259 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2728053 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2738193 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2755977 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2761749 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2763699 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2764713 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2767209 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2769393 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2775867 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2779455 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2784759 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2794119 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2796459 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2801841 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2803635 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2812605 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2812839 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2814555 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2825943 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2828283 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2834055 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2837331 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2838813 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2841075 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2841543 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2842635 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2842713 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2843181 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2844351 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2855349 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2864397 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2867439 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2868843 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2870559 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2873679 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2887485 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2889591 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2890917 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2891697 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2892087 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2893959 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2909637 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2912289 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2916891 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2918685 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2920635 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2929605 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2931867 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2938731 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2939511 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2940213 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2943801 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2945439 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2946765 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2950275 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2950587 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2954097 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2955189 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2971803 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2972739 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2973363 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2979525 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2980695 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2982177 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2984127 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2985609 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2991147 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2996139 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 2999103 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3015171 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3017277 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3018135 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3019851 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3022113 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3024765 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3026637 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3034593 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3037635 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3042705 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3044031 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3044265 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3046059 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3046527 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3058695 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3065715 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3068835 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3073203 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3073827 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3074139 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3086619 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3090129 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3090675 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3093561 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3097305 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3101049 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3102843 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3103467 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3104481 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3105027 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3118131 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3121953 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3124059 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3125775 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3126711 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3132405 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3134121 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3135681 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3138255 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3139113 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3142311 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3142467 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3155337 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3156507 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3162591 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3165789 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3168051 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3170937 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3171093 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3183807 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3187863 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3189423 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3189891 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3192075 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3193089 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3194259 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3197925 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3202683 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3217035 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3221637 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3222261 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3222573 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3232401 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3234585 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3237081 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3243009 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3246753 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3249717 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3250263 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3251277 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3251901 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3252915 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3254397 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3261885 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3263133 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3267813 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3280059 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3280917 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3288483 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3288951 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3291603 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3295737 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3303303 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3323271 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3343707 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3344331 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3349245 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3355251 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3356577 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3371709 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3376077 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3376389 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3376467 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3377793 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3379509 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3380445 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3383721 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3385749 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3390585 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3399633 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3407433 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3411879 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3413283 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3414297 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3423579 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3427167 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3427323 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3434811 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3435357 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3436215 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3437307 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3443157 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3451971 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3460707 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3466089 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3481923 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3483171 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3489489 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3493779 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3501657 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3506259 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3513591 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3516789 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3517491 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3517803 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3520767 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3524589 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3526227 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3532233 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3538629 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3542451 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3547755 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3549315 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3553215 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3554463 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3560313 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3570063 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3578409 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3582543 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3590031 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3597363 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3599937 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3600795 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3601653 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3620217 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3621465 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3638937 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3639483 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3651495 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3651885 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3656565 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3658047 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3668499 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3669435 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3672009 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3683007 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3683319 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3688545 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3693771 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3701181 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3702975 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3705471 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3711555 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3711633 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3717093 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3720135 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3723957 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3724113 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3729183 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3740415 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3740727 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3746187 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3747279 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3748761 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3752349 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3756015 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3762099 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3766311 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3769665 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3771381 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3776841 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 3784407 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[robot1] Loading per-robot model: /home/sara/Documents/Centralized Learning/RL-FL-Foraging/robot1_decentralized_indep_v9_4000000_steps.zip
+[robot1] Model loaded (19D obs, independent PPO v8).
+[PHERO ADDED  ] robot1 [1]: (-0.38,-0.14) w=1.000 den=6
+[PICKUP]   robot1 at (-0.38,-0.14) | density=6
+  [PHERO]  Laid at (-0.38,-0.14) density=6 prob=0.97 total_entries=1
+[DEPOSIT]  robot1 | site=(-0.38,-0.14) density=6
+  [TARGET]   robot1 → SITE (-0.38,-0.14)
+[PHERO ADDED  ] robot1 [2]: (-0.38,-0.14) w=0.693 den=6 | (0.19,0.15) w=0.827 den=7
+[PHERO UPDATED] robot1 [2]: (-0.38,-0.14) w=1.000 den=5 | (0.19,0.15) w=0.753 den=7
+[PICKUP]   robot1 at (-0.16,-0.25) | density=5
+  [PHERO]  Laid at (-0.16,-0.25) density=5 prob=0.92 total_entries=2
+[PHERO UPDATED] robot1 [2]: (-0.38,-0.14) w=0.997 den=5 | (0.19,0.15) w=0.753 den=7
+[PHERO UPDATED] robot1 [2]: (-0.38,-0.14) w=0.953 den=5 | (0.19,0.15) w=0.718 den=7
+[PHERO UPDATED] robot1 [2]: (-0.38,-0.14) w=0.828 den=5 | (0.19,0.15) w=0.622 den=7
+[DEPOSIT]  robot1 | site=(-0.16,-0.25) density=5
+  [TARGET]   robot1 → SITE (-0.16,-0.25)
+[PHERO UPDATED] robot1 [2]: (-0.38,-0.14) w=0.755 den=5 | (0.19,0.15) w=0.565 den=7
+[PHERO UPDATED] robot1 [2]: (-0.38,-0.14) w=0.719 den=5 | (0.19,0.15) w=0.970 den=6
+[PHERO ADDED  ] robot1 [3]: (-0.38,-0.14) w=0.554 den=5 | (0.19,0.15) w=0.747 den=6 | (-0.16,-0.37) w=1.000 den=4
+[PICKUP]   robot1 at (-0.16,-0.37) | density=4
+  [PHERO]  Laid at (-0.16,-0.37) density=4 prob=0.82 total_entries=3
+[DEPOSIT]  robot1 | site=(-0.16,-0.37) density=4
+  [TARGET]   robot1 → SITE (-0.16,-0.37)
+[PICKUP]   robot1 at (-0.31,-0.23) | density=3
+[DEPOSIT]  robot1 | site=(-0.31,-0.23) density=3
+  [TARGET]   robot1 → SITE (-0.31,-0.23)
+[PHERO UPDATED] robot1 [3]: (-0.38,-0.14) w=0.289 den=5 | (0.19,0.15) w=0.938 den=3 | (-0.16,-0.37) w=0.521 den=4
+[PHERO UPDATED] robot1 [3]: (-0.38,-0.14) w=0.262 den=5 | (0.19,0.15) w=0.855 den=3 | (-0.16,-0.37) w=0.474 den=4
+[PHERO UPDATED] robot1 [3]: (-0.38,-0.14) w=0.250 den=5 | (0.19,0.15) w=0.816 den=3 | (-0.16,-0.37) w=0.451 den=4
+[PHERO UPDATED] robot1 [3]: (-0.38,-0.14) w=0.238 den=5 | (0.19,0.15) w=0.779 den=3 | (-0.16,-0.37) w=0.430 den=4
+[PICKUP]   robot1 at (-0.35,-0.45) | density=2
+[PHERO ADDED  ] robot1 [4]: (-0.38,-0.14) w=0.148 den=5 | (0.19,0.15) w=0.482 den=3 | (-0.16,-0.37) w=0.266 den=4 | (0.20,0.50) w=0.647 den=2
+[DEPOSIT]  robot1 | site=(-0.35,-0.45) density=2
+  [TARGET]   robot1 → SITE (-0.35,-0.45)
+[PHERO UPDATED] robot1 [4]: (-0.38,-0.14) w=0.134 den=5 | (0.19,0.15) w=0.438 den=3 | (-0.16,-0.37) w=0.242 den=4 | (0.20,0.50) w=0.590 den=2
+[PICKUP]   robot1 at (-0.42,-0.14) | density=1
+[DEPOSIT]  robot1 | site=(-0.42,-0.14) density=1
+  [TARGET]   robot1 → SITE (-0.42,-0.14)
+[PHERO UPDATED] robot1 [4]: (-0.38,-0.14) w=0.083 den=5 | (0.19,0.15) w=0.271 den=3 | (-0.16,-0.37) w=0.150 den=4 | (0.20,0.50) w=0.367 den=2
+[PHERO UPDATED] robot1 [4]: (-0.38,-0.14) w=0.054 den=5 | (0.19,0.15) w=0.176 den=3 | (-0.16,-0.37) w=0.097 den=4 | (0.20,0.50) w=0.239 den=2
+[PHERO UPDATED] robot1 [4]: (-0.38,-0.14) w=0.049 den=5 | (0.19,0.15) w=0.160 den=3 | (-0.16,-0.37) w=0.088 den=4 | (0.20,0.50) w=0.218 den=2
+[PHERO ADDED  ] robot1 [5]: (-0.38,-0.14) w=0.012 den=5 | (0.19,0.15) w=0.039 den=3 | (-0.16,-0.37) w=0.021 den=4 | (0.20,0.50) w=0.053 den=2 | (0.65,-1.20) w=1.000 den=11
+[PICKUP]   robot1 at (0.65,-1.20) | density=11
+  [PHERO]  Laid at (0.65,-1.20) density=11 prob=1.00 total_entries=5
+[PHERO ADDED  ] robot1 [6]: (-0.38,-0.14) w=0.009 den=5 | (0.19,0.15) w=0.030 den=3 | (-0.16,-0.37) w=0.016 den=4 | (0.20,0.50) w=0.041 den=2 | (0.65,-1.20) w=0.769 den=11 | (0.98,-0.74) w=0.491 den=12
+[PHERO UPDATED] robot1 [6]: (-0.38,-0.14) w=0.009 den=5 | (0.19,0.15) w=0.028 den=3 | (-0.16,-0.37) w=0.016 den=4 | (0.20,0.50) w=0.039 den=2 | (0.65,-1.20) w=0.736 den=11 | (0.98,-0.74) w=0.468 den=12
+[PHERO UPDATED] robot1 [6]: (-0.38,-0.14) w=0.008 den=5 | (0.19,0.15) w=0.026 den=3 | (-0.16,-0.37) w=0.014 den=4 | (0.20,0.50) w=0.035 den=2 | (0.65,-1.20) w=0.670 den=11 | (0.98,-0.74) w=0.426 den=12
+[DEPOSIT]  robot1 | site=(0.65,-1.20) density=11
+  [TARGET]   robot1 → SITE (0.65,-1.20)
+[PHERO UPDATED] robot1 [6]: (-0.38,-0.14) w=0.005 den=5 | (0.19,0.15) w=0.015 den=3 | (-0.16,-0.37) w=0.008 den=4 | (0.20,0.50) w=0.021 den=2 | (0.65,-1.20) w=0.828 den=10 | (0.98,-0.74) w=0.251 den=12
+[PHERO UPDATED] robot1 [6]: (-0.38,-0.14) w=0.004 den=5 | (0.19,0.15) w=0.014 den=3 | (-0.16,-0.37) w=0.008 den=4 | (0.20,0.50) w=0.019 den=2 | (0.65,-1.20) w=0.755 den=10 | (0.98,-0.74) w=0.228 den=12
+[PHERO UPDATED] robot1 [6]: (-0.38,-0.14) w=0.001 den=5 | (0.19,0.15) w=0.005 den=3 | (-0.16,-0.37) w=0.003 den=4 | (0.20,0.50) w=0.007 den=2 | (0.65,-1.20) w=0.265 den=10 | (0.98,-0.74) w=0.079 den=12
+[PHERO UPDATED] robot1 [6]: (-0.38,-0.14) w=0.001 den=5 | (0.19,0.15) w=0.004 den=3 | (-0.16,-0.37) w=0.002 den=4 | (0.20,0.50) w=0.006 den=2 | (0.65,-1.20) w=0.242 den=10 | (0.98,-0.74) w=0.072 den=12
+[PHERO EXPIRED] robot1 [5]: (0.19,0.15) w=0.003 den=3 | (-0.16,-0.37) w=0.002 den=4 | (0.20,0.50) w=0.004 den=2 | (0.65,-1.20) w=0.181 den=10 | (0.98,-0.74) w=0.054 den=12
+[PHERO UPDATED] robot1 [5]: (0.19,0.15) w=0.003 den=3 | (-0.16,-0.37) w=0.002 den=4 | (0.20,0.50) w=0.004 den=2 | (0.65,-1.20) w=0.171 den=10 | (0.98,-0.74) w=1.000 den=9
+[PICKUP]   robot1 at (0.84,-0.70) | density=9
+  [PHERO]  Laid at (0.84,-0.70) density=9 prob=1.00 total_entries=5
+[PHERO ADDED  ] robot1 [6]: (0.19,0.15) w=0.002 den=3 | (-0.16,-0.37) w=0.001 den=4 | (0.20,0.50) w=0.003 den=2 | (0.65,-1.20) w=0.118 den=10 | (0.98,-0.74) w=0.687 den=9 | (-0.79,1.21) w=0.551 den=11
+[DEPOSIT]  robot1 | site=(0.84,-0.70) density=9
+  [TARGET]   robot1 → SITE (0.84,-0.70)
+[PHERO UPDATED] robot1 [6]: (0.19,0.15) w=0.002 den=3 | (-0.16,-0.37) w=0.001 den=4 | (0.20,0.50) w=0.003 den=2 | (0.65,-1.20) w=0.112 den=10 | (0.98,-0.74) w=0.657 den=9 | (-0.79,1.21) w=0.526 den=11
+[PHERO UPDATED] robot1 [6]: (0.19,0.15) w=0.002 den=3 | (-0.16,-0.37) w=0.001 den=4 | (0.20,0.50) w=0.003 den=2 | (0.65,-1.20) w=0.102 den=10 | (0.98,-0.74) w=0.598 den=9 | (-0.79,1.21) w=0.477 den=11
+[PHERO EXPIRED] robot1 [5]: (0.19,0.15) w=0.002 den=3 | (0.20,0.50) w=0.002 den=2 | (0.65,-1.20) w=0.100 den=10 | (0.98,-0.74) w=0.588 den=9 | (-0.79,1.21) w=0.469 den=11
+[PHERO UPDATED] robot1 [5]: (0.19,0.15) w=0.001 den=3 | (0.20,0.50) w=0.002 den=2 | (0.65,-1.20) w=0.080 den=10 | (0.98,-0.74) w=0.471 den=9 | (-0.79,1.21) w=0.376 den=11
+[PHERO UPDATED] robot1 [5]: (0.19,0.15) w=0.001 den=3 | (0.20,0.50) w=0.002 den=2 | (0.65,-1.20) w=0.077 den=10 | (0.98,-0.74) w=0.450 den=9 | (-0.79,1.21) w=0.358 den=11
+[PHERO UPDATED] robot1 [5]: (0.19,0.15) w=0.001 den=3 | (0.20,0.50) w=0.002 den=2 | (0.65,-1.20) w=0.070 den=10 | (0.98,-0.74) w=0.410 den=9 | (-0.79,1.21) w=0.325 den=11
+[PHERO UPDATED] robot1 [5]: (0.19,0.15) w=0.001 den=3 | (0.20,0.50) w=0.002 den=2 | (0.65,-1.20) w=0.063 den=10 | (0.98,-0.74) w=0.374 den=9 | (-0.79,1.21) w=0.295 den=11
+[PHERO UPDATED] robot1 [5]: (0.19,0.15) w=0.001 den=3 | (0.20,0.50) w=0.001 den=2 | (0.65,-1.20) w=1.000 den=8 | (0.98,-0.74) w=0.342 den=9 | (-0.79,1.21) w=0.271 den=11
+[PICKUP]   robot1 at (0.61,-1.01) | density=8
+  [PHERO]  Laid at (0.61,-1.01) density=8 prob=1.00 total_entries=5
+[PHERO UPDATED] robot1 [5]: (0.19,0.15) w=0.001 den=3 | (0.20,0.50) w=0.001 den=2 | (0.65,-1.20) w=0.992 den=8 | (0.98,-0.74) w=0.341 den=9 | (-0.79,1.21) w=0.268 den=11
+[PHERO EXPIRED] robot1 [4]: (0.20,0.50) w=0.001 den=2 | (0.65,-1.20) w=0.958 den=8 | (0.98,-0.74) w=0.329 den=9 | (-0.79,1.21) w=0.259 den=11
+[PHERO UPDATED] robot1 [4]: (0.20,0.50) w=0.001 den=2 | (0.65,-1.20) w=0.949 den=8 | (0.98,-0.74) w=0.325 den=9 | (-0.79,1.21) w=0.256 den=11
+[PHERO UPDATED] robot1 [4]: (0.20,0.50) w=0.001 den=2 | (0.65,-1.20) w=0.865 den=8 | (0.98,-0.74) w=0.295 den=9 | (-0.79,1.21) w=0.232 den=11
+[PHERO EXPIRED] robot1 [3]: (0.65,-1.20) w=0.707 den=8 | (0.98,-0.74) w=0.241 den=9 | (-0.79,1.21) w=0.190 den=11
+[DEPOSIT]  robot1 | site=(0.61,-1.01) density=8
+  [TARGET]   robot1 → SITE (0.61,-1.01)
+[PHERO UPDATED] robot1 [3]: (0.65,-1.20) w=0.710 den=7 | (0.98,-0.74) w=0.183 den=9 | (-0.79,1.21) w=0.144 den=11
+[PHERO UPDATED] robot1 [3]: (0.65,-1.20) w=0.647 den=7 | (0.98,-0.74) w=0.166 den=9 | (-0.79,1.21) w=0.131 den=11
+[PHERO UPDATED] robot1 [3]: (0.65,-1.20) w=0.590 den=7 | (0.98,-0.74) w=0.151 den=9 | (-0.79,1.21) w=0.119 den=11
+[PHERO UPDATED] robot1 [3]: (0.65,-1.20) w=0.227 den=7 | (0.98,-0.74) w=0.058 den=9 | (-0.79,1.21) w=0.045 den=11
+[PHERO UPDATED] robot1 [3]: (0.65,-1.20) w=0.206 den=7 | (0.98,-0.74) w=0.052 den=9 | (-0.79,1.21) w=0.041 den=11
+[PHERO UPDATED] robot1 [3]: (0.65,-1.20) w=0.072 den=7 | (0.98,-0.74) w=0.018 den=9 | (-0.79,1.21) w=0.014 den=11
+[PHERO UPDATED] robot1 [3]: (0.65,-1.20) w=0.066 den=7 | (0.98,-0.74) w=0.017 den=9 | (-0.79,1.21) w=0.013 den=11
+[PHERO UPDATED] robot1 [3]: (0.65,-1.20) w=0.060 den=7 | (0.98,-0.74) w=0.015 den=9 | (-0.79,1.21) w=0.012 den=11
+[PHERO UPDATED] robot1 [3]: (0.65,-1.20) w=1.000 den=6 | (0.98,-0.74) w=0.015 den=9 | (-0.79,1.21) w=0.012 den=11
+[PICKUP]   robot1 at (0.66,-0.98) | density=6
+  [PHERO]  Laid at (0.66,-0.98) density=6 prob=0.97 total_entries=3
+[PHERO UPDATED] robot1 [3]: (0.65,-1.20) w=0.932 den=6 | (0.98,-0.74) w=0.014 den=9 | (-0.79,1.21) w=0.011 den=11
+[PHERO UPDATED] robot1 [3]: (0.65,-1.20) w=0.849 den=6 | (0.98,-0.74) w=0.012 den=9 | (-0.79,1.21) w=0.010 den=11
+[DEPOSIT]  robot1 | site=(0.66,-0.98) density=6
+  [TARGET]   robot1 → SITE (0.66,-0.98)
+[PHERO UPDATED] robot1 [3]: (0.65,-1.20) w=0.716 den=5 | (0.98,-0.74) w=0.008 den=9 | (-0.79,1.21) w=0.007 den=11
+[PHERO UPDATED] robot1 [3]: (0.65,-1.20) w=0.652 den=5 | (0.98,-0.74) w=0.008 den=9 | (-0.79,1.21) w=0.006 den=11
+[PHERO UPDATED] robot1 [3]: (0.65,-1.20) w=0.595 den=5 | (0.98,-0.74) w=0.007 den=9 | (-0.79,1.21) w=0.005 den=11
+[PHERO UPDATED] robot1 [3]: (0.65,-1.20) w=0.240 den=5 | (0.98,-0.74) w=0.003 den=9 | (-0.79,1.21) w=0.002 den=11
+[PHERO UPDATED] robot1 [3]: (0.65,-1.20) w=0.218 den=5 | (0.98,-0.74) w=0.003 den=9 | (-0.79,1.21) w=0.002 den=11
+[PHERO UPDATED] robot1 [3]: (0.65,-1.20) w=0.199 den=5 | (0.98,-0.74) w=0.002 den=9 | (-0.79,1.21) w=0.002 den=11
+[PHERO UPDATED] robot1 [3]: (0.65,-1.20) w=0.181 den=5 | (0.98,-0.74) w=0.002 den=9 | (-0.79,1.21) w=0.002 den=11
+[PHERO EXPIRED] robot1 [2]: (0.65,-1.20) w=0.109 den=5 | (0.98,-0.74) w=0.001 den=9
+[PHERO EXPIRED] robot1 [1]: (0.65,-1.20) w=0.086 den=5
+[PHERO UPDATED] robot1 [1]: (0.65,-1.20) w=0.060 den=5
+[PHERO UPDATED] robot1 [1]: (0.65,-1.20) w=0.055 den=5
+[PHERO UPDATED] robot1 [1]: (0.65,-1.20) w=1.000 den=4
+[PICKUP]   robot1 at (0.67,-0.99) | density=4
+  [PHERO]  Laid at (0.67,-0.99) density=4 prob=0.82 total_entries=1
+[PHERO UPDATED] robot1 [1]: (0.65,-1.20) w=0.839 den=4
+[PHERO UPDATED] robot1 [1]: (0.65,-1.20) w=0.764 den=4
+[PHERO UPDATED] robot1 [1]: (0.65,-1.20) w=0.697 den=4
+[DEPOSIT]  robot1 | site=(0.67,-0.99) density=4
+  [TARGET]   robot1 → SITE (0.67,-0.99)
+[PHERO UPDATED] robot1 [1]: (0.65,-1.20) w=0.635 den=4
+[PHERO UPDATED] robot1 [1]: (0.65,-1.20) w=1.000 den=3
+[PICKUP]   robot1 at (0.70,-0.98) | density=3
+  [PHERO]  Laid at (0.70,-0.98) density=3 prob=0.65 total_entries=1
+[DEPOSIT]  robot1 | site=(0.70,-0.98) density=3
+  [TARGET]   robot1 → SITE (0.70,-0.98)
+[PHERO UPDATED] robot1 [1]: (0.65,-1.20) w=0.835 den=2
+[PHERO UPDATED] robot1 [1]: (0.65,-1.20) w=0.761 den=2
+[PHERO UPDATED] robot1 [1]: (0.65,-1.20) w=0.278 den=2
+[PHERO UPDATED] robot1 [1]: (0.65,-1.20) w=0.254 den=2
+[PHERO ADDED  ] robot1 [2]: (0.65,-1.20) w=0.084 den=2 | (1.68,0.45) w=0.211 den=12
+[PICKUP]   robot1 at (0.74,-0.95) | density=1
+[PHERO UPDATED] robot1 [2]: (0.65,-1.20) w=0.076 den=2 | (1.68,0.45) w=0.193 den=12
+[PHERO UPDATED] robot1 [2]: (0.65,-1.20) w=0.069 den=2 | (1.68,0.45) w=0.176 den=12
+[DEPOSIT]  robot1 | site=(0.74,-0.95) density=1
+  [TARGET]   robot1 → PHERO (1.68,0.45) density=12
+[PHERO UPDATED] robot1 [2]: (0.65,-1.20) w=0.032 den=2 | (1.68,0.45) w=0.082 den=12
+[PHERO UPDATED] robot1 [2]: (0.65,-1.20) w=0.029 den=2 | (1.68,0.45) w=0.075 den=12
+[PHERO UPDATED] robot1 [2]: (0.65,-1.20) w=0.027 den=2 | (1.68,0.45) w=0.068 den=12
+[PHERO UPDATED] robot1 [2]: (0.65,-1.20) w=0.024 den=2 | (1.68,0.45) w=0.062 den=12
+[PHERO UPDATED] robot1 [2]: (0.65,-1.20) w=0.022 den=2 | (1.68,0.45) w=0.056 den=12
+[PHERO UPDATED] robot1 [2]: (0.65,-1.20) w=0.019 den=2 | (1.68,0.45) w=0.049 den=12
+[PHERO UPDATED] robot1 [2]: (0.65,-1.20) w=0.018 den=2 | (1.68,0.45) w=1.000 den=11
+[PICKUP]   robot1 at (1.67,0.53) | density=11
+  [PHERO]  Laid at (1.67,0.53) density=11 prob=1.00 total_entries=2
+[PHERO UPDATED] robot1 [2]: (0.65,-1.20) w=0.017 den=2 | (1.68,0.45) w=0.950 den=11
+[PHERO UPDATED] robot1 [2]: (0.65,-1.20) w=0.016 den=2 | (1.68,0.45) w=0.866 den=11
+[DEPOSIT]  robot1 | site=(1.67,0.53) density=11
+  [TARGET]   robot1 → SITE (1.67,0.53)
+[PHERO EXPIRED] robot1 [1]: (1.68,0.45) w=0.055 den=11
+[PHERO UPDATED] robot1 [1]: (1.68,0.45) w=1.000 den=10
+[PICKUP]   robot1 at (1.76,0.44) | density=10
+  [PHERO]  Laid at (1.76,0.44) density=10 prob=1.00 total_entries=1
+[DEPOSIT]  robot1 | site=(1.76,0.44) density=10
+  [TARGET]   robot1 → SITE (1.76,0.44)
+[PHERO ADDED  ] robot1 [2]: (1.68,0.45) w=0.037 den=10 | (-0.58,0.91) w=0.077 den=5
+[PHERO UPDATED] robot1 [2]: (1.68,0.45) w=0.034 den=10 | (-0.58,0.91) w=0.070 den=5
+[PHERO UPDATED] robot1 [2]: (1.68,0.45) w=0.030 den=10 | (-0.58,0.91) w=0.064 den=5
+[PHERO UPDATED] robot1 [2]: (1.68,0.45) w=0.028 den=10 | (-0.58,0.91) w=0.058 den=5
+[PHERO UPDATED] robot1 [2]: (1.68,0.45) w=0.025 den=10 | (-0.58,0.91) w=0.053 den=5
+[PHERO UPDATED] robot1 [2]: (1.68,0.45) w=0.023 den=10 | (-0.58,0.91) w=0.048 den=5
+[PHERO UPDATED] robot1 [2]: (1.68,0.45) w=0.022 den=10 | (-0.58,0.91) w=0.046 den=5
+[PHERO UPDATED] robot1 [2]: (1.68,0.45) w=0.021 den=10 | (-0.58,0.91) w=0.044 den=5
+[PHERO UPDATED] robot1 [2]: (1.68,0.45) w=0.020 den=10 | (-0.58,0.91) w=0.042 den=5
+[PHERO EXPIRED] robot1 [1]: (-0.58,0.91) w=0.002 den=5
+[GIVE-UP]  robot1 giving up after 3902 searching steps
+  [EMPTY_RTN] robot1 → PHERO (-0.58,0.91) density=5
+[PHERO EXPIRED] robot1 [0]: empty
+[PICKUP]   robot1 at (-0.84,0.98) | density=2
+[DEPOSIT]  robot1 | site=(-0.84,0.98) density=2
+  [TARGET]   robot1 → SITE (-0.84,0.98)
+[PICKUP]   robot1 at (-0.86,0.97) | density=1
+[DEPOSIT]  robot1 | site=(-0.86,0.97) density=1
+  [TARGET]   robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 78 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[PHERO ADDED  ] robot1 [1]: (1.73,0.55) w=0.013 den=7
+[PHERO UPDATED] robot1 [1]: (1.73,0.55) w=0.012 den=7
+[PHERO UPDATED] robot1 [1]: (1.73,0.55) w=0.011 den=7
+[PHERO EXPIRED] robot1 [0]: empty
+[PHERO ADDED  ] robot1 [1]: (1.73,0.55) w=0.025 den=6
+[PHERO UPDATED] robot1 [1]: (1.73,0.55) w=0.025 den=6
+[PHERO UPDATED] robot1 [1]: (1.73,0.55) w=0.024 den=6
+[PHERO UPDATED] robot1 [1]: (1.73,0.55) w=0.023 den=6
+[PHERO UPDATED] robot1 [1]: (1.73,0.55) w=0.022 den=6
+[GIVE-UP]  robot1 giving up after 6396 searching steps
+  [EMPTY_RTN] robot1 → PHERO (1.73,0.55) density=6
+[PHERO UPDATED] robot1 [1]: (1.73,0.55) w=0.003 den=6
+[PHERO UPDATED] robot1 [1]: (1.73,0.55) w=0.003 den=6
+[PHERO UPDATED] robot1 [1]: (1.73,0.55) w=0.003 den=6
+[PHERO UPDATED] robot1 [1]: (1.73,0.55) w=0.002 den=6
+[PHERO UPDATED] robot1 [1]: (1.73,0.55) w=0.002 den=6
+[PHERO UPDATED] robot1 [1]: (1.73,0.55) w=0.002 den=6
+[PHERO EXPIRED] robot1 [0]: empty
+[PICKUP]   robot1 at (1.77,0.71) | density=4
+[PHERO ADDED  ] robot1 [1]: (1.81,0.89) w=0.296 den=5
+[PHERO UPDATED] robot1 [1]: (1.81,0.89) w=0.283 den=5
+[PHERO UPDATED] robot1 [1]: (1.81,0.89) w=0.258 den=5
+[DEPOSIT]  robot1 | site=(1.77,0.71) density=4
+  [TARGET]   robot1 → SITE (1.77,0.71)
+[PHERO UPDATED] robot1 [1]: (1.81,0.89) w=0.615 den=3
+[PHERO UPDATED] robot1 [1]: (1.81,0.89) w=0.560 den=3
+[PHERO UPDATED] robot1 [1]: (1.81,0.89) w=0.365 den=3
+[PHERO UPDATED] robot1 [1]: (1.81,0.89) w=0.333 den=3
+[PHERO UPDATED] robot1 [1]: (1.81,0.89) w=0.163 den=3
+[PHERO UPDATED] robot1 [1]: (1.81,0.89) w=0.155 den=3
+[PHERO UPDATED] robot1 [1]: (1.81,0.89) w=0.148 den=3
+[PHERO UPDATED] robot1 [1]: (1.81,0.89) w=0.142 den=3
+[PHERO UPDATED] robot1 [1]: (1.81,0.89) w=0.006 den=3
+[PHERO UPDATED] robot1 [1]: (1.81,0.89) w=0.005 den=3
+[PHERO EXPIRED] robot1 [0]: empty
+[GIVE-UP]  robot1 giving up after 6483 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 6717 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[PHERO ADDED  ] robot1 [1]: (-1.91,-0.13) w=1.000 den=9
+[PICKUP]   robot1 at (-1.91,-0.13) | density=9
+  [PHERO]  Laid at (-1.91,-0.13) density=9 prob=1.00 total_entries=1
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=0.619 den=9
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=0.591 den=9
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=0.564 den=9
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=0.538 den=9
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=0.514 den=9
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=0.491 den=9
+[DEPOSIT]  robot1 | site=(-1.91,-0.13) density=9
+  [TARGET]   robot1 → SITE (-1.91,-0.13)
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=1.000 den=8
+[PICKUP]   robot1 at (-1.94,-0.13) | density=8
+  [PHERO]  Laid at (-1.94,-0.13) density=8 prob=1.00 total_entries=1
+[DEPOSIT]  robot1 | site=(-1.94,-0.13) density=8
+  [TARGET]   robot1 → SITE (-1.94,-0.13)
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=0.047 den=8
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=0.043 den=8
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=1.000 den=7
+[PICKUP]   robot1 at (-1.94,-0.18) | density=7
+  [PHERO]  Laid at (-1.94,-0.18) density=7 prob=0.99 total_entries=1
+[DEPOSIT]  robot1 | site=(-1.94,-0.18) density=7
+  [TARGET]   robot1 → SITE (-1.94,-0.18)
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=1.000 den=6
+[PICKUP]   robot1 at (-1.92,-0.21) | density=6
+  [PHERO]  Laid at (-1.92,-0.21) density=6 prob=0.97 total_entries=1
+[DEPOSIT]  robot1 | site=(-1.92,-0.21) density=6
+  [TARGET]   robot1 → SITE (-1.92,-0.21)
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=0.404 den=6
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=1.000 den=5
+[PICKUP]   robot1 at (-1.94,-0.22) | density=5
+  [PHERO]  Laid at (-1.94,-0.22) density=5 prob=0.92 total_entries=1
+[DEPOSIT]  robot1 | site=(-1.94,-0.22) density=5
+  [TARGET]   robot1 → SITE (-1.94,-0.22)
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=0.066 den=5
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=0.060 den=5
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=0.057 den=5
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=0.055 den=5
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=0.052 den=5
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=0.038 den=5
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=1.000 den=4
+[PICKUP]   robot1 at (-1.95,-0.25) | density=4
+  [PHERO]  Laid at (-1.95,-0.25) density=4 prob=0.82 total_entries=1
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=0.923 den=4
+[DEPOSIT]  robot1 | site=(-1.95,-0.25) density=4
+  [TARGET]   robot1 → SITE (-1.95,-0.25)
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=0.019 den=4
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=0.017 den=4
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=0.016 den=4
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=0.004 den=4
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=0.003 den=4
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=1.000 den=3
+[PICKUP]   robot1 at (-1.96,-0.29) | density=3
+  [PHERO]  Laid at (-1.96,-0.29) density=3 prob=0.65 total_entries=1
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=0.946 den=3
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=0.862 den=3
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=0.785 den=3
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=0.716 den=3
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=0.652 den=3
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=0.595 den=3
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=0.542 den=3
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=0.494 den=3
+[DEPOSIT]  robot1 | site=(-1.96,-0.29) density=3
+  [TARGET]   robot1 → SITE (-1.96,-0.29)
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=0.450 den=3
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=0.430 den=3
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=0.410 den=3
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=0.392 den=3
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=0.374 den=3
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=0.357 den=3
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=0.341 den=3
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=0.325 den=3
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=0.310 den=3
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=0.296 den=3
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=0.283 den=3
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=0.007 den=3
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=0.007 den=3
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=0.002 den=3
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=0.001 den=3
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=0.001 den=3
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=0.001 den=3
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=0.001 den=3
+[PHERO EXPIRED] robot1 [0]: empty
+[PHERO ADDED  ] robot1 [1]: (-1.91,-0.13) w=0.001 den=1
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=0.001 den=1
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=0.001 den=1
+[PHERO UPDATED] robot1 [1]: (-1.91,-0.13) w=0.001 den=1
+[PHERO EXPIRED] robot1 [0]: empty
+[GIVE-UP]  robot1 giving up after 6074 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 8804 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 11066 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 16448 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE

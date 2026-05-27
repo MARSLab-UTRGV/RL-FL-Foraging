@@ -1,6 +1,7 @@
 import sys
 import os
 import math
+import random
 import pickle
 import base64
 import numpy as np
@@ -11,53 +12,55 @@ from stable_baselines3.common.vec_env import DummyVecEnv
 from stable_baselines3.common.logger import Logger as SB3Logger
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'epuck_decentralized'))
-from epuck_decentralized_v4 import EpuckDecentralizedV4, TARGET_ARRIVAL_DIST, PHEROMONE_MIN
+from epuck_decentralized_v4 import (
+    EpuckDecentralizedV4,
+    TARGET_ARRIVAL_DIST, PHEROMONE_MIN,
+    DENSITY_MAX, RATE_OF_LAYING_PHEROMONE,
+)
 
 # =============================================================================
-# FULLY DECENTRALIZED TRAINING ROBOT — v4
+# FULLY DECENTRALIZED TRAINING ROBOT — v4 (synced to centralized CPFA-RL v5)
 #
-# Changes from v3:
-#   1. Pheromone: single hotspot → CPFA list-based with roulette selection
-#   2. Site fidelity: robot remembers own last pickup, priority over roulette
-#   3. Obs: 18D → 20D  (add site [14-16], shift phero to [17-19], drop phero_strength)
-#   4. Reward: site approach ×15, phero approach ×15 (to assigned target, not broadcast)
-#   5. Target depletion: if arrival < 0.18m with no pickup → roulette for next target
-#   6. Gossip FL: unchanged (model sharing via channel 11, FedAvg α=0.2)
+# Key changes vs earlier versions:
+#   - 17D obs (tag sensing removed — matches centralized for fair comparison)
+#   - ENT_COEF=0.03, BATCH_SIZE=1024, TOTAL_STEPS=10M — matches centralized
+#   - CPFA pheromone: list-based, Poisson CDF gate at PICKUP (P2P advantage),
+#     Poisson CDF site fidelity at deposit, roulette target selection
+#   - Reward: removed all positional standing-still bonuses; forward bias ×0.15
+#   - Gossip FL: unchanged (model sharing via channel 11, FedAvg α=0.2)
 #
-# Obs layout (20D):
+# Obs layout (18D — matches centralized exactly):
 #   [0:8]  prox sensors
-#   [8]    tag_visible
-#   [9]    tag_dist_norm
-#   [10]   tag_angle_norm
-#   [11]   carrying
-#   [12]   base_dist_norm
-#   [13]   base_angle_norm
-#   [14]   site_known         ← own last pickup target
-#   [15]   site_dist_norm
-#   [16]   site_angle_norm
-#   [17]   phero_known        ← roulette-selected target
-#   [18]   phero_dist_norm
-#   [19]   phero_angle_norm
+#   [8]    carrying
+#   [9]    base_dist_norm
+#   [10]   base_angle_norm
+#   [11]   site_known
+#   [12]   site_dist_norm
+#   [13]   site_angle_norm
+#   [14]   phero_known
+#   [15]   phero_dist_norm
+#   [16]   phero_angle_norm
+#   [17]   search_duration_norm  (steps_without_pickup/4000, zeroed when carrying)
 # =============================================================================
 
-OBS_DIM       = 20
+OBS_DIM             = 18   # matches centralized 18D obs exactly
+SEARCH_DURATION_MAX = 4000  # steps without pickup before obs saturates at 1.0
 ACT_DIM       = 2
 N_STEPS       = 16384
 N_EPOCHS      = 10
-BATCH_SIZE    = 256
+BATCH_SIZE    = 1024  # matches centralized
 GAMMA         = 0.99
 GAE_LAMBDA    = 0.95
 CLIP_RANGE    = 0.2
-ENT_COEF      = 0.15
+ENT_COEF      = 0.03  # matches centralized (0.03 keeps exploration without divergence)
 VF_COEF       = 0.5
 LR            = 3e-4
 MAX_GRAD_NORM = 0.5
-SAVE_FREQ     = 50_000
-TOTAL_STEPS   = 7_000_000
+SAVE_FREQ     = 200_000  # matches centralized
+TOTAL_STEPS   = 10_000_000  # matches centralized (10M steps)
 
 GOSSIP_ALPHA      = 0.2
 STEPS_PER_EPISODE = 16384
-TAG_SEEK_RANGE    = 1.0
 
 
 class _DictWriter:
@@ -139,11 +142,6 @@ class EpuckDecentralizedTrainV4(EpuckDecentralizedV4):
             print(f"[{self._robot_name}] Gossip disabled")
         self._pending_neighbor_weights = []
 
-        # ── Tag obs from supervisor ────────────────────────────────────
-        self._tag_visible    = 0.0
-        self._tag_dist_norm  = 0.0
-        self._tag_angle_norm = 0.0
-
         # ── Rollout buffer tracking ────────────────────────────────────
         self._last_obs         = None
         self._last_raw_action  = np.zeros(ACT_DIM, dtype=np.float32)
@@ -157,10 +155,10 @@ class EpuckDecentralizedTrainV4(EpuckDecentralizedV4):
         self._n_updates       = 0
 
         # ── Reward shaping state ───────────────────────────────────────
-        self._prev_tag_dist   = None
-        self._prev_base_dist  = None
-        self._prev_site_dist  = None   # approach shaping toward site target
-        self._prev_phero_dist = None   # approach shaping toward phero target
+        self._prev_base_dist       = None
+        self._prev_site_dist       = None
+        self._prev_phero_dist      = None
+        self._steps_without_pickup = 0   # obs[17] — informational only, no override
 
         # ── Per-episode stats ──────────────────────────────────────────
         self._ep_pickups       = 0
@@ -188,10 +186,7 @@ class EpuckDecentralizedTrainV4(EpuckDecentralizedV4):
             return
 
         try:
-            self._tag_visible    = float(message[0])
-            self._tag_dist_norm  = float(message[1])
-            self._tag_angle_norm = float(message[2])
-            pickup_signal        = float(message[3])
+            pickup_signal = float(message[3])
         except (ValueError, IndexError):
             return
 
@@ -209,25 +204,40 @@ class EpuckDecentralizedTrainV4(EpuckDecentralizedV4):
             self.carrying = True
             gps = self.gps.getValues()
             px, py = gps[0], gps[1]
-            self._add_pheromone(px, py, pickup_signal)
-            self._site_fidelity_pos  = (px, py)
-            self._last_pickup_weight = pickup_signal
-            self._current_target     = None
-            self._ep_pickups        += 1
-            self._prev_tag_dist      = None
-            self._prev_site_dist     = None
-            self._prev_phero_dist    = None
-            approx_density = round((pickup_signal - 0.2) / 0.8 * 5)
+            density = round((pickup_signal - 0.2) / 0.8 * DENSITY_MAX)
+            density = max(0, min(DENSITY_MAX, density))
+            self._site_fidelity_pos = (px, py)
+            self._resource_density  = density
+            # CPFA pheromone laying at PICKUP — Poisson CDF gate
+            lay_prob = self._poisson_cdf(density, RATE_OF_LAYING_PHEROMONE)
+            laid = False
+            if random.random() < lay_prob:
+                self._add_pheromone(px, py, 1.0)
+                laid = True
+            self._current_target       = None
+            self._ep_pickups          += 1
+            self._prev_site_dist       = None
+            self._prev_phero_dist      = None
+            self._steps_without_pickup = 0
+            # Pre-seed so first carry step has zero approach-reward delta, not a spike.
+            # Without this, _prev_base_dist is stale from last deposit (~0.25m)
+            # → first carry reward = (0.25 − cluster_dist) × 8 ≈ −10.
+            self._prev_base_dist = math.sqrt(px ** 2 + py ** 2)
+            # Successful pickup clears give-up — site fidelity re-enabled
+            self._gave_up       = False
+            self._give_up_timer = 0
             self._log(f"[PICKUP] {self._robot_name} at ({px:.2f},{py:.2f}) | "
-                      f"strength={pickup_signal:.2f} approx_density~{approx_density} | "
+                      f"density={density} lay_prob={lay_prob:.2f} laid={laid} | "
                       f"Ep picks: {self._ep_pickups}")
-            self._log(f"  [PHERO] Added ({px:.2f},{py:.2f}) weight={pickup_signal:.2f} | "
-                      f"list_size={len(self.pheromone_list)}")
+            if laid:
+                self._log(f"  [PHERO] Added ({px:.2f},{py:.2f}) weight=1.0 | "
+                          f"list_size={len(self.pheromone_list)}")
 
         # ── Deposit ───────────────────────────────────────────────────
         elif pickup_signal < -0.5 and self.carrying:
-            self.carrying  = False
-            self._ep_deposits += 1
+            self.carrying              = False
+            self._ep_deposits         += 1
+            self._steps_without_pickup = 0   # new search trip starts
             self._assign_target()
             # Pre-seed distance tracking so approach reward fires from step 1
             if self._current_target is not None:
@@ -246,7 +256,7 @@ class EpuckDecentralizedTrainV4(EpuckDecentralizedV4):
             t = self._current_target
             t_str = f"{t[0].upper()} ({t[1]:.2f},{t[2]:.2f})" if t else "EXPLORE"
             sf = self._site_fidelity_pos
-            sf_str = f"({sf[0]:.2f},{sf[1]:.2f}) weight={self._last_pickup_weight:.2f}" if sf else "None"
+            sf_str = f"({sf[0]:.2f},{sf[1]:.2f}) density={self._resource_density}" if sf else "None"
             self._log(f"[DEPOSIT] {self._robot_name} | Ep deps: {self._ep_deposits}")
             self._log(f"  [SITE_FID] last_pickup={sf_str}")
             self._log(f"  [TARGET]   → {t_str}")
@@ -256,40 +266,41 @@ class EpuckDecentralizedTrainV4(EpuckDecentralizedV4):
             gps = self.gps.getValues()
             tx, ty = self._current_target[1], self._current_target[2]
             if math.sqrt((gps[0]-tx)**2 + (gps[1]-ty)**2) < TARGET_ARRIVAL_DIST:
-                # Arrived at cluster but no food found — confirm depletion progressively
-                if self._current_target[0] == 'site':
-                    # Accelerate decay of return probability — mirrors CPFA density gate
-                    # falling as cluster depletes. PPO + Poisson gate handle the rest.
-                    self._last_pickup_weight = max(self._last_pickup_weight * 0.5, 0.05)
-                elif self._current_target[0] == 'phero':
-                    # Accelerate decay of this cluster entry — roulette naturally shifts
-                    # to fresher/stronger clusters as depleted ones lose weight.
+                if self._current_target[0] == 'phero':
+                    # Accelerate decay of depleted cluster — roulette shifts to fresher ones
                     for entry in self.pheromone_list:
                         if math.sqrt((entry['x'] - tx) ** 2 +
                                      (entry['y'] - ty) ** 2) < 0.3:
                             entry['weight'] = max(entry['weight'] * 0.5, PHEROMONE_MIN)
                             break
-                self._assign_target()
+                # Mirrors centralized: target cleared, _assign_target() NOT called.
+                # PPO does free local search. Give-up timer fires eventually →
+                # _assign_target(gave_up=True) skips stale site fidelity.
+                self._current_target  = None
                 self._prev_site_dist  = None
                 self._prev_phero_dist = None
 
-        # ── Assemble 20D obs ──────────────────────────────────────────
+        # ── Increment search counter (only while not carrying) ───────────
+        if not self.carrying:
+            self._steps_without_pickup += 1
+
+        # ── Assemble 18D obs (matches centralized exactly) ───────────────
         prox     = [s.getValue() / 4096.0 for s in self.ps]
         obs_comp = self._obs_components()
+        search_norm = (0.0 if self.carrying else
+                       min(self._steps_without_pickup / SEARCH_DURATION_MAX, 1.0))
         obs = np.array(
             prox + [
-                self._tag_visible,                    # [8]
-                self._tag_dist_norm,                  # [9]
-                self._tag_angle_norm,                 # [10]
-                1.0 if self.carrying else 0.0,        # [11]
-                obs_comp["base_dist_norm"],            # [12]
-                obs_comp["base_angle_norm"],           # [13]
-                obs_comp["site_known"],                # [14]
-                obs_comp["site_dist_norm"],            # [15]
-                obs_comp["site_angle_norm"],           # [16]
-                obs_comp["phero_known"],               # [17]
-                obs_comp["phero_dist_norm"],           # [18]
-                obs_comp["phero_angle_norm"],          # [19]
+                1.0 if self.carrying else 0.0,        # [8]
+                obs_comp["base_dist_norm"],            # [9]
+                obs_comp["base_angle_norm"],           # [10]
+                obs_comp["site_known"],                # [11]
+                obs_comp["site_dist_norm"],            # [12]
+                obs_comp["site_angle_norm"],           # [13]
+                obs_comp["phero_known"],               # [14]
+                obs_comp["phero_dist_norm"],           # [15]
+                obs_comp["phero_angle_norm"],          # [16]
+                search_norm,                           # [17] informational only
             ],
             dtype=np.float32,
         )
@@ -378,16 +389,19 @@ class EpuckDecentralizedTrainV4(EpuckDecentralizedV4):
             f"target={target_str}"
         )
 
-        self.carrying            = False
-        self.pheromone_list      = []
-        self._site_fidelity_pos  = None
-        self._last_pickup_weight = 0.0
-        self._current_target     = None
-        self._prev_tag_dist      = None
-        self._prev_base_dist     = None
-        self._prev_site_dist     = None
-        self._prev_phero_dist    = None
-        self._ep_pickups         = 0
+        self.carrying           = False
+        self.pheromone_list     = []
+        self._site_fidelity_pos = None
+        self._resource_density  = 0
+        self._current_target    = None
+        self._last_raw_action      = np.zeros(ACT_DIM, dtype=np.float32)
+        self._prev_base_dist       = None
+        self._prev_site_dist       = None
+        self._prev_phero_dist      = None
+        self._steps_without_pickup = 0
+        self._gave_up              = False
+        self._give_up_timer        = 0
+        self._ep_pickups           = 0
         self._ep_deposits        = 0
         self._ep_gossip_merges   = 0
         self._ep_total_reward    = 0.0
@@ -418,32 +432,15 @@ class EpuckDecentralizedTrainV4(EpuckDecentralizedV4):
         elif pickup_signal < -0.5:
             reward += 20.0
 
+        dist_from_base = obs_comp["base_dist_norm"] * 3.5
+
         if not self.carrying:
-            # ── Tag approach shaping ───────────────────────────────────
-            curr_tag_dist = (self._tag_dist_norm * TAG_SEEK_RANGE
-                             if self._tag_visible > 0.5 else None)
-            if self._prev_tag_dist is not None and curr_tag_dist is not None:
-                reward += (self._prev_tag_dist - curr_tag_dist) * 8.0
-            self._prev_tag_dist = curr_tag_dist
-
-            if self._tag_visible > 0.5:
-                reward += 0.2 + max(math.cos(self._tag_angle_norm * math.pi), 0.0) * 0.3
-
-            dist_from_base = math.sqrt(gps_x ** 2 + gps_y ** 2)
-
-            # Zone reward — stay in active foraging zone
-            if 0.8 < dist_from_base < 2.4:
-                reward += 0.10
-
-            # Near-base penalty
-            if dist_from_base < 0.8:
-                reward -= (0.8 - dist_from_base) * 4.0
-
-            # Forward motion bias
+            # Forward motion bias — only per-step reward available in free exploration.
+            # Standing still earns nothing; full forward gives +0.15/step. Matches centralized.
             if wall_dist >= 0.35:
                 avg_speed = (self._last_raw_action[0] + self._last_raw_action[1]) / 2.0
                 if avg_speed > 0:
-                    reward += avg_speed * 0.01
+                    reward += avg_speed * 0.15
 
             # ── Site fidelity approach (Priority 1 target) ─────────────
             if obs_comp["site_known"] > 0.5:
@@ -465,19 +462,21 @@ class EpuckDecentralizedTrainV4(EpuckDecentralizedV4):
                 if curr_pd > 0.001:
                     reward += math.cos(obs_comp["phero_angle_norm"] * math.pi) * 0.5
 
-            # ── Free exploration (no target assigned) ──────────────────
+            # ── Free exploration — no positional bonus, no zone reward ─
             else:
-                if dist_from_base > 0.5:
-                    reward += min(dist_from_base / 2.3, 1.0) * 0.15
                 self._prev_site_dist  = None
                 self._prev_phero_dist = None
 
+            # Keep _prev_base_dist current every explore step — matches centralized line 574.
+            # Prevents stale deposit value (~0.25m) from causing spike at next pickup.
+            # (pickup also pre-seeds it, but this ensures it's always fresh.)
+            self._prev_base_dist = dist_from_base
+
         else:
-            # ── Carrying: approach base ────────────────────────────────
-            dist_to_base = obs_comp["base_dist_norm"] * 3.5
+            # ── Carrying: return to base ───────────────────────────────
             if self._prev_base_dist is not None:
-                reward += (self._prev_base_dist - dist_to_base) * 8.0
-            self._prev_base_dist  = dist_to_base
+                reward += (self._prev_base_dist - dist_from_base) * 8.0
+            self._prev_base_dist  = dist_from_base
             reward += math.cos(obs_comp["base_angle_norm"] * math.pi) * 0.5
             self._prev_site_dist  = None
             self._prev_phero_dist = None

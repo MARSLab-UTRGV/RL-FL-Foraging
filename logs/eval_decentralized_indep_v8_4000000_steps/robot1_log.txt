@@ -1,0 +1,440 @@
+[robot1] Loading per-robot model: /home/sara/Documents/Centralized Learning/RL-FL-Foraging/robot1_decentralized_indep_v8_4000000_steps.zip
+[robot1] Model loaded (19D obs, independent PPO v8).
+[PHERO ADDED  ] robot1 [1]: (-0.38,-0.14) w=1.000 den=6
+[PICKUP]   robot1 at (-0.38,-0.14) | density=6
+  [PHERO]  Laid at (-0.38,-0.14) density=6 prob=0.97 total_entries=1
+[DEPOSIT]  robot1 | site=(-0.38,-0.14) density=6
+  [TARGET]   robot1 → SITE (-0.38,-0.14)
+[PHERO ADDED  ] robot1 [2]: (-0.38,-0.14) w=0.693 den=6 | (0.19,0.15) w=0.827 den=7
+[PHERO UPDATED] robot1 [2]: (-0.38,-0.14) w=1.000 den=5 | (0.19,0.15) w=0.753 den=7
+[PICKUP]   robot1 at (-0.16,-0.25) | density=5
+  [PHERO]  Laid at (-0.16,-0.25) density=5 prob=0.92 total_entries=2
+[PHERO UPDATED] robot1 [2]: (-0.38,-0.14) w=0.997 den=5 | (0.19,0.15) w=0.753 den=7
+[PHERO UPDATED] robot1 [2]: (-0.38,-0.14) w=0.953 den=5 | (0.19,0.15) w=0.718 den=7
+[DEPOSIT]  robot1 | site=(-0.16,-0.25) density=5
+  [TARGET]   robot1 → SITE (-0.16,-0.25)
+[PHERO ADDED  ] robot1 [3]: (-0.38,-0.14) w=0.169 den=5 | (0.19,0.15) w=0.127 den=7 | (0.80,-1.22) w=1.000 den=11
+[PICKUP]   robot1 at (0.80,-1.22) | density=11
+  [PHERO]  Laid at (0.80,-1.22) density=11 prob=1.00 total_entries=3
+[PHERO ADDED  ] robot1 [4]: (-0.38,-0.14) w=0.121 den=5 | (0.19,0.15) w=0.091 den=7 | (0.80,-1.22) w=0.718 den=11 | (0.98,-0.75) w=0.600 den=12
+[PHERO UPDATED] robot1 [4]: (-0.38,-0.14) w=0.115 den=5 | (0.19,0.15) w=0.087 den=7 | (0.80,-1.22) w=0.687 den=11 | (0.98,-0.75) w=0.572 den=12
+[PHERO UPDATED] robot1 [4]: (-0.38,-0.14) w=0.105 den=5 | (0.19,0.15) w=0.079 den=7 | (0.80,-1.22) w=0.626 den=11 | (0.98,-0.75) w=0.520 den=12
+[DEPOSIT]  robot1 | site=(0.80,-1.22) density=11
+  [TARGET]   robot1 → SITE (0.80,-1.22)
+[PHERO UPDATED] robot1 [4]: (-0.38,-0.14) w=0.095 den=5 | (0.19,0.15) w=0.072 den=7 | (0.80,-1.22) w=0.570 den=11 | (0.98,-0.75) w=0.472 den=12
+[PHERO ADDED  ] robot1 [5]: (-0.38,-0.14) w=0.059 den=5 | (0.19,0.15) w=0.044 den=7 | (0.80,-1.22) w=0.353 den=11 | (0.98,-0.75) w=0.292 den=12 | (0.58,-0.91) w=0.798 den=10
+[PHERO UPDATED] robot1 [5]: (-0.38,-0.14) w=0.021 den=5 | (0.19,0.15) w=0.016 den=7 | (0.80,-1.22) w=0.129 den=11 | (0.98,-0.75) w=0.107 den=12 | (0.58,-0.91) w=0.292 den=10
+[PHERO UPDATED] robot1 [5]: (-0.38,-0.14) w=0.020 den=5 | (0.19,0.15) w=0.015 den=7 | (0.80,-1.22) w=0.117 den=11 | (0.98,-0.75) w=0.097 den=12 | (0.58,-0.91) w=0.266 den=10
+[PICKUP]   robot1 at (0.45,0.10) | density=4
+[DEPOSIT]  robot1 | site=(0.45,0.10) density=4
+  [TARGET]   robot1 → SITE (0.45,0.10)
+[PICKUP]   robot1 at (0.27,0.24) | density=3
+[DEPOSIT]  robot1 | site=(0.27,0.24) density=3
+  [TARGET]   robot1 → SITE (0.27,0.24)
+[PHERO UPDATED] robot1 [5]: (-0.38,-0.14) w=0.005 den=5 | (0.19,0.15) w=0.004 den=7 | (0.80,-1.22) w=0.031 den=11 | (0.98,-0.75) w=0.025 den=12 | (0.58,-0.91) w=0.070 den=10
+[PHERO UPDATED] robot1 [5]: (-0.38,-0.14) w=0.005 den=5 | (0.19,0.15) w=0.003 den=7 | (0.80,-1.22) w=0.028 den=11 | (0.98,-0.75) w=0.023 den=12 | (0.58,-0.91) w=0.063 den=10
+[PHERO UPDATED] robot1 [5]: (-0.38,-0.14) w=0.004 den=5 | (0.19,0.15) w=0.003 den=7 | (0.80,-1.22) w=0.025 den=11 | (0.98,-0.75) w=0.021 den=12 | (0.58,-0.91) w=0.058 den=10
+[PHERO EXPIRED] robot1 [4]: (-0.38,-0.14) w=0.001 den=5 | (0.80,-1.22) w=0.008 den=11 | (0.98,-0.75) w=0.007 den=12 | (0.58,-0.91) w=0.018 den=10
+[PHERO EXPIRED] robot1 [3]: (0.80,-1.22) w=0.006 den=11 | (0.98,-0.75) w=0.005 den=12 | (0.58,-0.91) w=0.014 den=10
+[PHERO EXPIRED] robot1 [2]: (0.80,-1.22) w=0.001 den=11 | (0.58,-0.91) w=0.003 den=10
+[PHERO EXPIRED] robot1 [1]: (0.58,-0.91) w=0.002 den=10
+[PHERO ADDED  ] robot1 [2]: (0.58,-0.91) w=0.002 den=10 | (-0.58,-0.21) w=0.432 den=4
+[PHERO UPDATED] robot1 [2]: (0.58,-0.91) w=0.001 den=10 | (-0.58,-0.21) w=0.394 den=4
+[PHERO UPDATED] robot1 [2]: (0.58,-0.91) w=0.001 den=10 | (-0.58,-0.21) w=0.359 den=4
+[PHERO UPDATED] robot1 [2]: (0.58,-0.91) w=0.001 den=10 | (-0.58,-0.21) w=0.327 den=4
+[PHERO UPDATED] robot1 [2]: (0.58,-0.91) w=0.001 den=10 | (-0.58,-0.21) w=0.298 den=4
+[PHERO EXPIRED] robot1 [1]: (-0.58,-0.21) w=0.277 den=4
+[PHERO UPDATED] robot1 [1]: (-0.58,-0.21) w=0.272 den=4
+[PHERO ADDED  ] robot1 [2]: (-0.58,-0.21) w=0.046 den=4 | (0.49,0.49) w=0.438 den=1
+[PHERO UPDATED] robot1 [2]: (-0.58,-0.21) w=0.042 den=4 | (0.49,0.49) w=0.399 den=1
+[PHERO ADDED  ] robot1 [3]: (-0.58,-0.21) w=0.005 den=4 | (0.49,0.49) w=0.046 den=1 | (-0.60,0.77) w=0.190 den=10
+[PHERO UPDATED] robot1 [3]: (-0.58,-0.21) w=0.004 den=4 | (0.49,0.49) w=0.042 den=1 | (-0.60,0.77) w=0.173 den=10
+[PHERO UPDATED] robot1 [3]: (-0.58,-0.21) w=0.004 den=4 | (0.49,0.49) w=0.038 den=1 | (-0.60,0.77) w=0.158 den=10
+[PHERO ADDED  ] robot1 [4]: (-0.58,-0.21) w=0.002 den=4 | (0.49,0.49) w=0.017 den=1 | (-0.60,0.77) w=0.070 den=10 | (-1.02,0.84) w=0.172 den=9
+[PHERO UPDATED] robot1 [4]: (-0.58,-0.21) w=0.002 den=4 | (0.49,0.49) w=0.015 den=1 | (-0.60,0.77) w=0.063 den=10 | (-1.02,0.84) w=0.157 den=9
+[PHERO UPDATED] robot1 [4]: (-0.58,-0.21) w=0.001 den=4 | (0.49,0.49) w=0.014 den=1 | (-0.60,0.77) w=0.058 den=10 | (-1.02,0.84) w=0.143 den=9
+[PHERO EXPIRED] robot1 [3]: (0.49,0.49) w=0.010 den=1 | (-0.60,0.77) w=0.040 den=10 | (-1.02,0.84) w=0.098 den=9
+[PHERO ADDED  ] robot1 [4]: (0.49,0.49) w=0.008 den=1 | (-0.60,0.77) w=0.035 den=10 | (-1.02,0.84) w=0.087 den=9 | (1.62,0.74) w=1.000 den=16
+[PICKUP]   robot1 at (1.62,0.74) | density=16
+  [PHERO]  Laid at (1.62,0.74) density=16 prob=1.00 total_entries=4
+[DEPOSIT]  robot1 | site=(1.62,0.74) density=16
+  [TARGET]   robot1 → SITE (1.62,0.74)
+[PHERO UPDATED] robot1 [4]: (0.49,0.49) w=0.002 den=1 | (-0.60,0.77) w=0.008 den=10 | (-1.02,0.84) w=0.021 den=9 | (1.62,0.74) w=0.242 den=16
+[PHERO UPDATED] robot1 [4]: (0.49,0.49) w=0.002 den=1 | (-0.60,0.77) w=0.008 den=10 | (-1.02,0.84) w=0.019 den=9 | (1.62,0.74) w=0.220 den=16
+[PHERO EXPIRED] robot1 [3]: (-0.60,0.77) w=0.004 den=10 | (-1.02,0.84) w=0.010 den=9 | (1.62,0.74) w=0.119 den=16
+[PHERO ADDED  ] robot1 [4]: (-0.60,0.77) w=0.002 den=10 | (-1.02,0.84) w=0.005 den=9 | (1.62,0.74) w=0.063 den=16 | (0.89,-1.22) w=0.539 den=5
+[PHERO UPDATED] robot1 [4]: (-0.60,0.77) w=0.002 den=10 | (-1.02,0.84) w=0.005 den=9 | (1.62,0.74) w=0.057 den=16 | (0.89,-1.22) w=0.491 den=5
+[PHERO EXPIRED] robot1 [3]: (-1.02,0.84) w=0.002 den=9 | (1.62,0.74) w=0.029 den=16 | (0.89,-1.22) w=0.245 den=5
+[PHERO EXPIRED] robot1 [2]: (1.62,0.74) w=0.012 den=16 | (0.89,-1.22) w=0.099 den=5
+[PHERO ADDED  ] robot1 [3]: (1.62,0.74) w=0.010 den=16 | (0.89,-1.22) w=0.087 den=5 | (-0.60,0.77) w=0.107 den=8
+[PHERO UPDATED] robot1 [3]: (1.62,0.74) w=0.009 den=16 | (0.89,-1.22) w=0.079 den=5 | (-0.60,0.77) w=0.098 den=8
+[PHERO UPDATED] robot1 [3]: (1.62,0.74) w=0.008 den=16 | (0.89,-1.22) w=0.072 den=5 | (-0.60,0.77) w=0.089 den=8
+[PHERO UPDATED] robot1 [3]: (1.62,0.74) w=0.008 den=16 | (0.89,-1.22) w=0.065 den=5 | (-0.60,0.77) w=0.081 den=8
+[PHERO UPDATED] robot1 [3]: (1.62,0.74) w=0.006 den=16 | (0.89,-1.22) w=0.054 den=5 | (-0.60,0.77) w=0.067 den=8
+[PHERO ADDED  ] robot1 [4]: (1.62,0.74) w=0.006 den=16 | (0.89,-1.22) w=0.052 den=5 | (-0.60,0.77) w=0.064 den=8 | (-1.02,0.84) w=0.366 den=7
+[PHERO UPDATED] robot1 [4]: (1.62,0.74) w=0.005 den=16 | (0.89,-1.22) w=0.047 den=5 | (-0.60,0.77) w=0.058 den=8 | (-1.02,0.84) w=0.334 den=7
+[PHERO EXPIRED] robot1 [3]: (0.89,-1.22) w=0.009 den=5 | (-0.60,0.77) w=0.011 den=8 | (-1.02,0.84) w=0.061 den=7
+[PHERO ADDED  ] robot1 [4]: (0.89,-1.22) w=0.007 den=5 | (-0.60,0.77) w=0.009 den=8 | (-1.02,0.84) w=0.053 den=7 | (1.92,0.94) w=1.000 den=15
+[PICKUP]   robot1 at (1.92,0.94) | density=15
+  [PHERO]  Laid at (1.92,0.94) density=15 prob=1.00 total_entries=4
+[PHERO UPDATED] robot1 [4]: (0.89,-1.22) w=0.004 den=5 | (-0.60,0.77) w=0.094 den=6 | (-1.02,0.84) w=0.025 den=7 | (1.92,0.94) w=0.471 den=15
+[PHERO UPDATED] robot1 [4]: (0.89,-1.22) w=0.003 den=5 | (-0.60,0.77) w=0.089 den=6 | (-1.02,0.84) w=0.024 den=7 | (1.92,0.94) w=0.451 den=15
+[DEPOSIT]  robot1 | site=(1.92,0.94) density=15
+  [TARGET]   robot1 → SITE (1.92,0.94)
+[PHERO UPDATED] robot1 [4]: (0.89,-1.22) w=0.003 den=5 | (-0.60,0.77) w=0.081 den=6 | (-1.02,0.84) w=0.022 den=7 | (1.92,0.94) w=0.411 den=15
+[PHERO UPDATED] robot1 [4]: (0.89,-1.22) w=0.003 den=5 | (-0.60,0.77) w=0.074 den=6 | (-1.02,0.84) w=0.020 den=7 | (1.92,0.94) w=0.374 den=15
+[PHERO UPDATED] robot1 [4]: (0.89,-1.22) w=0.003 den=5 | (-0.60,0.77) w=0.067 den=6 | (-1.02,0.84) w=0.018 den=7 | (1.92,0.94) w=0.341 den=15
+[PHERO EXPIRED] robot1 [3]: (-0.60,0.77) w=0.027 den=6 | (-1.02,0.84) w=0.007 den=7 | (1.92,0.94) w=0.136 den=15
+[PHERO UPDATED] robot1 [3]: (-0.60,0.77) w=0.399 den=5 | (-1.02,0.84) w=0.005 den=7 | (1.92,0.94) w=0.089 den=15
+[PHERO UPDATED] robot1 [3]: (-0.60,0.77) w=0.363 den=5 | (-1.02,0.84) w=0.004 den=7 | (1.92,0.94) w=0.081 den=15
+[PHERO UPDATED] robot1 [3]: (-0.60,0.77) w=0.331 den=5 | (-1.02,0.84) w=0.004 den=7 | (1.92,0.94) w=0.073 den=15
+[PHERO UPDATED] robot1 [3]: (-0.60,0.77) w=0.302 den=5 | (-1.02,0.84) w=0.003 den=7 | (1.92,0.94) w=0.067 den=15
+[PHERO UPDATED] robot1 [3]: (-0.60,0.77) w=0.275 den=5 | (-1.02,0.84) w=0.003 den=7 | (1.92,0.94) w=0.061 den=15
+[PHERO UPDATED] robot1 [3]: (-0.60,0.77) w=0.251 den=5 | (-1.02,0.84) w=0.003 den=7 | (1.92,0.94) w=0.055 den=15
+[PHERO UPDATED] robot1 [3]: (-0.60,0.77) w=0.228 den=5 | (-1.02,0.84) w=0.003 den=7 | (1.92,0.94) w=0.050 den=15
+[PHERO UPDATED] robot1 [3]: (-0.60,0.77) w=0.208 den=5 | (-1.02,0.84) w=0.002 den=7 | (1.92,0.94) w=0.045 den=15
+[PHERO UPDATED] robot1 [3]: (-0.60,0.77) w=0.190 den=5 | (-1.02,0.84) w=0.002 den=7 | (1.92,0.94) w=0.041 den=15
+[PHERO UPDATED] robot1 [3]: (-0.60,0.77) w=0.173 den=5 | (-1.02,0.84) w=0.002 den=7 | (1.92,0.94) w=0.038 den=15
+[PHERO UPDATED] robot1 [3]: (-0.60,0.77) w=0.158 den=5 | (-1.02,0.84) w=0.002 den=7 | (1.92,0.94) w=0.034 den=15
+[PHERO UPDATED] robot1 [3]: (-0.60,0.77) w=0.144 den=5 | (-1.02,0.84) w=0.002 den=7 | (1.92,0.94) w=0.031 den=15
+[PHERO UPDATED] robot1 [3]: (-0.60,0.77) w=0.131 den=5 | (-1.02,0.84) w=0.001 den=7 | (1.92,0.94) w=0.028 den=15
+[PHERO UPDATED] robot1 [3]: (-0.60,0.77) w=0.119 den=5 | (-1.02,0.84) w=0.001 den=7 | (1.92,0.94) w=0.026 den=15
+[PHERO EXPIRED] robot1 [2]: (-0.60,0.77) w=0.089 den=5 | (1.92,0.94) w=0.019 den=15
+[PHERO ADDED  ] robot1 [3]: (-0.60,0.77) w=0.035 den=5 | (1.92,0.94) w=0.007 den=15 | (-2.09,-0.56) w=1.000 den=9
+[PICKUP]   robot1 at (-2.09,-0.56) | density=9
+  [PHERO]  Laid at (-2.09,-0.56) density=9 prob=1.00 total_entries=3
+[DEPOSIT]  robot1 | site=(-2.09,-0.56) density=9
+  [TARGET]   robot1 → SITE (-2.09,-0.56)
+[PHERO EXPIRED] robot1 [2]: (-0.60,0.77) w=0.005 den=5 | (-2.09,-0.56) w=0.135 den=9
+[PHERO ADDED  ] robot1 [3]: (-0.60,0.77) w=0.003 den=5 | (-2.09,-0.56) w=0.078 den=9 | (-0.91,0.86) w=0.362 den=4
+[PHERO UPDATED] robot1 [3]: (-0.60,0.77) w=0.002 den=5 | (-2.09,-0.56) w=0.071 den=9 | (-0.91,0.86) w=0.329 den=4
+[PHERO UPDATED] robot1 [3]: (-0.60,0.77) w=0.002 den=5 | (-2.09,-0.56) w=0.067 den=9 | (-0.91,0.86) w=0.314 den=4
+[PHERO UPDATED] robot1 [3]: (-0.60,0.77) w=0.002 den=5 | (-2.09,-0.56) w=0.061 den=9 | (-0.91,0.86) w=0.287 den=4
+[PHERO EXPIRED] robot1 [2]: (-2.09,-0.56) w=0.029 den=9 | (-0.91,0.86) w=0.134 den=4
+[PHERO ADDED  ] robot1 [3]: (-2.09,-0.56) w=0.017 den=9 | (-0.91,0.86) w=0.077 den=4 | (1.96,0.94) w=1.000 den=14
+[PICKUP]   robot1 at (1.96,0.94) | density=14
+  [PHERO]  Laid at (1.96,0.94) density=14 prob=1.00 total_entries=3
+[DEPOSIT]  robot1 | site=(1.96,0.94) density=14
+  [TARGET]   robot1 → SITE (1.96,0.94)
+[PHERO EXPIRED] robot1 [2]: (-0.91,0.86) w=0.005 den=4 | (1.96,0.94) w=0.060 den=14
+[PHERO EXPIRED] robot1 [1]: (1.96,0.94) w=0.013 den=14
+[PHERO EXPIRED] robot1 [0]: empty
+[PHERO ADDED  ] robot1 [1]: (1.97,0.86) w=0.633 den=13
+[PHERO UPDATED] robot1 [1]: (1.97,0.86) w=0.577 den=13
+[PHERO UPDATED] robot1 [1]: (1.97,0.86) w=0.176 den=13
+[PHERO UPDATED] robot1 [1]: (1.97,0.86) w=0.160 den=13
+[PHERO UPDATED] robot1 [1]: (1.97,0.86) w=0.104 den=13
+[PHERO UPDATED] robot1 [1]: (1.97,0.86) w=0.095 den=13
+[PHERO UPDATED] robot1 [1]: (1.97,0.86) w=0.087 den=13
+[PHERO UPDATED] robot1 [1]: (1.97,0.86) w=0.079 den=13
+[PHERO UPDATED] robot1 [1]: (1.97,0.86) w=0.001 den=13
+[PHERO UPDATED] robot1 [1]: (1.97,0.86) w=0.001 den=13
+[PHERO UPDATED] robot1 [1]: (1.97,0.86) w=0.001 den=13
+[PHERO UPDATED] robot1 [1]: (1.97,0.86) w=0.001 den=13
+[PHERO ADDED  ] robot1 [2]: (1.97,0.86) w=0.001 den=13 | (1.64,0.49) w=1.000 den=12
+[PICKUP]   robot1 at (1.64,0.49) | density=12
+  [PHERO]  Laid at (1.64,0.49) density=12 prob=1.00 total_entries=2
+[PHERO EXPIRED] robot1 [1]: (1.64,0.49) w=0.967 den=12
+[DEPOSIT]  robot1 | site=(1.64,0.49) density=12
+  [TARGET]   robot1 → SITE (1.64,0.49)
+[PHERO UPDATED] robot1 [1]: (1.64,0.49) w=0.041 den=12
+[PHERO UPDATED] robot1 [1]: (1.64,0.49) w=0.005 den=12
+[PHERO UPDATED] robot1 [1]: (1.64,0.49) w=0.005 den=12
+[PHERO UPDATED] robot1 [1]: (1.64,0.49) w=0.004 den=12
+[PHERO UPDATED] robot1 [1]: (1.64,0.49) w=0.004 den=12
+[PHERO UPDATED] robot1 [1]: (1.64,0.49) w=0.004 den=12
+[PHERO UPDATED] robot1 [1]: (1.64,0.49) w=0.003 den=12
+[PHERO UPDATED] robot1 [1]: (1.64,0.49) w=0.003 den=12
+[PHERO UPDATED] robot1 [1]: (1.64,0.49) w=0.003 den=12
+[PHERO UPDATED] robot1 [1]: (1.64,0.49) w=0.003 den=12
+[PHERO UPDATED] robot1 [1]: (1.64,0.49) w=0.002 den=12
+[PHERO UPDATED] robot1 [1]: (1.64,0.49) w=0.002 den=12
+[PHERO UPDATED] robot1 [1]: (1.64,0.49) w=0.002 den=12
+[PHERO UPDATED] robot1 [1]: (1.64,0.49) w=0.002 den=12
+[PHERO UPDATED] robot1 [1]: (1.64,0.49) w=0.002 den=12
+[PHERO UPDATED] robot1 [1]: (1.64,0.49) w=0.001 den=12
+[PHERO UPDATED] robot1 [1]: (1.64,0.49) w=0.001 den=12
+[PHERO UPDATED] robot1 [1]: (1.64,0.49) w=0.001 den=12
+[PHERO UPDATED] robot1 [1]: (1.64,0.49) w=0.001 den=12
+[PHERO EXPIRED] robot1 [0]: empty
+[PHERO ADDED  ] robot1 [1]: (-2.14,-0.16) w=0.272 den=8
+[PHERO UPDATED] robot1 [1]: (-2.14,-0.16) w=0.217 den=8
+[PHERO UPDATED] robot1 [1]: (-2.14,-0.16) w=0.207 den=8
+[PHERO UPDATED] robot1 [1]: (-2.14,-0.16) w=0.198 den=8
+[PHERO UPDATED] robot1 [1]: (-2.14,-0.16) w=0.189 den=8
+[PHERO UPDATED] robot1 [1]: (-2.14,-0.16) w=0.028 den=8
+[PHERO UPDATED] robot1 [1]: (-2.14,-0.16) w=0.025 den=8
+[PHERO UPDATED] robot1 [1]: (-2.14,-0.16) w=0.023 den=8
+[PHERO UPDATED] robot1 [1]: (-2.14,-0.16) w=0.011 den=8
+[PHERO UPDATED] robot1 [1]: (-2.14,-0.16) w=0.010 den=8
+[PHERO EXPIRED] robot1 [0]: empty
+[robot1] Loading per-robot model: /home/sara/Documents/Centralized Learning/RL-FL-Foraging/robot1_decentralized_indep_v8_4000000_steps.zip
+[robot1] Model loaded (19D obs, independent PPO v8).
+[PHERO ADDED  ] robot1 [1]: (-0.38,-0.14) w=1.000 den=6
+[PICKUP]   robot1 at (-0.38,-0.14) | density=6
+  [PHERO]  Laid at (-0.38,-0.14) density=6 prob=0.97 total_entries=1
+[DEPOSIT]  robot1 | site=(-0.38,-0.14) density=6
+  [TARGET]   robot1 → SITE (-0.38,-0.14)
+[PHERO ADDED  ] robot1 [2]: (-0.38,-0.14) w=0.693 den=6 | (0.19,0.15) w=0.827 den=7
+[PHERO UPDATED] robot1 [2]: (-0.38,-0.14) w=1.000 den=5 | (0.19,0.15) w=0.753 den=7
+[PICKUP]   robot1 at (-0.16,-0.25) | density=5
+  [PHERO]  Laid at (-0.16,-0.25) density=5 prob=0.92 total_entries=2
+[PHERO UPDATED] robot1 [2]: (-0.38,-0.14) w=0.997 den=5 | (0.19,0.15) w=0.753 den=7
+[PHERO UPDATED] robot1 [2]: (-0.38,-0.14) w=0.953 den=5 | (0.19,0.15) w=0.718 den=7
+[DEPOSIT]  robot1 | site=(-0.16,-0.25) density=5
+  [TARGET]   robot1 → SITE (-0.16,-0.25)
+[PHERO ADDED  ] robot1 [3]: (-0.38,-0.14) w=0.169 den=5 | (0.19,0.15) w=0.127 den=7 | (0.80,-1.22) w=1.000 den=11
+[PICKUP]   robot1 at (0.80,-1.22) | density=11
+  [PHERO]  Laid at (0.80,-1.22) density=11 prob=1.00 total_entries=3
+[PHERO ADDED  ] robot1 [4]: (-0.38,-0.14) w=0.121 den=5 | (0.19,0.15) w=0.091 den=7 | (0.80,-1.22) w=0.718 den=11 | (0.98,-0.75) w=0.600 den=12
+[PHERO UPDATED] robot1 [4]: (-0.38,-0.14) w=0.115 den=5 | (0.19,0.15) w=0.087 den=7 | (0.80,-1.22) w=0.687 den=11 | (0.98,-0.75) w=0.572 den=12
+[PHERO UPDATED] robot1 [4]: (-0.38,-0.14) w=0.105 den=5 | (0.19,0.15) w=0.079 den=7 | (0.80,-1.22) w=0.626 den=11 | (0.98,-0.75) w=0.520 den=12
+[DEPOSIT]  robot1 | site=(0.80,-1.22) density=11
+  [TARGET]   robot1 → SITE (0.80,-1.22)
+[PHERO UPDATED] robot1 [4]: (-0.38,-0.14) w=0.095 den=5 | (0.19,0.15) w=0.072 den=7 | (0.80,-1.22) w=0.570 den=11 | (0.98,-0.75) w=0.472 den=12
+[PHERO ADDED  ] robot1 [5]: (-0.38,-0.14) w=0.059 den=5 | (0.19,0.15) w=0.044 den=7 | (0.80,-1.22) w=0.353 den=11 | (0.98,-0.75) w=0.292 den=12 | (0.58,-0.91) w=0.798 den=10
+[PHERO UPDATED] robot1 [5]: (-0.38,-0.14) w=0.021 den=5 | (0.19,0.15) w=0.016 den=7 | (0.80,-1.22) w=0.129 den=11 | (0.98,-0.75) w=0.107 den=12 | (0.58,-0.91) w=0.292 den=10
+[PHERO UPDATED] robot1 [5]: (-0.38,-0.14) w=0.020 den=5 | (0.19,0.15) w=0.015 den=7 | (0.80,-1.22) w=0.117 den=11 | (0.98,-0.75) w=0.097 den=12 | (0.58,-0.91) w=0.266 den=10
+[PHERO UPDATED] robot1 [5]: (-0.38,-0.14) w=0.012 den=5 | (0.19,0.15) w=1.000 den=4 | (0.80,-1.22) w=0.071 den=11 | (0.98,-0.75) w=0.059 den=12 | (0.58,-0.91) w=0.161 den=10
+[PICKUP]   robot1 at (0.45,0.10) | density=4
+  [PHERO]  Laid at (0.45,0.10) density=4 prob=0.82 total_entries=5
+[DEPOSIT]  robot1 | site=(0.45,0.10) density=4
+  [TARGET]   robot1 → SITE (0.45,0.10)
+[PICKUP]   robot1 at (0.27,0.24) | density=3
+[DEPOSIT]  robot1 | site=(0.27,0.24) density=3
+  [TARGET]   robot1 → SITE (0.27,0.24)
+[PHERO UPDATED] robot1 [5]: (-0.38,-0.14) w=0.005 den=5 | (0.19,0.15) w=0.430 den=4 | (0.80,-1.22) w=0.031 den=11 | (0.98,-0.75) w=0.025 den=12 | (0.58,-0.91) w=0.070 den=10
+[PHERO UPDATED] robot1 [5]: (-0.38,-0.14) w=0.005 den=5 | (0.19,0.15) w=0.411 den=4 | (0.80,-1.22) w=0.029 den=11 | (0.98,-0.75) w=0.024 den=12 | (0.58,-0.91) w=0.066 den=10
+[PHERO UPDATED] robot1 [5]: (-0.38,-0.14) w=0.004 den=5 | (0.19,0.15) w=0.375 den=4 | (0.80,-1.22) w=0.026 den=11 | (0.98,-0.75) w=0.022 den=12 | (0.58,-0.91) w=0.060 den=10
+[PHERO EXPIRED] robot1 [4]: (0.19,0.15) w=0.085 den=4 | (0.80,-1.22) w=0.006 den=11 | (0.98,-0.75) w=0.005 den=12 | (0.58,-0.91) w=0.014 den=10
+[PHERO EXPIRED] robot1 [3]: (0.19,0.15) w=0.017 den=4 | (0.80,-1.22) w=0.001 den=11 | (0.58,-0.91) w=0.003 den=10
+[PHERO EXPIRED] robot1 [2]: (0.19,0.15) w=0.014 den=4 | (0.58,-0.91) w=0.002 den=10
+[PHERO ADDED  ] robot1 [3]: (0.19,0.15) w=0.010 den=4 | (0.58,-0.91) w=0.002 den=10 | (-0.22,-0.24) w=0.646 den=3
+[PHERO UPDATED] robot1 [3]: (0.19,0.15) w=0.009 den=4 | (0.58,-0.91) w=0.001 den=10 | (-0.22,-0.24) w=0.589 den=3
+[PHERO UPDATED] robot1 [3]: (0.19,0.15) w=0.008 den=4 | (0.58,-0.91) w=0.001 den=10 | (-0.22,-0.24) w=0.537 den=3
+[PHERO UPDATED] robot1 [3]: (0.19,0.15) w=0.007 den=4 | (0.58,-0.91) w=0.001 den=10 | (-0.22,-0.24) w=0.489 den=3
+[PHERO UPDATED] robot1 [3]: (0.19,0.15) w=0.007 den=4 | (0.58,-0.91) w=0.001 den=10 | (-0.22,-0.24) w=0.446 den=3
+[PHERO EXPIRED] robot1 [2]: (0.19,0.15) w=0.006 den=4 | (-0.22,-0.24) w=0.416 den=3
+[PHERO UPDATED] robot1 [2]: (0.19,0.15) w=0.006 den=4 | (-0.22,-0.24) w=0.406 den=3
+[PHERO EXPIRED] robot1 [1]: (-0.22,-0.24) w=0.067 den=3
+[PHERO UPDATED] robot1 [1]: (-0.22,-0.24) w=0.066 den=3
+[PHERO ADDED  ] robot1 [2]: (-0.22,-0.24) w=0.007 den=3 | (-0.60,0.77) w=0.190 den=10
+[PHERO UPDATED] robot1 [2]: (-0.22,-0.24) w=0.007 den=3 | (-0.60,0.77) w=0.173 den=10
+[PHERO UPDATED] robot1 [2]: (-0.22,-0.24) w=0.006 den=3 | (-0.60,0.77) w=0.158 den=10
+[PHERO ADDED  ] robot1 [3]: (-0.22,-0.24) w=0.003 den=3 | (-0.60,0.77) w=0.070 den=10 | (-1.02,0.84) w=0.172 den=9
+[PHERO UPDATED] robot1 [3]: (-0.22,-0.24) w=0.002 den=3 | (-0.60,0.77) w=0.063 den=10 | (-1.02,0.84) w=0.157 den=9
+[PHERO UPDATED] robot1 [3]: (-0.22,-0.24) w=0.002 den=3 | (-0.60,0.77) w=0.058 den=10 | (-1.02,0.84) w=0.143 den=9
+[PHERO ADDED  ] robot1 [4]: (-0.22,-0.24) w=0.001 den=3 | (-0.60,0.77) w=0.035 den=10 | (-1.02,0.84) w=0.087 den=9 | (1.62,0.74) w=1.000 den=16
+[PICKUP]   robot1 at (1.62,0.74) | density=16
+  [PHERO]  Laid at (1.62,0.74) density=16 prob=1.00 total_entries=4
+[PHERO EXPIRED] robot1 [3]: (-0.60,0.77) w=0.026 den=10 | (-1.02,0.84) w=0.066 den=9 | (1.62,0.74) w=0.755 den=16
+[DEPOSIT]  robot1 | site=(1.62,0.74) density=16
+  [TARGET]   robot1 → SITE (1.62,0.74)
+[PHERO UPDATED] robot1 [3]: (-0.60,0.77) w=0.008 den=10 | (-1.02,0.84) w=0.021 den=9 | (1.62,0.74) w=0.242 den=16
+[PHERO UPDATED] robot1 [3]: (-0.60,0.77) w=0.008 den=10 | (-1.02,0.84) w=0.019 den=9 | (1.62,0.74) w=0.220 den=16
+[PHERO ADDED  ] robot1 [4]: (-0.60,0.77) w=0.002 den=10 | (-1.02,0.84) w=0.005 den=9 | (1.62,0.74) w=0.063 den=16 | (0.89,-1.22) w=0.539 den=5
+[PHERO UPDATED] robot1 [4]: (-0.60,0.77) w=0.002 den=10 | (-1.02,0.84) w=0.005 den=9 | (1.62,0.74) w=0.057 den=16 | (0.89,-1.22) w=0.491 den=5
+[PHERO EXPIRED] robot1 [3]: (-1.02,0.84) w=0.002 den=9 | (1.62,0.74) w=0.029 den=16 | (0.89,-1.22) w=0.245 den=5
+[PHERO EXPIRED] robot1 [2]: (1.62,0.74) w=0.012 den=16 | (0.89,-1.22) w=0.099 den=5
+[PHERO ADDED  ] robot1 [3]: (1.62,0.74) w=0.010 den=16 | (0.89,-1.22) w=0.087 den=5 | (-0.60,0.77) w=0.107 den=8
+[PHERO UPDATED] robot1 [3]: (1.62,0.74) w=0.009 den=16 | (0.89,-1.22) w=0.079 den=5 | (-0.60,0.77) w=0.098 den=8
+[PHERO UPDATED] robot1 [3]: (1.62,0.74) w=0.008 den=16 | (0.89,-1.22) w=0.072 den=5 | (-0.60,0.77) w=0.089 den=8
+[PHERO UPDATED] robot1 [3]: (1.62,0.74) w=0.008 den=16 | (0.89,-1.22) w=0.065 den=5 | (-0.60,0.77) w=0.081 den=8
+[PHERO UPDATED] robot1 [3]: (1.62,0.74) w=0.006 den=16 | (0.89,-1.22) w=0.054 den=5 | (-0.60,0.77) w=0.067 den=8
+[PHERO ADDED  ] robot1 [4]: (1.62,0.74) w=0.006 den=16 | (0.89,-1.22) w=0.052 den=5 | (-0.60,0.77) w=0.064 den=8 | (-1.02,0.84) w=0.366 den=7
+[PHERO UPDATED] robot1 [4]: (1.62,0.74) w=0.005 den=16 | (0.89,-1.22) w=0.047 den=5 | (-0.60,0.77) w=0.058 den=8 | (-1.02,0.84) w=0.334 den=7
+[PHERO EXPIRED] robot1 [3]: (0.89,-1.22) w=0.009 den=5 | (-0.60,0.77) w=0.011 den=8 | (-1.02,0.84) w=0.061 den=7
+[PHERO ADDED  ] robot1 [4]: (0.89,-1.22) w=0.007 den=5 | (-0.60,0.77) w=0.009 den=8 | (-1.02,0.84) w=0.053 den=7 | (1.92,0.94) w=1.000 den=15
+[PICKUP]   robot1 at (1.92,0.94) | density=15
+  [PHERO]  Laid at (1.92,0.94) density=15 prob=1.00 total_entries=4
+[PHERO UPDATED] robot1 [4]: (0.89,-1.22) w=0.004 den=5 | (-0.60,0.77) w=0.094 den=6 | (-1.02,0.84) w=0.025 den=7 | (1.92,0.94) w=0.471 den=15
+[PHERO UPDATED] robot1 [4]: (0.89,-1.22) w=0.003 den=5 | (-0.60,0.77) w=0.089 den=6 | (-1.02,0.84) w=0.024 den=7 | (1.92,0.94) w=0.451 den=15
+[DEPOSIT]  robot1 | site=(1.92,0.94) density=15
+  [TARGET]   robot1 → SITE (1.92,0.94)
+[PHERO UPDATED] robot1 [4]: (0.89,-1.22) w=0.003 den=5 | (-0.60,0.77) w=0.081 den=6 | (-1.02,0.84) w=0.022 den=7 | (1.92,0.94) w=0.411 den=15
+[PHERO UPDATED] robot1 [4]: (0.89,-1.22) w=0.003 den=5 | (-0.60,0.77) w=0.074 den=6 | (-1.02,0.84) w=0.020 den=7 | (1.92,0.94) w=0.374 den=15
+[PHERO UPDATED] robot1 [4]: (0.89,-1.22) w=0.003 den=5 | (-0.60,0.77) w=0.067 den=6 | (-1.02,0.84) w=0.018 den=7 | (1.92,0.94) w=0.341 den=15
+[PHERO EXPIRED] robot1 [3]: (-0.60,0.77) w=0.027 den=6 | (-1.02,0.84) w=0.007 den=7 | (1.92,0.94) w=0.136 den=15
+[PHERO UPDATED] robot1 [3]: (-0.60,0.77) w=0.399 den=5 | (-1.02,0.84) w=0.005 den=7 | (1.92,0.94) w=0.089 den=15
+[PHERO UPDATED] robot1 [3]: (-0.60,0.77) w=0.363 den=5 | (-1.02,0.84) w=0.004 den=7 | (1.92,0.94) w=0.081 den=15
+[PHERO UPDATED] robot1 [3]: (-0.60,0.77) w=0.331 den=5 | (-1.02,0.84) w=0.004 den=7 | (1.92,0.94) w=0.073 den=15
+[PHERO UPDATED] robot1 [3]: (-0.60,0.77) w=0.302 den=5 | (-1.02,0.84) w=0.003 den=7 | (1.92,0.94) w=0.067 den=15
+[PHERO UPDATED] robot1 [3]: (-0.60,0.77) w=0.275 den=5 | (-1.02,0.84) w=0.003 den=7 | (1.92,0.94) w=0.061 den=15
+[PHERO UPDATED] robot1 [3]: (-0.60,0.77) w=0.251 den=5 | (-1.02,0.84) w=0.003 den=7 | (1.92,0.94) w=0.055 den=15
+[PHERO UPDATED] robot1 [3]: (-0.60,0.77) w=0.228 den=5 | (-1.02,0.84) w=0.003 den=7 | (1.92,0.94) w=0.050 den=15
+[PHERO UPDATED] robot1 [3]: (-0.60,0.77) w=0.208 den=5 | (-1.02,0.84) w=0.002 den=7 | (1.92,0.94) w=0.045 den=15
+[PHERO UPDATED] robot1 [3]: (-0.60,0.77) w=0.190 den=5 | (-1.02,0.84) w=0.002 den=7 | (1.92,0.94) w=0.041 den=15
+[PHERO UPDATED] robot1 [3]: (-0.60,0.77) w=0.173 den=5 | (-1.02,0.84) w=0.002 den=7 | (1.92,0.94) w=0.038 den=15
+[PHERO UPDATED] robot1 [3]: (-0.60,0.77) w=0.158 den=5 | (-1.02,0.84) w=0.002 den=7 | (1.92,0.94) w=0.034 den=15
+[PHERO UPDATED] robot1 [3]: (-0.60,0.77) w=0.144 den=5 | (-1.02,0.84) w=0.002 den=7 | (1.92,0.94) w=0.031 den=15
+[PHERO UPDATED] robot1 [3]: (-0.60,0.77) w=0.131 den=5 | (-1.02,0.84) w=0.001 den=7 | (1.92,0.94) w=0.028 den=15
+[PHERO UPDATED] robot1 [3]: (-0.60,0.77) w=0.119 den=5 | (-1.02,0.84) w=0.001 den=7 | (1.92,0.94) w=0.026 den=15
+[PHERO EXPIRED] robot1 [2]: (-0.60,0.77) w=0.089 den=5 | (1.92,0.94) w=0.019 den=15
+[PHERO ADDED  ] robot1 [3]: (-0.60,0.77) w=0.035 den=5 | (1.92,0.94) w=0.007 den=15 | (-2.09,-0.56) w=1.000 den=9
+[PICKUP]   robot1 at (-2.09,-0.56) | density=9
+  [PHERO]  Laid at (-2.09,-0.56) density=9 prob=1.00 total_entries=3
+[DEPOSIT]  robot1 | site=(-2.09,-0.56) density=9
+  [TARGET]   robot1 → SITE (-2.09,-0.56)
+[PHERO EXPIRED] robot1 [2]: (-0.60,0.77) w=0.005 den=5 | (-2.09,-0.56) w=0.135 den=9
+[PHERO ADDED  ] robot1 [3]: (-0.60,0.77) w=0.003 den=5 | (-2.09,-0.56) w=0.078 den=9 | (-0.91,0.86) w=0.362 den=4
+[PHERO UPDATED] robot1 [3]: (-0.60,0.77) w=0.002 den=5 | (-2.09,-0.56) w=0.071 den=9 | (-0.91,0.86) w=0.329 den=4
+[PHERO UPDATED] robot1 [3]: (-0.60,0.77) w=0.002 den=5 | (-2.09,-0.56) w=0.067 den=9 | (-0.91,0.86) w=0.314 den=4
+[PHERO UPDATED] robot1 [3]: (-0.60,0.77) w=0.002 den=5 | (-2.09,-0.56) w=0.061 den=9 | (-0.91,0.86) w=0.287 den=4
+[PHERO EXPIRED] robot1 [2]: (-2.09,-0.56) w=0.029 den=9 | (-0.91,0.86) w=0.134 den=4
+[PHERO ADDED  ] robot1 [3]: (-2.09,-0.56) w=0.017 den=9 | (-0.91,0.86) w=0.077 den=4 | (1.96,0.94) w=1.000 den=14
+[PICKUP]   robot1 at (1.96,0.94) | density=14
+  [PHERO]  Laid at (1.96,0.94) density=14 prob=1.00 total_entries=3
+[DEPOSIT]  robot1 | site=(1.96,0.94) density=14
+  [TARGET]   robot1 → SITE (1.96,0.94)
+[PHERO EXPIRED] robot1 [2]: (-0.91,0.86) w=0.005 den=4 | (1.96,0.94) w=0.060 den=14
+[PHERO EXPIRED] robot1 [1]: (1.96,0.94) w=0.013 den=14
+[PHERO EXPIRED] robot1 [0]: empty
+[PHERO ADDED  ] robot1 [1]: (1.97,0.86) w=0.633 den=13
+[PHERO UPDATED] robot1 [1]: (1.97,0.86) w=0.577 den=13
+[PHERO UPDATED] robot1 [1]: (1.97,0.86) w=0.176 den=13
+[PHERO UPDATED] robot1 [1]: (1.97,0.86) w=0.160 den=13
+[PHERO UPDATED] robot1 [1]: (1.97,0.86) w=0.104 den=13
+[PHERO UPDATED] robot1 [1]: (1.97,0.86) w=0.095 den=13
+[PHERO UPDATED] robot1 [1]: (1.97,0.86) w=0.087 den=13
+[PHERO UPDATED] robot1 [1]: (1.97,0.86) w=0.079 den=13
+[PHERO UPDATED] robot1 [1]: (1.97,0.86) w=0.001 den=13
+[PHERO UPDATED] robot1 [1]: (1.97,0.86) w=0.001 den=13
+[PHERO UPDATED] robot1 [1]: (1.97,0.86) w=0.001 den=13
+[PHERO UPDATED] robot1 [1]: (1.97,0.86) w=0.001 den=13
+[PHERO ADDED  ] robot1 [2]: (1.97,0.86) w=0.001 den=13 | (1.64,0.49) w=1.000 den=12
+[PICKUP]   robot1 at (1.64,0.49) | density=12
+  [PHERO]  Laid at (1.64,0.49) density=12 prob=1.00 total_entries=2
+[PHERO EXPIRED] robot1 [1]: (1.64,0.49) w=0.967 den=12
+[DEPOSIT]  robot1 | site=(1.64,0.49) density=12
+  [TARGET]   robot1 → SITE (1.64,0.49)
+[PHERO UPDATED] robot1 [1]: (1.64,0.49) w=0.041 den=12
+[PHERO UPDATED] robot1 [1]: (1.64,0.49) w=0.005 den=12
+[PHERO UPDATED] robot1 [1]: (1.64,0.49) w=0.005 den=12
+[PHERO UPDATED] robot1 [1]: (1.64,0.49) w=0.004 den=12
+[PHERO UPDATED] robot1 [1]: (1.64,0.49) w=0.004 den=12
+[PHERO UPDATED] robot1 [1]: (1.64,0.49) w=0.004 den=12
+[PHERO UPDATED] robot1 [1]: (1.64,0.49) w=0.003 den=12
+[PHERO UPDATED] robot1 [1]: (1.64,0.49) w=0.003 den=12
+[PHERO UPDATED] robot1 [1]: (1.64,0.49) w=0.003 den=12
+[PHERO UPDATED] robot1 [1]: (1.64,0.49) w=0.003 den=12
+[PHERO UPDATED] robot1 [1]: (1.64,0.49) w=0.002 den=12
+[PHERO UPDATED] robot1 [1]: (1.64,0.49) w=0.002 den=12
+[PHERO UPDATED] robot1 [1]: (1.64,0.49) w=0.002 den=12
+[PHERO UPDATED] robot1 [1]: (1.64,0.49) w=0.002 den=12
+[PHERO UPDATED] robot1 [1]: (1.64,0.49) w=0.002 den=12
+[PHERO UPDATED] robot1 [1]: (1.64,0.49) w=0.001 den=12
+[PHERO UPDATED] robot1 [1]: (1.64,0.49) w=0.001 den=12
+[PHERO UPDATED] robot1 [1]: (1.64,0.49) w=0.001 den=12
+[PHERO UPDATED] robot1 [1]: (1.64,0.49) w=0.001 den=12
+[PHERO EXPIRED] robot1 [0]: empty
+[PHERO ADDED  ] robot1 [1]: (-2.14,-0.16) w=0.272 den=8
+[PHERO UPDATED] robot1 [1]: (-2.14,-0.16) w=0.217 den=8
+[PHERO UPDATED] robot1 [1]: (-2.14,-0.16) w=0.207 den=8
+[PHERO UPDATED] robot1 [1]: (-2.14,-0.16) w=0.198 den=8
+[PHERO UPDATED] robot1 [1]: (-2.14,-0.16) w=0.189 den=8
+[PHERO UPDATED] robot1 [1]: (-2.14,-0.16) w=0.028 den=8
+[PHERO UPDATED] robot1 [1]: (-2.14,-0.16) w=0.025 den=8
+[PHERO UPDATED] robot1 [1]: (-2.14,-0.16) w=0.023 den=8
+[PHERO UPDATED] robot1 [1]: (-2.14,-0.16) w=0.011 den=8
+[PHERO UPDATED] robot1 [1]: (-2.14,-0.16) w=0.010 den=8
+[GIVE-UP]  robot1 giving up after 9220 searching steps
+  [EMPTY_RTN] robot1 → PHERO (-2.14,-0.16) density=8
+[PHERO EXPIRED] robot1 [0]: empty
+[PHERO ADDED  ] robot1 [1]: (1.93,0.92) w=1.000 den=10
+[PICKUP]   robot1 at (1.93,0.92) | density=10
+  [PHERO]  Laid at (1.93,0.92) density=10 prob=1.00 total_entries=1
+[DEPOSIT]  robot1 | site=(1.93,0.92) density=10
+  [TARGET]   robot1 → SITE (1.93,0.92)
+[PHERO EXPIRED] robot1 [0]: empty
+[PHERO ADDED  ] robot1 [1]: (-1.81,-0.16) w=0.018 den=7
+[PHERO UPDATED] robot1 [1]: (-1.81,-0.16) w=0.017 den=7
+[PHERO ADDED  ] robot1 [2]: (-1.81,-0.16) w=0.010 den=7 | (-2.01,-0.56) w=0.047 den=6
+[PHERO UPDATED] robot1 [2]: (-1.81,-0.16) w=0.009 den=7 | (-2.01,-0.56) w=0.043 den=6
+[PHERO EXPIRED] robot1 [1]: (-2.01,-0.56) w=0.005 den=6
+[PHERO ADDED  ] robot1 [2]: (-2.01,-0.56) w=0.001 den=6 | (1.81,0.93) w=0.102 den=9
+[PHERO UPDATED] robot1 [2]: (-2.01,-0.56) w=0.001 den=6 | (1.81,0.93) w=0.093 den=9
+[PHERO UPDATED] robot1 [2]: (-2.01,-0.56) w=0.001 den=6 | (1.81,0.93) w=0.085 den=9
+[PHERO UPDATED] robot1 [2]: (-2.01,-0.56) w=0.001 den=6 | (1.81,0.93) w=0.077 den=9
+[PHERO EXPIRED] robot1 [1]: (1.81,0.93) w=0.069 den=9
+[PHERO UPDATED] robot1 [1]: (1.81,0.93) w=1.000 den=8
+[PICKUP]   robot1 at (1.74,0.82) | density=8
+  [PHERO]  Laid at (1.74,0.82) density=8 prob=1.00 total_entries=1
+[DEPOSIT]  robot1 | site=(1.74,0.82) density=8
+  [TARGET]   robot1 → SITE (1.74,0.82)
+[PHERO UPDATED] robot1 [1]: (1.81,0.93) w=0.086 den=8
+[PHERO UPDATED] robot1 [1]: (1.81,0.93) w=0.003 den=8
+[PHERO UPDATED] robot1 [1]: (1.81,0.93) w=0.003 den=8
+[PHERO UPDATED] robot1 [1]: (1.81,0.93) w=0.002 den=8
+[PHERO UPDATED] robot1 [1]: (1.81,0.93) w=0.002 den=8
+[PHERO EXPIRED] robot1 [0]: empty
+[PHERO ADDED  ] robot1 [1]: (2.03,0.81) w=1.000 den=6
+[PICKUP]   robot1 at (2.03,0.81) | density=6
+  [PHERO]  Laid at (2.03,0.81) density=6 prob=0.97 total_entries=1
+[PHERO UPDATED] robot1 [1]: (2.03,0.81) w=0.524 den=6
+[PHERO UPDATED] robot1 [1]: (2.03,0.81) w=0.477 den=6
+[PHERO UPDATED] robot1 [1]: (2.03,0.81) w=0.435 den=6
+[DEPOSIT]  robot1 | site=(2.03,0.81) density=6
+  [TARGET]   robot1 → SITE (2.03,0.81)
+[PHERO UPDATED] robot1 [1]: (2.03,0.81) w=0.257 den=6
+[PHERO UPDATED] robot1 [1]: (2.03,0.81) w=0.235 den=6
+[PHERO UPDATED] robot1 [1]: (2.03,0.81) w=0.214 den=6
+[PHERO UPDATED] robot1 [1]: (2.03,0.81) w=0.195 den=6
+[PHERO UPDATED] robot1 [1]: (2.03,0.81) w=0.178 den=6
+[PHERO UPDATED] robot1 [1]: (2.03,0.81) w=0.162 den=6
+[PHERO UPDATED] robot1 [1]: (2.03,0.81) w=0.033 den=6
+[PHERO UPDATED] robot1 [1]: (2.03,0.81) w=0.030 den=6
+[PHERO ADDED  ] robot1 [2]: (2.03,0.81) w=0.003 den=6 | (2.07,0.45) w=0.027 den=5
+[PHERO UPDATED] robot1 [2]: (2.03,0.81) w=0.003 den=6 | (2.07,0.45) w=0.025 den=5
+[PHERO UPDATED] robot1 [2]: (2.03,0.81) w=0.003 den=6 | (2.07,0.45) w=0.023 den=5
+[PHERO UPDATED] robot1 [2]: (2.03,0.81) w=0.002 den=6 | (2.07,0.45) w=0.021 den=5
+[PHERO UPDATED] robot1 [2]: (2.03,0.81) w=0.002 den=6 | (2.07,0.45) w=0.019 den=5
+[PHERO UPDATED] robot1 [2]: (2.03,0.81) w=0.002 den=6 | (2.07,0.45) w=0.017 den=5
+[PHERO UPDATED] robot1 [2]: (2.03,0.81) w=0.002 den=6 | (2.07,0.45) w=0.016 den=5
+[PHERO UPDATED] robot1 [2]: (2.03,0.81) w=0.002 den=6 | (2.07,0.45) w=0.014 den=5
+[PHERO UPDATED] robot1 [2]: (2.03,0.81) w=0.001 den=6 | (2.07,0.45) w=0.013 den=5
+[PHERO UPDATED] robot1 [2]: (2.03,0.81) w=0.001 den=6 | (2.07,0.45) w=0.012 den=5
+[PHERO UPDATED] robot1 [2]: (2.03,0.81) w=0.001 den=6 | (2.07,0.45) w=0.011 den=5
+[PHERO UPDATED] robot1 [2]: (2.03,0.81) w=0.001 den=6 | (2.07,0.45) w=0.010 den=5
+[PHERO EXPIRED] robot1 [1]: (2.07,0.45) w=0.009 den=5
+[PHERO UPDATED] robot1 [1]: (2.07,0.45) w=0.005 den=5
+[PHERO EXPIRED] robot1 [0]: empty
+[PHERO ADDED  ] robot1 [1]: (1.88,0.78) w=1.000 den=3
+[PICKUP]   robot1 at (1.88,0.78) | density=3
+  [PHERO]  Laid at (1.88,0.78) density=3 prob=0.65 total_entries=1
+[DEPOSIT]  robot1 | site=(1.88,0.78) density=3
+  [TARGET]   robot1 → SITE (1.88,0.78)
+[PHERO ADDED  ] robot1 [2]: (1.88,0.78) w=0.069 den=3 | (-1.92,-0.21) w=0.151 den=2
+[PHERO UPDATED] robot1 [2]: (1.88,0.78) w=0.063 den=3 | (-1.92,-0.21) w=0.138 den=2
+[PICKUP]   robot1 at (-1.81,-0.31) | density=1
+[DEPOSIT]  robot1 | site=(-1.81,-0.31) density=1
+  [TARGET]   robot1 → PHERO (1.88,0.78) density=3
+[PHERO UPDATED] robot1 [2]: (1.88,0.78) w=0.001 den=3 | (-1.92,-0.21) w=0.002 den=2
+[PHERO UPDATED] robot1 [2]: (1.88,0.78) w=0.001 den=3 | (-1.92,-0.21) w=0.002 den=2
+[PHERO EXPIRED] robot1 [1]: (-1.92,-0.21) w=0.002 den=2
+[PHERO EXPIRED] robot1 [0]: empty
+[PHERO ADDED  ] robot1 [1]: (2.06,0.76) w=0.046 den=2
+[PHERO UPDATED] robot1 [1]: (2.06,0.76) w=0.017 den=2
+[PHERO UPDATED] robot1 [1]: (2.06,0.76) w=0.015 den=2
+[PHERO UPDATED] robot1 [1]: (2.06,0.76) w=0.014 den=2
+[PHERO UPDATED] robot1 [1]: (2.06,0.76) w=0.001 den=2
+[PHERO UPDATED] robot1 [1]: (2.06,0.76) w=0.001 den=2
+[PHERO EXPIRED] robot1 [0]: empty
+[PICKUP]   robot1 at (1.69,0.52) | density=1
+[DEPOSIT]  robot1 | site=(1.69,0.52) density=1
+  [TARGET]   robot1 → SITE (1.69,0.52)
+[GIVE-UP]  robot1 giving up after 9090 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 13770 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 14472 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 16812 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 19620 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 21648 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 25938 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[GIVE-UP]  robot1 giving up after 29136 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE

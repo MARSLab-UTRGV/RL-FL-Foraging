@@ -1,21 +1,26 @@
 import sys
 import os
 import math
+import random
 import numpy as np
 
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'epuck_decentralized'))
-from epuck_decentralized_v4 import EpuckDecentralizedV4, TARGET_ARRIVAL_DIST, PHEROMONE_MIN
+from epuck_decentralized_v4 import (
+    EpuckDecentralizedV4,
+    TARGET_ARRIVAL_DIST, PHEROMONE_MIN, MERGE_RADIUS,
+    RATE_OF_LAYING_PHEROMONE,
+)
 
 from stable_baselines3 import PPO
 
 # =============================================================================
-# DECENTRALIZED EVAL ROBOT CONTROLLER  (CoRL 2026)
+# DECENTRALIZED EVAL ROBOT CONTROLLER  (CoRL 2026 — synced to v8)
 #
-# Mirrors training robot (epuck_decentralized_train_v4) exactly:
+# Mirrors training robot (epuck_decentralized_train_v8) exactly:
 #   - Same base class: EpuckDecentralizedV4 (CPFA list pheromone, site fidelity)
-#   - Same 20D obs layout
-#   - Same P1 / BASE_ESC / P2 override logic
-#   - Same pickup/deposit/target-depletion handling
+#   - Same 19D obs layout (no tag sensing — matches centralized; adds phero_density_norm at [17])
+#   - Same overrides: P1 (wall escape) + BASE_ESC + P2 (carrying only, no gave_up RTB)
+#   - Same pickup/deposit/target-depletion handling (Poisson CDF gate at pickup)
 #   - PPO inference: deterministic=True (no exploration noise)
 #
 # Message protocol (identical to training):
@@ -24,24 +29,27 @@ from stable_baselines3 import PPO
 #                                   site_known, phero_known, reserved×2, gps_x, gps_y]
 #
 # Model loading priority:
-#   1. current_eval_run.txt  → loads {robot_name}_{run_name}.zip  (per-robot independent)
+#   1. current_eval_run.txt  → loads {robot_name}_{run_name}.zip  (per-robot, v8)
 #   2. current_eval_model.txt → loads shared model path            (CTDE / fallback)
 #   3. Hard-coded fallback: decentralized_optA_v1
 # =============================================================================
 
-TAG_SEEK_RANGE = 1.0
-OBS_DIM        = 20
+OBS_DIM             = 19
+SEARCH_DURATION_MAX = 4000
+TARGET_LINGER_STEPS = 3      # steps to stay at cluster before declaring depletion
 
 
 class EpuckDecentralizedEval(EpuckDecentralizedV4):
 
+    # Arena half-sizes for wall-escape override (matches supervisor ARENA_CONFIGS)
+    _ARENA_HALF = {'5x5': 2.5, '7x7': 3.5, '9x9': 4.5, '12x12': 6.0}
+
     def __init__(self):
         super().__init__()
-        self._ppo = None
-
-        self._tag_visible    = 0.0
-        self._tag_dist_norm  = 0.0
-        self._tag_angle_norm = 0.0
+        self._ppo                  = None
+        self._steps_without_pickup = 0
+        self._arrival_steps        = 0   # steps spent within TARGET_ARRIVAL_DIST of current target
+        self._arena_half           = 2.5  # default 5x5; overridden in _load_ppo
 
     def _load_ppo(self):
         project_root = os.path.abspath(
@@ -49,15 +57,25 @@ class EpuckDecentralizedEval(EpuckDecentralizedV4):
         )
         robot_name = self.getName()
 
+        # Read arena size written by supervisor before Webots started
+        arena_cfg = os.path.join(project_root, 'current_eval_arena.txt')
+        if os.path.exists(arena_cfg):
+            arena_size = open(arena_cfg).read().strip()
+            self._arena_half = self._ARENA_HALF.get(arena_size, 2.5)
+        self._log(f"[{robot_name}] Arena: {getattr(self, '_arena_half', 2.5)*2:.0f}×"
+                  f"{getattr(self, '_arena_half', 2.5)*2:.0f} m "
+                  f"(half={self._arena_half} m)")
+
         # Priority 1: per-robot model from independent training
         run_cfg = os.path.join(project_root, 'current_eval_run.txt')
         if os.path.exists(run_cfg):
             run_name   = open(run_cfg).read().strip()
             model_path = os.path.join(project_root, f"{robot_name}_{run_name}")
             if os.path.exists(model_path + '.zip'):
-                print(f"[{robot_name}] Loading per-robot model: {model_path}.zip")
-                self._ppo = PPO.load(model_path)
-                print(f"[{robot_name}] Model loaded (20D obs, independent PPO).")
+                self._open_robot_log(f"eval_{run_name}")
+                self._log(f"[{robot_name}] Loading per-robot model: {model_path}.zip")
+                self._ppo = PPO.load(model_path, device='cpu')
+                self._log(f"[{robot_name}] Model loaded (19D obs, independent PPO v8, cpu).")
                 return
 
         # Priority 2: shared model from current_eval_model.txt (CTDE / fallback)
@@ -66,9 +84,10 @@ class EpuckDecentralizedEval(EpuckDecentralizedV4):
             model_path = open(model_cfg).read().strip()
         else:
             model_path = os.path.join(project_root, 'decentralized_optA_v1')
-        print(f"[{robot_name}] Loading shared model: {model_path}")
-        self._ppo = PPO.load(model_path)
-        print(f"[{robot_name}] Model loaded.")
+        self._open_robot_log("eval_shared")
+        self._log(f"[{robot_name}] Loading shared model: {model_path}")
+        self._ppo = PPO.load(model_path, device='cpu')
+        self._log(f"[{robot_name}] Model loaded (cpu).")
 
     # =========================================================================
     # deepbots interface
@@ -86,69 +105,113 @@ class EpuckDecentralizedEval(EpuckDecentralizedV4):
             return
 
         try:
-            self._tag_visible    = float(message[0])
-            self._tag_dist_norm  = float(message[1])
-            self._tag_angle_norm = float(message[2])
-            pickup_signal        = float(message[3])
+            pickup_signal = float(message[3])
         except (ValueError, IndexError):
             return
 
         # ── Pickup ────────────────────────────────────────────────────
         if pickup_signal > 0.0 and not self.carrying:
             self.carrying = True
-            gps = self.gps.getValues()
-            px, py = gps[0], gps[1]
-            self._add_pheromone(px, py, pickup_signal)
-            self._site_fidelity_pos  = (px, py)
-            self._last_pickup_weight = pickup_signal
-            self._current_target     = None
-            print(f"[PICKUP] {self.getName()} at ({px:.2f},{py:.2f}) | "
-                  f"strength={pickup_signal:.2f}")
+            density = max(0, round(pickup_signal))
+            # Supervisor sends exact tag position in message[0:1] on pickup.
+            # Use tag position (not robot GPS) for pheromone — eliminates the
+            # up-to-0.15m offset between robot GPS and actual tag location.
+            try:
+                px = float(message[0])
+                py = float(message[1])
+            except (ValueError, IndexError):
+                gps = self.gps.getValues()
+                px, py = gps[0], gps[1]
+            self._site_fidelity_pos = (px, py)
+            self._resource_density  = density
+            # Update any existing pheromone entry at this cluster to current
+            # actual density — corrects stale density from earlier denser pickups
+            for entry in self.pheromone_list:
+                if math.sqrt((entry['x'] - px)**2 +
+                             (entry['y'] - py)**2) < MERGE_RADIUS:
+                    entry['density'] = density
+                    break
+            # CPFA pheromone laying at PICKUP — Poisson CDF gate (P2P advantage)
+            lay_prob = self._poisson_cdf(density, RATE_OF_LAYING_PHEROMONE)
+            laid = False
+            if random.random() < lay_prob:
+                self._add_pheromone(px, py, 1.0, density)
+                laid = True
+            self._current_target       = None
+            self._gave_up              = False
+            self._give_up_timer        = 0
+            self._steps_without_pickup = 0
+            self._arrival_steps        = 0
+            self._log(f"[PICKUP]   {self.getName()} at tag=({px:.2f},{py:.2f}) | density={density}")
+            if laid:
+                self._log(f"  [PHERO]  Laid at ({px:.2f},{py:.2f}) "
+                          f"density={density} prob={lay_prob:.2f} "
+                          f"total_entries={len(self.pheromone_list)}")
 
         # ── Deposit ───────────────────────────────────────────────────
         elif pickup_signal < -0.5 and self.carrying:
             self.carrying = False
-            self._assign_target()
-            t = self._current_target
-            t_str = f"{t[0].upper()} ({t[1]:.2f},{t[2]:.2f})" if t else "EXPLORE"
+            self._arrival_steps = 0
             sf = self._site_fidelity_pos
-            sf_str = f"({sf[0]:.2f},{sf[1]:.2f}) w={self._last_pickup_weight:.2f}" if sf else "None"
-            print(f"[DEPOSIT] {self.getName()}")
-            print(f"  [SITE_FID] {sf_str}")
-            print(f"  [TARGET]   → {t_str}")
+            sf_str = f"({sf[0]:.2f},{sf[1]:.2f}) density={self._resource_density}" if sf else "None"
+            self._log(f"[DEPOSIT]  {self.getName()} | site={sf_str}")
+            self._assign_target()   # prints [TARGET] / [EMPTY_RTN] via _log in base class
 
         # ── Target depletion: arrived at cluster, no food found ───────
+        # Linger TARGET_LINGER_STEPS steps before declaring depleted so the
+        # supervisor has time to detect adjacent tags (which may be up to
+        # 0.0779 m from the stored pheromone point) and send a pickup signal.
+        # P2.5 keeps steering to (tx,ty) while _current_target is set, so the
+        # robot stays in the cluster area during the wait.
         if not self.carrying and self._current_target is not None:
             gps = self.gps.getValues()
             tx, ty = self._current_target[1], self._current_target[2]
             if math.sqrt((gps[0]-tx)**2 + (gps[1]-ty)**2) < TARGET_ARRIVAL_DIST:
-                if self._current_target[0] == 'site':
-                    self._last_pickup_weight = max(self._last_pickup_weight * 0.5, 0.05)
-                elif self._current_target[0] == 'phero':
-                    for entry in self.pheromone_list:
-                        if math.sqrt((entry['x'] - tx)**2 +
-                                     (entry['y'] - ty)**2) < 0.3:
-                            entry['weight'] = max(entry['weight'] * 0.5, PHEROMONE_MIN)
-                            break
-                self._assign_target()
+                self._arrival_steps += 1
+                if self._arrival_steps >= TARGET_LINGER_STEPS:
+                    self._arrival_steps = 0
+                    if self._current_target[0] == 'phero':
+                        # Mark depleted: density=0 removes from roulette; expire quickly
+                        for entry in self.pheromone_list:
+                            if math.sqrt((entry['x'] - tx)**2 +
+                                         (entry['y'] - ty)**2) < MERGE_RADIUS:
+                                entry['density'] = 0
+                                entry['weight']  = PHEROMONE_MIN
+                                break
+                    elif self._current_target[0] == 'site':
+                        # Clear own site fidelity — don't revisit a depleted personal cluster
+                        self._site_fidelity_pos = None
+                        self._resource_density  = 0
+                    # Cluster empty: assign next best (skip give-up wait)
+                    self._gave_up = True   # suppress stale site fidelity re-assignment
+                    self._current_target = None
+                    self._assign_target()
+                    self._gave_up = False
+            else:
+                self._arrival_steps = 0   # reset if robot moves away from target
 
-        # ── Assemble 20D obs (identical layout to training robot) ─────
+        # ── Increment search counter (only while not carrying) ───────
+        if not self.carrying:
+            self._steps_without_pickup += 1
+
+        # ── Assemble 19D obs (identical layout to training robot) ─────
         prox     = [s.getValue() / 4096.0 for s in self.ps]
         obs_comp = self._obs_components()
+        search_norm = (0.0 if self.carrying else
+                       min(self._steps_without_pickup / SEARCH_DURATION_MAX, 1.0))
         obs_arr  = np.array(
             prox + [
-                self._tag_visible,                    # [8]
-                self._tag_dist_norm,                  # [9]
-                self._tag_angle_norm,                 # [10]
-                1.0 if self.carrying else 0.0,        # [11]
-                obs_comp["base_dist_norm"],            # [12]
-                obs_comp["base_angle_norm"],           # [13]
-                obs_comp["site_known"],                # [14]
-                obs_comp["site_dist_norm"],            # [15]
-                obs_comp["site_angle_norm"],           # [16]
-                obs_comp["phero_known"],               # [17]
-                obs_comp["phero_dist_norm"],           # [18]
-                obs_comp["phero_angle_norm"],          # [19]
+                1.0 if self.carrying else 0.0,        # [8]
+                obs_comp["base_dist_norm"],            # [9]
+                obs_comp["base_angle_norm"],           # [10]
+                obs_comp["site_known"],                # [11]
+                obs_comp["site_dist_norm"],            # [12]
+                obs_comp["site_angle_norm"],           # [13]
+                obs_comp["phero_known"],               # [14]
+                obs_comp["phero_dist_norm"],           # [15]
+                obs_comp["phero_angle_norm"],          # [16]
+                obs_comp["phero_density_norm"],        # [17] density of best pheromone target
+                search_norm,                           # [18] informational only
             ],
             dtype=np.float32
         ).reshape(1, OBS_DIM)
@@ -181,7 +244,7 @@ class EpuckDecentralizedEval(EpuckDecentralizedV4):
         yaw       = self.imu.getRollPitchYaw()[2]
         fwd       = [math.cos(yaw), math.sin(yaw)]
         robot_pos = [gps[0], gps[1]]
-        wall_dist = 2.5 - max(abs(pos_x), abs(pos_y))
+        wall_dist = self._arena_half - max(abs(pos_x), abs(pos_y))
         prox      = [s.getValue() / 4096.0 for s in self.ps]
 
         # P1: wall / obstacle escape
@@ -202,6 +265,11 @@ class EpuckDecentralizedEval(EpuckDecentralizedV4):
         # P2: return to base when carrying
         if self.carrying:
             return self._steer_to(robot_pos, fwd, [0.0, 0.0], gain=2.5)
+
+        # P2.5: steer to site/phero target when known
+        if self._current_target is not None:
+            tx, ty = self._current_target[1], self._current_target[2]
+            return self._steer_to(robot_pos, fwd, [tx, ty], gain=2.5)
 
         return [left, right]
 

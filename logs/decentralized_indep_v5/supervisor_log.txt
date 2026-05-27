@@ -1,0 +1,1340 @@
+
+=================================================================
+[EP 1] Picks: 6 | Deps: 6 | Rate: 0.69 tags/min (sim) | TotalDeps: 6 | Wall: 3.0 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.53 | wall=2.03
+  R2[PPO     ]: carry=0 | base=0.36 | wall=2.15
+  R3[PPO     ]: carry=0 | base=0.38 | wall=2.12
+  R4[PPO     ]: carry=0 | base=0.33 | wall=2.22
+=================================================================
+
+=================================================================
+[EP 2] Picks: 7 | Deps: 7 | Rate: 0.80 tags/min (sim) | TotalDeps: 13 | Wall: 4.1 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.49 | wall=2.07
+  R2[PPO     ]: carry=0 | base=0.29 | wall=2.24
+  R3[PPO     ]: carry=0 | base=0.40 | wall=2.14
+  R4[PPO     ]: carry=0 | base=0.42 | wall=2.08
+=================================================================
+
+=================================================================
+[EP 3] Picks: 6 | Deps: 6 | Rate: 0.69 tags/min (sim) | TotalDeps: 19 | Wall: 4.1 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.60 | wall=2.01
+  R2[PPO     ]: carry=0 | base=0.28 | wall=2.24
+  R3[PPO     ]: carry=0 | base=0.33 | wall=2.17
+  R4[PPO     ]: carry=0 | base=0.48 | wall=2.02
+=================================================================
+
+=================================================================
+[EP 4] Picks: 3 | Deps: 3 | Rate: 0.34 tags/min (sim) | TotalDeps: 22 | Wall: 4.1 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.29 | wall=2.24
+  R2[PPO     ]: carry=0 | base=0.35 | wall=2.16
+  R3[PPO     ]: carry=0 | base=0.57 | wall=1.94
+  R4[PPO     ]: carry=0 | base=0.75 | wall=1.77
+=================================================================
+
+=================================================================
+[EP 5] Picks: 5 | Deps: 5 | Rate: 0.57 tags/min (sim) | TotalDeps: 27 | Wall: 4.1 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.45 | wall=2.05
+  R2[PPO     ]: carry=0 | base=0.28 | wall=2.28
+  R3[PPO     ]: carry=0 | base=0.28 | wall=2.23
+  R4[PPO     ]: carry=0 | base=0.46 | wall=2.10
+=================================================================
+
+=================================================================
+[EP 6] Picks: 3 | Deps: 3 | Rate: 0.34 tags/min (sim) | TotalDeps: 30 | Wall: 4.1 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.49 | wall=2.01
+  R2[PPO     ]: carry=0 | base=0.27 | wall=2.27
+  R3[PPO     ]: carry=0 | base=0.33 | wall=2.24
+  R4[PPO     ]: carry=0 | base=0.33 | wall=2.18
+=================================================================
+
+=================================================================
+[EP 7] Picks: 3 | Deps: 3 | Rate: 0.34 tags/min (sim) | TotalDeps: 33 | Wall: 4.1 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.51 | wall=2.00
+  R2[PPO     ]: carry=0 | base=0.49 | wall=2.01
+  R3[PPO     ]: carry=0 | base=0.28 | wall=2.24
+  R4[PPO     ]: carry=0 | base=0.44 | wall=2.07
+=================================================================
+
+=================================================================
+[EP 8] Picks: 4 | Deps: 4 | Rate: 0.46 tags/min (sim) | TotalDeps: 37 | Wall: 4.1 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.32 | wall=2.20
+  R2[PPO     ]: carry=0 | base=0.27 | wall=2.26
+  R3[PPO     ]: carry=0 | base=0.37 | wall=2.14
+  R4[PPO     ]: carry=0 | base=0.46 | wall=2.06
+=================================================================
+
+=================================================================
+[EP 9] Picks: 9 | Deps: 9 | Rate: 1.03 tags/min (sim) | TotalDeps: 46 | Wall: 4.1 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.28 | wall=2.27
+  R2[PPO     ]: carry=0 | base=0.36 | wall=2.14
+  R3[PPO     ]: carry=0 | base=0.26 | wall=2.27
+  R4[PPO     ]: carry=0 | base=0.30 | wall=2.20
+=================================================================
+
+=================================================================
+[EP 10] Picks: 8 | Deps: 8 | Rate: 0.92 tags/min (sim) | TotalDeps: 54 | Wall: 4.1 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.34 | wall=2.16
+  R2[PPO     ]: carry=0 | base=0.53 | wall=1.97
+  R3[PPO     ]: carry=0 | base=0.51 | wall=1.99
+  R4[PPO     ]: carry=0 | base=0.42 | wall=2.08
+=================================================================
+
+=================================================================
+[EP 11] Picks: 5 | Deps: 5 | Rate: 0.57 tags/min (sim) | TotalDeps: 59 | Wall: 4.1 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.37 | wall=2.18
+  R2[PPO     ]: carry=0 | base=0.39 | wall=2.15
+  R3[PPO     ]: carry=0 | base=0.48 | wall=2.02
+  R4[PPO     ]: carry=0 | base=0.50 | wall=2.00
+=================================================================
+
+=================================================================
+[EP 12] Picks: 5 | Deps: 5 | Rate: 0.57 tags/min (sim) | TotalDeps: 64 | Wall: 4.1 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.31 | wall=2.20
+  R2[PPO     ]: carry=0 | base=0.41 | wall=2.09
+  R3[PPO     ]: carry=0 | base=0.49 | wall=2.01
+  R4[PPO     ]: carry=0 | base=0.50 | wall=2.01
+=================================================================
+
+=================================================================
+[EP 13] Picks: 2 | Deps: 2 | Rate: 0.23 tags/min (sim) | TotalDeps: 66 | Wall: 4.1 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.49 | wall=2.01
+  R2[PPO     ]: carry=0 | base=0.33 | wall=2.22
+  R3[PPO     ]: carry=0 | base=0.40 | wall=2.13
+  R4[PPO     ]: carry=0 | base=0.49 | wall=2.02
+=================================================================
+
+=================================================================
+[EP 14] Picks: 1 | Deps: 1 | Rate: 0.11 tags/min (sim) | TotalDeps: 67 | Wall: 4.2 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.53 | wall=1.97
+  R2[PPO     ]: carry=0 | base=0.50 | wall=2.00
+  R3[PPO     ]: carry=0 | base=0.45 | wall=2.05
+  R4[PPO     ]: carry=0 | base=0.51 | wall=1.99
+=================================================================
+
+=================================================================
+[EP 15] Picks: 6 | Deps: 6 | Rate: 0.69 tags/min (sim) | TotalDeps: 73 | Wall: 4.2 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.52 | wall=1.98
+  R2[PPO     ]: carry=0 | base=0.51 | wall=2.00
+  R3[PPO     ]: carry=0 | base=0.50 | wall=2.00
+  R4[PPO     ]: carry=0 | base=0.44 | wall=2.06
+=================================================================
+
+=================================================================
+[EP 16] Picks: 8 | Deps: 8 | Rate: 0.92 tags/min (sim) | TotalDeps: 81 | Wall: 4.1 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.36 | wall=2.20
+  R2[PPO     ]: carry=0 | base=0.45 | wall=2.05
+  R3[PPO     ]: carry=0 | base=0.27 | wall=2.28
+  R4[PPO     ]: carry=0 | base=0.41 | wall=2.09
+=================================================================
+
+=================================================================
+[EP 17] Picks: 4 | Deps: 4 | Rate: 0.46 tags/min (sim) | TotalDeps: 85 | Wall: 4.1 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.52 | wall=1.99
+  R2[PPO     ]: carry=0 | base=0.45 | wall=2.05
+  R3[PPO     ]: carry=0 | base=0.26 | wall=2.30
+  R4[PPO     ]: carry=0 | base=0.50 | wall=2.00
+=================================================================
+
+=================================================================
+[EP 18] Picks: 3 | Deps: 3 | Rate: 0.34 tags/min (sim) | TotalDeps: 88 | Wall: 4.2 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.58 | wall=1.92
+  R2[PPO     ]: carry=0 | base=0.43 | wall=2.07
+  R3[PPO     ]: carry=0 | base=0.50 | wall=2.00
+  R4[PPO     ]: carry=0 | base=0.51 | wall=1.99
+=================================================================
+
+=================================================================
+[EP 19] Picks: 3 | Deps: 3 | Rate: 0.34 tags/min (sim) | TotalDeps: 91 | Wall: 4.3 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.47 | wall=2.03
+  R2[PPO     ]: carry=0 | base=0.54 | wall=1.97
+  R3[PPO     ]: carry=0 | base=0.55 | wall=1.95
+  R4[PPO     ]: carry=0 | base=0.49 | wall=2.02
+=================================================================
+
+=================================================================
+[EP 20] Picks: 6 | Deps: 6 | Rate: 0.69 tags/min (sim) | TotalDeps: 97 | Wall: 4.1 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.38 | wall=2.16
+  R2[PPO     ]: carry=0 | base=0.32 | wall=2.19
+  R3[PPO     ]: carry=0 | base=0.38 | wall=2.22
+  R4[PPO     ]: carry=0 | base=0.45 | wall=2.06
+=================================================================
+
+=================================================================
+[EP 21] Picks: 2 | Deps: 2 | Rate: 0.23 tags/min (sim) | TotalDeps: 99 | Wall: 4.2 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.37 | wall=2.15
+  R2[PPO     ]: carry=0 | base=0.45 | wall=2.05
+  R3[PPO     ]: carry=0 | base=0.52 | wall=1.98
+  R4[PPO     ]: carry=0 | base=0.49 | wall=2.01
+=================================================================
+
+=================================================================
+[EP 22] Picks: 3 | Deps: 3 | Rate: 0.34 tags/min (sim) | TotalDeps: 102 | Wall: 4.2 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.50 | wall=2.00
+  R2[PPO     ]: carry=0 | base=0.42 | wall=2.08
+  R3[PPO     ]: carry=0 | base=0.48 | wall=2.03
+  R4[PPO     ]: carry=0 | base=0.55 | wall=1.95
+=================================================================
+
+=================================================================
+[EP 23] Picks: 4 | Deps: 4 | Rate: 0.46 tags/min (sim) | TotalDeps: 106 | Wall: 4.2 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.44 | wall=2.06
+  R2[PPO     ]: carry=0 | base=0.47 | wall=2.03
+  R3[PPO     ]: carry=0 | base=0.51 | wall=1.99
+  R4[PPO     ]: carry=0 | base=0.54 | wall=1.96
+=================================================================
+
+=================================================================
+[EP 24] Picks: 6 | Deps: 6 | Rate: 0.69 tags/min (sim) | TotalDeps: 112 | Wall: 4.1 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.34 | wall=2.16
+  R2[PPO     ]: carry=0 | base=0.37 | wall=2.15
+  R3[PPO     ]: carry=0 | base=0.49 | wall=2.01
+  R4[PPO     ]: carry=0 | base=0.50 | wall=2.00
+=================================================================
+
+=================================================================
+[EP 25] Picks: 1 | Deps: 1 | Rate: 0.11 tags/min (sim) | TotalDeps: 113 | Wall: 4.2 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.52 | wall=1.98
+  R2[PPO     ]: carry=0 | base=0.49 | wall=2.01
+  R3[PPO     ]: carry=0 | base=0.45 | wall=2.05
+  R4[PPO     ]: carry=0 | base=0.50 | wall=2.00
+=================================================================
+
+=================================================================
+[EP 26] Picks: 4 | Deps: 4 | Rate: 0.46 tags/min (sim) | TotalDeps: 117 | Wall: 4.1 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.45 | wall=2.05
+  R2[PPO     ]: carry=0 | base=0.33 | wall=2.25
+  R3[PPO     ]: carry=0 | base=0.54 | wall=1.96
+  R4[PPO     ]: carry=0 | base=0.47 | wall=2.03
+=================================================================
+
+=================================================================
+[EP 27] Picks: 4 | Deps: 4 | Rate: 0.46 tags/min (sim) | TotalDeps: 121 | Wall: 4.1 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.44 | wall=2.06
+  R2[PPO     ]: carry=0 | base=0.37 | wall=2.16
+  R3[PPO     ]: carry=0 | base=0.50 | wall=2.00
+  R4[PPO     ]: carry=0 | base=0.51 | wall=1.99
+=================================================================
+
+=================================================================
+[EP 28] Picks: 13 | Deps: 13 | Rate: 1.49 tags/min (sim) | TotalDeps: 134 | Wall: 4.1 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.47 | wall=2.04
+  R2[PPO     ]: carry=0 | base=0.29 | wall=2.29
+  R3[PPO     ]: carry=0 | base=0.27 | wall=2.31
+  R4[PPO     ]: carry=0 | base=0.45 | wall=2.05
+=================================================================
+
+=================================================================
+[EP 29] Picks: 4 | Deps: 4 | Rate: 0.46 tags/min (sim) | TotalDeps: 138 | Wall: 4.2 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.38 | wall=2.19
+  R2[PPO     ]: carry=0 | base=0.50 | wall=2.00
+  R3[PPO     ]: carry=0 | base=0.41 | wall=2.09
+  R4[PPO     ]: carry=0 | base=0.49 | wall=2.02
+=================================================================
+
+=================================================================
+[EP 30] Picks: 8 | Deps: 8 | Rate: 0.92 tags/min (sim) | TotalDeps: 146 | Wall: 4.1 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.51 | wall=1.99
+  R2[PPO     ]: carry=0 | base=0.40 | wall=2.11
+  R3[PPO     ]: carry=0 | base=0.27 | wall=2.29
+  R4[PPO     ]: carry=0 | base=0.44 | wall=2.06
+=================================================================
+
+=================================================================
+[EP 31] Picks: 10 | Deps: 10 | Rate: 1.14 tags/min (sim) | TotalDeps: 156 | Wall: 4.0 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.38 | wall=2.21
+  R2[PPO     ]: carry=0 | base=0.52 | wall=1.98
+  R3[PPO     ]: carry=0 | base=0.25 | wall=2.25
+  R4[PPO     ]: carry=0 | base=0.45 | wall=2.05
+=================================================================
+
+=================================================================
+[EP 32] Picks: 8 | Deps: 8 | Rate: 0.92 tags/min (sim) | TotalDeps: 164 | Wall: 4.2 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.51 | wall=2.00
+  R2[PPO     ]: carry=0 | base=0.37 | wall=2.17
+  R3[PPO     ]: carry=0 | base=0.50 | wall=2.01
+  R4[PPO     ]: carry=0 | base=0.43 | wall=2.07
+=================================================================
+
+=================================================================
+[EP 33] Picks: 2 | Deps: 2 | Rate: 0.23 tags/min (sim) | TotalDeps: 166 | Wall: 4.3 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.49 | wall=2.01
+  R2[PPO     ]: carry=0 | base=0.38 | wall=2.21
+  R3[PPO     ]: carry=0 | base=0.51 | wall=1.99
+  R4[PPO     ]: carry=0 | base=0.44 | wall=2.06
+=================================================================
+
+=================================================================
+[EP 34] Picks: 7 | Deps: 7 | Rate: 0.80 tags/min (sim) | TotalDeps: 173 | Wall: 4.1 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.44 | wall=2.06
+  R2[PPO     ]: carry=0 | base=0.28 | wall=2.23
+  R3[PPO     ]: carry=0 | base=0.41 | wall=2.09
+  R4[PPO     ]: carry=0 | base=0.51 | wall=1.99
+=================================================================
+
+=================================================================
+[EP 35] Picks: 0 | Deps: 0 | Rate: 0.00 tags/min (sim) | TotalDeps: 173 | Wall: 4.3 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.50 | wall=2.01
+  R2[PPO     ]: carry=0 | base=0.50 | wall=2.01
+  R3[PPO     ]: carry=0 | base=0.45 | wall=2.05
+  R4[PPO     ]: carry=0 | base=0.53 | wall=1.97
+=================================================================
+
+=================================================================
+[EP 36] Picks: 2 | Deps: 2 | Rate: 0.23 tags/min (sim) | TotalDeps: 175 | Wall: 4.2 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.49 | wall=2.01
+  R2[PPO     ]: carry=0 | base=0.43 | wall=2.07
+  R3[PPO     ]: carry=0 | base=0.50 | wall=2.00
+  R4[PPO     ]: carry=0 | base=0.56 | wall=1.94
+=================================================================
+
+=================================================================
+[EP 37] Picks: 3 | Deps: 3 | Rate: 0.34 tags/min (sim) | TotalDeps: 178 | Wall: 4.3 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.51 | wall=1.99
+  R2[PPO     ]: carry=0 | base=0.46 | wall=2.04
+  R3[PPO     ]: carry=0 | base=0.49 | wall=2.01
+  R4[PPO     ]: carry=0 | base=0.53 | wall=1.97
+=================================================================
+
+=================================================================
+[EP 38] Picks: 8 | Deps: 8 | Rate: 0.92 tags/min (sim) | TotalDeps: 186 | Wall: 4.3 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.45 | wall=2.05
+  R2[PPO     ]: carry=0 | base=0.48 | wall=2.03
+  R3[PPO     ]: carry=0 | base=0.54 | wall=1.96
+  R4[PPO     ]: carry=0 | base=0.52 | wall=1.98
+=================================================================
+
+=================================================================
+[EP 39] Picks: 11 | Deps: 11 | Rate: 1.26 tags/min (sim) | TotalDeps: 197 | Wall: 4.1 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.52 | wall=1.98
+  R2[PPO     ]: carry=0 | base=0.50 | wall=2.00
+  R3[PPO     ]: carry=0 | base=0.45 | wall=2.05
+  R4[PPO     ]: carry=0 | base=0.58 | wall=1.92
+=================================================================
+
+=================================================================
+[EP 40] Picks: 11 | Deps: 11 | Rate: 1.26 tags/min (sim) | TotalDeps: 208 | Wall: 4.1 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.37 | wall=2.17
+  R2[PPO     ]: carry=0 | base=0.49 | wall=2.01
+  R3[PPO     ]: carry=0 | base=0.29 | wall=2.27
+  R4[BASE_ESC]: carry=0 | base=0.24 | wall=2.31
+=================================================================
+
+=================================================================
+[EP 41] Picks: 4 | Deps: 4 | Rate: 0.46 tags/min (sim) | TotalDeps: 212 | Wall: 4.4 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.28 | wall=2.29
+  R2[PPO     ]: carry=0 | base=0.49 | wall=2.01
+  R3[PPO     ]: carry=0 | base=0.56 | wall=1.94
+  R4[PPO     ]: carry=0 | base=0.50 | wall=2.00
+=================================================================
+
+=================================================================
+[EP 42] Picks: 12 | Deps: 12 | Rate: 1.37 tags/min (sim) | TotalDeps: 224 | Wall: 4.2 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.48 | wall=2.02
+  R2[PPO     ]: carry=0 | base=0.30 | wall=2.23
+  R3[PPO     ]: carry=0 | base=0.46 | wall=2.04
+  R4[PPO     ]: carry=0 | base=0.52 | wall=1.98
+=================================================================
+
+=================================================================
+[EP 43] Picks: 8 | Deps: 8 | Rate: 0.92 tags/min (sim) | TotalDeps: 232 | Wall: 4.2 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.40 | wall=2.12
+  R2[PPO     ]: carry=0 | base=0.35 | wall=2.18
+  R3[PPO     ]: carry=0 | base=0.26 | wall=2.24
+  R4[PPO     ]: carry=0 | base=0.48 | wall=2.02
+=================================================================
+
+=================================================================
+[EP 44] Picks: 8 | Deps: 8 | Rate: 0.92 tags/min (sim) | TotalDeps: 240 | Wall: 4.3 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.45 | wall=2.05
+  R2[PPO     ]: carry=0 | base=0.43 | wall=2.08
+  R3[PPO     ]: carry=0 | base=0.51 | wall=2.00
+  R4[PPO     ]: carry=0 | base=0.53 | wall=1.97
+=================================================================
+
+=================================================================
+[EP 45] Picks: 9 | Deps: 9 | Rate: 1.03 tags/min (sim) | TotalDeps: 249 | Wall: 4.1 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.41 | wall=2.09
+  R2[PPO     ]: carry=0 | base=0.51 | wall=1.99
+  R3[PPO     ]: carry=0 | base=0.50 | wall=2.00
+  R4[PPO     ]: carry=0 | base=0.60 | wall=1.90
+=================================================================
+
+=================================================================
+[EP 46] Picks: 3 | Deps: 3 | Rate: 0.34 tags/min (sim) | TotalDeps: 252 | Wall: 4.3 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.50 | wall=2.00
+  R2[PPO     ]: carry=0 | base=0.50 | wall=2.00
+  R3[PPO     ]: carry=0 | base=0.43 | wall=2.07
+  R4[PPO     ]: carry=0 | base=0.57 | wall=1.93
+=================================================================
+
+=================================================================
+[EP 47] Picks: 4 | Deps: 4 | Rate: 0.46 tags/min (sim) | TotalDeps: 256 | Wall: 4.2 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.43 | wall=2.07
+  R2[PPO     ]: carry=0 | base=0.50 | wall=2.00
+  R3[PPO     ]: carry=0 | base=0.50 | wall=2.00
+  R4[PPO     ]: carry=0 | base=0.56 | wall=1.94
+=================================================================
+
+=================================================================
+[EP 48] Picks: 4 | Deps: 4 | Rate: 0.46 tags/min (sim) | TotalDeps: 260 | Wall: 4.2 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.44 | wall=2.06
+  R2[PPO     ]: carry=0 | base=0.49 | wall=2.01
+  R3[BASE_ESC]: carry=0 | base=0.24 | wall=2.28
+  R4[PPO     ]: carry=0 | base=0.49 | wall=2.01
+=================================================================
+
+=================================================================
+[EP 49] Picks: 13 | Deps: 13 | Rate: 1.49 tags/min (sim) | TotalDeps: 273 | Wall: 4.1 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.51 | wall=1.99
+  R2[PPO     ]: carry=0 | base=0.44 | wall=2.06
+  R3[PPO     ]: carry=0 | base=0.33 | wall=2.24
+  R4[PPO     ]: carry=0 | base=0.42 | wall=2.10
+=================================================================
+
+=================================================================
+[EP 50] Picks: 8 | Deps: 8 | Rate: 0.92 tags/min (sim) | TotalDeps: 281 | Wall: 4.1 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.49 | wall=2.10
+  R2[PPO     ]: carry=0 | base=0.50 | wall=2.00
+  R3[PPO     ]: carry=0 | base=0.30 | wall=2.25
+  R4[PPO     ]: carry=0 | base=0.51 | wall=2.00
+=================================================================
+
+=================================================================
+[EP 51] Picks: 14 | Deps: 14 | Rate: 1.60 tags/min (sim) | TotalDeps: 295 | Wall: 4.1 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.33 | wall=2.27
+  R2[PPO     ]: carry=0 | base=0.28 | wall=2.27
+  R3[PPO     ]: carry=0 | base=0.45 | wall=2.07
+  R4[PPO     ]: carry=0 | base=0.53 | wall=1.97
+=================================================================
+
+=================================================================
+[EP 52] Picks: 8 | Deps: 8 | Rate: 0.92 tags/min (sim) | TotalDeps: 303 | Wall: 4.1 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.37 | wall=2.18
+  R2[PPO     ]: carry=0 | base=0.33 | wall=2.19
+  R3[PPO     ]: carry=0 | base=0.26 | wall=2.25
+  R4[PPO     ]: carry=0 | base=0.48 | wall=2.02
+=================================================================
+
+=================================================================
+[EP 53] Picks: 5 | Deps: 5 | Rate: 0.57 tags/min (sim) | TotalDeps: 308 | Wall: 4.2 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.51 | wall=1.99
+  R2[PPO     ]: carry=0 | base=0.48 | wall=2.02
+  R3[PPO     ]: carry=0 | base=0.49 | wall=2.01
+  R4[PPO     ]: carry=0 | base=0.56 | wall=1.94
+=================================================================
+
+=================================================================
+[EP 54] Picks: 8 | Deps: 8 | Rate: 0.92 tags/min (sim) | TotalDeps: 316 | Wall: 4.1 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.42 | wall=2.10
+  R2[PPO     ]: carry=0 | base=0.40 | wall=2.11
+  R3[PPO     ]: carry=0 | base=0.48 | wall=2.04
+  R4[PPO     ]: carry=0 | base=0.52 | wall=1.99
+=================================================================
+
+=================================================================
+[EP 55] Picks: 14 | Deps: 14 | Rate: 1.60 tags/min (sim) | TotalDeps: 330 | Wall: 4.0 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.46 | wall=2.05
+  R2[PPO     ]: carry=0 | base=0.47 | wall=2.03
+  R3[PPO     ]: carry=0 | base=0.34 | wall=2.22
+  R4[PPO     ]: carry=0 | base=0.43 | wall=2.11
+=================================================================
+
+=================================================================
+[EP 56] Picks: 5 | Deps: 5 | Rate: 0.57 tags/min (sim) | TotalDeps: 335 | Wall: 4.2 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.49 | wall=2.01
+  R2[PPO     ]: carry=0 | base=0.53 | wall=1.97
+  R3[PPO     ]: carry=0 | base=0.45 | wall=2.05
+  R4[PPO     ]: carry=0 | base=0.49 | wall=2.01
+=================================================================
+
+=================================================================
+[EP 57] Picks: 1 | Deps: 1 | Rate: 0.11 tags/min (sim) | TotalDeps: 336 | Wall: 4.3 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.37 | wall=2.20
+  R2[PPO     ]: carry=0 | base=0.52 | wall=1.98
+  R3[PPO     ]: carry=0 | base=0.49 | wall=2.01
+  R4[PPO     ]: carry=0 | base=0.45 | wall=2.05
+=================================================================
+
+=================================================================
+[EP 58] Picks: 6 | Deps: 6 | Rate: 0.69 tags/min (sim) | TotalDeps: 342 | Wall: 4.2 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.49 | wall=2.01
+  R2[PPO     ]: carry=0 | base=0.52 | wall=1.99
+  R3[PPO     ]: carry=0 | base=0.54 | wall=1.97
+  R4[PPO     ]: carry=0 | base=0.47 | wall=2.04
+=================================================================
+
+=================================================================
+[EP 59] Picks: 3 | Deps: 3 | Rate: 0.34 tags/min (sim) | TotalDeps: 345 | Wall: 4.1 min
+  Curriculum: NEAR    (11 clusters, max_dist=1.2m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.44 | wall=2.12
+  R2[PPO     ]: carry=0 | base=0.52 | wall=1.98
+  R3[PPO     ]: carry=0 | base=0.45 | wall=2.05
+  R4[PPO     ]: carry=0 | base=0.51 | wall=1.99
+=================================================================
+
+=================================================================
+[EP 60] Picks: 9 | Deps: 9 | Rate: 1.03 tags/min (sim) | TotalDeps: 354 | Wall: 4.1 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.38 | wall=2.22
+  R2[PPO     ]: carry=0 | base=0.39 | wall=2.12
+  R3[PPO     ]: carry=0 | base=0.27 | wall=2.26
+  R4[PPO     ]: carry=0 | base=0.42 | wall=2.09
+=================================================================
+
+=================================================================
+[EP 61] Picks: 1 | Deps: 1 | Rate: 0.11 tags/min (sim) | TotalDeps: 355 | Wall: 4.3 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.51 | wall=1.99
+  R2[PPO     ]: carry=0 | base=0.50 | wall=2.00
+  R3[PPO     ]: carry=0 | base=0.44 | wall=2.06
+  R4[PPO     ]: carry=0 | base=0.57 | wall=1.93
+=================================================================
+
+=================================================================
+[EP 62] Picks: 3 | Deps: 3 | Rate: 0.34 tags/min (sim) | TotalDeps: 358 | Wall: 4.3 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.42 | wall=2.08
+  R2[PPO     ]: carry=0 | base=0.49 | wall=2.01
+  R3[PPO     ]: carry=0 | base=0.55 | wall=1.95
+  R4[PPO     ]: carry=0 | base=0.49 | wall=2.02
+=================================================================
+
+=================================================================
+[EP 63] Picks: 3 | Deps: 3 | Rate: 0.34 tags/min (sim) | TotalDeps: 361 | Wall: 4.3 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.49 | wall=2.01
+  R2[PPO     ]: carry=0 | base=0.54 | wall=1.96
+  R3[PPO     ]: carry=0 | base=0.52 | wall=1.99
+  R4[PPO     ]: carry=0 | base=0.47 | wall=2.03
+=================================================================
+
+=================================================================
+[EP 64] Picks: 0 | Deps: 0 | Rate: 0.00 tags/min (sim) | TotalDeps: 361 | Wall: 4.3 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.49 | wall=2.01
+  R2[PPO     ]: carry=0 | base=0.53 | wall=1.97
+  R3[PPO     ]: carry=0 | base=0.46 | wall=2.04
+  R4[PPO     ]: carry=0 | base=0.51 | wall=1.99
+=================================================================
+
+=================================================================
+[EP 65] Picks: 1 | Deps: 1 | Rate: 0.11 tags/min (sim) | TotalDeps: 362 | Wall: 4.3 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.44 | wall=2.06
+  R2[PPO     ]: carry=0 | base=0.49 | wall=2.02
+  R3[PPO     ]: carry=0 | base=0.51 | wall=1.99
+  R4[PPO     ]: carry=0 | base=0.58 | wall=1.92
+=================================================================
+
+=================================================================
+[EP 66] Picks: 0 | Deps: 0 | Rate: 0.00 tags/min (sim) | TotalDeps: 362 | Wall: 4.3 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.54 | wall=1.96
+  R2[PPO     ]: carry=0 | base=0.52 | wall=1.98
+  R3[PPO     ]: carry=0 | base=0.51 | wall=1.99
+  R4[PPO     ]: carry=0 | base=0.46 | wall=2.04
+=================================================================
+
+=================================================================
+[EP 67] Picks: 5 | Deps: 5 | Rate: 0.57 tags/min (sim) | TotalDeps: 367 | Wall: 4.2 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.45 | wall=2.05
+  R2[PPO     ]: carry=0 | base=0.41 | wall=2.10
+  R3[PPO     ]: carry=0 | base=0.49 | wall=2.01
+  R4[PPO     ]: carry=0 | base=0.52 | wall=1.98
+=================================================================
+
+=================================================================
+[EP 68] Picks: 12 | Deps: 12 | Rate: 1.37 tags/min (sim) | TotalDeps: 379 | Wall: 4.1 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.54 | wall=1.96
+  R2[PPO     ]: carry=0 | base=0.43 | wall=2.11
+  R3[PPO     ]: carry=0 | base=0.28 | wall=2.22
+  R4[BASE_ESC]: carry=0 | base=0.24 | wall=2.30
+=================================================================
+
+=================================================================
+[EP 69] Picks: 0 | Deps: 0 | Rate: 0.00 tags/min (sim) | TotalDeps: 379 | Wall: 4.3 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.46 | wall=2.04
+  R2[PPO     ]: carry=0 | base=0.49 | wall=2.01
+  R3[PPO     ]: carry=0 | base=0.53 | wall=1.97
+  R4[PPO     ]: carry=0 | base=0.51 | wall=2.00
+=================================================================
+
+=================================================================
+[EP 70] Picks: 2 | Deps: 2 | Rate: 0.23 tags/min (sim) | TotalDeps: 381 | Wall: 4.3 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.54 | wall=1.96
+  R2[PPO     ]: carry=0 | base=0.52 | wall=1.98
+  R3[PPO     ]: carry=0 | base=0.45 | wall=2.05
+  R4[PPO     ]: carry=0 | base=0.47 | wall=2.03
+=================================================================
+
+=================================================================
+[EP 71] Picks: 3 | Deps: 3 | Rate: 0.34 tags/min (sim) | TotalDeps: 384 | Wall: 4.2 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.49 | wall=2.02
+  R2[PPO     ]: carry=0 | base=0.47 | wall=2.04
+  R3[PPO     ]: carry=0 | base=0.46 | wall=2.04
+  R4[PPO     ]: carry=0 | base=0.54 | wall=1.96
+=================================================================
+
+=================================================================
+[EP 72] Picks: 11 | Deps: 11 | Rate: 1.26 tags/min (sim) | TotalDeps: 395 | Wall: 4.2 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.51 | wall=1.99
+  R2[PPO     ]: carry=0 | base=0.50 | wall=2.00
+  R3[PPO     ]: carry=0 | base=0.54 | wall=1.97
+  R4[PPO     ]: carry=0 | base=0.43 | wall=2.07
+=================================================================
+
+=================================================================
+[EP 73] Picks: 2 | Deps: 2 | Rate: 0.23 tags/min (sim) | TotalDeps: 397 | Wall: 4.3 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.51 | wall=1.99
+  R2[PPO     ]: carry=0 | base=0.45 | wall=2.05
+  R3[BASE_ESC]: carry=0 | base=0.24 | wall=2.27
+  R4[PPO     ]: carry=0 | base=0.52 | wall=1.99
+=================================================================
+
+=================================================================
+[EP 74] Picks: 0 | Deps: 0 | Rate: 0.00 tags/min (sim) | TotalDeps: 397 | Wall: 4.3 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.54 | wall=1.96
+  R2[PPO     ]: carry=0 | base=0.48 | wall=2.02
+  R3[PPO     ]: carry=0 | base=0.48 | wall=2.02
+  R4[PPO     ]: carry=0 | base=0.42 | wall=2.08
+=================================================================
+
+=================================================================
+[EP 75] Picks: 0 | Deps: 0 | Rate: 0.00 tags/min (sim) | TotalDeps: 397 | Wall: 4.3 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.50 | wall=2.00
+  R2[PPO     ]: carry=0 | base=0.46 | wall=2.04
+  R3[PPO     ]: carry=0 | base=0.49 | wall=2.01
+  R4[PPO     ]: carry=0 | base=0.52 | wall=1.98
+=================================================================
+
+=================================================================
+[EP 76] Picks: 7 | Deps: 7 | Rate: 0.80 tags/min (sim) | TotalDeps: 404 | Wall: 4.1 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.53 | wall=1.98
+  R2[PPO     ]: carry=0 | base=0.55 | wall=1.97
+  R3[PPO     ]: carry=0 | base=0.48 | wall=2.02
+  R4[PPO     ]: carry=0 | base=0.52 | wall=1.98
+=================================================================
+
+=================================================================
+[EP 77] Picks: 5 | Deps: 5 | Rate: 0.57 tags/min (sim) | TotalDeps: 409 | Wall: 4.2 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.44 | wall=2.06
+  R2[PPO     ]: carry=0 | base=0.51 | wall=1.99
+  R3[PPO     ]: carry=0 | base=0.51 | wall=1.99
+  R4[PPO     ]: carry=0 | base=0.58 | wall=1.92
+=================================================================
+
+=================================================================
+[EP 78] Picks: 1 | Deps: 1 | Rate: 0.11 tags/min (sim) | TotalDeps: 410 | Wall: 4.2 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.30 | wall=2.25
+  R2[PPO     ]: carry=0 | base=0.44 | wall=2.06
+  R3[PPO     ]: carry=0 | base=0.51 | wall=1.99
+  R4[PPO     ]: carry=0 | base=0.52 | wall=1.98
+=================================================================
+
+=================================================================
+[EP 79] Picks: 5 | Deps: 5 | Rate: 0.57 tags/min (sim) | TotalDeps: 415 | Wall: 4.1 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.52 | wall=1.98
+  R2[PPO     ]: carry=0 | base=0.37 | wall=2.16
+  R3[PPO     ]: carry=0 | base=0.26 | wall=2.30
+  R4[PPO     ]: carry=0 | base=0.48 | wall=2.02
+=================================================================
+
+=================================================================
+[EP 80] Picks: 0 | Deps: 0 | Rate: 0.00 tags/min (sim) | TotalDeps: 415 | Wall: 4.3 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.51 | wall=1.99
+  R2[PPO     ]: carry=0 | base=0.46 | wall=2.05
+  R3[PPO     ]: carry=0 | base=0.46 | wall=2.04
+  R4[PPO     ]: carry=0 | base=0.52 | wall=1.98
+=================================================================
+
+=================================================================
+[EP 81] Picks: 1 | Deps: 1 | Rate: 0.11 tags/min (sim) | TotalDeps: 416 | Wall: 4.3 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.44 | wall=2.06
+  R2[PPO     ]: carry=0 | base=0.51 | wall=1.99
+  R3[PPO     ]: carry=0 | base=0.40 | wall=2.12
+  R4[PPO     ]: carry=0 | base=0.50 | wall=2.00
+=================================================================
+
+=================================================================
+[EP 82] Picks: 7 | Deps: 7 | Rate: 0.80 tags/min (sim) | TotalDeps: 423 | Wall: 4.2 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.45 | wall=2.06
+  R2[PPO     ]: carry=0 | base=0.48 | wall=2.02
+  R3[PPO     ]: carry=0 | base=0.49 | wall=2.02
+  R4[PPO     ]: carry=0 | base=0.52 | wall=1.98
+=================================================================
+
+=================================================================
+[EP 83] Picks: 0 | Deps: 0 | Rate: 0.00 tags/min (sim) | TotalDeps: 423 | Wall: 4.3 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.49 | wall=2.01
+  R2[PPO     ]: carry=0 | base=0.56 | wall=1.94
+  R3[PPO     ]: carry=0 | base=0.43 | wall=2.07
+  R4[PPO     ]: carry=0 | base=0.50 | wall=2.00
+=================================================================
+
+=================================================================
+[EP 84] Picks: 6 | Deps: 6 | Rate: 0.69 tags/min (sim) | TotalDeps: 429 | Wall: 4.2 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.52 | wall=1.98
+  R2[PPO     ]: carry=0 | base=0.47 | wall=2.03
+  R3[PPO     ]: carry=0 | base=0.51 | wall=2.00
+  R4[PPO     ]: carry=0 | base=0.59 | wall=1.91
+=================================================================
+
+=================================================================
+[EP 85] Picks: 0 | Deps: 0 | Rate: 0.00 tags/min (sim) | TotalDeps: 429 | Wall: 4.4 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.52 | wall=1.98
+  R2[PPO     ]: carry=0 | base=0.49 | wall=2.01
+  R3[PPO     ]: carry=0 | base=0.44 | wall=2.06
+  R4[PPO     ]: carry=0 | base=0.56 | wall=1.94
+=================================================================
+
+=================================================================
+[EP 86] Picks: 12 | Deps: 12 | Rate: 1.37 tags/min (sim) | TotalDeps: 441 | Wall: 4.1 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.46 | wall=2.04
+  R2[PPO     ]: carry=0 | base=0.51 | wall=1.99
+  R3[BASE_ESC]: carry=0 | base=0.25 | wall=2.31
+  R4[PPO     ]: carry=0 | base=0.54 | wall=1.97
+=================================================================
+
+=================================================================
+[EP 87] Picks: 8 | Deps: 8 | Rate: 0.92 tags/min (sim) | TotalDeps: 449 | Wall: 4.1 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.53 | wall=1.97
+  R2[PPO     ]: carry=0 | base=0.46 | wall=2.04
+  R3[PPO     ]: carry=0 | base=0.52 | wall=1.98
+  R4[PPO     ]: carry=0 | base=0.26 | wall=2.28
+=================================================================
+
+=================================================================
+[EP 88] Picks: 5 | Deps: 5 | Rate: 0.57 tags/min (sim) | TotalDeps: 454 | Wall: 4.2 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.56 | wall=1.95
+  R2[PPO     ]: carry=0 | base=0.49 | wall=2.02
+  R3[PPO     ]: carry=0 | base=0.50 | wall=2.00
+  R4[PPO     ]: carry=0 | base=0.44 | wall=2.06
+=================================================================
+
+=================================================================
+[EP 89] Picks: 4 | Deps: 4 | Rate: 0.46 tags/min (sim) | TotalDeps: 458 | Wall: 4.2 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.52 | wall=1.98
+  R2[PPO     ]: carry=0 | base=0.53 | wall=1.97
+  R3[PPO     ]: carry=0 | base=0.36 | wall=2.20
+  R4[PPO     ]: carry=0 | base=0.49 | wall=2.01
+=================================================================
+
+=================================================================
+[EP 90] Picks: 0 | Deps: 0 | Rate: 0.00 tags/min (sim) | TotalDeps: 458 | Wall: 4.1 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.49 | wall=2.01
+  R2[PPO     ]: carry=0 | base=0.51 | wall=1.99
+  R3[PPO     ]: carry=0 | base=0.56 | wall=1.94
+  R4[PPO     ]: carry=0 | base=0.44 | wall=2.06
+=================================================================
+
+=================================================================
+[EP 91] Picks: 0 | Deps: 0 | Rate: 0.00 tags/min (sim) | TotalDeps: 458 | Wall: 4.1 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.50 | wall=2.00
+  R2[PPO     ]: carry=0 | base=0.51 | wall=1.99
+  R3[PPO     ]: carry=0 | base=0.56 | wall=1.94
+  R4[PPO     ]: carry=0 | base=0.44 | wall=2.06
+=================================================================
+
+=================================================================
+[EP 92] Picks: 6 | Deps: 6 | Rate: 0.69 tags/min (sim) | TotalDeps: 464 | Wall: 3.8 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.52 | wall=1.98
+  R2[PPO     ]: carry=0 | base=0.51 | wall=1.99
+  R3[BASE_ESC]: carry=0 | base=0.24 | wall=2.30
+  R4[PPO     ]: carry=0 | base=0.52 | wall=1.98
+=================================================================
+
+=================================================================
+[EP 93] Picks: 0 | Deps: 0 | Rate: 0.00 tags/min (sim) | TotalDeps: 464 | Wall: 4.1 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.55 | wall=1.95
+  R2[PPO     ]: carry=0 | base=0.43 | wall=2.07
+  R3[PPO     ]: carry=0 | base=0.50 | wall=2.00
+  R4[PPO     ]: carry=0 | base=0.48 | wall=2.02
+=================================================================
+
+=================================================================
+[EP 94] Picks: 11 | Deps: 11 | Rate: 1.26 tags/min (sim) | TotalDeps: 475 | Wall: 3.8 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.50 | wall=2.02
+  R2[PPO     ]: carry=0 | base=0.50 | wall=2.00
+  R3[PPO     ]: carry=0 | base=0.58 | wall=1.92
+  R4[PPO     ]: carry=0 | base=0.56 | wall=1.94
+=================================================================
+
+=================================================================
+[EP 95] Picks: 0 | Deps: 0 | Rate: 0.00 tags/min (sim) | TotalDeps: 475 | Wall: 4.0 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.56 | wall=1.94
+  R2[PPO     ]: carry=0 | base=0.51 | wall=1.99
+  R3[PPO     ]: carry=0 | base=0.44 | wall=2.06
+  R4[PPO     ]: carry=0 | base=0.49 | wall=2.01
+=================================================================
+
+=================================================================
+[EP 96] Picks: 3 | Deps: 3 | Rate: 0.34 tags/min (sim) | TotalDeps: 478 | Wall: 4.0 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.47 | wall=2.03
+  R2[PPO     ]: carry=0 | base=0.44 | wall=2.06
+  R3[PPO     ]: carry=0 | base=0.51 | wall=2.00
+  R4[PPO     ]: carry=0 | base=0.54 | wall=1.96
+=================================================================
+
+=================================================================
+[EP 97] Picks: 0 | Deps: 0 | Rate: 0.00 tags/min (sim) | TotalDeps: 478 | Wall: 4.0 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.44 | wall=2.06
+  R2[PPO     ]: carry=0 | base=0.50 | wall=2.00
+  R3[PPO     ]: carry=0 | base=0.50 | wall=2.00
+  R4[PPO     ]: carry=0 | base=0.56 | wall=1.94
+=================================================================
+
+=================================================================
+[EP 98] Picks: 1 | Deps: 1 | Rate: 0.11 tags/min (sim) | TotalDeps: 479 | Wall: 4.0 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.48 | wall=2.02
+  R2[PPO     ]: carry=0 | base=0.41 | wall=2.10
+  R3[PPO     ]: carry=0 | base=0.45 | wall=2.05
+  R4[PPO     ]: carry=0 | base=0.52 | wall=1.98
+=================================================================
+
+=================================================================
+[EP 99] Picks: 1 | Deps: 1 | Rate: 0.11 tags/min (sim) | TotalDeps: 480 | Wall: 4.0 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.28 | wall=2.23
+  R2[PPO     ]: carry=0 | base=0.50 | wall=2.00
+  R3[PPO     ]: carry=0 | base=0.51 | wall=2.00
+  R4[PPO     ]: carry=0 | base=0.43 | wall=2.08
+=================================================================
+
+=================================================================
+[EP 100] Picks: 4 | Deps: 4 | Rate: 0.46 tags/min (sim) | TotalDeps: 484 | Wall: 4.3 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.47 | wall=2.03
+  R2[PPO     ]: carry=0 | base=0.34 | wall=2.25
+  R3[BASE_ESC]: carry=0 | base=0.25 | wall=2.32
+  R4[PPO     ]: carry=0 | base=0.47 | wall=2.03
+=================================================================
+
+=================================================================
+[EP 101] Picks: 8 | Deps: 8 | Rate: 0.92 tags/min (sim) | TotalDeps: 492 | Wall: 4.2 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.49 | wall=2.02
+  R2[PPO     ]: carry=0 | base=0.45 | wall=2.05
+  R3[PPO     ]: carry=0 | base=0.56 | wall=1.94
+  R4[PPO     ]: carry=0 | base=0.52 | wall=1.98
+=================================================================
+
+=================================================================
+[EP 102] Picks: 9 | Deps: 9 | Rate: 1.03 tags/min (sim) | TotalDeps: 501 | Wall: 4.1 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.46 | wall=2.14
+  R2[PPO     ]: carry=0 | base=0.49 | wall=2.04
+  R3[BASE_ESC]: carry=0 | base=0.24 | wall=2.28
+  R4[PPO     ]: carry=0 | base=0.50 | wall=2.00
+=================================================================
+
+=================================================================
+[EP 103] Picks: 6 | Deps: 6 | Rate: 0.69 tags/min (sim) | TotalDeps: 507 | Wall: 4.2 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.51 | wall=1.99
+  R2[PPO     ]: carry=0 | base=0.53 | wall=1.97
+  R3[PPO     ]: carry=0 | base=0.46 | wall=2.06
+  R4[PPO     ]: carry=0 | base=0.46 | wall=2.04
+=================================================================
+
+=================================================================
+[EP 104] Picks: 1 | Deps: 1 | Rate: 0.11 tags/min (sim) | TotalDeps: 508 | Wall: 4.2 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.51 | wall=1.99
+  R2[PPO     ]: carry=0 | base=0.53 | wall=1.98
+  R3[PPO     ]: carry=0 | base=0.45 | wall=2.05
+  R4[PPO     ]: carry=0 | base=0.44 | wall=2.06
+=================================================================
+
+=================================================================
+[EP 105] Picks: 1 | Deps: 1 | Rate: 0.11 tags/min (sim) | TotalDeps: 509 | Wall: 4.3 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.56 | wall=1.94
+  R2[PPO     ]: carry=0 | base=0.46 | wall=2.05
+  R3[PPO     ]: carry=0 | base=0.44 | wall=2.06
+  R4[PPO     ]: carry=0 | base=0.49 | wall=2.01
+=================================================================
+
+=================================================================
+[EP 106] Picks: 0 | Deps: 0 | Rate: 0.00 tags/min (sim) | TotalDeps: 509 | Wall: 4.4 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.54 | wall=1.96
+  R2[PPO     ]: carry=0 | base=0.52 | wall=1.98
+  R3[PPO     ]: carry=0 | base=0.47 | wall=2.03
+  R4[PPO     ]: carry=0 | base=0.45 | wall=2.05
+=================================================================
+
+=================================================================
+[EP 107] Picks: 5 | Deps: 5 | Rate: 0.57 tags/min (sim) | TotalDeps: 514 | Wall: 4.2 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[BASE_ESC]: carry=0 | base=0.22 | wall=2.34
+  R2[PPO     ]: carry=0 | base=0.49 | wall=2.02
+  R3[PPO     ]: carry=0 | base=0.51 | wall=1.99
+  R4[PPO     ]: carry=0 | base=0.56 | wall=1.94
+=================================================================
+
+=================================================================
+[EP 108] Picks: 7 | Deps: 7 | Rate: 0.80 tags/min (sim) | TotalDeps: 521 | Wall: 4.1 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.49 | wall=2.01
+  R2[PPO     ]: carry=0 | base=0.45 | wall=2.05
+  R3[PPO     ]: carry=0 | base=0.49 | wall=2.02
+  R4[PPO     ]: carry=0 | base=0.52 | wall=1.98
+=================================================================
+
+=================================================================
+[EP 109] Picks: 1 | Deps: 1 | Rate: 0.11 tags/min (sim) | TotalDeps: 522 | Wall: 4.2 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.25 | wall=2.25
+  R2[PPO     ]: carry=0 | base=0.50 | wall=2.00
+  R3[PPO     ]: carry=0 | base=0.47 | wall=2.03
+  R4[PPO     ]: carry=0 | base=0.54 | wall=1.96
+=================================================================
+
+=================================================================
+[EP 110] Picks: 4 | Deps: 4 | Rate: 0.46 tags/min (sim) | TotalDeps: 526 | Wall: 4.2 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.48 | wall=2.02
+  R2[PPO     ]: carry=0 | base=0.57 | wall=1.93
+  R3[PPO     ]: carry=0 | base=0.52 | wall=1.98
+  R4[PPO     ]: carry=0 | base=0.45 | wall=2.05
+=================================================================
+
+=================================================================
+[EP 111] Picks: 13 | Deps: 13 | Rate: 1.49 tags/min (sim) | TotalDeps: 539 | Wall: 4.0 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.58 | wall=1.93
+  R2[PPO     ]: carry=0 | base=0.53 | wall=1.97
+  R3[BASE_ESC]: carry=0 | base=0.22 | wall=2.29
+  R4[PPO     ]: carry=0 | base=0.48 | wall=2.02
+=================================================================
+
+=================================================================
+[EP 112] Picks: 1 | Deps: 1 | Rate: 0.11 tags/min (sim) | TotalDeps: 540 | Wall: 4.2 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.46 | wall=2.04
+  R2[BASE_ESC]: carry=0 | base=0.23 | wall=2.31
+  R3[PPO     ]: carry=0 | base=0.47 | wall=2.03
+  R4[PPO     ]: carry=0 | base=0.53 | wall=1.97
+=================================================================
+
+=================================================================
+[EP 113] Picks: 1 | Deps: 1 | Rate: 0.11 tags/min (sim) | TotalDeps: 541 | Wall: 4.3 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.44 | wall=2.06
+  R2[PPO     ]: carry=0 | base=0.51 | wall=1.99
+  R3[PPO     ]: carry=0 | base=0.50 | wall=2.00
+  R4[PPO     ]: carry=0 | base=0.56 | wall=1.94
+=================================================================
+
+=================================================================
+[EP 114] Picks: 3 | Deps: 3 | Rate: 0.34 tags/min (sim) | TotalDeps: 544 | Wall: 4.3 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.53 | wall=1.97
+  R2[PPO     ]: carry=0 | base=0.47 | wall=2.03
+  R3[PPO     ]: carry=0 | base=0.46 | wall=2.04
+  R4[PPO     ]: carry=0 | base=0.54 | wall=1.96
+=================================================================
+
+=================================================================
+[EP 115] Picks: 12 | Deps: 12 | Rate: 1.37 tags/min (sim) | TotalDeps: 556 | Wall: 4.2 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.47 | wall=2.09
+  R2[PPO     ]: carry=0 | base=0.48 | wall=2.02
+  R3[PPO     ]: carry=0 | base=0.33 | wall=2.21
+  R4[PPO     ]: carry=0 | base=0.55 | wall=1.95
+=================================================================
+
+=================================================================
+[EP 116] Picks: 5 | Deps: 5 | Rate: 0.57 tags/min (sim) | TotalDeps: 561 | Wall: 4.3 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.53 | wall=1.97
+  R2[BASE_ESC]: carry=0 | base=0.23 | wall=2.28
+  R3[PPO     ]: carry=0 | base=0.44 | wall=2.06
+  R4[PPO     ]: carry=0 | base=0.52 | wall=1.98
+=================================================================
+
+=================================================================
+[EP 117] Picks: 3 | Deps: 3 | Rate: 0.34 tags/min (sim) | TotalDeps: 564 | Wall: 4.3 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.57 | wall=1.93
+  R2[PPO     ]: carry=0 | base=0.43 | wall=2.07
+  R3[PPO     ]: carry=0 | base=0.49 | wall=2.01
+  R4[PPO     ]: carry=0 | base=0.50 | wall=2.00
+=================================================================
+
+=================================================================
+[EP 118] Picks: 0 | Deps: 0 | Rate: 0.00 tags/min (sim) | TotalDeps: 564 | Wall: 4.4 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.47 | wall=2.03
+  R2[PPO     ]: carry=0 | base=0.54 | wall=1.96
+  R3[PPO     ]: carry=0 | base=0.53 | wall=1.98
+  R4[PPO     ]: carry=0 | base=0.49 | wall=2.02
+=================================================================
+
+=================================================================
+[EP 119] Picks: 5 | Deps: 5 | Rate: 0.57 tags/min (sim) | TotalDeps: 569 | Wall: 4.1 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.47 | wall=2.03
+  R2[PPO     ]: carry=0 | base=0.41 | wall=2.09
+  R3[PPO     ]: carry=0 | base=0.26 | wall=2.29
+  R4[PPO     ]: carry=0 | base=0.52 | wall=1.98
+=================================================================
+
+=================================================================
+[EP 120] Picks: 7 | Deps: 7 | Rate: 0.80 tags/min (sim) | TotalDeps: 576 | Wall: 4.2 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.50 | wall=2.00
+  R2[PPO     ]: carry=0 | base=0.57 | wall=1.94
+  R3[BASE_ESC]: carry=0 | base=0.25 | wall=2.26
+  R4[PPO     ]: carry=0 | base=0.46 | wall=2.04
+=================================================================
+
+=================================================================
+[EP 121] Picks: 2 | Deps: 2 | Rate: 0.23 tags/min (sim) | TotalDeps: 578 | Wall: 4.4 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.46 | wall=2.04
+  R2[PPO     ]: carry=0 | base=0.54 | wall=1.96
+  R3[PPO     ]: carry=0 | base=0.47 | wall=2.03
+  R4[PPO     ]: carry=0 | base=0.54 | wall=1.96
+=================================================================
+
+=================================================================
+[EP 122] Picks: 6 | Deps: 6 | Rate: 0.69 tags/min (sim) | TotalDeps: 584 | Wall: 4.2 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.51 | wall=2.01
+  R2[PPO     ]: carry=0 | base=0.55 | wall=1.95
+  R3[PPO     ]: carry=0 | base=0.41 | wall=2.12
+  R4[PPO     ]: carry=0 | base=0.53 | wall=1.97
+=================================================================
+
+=================================================================
+[EP 123] Picks: 0 | Deps: 0 | Rate: 0.00 tags/min (sim) | TotalDeps: 584 | Wall: 4.3 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.54 | wall=1.96
+  R2[PPO     ]: carry=0 | base=0.47 | wall=2.03
+  R3[PPO     ]: carry=0 | base=0.54 | wall=1.96
+  R4[PPO     ]: carry=0 | base=0.47 | wall=2.03
+=================================================================
+
+=================================================================
+[EP 124] Picks: 9 | Deps: 9 | Rate: 1.03 tags/min (sim) | TotalDeps: 593 | Wall: 4.1 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.48 | wall=2.06
+  R2[BASE_ESC]: carry=0 | base=0.22 | wall=2.29
+  R3[PPO     ]: carry=0 | base=0.47 | wall=2.05
+  R4[PPO     ]: carry=0 | base=0.45 | wall=2.05
+=================================================================
+
+=================================================================
+[EP 125] Picks: 0 | Deps: 0 | Rate: 0.00 tags/min (sim) | TotalDeps: 593 | Wall: 4.4 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.53 | wall=1.98
+  R2[PPO     ]: carry=0 | base=0.45 | wall=2.05
+  R3[PPO     ]: carry=0 | base=0.56 | wall=1.95
+  R4[PPO     ]: carry=0 | base=0.48 | wall=2.02
+=================================================================
+
+=================================================================
+[EP 126] Picks: 10 | Deps: 10 | Rate: 1.14 tags/min (sim) | TotalDeps: 603 | Wall: 4.2 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.56 | wall=2.01
+  R2[PPO     ]: carry=0 | base=0.36 | wall=2.19
+  R3[PPO     ]: carry=0 | base=0.48 | wall=2.04
+  R4[PPO     ]: carry=0 | base=0.41 | wall=2.09
+=================================================================
+
+=================================================================
+[EP 127] Picks: 20 | Deps: 20 | Rate: 2.29 tags/min (sim) | TotalDeps: 623 | Wall: 4.0 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.52 | wall=1.98
+  R2[PPO     ]: carry=0 | base=0.48 | wall=2.02
+  R3[PPO     ]: carry=0 | base=0.52 | wall=1.99
+  R4[PPO     ]: carry=0 | base=0.56 | wall=1.95
+=================================================================
+
+=================================================================
+[EP 128] Picks: 1 | Deps: 1 | Rate: 0.11 tags/min (sim) | TotalDeps: 624 | Wall: 4.4 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.51 | wall=1.99
+  R2[PPO     ]: carry=0 | base=0.53 | wall=1.97
+  R3[BASE_ESC]: carry=0 | base=0.24 | wall=2.30
+  R4[PPO     ]: carry=0 | base=0.46 | wall=2.04
+=================================================================
+
+=================================================================
+[EP 129] Picks: 4 | Deps: 4 | Rate: 0.46 tags/min (sim) | TotalDeps: 628 | Wall: 4.1 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.44 | wall=2.08
+  R2[PPO     ]: carry=0 | base=0.27 | wall=2.28
+  R3[PPO     ]: carry=0 | base=0.51 | wall=2.01
+  R4[PPO     ]: carry=0 | base=0.50 | wall=2.01
+=================================================================
+
+=================================================================
+[EP 130] Picks: 11 | Deps: 11 | Rate: 1.26 tags/min (sim) | TotalDeps: 639 | Wall: 4.1 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.48 | wall=2.02
+  R2[PPO     ]: carry=0 | base=0.48 | wall=2.02
+  R3[PPO     ]: carry=0 | base=0.55 | wall=1.95
+  R4[PPO     ]: carry=0 | base=0.52 | wall=1.98
+=================================================================
+
+=================================================================
+[EP 131] Picks: 1 | Deps: 1 | Rate: 0.11 tags/min (sim) | TotalDeps: 640 | Wall: 4.3 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.45 | wall=2.05
+  R2[PPO     ]: carry=0 | base=0.29 | wall=2.23
+  R3[PPO     ]: carry=0 | base=0.52 | wall=1.98
+  R4[PPO     ]: carry=0 | base=0.50 | wall=2.00
+=================================================================
+
+=================================================================
+[EP 132] Picks: 1 | Deps: 1 | Rate: 0.11 tags/min (sim) | TotalDeps: 641 | Wall: 4.3 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.47 | wall=2.03
+  R2[PPO     ]: carry=0 | base=0.54 | wall=1.96
+  R3[PPO     ]: carry=0 | base=0.26 | wall=2.25
+  R4[PPO     ]: carry=0 | base=0.49 | wall=2.01
+=================================================================
+
+=================================================================
+[EP 133] Picks: 0 | Deps: 0 | Rate: 0.00 tags/min (sim) | TotalDeps: 641 | Wall: 4.1 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.50 | wall=2.00
+  R2[PPO     ]: carry=0 | base=0.56 | wall=1.94
+  R3[PPO     ]: carry=0 | base=0.43 | wall=2.07
+  R4[PPO     ]: carry=0 | base=0.49 | wall=2.02
+=================================================================
+
+=================================================================
+[EP 134] Picks: 4 | Deps: 4 | Rate: 0.46 tags/min (sim) | TotalDeps: 645 | Wall: 4.0 min
+  Curriculum: MEDIUM  (11 clusters, max_dist=1.6m)
+  Pheromone:  P2P per-robot (not tracked by supervisor)
+  R1[PPO     ]: carry=0 | base=0.52 | wall=1.98
+  R2[PPO     ]: carry=0 | base=0.28 | wall=2.23
+  R3[BASE_ESC]: carry=0 | base=0.25 | wall=2.26
+  R4[PPO     ]: carry=0 | base=0.47 | wall=2.03
+=================================================================

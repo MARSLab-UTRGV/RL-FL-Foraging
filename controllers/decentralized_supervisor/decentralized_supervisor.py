@@ -20,7 +20,7 @@ from controller import Supervisor
 #
 # Message protocol (same as eval supervisor):
 #   Supervisor → Robot: [tag_visible, tag_dist_norm, tag_angle_norm, pickup_signal]
-#     pickup_signal > 0  → pickup; value = pheromone strength (0.2–1.0)
+#     pickup_signal > 0  → pickup; value = resource density (raw tag count ≥ 1)
 #     pickup_signal = -1 → deposit confirmed
 #     pickup_signal = 0  → normal step
 #   Robot → Supervisor: 17 floats [prox×8, carrying, base_dist, base_angle,
@@ -37,7 +37,6 @@ from controller import Supervisor
 TAG_SEEK_RANGE  = 1.0
 FOV_HALF_ANGLE  = 1.2
 DENSITY_RADIUS  = 0.5
-DENSITY_MAX     = 5
 NUM_ROBOTS      = 4
 NUM_TAGS        = 64
 STEPS_PER_EPISODE = 16384
@@ -147,15 +146,14 @@ class DecentralizedTrainSupervisor:
 
         return tag_visible, tag_dist / TAG_SEEK_RANGE, tag_angle / math.pi
 
-    def _pickup_strength(self, pos):
-        """Pheromone strength based on tag cluster density near pickup position."""
-        nearby = sum(
+    def _count_density(self, pos):
+        """Raw tag count within 0.5m — counted after hiding, reflects remaining tags."""
+        return sum(
             1 for t in self.tag_nodes
             if t.getPosition()[2] >= 0 and
                math.sqrt((t.getPosition()[0] - pos[0])**2 +
-                         (t.getPosition()[1] - pos[1])**2) <= DENSITY_RADIUS
+                         (t.getPosition()[1] - pos[1])**2) < 0.5
         )
-        return 0.2 + 0.8 * min(nearby / DENSITY_MAX, 1.0)
 
     # =========================================================================
     # Main step
@@ -179,12 +177,15 @@ class DecentralizedTrainSupervisor:
                     if math.sqrt(dx * dx + dy * dy) < 0.15:
                         self.carrying[i] = True
                         tag_node.getField("translation").setSFVec3f([0, 0, -10])
-                        pickup_signal        = self._pickup_strength([gps_x, gps_y])
+                        pickup_signal        = float(self._count_density([gps_x, gps_y]))
                         self.total_pickups  += 1
                         self.ep_pickups     += 1
-                        print(f"[PICKUP]  robot{i+1} | "
-                              f"strength={pickup_signal:.2f} | "
-                              f"Total: {self.total_pickups}")
+                        msg_ev = (f"[PICKUP]  robot{i+1} | "
+                                  f"density={pickup_signal:.0f} | "
+                                  f"Total: {self.total_pickups}")
+                        print(msg_ev)
+                        with open(self._log_path, 'a') as _f:
+                            _f.write(msg_ev + '\n')
                         break
             else:
                 # Deposit detection: robot within 0.25m of base while carrying
@@ -193,7 +194,10 @@ class DecentralizedTrainSupervisor:
                     pickup_signal        = -1.0
                     self.total_deposits += 1
                     self.ep_deposits    += 1
-                    print(f"[DEPOSIT] robot{i+1} | Total: {self.total_deposits}")
+                    msg_ev = f"[DEPOSIT] robot{i+1} | Total: {self.total_deposits}"
+                    print(msg_ev)
+                    with open(self._log_path, 'a') as _f:
+                        _f.write(msg_ev + '\n')
 
             # Camera simulation → tag obs
             tag_vis, tag_dist_n, tag_angle_n = self._tag_obs(i)
@@ -224,12 +228,14 @@ class DecentralizedTrainSupervisor:
         wall_min = (time.time() - self.ep_start_time) / 60.0
 
         ep = self.total_episodes + 1
-        if ep < 60:
-            phase = "CLOSE   (2 clusters, max_dist=1.0m)"
-        elif ep < 201:
-            phase = "MEDIUM  (3-5 clusters, max_dist=1.8m)"
+        if ep < 30:
+            phase = "NEAR    (11 clusters, max_dist=1.2m)"
+        elif ep < 75:
+            phase = "MEDIUM  (11 clusters, max_dist=1.6m)"
+        elif ep < 150:
+            phase = "FAR     (11 clusters, max_dist=2.0m)"
         else:
-            phase = "FULL    (6-8 clusters, max_dist=2.3m)"
+            phase = "FULL    (11 clusters, max_dist=2.3m)"
 
         log = (
             f"\n{'='*65}\n"
@@ -280,19 +286,18 @@ class DecentralizedTrainSupervisor:
             self.robot_nodes[i].resetPhysics()
 
     def _respawn_tags(self):
-        """Place tags in rotated grids — uniform 0.10m spacing matches eval world geometry.
-        Random rotation each episode keeps geometry consistent but orientation varied."""
-        centers      = self._cluster_centers()
-        tags_per     = NUM_TAGS // len(centers)
-        tag_idx      = 0
-        GRID_SPACING = 0.10   # metres between tags — matches eval world
+        """11 fixed clusters per episode — 5 clusters × 8 tags + 6 clusters × 4 tags = 64 tags.
+        GRID_SPACING=0.0775m matches centralized. Random rotation each episode."""
+        centers      = self._cluster_centers()   # always 11
+        GRID_SPACING = 0.0775
+        # First 5 clusters get 8 tags, remaining 6 get 4 tags
+        cluster_sizes = [8] * 5 + [4] * 6
 
-        for cx, cy in centers:
-            count = (tags_per if tag_idx + tags_per <= NUM_TAGS
-                     else NUM_TAGS - tag_idx)
-            cols  = max(1, int(math.ceil(math.sqrt(count))))
-            rows  = int(math.ceil(count / cols))
-            rot   = random.uniform(0, math.pi / 2)   # random orientation per episode
+        tag_idx = 0
+        for (cx, cy), count in zip(centers, cluster_sizes):
+            cols = max(1, int(math.ceil(math.sqrt(count))))
+            rows = int(math.ceil(count / cols))
+            rot  = random.uniform(0, math.pi / 2)
 
             k = 0
             for row in range(rows):
@@ -308,41 +313,46 @@ class DecentralizedTrainSupervisor:
                     tag_idx += 1
                     k += 1
 
-        while tag_idx < NUM_TAGS:
-            cx, cy = random.choice(centers)
-            rot = random.uniform(0, math.pi * 2)
-            tx  = cx + math.cos(rot) * GRID_SPACING
-            ty  = cy + math.sin(rot) * GRID_SPACING
-            self.tag_nodes[tag_idx].getField("translation").setSFVec3f(
-                [max(-2.3, min(2.3, tx)), max(-2.3, min(2.3, ty)), 0.01375])
-            tag_idx += 1
-
     def _cluster_centers(self):
-        """Curriculum matching centralized proportions (14%/33%/53%) scaled to ~427 episodes.
-        With 7M steps / 16384 per episode ≈ 427 episodes total:
-          Phase 1 (ep   1-60):  60 eps = 14% — bootstraps basic pickup/deposit
-          Phase 2 (ep  61-201): 141 eps = 33% — medium-range pheromone following
-          Phase 3 (ep 202+  ): 226 eps = 53% — full arena, 6-8 clusters
+        """11 fixed clusters per episode — matches centralized CPFA-RL v5 exactly.
+        4-phase curriculum (5M steps / 16384 per episode ≈ 305 episodes):
+          Phase 1 (ep   1-29):  max_dist=1.2m, min_sep=0.40m
+          Phase 2 (ep  30-74):  max_dist=1.6m, min_sep=0.45m
+          Phase 3 (ep  75-149): max_dist=2.0m, min_sep=0.50m
+          Phase 4 (ep 150+  ):  max_dist=2.3m, min_sep=0.50m
         """
-        if self.total_episodes < 60:
-            max_dist, n_clusters = 1.0, 2
-        elif self.total_episodes < 201:
-            max_dist, n_clusters = 1.8, random.randint(3, 5)
+        ep = self.total_episodes
+        if ep < 30:
+            max_dist, min_sep = 1.2, 0.40
+        elif ep < 75:
+            max_dist, min_sep = 1.6, 0.45
+        elif ep < 150:
+            max_dist, min_sep = 2.0, 0.50
         else:
-            max_dist, n_clusters = 2.3, random.randint(6, 8)
+            max_dist, min_sep = 2.3, 0.50
 
         centers = []
-        for _ in range(n_clusters):
-            for _ in range(60):
+        for _ in range(11):
+            for _ in range(100):
                 angle = random.uniform(0, 2 * math.pi)
-                dist  = random.uniform(0.7, max_dist)
+                dist  = random.uniform(0.5, max_dist)
                 cx    = math.cos(angle) * dist
                 cy    = math.sin(angle) * dist
-                if all(math.sqrt((cx-ox)**2 + (cy-oy)**2) > 0.8
+                if all(math.sqrt((cx-ox)**2 + (cy-oy)**2) > min_sep
                        for ox, oy in centers):
                     centers.append((cx, cy))
                     break
-        return centers if centers else [(1.5, 0.0)]
+            else:
+                # Fallback if placement fails: place near a random existing center
+                if centers:
+                    ox, oy = random.choice(centers)
+                    a = random.uniform(0, 2 * math.pi)
+                    centers.append((ox + math.cos(a) * min_sep,
+                                    oy + math.sin(a) * min_sep))
+                else:
+                    centers.append((random.uniform(-max_dist, max_dist),
+                                    random.uniform(-max_dist, max_dist)))
+        return centers
 
     # =========================================================================
     # Main loop

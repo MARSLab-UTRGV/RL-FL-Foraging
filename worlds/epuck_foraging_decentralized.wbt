@@ -202,7 +202,7 @@ DEF APRILTAG_64 Solid { translation 0.1 1.4 0.01375 children [ Shape { appearanc
 DEF ROBOT1 E-puck {
   translation -0.5 0 0
   name "robot1"
-  controller "epuck_decentralized_train_v4"
+  controller "epuck_decentralized_train_v8"
   emitter_channel 1
   receiver_channel 1
   camera_fieldOfView 1
@@ -218,7 +218,7 @@ DEF ROBOT1 E-puck {
     }
     Emitter {
       name "phero_emitter"
-      range 2.0
+      range 0.5
       channel 10
     }
     Receiver {
@@ -228,7 +228,7 @@ DEF ROBOT1 E-puck {
     }
     Emitter {
       name "model_emitter"
-      range 2.0
+      range 1.0
       channel 11
     }
     Receiver {
@@ -242,7 +242,7 @@ DEF ROBOT1 E-puck {
 DEF ROBOT2 E-puck {
   translation 0.5 0 0
   name "robot2"
-  controller "epuck_decentralized_train_v4"
+  controller "epuck_decentralized_train_v8"
   emitter_channel 2
   receiver_channel 2
   camera_fieldOfView 1
@@ -258,7 +258,7 @@ DEF ROBOT2 E-puck {
     }
     Emitter {
       name "phero_emitter"
-      range 2.0
+      range 0.5
       channel 10
     }
     Receiver {
@@ -268,7 +268,7 @@ DEF ROBOT2 E-puck {
     }
     Emitter {
       name "model_emitter"
-      range 2.0
+      range 1.0
       channel 11
     }
     Receiver {
@@ -282,7 +282,7 @@ DEF ROBOT2 E-puck {
 DEF ROBOT3 E-puck {
   translation 0 0.5 0
   name "robot3"
-  controller "epuck_decentralized_train_v4"
+  controller "epuck_decentralized_train_v8"
   emitter_channel 3
   receiver_channel 3
   camera_fieldOfView 1
@@ -298,7 +298,7 @@ DEF ROBOT3 E-puck {
     }
     Emitter {
       name "phero_emitter"
-      range 2.0
+      range 0.5
       channel 10
     }
     Receiver {
@@ -308,7 +308,7 @@ DEF ROBOT3 E-puck {
     }
     Emitter {
       name "model_emitter"
-      range 2.0
+      range 1.0
       channel 11
     }
     Receiver {
@@ -322,7 +322,7 @@ DEF ROBOT3 E-puck {
 DEF ROBOT4 E-puck {
   translation 0 -0.5 0
   name "robot4"
-  controller "epuck_decentralized_train_v4"
+  controller "epuck_decentralized_train_v8"
   emitter_channel 4
   receiver_channel 4
   camera_fieldOfView 1
@@ -338,7 +338,7 @@ DEF ROBOT4 E-puck {
     }
     Emitter {
       name "phero_emitter"
-      range 2.0
+      range 0.5
       channel 10
     }
     Receiver {
@@ -348,7 +348,7 @@ DEF ROBOT4 E-puck {
     }
     Emitter {
       name "model_emitter"
-      range 2.0
+      range 1.0
       channel 11
     }
     Receiver {
