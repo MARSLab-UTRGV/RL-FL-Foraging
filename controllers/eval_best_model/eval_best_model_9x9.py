@@ -2,6 +2,7 @@ import math
 import random
 import numpy as np
 import sys
+import argparse
 from controller import Supervisor
 from stable_baselines3 import PPO
 import gymnasium as gym
@@ -539,12 +540,38 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
         else:
             return "EXPLORE"
 
+    def _positions_finite(self):
+        nodes = [self.base_node] + self.robot_nodes
+        for node in nodes:
+            if node is None:
+                return False
+            pos = node.getPosition()
+            if pos is None or not all(math.isfinite(v) for v in pos[:2]):
+                return False
+        return True
+
+    def wait_until_ready(self, max_steps=300):
+        for _ in range(max_steps):
+            if self._positions_finite():
+                return True
+            if Supervisor.step(self, self.timestep) == -1:
+                return False
+        return self._positions_finite()
+
     def reset(self):
         positions = [[-0.5, 0, 0], [0.5, 0, 0], [0, 0.5, 0], [0, -0.5, 0]]
         for i in range(self.num_robots):
-            self.robot_nodes[i].getField("translation").setSFVec3f(positions[i])
-            self.robot_nodes[i].getField("rotation").setSFRotation([0, 0, 1, 0])
+            translation = self.robot_nodes[i].getField("translation")
+            rotation    = self.robot_nodes[i].getField("rotation")
+            if translation is not None:
+                translation.setSFVec3f(positions[i])
+            if rotation is not None:
+                rotation.setSFRotation([0, 0, 1, 0])
             self.robot_nodes[i].resetPhysics()
+
+        if not self.wait_until_ready():
+            print("[ERROR] Webots scene did not produce finite robot/base positions after reset.")
+            sys.exit(1)
 
         self.robot_states         = [None]  * self.num_robots
         self.carrying_state       = [False] * self.num_robots
@@ -567,6 +594,13 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
 # EVALUATION ENTRY POINT
 # =============================================================================
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("model", nargs="?",
+                        help="PPO model path. .zip suffix is optional.")
+    parser.add_argument("--duration-sim-min", type=float, default=None,
+                        help="Stop after this many simulated minutes and print BATCH_RESULT.")
+    args = parser.parse_args()
+
     print("=" * 60)
     print("EVALUATION MODE — CPFA-RL Trained Model")
     print("Arena: 9×9m  |  Obs space: 18 per robot × 4 robots = 72 total")
@@ -574,8 +608,8 @@ if __name__ == "__main__":
 
     env = EpuckForagingSupervisor()
 
-    if len(sys.argv) > 1:
-        model_path = sys.argv[1]
+    if args.model:
+        model_path = args.model
     else:
         model_path = "logs/ppo_cpfa_v9/ppo_cpfa_v9_5000000_steps"
     if model_path.endswith('.zip'):
@@ -588,7 +622,7 @@ if __name__ == "__main__":
             "lr_schedule": lambda _: 3e-4,
             "clip_range":  lambda _: 0.2,
         }
-        model = PPO.load(model_path, custom_objects=custom_objects)
+        model = PPO.load(model_path, custom_objects=custom_objects, device="cpu")
     except Exception as e:
         print(f"[ERROR] {e}")
         print("Make sure you trained with epuck_foraging_supervisor_cpfa.py "
@@ -600,8 +634,18 @@ if __name__ == "__main__":
 
     obs        = env.reset()
     step_count = 0
+    target_steps = None
+    if args.duration_sim_min is not None:
+        target_steps = math.ceil(args.duration_sim_min * 60.0 * 1000.0 / env.timestep)
 
     while True:
+        if not np.isfinite(obs).all():
+            if env.wait_until_ready():
+                obs = env.get_observations()
+            if not np.isfinite(obs).all():
+                bad = np.where(~np.isfinite(obs))[0].tolist()
+                print(f"[ERROR] Non-finite observation before predict. Bad indices: {bad}")
+                sys.exit(1)
         action, _states = model.predict(obs, deterministic=True)
         obs, _, done, _ = env.step(action)
         step_count += 1
@@ -645,3 +689,9 @@ if __name__ == "__main__":
             print(log_msg)
             with open("eval_cpfa_log_9x9.txt", "a") as f:
                 f.write(log_msg)
+
+        if target_steps is not None and step_count >= target_steps:
+            print(f"BATCH_RESULT pickups={env.total_pickups} deposits={env.total_deposits}",
+                  flush=True)
+            env.simulationQuit(0)
+            break

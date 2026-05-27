@@ -1,5 +1,8 @@
+import argparse
 import math
+import os
 import random
+import time
 from controller import Supervisor
 
 # =============================================================================
@@ -50,8 +53,29 @@ RETURNING  = "RETURNING"
 SURVEYING  = "SURVEYING"
 
 
+def _default_params_path():
+    return os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                        "cpfa_params.yaml")
+
+
+def _read_flat_yaml(path):
+    """Read simple key: value YAML without requiring PyYAML."""
+    params = {}
+    with open(path, "r") as f:
+        for line in f:
+            line = line.split("#", 1)[0].strip()
+            if not line or ":" not in line:
+                continue
+            key, value = line.split(":", 1)
+            key = key.strip()
+            value = value.strip().strip("'\"")
+            if value:
+                params[key] = float(value)
+    return params
+
+
 class CPFABaseline(Supervisor):
-    def __init__(self):
+    def __init__(self, params_path):
         super().__init__()
         self.timestep = int(self.getBasicTimeStep())
 
@@ -101,17 +125,20 @@ class CPFABaseline(Supervisor):
         # RATE_OF_LAYING_PHEROMONE: ARGoS=14.44 (32 items/cluster → density 8-16 → P(lay)≈1).
         #   Webots: 16 items/cluster → density 1-3 → P(lay|λ=14.44)≈0 always. Scaled to 3.0
         #   so P(lay|density=2, λ=3.0)≈0.42.
-        self.RATE_OF_LAYING_PHEROMONE = 3.0
-        self.RATE_OF_SITE_FIDELITY    = 1.376   # unchanged — already works in Webots
+        params = _read_flat_yaml(params_path)
+        self.params_path = params_path
+
+        self.RATE_OF_LAYING_PHEROMONE = params["rate_of_laying_pheromone"]
+        self.RATE_OF_SITE_FIDELITY    = params["rate_of_site_fidelity"]
         # RATE_OF_PHEROMONE_DECAY: ARGoS=0.337/s (τ≈3s) with 64 robots constantly reinforcing.
         #   Webots: 4 robots → trail not reinforced for ~4+ min → fully decayed. Scaled to 0.05/s (τ≈20s).
-        self.RATE_OF_PHEROMONE_DECAY  = 0.05
+        self.RATE_OF_PHEROMONE_DECAY  = params["rate_of_pheromone_decay"]
         self.PHEROMONE_MIN            = 0.001
 
         # Give-up / uninformed-switch: both checked every 5 sim-seconds.
         # At 32ms/step → 5 sec = 156 steps.
-        self.PROB_RETURN_TO_NEST      = 0.0189  # per 5-sec check in SEARCHING  → E[give-up] ~265s
-        self.PROB_SWITCH_TO_SEARCHING = 0.765   # per 5-sec check in uninformed DEPARTING
+        self.PROB_RETURN_TO_NEST      = params["probability_of_returning_to_nest"]
+        self.PROB_SWITCH_TO_SEARCHING = params["probability_of_switching_to_searching"]
         self.GIVE_UP_CHECK_STEPS      = 156     # 5 seconds at 32ms/step
         self.give_up_timer            = [0]     * self.num_robots
         # Per-robot DEPARTING timer — ARGoS each robot checks independently (not global step_count)
@@ -129,9 +156,13 @@ class CPFABaseline(Supervisor):
 
         # CRW parameters (CPFA uninformed/informed search)
         # ARGoS UninformedSearchVariation = 3.67 rad (was math.radians(30°) = 0.524 rad)
-        self.UNINFORMED_SEARCH_VARIATION   = 3.67    # rad — matches ARGoS evolved value
+        if "uninformed_search_variation_rad" in params:
+            self.UNINFORMED_SEARCH_VARIATION = params["uninformed_search_variation_rad"]
+        else:
+            self.UNINFORMED_SEARCH_VARIATION = math.radians(
+                params["uninformed_search_variation_deg"])
         # ARGoS RateOfInformedSearchDecay = 0.346/waypoint (formula overhaul in Gap 4)
-        self.RATE_OF_INFORMED_SEARCH_DECAY = 0.346   # /waypoint (was 0.0002/step)
+        self.RATE_OF_INFORMED_SEARCH_DECAY = params["rate_of_informed_search_decay"]
         self.search_heading            = [0.0] * self.num_robots
         self.informed_search_steps     = [0]   * self.num_robots  # waypoints since informed
 
@@ -139,16 +170,95 @@ class CPFABaseline(Supervisor):
         self.total_pickups  = 0
         self.total_deposits = 0
         self.step_count     = 0
+        self.eighty_percent_deposits = int(self.num_tags * 0.8)
+        self.eighty_percent_step     = None
+        self.results_path   = self._new_results_path()
 
         print("=" * 65)
-        print("CPFA BASELINE — ARGoS-calibrated parameters  (9×9m arena  208 tags)")
+        print(f"CPFA BASELINE — ARGoS-calibrated parameters  (9×9m arena  {self.num_tags} tags)")
+        print(f"  Params file                  = {self.params_path}")
+        print(f"  Results file                 = {self.results_path}")
         print(f"  RateOfLayingPheromone        = {self.RATE_OF_LAYING_PHEROMONE}")
         print(f"  RateOfSiteFidelity           = {self.RATE_OF_SITE_FIDELITY}")
         print(f"  RateOfPheromoneDecay         = {self.RATE_OF_PHEROMONE_DECAY} /s  (lifetime ~{-math.log(0.001)/self.RATE_OF_PHEROMONE_DECAY:.0f}s)")
         print(f"  ProbabilityOfReturningToNest = {self.PROB_RETURN_TO_NEST} (every 5 sec → E[give-up] ~{5/self.PROB_RETURN_TO_NEST:.0f}s)")
         print(f"  UninformedSearchVariation    = {self.UNINFORMED_SEARCH_VARIATION:.2f} rad ({math.degrees(self.UNINFORMED_SEARCH_VARIATION):.1f}°)")
         print(f"  RateOfInformedSearchDecay    = {self.RATE_OF_INFORMED_SEARCH_DECAY} /waypoint")
+        print(f"  ProbabilityOfSwitchingToSearching = {self.PROB_SWITCH_TO_SEARCHING} (every 5 sec in uninformed DEPARTING)")
         print("=" * 65 + "\n")
+        self._write_log(
+            "CPFA BASELINE RUN (9x9)\n"
+            f"Params file: {self.params_path}\n"
+            f"Results file: {self.results_path}\n"
+            f"RateOfLayingPheromone={self.RATE_OF_LAYING_PHEROMONE}\n"
+            f"RateOfSiteFidelity={self.RATE_OF_SITE_FIDELITY}\n"
+            f"RateOfPheromoneDecay={self.RATE_OF_PHEROMONE_DECAY}\n"
+            f"ProbabilityOfReturningToNest={self.PROB_RETURN_TO_NEST}\n"
+            f"ProbabilityOfSwitchingToSearching={self.PROB_SWITCH_TO_SEARCHING}\n"
+            f"UninformedSearchVariationRad={self.UNINFORMED_SEARCH_VARIATION}\n"
+            f"UninformedSearchVariationDeg={math.degrees(self.UNINFORMED_SEARCH_VARIATION)}\n"
+            f"RateOfInformedSearchDecay={self.RATE_OF_INFORMED_SEARCH_DECAY}\n"
+        )
+
+    def _new_results_path(self):
+        out_dir = os.path.dirname(os.path.abspath(__file__))
+        script_name = os.path.splitext(os.path.basename(__file__))[0]
+        stamp = time.strftime("%Y%m%d_%H%M%S")
+        path = os.path.join(out_dir, f"{script_name}_results_{stamp}.txt")
+        suffix = 1
+        while os.path.exists(path):
+            path = os.path.join(out_dir,
+                                f"{script_name}_results_{stamp}_{suffix}.txt")
+            suffix += 1
+        return path
+
+    def _write_log(self, msg):
+        with open(self.results_path, "a") as f:
+            f.write(msg)
+
+    def _elapsed_min(self, step):
+        return step * self.timestep / 1000.0 / 60.0
+
+    def _record_eighty_percent_if_needed(self):
+        if (self.eighty_percent_step is not None or
+                self.total_deposits < self.eighty_percent_deposits):
+            return
+        self.eighty_percent_step = self.step_count
+        elapsed_min = self._elapsed_min(self.eighty_percent_step)
+        rate = self.eighty_percent_deposits / elapsed_min if elapsed_min > 0 else 0.0
+        msg = (
+            f"\n{'='*70}\n"
+            f"80% COMPLETE: {self.eighty_percent_deposits}/{self.num_tags} deposits\n"
+            f"Step {self.eighty_percent_step} ({elapsed_min:.2f} min)\n"
+            f"Rate: {rate:.3f} tags/min\n"
+            f"{'='*70}\n"
+        )
+        print(msg)
+        self._write_log(msg)
+
+    def _final_summary(self):
+        elapsed_min = self._elapsed_min(self.step_count)
+        rate = self.total_deposits / elapsed_min if elapsed_min > 0 else 0.0
+        if self.eighty_percent_step is None:
+            eighty_msg = "80% completion: not reached\n"
+        else:
+            eighty_min = self._elapsed_min(self.eighty_percent_step)
+            eighty_rate = self.eighty_percent_deposits / eighty_min if eighty_min > 0 else 0.0
+            eighty_msg = (
+                f"80% completion: {self.eighty_percent_deposits}/{self.num_tags} deposits at "
+                f"step {self.eighty_percent_step} ({eighty_min:.2f} min), "
+                f"rate {eighty_rate:.3f} tags/min\n"
+            )
+        return (
+            f"\n{'='*70}\n"
+            f"COMPLETE: all {self.num_tags} tags deposited\n"
+            f"{eighty_msg}"
+            f"Step {self.step_count} ({elapsed_min:.2f} min)\n"
+            f"Pickups: {self.total_pickups}\n"
+            f"Deposits: {self.total_deposits}\n"
+            f"Rate: {rate:.3f} tags/min\n"
+            f"{'='*70}\n"
+        )
 
     # =========================================================================
     # CPFA HELPERS (identical to epuck_foraging_supervisor_cpfa.py)
@@ -322,7 +432,11 @@ class CPFABaseline(Supervisor):
     # MAIN CONTROL LOOP
     # =========================================================================
 
-    def run(self):
+    def run(self, duration_sim_min=None):
+        target_steps = None
+        if duration_sim_min is not None:
+            target_steps = math.ceil(duration_sim_min * 60.0 * 1000.0 / self.timestep)
+
         while self.step(self.timestep) != -1:
             self.step_count += 1
 
@@ -591,10 +705,34 @@ class CPFABaseline(Supervisor):
                         f"target={t_str}\n"
                     )
                 print(log_msg)
-                with open("cpfa_baseline_log_9x9.txt", "a") as f:
-                    f.write(log_msg)
+                self._write_log(log_msg)
+
+            self._record_eighty_percent_if_needed()
+
+            if target_steps is not None and self.step_count >= target_steps:
+                result_msg = (
+                    f"BATCH_RESULT pickups={self.total_pickups} "
+                    f"deposits={self.total_deposits}"
+                )
+                print(result_msg, flush=True)
+                self._write_log(result_msg + "\n")
+                self.simulationQuit(0)
+                break
+
+            if target_steps is None and self.total_deposits >= self.num_tags:
+                final_msg = self._final_summary()
+                print(final_msg)
+                self._write_log(final_msg)
+                break
 
 
 # =============================================================================
-controller = CPFABaseline()
-controller.run()
+parser = argparse.ArgumentParser()
+parser.add_argument("--params", default=_default_params_path(),
+                    help="Flat YAML file containing CPFA parameter values.")
+parser.add_argument("--duration-sim-min", type=float, default=None,
+                    help="Stop after this many simulated minutes and print BATCH_RESULT.")
+args, _ = parser.parse_known_args()
+
+controller = CPFABaseline(args.params)
+controller.run(args.duration_sim_min)

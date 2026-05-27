@@ -431,7 +431,11 @@ class CPFABaseline(Supervisor):
     # MAIN CONTROL LOOP
     # =========================================================================
 
-    def run(self):
+    def run(self, duration_sim_min=None):
+        target_steps = None
+        if duration_sim_min is not None:
+            target_steps = math.ceil(duration_sim_min * 60.0 * 1000.0 / self.timestep)
+
         while self.step(self.timestep) != -1:
             self.step_count += 1
 
@@ -704,7 +708,17 @@ class CPFABaseline(Supervisor):
 
             self._record_eighty_percent_if_needed()
 
-            if self.total_deposits >= self.num_tags:
+            if target_steps is not None and self.step_count >= target_steps:
+                result_msg = (
+                    f"BATCH_RESULT pickups={self.total_pickups} "
+                    f"deposits={self.total_deposits}"
+                )
+                print(result_msg, flush=True)
+                self._write_log(result_msg + "\n")
+                self.simulationQuit(0)
+                break
+
+            if target_steps is None and self.total_deposits >= self.num_tags:
                 final_msg = self._final_summary()
                 print(final_msg)
                 self._write_log(final_msg)
@@ -715,7 +729,9 @@ class CPFABaseline(Supervisor):
 parser = argparse.ArgumentParser()
 parser.add_argument("--params", default=_default_params_path(),
                     help="Flat YAML file containing CPFA parameter values.")
+parser.add_argument("--duration-sim-min", type=float, default=None,
+                    help="Stop after this many simulated minutes and print BATCH_RESULT.")
 args, _ = parser.parse_known_args()
 
 controller = CPFABaseline(args.params)
-controller.run()
+controller.run(args.duration_sim_min)
