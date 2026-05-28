@@ -37,9 +37,9 @@ import gymnasium as gym
 # =============================================================================
 
 class EpuckForagingSupervisor(Supervisor, gym.Env):
-    def __init__(self):
-        self.num_robots            = 4
-        self.num_tags              = 128
+    def __init__(self, num_robots=4, num_tags=128):
+        self.num_robots            = num_robots
+        self.num_tags              = num_tags
         self.obs_per_robot         = 18
         self.observation_space_dim = self.obs_per_robot * self.num_robots
         self.action_space_dim      = 2 * self.num_robots
@@ -58,16 +58,39 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
 
         # --- Robot nodes ---
         self.robot_nodes = []
+        self.initial_robot_transforms = []
         for i in range(self.num_robots):
-            node = self.getFromDef(f"ROBOT{i+1}")
+            node_name = f"ROBOT{i+1}"
+            node = self.getFromDef(node_name)
             if node is None:
-                print(f"[ERROR] Could not find ROBOT{i+1}!")
+                print(f"[ERROR] Could not find {node_name}!")
                 exit(1)
             self.robot_nodes.append(node)
+            translation = node.getField("translation")
+            rotation = node.getField("rotation")
+            initial_translation = (
+                list(translation.getSFVec3f()) if translation is not None else None
+            )
+            initial_rotation = (
+                list(rotation.getSFRotation()) if rotation is not None else None
+            )
+            self.initial_robot_transforms.append(
+                (initial_translation, initial_rotation)
+            )
 
         # --- Tag and base nodes ---
-        self.tag_nodes = [self.getFromDef(f"APRILTAG_{i+1}") for i in range(self.num_tags)]
+        self.tag_nodes = []
+        for i in range(self.num_tags):
+            node_name = f"APRILTAG_{i+1}"
+            node = self.getFromDef(node_name)
+            if node is None:
+                print(f"[ERROR] Could not find active tag {node_name}!")
+                exit(1)
+            self.tag_nodes.append(node)
         self.base_node = self.getFromDef("BASE_STATION")
+        if self.base_node is None:
+            print("[ERROR] Could not find BASE_STATION!")
+            exit(1)
 
         # --- Emitters / Receivers ---
         self.emitters  = []
@@ -559,14 +582,14 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
         return self._positions_finite()
 
     def reset(self):
-        positions = [[-0.5, 0, 0], [0.5, 0, 0], [0, 0.5, 0], [0, -0.5, 0]]
         for i in range(self.num_robots):
             translation = self.robot_nodes[i].getField("translation")
             rotation    = self.robot_nodes[i].getField("rotation")
-            if translation is not None:
-                translation.setSFVec3f(positions[i])
-            if rotation is not None:
-                rotation.setSFRotation([0, 0, 1, 0])
+            initial_translation, initial_rotation = self.initial_robot_transforms[i]
+            if translation is not None and initial_translation is not None:
+                translation.setSFVec3f(initial_translation)
+            if rotation is not None and initial_rotation is not None:
+                rotation.setSFRotation(initial_rotation)
             self.robot_nodes[i].resetPhysics()
 
         if not self.wait_until_ready():
@@ -607,6 +630,42 @@ def _batch_result(env):
     return f"BATCH_RESULT pickups={env.total_pickups} deposits={env.total_deposits}"
 
 
+def _derive_ppo_group_size(model, obs_per_robot):
+    model_obs_dim = int(np.prod(model.observation_space.shape))
+    model_action_dim = int(np.prod(model.action_space.shape))
+    if model_obs_dim % obs_per_robot != 0:
+        raise ValueError(
+            f"Model observation dim {model_obs_dim} is not divisible by "
+            f"obs_per_robot={obs_per_robot}."
+        )
+    group_robots = model_obs_dim // obs_per_robot
+    expected_action_dim = group_robots * 2
+    if model_action_dim != expected_action_dim:
+        raise ValueError(
+            f"Model action dim {model_action_dim} does not match "
+            f"{group_robots} robots x 2 actions."
+        )
+    return group_robots, model_obs_dim, model_action_dim
+
+
+def _predict_grouped_actions(model, obs, env, group_robots):
+    if env.num_robots % group_robots != 0:
+        raise ValueError(
+            f"num_robots={env.num_robots} must be divisible by PPO group "
+            f"size {group_robots}."
+        )
+
+    actions = []
+    group_obs_dim = group_robots * env.obs_per_robot
+    for start_robot in range(0, env.num_robots, group_robots):
+        start = start_robot * env.obs_per_robot
+        end = start + group_obs_dim
+        group_obs = obs[start:end]
+        group_action, _states = model.predict(group_obs, deterministic=True)
+        actions.extend(np.asarray(group_action, dtype=np.float32).reshape(-1))
+    return np.array(actions, dtype=np.float32)
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("model", nargs="?",
@@ -615,14 +674,28 @@ if __name__ == "__main__":
                         help="Stop after this many simulated minutes and print BATCH_RESULT.")
     parser.add_argument("--stop-on-completion", action="store_true",
                         help="Stop as soon as all tags are deposited, even with a duration cap.")
+    parser.add_argument("--num-robots", type=int, default=4,
+                        help="Number of robots to control from ROBOT1..ROBOTN.")
+    parser.add_argument("--num-tags", type=int, default=128,
+                        help="Number of active tags to evaluate from APRILTAG_1..APRILTAG_N.")
     args = parser.parse_args()
 
     print("=" * 60)
     print("EVALUATION MODE — CPFA-RL Trained Model")
-    print("Arena: 7×7m  |  Obs space: 18 per robot × 4 robots = 72 total")
+    print(
+        f"Arena: 7×7m  |  Robots: {args.num_robots}  |  "
+        f"Active tags: {args.num_tags}"
+    )
     print("=" * 60)
 
-    env = EpuckForagingSupervisor()
+    if args.num_robots <= 0:
+        print("[ERROR] --num-robots must be greater than 0.")
+        sys.exit(1)
+    if args.num_tags <= 0:
+        print("[ERROR] --num-tags must be greater than 0.")
+        sys.exit(1)
+
+    env = EpuckForagingSupervisor(args.num_robots, args.num_tags)
 
     if args.model:
         model_path = args.model
@@ -645,7 +718,24 @@ if __name__ == "__main__":
               "(obs_per_robot=18, CPFA pheromone list).")
         sys.exit(1)
 
-    print("Model loaded. Starting evaluation...\n")
+    try:
+        ppo_group_robots, model_obs_dim, model_action_dim = _derive_ppo_group_size(
+            model, env.obs_per_robot
+        )
+        if env.num_robots % ppo_group_robots != 0:
+            raise ValueError(
+                f"--num-robots {env.num_robots} must be divisible by "
+                f"the loaded PPO group size {ppo_group_robots}."
+            )
+    except ValueError as e:
+        print(f"[ERROR] {e}")
+        sys.exit(1)
+
+    print(
+        f"Model loaded. PPO group: {ppo_group_robots} robots "
+        f"({model_obs_dim} obs, {model_action_dim} actions). "
+        "Starting evaluation...\n"
+    )
     print("=" * 60 + "\n")
 
     obs        = env.reset()
@@ -662,7 +752,7 @@ if __name__ == "__main__":
                 bad = np.where(~np.isfinite(obs))[0].tolist()
                 print(f"[ERROR] Non-finite observation before predict. Bad indices: {bad}")
                 sys.exit(1)
-        action, _states = model.predict(obs, deterministic=True)
+        action = _predict_grouped_actions(model, obs, env, ppo_group_robots)
         obs, _, done, _ = env.step(action)
         step_count += 1
 
@@ -684,13 +774,12 @@ if __name__ == "__main__":
             )
 
             base_pos = env.base_node.getPosition()
-            for ri in range(4):
-                ro     = obs[ri*18 : (ri+1)*18]
+            for ri in range(env.num_robots):
+                ro     = obs[ri*env.obs_per_robot : (ri+1)*env.obs_per_robot]
                 ra_l   = env.last_action[ri*2]    # overridden action sent to robot
                 ra_r   = env.last_action[ri*2+1]
                 rpos   = env.robot_nodes[ri].getPosition()
-                wall_d = 2.5 - max(abs(rpos[0]), abs(rpos[1]))
-                d2base = math.sqrt((rpos[0]-base_pos[0])**2 + (rpos[1]-base_pos[1])**2)
+                wall_d = 3.5 - max(abs(rpos[0]), abs(rpos[1]))
                 mode   = env._get_mode(ri, wall_d)
 
                 log_msg += (

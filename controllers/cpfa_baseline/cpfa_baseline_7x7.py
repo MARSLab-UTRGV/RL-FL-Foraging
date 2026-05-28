@@ -75,17 +75,31 @@ def _read_flat_yaml(path):
 
 
 class CPFABaseline(Supervisor):
-    def __init__(self, params_path):
+    def __init__(self, params_path, num_robots=4, num_tags=128):
         super().__init__()
         self.timestep = int(self.getBasicTimeStep())
 
-        self.num_robots = 4
-        self.num_tags   = 128
+        self.num_robots = num_robots
+        self.num_tags   = num_tags
 
         # --- World nodes ---
-        self.robot_nodes = [self.getFromDef(f"ROBOT{i+1}") for i in range(self.num_robots)]
-        self.tag_nodes   = [self.getFromDef(f"APRILTAG_{i+1}") for i in range(self.num_tags)]
+        self.robot_nodes = []
+        for i in range(self.num_robots):
+            node_name = f"ROBOT{i+1}"
+            node = self.getFromDef(node_name)
+            if node is None:
+                raise RuntimeError(f"Could not find {node_name} in world.")
+            self.robot_nodes.append(node)
+        self.tag_nodes = []
+        for i in range(self.num_tags):
+            node_name = f"APRILTAG_{i+1}"
+            node = self.getFromDef(node_name)
+            if node is None:
+                raise RuntimeError(f"Could not find active tag {node_name} in world.")
+            self.tag_nodes.append(node)
         self.base_node   = self.getFromDef("BASE_STATION")
+        if self.base_node is None:
+            raise RuntimeError("Could not find BASE_STATION in world.")
 
         # --- Communication ---
         self.emitters  = [self.getDevice(f"emitter{i+1}") for i in range(self.num_robots)]
@@ -175,7 +189,7 @@ class CPFABaseline(Supervisor):
         self.results_path   = self._new_results_path()
 
         print("=" * 65)
-        print(f"CPFA BASELINE — ARGoS-calibrated parameters  (7×7m arena  {self.num_tags} tags)")
+        print(f"CPFA BASELINE — ARGoS-calibrated parameters  (7×7m arena  {self.num_robots} robots, {self.num_tags} active tags)")
         print(f"  Params file                  = {self.params_path}")
         print(f"  Results file                 = {self.results_path}")
         print(f"  RateOfLayingPheromone        = {self.RATE_OF_LAYING_PHEROMONE}")
@@ -188,6 +202,8 @@ class CPFABaseline(Supervisor):
         print("=" * 65 + "\n")
         self._write_log(
             "CPFA BASELINE RUN (7x7)\n"
+            f"Robots: {self.num_robots}\n"
+            f"Active tags: {self.num_tags}\n"
             f"Params file: {self.params_path}\n"
             f"Results file: {self.results_path}\n"
             f"RateOfLayingPheromone={self.RATE_OF_LAYING_PHEROMONE}\n"
@@ -732,7 +748,16 @@ parser.add_argument("--params", default=_default_params_path(),
                     help="Flat YAML file containing CPFA parameter values.")
 parser.add_argument("--duration-sim-min", type=float, default=None,
                     help="Stop after this many simulated minutes and print BATCH_RESULT.")
+parser.add_argument("--num-robots", type=int, default=4,
+                    help="Number of robots to control from ROBOT1..ROBOTN.")
+parser.add_argument("--num-tags", type=int, default=128,
+                    help="Number of active tags to evaluate from APRILTAG_1..APRILTAG_N.")
 args, _ = parser.parse_known_args()
 
-controller = CPFABaseline(args.params)
+if args.num_robots <= 0:
+    parser.error("--num-robots must be greater than 0")
+if args.num_tags <= 0:
+    parser.error("--num-tags must be greater than 0")
+
+controller = CPFABaseline(args.params, args.num_robots, args.num_tags)
 controller.run(args.duration_sim_min)
