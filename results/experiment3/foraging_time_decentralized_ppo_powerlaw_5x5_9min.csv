@@ -1,0 +1,11 @@
+method,experiment,distribution,arena,sample,foraging_time_min,completed_all_tags,status,elapsed_sim_min,steps,pickups,deposits
+decentralized,foraging_time,powerlaw,5x5,1,9,false,duration_elapsed,9,16875,51,51
+decentralized,foraging_time,powerlaw,5x5,2,9,false,duration_elapsed,9,16875,40,40
+decentralized,foraging_time,powerlaw,5x5,3,9,false,duration_elapsed,9,16875,32,32
+decentralized,foraging_time,powerlaw,5x5,4,9,false,duration_elapsed,9,16875,48,45
+decentralized,foraging_time,powerlaw,5x5,5,9,false,duration_elapsed,9,16875,51,50
+decentralized,foraging_time,powerlaw,5x5,6,9,false,duration_elapsed,9,16875,49,48
+decentralized,foraging_time,powerlaw,5x5,7,9,false,duration_elapsed,9,16875,53,52
+decentralized,foraging_time,powerlaw,5x5,8,9,false,duration_elapsed,9,16875,54,52
+decentralized,foraging_time,powerlaw,5x5,9,9,false,duration_elapsed,9,16875,35,34
+decentralized,foraging_time,powerlaw,5x5,10,9,false,duration_elapsed,9,16875,52,52

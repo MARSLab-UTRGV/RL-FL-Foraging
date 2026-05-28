@@ -1,0 +1,11 @@
+method,experiment,distribution,arena,sample,foraging_time_min,completed_all_tags,status,elapsed_sim_min,steps,pickups,deposits
+cpfa_baseline,foraging_time,clustered,5x5,1,9,false,duration_elapsed,9,16875,33,32
+cpfa_baseline,foraging_time,clustered,5x5,2,9,false,duration_elapsed,9,16875,33,32
+cpfa_baseline,foraging_time,clustered,5x5,3,9,false,duration_elapsed,9,16875,37,35
+cpfa_baseline,foraging_time,clustered,5x5,4,9,false,duration_elapsed,9,16875,28,27
+cpfa_baseline,foraging_time,clustered,5x5,5,9,false,duration_elapsed,9,16875,35,35
+cpfa_baseline,foraging_time,clustered,5x5,6,9,false,duration_elapsed,9,16875,40,39
+cpfa_baseline,foraging_time,clustered,5x5,7,9,false,duration_elapsed,9,16875,30,29
+cpfa_baseline,foraging_time,clustered,5x5,8,9,false,duration_elapsed,9,16875,25,25
+cpfa_baseline,foraging_time,clustered,5x5,9,9,false,duration_elapsed,9,16875,22,22
+cpfa_baseline,foraging_time,clustered,5x5,10,9,false,duration_elapsed,9,16875,32,31
