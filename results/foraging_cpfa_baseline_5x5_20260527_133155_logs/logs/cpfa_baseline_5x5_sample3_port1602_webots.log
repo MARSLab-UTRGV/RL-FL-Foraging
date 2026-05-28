@@ -1,0 +1,3 @@
+ipc://1602/supervisor
+tcp://<ip_address>:1602/supervisor
+AL lib: (EE) ALCpulsePlayback_streamStateCallback: Received stream failure!
