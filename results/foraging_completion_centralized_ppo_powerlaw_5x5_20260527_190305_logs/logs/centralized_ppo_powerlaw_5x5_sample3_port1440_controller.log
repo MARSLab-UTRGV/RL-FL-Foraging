@@ -1,0 +1,25 @@
+Traceback (most recent call last):
+  File "/home/fabian_hernandez/foraging/RL-FL-Foraging/controllers/eval_best_model/eval_best_model_5x5.py", line 7, in <module>
+    from stable_baselines3 import PPO
+  File "/home/fabian_hernandez/foraging/RL-FL-Foraging/venv/lib/python3.12/site-packages/stable_baselines3/__init__.py", line 3, in <module>
+    from stable_baselines3.a2c import A2C
+  File "/home/fabian_hernandez/foraging/RL-FL-Foraging/venv/lib/python3.12/site-packages/stable_baselines3/a2c/__init__.py", line 1, in <module>
+    from stable_baselines3.a2c.a2c import A2C
+  File "/home/fabian_hernandez/foraging/RL-FL-Foraging/venv/lib/python3.12/site-packages/stable_baselines3/a2c/a2c.py", line 7, in <module>
+    from stable_baselines3.common.buffers import RolloutBuffer
+  File "/home/fabian_hernandez/foraging/RL-FL-Foraging/venv/lib/python3.12/site-packages/stable_baselines3/common/buffers.py", line 18, in <module>
+    from stable_baselines3.common.vec_env import VecNormalize
+  File "/home/fabian_hernandez/foraging/RL-FL-Foraging/venv/lib/python3.12/site-packages/stable_baselines3/common/vec_env/__init__.py", line 5, in <module>
+    from stable_baselines3.common.vec_env.dummy_vec_env import DummyVecEnv
+  File "/home/fabian_hernandez/foraging/RL-FL-Foraging/venv/lib/python3.12/site-packages/stable_baselines3/common/vec_env/dummy_vec_env.py", line 11, in <module>
+    from stable_baselines3.common.vec_env.patch_gym import _patch_env
+  File "/home/fabian_hernandez/foraging/RL-FL-Foraging/venv/lib/python3.12/site-packages/stable_baselines3/common/vec_env/patch_gym.py", line 8, in <module>
+    import gym
+  File "/home/fabian_hernandez/foraging/RL-FL-Foraging/venv/lib/python3.12/site-packages/gym/__init__.py", line 13, in <module>
+    from gym.envs import make, spec, register
+  File "/home/fabian_hernandez/foraging/RL-FL-Foraging/venv/lib/python3.12/site-packages/gym/envs/__init__.py", line 10, in <module>
+    _load_env_plugins()
+  File "/home/fabian_hernandez/foraging/RL-FL-Foraging/venv/lib/python3.12/site-packages/gym/envs/registration.py", line 770, in load_env_plugins
+    for plugin in metadata.entry_points().get(entry_point, []):
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'EntryPoints' object has no attribute 'get'

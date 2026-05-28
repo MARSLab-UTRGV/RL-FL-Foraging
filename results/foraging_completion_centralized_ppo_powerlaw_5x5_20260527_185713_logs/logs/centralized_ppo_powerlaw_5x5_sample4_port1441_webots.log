@@ -1,0 +1,4 @@
+ipc://1441/supervisor
+tcp://<ip_address>:1441/supervisor
+Warning: QProcess: Destroyed while process ("python3") is still running.
+Warning: QProcess: Destroyed while process ("python3") is still running.
