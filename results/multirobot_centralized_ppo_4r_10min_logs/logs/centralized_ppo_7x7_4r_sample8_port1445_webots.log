@@ -1,2 +1,0 @@
-ipc://1445/supervisor
-tcp://<ip_address>:1445/supervisor
