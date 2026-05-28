@@ -1,0 +1,11 @@
+method,experiment,distribution,arena,sample,foraging_time_min,completed_all_tags,status,elapsed_sim_min,steps,pickups,deposits
+decentralized,foraging_time,clustered,5x5,1,9,false,duration_elapsed,9,16875,51,49
+decentralized,foraging_time,clustered,5x5,2,9,false,duration_elapsed,9,16875,51,51
+decentralized,foraging_time,clustered,5x5,3,9,false,duration_elapsed,9,16875,45,44
+decentralized,foraging_time,clustered,5x5,4,9,false,duration_elapsed,9,16875,50,49
+decentralized,foraging_time,clustered,5x5,5,9,false,duration_elapsed,9,16875,53,52
+decentralized,foraging_time,clustered,5x5,6,9,false,duration_elapsed,9,16875,52,52
+decentralized,foraging_time,clustered,5x5,7,9,false,duration_elapsed,9,16875,48,47
+decentralized,foraging_time,clustered,5x5,8,9,false,duration_elapsed,9,16875,36,36
+decentralized,foraging_time,clustered,5x5,9,9,false,duration_elapsed,9,16875,39,39
+decentralized,foraging_time,clustered,5x5,10,9,false,duration_elapsed,9,16875,48,48
