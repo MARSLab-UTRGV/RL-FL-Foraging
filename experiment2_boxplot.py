@@ -19,7 +19,7 @@ from matplotlib.patches import Patch
 METHODS = ["cpfa_baseline", "centralized_ppo", "decentralized_ppo"]
 
 METHOD_LABELS = {
-    "cpfa_baseline": "Baseline",
+    "cpfa_baseline": "CPFA Baseline",
     "centralized_ppo": "Centralized PPO",
     "decentralized_ppo": "Decentralized PPO",
 }
@@ -139,7 +139,7 @@ def plot_boxplots(data, groups, output_path):
         Patch(facecolor=METHOD_COLORS[method], alpha=0.65, label=METHOD_LABELS[method])
         for method in METHODS
     ]
-    ax.legend(handles=handles, title="Method")
+    ax.legend(handles=handles)
 
     fig.tight_layout()
     output_path.parent.mkdir(parents=True, exist_ok=True)

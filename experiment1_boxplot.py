@@ -20,7 +20,7 @@ from matplotlib.patches import Patch
 METHODS = ["cpfa_baseline", "centralized_ppo", "decentralized_ppo"]
 
 METHOD_LABELS = {
-    "cpfa_baseline": "Baseline",
+    "cpfa_baseline": "CPFA Baseline",
     "centralized_ppo": "Centralized PPO",
     "decentralized_ppo": "Decentralized PPO",
 }
@@ -136,20 +136,22 @@ def plot_boxplots(data, times_by_arena, output_path):
             patch.set_facecolor(METHOD_COLORS[method])
             patch.set_alpha(0.65)
 
-    ax.set_title("Experiment 1 Deposits by Arena and Method")
-    ax.set_xlabel("Arena Size and Foraging Time")
-    ax.set_ylabel("Deposits")
+    ax.set_title("Experiment 1", fontsize=15)
+    ax.set_xlabel("Arena Size and Foraging Time", fontsize=15)
+    ax.set_ylabel("Deposits", fontsize=15)
     ax.set_xticks(group_centers)
     ax.set_xticklabels(
-        [f"({arena}, {times_by_arena[arena]} min)" for arena in arenas]
+        [f"({arena}, {times_by_arena[arena]} min)" for arena in arenas],
+        fontsize=12,
     )
+    ax.tick_params(axis="y", labelsize=12)
     ax.grid(axis="y", linestyle="--", alpha=0.35)
 
     handles = [
         Patch(facecolor=METHOD_COLORS[method], alpha=0.65, label=METHOD_LABELS[method])
         for method in METHODS
     ]
-    ax.legend(handles=handles, title="Method")
+    ax.legend(handles=handles, fontsize=11)
 
     fig.tight_layout()
     output_path.parent.mkdir(parents=True, exist_ok=True)
