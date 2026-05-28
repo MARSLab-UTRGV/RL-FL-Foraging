@@ -16,7 +16,7 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import Patch
 
 
-DISTRIBUTIONS = ["powerlaw", "clustered", "random"]
+DISTRIBUTIONS = ["clustered", "powerlaw", "random"]
 METHODS = ["cpfa_baseline", "centralized_ppo", "decentralized"]
 
 DISTRIBUTION_LABELS = {
