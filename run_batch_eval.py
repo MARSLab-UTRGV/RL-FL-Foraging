@@ -4,13 +4,20 @@ Batch evaluation script for decentralized RL foraging.
 
 Runs samples sequentially — Webots opens for each sample in fast-simulation
 mode, the supervisor runs for DURATION_SIM_MIN simulation minutes, then both
-exit automatically. Results are appended to a CSV for statistical analysis.
+exit automatically. Results are written to a CSV (one row per integer
+simulation minute, cumulative deposits).
 
 Usage:
-    python3 run_batch_eval.py                          # defaults below
+    python3 run_batch_eval.py                               # defaults below
     python3 run_batch_eval.py --arena_size 7x7 --samples 1-10 --duration 10
 
-After all samples finish, mean/std are printed and a boxplot is saved.
+    # Multi-robot scalability experiment
+    python3 run_batch_eval.py --arena_size 7x7 --num_robots 4  --num_tags 32
+    python3 run_batch_eval.py --arena_size 7x7 --num_robots 8  --num_tags 64
+    python3 run_batch_eval.py --arena_size 7x7 --num_robots 12 --num_tags 128
+    python3 run_batch_eval.py --arena_size 7x7 --num_robots 16 --num_tags 208
+
+After all samples finish, mean/std deposits and a boxplot are saved.
 """
 
 import argparse
@@ -25,6 +32,8 @@ ARENA_SIZE       = '5x5'
 RUN_NAME         = 'decentralized_indep_v9'
 SAMPLES          = list(range(1, 11))     # 1–10
 DURATION_SIM_MIN = 10.0                   # sim-minutes per sample
+NUM_ROBOTS       = 4
+NUM_TAGS         = None                   # None = use arena default
 WEBOTS_BIN       = 'webots'               # set full path if webots not on PATH
 WEBOTS_STARTUP_S = 15                     # seconds to wait for Webots to be ready
 # ──────────────────────────────────────────────────────────────────────────────
@@ -45,14 +54,17 @@ def write_config(arena_size, run_name):
 
 
 def run_sample(sample_num, arena_size, run_name, duration_sim_min, results_csv,
-               webots_bin=WEBOTS_BIN):
-    world = os.path.join(WORLDS_DIR, f'eval_sample{sample_num}_{arena_size}.wbt')
+               num_robots=4, num_tags=None, webots_bin=WEBOTS_BIN):
+    # World file: extra robots → add _{num_robots}r suffix
+    suffix = f'_{num_robots}r' if num_robots > 4 else ''
+    world  = os.path.join(WORLDS_DIR, f'eval_sample{sample_num}_{arena_size}{suffix}.wbt')
     if not os.path.exists(world):
         print(f'[BATCH] World not found, skipping: {world}')
         return False
 
     print(f'\n{"="*60}')
     print(f'[BATCH] Sample {sample_num} | Arena: {arena_size} | '
+          f'Robots: {num_robots} | Tags: {num_tags or "default"} | '
           f'Duration: {duration_sim_min} sim-min')
     print(f'{"="*60}')
 
@@ -60,7 +72,7 @@ def run_sample(sample_num, arena_size, run_name, duration_sim_min, results_csv,
 
     # Launch Webots (background)
     webots_proc = subprocess.Popen(
-        [webots_bin, '--batch', world],
+        [webots_bin, '--batch', '--no-rendering', world],
         stdout=subprocess.DEVNULL,
         stderr=subprocess.DEVNULL,
     )
@@ -77,7 +89,11 @@ def run_sample(sample_num, arena_size, run_name, duration_sim_min, results_csv,
         '--duration_sim_min', str(duration_sim_min),
         '--results_csv',      results_csv,
         '--sample_id',        str(sample_num),
+        '--num_robots',       str(num_robots),
     ]
+    if num_tags is not None:
+        sup_cmd += ['--num_tags', str(num_tags)]
+
     t0 = time.time()
     result = subprocess.run(sup_cmd, cwd=SUPERVISOR_DIR)
     wall_sec = time.time() - t0
@@ -96,7 +112,7 @@ def run_sample(sample_num, arena_size, run_name, duration_sim_min, results_csv,
     return result.returncode == 0
 
 
-def print_summary(results_csv):
+def print_summary(results_csv, arena_size, num_robots, duration):
     if not os.path.exists(results_csv):
         print('[BATCH] No results CSV found.')
         return
@@ -108,38 +124,50 @@ def print_summary(results_csv):
         print('[BATCH] CSV is empty.')
         return
 
-    rates = [float(r['sim_rate']) for r in rows]
-    deps  = [int(r['deposits'])   for r in rows]
-    mean  = sum(rates) / len(rates)
-    std   = (sum((x - mean) ** 2 for x in rates) / len(rates)) ** 0.5
+    # Group rows by sample; get final deposits per sample
+    from collections import defaultdict
+    sample_rows = defaultdict(list)
+    for r in rows:
+        sample_rows[r['sample']].append(r)
 
     print(f'\n{"="*60}')
     print('BATCH EVAL RESULTS')
+    print(f'Arena: {arena_size} | Robots: {num_robots} | Duration: {duration} sim-min')
     print(f'{"="*60}')
-    print(f'{"Sample":>8} {"Deposits":>10} {"SimTime(min)":>13} '
-          f'{"SimRate":>10} {"WallTime(min)":>14}')
-    print('-' * 60)
-    for r in rows:
-        print(f'{r["sample"]:>8} {r["deposits"]:>10} {r["sim_time_min"]:>13} '
-              f'{r["sim_rate"]:>10} {r["elapsed_min"]:>14}')
-    print('-' * 60)
-    print(f'{"mean":>8} {sum(deps)/len(deps):>10.1f} {"":>13} {mean:>10.4f}')
-    print(f'{"std":>8} {"":>10} {"":>13} {std:>10.4f}')
-    print(f'{"min":>8} {"":>10} {"":>13} {min(rates):>10.4f}')
-    print(f'{"max":>8} {"":>10} {"":>13} {max(rates):>10.4f}')
+    print(f'{"Sample":>8} {"FinalDeposits":>15} {"AtMinute":>10}')
+    print('-' * 36)
+
+    final_deposits = []
+    for sample_id in sorted(sample_rows.keys(), key=lambda s: (len(s), s)):
+        s_rows = sorted(sample_rows[sample_id], key=lambda r: float(r['time_min']))
+        last   = s_rows[-1]
+        d      = int(last['deposits'])
+        t      = float(last['time_min'])
+        final_deposits.append(d)
+        print(f'{sample_id:>8} {d:>15} {t:>10.0f}')
+
+    if not final_deposits:
+        return
+    mean = sum(final_deposits) / len(final_deposits)
+    std  = (sum((x - mean) ** 2 for x in final_deposits) / len(final_deposits)) ** 0.5
+    print('-' * 36)
+    print(f'{"mean":>8} {mean:>15.1f}')
+    print(f'{"std":>8} {std:>15.1f}')
+    print(f'{"min":>8} {min(final_deposits):>15}')
+    print(f'{"max":>8} {max(final_deposits):>15}')
     print(f'\nCSV saved to: {results_csv}')
 
     # Boxplot (optional — only if matplotlib is available)
     try:
         import matplotlib.pyplot as plt
         fig, ax = plt.subplots(figsize=(5, 5))
-        ax.boxplot(rates, patch_artist=True,
+        ax.boxplot(final_deposits, patch_artist=True,
                    boxprops=dict(facecolor='steelblue', alpha=0.7))
-        ax.set_ylabel('SimRate (tags / sim-min)')
-        ax.set_title(f'Decentralized RL  |  {rows[0]["arena"]}  |  '
-                     f'{len(rows)} samples')
+        ax.set_ylabel(f'Deposits in {duration} sim-min')
+        ax.set_title(f'Decentralized RL  |  {arena_size}  |  '
+                     f'{num_robots} robots  |  {len(final_deposits)} samples')
         ax.set_xticks([1])
-        ax.set_xticklabels([rows[0]["arena"]])
+        ax.set_xticklabels([f'{num_robots}r'])
         plot_path = results_csv.replace('.csv', '_boxplot.png')
         plt.tight_layout()
         plt.savefig(plot_path, dpi=150)
@@ -170,14 +198,21 @@ def main():
                         help='Range or list: "1-10", "1,3,5", "1-5"')
     parser.add_argument('--duration',    type=float, default=DURATION_SIM_MIN,
                         help='Sim-minutes per sample (default: 10)')
+    parser.add_argument('--num_robots',  type=int, default=NUM_ROBOTS,
+                        help='Number of robots (default: 4; >4 adds _Nr suffix to world)')
+    parser.add_argument('--num_tags',    type=int, default=NUM_TAGS,
+                        help='Active tag count override (default: arena default)')
     parser.add_argument('--webots_bin',  default=WEBOTS_BIN,
                         help='Path to webots executable')
     args = parser.parse_args()
 
-    samples     = parse_sample_range(args.samples)
+    samples = parse_sample_range(args.samples)
+
+    # CSV name encodes the config for easy identification
+    tag_str = f'_t{args.num_tags}' if args.num_tags else ''
     results_csv = os.path.join(
         PROJECT_ROOT,
-        f'batch_results_{args.arena_size}_{args.run_name}.csv'
+        f'batch_results_{args.arena_size}_{args.num_robots}r{tag_str}_{args.run_name}.csv'
     )
 
     # Remove old CSV so header is written fresh
@@ -187,7 +222,8 @@ def main():
 
     print(f'\n{"="*60}')
     print(f'BATCH EVAL  |  Arena: {args.arena_size}  |  '
-          f'Samples: {samples}  |  Duration: {args.duration} sim-min')
+          f'Robots: {args.num_robots}  |  Tags: {args.num_tags or "default"}')
+    print(f'Samples: {samples}  |  Duration: {args.duration} sim-min')
     print(f'Model: {args.run_name}')
     print(f'Results: {results_csv}')
     print(f'{"="*60}\n')
@@ -196,12 +232,14 @@ def main():
     for sample in samples:
         success = run_sample(sample, args.arena_size, args.run_name,
                              args.duration, results_csv,
+                             num_robots=args.num_robots,
+                             num_tags=args.num_tags,
                              webots_bin=args.webots_bin)
         if success:
             ok += 1
 
     print(f'\n[BATCH] Done: {ok}/{len(samples)} samples completed successfully.')
-    print_summary(results_csv)
+    print_summary(results_csv, args.arena_size, args.num_robots, args.duration)
 
 
 if __name__ == '__main__':

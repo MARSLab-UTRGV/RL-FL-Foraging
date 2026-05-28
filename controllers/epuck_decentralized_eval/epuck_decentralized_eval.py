@@ -78,6 +78,22 @@ class EpuckDecentralizedEval(EpuckDecentralizedV4):
                 self._log(f"[{robot_name}] Model loaded (19D obs, independent PPO v8, cpu).")
                 return
 
+        # Cycle robots 5-16 → trained robots 1-4 (robot5→1, robot6→2, …)
+        try:
+            robot_num  = int(''.join(filter(str.isdigit, robot_name)))
+            mapped_num = ((robot_num - 1) % 4) + 1
+            if mapped_num != robot_num:
+                mapped_name = f"robot{mapped_num}"
+                cycle_path  = os.path.join(project_root, f"{mapped_name}_{run_name}")
+                if os.path.exists(cycle_path + '.zip'):
+                    self._open_robot_log(f"eval_{run_name}")
+                    self._log(f"[{robot_name}] No own model — cycling to {mapped_name}'s model")
+                    self._ppo = PPO.load(cycle_path, device='cpu')
+                    self._log(f"[{robot_name}] Model loaded (cycled from {mapped_name}, cpu).")
+                    return
+        except ValueError:
+            pass
+
         # Priority 2: shared model from current_eval_model.txt (CTDE / fallback)
         model_cfg = os.path.join(project_root, 'current_eval_model.txt')
         if os.path.exists(model_cfg):
