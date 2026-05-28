@@ -593,12 +593,28 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
 # =============================================================================
 # EVALUATION ENTRY POINT
 # =============================================================================
+def _machine_result(label, env, step_count):
+    elapsed_min = step_count * env.timestep / 1000.0 / 60.0
+    return (
+        f"{label} pickups={env.total_pickups} "
+        f"deposits={env.total_deposits} "
+        f"steps={step_count} "
+        f"elapsed_min={elapsed_min:.6f}"
+    )
+
+
+def _batch_result(env):
+    return f"BATCH_RESULT pickups={env.total_pickups} deposits={env.total_deposits}"
+
+
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("model", nargs="?",
                         help="PPO model path. .zip suffix is optional.")
     parser.add_argument("--duration-sim-min", type=float, default=None,
                         help="Stop after this many simulated minutes and print BATCH_RESULT.")
+    parser.add_argument("--stop-on-completion", action="store_true",
+                        help="Stop as soon as all tags are deposited, even with a duration cap.")
     args = parser.parse_args()
 
     print("=" * 60)
@@ -690,8 +706,17 @@ if __name__ == "__main__":
             with open("eval_cpfa_log_12x12.txt", "a") as f:
                 f.write(log_msg)
 
+        completion_reached = env.total_deposits >= env.num_tags
+        if completion_reached and args.stop_on_completion:
+            result_msg = _machine_result("COMPLETION_RESULT", env, step_count)
+            print(result_msg, flush=True)
+            print(_batch_result(env), flush=True)
+            env.simulationQuit(0)
+            break
+
         if target_steps is not None and step_count >= target_steps:
-            print(f"BATCH_RESULT pickups={env.total_pickups} deposits={env.total_deposits}",
-                  flush=True)
+            label = "COMPLETION_RESULT" if completion_reached else "TIMEOUT_RESULT"
+            print(_machine_result(label, env, step_count), flush=True)
+            print(_batch_result(env), flush=True)
             env.simulationQuit(0)
             break
