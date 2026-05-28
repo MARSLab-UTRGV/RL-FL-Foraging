@@ -2,10 +2,12 @@
 """
 Batch evaluation script for decentralized RL foraging.
 
-Runs samples sequentially — Webots opens for each sample in fast-simulation
-mode, the supervisor runs for DURATION_SIM_MIN simulation minutes, then both
-exit automatically. Results are written to a CSV (one row per integer
-simulation minute, cumulative deposits).
+Runs samples in parallel by default — each sample gets its own Webots instance
+on a dedicated port.  Webots prints the supervisor controller URL via
+--extern-urls; the batch runner captures that URL and passes it to the
+supervisor subprocess via WEBOTS_CONTROLLER_URL.
+
+Per-sample CSVs are written to temp files then merged at the end.
 
 Usage:
     python3 run_batch_eval.py                               # defaults below
@@ -17,25 +19,35 @@ Usage:
     python3 run_batch_eval.py --arena_size 7x7 --num_robots 12 --num_tags 128
     python3 run_batch_eval.py --arena_size 7x7 --num_robots 16 --num_tags 208
 
-After all samples finish, mean/std deposits and a boxplot are saved.
+    # Limit concurrency (e.g. 4 at a time to avoid RAM pressure)
+    python3 run_batch_eval.py --max_parallel 4
+
+    # Fall back to fully sequential (one Webots at a time)
+    python3 run_batch_eval.py --max_parallel 1
 """
 
 import argparse
 import csv
 import os
+import queue
+import shutil
+import signal
 import subprocess
 import sys
+import threading
 import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 # ── Default configuration ──────────────────────────────────────────────────────
 ARENA_SIZE       = '5x5'
 RUN_NAME         = 'decentralized_indep_v9'
-SAMPLES          = list(range(1, 11))     # 1–10
-DURATION_SIM_MIN = 10.0                   # sim-minutes per sample
+DURATION_SIM_MIN = 10.0
 NUM_ROBOTS       = 4
-NUM_TAGS         = None                   # None = use arena default
-WEBOTS_BIN       = 'webots'               # set full path if webots not on PATH
-WEBOTS_STARTUP_S = 15                     # seconds to wait for Webots to be ready
+NUM_TAGS         = None          # None = use arena default
+BASE_PORT        = 5100          # port for sample index 0; each sample adds its index
+WEBOTS_BIN       = 'webots'
+WEBOTS_STARTUP_S = 45            # seconds to wait for Webots supervisor URL
+MAX_PARALLEL     = 10            # run all 10 samples simultaneously by default
 # ──────────────────────────────────────────────────────────────────────────────
 
 PROJECT_ROOT   = os.path.dirname(os.path.abspath(__file__))
@@ -43,6 +55,94 @@ SUPERVISOR_DIR = os.path.join(PROJECT_ROOT, 'controllers', 'eval_decentralized')
 SUPERVISOR_PY  = os.path.join(SUPERVISOR_DIR, 'eval_decentralized.py')
 WORLDS_DIR     = os.path.join(PROJECT_ROOT, 'worlds')
 
+EXTERN_URL_PREFIXES     = ('ipc://', 'tcp://')
+SUPERVISOR_CTRL_NAME    = 'supervisor'
+
+
+# ── Webots environment helpers ────────────────────────────────────────────────
+
+def _infer_webots_home(webots_bin):
+    if os.environ.get('WEBOTS_HOME'):
+        return os.environ['WEBOTS_HOME']
+    resolved = shutil.which(webots_bin)
+    if resolved is None:
+        return None
+    resolved = os.path.realpath(resolved)
+    # webots wrapper → .../bin/webots-bin → .../<WEBOTS_HOME>/bin/
+    if os.path.basename(resolved) == 'webots-bin':
+        return os.path.dirname(os.path.dirname(resolved))
+    return os.path.dirname(resolved)
+
+
+def _add_webots_controller_env(env, webots_bin):
+    home = _infer_webots_home(webots_bin)
+    if home is None:
+        return
+    env['WEBOTS_HOME'] = home
+    py_lib = os.path.join(home, 'lib', 'controller', 'python')
+    ld_lib = os.path.join(home, 'lib', 'controller')
+    env['PYTHONPATH'] = py_lib + os.pathsep + env.get('PYTHONPATH', '')
+    env['LD_LIBRARY_PATH'] = ld_lib + os.pathsep + env.get('LD_LIBRARY_PATH', '')
+
+
+# ── Webots stdout pump (captures extern controller URLs) ──────────────────────
+
+def _pump_webots_output(stdout, url_queue):
+    """Read Webots stdout; push lines starting with ipc:// or tcp:// to queue."""
+    try:
+        for line in stdout:
+            line = line.strip()
+            if line.startswith(EXTERN_URL_PREFIXES):
+                url_queue.put(line)
+    finally:
+        url_queue.put(None)   # sentinel
+
+
+def _wait_for_supervisor_url(port, timeout_s, webots_proc, url_queue):
+    """
+    Block until Webots prints the supervisor controller URL (via --extern-urls),
+    then return it.  Raises if Webots exits early or the timeout is exceeded.
+    """
+    deadline = time.time() + timeout_s
+    while time.time() < deadline:
+        if webots_proc.poll() is not None:
+            raise RuntimeError(
+                f'Webots (port {port}) exited before supervisor URL appeared')
+        remaining = max(0.0, deadline - time.time())
+        try:
+            url = url_queue.get(timeout=min(0.5, remaining))
+        except queue.Empty:
+            continue
+        if url is None:
+            continue
+        # URL path ends in the controller name, e.g. .../supervisor
+        if url.rstrip('/').split('/')[-1] == SUPERVISOR_CTRL_NAME:
+            return url
+    raise TimeoutError(
+        f'Timed out waiting for supervisor URL on port {port} '
+        f'after {timeout_s:.0f}s')
+
+
+# ── Process cleanup ───────────────────────────────────────────────────────────
+
+def _terminate(proc):
+    if proc is None or proc.poll() is not None:
+        return
+    try:
+        os.killpg(proc.pid, signal.SIGTERM)
+    except ProcessLookupError:
+        return
+    try:
+        proc.wait(timeout=10)
+    except subprocess.TimeoutExpired:
+        try:
+            os.killpg(proc.pid, signal.SIGKILL)
+        except ProcessLookupError:
+            pass
+        proc.wait()
+
+
+# ── Config files (written once before parallel launch) ───────────────────────
 
 def write_config(arena_size, run_name):
     for fname, content in [
@@ -53,64 +153,133 @@ def write_config(arena_size, run_name):
             f.write(content)
 
 
-def run_sample(sample_num, arena_size, run_name, duration_sim_min, results_csv,
-               num_robots=4, num_tags=None, webots_bin=WEBOTS_BIN):
-    # World file: extra robots → add _{num_robots}r suffix
+# ── Per-sample runner (called from thread pool) ───────────────────────────────
+
+def run_sample(sample_num, arena_size, run_name, duration_sim_min,
+               sample_csv, num_robots, num_tags,
+               port, webots_bin, startup_s):
+    """
+    Launch one Webots instance + one supervisor process for a single sample.
+    Returns True on success.
+    """
     suffix = f'_{num_robots}r' if num_robots > 4 else ''
-    world  = os.path.join(WORLDS_DIR, f'eval_sample{sample_num}_{arena_size}{suffix}.wbt')
+    world  = os.path.join(WORLDS_DIR,
+                          f'eval_sample{sample_num}_{arena_size}{suffix}.wbt')
     if not os.path.exists(world):
-        print(f'[BATCH] World not found, skipping: {world}')
+        print(f'[s{sample_num}] World not found, skipping: {world}')
         return False
 
-    print(f'\n{"="*60}')
-    print(f'[BATCH] Sample {sample_num} | Arena: {arena_size} | '
-          f'Robots: {num_robots} | Tags: {num_tags or "default"} | '
-          f'Duration: {duration_sim_min} sim-min')
-    print(f'{"="*60}')
+    print(f'[s{sample_num}] Starting | port={port} | {os.path.basename(world)}')
 
-    write_config(arena_size, run_name)
-
-    # Launch Webots (background)
-    webots_proc = subprocess.Popen(
-        [webots_bin, '--batch', '--no-rendering', world],
-        stdout=subprocess.DEVNULL,
-        stderr=subprocess.DEVNULL,
-    )
-    print(f'[BATCH] Webots started (PID {webots_proc.pid}) — '
-          f'waiting {WEBOTS_STARTUP_S}s for ready...')
-    time.sleep(WEBOTS_STARTUP_S)
-
-    # Run supervisor (blocks until simulationQuit is called inside)
-    sup_cmd = [
-        sys.executable,
-        SUPERVISOR_PY,
-        '--arena_size',       arena_size,
-        '--run_name',         run_name,
-        '--duration_sim_min', str(duration_sim_min),
-        '--results_csv',      results_csv,
-        '--sample_id',        str(sample_num),
-        '--num_robots',       str(num_robots),
+    webots_cmd = [
+        webots_bin,
+        '--batch',
+        f'--port={port}',
+        '--extern-urls',
+        '--mode=fast',
+        '--minimize',
+        '--no-rendering',
+        world,
     ]
-    if num_tags is not None:
-        sup_cmd += ['--num_tags', str(num_tags)]
 
-    t0 = time.time()
-    result = subprocess.run(sup_cmd, cwd=SUPERVISOR_DIR)
-    wall_sec = time.time() - t0
-    print(f'[BATCH] Supervisor finished in {wall_sec:.1f}s '
-          f'(exit code {result.returncode})')
+    webots_env = os.environ.copy()
+    webots_env['WEBOTS_PORT'] = str(port)
 
-    # Webots exits via simulationQuit; terminate it anyway in case it's still up
-    if webots_proc.poll() is None:
-        webots_proc.terminate()
+    webots_proc = None
+    pump_thread = None
+    try:
+        webots_proc = subprocess.Popen(
+            webots_cmd,
+            cwd=PROJECT_ROOT,
+            env=webots_env,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.STDOUT,
+            text=True,
+            bufsize=1,
+            start_new_session=True,
+        )
+
+        url_queue = queue.Queue()
+        pump_thread = threading.Thread(
+            target=_pump_webots_output,
+            args=(webots_proc.stdout, url_queue),
+            daemon=True,
+        )
+        pump_thread.start()
+
+        ctrl_url = _wait_for_supervisor_url(port, startup_s, webots_proc, url_queue)
+        print(f'[s{sample_num}] Supervisor URL: {ctrl_url}')
+
+        # Build supervisor command
+        sup_cmd = [
+            sys.executable, SUPERVISOR_PY,
+            '--arena_size',       arena_size,
+            '--run_name',         run_name,
+            '--duration_sim_min', str(duration_sim_min),
+            '--results_csv',      sample_csv,
+            '--sample_id',        str(sample_num),
+            '--num_robots',       str(num_robots),
+        ]
+        if num_tags is not None:
+            sup_cmd += ['--num_tags', str(num_tags)]
+
+        ctrl_env = os.environ.copy()
+        ctrl_env['WEBOTS_CONTROLLER_URL'] = ctrl_url
+        ctrl_env['WEBOTS_PORT']           = str(port)
+        ctrl_env['PYTHONUNBUFFERED']      = '1'
+        _add_webots_controller_env(ctrl_env, webots_bin)
+
+        t0 = time.time()
+        result = subprocess.run(sup_cmd, cwd=SUPERVISOR_DIR, env=ctrl_env)
+        wall_s = time.time() - t0
+        ok = result.returncode == 0
+        print(f'[s{sample_num}] Done in {wall_s:.1f}s '
+              f'(code {result.returncode}) {"✓" if ok else "✗"}')
+        return ok
+
+    except Exception as exc:
+        print(f'[s{sample_num}] ERROR: {exc}')
+        return False
+
+    finally:
+        _terminate(webots_proc)
+        if pump_thread is not None:
+            pump_thread.join(timeout=5)
+
+
+# ── CSV merge ─────────────────────────────────────────────────────────────────
+
+def merge_sample_csvs(samples, results_csv):
+    """Collect per-sample temp CSVs, sort by (sample, time_min), write final CSV."""
+    all_rows = []
+    for s in samples:
+        tmp = results_csv + f'.s{s}.tmp'
+        if not os.path.exists(tmp):
+            continue
+        with open(tmp, newline='') as f:
+            all_rows.extend(list(csv.DictReader(f)))
+        os.remove(tmp)
+
+    if not all_rows:
+        return
+
+    def sort_key(r):
         try:
-            webots_proc.wait(timeout=10)
-        except subprocess.TimeoutExpired:
-            webots_proc.kill()
+            return (int(r.get('sample', 0)), float(r.get('time_min', 0)))
+        except (ValueError, TypeError):
+            return (0, 0.0)
 
-    time.sleep(2)   # brief pause before next sample
-    return result.returncode == 0
+    all_rows.sort(key=sort_key)
 
+    with open(results_csv, 'w', newline='') as f:
+        w = csv.DictWriter(f, fieldnames=list(all_rows[0].keys()))
+        w.writeheader()
+        w.writerows(all_rows)
+
+    print(f'[BATCH] Merged {len(all_rows)} rows → {results_csv}')
+
+
+# ── Summary / boxplot ─────────────────────────────────────────────────────────
 
 def print_summary(results_csv, arena_size, num_robots, duration):
     if not os.path.exists(results_csv):
@@ -124,65 +293,57 @@ def print_summary(results_csv, arena_size, num_robots, duration):
         print('[BATCH] CSV is empty.')
         return
 
-    # Group rows by sample; get final deposits per sample
-    from collections import defaultdict
-    sample_rows = defaultdict(list)
-    for r in rows:
-        sample_rows[r['sample']].append(r)
-
     print(f'\n{"="*60}')
     print('BATCH EVAL RESULTS')
     print(f'Arena: {arena_size} | Robots: {num_robots} | Duration: {duration} sim-min')
     print(f'{"="*60}')
-    print(f'{"Sample":>8} {"FinalDeposits":>15} {"AtMinute":>10}')
-    print('-' * 36)
+    print(f'{"Sample":>8} {"Deposits":>10} {"SimRate":>10} {"Wall(min)":>10}')
+    print('-' * 42)
 
-    final_deposits = []
-    for sample_id in sorted(sample_rows.keys(), key=lambda s: (len(s), s)):
-        s_rows = sorted(sample_rows[sample_id], key=lambda r: float(r['time_min']))
-        last   = s_rows[-1]
-        d      = int(last['deposits'])
-        t      = float(last['time_min'])
-        final_deposits.append(d)
-        print(f'{sample_id:>8} {d:>15} {t:>10.0f}')
+    deposits = []
+    for r in sorted(rows, key=lambda r: (len(r['sample']), r['sample'])):
+        d = int(r['deposits'])
+        deposits.append(d)
+        print(f'{r["sample"]:>8} {d:>10} {r["sim_rate"]:>10} {r["wall_time_min"]:>10}')
 
-    if not final_deposits:
+    if not deposits:
         return
-    mean = sum(final_deposits) / len(final_deposits)
-    std  = (sum((x - mean) ** 2 for x in final_deposits) / len(final_deposits)) ** 0.5
-    print('-' * 36)
-    print(f'{"mean":>8} {mean:>15.1f}')
-    print(f'{"std":>8} {std:>15.1f}')
-    print(f'{"min":>8} {min(final_deposits):>15}')
-    print(f'{"max":>8} {max(final_deposits):>15}')
-    print(f'\nCSV saved to: {results_csv}')
+    mean = sum(deposits) / len(deposits)
+    std  = (sum((x - mean) ** 2 for x in deposits) / len(deposits)) ** 0.5
+    print('-' * 42)
+    print(f'{"mean":>8} {mean:>10.1f}')
+    print(f'{"std":>8} {std:>10.1f}')
+    print(f'{"min":>8} {min(deposits):>10}')
+    print(f'{"max":>8} {max(deposits):>10}')
+    print(f'\nCSV: {results_csv}')
 
-    # Boxplot (optional — only if matplotlib is available)
     try:
         import matplotlib.pyplot as plt
         fig, ax = plt.subplots(figsize=(5, 5))
-        ax.boxplot(final_deposits, patch_artist=True,
+        ax.boxplot(deposits, patch_artist=True,
                    boxprops=dict(facecolor='steelblue', alpha=0.7))
         ax.set_ylabel(f'Deposits in {duration} sim-min')
         ax.set_title(f'Decentralized RL  |  {arena_size}  |  '
-                     f'{num_robots} robots  |  {len(final_deposits)} samples')
+                     f'{num_robots} robots  |  {len(deposits)} samples')
         ax.set_xticks([1])
         ax.set_xticklabels([f'{num_robots}r'])
         plot_path = results_csv.replace('.csv', '_boxplot.png')
         plt.tight_layout()
         plt.savefig(plot_path, dpi=150)
         plt.close()
-        print(f'Boxplot saved to: {plot_path}')
+        print(f'Boxplot: {plot_path}')
     except ImportError:
-        print('(matplotlib not available — skipping boxplot)')
+        pass
 
+
+# ── Argument parsing ──────────────────────────────────────────────────────────
 
 def parse_sample_range(s):
-    """Parse '1-10' or '1,3,5' or '1' into a list of ints."""
     samples = []
     for part in s.split(','):
+        part = part.strip()
         if '-' in part:
-            a, b = part.split('-')
+            a, b = part.split('-', 1)
             samples.extend(range(int(a), int(b) + 1))
         else:
             samples.append(int(part))
@@ -190,55 +351,89 @@ def parse_sample_range(s):
 
 
 def main():
-    parser = argparse.ArgumentParser(description='Batch eval for decentralized RL')
-    parser.add_argument('--arena_size',  default=ARENA_SIZE,
+    parser = argparse.ArgumentParser(description='Parallel batch eval for decentralized RL')
+    parser.add_argument('--arena_size',   default=ARENA_SIZE,
                         choices=['5x5', '7x7', '9x9', '12x12'])
-    parser.add_argument('--run_name',    default=RUN_NAME)
-    parser.add_argument('--samples',     default='1-10',
-                        help='Range or list: "1-10", "1,3,5", "1-5"')
-    parser.add_argument('--duration',    type=float, default=DURATION_SIM_MIN,
+    parser.add_argument('--run_name',     default=RUN_NAME)
+    parser.add_argument('--samples',      default='1-10',
+                        help='Range or list: "1-10", "1,3,5"')
+    parser.add_argument('--duration',     type=float, default=DURATION_SIM_MIN,
                         help='Sim-minutes per sample (default: 10)')
-    parser.add_argument('--num_robots',  type=int, default=NUM_ROBOTS,
-                        help='Number of robots (default: 4; >4 adds _Nr suffix to world)')
-    parser.add_argument('--num_tags',    type=int, default=NUM_TAGS,
-                        help='Active tag count override (default: arena default)')
-    parser.add_argument('--webots_bin',  default=WEBOTS_BIN,
-                        help='Path to webots executable')
+    parser.add_argument('--num_robots',   type=int, default=NUM_ROBOTS)
+    parser.add_argument('--num_tags',     type=int, default=NUM_TAGS,
+                        help='Active tag count override')
+    parser.add_argument('--max_parallel', type=int, default=MAX_PARALLEL,
+                        help='Max simultaneous Webots instances (1 = sequential)')
+    parser.add_argument('--base_port',    type=int, default=BASE_PORT,
+                        help='Base Webots port; sample i uses base_port + i')
+    parser.add_argument('--webots_bin',   default=WEBOTS_BIN)
+    parser.add_argument('--startup_s',    type=float, default=WEBOTS_STARTUP_S,
+                        help='Seconds to wait for Webots supervisor URL')
     args = parser.parse_args()
 
-    samples = parse_sample_range(args.samples)
+    samples     = parse_sample_range(args.samples)
+    max_workers = min(args.max_parallel, len(samples))
 
-    # CSV name encodes the config for easy identification
     tag_str = f'_t{args.num_tags}' if args.num_tags else ''
+    r_str   = f'_{args.num_robots}r' if args.num_robots != 4 else ''
     results_csv = os.path.join(
         PROJECT_ROOT,
-        f'batch_results_{args.arena_size}_{args.num_robots}r{tag_str}_{args.run_name}.csv'
+        f'batch_results_{args.arena_size}{r_str}{tag_str}_{args.run_name}.csv'
     )
 
-    # Remove old CSV so header is written fresh
+    # Clean old CSV and temp files
     if os.path.exists(results_csv):
         os.remove(results_csv)
-        print(f'[BATCH] Removed existing: {os.path.basename(results_csv)}')
+    for s in samples:
+        tmp = results_csv + f'.s{s}.tmp'
+        if os.path.exists(tmp):
+            os.remove(tmp)
+
+    # Write shared config once (all samples use same run/arena)
+    write_config(args.arena_size, args.run_name)
 
     print(f'\n{"="*60}')
-    print(f'BATCH EVAL  |  Arena: {args.arena_size}  |  '
-          f'Robots: {args.num_robots}  |  Tags: {args.num_tags or "default"}')
+    print(f'BATCH EVAL  |  Arena: {args.arena_size}  |  Robots: {args.num_robots}  |  '
+          f'Tags: {args.num_tags or "default"}')
     print(f'Samples: {samples}  |  Duration: {args.duration} sim-min')
+    print(f'Parallel: {max_workers}  |  Base port: {args.base_port}')
     print(f'Model: {args.run_name}')
     print(f'Results: {results_csv}')
     print(f'{"="*60}\n')
 
     ok = 0
-    for sample in samples:
-        success = run_sample(sample, args.arena_size, args.run_name,
-                             args.duration, results_csv,
-                             num_robots=args.num_robots,
-                             num_tags=args.num_tags,
-                             webots_bin=args.webots_bin)
-        if success:
-            ok += 1
+    failed = []
 
-    print(f'\n[BATCH] Done: {ok}/{len(samples)} samples completed successfully.')
+    with ThreadPoolExecutor(max_workers=max_workers) as pool:
+        future_map = {}
+        for idx, sample in enumerate(samples):
+            port       = args.base_port + idx
+            sample_csv = results_csv + f'.s{sample}.tmp'
+            future = pool.submit(
+                run_sample,
+                sample, args.arena_size, args.run_name,
+                args.duration, sample_csv,
+                args.num_robots, args.num_tags,
+                port, args.webots_bin, args.startup_s,
+            )
+            future_map[future] = sample
+
+        for future in as_completed(future_map):
+            sample = future_map[future]
+            try:
+                success = future.result()
+                if success:
+                    ok += 1
+                else:
+                    failed.append(sample)
+            except Exception as exc:
+                print(f'[s{sample}] EXCEPTION: {exc}')
+                failed.append(sample)
+
+    print(f'\n[BATCH] Done: {ok}/{len(samples)} succeeded'
+          + (f', failed: {sorted(failed)}' if failed else ''))
+
+    merge_sample_csvs(samples, results_csv)
     print_summary(results_csv, args.arena_size, args.num_robots, args.duration)
 
 

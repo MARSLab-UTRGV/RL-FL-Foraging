@@ -237,34 +237,12 @@ class DecentralizedEvalSupervisor:
         if duration_sim_min > 0:
             self.supervisor.simulationSetMode(self.supervisor.SIMULATION_MODE_FAST)
 
-        # Open CSV once; write one row per integer simulation minute
-        csv_file   = None
-        csv_writer = None
-        if results_csv:
-            write_header = not os.path.exists(results_csv)
-            csv_file   = open(results_csv, 'a', newline='')
-            csv_writer = csv.writer(csv_file)
-            if write_header:
-                csv_writer.writerow(
-                    ['sample', 'arena', 'num_robots', 'time_min', 'deposits'])
-
-        last_logged_minute = 0
-
         while True:
             if not self.run_step():
                 break
             self.step += 1
 
             sim_time_min = (self.step * self.timestep / 1000.0) / 60.0
-
-            # Per-minute CSV row (cumulative deposits)
-            current_minute = int(sim_time_min)
-            if current_minute > last_logged_minute:
-                if csv_writer:
-                    csv_writer.writerow([sample_id, self.arena_size, self.num_robots,
-                                         current_minute, self.total_deposits])
-                    csv_file.flush()
-                last_logged_minute = current_minute
 
             if duration_sim_min > 0 and sim_time_min >= duration_sim_min:
                 break
@@ -312,9 +290,6 @@ class DecentralizedEvalSupervisor:
                     f.write(log_msg)
 
         # ── Final stats ───────────────────────────────────────────────
-        if csv_file:
-            csv_file.close()
-
         elapsed_min  = (time.time() - self.start_time) / 60.0
         sim_time_min = (self.step * self.timestep / 1000.0) / 60.0
         sim_rate     = self.total_deposits / sim_time_min if sim_time_min > 0.01 else 0.0
@@ -330,6 +305,18 @@ class DecentralizedEvalSupervisor:
         print(final_msg)
         with open(self._log_path, "a") as f:
             f.write(final_msg)
+
+        # ── Write single CSV row ──────────────────────────────────────
+        if results_csv:
+            write_header = not os.path.exists(results_csv)
+            with open(results_csv, 'a', newline='') as f:
+                w = csv.writer(f)
+                if write_header:
+                    w.writerow(['sample', 'arena', 'num_robots', 'deposits',
+                                'sim_time_min', 'sim_rate', 'wall_time_min'])
+                w.writerow([sample_id, self.arena_size, self.num_robots,
+                            self.total_deposits, round(sim_time_min, 2),
+                            round(sim_rate, 4), round(elapsed_min, 2)])
 
         if duration_sim_min > 0:
             self.supervisor.simulationQuit(0)
