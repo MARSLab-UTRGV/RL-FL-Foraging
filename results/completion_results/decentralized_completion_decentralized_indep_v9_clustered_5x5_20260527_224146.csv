@@ -1,0 +1,6 @@
+method,distribution,arena,sample,completed,status,completion_time_min,elapsed_time_min,steps,pickups,deposits
+decentralized,clustered,5x5,1,true,completed,12.6389,12.6389,23698,64,64
+decentralized,clustered,5x5,2,true,completed,11.7413,11.7413,22015,64,64
+decentralized,clustered,5x5,3,true,completed,11.9904,11.9904,22482,64,64
+decentralized,clustered,5x5,4,true,completed,9.3904,9.3904,17607,64,64
+decentralized,clustered,5x5,5,true,completed,11.5227,11.5227,21605,64,64

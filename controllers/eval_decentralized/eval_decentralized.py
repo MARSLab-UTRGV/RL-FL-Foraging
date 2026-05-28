@@ -224,7 +224,19 @@ class DecentralizedEvalSupervisor:
             return False
         return True
 
-    def run(self, duration_sim_min=0.0, results_csv=None, sample_id=None):
+    def _machine_result(self, label, sim_time_min, elapsed_min, sim_rate, wall_rate):
+        return (
+            f"{label} pickups={self.total_pickups} "
+            f"deposits={self.total_deposits} "
+            f"steps={self.step} "
+            f"elapsed_min={sim_time_min:.6f} "
+            f"wall_min={elapsed_min:.6f} "
+            f"sim_rate={sim_rate:.6f} "
+            f"wall_rate={wall_rate:.6f}"
+        )
+
+    def run(self, duration_sim_min=0.0, results_csv=None, sample_id=None,
+            stop_on_completion=False):
         print("=" * 60)
         print(f"DECENTRALIZED EVAL SUPERVISOR  (arena: {self.arena_size})")
         print(f"Tags: {len(self.tag_nodes)} | Arena half: {self.arena_half} m")
@@ -243,6 +255,9 @@ class DecentralizedEvalSupervisor:
             self.step += 1
 
             sim_time_min = (self.step * self.timestep / 1000.0) / 60.0
+            completion_reached = self.total_deposits >= len(self.tag_nodes)
+            if completion_reached and stop_on_completion:
+                break
             if duration_sim_min > 0 and sim_time_min >= duration_sim_min:
                 break
 
@@ -303,6 +318,15 @@ class DecentralizedEvalSupervisor:
         with open(self._log_path, "a") as f:
             f.write(final_msg)
 
+        completion_reached = self.total_deposits >= len(self.tag_nodes)
+        label = "COMPLETION_RESULT" if completion_reached else "TIMEOUT_RESULT"
+        result_msg = self._machine_result(
+            label, sim_time_min, elapsed_min, sim_rate, wall_rate
+        )
+        print(result_msg, flush=True)
+        with open(self._log_path, "a") as f:
+            f.write(result_msg + "\n")
+
         # ── Write CSV row ──────────────────────────────────────────────
         if results_csv:
             write_header = not os.path.exists(results_csv)
@@ -344,6 +368,8 @@ if __name__ == "__main__":
                         help='Append final stats row to this CSV file')
     parser.add_argument('--sample_id', type=str, default=None,
                         help='Sample label written into the CSV (e.g. "1")')
+    parser.add_argument('--stop_on_completion', action='store_true',
+                        help='Stop as soon as all tags are deposited.')
     args = parser.parse_args()
 
     # Write arena config BEFORE connecting to Webots — robots read this on startup.
@@ -379,4 +405,5 @@ if __name__ == "__main__":
         duration_sim_min=args.duration_sim_min,
         results_csv=args.results_csv,
         sample_id=args.sample_id,
+        stop_on_completion=args.stop_on_completion,
     )

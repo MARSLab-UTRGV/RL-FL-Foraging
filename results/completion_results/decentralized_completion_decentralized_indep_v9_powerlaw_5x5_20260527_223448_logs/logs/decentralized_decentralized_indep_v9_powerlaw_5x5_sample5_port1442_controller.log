@@ -1,0 +1,614 @@
+[SUPERVISOR] Arena: 5x5 (tags=64, half=2.5 m)
+[SUPERVISOR] Per-robot eval | run_name: decentralized_indep_v9
+[SUPERVISOR] Each robot loads {robot_name}_decentralized_indep_v9.zip
+============================================================
+DECENTRALIZED EVAL SUPERVISOR  (arena: 5x5)
+Tags: 64 | Arena half: 2.5 m
+Duration: 120.0 sim-min | Fast mode ON
+Robots run PPO locally — supervisor handles tag mechanics only
+============================================================
+
+[SUPERVISOR] Logging to: /home/fabian_hernandez/foraging/RL-FL-Foraging/logs/eval_decentralized_indep_v9_5x5/supervisor_log.txt
+
+[PICKUP]  robot2 | tag=(1.41,0.13) | density=9 | Total: 1
+
+============================================================
+Step 500 | Pickups: 1 | Deposits: 0
+Sim: 0.3 min | Wall: 0.2 min | SimRate: 0.00 tags/sim-min | WallRate: 0.00 tags/wall-min
+============================================================
+R1[PPO     ]: carry=0 | base=1.47 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.18
+R2[RTB     ]: carry=1 | base=0.73 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.77
+R3[PPO     ]: carry=0 | base=1.98 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=0.58
+R4[PPO     ]: carry=0 | base=1.98 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=0.58
+
+[DEPOSIT] robot2 | Total: 1
+[PICKUP]  robot3 | tag=(1.56,0.21) | density=8 | Total: 2
+
+============================================================
+Step 1000 | Pickups: 2 | Deposits: 1
+Sim: 0.5 min | Wall: 0.3 min | SimRate: 1.88 tags/sim-min | WallRate: 3.12 tags/wall-min
+============================================================
+R1[PPO     ]: carry=0 | base=2.00 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=0.89
+R2[PPO     ]: carry=0 | base=1.08 | tag_vis=1 td=0.35 | site=1 phero=0 | wall=1.43
+R3[RTB     ]: carry=1 | base=1.14 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.36
+R4[PPO     ]: carry=0 | base=1.09 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.41
+
+[PICKUP]  robot2 | tag=(1.41,0.21) | density=7 | Total: 3
+[DEPOSIT] robot3 | Total: 2
+[DEPOSIT] robot2 | Total: 3
+
+============================================================
+Step 1500 | Pickups: 3 | Deposits: 3
+Sim: 0.8 min | Wall: 0.4 min | SimRate: 3.75 tags/sim-min | WallRate: 7.60 tags/wall-min
+============================================================
+R1[PPO     ]: carry=0 | base=1.28 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.26
+R2[BASE_ESC]: carry=0 | base=0.22 | tag_vis=1 td=0.79 | site=1 phero=0 | wall=2.28
+R3[PPO     ]: carry=0 | base=0.71 | tag_vis=1 td=0.74 | site=1 phero=0 | wall=1.80
+R4[PPO     ]: carry=0 | base=1.35 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.19
+
+[PICKUP]  robot3 | tag=(1.41,0.29) | density=6 | Total: 4
+[PICKUP]  robot1 | tag=(1.30,-1.27) | density=20 | Total: 5
+[PICKUP]  robot2 | tag=(1.49,0.21) | density=5 | Total: 6
+
+============================================================
+Step 2000 | Pickups: 6 | Deposits: 3
+Sim: 1.1 min | Wall: 0.5 min | SimRate: 2.81 tags/sim-min | WallRate: 6.46 tags/wall-min
+============================================================
+R1[RTB     ]: carry=1 | base=0.94 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.82
+R2[RTB     ]: carry=1 | base=1.30 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.20
+R3[RTB     ]: carry=1 | base=0.44 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=2.06
+R4[PPO     ]: carry=0 | base=2.26 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=0.66
+
+[DEPOSIT] robot3 | Total: 4
+[DEPOSIT] robot1 | Total: 5
+[DEPOSIT] robot2 | Total: 6
+[PICKUP]  robot4 | tag=(-1.35,0.35) | density=9 | Total: 7
+[PICKUP]  robot3 | tag=(1.49,0.29) | density=4 | Total: 8
+
+============================================================
+Step 2500 | Pickups: 8 | Deposits: 6
+Sim: 1.3 min | Wall: 0.5 min | SimRate: 4.50 tags/sim-min | WallRate: 11.16 tags/wall-min
+============================================================
+R1[PPO     ]: carry=0 | base=1.02 | tag_vis=1 td=0.73 | site=1 phero=0 | wall=1.75
+R2[PPO     ]: carry=0 | base=0.65 | tag_vis=1 td=0.87 | site=1 phero=0 | wall=1.87
+R3[RTB     ]: carry=1 | base=1.39 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.13
+R4[RTB     ]: carry=1 | base=1.11 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.43
+
+[PICKUP]  robot1 | tag=(1.30,-1.12) | density=19 | Total: 9
+[PICKUP]  robot2 | tag=(1.49,0.13) | density=3 | Total: 10
+[DEPOSIT] robot4 | Total: 7
+[DEPOSIT] robot3 | Total: 8
+
+============================================================
+Step 3000 | Pickups: 10 | Deposits: 8
+Sim: 1.6 min | Wall: 0.6 min | SimRate: 5.00 tags/sim-min | WallRate: 13.55 tags/wall-min
+============================================================
+R1[RTB     ]: carry=1 | base=0.77 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.92
+R2[RTB     ]: carry=1 | base=0.72 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.78
+R3[PPO     ]: carry=0 | base=0.26 | tag_vis=0 td=0.00 | site=1 phero=0 | wall=2.26
+R4[PPO     ]: carry=0 | base=0.84 | tag_vis=1 td=0.42 | site=1 phero=0 | wall=1.71
+
+[PICKUP]  robot4 | tag=(-1.19,0.27) | density=8 | Total: 11
+[DEPOSIT] robot2 | Total: 9
+[DEPOSIT] robot1 | Total: 10
+[PICKUP]  robot3 | tag=(1.56,0.29) | density=2 | Total: 12
+[DEPOSIT] robot4 | Total: 11
+
+============================================================
+Step 3500 | Pickups: 12 | Deposits: 11
+Sim: 1.9 min | Wall: 0.7 min | SimRate: 5.89 tags/sim-min | WallRate: 16.67 tags/wall-min
+============================================================
+R1[PPO     ]: carry=0 | base=1.17 | tag_vis=1 td=0.61 | site=1 phero=0 | wall=1.64
+R2[PPO     ]: carry=0 | base=1.16 | tag_vis=1 td=0.42 | site=1 phero=0 | wall=1.35
+R3[RTB     ]: carry=1 | base=1.23 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.28
+R4[BASE_ESC]: carry=0 | base=0.23 | tag_vis=1 td=0.53 | site=1 phero=0 | wall=2.28
+
+[PICKUP]  robot1 | tag=(1.30,-1.19) | density=18 | Total: 13
+[PICKUP]  robot4 | tag=(-1.19,0.19) | density=7 | Total: 14
+[PICKUP]  robot2 | tag=(1.56,0.13) | density=1 | Total: 15
+[DEPOSIT] robot3 | Total: 12
+
+============================================================
+Step 4000 | Pickups: 15 | Deposits: 12
+Sim: 2.1 min | Wall: 0.7 min | SimRate: 5.62 tags/sim-min | WallRate: 16.80 tags/wall-min
+============================================================
+R1[RTB     ]: carry=1 | base=0.61 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=2.01
+R2[RTB     ]: carry=1 | base=0.91 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.59
+R3[PPO     ]: carry=0 | base=0.28 | tag_vis=0 td=0.00 | site=1 phero=0 | wall=2.24
+R4[RTB     ]: carry=1 | base=0.55 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.95
+
+[DEPOSIT] robot4 | Total: 13
+[DEPOSIT] robot1 | Total: 14
+[DEPOSIT] robot2 | Total: 15
+[PICKUP]  robot4 | tag=(-1.27,0.19) | density=6 | Total: 16
+
+============================================================
+Step 4500 | Pickups: 16 | Deposits: 15
+Sim: 2.4 min | Wall: 0.8 min | SimRate: 6.25 tags/sim-min | WallRate: 18.82 tags/wall-min
+============================================================
+R1[PPO     ]: carry=0 | base=1.36 | tag_vis=1 td=0.44 | site=1 phero=0 | wall=1.51
+R2[PPO     ]: carry=0 | base=1.04 | tag_vis=0 td=0.00 | site=1 phero=0 | wall=1.46
+R3[PPO     ]: carry=0 | base=1.55 | tag_vis=1 td=0.98 | site=0 phero=1 | wall=0.96
+R4[RTB     ]: carry=1 | base=1.17 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.35
+
+[PICKUP]  robot1 | tag=(1.37,-1.12) | density=17 | Total: 17
+[PICKUP]  robot3 | tag=(1.45,-1.12) | density=16 | Total: 18
+[DEPOSIT] robot4 | Total: 16
+[PICKUP]  robot2 | tag=(1.37,-1.19) | density=15 | Total: 19
+
+============================================================
+Step 5000 | Pickups: 19 | Deposits: 16
+Sim: 2.7 min | Wall: 0.9 min | SimRate: 6.00 tags/sim-min | WallRate: 18.57 tags/wall-min
+============================================================
+R1[RTB     ]: carry=1 | base=0.52 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=2.09
+R2[RTB     ]: carry=1 | base=1.71 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.16
+R3[RTB     ]: carry=1 | base=0.87 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.83
+R4[PPO     ]: carry=0 | base=0.63 | tag_vis=1 td=0.63 | site=1 phero=0 | wall=1.89
+
+[DEPOSIT] robot1 | Total: 17
+[PICKUP]  robot4 | tag=(-1.27,0.27) | density=5 | Total: 20
+[DEPOSIT] robot3 | Total: 18
+[DEPOSIT] robot2 | Total: 19
+[DEPOSIT] robot4 | Total: 20
+
+============================================================
+Step 5500 | Pickups: 20 | Deposits: 20
+Sim: 2.9 min | Wall: 0.9 min | SimRate: 6.82 tags/sim-min | WallRate: 21.70 tags/wall-min
+============================================================
+R1[PPO     ]: carry=0 | base=1.36 | tag_vis=1 td=0.53 | site=1 phero=0 | wall=1.46
+R2[BASE_ESC]: carry=0 | base=0.22 | tag_vis=1 td=0.87 | site=1 phero=0 | wall=2.34
+R3[PPO     ]: carry=0 | base=1.07 | tag_vis=1 td=0.83 | site=1 phero=0 | wall=1.62
+R4[BASE_ESC]: carry=0 | base=0.24 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=2.26
+
+[PICKUP]  robot1 | tag=(1.45,-1.19) | density=14 | Total: 21
+[PICKUP]  robot3 | tag=(1.53,-1.12) | density=13 | Total: 22
+[PICKUP]  robot4 | tag=(-1.19,0.35) | density=4 | Total: 23
+[PICKUP]  robot2 | tag=(1.37,-1.27) | density=12 | Total: 24
+
+============================================================
+Step 6000 | Pickups: 24 | Deposits: 20
+Sim: 3.2 min | Wall: 1.0 min | SimRate: 6.25 tags/sim-min | WallRate: 20.28 tags/wall-min
+============================================================
+R1[RTB     ]: carry=1 | base=0.83 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.83
+R2[RTB     ]: carry=1 | base=1.76 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.16
+R3[RTB     ]: carry=1 | base=0.94 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.76
+R4[RTB     ]: carry=1 | base=0.96 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.54
+
+[DEPOSIT] robot1 | Total: 21
+[DEPOSIT] robot3 | Total: 22
+[DEPOSIT] robot4 | Total: 23
+[DEPOSIT] robot2 | Total: 24
+
+============================================================
+Step 6500 | Pickups: 24 | Deposits: 24
+Sim: 3.5 min | Wall: 1.0 min | SimRate: 6.92 tags/sim-min | WallRate: 22.92 tags/wall-min
+============================================================
+R1[PPO     ]: carry=0 | base=1.07 | tag_vis=1 td=0.81 | site=1 phero=0 | wall=1.72
+R2[BASE_ESC]: carry=0 | base=0.22 | tag_vis=1 td=0.89 | site=1 phero=0 | wall=2.34
+R3[PPO     ]: carry=0 | base=1.00 | tag_vis=1 td=0.95 | site=1 phero=0 | wall=1.66
+R4[PPO     ]: carry=0 | base=1.01 | tag_vis=1 td=0.33 | site=1 phero=0 | wall=1.54
+
+[PICKUP]  robot4 | tag=(-1.27,0.35) | density=3 | Total: 25
+[PICKUP]  robot1 | tag=(1.45,-1.27) | density=11 | Total: 26
+[PICKUP]  robot3 | tag=(1.53,-1.19) | density=10 | Total: 27
+[DEPOSIT] robot4 | Total: 25
+[PICKUP]  robot2 | tag=(1.30,-1.35) | density=9 | Total: 28
+
+============================================================
+Step 7000 | Pickups: 28 | Deposits: 25
+Sim: 3.7 min | Wall: 1.1 min | SimRate: 6.70 tags/sim-min | WallRate: 22.53 tags/wall-min
+============================================================
+R1[RTB     ]: carry=1 | base=1.03 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.67
+R2[RTB     ]: carry=1 | base=1.79 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.18
+R3[RTB     ]: carry=1 | base=1.18 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.59
+R4[BASE_ESC]: carry=0 | base=0.23 | tag_vis=1 td=0.52 | site=1 phero=0 | wall=2.28
+
+[DEPOSIT] robot1 | Total: 26
+[DEPOSIT] robot3 | Total: 27
+[PICKUP]  robot4 | tag=(-1.35,0.27) | density=2 | Total: 29
+[DEPOSIT] robot2 | Total: 28
+
+============================================================
+Step 7500 | Pickups: 29 | Deposits: 28
+Sim: 4.0 min | Wall: 1.2 min | SimRate: 7.00 tags/sim-min | WallRate: 24.03 tags/wall-min
+============================================================
+R1[PPO     ]: carry=0 | base=0.91 | tag_vis=0 td=0.00 | site=1 phero=0 | wall=1.84
+R2[BASE_ESC]: carry=0 | base=0.23 | tag_vis=1 td=0.89 | site=1 phero=0 | wall=2.32
+R3[PPO     ]: carry=0 | base=0.77 | tag_vis=0 td=0.00 | site=1 phero=0 | wall=1.85
+R4[RTB     ]: carry=1 | base=0.90 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.62
+
+[DEPOSIT] robot4 | Total: 29
+[PICKUP]  robot1 | tag=(1.37,-1.35) | density=8 | Total: 30
+[PICKUP]  robot3 | tag=(1.53,-1.27) | density=7 | Total: 31
+
+============================================================
+Step 8000 | Pickups: 31 | Deposits: 29
+Sim: 4.3 min | Wall: 1.2 min | SimRate: 6.80 tags/sim-min | WallRate: 23.44 tags/wall-min
+============================================================
+R1[RTB     ]: carry=1 | base=1.28 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.48
+R2[PPO     ]: carry=0 | base=1.78 | tag_vis=1 td=0.17 | site=1 phero=0 | wall=1.22
+R3[RTB     ]: carry=1 | base=1.48 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.39
+R4[PPO     ]: carry=0 | base=1.06 | tag_vis=1 td=0.34 | site=1 phero=0 | wall=1.47
+
+[PICKUP]  robot2 | tag=(1.30,-1.43) | density=6 | Total: 32
+[PICKUP]  robot4 | tag=(-1.35,0.19) | density=1 | Total: 33
+[DEPOSIT] robot1 | Total: 30
+[DEPOSIT] robot3 | Total: 31
+[DEPOSIT] robot4 | Total: 32
+
+============================================================
+Step 8500 | Pickups: 33 | Deposits: 32
+Sim: 4.5 min | Wall: 1.3 min | SimRate: 7.06 tags/sim-min | WallRate: 24.99 tags/wall-min
+============================================================
+R1[PPO     ]: carry=0 | base=0.67 | tag_vis=0 td=0.00 | site=1 phero=0 | wall=1.97
+R2[RTB     ]: carry=1 | base=0.35 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=2.24
+R3[PPO     ]: carry=0 | base=0.43 | tag_vis=0 td=0.00 | site=1 phero=0 | wall=2.16
+R4[BASE_ESC]: carry=0 | base=0.22 | tag_vis=1 td=0.78 | site=0 phero=1 | wall=2.28
+
+[DEPOSIT] robot2 | Total: 33
+[PICKUP]  robot1 | tag=(1.37,-1.43) | density=5 | Total: 34
+[PICKUP]  robot3 | tag=(1.45,-1.35) | density=4 | Total: 35
+
+============================================================
+Step 9000 | Pickups: 35 | Deposits: 33
+Sim: 4.8 min | Wall: 1.4 min | SimRate: 6.88 tags/sim-min | WallRate: 24.21 tags/wall-min
+============================================================
+R1[RTB     ]: carry=1 | base=1.55 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.33
+R2[PPO     ]: carry=0 | base=1.61 | tag_vis=1 td=0.46 | site=1 phero=0 | wall=1.30
+R3[RTB     ]: carry=1 | base=1.84 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.04
+R4[PPO     ]: carry=0 | base=1.34 | tag_vis=1 td=0.72 | site=0 phero=1 | wall=1.51
+
+[PICKUP]  robot2 | tag=(1.45,-1.43) | density=3 | Total: 36
+[DEPOSIT] robot1 | Total: 34
+[DEPOSIT] robot3 | Total: 35
+
+============================================================
+Step 9500 | Pickups: 36 | Deposits: 35
+Sim: 5.1 min | Wall: 1.4 min | SimRate: 6.91 tags/sim-min | WallRate: 24.70 tags/wall-min
+============================================================
+R1[PPO     ]: carry=0 | base=0.42 | tag_vis=0 td=0.00 | site=1 phero=0 | wall=2.15
+R2[RTB     ]: carry=1 | base=0.76 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.95
+R3[BASE_ESC]: carry=0 | base=0.22 | tag_vis=1 td=0.88 | site=1 phero=0 | wall=2.34
+R4[PPO     ]: carry=0 | base=0.84 | tag_vis=1 td=0.84 | site=0 phero=1 | wall=1.73
+
+[DEPOSIT] robot2 | Total: 36
+[PICKUP]  robot1 | tag=(1.53,-1.43) | density=2 | Total: 37
+[PICKUP]  robot3 | tag=(1.53,-1.35) | density=1 | Total: 38
+
+============================================================
+Step 10000 | Pickups: 38 | Deposits: 36
+Sim: 5.3 min | Wall: 1.5 min | SimRate: 6.75 tags/sim-min | WallRate: 23.95 tags/wall-min
+============================================================
+R1[RTB     ]: carry=1 | base=1.96 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.10
+R2[PPO     ]: carry=0 | base=1.16 | tag_vis=0 td=0.00 | site=1 phero=0 | wall=1.66
+R3[RTB     ]: carry=1 | base=1.92 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.09
+R4[PPO     ]: carry=0 | base=1.30 | tag_vis=0 td=0.00 | site=0 phero=1 | wall=1.23
+
+[DEPOSIT] robot1 | Total: 37
+
+============================================================
+Step 10500 | Pickups: 38 | Deposits: 37
+Sim: 5.6 min | Wall: 1.6 min | SimRate: 6.61 tags/sim-min | WallRate: 23.65 tags/wall-min
+============================================================
+R1[BASE_ESC]: carry=0 | base=0.23 | tag_vis=1 td=0.88 | site=0 phero=1 | wall=2.33
+R2[PPO     ]: carry=0 | base=1.50 | tag_vis=0 td=0.00 | site=0 phero=1 | wall=1.40
+R3[RTB     ]: carry=1 | base=0.33 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=2.24
+R4[PPO     ]: carry=0 | base=0.36 | tag_vis=0 td=0.00 | site=0 phero=1 | wall=2.15
+
+[DEPOSIT] robot3 | Total: 38
+
+============================================================
+Step 11000 | Pickups: 38 | Deposits: 38
+Sim: 5.9 min | Wall: 1.7 min | SimRate: 6.48 tags/sim-min | WallRate: 22.84 tags/wall-min
+============================================================
+R1[PPO     ]: carry=0 | base=1.73 | tag_vis=0 td=0.00 | site=0 phero=1 | wall=1.27
+R2[PPO     ]: carry=0 | base=0.55 | tag_vis=1 td=0.76 | site=0 phero=1 | wall=1.97
+R3[PPO     ]: carry=0 | base=1.63 | tag_vis=0 td=0.00 | site=0 phero=1 | wall=1.34
+R4[PPO     ]: carry=0 | base=1.95 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.09
+
+
+============================================================
+Step 11500 | Pickups: 38 | Deposits: 38
+Sim: 6.1 min | Wall: 1.8 min | SimRate: 6.20 tags/sim-min | WallRate: 21.62 tags/wall-min
+============================================================
+R1[PPO     ]: carry=0 | base=2.66 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=0.48
+R2[PPO     ]: carry=0 | base=0.83 | tag_vis=1 td=0.92 | site=0 phero=1 | wall=1.68
+R3[WALL_ESC]: carry=0 | base=2.90 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=0.34
+R4[PPO     ]: carry=0 | base=2.28 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=0.71
+
+
+============================================================
+Step 12000 | Pickups: 38 | Deposits: 38
+Sim: 6.4 min | Wall: 1.9 min | SimRate: 5.94 tags/sim-min | WallRate: 20.49 tags/wall-min
+============================================================
+R1[PPO     ]: carry=0 | base=0.75 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.85
+R2[PPO     ]: carry=0 | base=1.21 | tag_vis=0 td=0.00 | site=0 phero=1 | wall=1.57
+R3[PPO     ]: carry=0 | base=0.99 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.70
+R4[PPO     ]: carry=0 | base=0.41 | tag_vis=1 td=1.00 | site=0 phero=0 | wall=2.10
+
+
+============================================================
+Step 12500 | Pickups: 38 | Deposits: 38
+Sim: 6.7 min | Wall: 1.9 min | SimRate: 5.70 tags/sim-min | WallRate: 19.51 tags/wall-min
+============================================================
+R1[PPO     ]: carry=0 | base=1.32 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.43
+R2[WALL_ESC]: carry=0 | base=2.87 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=0.30
+R3[PPO     ]: carry=0 | base=1.07 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.51
+R4[PPO     ]: carry=0 | base=1.69 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.09
+
+
+============================================================
+Step 13000 | Pickups: 38 | Deposits: 38
+Sim: 6.9 min | Wall: 2.0 min | SimRate: 5.48 tags/sim-min | WallRate: 18.59 tags/wall-min
+============================================================
+R1[PPO     ]: carry=0 | base=1.81 | tag_vis=0 td=0.00 | site=0 phero=1 | wall=0.80
+R2[PPO     ]: carry=0 | base=1.12 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.56
+R3[PPO     ]: carry=0 | base=2.26 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=0.53
+R4[PPO     ]: carry=0 | base=1.96 | tag_vis=1 td=0.49 | site=0 phero=0 | wall=0.79
+
+
+============================================================
+Step 13500 | Pickups: 38 | Deposits: 38
+Sim: 7.2 min | Wall: 2.1 min | SimRate: 5.28 tags/sim-min | WallRate: 17.79 tags/wall-min
+============================================================
+R1[PPO     ]: carry=0 | base=1.79 | tag_vis=0 td=0.00 | site=0 phero=1 | wall=1.20
+R2[PPO     ]: carry=0 | base=0.95 | tag_vis=1 td=0.94 | site=0 phero=0 | wall=1.82
+R3[PPO     ]: carry=0 | base=1.15 | tag_vis=0 td=0.00 | site=0 phero=1 | wall=1.38
+R4[BASE_ESC]: carry=0 | base=0.25 | tag_vis=1 td=0.98 | site=0 phero=0 | wall=2.31
+
+
+============================================================
+Step 14000 | Pickups: 38 | Deposits: 38
+Sim: 7.5 min | Wall: 2.2 min | SimRate: 5.09 tags/sim-min | WallRate: 17.04 tags/wall-min
+============================================================
+R1[PPO     ]: carry=0 | base=1.82 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=0.81
+R2[WALL_ESC]: carry=0 | base=2.79 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=0.32
+R3[PPO     ]: carry=0 | base=2.11 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=0.87
+R4[PPO     ]: carry=0 | base=2.01 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=0.53
+
+
+============================================================
+Step 14500 | Pickups: 38 | Deposits: 38
+Sim: 7.7 min | Wall: 2.3 min | SimRate: 4.91 tags/sim-min | WallRate: 16.33 tags/wall-min
+============================================================
+R1[PPO     ]: carry=0 | base=0.58 | tag_vis=1 td=0.81 | site=0 phero=0 | wall=1.96
+R2[PPO     ]: carry=0 | base=1.23 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.45
+R3[PPO     ]: carry=0 | base=1.59 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.08
+R4[PPO     ]: carry=0 | base=0.99 | tag_vis=1 td=0.72 | site=0 phero=0 | wall=1.52
+
+
+============================================================
+Step 15000 | Pickups: 38 | Deposits: 38
+Sim: 8.0 min | Wall: 2.4 min | SimRate: 4.75 tags/sim-min | WallRate: 15.72 tags/wall-min
+============================================================
+R1[PPO     ]: carry=0 | base=2.18 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=0.75
+R2[PPO     ]: carry=0 | base=0.84 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.86
+R3[PPO     ]: carry=0 | base=0.38 | tag_vis=1 td=0.52 | site=0 phero=0 | wall=2.13
+R4[PPO     ]: carry=0 | base=1.22 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.51
+
+
+============================================================
+Step 15500 | Pickups: 38 | Deposits: 38
+Sim: 8.3 min | Wall: 2.5 min | SimRate: 4.60 tags/sim-min | WallRate: 15.14 tags/wall-min
+============================================================
+R1[PPO     ]: carry=0 | base=2.26 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=0.60
+R2[WALL_ESC]: carry=0 | base=2.63 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=0.31
+R3[PPO     ]: carry=0 | base=2.19 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=0.75
+R4[WALL_ESC]: carry=0 | base=2.94 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=0.31
+
+
+============================================================
+Step 16000 | Pickups: 38 | Deposits: 38
+Sim: 8.5 min | Wall: 2.6 min | SimRate: 4.45 tags/sim-min | WallRate: 14.57 tags/wall-min
+============================================================
+R1[PPO     ]: carry=0 | base=2.17 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=0.45
+R2[PPO     ]: carry=0 | base=1.02 | tag_vis=1 td=0.58 | site=0 phero=0 | wall=1.56
+R3[PPO     ]: carry=0 | base=1.67 | tag_vis=1 td=0.85 | site=0 phero=0 | wall=1.06
+R4[PPO     ]: carry=0 | base=1.26 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.48
+
+[PICKUP]  robot3 | tag=(-0.39,0.74) | density=6 | Total: 39
+[DEPOSIT] robot3 | Total: 39
+
+============================================================
+Step 16500 | Pickups: 39 | Deposits: 39
+Sim: 8.8 min | Wall: 2.7 min | SimRate: 4.43 tags/sim-min | WallRate: 14.49 tags/wall-min
+============================================================
+R1[PPO     ]: carry=0 | base=2.81 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=0.40
+R2[PPO     ]: carry=0 | base=0.96 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.73
+R3[PPO     ]: carry=0 | base=0.28 | tag_vis=1 td=0.40 | site=1 phero=0 | wall=2.28
+R4[PPO     ]: carry=0 | base=0.81 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.89
+
+[PICKUP]  robot3 | tag=(-0.31,0.58) | density=5 | Total: 40
+[DEPOSIT] robot3 | Total: 40
+[PICKUP]  robot3 | tag=(-0.39,0.58) | density=4 | Total: 41
+
+============================================================
+Step 17000 | Pickups: 41 | Deposits: 40
+Sim: 9.1 min | Wall: 2.8 min | SimRate: 4.41 tags/sim-min | WallRate: 14.42 tags/wall-min
+============================================================
+R1[PPO     ]: carry=0 | base=1.11 | tag_vis=1 td=0.84 | site=0 phero=1 | wall=1.65
+R2[PPO     ]: carry=0 | base=2.86 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=0.41
+R3[RTB     ]: carry=1 | base=0.59 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.98
+R4[PPO     ]: carry=0 | base=2.72 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=0.47
+
+[DEPOSIT] robot3 | Total: 41
+[PICKUP]  robot1 | tag=(-0.31,0.74) | density=3 | Total: 42
+[PICKUP]  robot3 | tag=(-0.31,0.66) | density=2 | Total: 43
+[DEPOSIT] robot1 | Total: 42
+
+============================================================
+Step 17500 | Pickups: 43 | Deposits: 42
+Sim: 9.3 min | Wall: 2.8 min | SimRate: 4.50 tags/sim-min | WallRate: 14.74 tags/wall-min
+============================================================
+R1[BASE_ESC]: carry=0 | base=0.22 | tag_vis=1 td=0.55 | site=1 phero=0 | wall=2.31
+R2[PPO     ]: carry=0 | base=1.59 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.26
+R3[RTB     ]: carry=1 | base=0.59 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=2.07
+R4[PPO     ]: carry=0 | base=1.61 | tag_vis=1 td=0.80 | site=0 phero=0 | wall=1.22
+
+[DEPOSIT] robot3 | Total: 43
+[PICKUP]  robot1 | tag=(-0.39,0.66) | density=1 | Total: 44
+[DEPOSIT] robot1 | Total: 44
+
+============================================================
+Step 18000 | Pickups: 44 | Deposits: 44
+Sim: 9.6 min | Wall: 2.9 min | SimRate: 4.58 tags/sim-min | WallRate: 15.02 tags/wall-min
+============================================================
+R1[PPO     ]: carry=0 | base=0.31 | tag_vis=0 td=0.00 | site=1 phero=0 | wall=2.25
+R2[PPO     ]: carry=0 | base=0.49 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=2.06
+R3[PPO     ]: carry=0 | base=1.29 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.42
+R4[PPO     ]: carry=0 | base=0.44 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=2.10
+
+
+============================================================
+Step 18500 | Pickups: 44 | Deposits: 44
+Sim: 9.9 min | Wall: 3.0 min | SimRate: 4.46 tags/sim-min | WallRate: 14.55 tags/wall-min
+============================================================
+R1[PPO     ]: carry=0 | base=1.61 | tag_vis=1 td=0.65 | site=0 phero=1 | wall=0.94
+R2[PPO     ]: carry=0 | base=2.40 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=0.55
+R3[PPO     ]: carry=0 | base=2.76 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=0.40
+R4[PPO     ]: carry=0 | base=2.16 | tag_vis=0 td=0.00 | site=0 phero=1 | wall=0.70
+
+
+============================================================
+Step 19000 | Pickups: 44 | Deposits: 44
+Sim: 10.1 min | Wall: 3.1 min | SimRate: 4.34 tags/sim-min | WallRate: 14.13 tags/wall-min
+============================================================
+R1[PPO     ]: carry=0 | base=0.54 | tag_vis=1 td=0.41 | site=0 phero=0 | wall=2.08
+R2[PPO     ]: carry=0 | base=1.81 | tag_vis=1 td=0.43 | site=0 phero=0 | wall=0.92
+R3[PPO     ]: carry=0 | base=1.92 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=0.59
+R4[PPO     ]: carry=0 | base=0.47 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=2.07
+
+[PICKUP]  robot1 | tag=(-0.49,-0.73) | density=8 | Total: 45
+[PICKUP]  robot2 | tag=(0.47,1.59) | density=12 | Total: 46
+[DEPOSIT] robot1 | Total: 45
+[DEPOSIT] robot2 | Total: 46
+[PICKUP]  robot4 | tag=(0.31,1.59) | density=11 | Total: 47
+
+============================================================
+Step 19500 | Pickups: 47 | Deposits: 46
+Sim: 10.4 min | Wall: 3.2 min | SimRate: 4.42 tags/sim-min | WallRate: 14.43 tags/wall-min
+============================================================
+R1[PPO     ]: carry=0 | base=0.61 | tag_vis=1 td=0.33 | site=1 phero=0 | wall=2.01
+R2[BASE_ESC]: carry=0 | base=0.23 | tag_vis=0 td=0.00 | site=1 phero=0 | wall=2.28
+R3[PPO     ]: carry=0 | base=2.67 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=0.47
+R4[RTB     ]: carry=1 | base=1.50 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.04
+
+[PICKUP]  robot1 | tag=(-0.57,-0.73) | density=7 | Total: 48
+[DEPOSIT] robot1 | Total: 47
+[PICKUP]  robot2 | tag=(0.39,1.59) | density=10 | Total: 49
+[DEPOSIT] robot4 | Total: 48
+
+============================================================
+Step 20000 | Pickups: 49 | Deposits: 48
+Sim: 10.7 min | Wall: 3.3 min | SimRate: 4.50 tags/sim-min | WallRate: 14.75 tags/wall-min
+============================================================
+R1[PPO     ]: carry=0 | base=0.54 | tag_vis=1 td=0.44 | site=1 phero=0 | wall=2.09
+R2[RTB     ]: carry=1 | base=1.52 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.05
+R3[PPO     ]: carry=0 | base=1.83 | tag_vis=1 td=0.76 | site=0 phero=0 | wall=1.08
+R4[BASE_ESC]: carry=0 | base=0.22 | tag_vis=0 td=0.00 | site=1 phero=0 | wall=2.28
+
+[PICKUP]  robot1 | tag=(-0.49,-0.81) | density=6 | Total: 50
+[PICKUP]  robot3 | tag=(-0.57,-0.96) | density=5 | Total: 51
+[DEPOSIT] robot1 | Total: 49
+[PICKUP]  robot4 | tag=(0.24,1.59) | density=9 | Total: 52
+[DEPOSIT] robot2 | Total: 50
+[DEPOSIT] robot3 | Total: 51
+
+============================================================
+Step 20500 | Pickups: 52 | Deposits: 51
+Sim: 10.9 min | Wall: 3.3 min | SimRate: 4.66 tags/sim-min | WallRate: 15.38 tags/wall-min
+============================================================
+R1[PPO     ]: carry=0 | base=0.33 | tag_vis=1 td=0.69 | site=1 phero=0 | wall=2.24
+R2[PPO     ]: carry=0 | base=0.33 | tag_vis=0 td=0.00 | site=1 phero=0 | wall=2.17
+R3[BASE_ESC]: carry=0 | base=0.22 | tag_vis=0 td=0.00 | site=1 phero=0 | wall=2.29
+R4[RTB     ]: carry=1 | base=1.37 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.17
+
+[PICKUP]  robot1 | tag=(-0.57,-0.81) | density=4 | Total: 53
+[PICKUP]  robot3 | tag=(-0.49,-0.89) | density=3 | Total: 54
+[DEPOSIT] robot4 | Total: 52
+[PICKUP]  robot2 | tag=(0.39,1.66) | density=8 | Total: 55
+[DEPOSIT] robot1 | Total: 53
+[DEPOSIT] robot3 | Total: 54
+
+============================================================
+Step 21000 | Pickups: 55 | Deposits: 54
+Sim: 11.2 min | Wall: 3.4 min | SimRate: 4.82 tags/sim-min | WallRate: 16.00 tags/wall-min
+============================================================
+R1[BASE_ESC]: carry=0 | base=0.19 | tag_vis=0 td=0.00 | site=1 phero=0 | wall=2.37
+R2[RTB     ]: carry=1 | base=1.34 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.23
+R3[BASE_ESC]: carry=0 | base=0.24 | tag_vis=0 td=0.00 | site=1 phero=0 | wall=2.29
+R4[PPO     ]: carry=0 | base=0.59 | tag_vis=0 td=0.00 | site=1 phero=0 | wall=1.91
+
+[PICKUP]  robot1 | tag=(-0.57,-0.89) | density=2 | Total: 56
+[PICKUP]  robot4 | tag=(0.24,1.66) | density=7 | Total: 57
+[DEPOSIT] robot2 | Total: 55
+[PICKUP]  robot3 | tag=(-0.49,-0.96) | density=1 | Total: 58
+
+============================================================
+Step 21500 | Pickups: 58 | Deposits: 55
+Sim: 11.5 min | Wall: 3.4 min | SimRate: 4.80 tags/sim-min | WallRate: 16.01 tags/wall-min
+============================================================
+R1[RTB     ]: carry=1 | base=0.32 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=2.22
+R2[PPO     ]: carry=0 | base=0.62 | tag_vis=0 td=0.00 | site=1 phero=0 | wall=1.88
+R3[RTB     ]: carry=1 | base=0.59 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=2.02
+R4[RTB     ]: carry=1 | base=1.02 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.51
+
+[DEPOSIT] robot1 | Total: 56
+[DEPOSIT] robot3 | Total: 57
+[DEPOSIT] robot4 | Total: 58
+[PICKUP]  robot2 | tag=(0.31,1.66) | density=6 | Total: 59
+
+============================================================
+Step 22000 | Pickups: 59 | Deposits: 58
+Sim: 11.7 min | Wall: 3.5 min | SimRate: 4.94 tags/sim-min | WallRate: 16.52 tags/wall-min
+============================================================
+R1[PPO     ]: carry=0 | base=0.93 | tag_vis=0 td=0.00 | site=0 phero=1 | wall=1.79
+R2[RTB     ]: carry=1 | base=1.05 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.50
+R3[PPO     ]: carry=0 | base=0.86 | tag_vis=0 td=0.00 | site=0 phero=1 | wall=1.83
+R4[PPO     ]: carry=0 | base=0.94 | tag_vis=1 td=0.84 | site=1 phero=0 | wall=1.57
+
+[PICKUP]  robot4 | tag=(0.24,1.74) | density=5 | Total: 60
+[DEPOSIT] robot2 | Total: 59
+
+============================================================
+Step 22500 | Pickups: 60 | Deposits: 59
+Sim: 12.0 min | Wall: 3.6 min | SimRate: 4.92 tags/sim-min | WallRate: 16.42 tags/wall-min
+============================================================
+R1[PPO     ]: carry=0 | base=0.97 | tag_vis=1 td=0.78 | site=0 phero=1 | wall=1.54
+R2[PPO     ]: carry=0 | base=0.90 | tag_vis=1 td=0.86 | site=1 phero=0 | wall=1.61
+R3[PPO     ]: carry=0 | base=0.61 | tag_vis=0 td=0.00 | site=0 phero=1 | wall=1.89
+R4[RTB     ]: carry=1 | base=0.86 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.67
+
+[DEPOSIT] robot4 | Total: 60
+[PICKUP]  robot1 | tag=(0.47,1.66) | density=4 | Total: 61
+[PICKUP]  robot2 | tag=(0.31,1.74) | density=3 | Total: 62
+[PICKUP]  robot3 | tag=(0.47,1.74) | density=2 | Total: 63
+
+============================================================
+Step 23000 | Pickups: 63 | Deposits: 60
+Sim: 12.3 min | Wall: 3.7 min | SimRate: 4.89 tags/sim-min | WallRate: 16.43 tags/wall-min
+============================================================
+R1[RTB     ]: carry=1 | base=0.72 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.82
+R2[RTB     ]: carry=1 | base=0.88 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.65
+R3[RTB     ]: carry=1 | base=1.27 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.31
+R4[PPO     ]: carry=0 | base=1.10 | tag_vis=1 td=0.71 | site=1 phero=0 | wall=1.40
+
+[DEPOSIT] robot1 | Total: 61
+[DEPOSIT] robot2 | Total: 62
+[PICKUP]  robot4 | tag=(0.39,1.74) | density=1 | Total: 64
+[DEPOSIT] robot3 | Total: 63
+
+============================================================
+Step 23500 | Pickups: 64 | Deposits: 63
+Sim: 12.5 min | Wall: 3.7 min | SimRate: 5.03 tags/sim-min | WallRate: 16.96 tags/wall-min
+============================================================
+R1[PPO     ]: carry=0 | base=0.89 | tag_vis=0 td=0.00 | site=1 phero=0 | wall=1.63
+R2[PPO     ]: carry=0 | base=1.01 | tag_vis=0 td=0.00 | site=1 phero=0 | wall=1.50
+R3[PPO     ]: carry=0 | base=0.67 | tag_vis=0 td=0.00 | site=0 phero=1 | wall=1.85
+R4[RTB     ]: carry=1 | base=0.95 | tag_vis=0 td=0.00 | site=0 phero=0 | wall=1.57
+
+[DEPOSIT] robot4 | Total: 64
+
+[FINAL] Sample=5 | Arena=5x5 | Pickups=64 | Deposits=64 | Sim=12.64 min | SimRate=5.0635 | Wall=3.75 min | WallRate=17.0803
+
+COMPLETION_RESULT pickups=64 deposits=64 steps=23699 elapsed_min=12.639467 wall_min=3.747005 sim_rate=5.063505 wall_rate=17.080307
