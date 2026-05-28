@@ -1,0 +1,11 @@
+method,arena,robots,sample,active_tags,foraging_time_min,pickups,deposits,deposit_fraction
+cpfa_baseline,7x7,16,1,208,10,137,129,0.620192
+cpfa_baseline,7x7,16,2,208,10,130,129,0.620192
+cpfa_baseline,7x7,16,3,208,10,149,143,0.6875
+cpfa_baseline,7x7,16,4,208,10,115,111,0.533654
+cpfa_baseline,7x7,16,5,208,10,150,147,0.706731
+cpfa_baseline,7x7,16,6,208,10,123,120,0.576923
+cpfa_baseline,7x7,16,7,208,10,125,123,0.591346
+cpfa_baseline,7x7,16,8,208,10,98,95,0.456731
+cpfa_baseline,7x7,16,9,208,10,127,117,0.5625
+cpfa_baseline,7x7,16,10,208,10,112,110,0.528846
