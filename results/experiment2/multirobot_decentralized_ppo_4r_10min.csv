@@ -1,0 +1,11 @@
+method,arena,robots,sample,active_tags,foraging_time_min,pickups,deposits,deposit_fraction
+decentralized_ppo,7x7,4,1,32,10,16,16,0.5
+decentralized_ppo,7x7,4,2,32,10,17,17,0.53125
+decentralized_ppo,7x7,4,3,32,10,30,30,0.9375
+decentralized_ppo,7x7,4,4,32,10,21,21,0.65625
+decentralized_ppo,7x7,4,5,32,10,16,16,0.5
+decentralized_ppo,7x7,4,6,32,10,10,10,0.3125
+decentralized_ppo,7x7,4,7,32,10,7,7,0.21875
+decentralized_ppo,7x7,4,8,32,10,24,24,0.75
+decentralized_ppo,7x7,4,9,32,10,10,10,0.3125
+decentralized_ppo,7x7,4,10,32,10,16,16,0.5
