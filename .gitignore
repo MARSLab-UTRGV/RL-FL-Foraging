@@ -39,7 +39,7 @@ env/
 
 # VS Code
 .vscode/
-
+.codex
 # Webots
 worlds/.*.wbproj
 *.wbproj
