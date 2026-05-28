@@ -1,0 +1,11 @@
+method,arena,sample,foraging_time_min,pickups,deposits
+cpfa_baseline,7x7,1,25,75,74
+cpfa_baseline,7x7,2,25,68,67
+cpfa_baseline,7x7,3,25,64,63
+cpfa_baseline,7x7,4,25,69,68
+cpfa_baseline,7x7,5,25,56,56
+cpfa_baseline,7x7,6,25,55,55
+cpfa_baseline,7x7,7,25,68,68
+cpfa_baseline,7x7,8,25,55,55
+cpfa_baseline,7x7,9,25,68,68
+cpfa_baseline,7x7,10,25,63,62

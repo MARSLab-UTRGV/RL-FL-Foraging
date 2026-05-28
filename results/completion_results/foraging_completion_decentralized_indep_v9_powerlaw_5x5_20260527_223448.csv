@@ -1,0 +1,6 @@
+method,distribution,arena,sample,completed,status,completion_time_min,elapsed_time_min,steps,pickups,deposits
+decentralized,powerlaw,5x5,1,true,completed,14.3435,14.3435,26894,64,64
+decentralized,powerlaw,5x5,2,true,completed,14.6533,14.6533,27475,64,64
+decentralized,powerlaw,5x5,3,true,completed,13.9968,13.9968,26244,64,64
+decentralized,powerlaw,5x5,4,true,completed,13.5749,13.5749,25453,64,64
+decentralized,powerlaw,5x5,5,true,completed,12.6395,12.6395,23699,64,64

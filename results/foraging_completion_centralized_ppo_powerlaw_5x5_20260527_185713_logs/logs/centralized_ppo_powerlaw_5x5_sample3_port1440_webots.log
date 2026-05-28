@@ -1,0 +1,3 @@
+ipc://1440/supervisor
+tcp://<ip_address>:1440/supervisor
+Warning: QProcess: Destroyed while process ("python3") is still running.

@@ -201,7 +201,8 @@ class CPFABaseline(Supervisor):
         )
 
     def _new_results_path(self):
-        out_dir = os.path.dirname(os.path.abspath(__file__))
+        out_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "results")
+        os.makedirs(out_dir, exist_ok=True)
         stamp = time.strftime("%Y%m%d_%H%M%S")
         path = os.path.join(out_dir, f"cpfa_baseline_results_{stamp}.txt")
         suffix = 1
@@ -257,6 +258,21 @@ class CPFABaseline(Supervisor):
             f"Deposits: {self.total_deposits}\n"
             f"Rate: {rate:.3f} tags/min\n"
             f"{'='*70}\n"
+        )
+
+    def _machine_result(self, label):
+        elapsed_min = self._elapsed_min(self.step_count)
+        return (
+            f"{label} pickups={self.total_pickups} "
+            f"deposits={self.total_deposits} "
+            f"steps={self.step_count} "
+            f"elapsed_min={elapsed_min:.6f}"
+        )
+
+    def _batch_result(self):
+        return (
+            f"BATCH_RESULT pickups={self.total_pickups} "
+            f"deposits={self.total_deposits}"
         )
 
     # =========================================================================
@@ -431,7 +447,11 @@ class CPFABaseline(Supervisor):
     # MAIN CONTROL LOOP
     # =========================================================================
 
-    def run(self):
+    def run(self, duration_sim_min=None, stop_on_completion=False):
+        target_steps = None
+        if duration_sim_min is not None:
+            target_steps = math.ceil(duration_sim_min * 60.0 * 1000.0 / self.timestep)
+
         while self.step(self.timestep) != -1:
             self.step_count += 1
 
@@ -704,10 +724,29 @@ class CPFABaseline(Supervisor):
 
             self._record_eighty_percent_if_needed()
 
-            if self.total_deposits >= self.num_tags:
+            completion_reached = self.total_deposits >= self.num_tags
+            if completion_reached and (target_steps is None or stop_on_completion):
                 final_msg = self._final_summary()
                 print(final_msg)
                 self._write_log(final_msg)
+                result_msg = self._machine_result("COMPLETION_RESULT")
+                print(result_msg, flush=True)
+                self._write_log(result_msg + "\n")
+                batch_msg = self._batch_result()
+                print(batch_msg, flush=True)
+                self._write_log(batch_msg + "\n")
+                self.simulationQuit(0)
+                break
+
+            if target_steps is not None and self.step_count >= target_steps:
+                label = "COMPLETION_RESULT" if completion_reached else "TIMEOUT_RESULT"
+                result_msg = self._machine_result(label)
+                print(result_msg, flush=True)
+                self._write_log(result_msg + "\n")
+                batch_msg = self._batch_result()
+                print(batch_msg, flush=True)
+                self._write_log(batch_msg + "\n")
+                self.simulationQuit(0)
                 break
 
 
@@ -715,7 +754,11 @@ class CPFABaseline(Supervisor):
 parser = argparse.ArgumentParser()
 parser.add_argument("--params", default=_default_params_path(),
                     help="Flat YAML file containing CPFA parameter values.")
+parser.add_argument("--duration-sim-min", type=float, default=None,
+                    help="Stop after this many simulated minutes and print BATCH_RESULT.")
+parser.add_argument("--stop-on-completion", action="store_true",
+                    help="Stop as soon as all tags are deposited, even with a duration cap.")
 args, _ = parser.parse_known_args()
 
 controller = CPFABaseline(args.params)
-controller.run()
+controller.run(args.duration_sim_min, args.stop_on_completion)

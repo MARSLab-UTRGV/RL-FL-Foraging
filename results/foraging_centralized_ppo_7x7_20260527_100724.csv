@@ -1,0 +1,11 @@
+method,arena,sample,foraging_time_min,pickups,deposits
+centralized_ppo,7x7,1,25,93,92
+centralized_ppo,7x7,2,25,97,96
+centralized_ppo,7x7,3,25,94,92
+centralized_ppo,7x7,4,25,108,107
+centralized_ppo,7x7,5,25,98,97
+centralized_ppo,7x7,6,25,103,101
+centralized_ppo,7x7,7,25,108,106
+centralized_ppo,7x7,8,25,96,95
+centralized_ppo,7x7,9,25,90,90
+centralized_ppo,7x7,10,25,92,91
