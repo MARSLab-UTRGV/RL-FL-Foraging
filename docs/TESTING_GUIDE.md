@@ -409,13 +409,14 @@ than arena scale.
 
 | Type | Files | Tags | Distribution |
 |------|-------|------|--------------|
-| Power-law clusters | `eval_powerlaw1_5x5.wbt` … `eval_powerlaw5_5x5.wbt` | 64 | Few large, many small clusters (sizes: 20, 12, 9, 9, 8, 6) |
-| Uniform random | `eval_random1_5x5.wbt` … `eval_random5_5x5.wbt` | 64 | No clustering — tags placed independently at random |
+| Power-law clusters | `eval_powerlaw1_5x5.wbt` … `eval_powerlaw10_5x5.wbt` | 64 | Few large, many small clusters (sizes: 20, 12, 9, 9, 8, 6) |
+| Uniform random | `eval_random1_5x5.wbt` … `eval_random10_5x5.wbt` | 64 | No clustering — tags placed independently at random |
 
-**Power-law layout:** 6 clusters at 72° rotation intervals (samples 1–5 at 0°, 72°, 144°, 216°, 288°).
+**Power-law layout:** 6 clusters at 72° rotation intervals. Samples 1–5 at 0°, 72°, 144°, 216°, 288°;
+samples 6–10 interleaved at 36°, 108°, 180°, 252°, 324°.
 `min_spacing=0.0775 m`, placement zone ±2.1 m (same safe zone as training).
 
-**Random layout:** Uniform random placement, no clusters. Seeds: 42, 137, 271, 512, 999.
+**Random layout:** Uniform random placement, no clusters. Seeds 1–5: 42, 137, 271, 512, 999; seeds 6–10: 1337, 2718, 3141, 4321, 8675.
 `min_spacing=0.08 m`, `nest_excl=0.35 m`, placement zone ±2.1 m.
 
 ---
@@ -431,7 +432,7 @@ WEBOTS_PORT=1235 python3 controllers/eval_best_model/eval_best_model_5x5.py \
     logs/ppo_cpfa_c7/ppo_cpfa_c7_5000000_steps
 ```
 
-Replace `<N>` with 1–5.
+Replace `<N>` with 1–10.
 
 **Random samples**
 
@@ -442,7 +443,7 @@ WEBOTS_PORT=1235 python3 controllers/eval_best_model/eval_best_model_5x5.py \
     logs/ppo_cpfa_c7/ppo_cpfa_c7_5000000_steps
 ```
 
-Replace `<N>` with 1–5.
+Replace `<N>` with 1–10.
 
 **CPFA baseline — same worlds, different controller**
 
@@ -472,7 +473,7 @@ depleted cluster centres and site-fidelity shortcuts that don't exist.
 
 ### Measurement Protocol
 
-Same 30-minute trials as the generalization suite. Record tags/min per sample.
+Same 30-minute trials as the generalization suite. Record tags/min per sample (10 samples each).
 
 **Results table template:**
 
