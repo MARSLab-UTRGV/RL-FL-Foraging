@@ -83,7 +83,7 @@ By default, the runner uses `--samples 1-5`, so each distribution runs five samp
 - `--model ppo_cpfa_v9.zip`: model file for `centralized_ppo`; ignored by `cpfa_baseline`.
 - `--base-port 1438`: first Webots port. Each parallel sample uses the next port.
 - `--max-parallel 5`: number of samples to run concurrently. Defaults to all selected samples.
-- `--results-csv results/my_completion_run.csv`: custom output CSV path.
+- `--results-csv results/my_completion_run.csv`: custom output CSV path. You can also pass a directory, such as `results/completion_results`, and the runner will create a timestamped CSV inside it.
 - `--webots-bin webots`: Webots executable.
 - `--startup-seconds 30`: time allowed for Webots to expose the extern supervisor URL.
 - `--controller-start-retries 3`: controller startup retry count.
@@ -128,4 +128,3 @@ Check commands before running:
 python run_foraging_experiments.py --method cpfa_baseline --arena 5x5 --dry-run
 python run_foraging_completion_experiments.py --method centralized_ppo --distribution random --dry-run
 ```
-

@@ -201,7 +201,8 @@ class CPFABaseline(Supervisor):
         )
 
     def _new_results_path(self):
-        out_dir = os.path.dirname(os.path.abspath(__file__))
+        out_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "results")
+        os.makedirs(out_dir, exist_ok=True)
         stamp = time.strftime("%Y%m%d_%H%M%S")
         path = os.path.join(out_dir, f"cpfa_baseline_results_{stamp}.txt")
         suffix = 1

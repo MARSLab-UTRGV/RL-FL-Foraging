@@ -1,0 +1,6 @@
+method,distribution,arena,sample,completed,status,completion_time_min,elapsed_time_min,steps,pickups,deposits
+centralized_ppo,random,5x5,1,true,completed,21.0373,21.0373,39445,64,64
+centralized_ppo,random,5x5,2,true,completed,28.0048,28.0048,52509,64,64
+centralized_ppo,random,5x5,3,true,completed,30.4101,30.4101,57019,64,64
+centralized_ppo,random,5x5,4,true,completed,26.3173,26.3173,49345,64,64
+centralized_ppo,random,5x5,5,true,completed,23.1381,23.1381,43384,64,64
