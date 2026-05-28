@@ -82,6 +82,23 @@ def default_results_csv(method, distribution):
     return RESULTS_DIR / f"foraging_completion_{method}_{distribution}_{ARENA}_{stamp}.csv"
 
 
+def default_results_csv_in(directory, method, distribution):
+    stamp = time.strftime("%Y%m%d_%H%M%S")
+    return directory / f"foraging_completion_{method}_{distribution}_{ARENA}_{stamp}.csv"
+
+
+def resolve_results_csv(results_csv, method, distribution):
+    if results_csv is None:
+        return default_results_csv(method, distribution)
+    if not results_csv.is_absolute():
+        results_csv = PROJECT_ROOT / results_csv
+    if results_csv.exists() and results_csv.is_dir():
+        return default_results_csv_in(results_csv, method, distribution)
+    if not results_csv.exists() and results_csv.suffix == "":
+        return default_results_csv_in(results_csv, method, distribution)
+    return results_csv
+
+
 def model_exists(model):
     path = Path(model)
     candidates = [path] if path.is_absolute() else [PROJECT_ROOT / path]
@@ -426,9 +443,7 @@ def main():
     if args.method == "centralized_ppo" and not model_exists(args.model):
         parser.error(f"--model not found: {args.model}")
 
-    results_csv = args.results_csv or default_results_csv(args.method, args.distribution)
-    if not results_csv.is_absolute():
-        results_csv = PROJECT_ROOT / results_csv
+    results_csv = resolve_results_csv(args.results_csv, args.method, args.distribution)
 
     if args.dry_run:
         print_dry_run(args, args.samples, results_csv)
