@@ -401,7 +401,7 @@ DEF ROBOT4 E-puck {
 }
 
 DEF ROBOT5 E-puck {
-  translation 0.2121 0.2121 0
+  translation 0.4619 0.1913 0
   name "robot5"
   controller "epuck_decentralized_eval"
   emitter_channel 5
@@ -431,7 +431,7 @@ DEF ROBOT5 E-puck {
 }
 
 DEF ROBOT6 E-puck {
-  translation -0.2121 0.2121 0
+  translation -0.1913 0.4619 0
   name "robot6"
   controller "epuck_decentralized_eval"
   emitter_channel 6
@@ -461,7 +461,7 @@ DEF ROBOT6 E-puck {
 }
 
 DEF ROBOT7 E-puck {
-  translation -0.2121 -0.2121 0
+  translation -0.4619 -0.1913 0
   name "robot7"
   controller "epuck_decentralized_eval"
   emitter_channel 7
@@ -491,7 +491,7 @@ DEF ROBOT7 E-puck {
 }
 
 DEF ROBOT8 E-puck {
-  translation 0.2121 -0.2121 0
+  translation 0.1913 -0.4619 0
   name "robot8"
   controller "epuck_decentralized_eval"
   emitter_channel 8

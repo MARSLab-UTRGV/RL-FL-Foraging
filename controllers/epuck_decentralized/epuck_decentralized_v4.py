@@ -110,6 +110,10 @@ class EpuckDecentralizedV4(CSVRobot):
         self._steps_since_pickup = 0   # increments while not carrying; reset at pickup
         self._carrying_prev      = False
 
+        # ── Arena geometry — subclasses override _arena_half for non-5×5 eval ──
+        self._arena_half = 2.5                              # default: 5×5 arena
+        self._max_dist   = self._arena_half * math.sqrt(2) # max distance from base (corner)
+
         # ── Per-robot log file (set via _open_robot_log in subclass) ──
         self._robot_log_path = None
 
@@ -304,7 +308,7 @@ class EpuckDecentralizedV4(CSVRobot):
                 s_dot   = max(min(fwd[0]*s_norm[0] + fwd[1]*s_norm[1], 1.0), -1.0)
                 s_cross = fwd[0]*s_norm[1] - fwd[1]*s_norm[0]
                 site_known  = 1.0
-                site_dist   = min(s_d / 3.5, 1.0)
+                site_dist   = min(s_d / self._max_dist, 1.0)
                 site_angle  = math.copysign(math.acos(s_dot), s_cross) / math.pi
 
         # ── Pheromone target — zeroed when carrying ───────────────────
@@ -322,7 +326,7 @@ class EpuckDecentralizedV4(CSVRobot):
                 p_dot   = max(min(fwd[0]*p_norm[0] + fwd[1]*p_norm[1], 1.0), -1.0)
                 p_cross = fwd[0]*p_norm[1] - fwd[1]*p_norm[0]
                 phero_known = 1.0
-                phero_dist  = min(p_d / 3.5, 1.0)
+                phero_dist  = min(p_d / self._max_dist, 1.0)
                 phero_angle = math.copysign(math.acos(p_dot), p_cross) / math.pi
                 if len(self._current_target) > 3:
                     phero_density_norm = min(self._current_target[3] / 12.0, 1.0)
@@ -330,7 +334,7 @@ class EpuckDecentralizedV4(CSVRobot):
         return {
             "pos_x":              pos_x,
             "pos_y":              pos_y,
-            "base_dist_norm":     min(dist_to_base / 3.5, 1.0),
+            "base_dist_norm":     min(dist_to_base / self._max_dist, 1.0),
             "base_angle_norm":    angle_to_base / math.pi,
             "site_known":         site_known,
             "site_dist_norm":     site_dist,

@@ -191,8 +191,8 @@ class DecentralizedEvalSupervisor:
                         self.carrying[i] = True
                         pickup_tag_x = tag_pos[0]
                         pickup_tag_y = tag_pos[1]
-                        tag_node.getField("translation").setSFVec3f([0, 0, -10])
                         pickup_signal      = float(self._count_density([gps_x, gps_y]))
+                        tag_node.getField("translation").setSFVec3f([0, 0, -10])
                         self.total_pickups += 1
                         msg_ev = (f"[PICKUP]  robot{i+1} | "
                                   f"tag=({pickup_tag_x:.2f},{pickup_tag_y:.2f}) | "

@@ -176,8 +176,8 @@ class DecentralizedTrainSupervisor:
                     dy = tag_pos[1] - gps_y
                     if math.sqrt(dx * dx + dy * dy) < 0.15:
                         self.carrying[i] = True
-                        tag_node.getField("translation").setSFVec3f([0, 0, -10])
                         pickup_signal        = float(self._count_density([gps_x, gps_y]))
+                        tag_node.getField("translation").setSFVec3f([0, 0, -10])
                         self.total_pickups  += 1
                         self.ep_pickups     += 1
                         msg_ev = (f"[PICKUP]  robot{i+1} | "

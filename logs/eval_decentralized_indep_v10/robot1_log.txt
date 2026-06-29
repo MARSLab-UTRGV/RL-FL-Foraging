@@ -1,0 +1,287 @@
+[robot1] Loading per-robot model: /home/sara/Documents/Centralized Learning/RL-FL-Foraging/robot1_decentralized_indep_v10.zip
+[robot1] Model loaded (19D obs, independent PPO v8, cpu).
+[PHERO LAID-ADD] robot1 [1]: (-0.38,-0.28) w=1.000 den=6
+[PICKUP]   robot1 at tag=(-0.38,-0.28) | density=6
+  [PHERO]  Laid at (-0.38,-0.28) density=6 prob=0.97 total_entries=1
+[DEPOSIT]  robot1 | site=(-0.38,-0.28) density=6
+  [TARGET]   robot1 → SITE (-0.38,-0.28)
+[PHERO LAID-UPD] robot1 [1]: (-0.38,-0.28) w=1.000 den=5
+[PICKUP]   robot1 at tag=(-0.30,-0.28) | density=5
+  [PHERO]  Laid at (-0.30,-0.28) density=5 prob=0.92 total_entries=1
+[PHERO RECV-ADD] robot1 [2]: (-0.38,-0.28) w=0.848 den=5 | (0.30,0.40) w=0.740 den=7
+[DEPOSIT]  robot1 | site=(-0.30,-0.28) density=5
+  [TARGET]   robot1 → SITE (-0.30,-0.28)
+[PHERO RECV-UPD] robot1 [2]: (-0.38,-0.28) w=0.811 den=5 | (0.30,0.40) w=0.706 den=7
+[PHERO LAID-UPD] robot1 [2]: (-0.38,-0.28) w=1.000 den=4 | (0.30,0.40) w=0.584 den=7
+[PICKUP]   robot1 at tag=(-0.30,-0.36) | density=4
+  [PHERO]  Laid at (-0.30,-0.36) density=4 prob=0.82 total_entries=2
+[PHERO RECV-UPD] robot1 [2]: (-0.38,-0.28) w=0.823 den=4 | (0.30,0.40) w=0.727 den=6
+[DEPOSIT]  robot1 | site=(-0.30,-0.36) density=4
+  [TARGET]   robot1 → SITE (-0.30,-0.36)
+[PICKUP]   robot1 at tag=(-0.38,-0.36) | density=3
+[DEPOSIT]  robot1 | site=(-0.38,-0.36) density=3
+  [TARGET]   robot1 → SITE (-0.38,-0.36)
+[PICKUP]   robot1 at tag=(-0.46,-0.36) | density=2
+[DEPOSIT]  robot1 | site=(-0.46,-0.36) density=2
+  [TARGET]   robot1 → PHERO (0.30,0.40) density=6
+[PHERO RECV-UPD] robot1 [2]: (-0.38,-0.28) w=0.248 den=2 | (0.30,0.40) w=0.766 den=2
+[PHERO RECV-UPD] robot1 [2]: (-0.38,-0.28) w=0.236 den=2 | (0.30,0.40) w=0.922 den=1
+[PHERO RECV-UPD] robot1 [2]: (-0.38,-0.28) w=0.215 den=2 | (0.30,0.40) w=0.840 den=1
+[PHERO RECV-UPD] robot1 [2]: (-0.38,-0.28) w=0.204 den=2 | (0.30,0.40) w=0.802 den=1
+[PHERO RECV-UPD] robot1 [2]: (-0.38,-0.28) w=0.195 den=2 | (0.30,0.40) w=0.766 den=1
+[PHERO RECV-UPD] robot1 [2]: (-0.38,-0.28) w=0.186 den=2 | (0.30,0.40) w=0.731 den=1
+[PHERO RECV-UPD] robot1 [2]: (-0.38,-0.28) w=0.177 den=2 | (0.30,0.40) w=0.698 den=1
+[PHERO RECV-UPD] robot1 [2]: (-0.38,-0.28) w=0.169 den=2 | (0.30,0.40) w=0.666 den=1
+[PHERO RECV-UPD] robot1 [2]: (-0.38,-0.28) w=0.161 den=2 | (0.30,0.40) w=0.636 den=1
+[PHERO RECV-UPD] robot1 [2]: (-0.38,-0.28) w=0.153 den=2 | (0.30,0.40) w=0.607 den=1
+[PHERO RECV-UPD] robot1 [2]: (-0.38,-0.28) w=0.146 den=2 | (0.30,0.40) w=0.579 den=1
+[PHERO RECV-UPD] robot1 [2]: (-0.38,-0.28) w=0.139 den=2 | (0.30,0.40) w=0.553 den=1
+[PHERO RECV-UPD] robot1 [2]: (-0.38,-0.28) w=0.133 den=2 | (0.30,0.40) w=0.528 den=1
+[PHERO RECV-UPD] robot1 [2]: (-0.38,-0.28) w=0.127 den=2 | (0.30,0.40) w=0.504 den=1
+[PHERO RECV-UPD] robot1 [2]: (-0.38,-0.28) w=0.121 den=2 | (0.30,0.40) w=0.481 den=1
+[PHERO RECV-UPD] robot1 [2]: (-0.38,-0.28) w=0.115 den=2 | (0.30,0.40) w=0.460 den=1
+  [EMPTY_RTN] robot1 → PHERO (-0.38,-0.28) density=2
+[PHERO EXPIRED] robot1 [1]: (-0.38,-0.28) w=0.111 den=2
+[PHERO RECV-ADD] robot1 [2]: (-0.38,-0.28) w=0.110 den=2 | (0.30,0.40) w=0.439 den=1
+[PHERO RECV-UPD] robot1 [2]: (-0.38,-0.28) w=0.795 den=1 | (0.30,0.40) w=0.299 den=1
+[PHERO RECV-UPD] robot1 [2]: (-0.38,-0.28) w=0.759 den=1 | (0.30,0.40) w=0.285 den=1
+[PHERO RECV-UPD] robot1 [2]: (-0.38,-0.28) w=0.725 den=1 | (0.30,0.40) w=0.271 den=1
+[PHERO RECV-UPD] robot1 [2]: (-0.38,-0.28) w=0.692 den=1 | (0.30,0.40) w=0.259 den=1
+[PHERO RECV-UPD] robot1 [2]: (-0.38,-0.28) w=0.661 den=1 | (0.30,0.40) w=0.247 den=1
+[PHERO RECV-UPD] robot1 [2]: (-0.38,-0.28) w=0.631 den=1 | (0.30,0.40) w=0.235 den=1
+[PHERO RECV-UPD] robot1 [2]: (-0.38,-0.28) w=0.602 den=1 | (0.30,0.40) w=0.224 den=1
+[PHERO RECV-UPD] robot1 [2]: (-0.38,-0.28) w=0.575 den=1 | (0.30,0.40) w=0.214 den=1
+[PHERO RECV-UPD] robot1 [2]: (-0.38,-0.28) w=0.549 den=1 | (0.30,0.40) w=0.204 den=1
+[PHERO RECV-UPD] robot1 [2]: (-0.38,-0.28) w=0.524 den=1 | (0.30,0.40) w=0.194 den=1
+[PHERO RECV-UPD] robot1 [2]: (-0.38,-0.28) w=0.500 den=1 | (0.30,0.40) w=0.185 den=1
+  [EMPTY_RTN] robot1 → PHERO (0.30,0.40) density=1
+[PHERO EXPIRED] robot1 [1]: (0.30,0.40) w=0.159 den=1
+[PHERO RECV-ADD] robot1 [2]: (0.30,0.40) w=0.114 den=1 | (-0.38,-0.28) w=0.312 den=1
+[PHERO RECV-UPD] robot1 [2]: (0.30,0.40) w=0.109 den=1 | (-0.38,-0.28) w=0.298 den=1
+[PHERO RECV-UPD] robot1 [2]: (0.30,0.40) w=0.104 den=1 | (-0.38,-0.28) w=0.285 den=1
+[PHERO RECV-UPD] robot1 [2]: (0.30,0.40) w=0.099 den=1 | (-0.38,-0.28) w=0.272 den=1
+[PHERO RECV-UPD] robot1 [2]: (0.30,0.40) w=0.090 den=1 | (-0.38,-0.28) w=0.247 den=1
+  [EMPTY_RTN] robot1 → PHERO (-0.38,-0.28) density=1
+[PHERO EXPIRED] robot1 [1]: (-0.38,-0.28) w=0.242 den=1
+[PHERO RECV-UPD] robot1 [1]: (-0.38,-0.28) w=0.225 den=1
+[PHERO RECV-UPD] robot1 [1]: (-0.38,-0.28) w=0.205 den=1
+[PHERO RECV-UPD] robot1 [1]: (-0.38,-0.28) w=0.187 den=1
+[PHERO RECV-UPD] robot1 [1]: (-0.38,-0.28) w=0.171 den=1
+[PHERO RECV-UPD] robot1 [1]: (-0.38,-0.28) w=0.163 den=1
+[PHERO RECV-UPD] robot1 [1]: (-0.38,-0.28) w=0.156 den=1
+[PHERO RECV-UPD] robot1 [1]: (-0.38,-0.28) w=0.148 den=1
+[PHERO RECV-UPD] robot1 [1]: (-0.38,-0.28) w=0.142 den=1
+[PHERO RECV-UPD] robot1 [1]: (-0.38,-0.28) w=0.135 den=1
+[PHERO RECV-UPD] robot1 [1]: (-0.38,-0.28) w=0.129 den=1
+[PHERO RECV-UPD] robot1 [1]: (-0.38,-0.28) w=0.123 den=1
+[PHERO RECV-UPD] robot1 [1]: (-0.38,-0.28) w=0.118 den=1
+[PHERO RECV-UPD] robot1 [1]: (-0.38,-0.28) w=0.112 den=1
+  [EMPTY_RTN] robot1 → EXPLORE
+[PHERO EXPIRED] robot1 [0]: empty
+[PHERO LAID-ADD] robot1 [1]: (-0.88,1.08) w=1.000 den=12
+[PICKUP]   robot1 at tag=(-0.88,1.08) | density=12
+  [PHERO]  Laid at (-0.88,1.08) density=12 prob=1.00 total_entries=1
+[PHERO RECV-UPD] robot1 [1]: (-0.88,1.08) w=0.994 den=11
+[PHERO RECV-UPD] robot1 [1]: (-0.88,1.08) w=0.906 den=11
+[PHERO RECV-UPD] robot1 [1]: (-0.88,1.08) w=0.825 den=11
+[PHERO RECV-UPD] robot1 [1]: (-0.88,1.08) w=0.752 den=11
+[PHERO RECV-UPD] robot1 [1]: (-0.88,1.08) w=0.686 den=11
+[DEPOSIT]  robot1 | site=(-0.88,1.08) density=12
+  [TARGET]   robot1 → SITE (-0.88,1.08)
+[PHERO RECV-UPD] robot1 [1]: (-0.88,1.08) w=0.625 den=11
+[PHERO RECV-UPD] robot1 [1]: (-0.88,1.08) w=0.569 den=11
+[PHERO RECV-UPD] robot1 [1]: (-0.88,1.08) w=0.519 den=11
+[PHERO RECV-UPD] robot1 [1]: (-0.88,1.08) w=0.473 den=11
+[PHERO RECV-ADD] robot1 [2]: (-0.88,1.08) w=0.451 den=11 | (0.88,-1.08) w=0.534 den=11
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.410 den=11 | (0.88,-1.08) w=0.487 den=11
+[PHERO LAID-UPD] robot1 [2]: (-0.88,1.08) w=1.000 den=10 | (0.88,-1.08) w=0.469 den=11
+[PICKUP]   robot1 at tag=(-0.72,0.84) | density=10
+  [PHERO]  Laid at (-0.72,0.84) density=10 prob=1.00 total_entries=2
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.946 den=10 | (0.88,-1.08) w=0.442 den=11
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.998 den=9 | (0.88,-1.08) w=0.402 den=11
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.910 den=9 | (0.88,-1.08) w=0.365 den=11
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.753 den=9 | (0.88,-1.08) w=0.301 den=11
+[DEPOSIT]  robot1 | site=(-0.72,0.84) density=10
+  [TARGET]   robot1 → SITE (-0.72,0.84)
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.687 den=9 | (0.88,-1.08) w=0.274 den=11
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.626 den=9 | (0.88,-1.08) w=0.249 den=11
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.570 den=9 | (0.88,-1.08) w=0.226 den=11
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.520 den=9 | (0.88,-1.08) w=0.205 den=11
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.474 den=9 | (0.88,-1.08) w=0.186 den=11
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.432 den=9 | (0.88,-1.08) w=0.169 den=11
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.393 den=9 | (0.88,-1.08) w=0.154 den=11
+[PHERO LAID-UPD] robot1 [2]: (-0.88,1.08) w=1.000 den=8 | (0.88,-1.08) w=0.153 den=11
+[PICKUP]   robot1 at tag=(-0.72,1.00) | density=8
+  [PHERO]  Laid at (-0.72,1.00) density=8 prob=1.00 total_entries=2
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.919 den=8 | (0.88,-1.08) w=0.140 den=11
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.986 den=7 | (0.88,-1.08) w=0.133 den=11
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.898 den=7 | (0.88,-1.08) w=0.121 den=11
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.819 den=7 | (0.88,-1.08) w=0.110 den=11
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.746 den=7 | (0.88,-1.08) w=0.100 den=11
+[DEPOSIT]  robot1 | site=(-0.72,1.00) density=8
+  [TARGET]   robot1 → SITE (-0.72,1.00)
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.678 den=7 | (0.88,-1.08) w=0.521 den=8
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.680 den=7 | (0.88,-1.08) w=0.521 den=8
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.620 den=7 | (0.88,-1.08) w=0.474 den=8
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.565 den=7 | (0.88,-1.08) w=0.430 den=8
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.515 den=7 | (0.88,-1.08) w=0.391 den=8
+[PHERO LAID-UPD] robot1 [2]: (-0.88,1.08) w=1.000 den=6 | (0.88,-1.08) w=0.254 den=8
+[PICKUP]   robot1 at tag=(-0.72,1.08) | density=6
+  [PHERO]  Laid at (-0.72,1.08) density=6 prob=0.97 total_entries=2
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.989 den=5 | (0.88,-1.08) w=0.231 den=8
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.901 den=5 | (0.88,-1.08) w=0.209 den=8
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.821 den=5 | (0.88,-1.08) w=0.190 den=8
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.749 den=5 | (0.88,-1.08) w=0.173 den=8
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.682 den=5 | (0.88,-1.08) w=0.157 den=8
+[DEPOSIT]  robot1 | site=(-0.72,1.08) density=6
+  [TARGET]   robot1 → SITE (-0.72,1.08)
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.622 den=5 | (0.88,-1.08) w=0.143 den=8
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.567 den=5 | (0.88,-1.08) w=0.130 den=8
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.516 den=5 | (0.88,-1.08) w=0.118 den=8
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.471 den=5 | (0.88,-1.08) w=0.107 den=8
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.429 den=5 | (0.88,-1.08) w=0.097 den=8
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.391 den=5 | (0.88,-1.08) w=0.088 den=8
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.356 den=5 | (0.88,-1.08) w=0.080 den=8
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.325 den=5 | (0.88,-1.08) w=0.073 den=8
+[PHERO LAID-UPD] robot1 [2]: (-0.88,1.08) w=1.000 den=4 | (0.88,-1.08) w=0.072 den=8
+[PICKUP]   robot1 at tag=(-0.80,0.92) | density=4
+  [PHERO]  Laid at (-0.80,0.92) density=4 prob=0.82 total_entries=2
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.973 den=3 | (0.88,-1.08) w=0.066 den=8
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.887 den=3 | (0.88,-1.08) w=0.060 den=8
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.808 den=3 | (0.88,-1.08) w=0.055 den=8
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.737 den=3 | (0.88,-1.08) w=0.050 den=8
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.671 den=3 | (0.88,-1.08) w=0.045 den=8
+[DEPOSIT]  robot1 | site=(-0.80,0.92) density=4
+  [TARGET]   robot1 → SITE (-0.80,0.92)
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.612 den=3 | (0.88,-1.08) w=0.041 den=8
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.556 den=3 | (0.88,-1.08) w=0.563 den=4
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.558 den=3 | (0.88,-1.08) w=0.563 den=4
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.532 den=3 | (0.88,-1.08) w=0.538 den=4
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.507 den=3 | (0.88,-1.08) w=0.513 den=4
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.483 den=3 | (0.88,-1.08) w=0.490 den=4
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.460 den=3 | (0.88,-1.08) w=0.468 den=4
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.439 den=3 | (0.88,-1.08) w=0.446 den=4
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.418 den=3 | (0.88,-1.08) w=0.426 den=4
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.399 den=3 | (0.88,-1.08) w=0.407 den=4
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.380 den=3 | (0.88,-1.08) w=0.388 den=4
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.362 den=3 | (0.88,-1.08) w=0.371 den=4
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.345 den=3 | (0.88,-1.08) w=0.354 den=4
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.329 den=3 | (0.88,-1.08) w=0.338 den=4
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.313 den=3 | (0.88,-1.08) w=0.323 den=4
+[PICKUP]   robot1 at tag=(-0.88,1.00) | density=2
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.299 den=2 | (0.88,-1.08) w=0.308 den=4
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.285 den=2 | (0.88,-1.08) w=0.294 den=4
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.271 den=2 | (0.88,-1.08) w=0.281 den=4
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.259 den=2 | (0.88,-1.08) w=0.268 den=4
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.247 den=2 | (0.88,-1.08) w=0.256 den=4
+[DEPOSIT]  robot1 | site=(-0.88,1.00) density=2
+  [TARGET]   robot1 → SITE (-0.88,1.00)
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.176 den=2 | (0.88,-1.08) w=0.183 den=4
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.168 den=2 | (0.88,-1.08) w=0.175 den=4
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.160 den=2 | (0.88,-1.08) w=0.167 den=4
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.153 den=2 | (0.88,-1.08) w=0.159 den=4
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.145 den=2 | (0.88,-1.08) w=0.152 den=4
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.139 den=2 | (0.88,-1.08) w=0.145 den=4
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.132 den=2 | (0.88,-1.08) w=0.571 den=2
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.078 den=2 | (0.88,-1.08) w=0.338 den=2
+  [EMPTY_RTN] robot1 → PHERO (0.88,-1.08) density=2
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.071 den=2 | (0.88,-1.08) w=0.308 den=2
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.064 den=2 | (0.88,-1.08) w=0.281 den=2
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.058 den=2 | (0.88,-1.08) w=0.256 den=2
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.015 den=2 | (0.88,-1.08) w=0.067 den=2
+  [EMPTY_RTN] robot1 → PHERO (-0.88,1.08) density=2
+[PHERO EXPIRED] robot1 [1]: (-0.88,1.08) w=0.015 den=2
+[PHERO RECV-ADD] robot1 [2]: (-0.88,1.08) w=0.015 den=2 | (0.88,-1.08) w=0.064 den=2
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.013 den=2 | (0.88,-1.08) w=0.058 den=2
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.013 den=2 | (0.88,-1.08) w=0.056 den=2
+[PHERO RECV-UPD] robot1 [2]: (-0.88,1.08) w=0.003 den=2 | (0.88,-1.08) w=0.013 den=2
+  [EMPTY_RTN] robot1 → PHERO (0.88,-1.08) density=2
+[PHERO EXPIRED] robot1 [1]: (0.88,-1.08) w=0.012 den=2
+[PHERO RECV-UPD] robot1 [1]: (0.88,-1.08) w=0.012 den=2
+[PHERO RECV-UPD] robot1 [1]: (0.88,-1.08) w=0.011 den=2
+  [EMPTY_RTN] robot1 → EXPLORE
+[PHERO EXPIRED] robot1 [0]: empty
+[PHERO RECV-ADD] robot1 [1]: (0.88,-1.08) w=0.003 den=2
+[PHERO RECV-UPD] robot1 [1]: (0.88,-1.08) w=0.002 den=2
+[PHERO RECV-UPD] robot1 [1]: (0.88,-1.08) w=0.002 den=2
+[PHERO EXPIRED] robot1 [0]: empty
+[GIVE-UP]  robot1 giving up after 4337 searching steps
+  [EMPTY_RTN] robot1 → EXPLORE
+[PHERO RECV-ADD] robot1 [1]: (-1.89,-0.27) w=0.328 den=9
+[PHERO RECV-UPD] robot1 [1]: (-1.89,-0.27) w=0.299 den=9
+[PHERO RECV-UPD] robot1 [1]: (-1.89,-0.27) w=0.272 den=9
+[PHERO RECV-UPD] robot1 [1]: (-1.89,-0.27) w=0.248 den=9
+[PHERO RECV-UPD] robot1 [1]: (-1.89,-0.27) w=0.226 den=9
+[PHERO RECV-UPD] robot1 [1]: (-1.89,-0.27) w=0.206 den=9
+[PHERO RECV-UPD] robot1 [1]: (-1.89,-0.27) w=0.260 den=8
+[PHERO RECV-UPD] robot1 [1]: (-1.89,-0.27) w=0.237 den=8
+[GIVE-UP]  robot1 giving up after 6911 searching steps
+  [EMPTY_RTN] robot1 → PHERO (-1.89,-0.27) density=8
+[PHERO LAID-UPD] robot1 [1]: (-1.89,-0.27) w=1.000 den=6
+[PICKUP]   robot1 at tag=(-1.89,-0.35) | density=6
+  [PHERO]  Laid at (-1.89,-0.35) density=6 prob=0.97 total_entries=1
+[PHERO RECV-ADD] robot1 [2]: (-1.89,-0.27) w=0.503 den=6 | (1.84,0.80) w=0.005 den=16
+[PHERO RECV-UPD] robot1 [2]: (-1.89,-0.27) w=0.481 den=6 | (1.84,0.80) w=0.005 den=16
+[DEPOSIT]  robot1 | site=(-1.89,-0.35) density=6
+  [TARGET]   robot1 → SITE (-1.89,-0.35)
+[PHERO RECV-UPD] robot1 [2]: (-1.89,-0.27) w=0.439 den=6 | (1.84,0.80) w=0.004 den=16
+[PHERO RECV-UPD] robot1 [2]: (-1.89,-0.27) w=0.602 den=5 | (1.84,0.80) w=0.003 den=16
+[PHERO RECV-UPD] robot1 [2]: (-1.89,-0.27) w=0.549 den=5 | (1.84,0.80) w=0.003 den=16
+[PHERO LAID-UPD] robot1 [2]: (-1.89,-0.27) w=1.000 den=4 | (1.84,0.80) w=0.002 den=16
+[PICKUP]   robot1 at tag=(-1.97,-0.27) | density=4
+  [PHERO]  Laid at (-1.97,-0.27) density=4 prob=0.82 total_entries=2
+[PHERO EXPIRED] robot1 [1]: (-1.89,-0.27) w=0.664 den=4
+[DEPOSIT]  robot1 | site=(-1.97,-0.27) density=4
+  [TARGET]   robot1 → SITE (-1.97,-0.27)
+[PHERO RECV-UPD] robot1 [1]: (-1.89,-0.27) w=0.266 den=4
+[PHERO RECV-UPD] robot1 [1]: (-1.89,-0.27) w=0.243 den=4
+[PICKUP]   robot1 at tag=(-1.97,-0.35) | density=2
+[DEPOSIT]  robot1 | site=(-1.97,-0.35) density=2
+  [TARGET]   robot1 → SITE (-1.97,-0.35)
+  [EMPTY_RTN] robot1 → PHERO (-1.89,-0.27) density=2
+  [EMPTY_RTN] robot1 → EXPLORE
+[PHERO EXPIRED] robot1 [0]: empty
+[PHERO RECV-ADD] robot1 [1]: (1.84,0.80) w=0.225 den=10
+[PHERO RECV-UPD] robot1 [1]: (1.84,0.80) w=0.205 den=10
+[PHERO RECV-UPD] robot1 [1]: (1.84,0.80) w=0.322 den=7
+[PHERO RECV-UPD] robot1 [1]: (1.84,0.80) w=0.294 den=7
+[PHERO LAID-UPD] robot1 [1]: (1.84,0.80) w=1.000 den=6
+[PICKUP]   robot1 at tag=(2.00,0.80) | density=6
+  [PHERO]  Laid at (2.00,0.80) density=6 prob=0.97 total_entries=1
+[PHERO RECV-UPD] robot1 [1]: (1.84,0.80) w=0.925 den=6
+[PHERO RECV-UPD] robot1 [1]: (1.84,0.80) w=0.956 den=5
+[PHERO RECV-UPD] robot1 [1]: (1.84,0.80) w=0.871 den=5
+[PHERO RECV-UPD] robot1 [1]: (1.84,0.80) w=0.794 den=5
+[PHERO RECV-UPD] robot1 [1]: (1.84,0.80) w=0.724 den=5
+[PHERO RECV-UPD] robot1 [1]: (1.84,0.80) w=0.660 den=5
+[PHERO RECV-UPD] robot1 [1]: (1.84,0.80) w=0.601 den=5
+[PHERO RECV-UPD] robot1 [1]: (1.84,0.80) w=0.548 den=5
+[DEPOSIT]  robot1 | site=(2.00,0.80) density=6
+  [TARGET]   robot1 → SITE (2.00,0.80)
+[PHERO RECV-UPD] robot1 [1]: (1.84,0.80) w=0.499 den=5
+[PHERO RECV-UPD] robot1 [1]: (1.84,0.80) w=0.455 den=5
+[PHERO RECV-UPD] robot1 [1]: (1.84,0.80) w=0.415 den=5
+[PHERO RECV-UPD] robot1 [1]: (1.84,0.80) w=0.378 den=5
+[PHERO LAID-UPD] robot1 [1]: (1.84,0.80) w=1.000 den=2
+[PICKUP]   robot1 at tag=(1.84,0.56) | density=2
+  [PHERO]  Laid at (1.84,0.56) density=2 prob=0.42 total_entries=1
+[PHERO RECV-UPD] robot1 [1]: (1.84,0.80) w=0.913 den=2
+[PHERO RECV-UPD] robot1 [1]: (1.84,0.80) w=0.756 den=2
+[PHERO RECV-UPD] robot1 [1]: (1.84,0.80) w=0.689 den=2
+[PHERO RECV-UPD] robot1 [1]: (1.84,0.80) w=0.628 den=2
+[DEPOSIT]  robot1 | site=(1.84,0.56) density=2
+  [TARGET]   robot1 → SITE (1.84,0.56)
+[PHERO RECV-ADD] robot1 [2]: (1.84,0.80) w=0.449 den=2 | (-1.89,-0.27) w=0.001 den=1
+[PHERO RECV-UPD] robot1 [2]: (1.84,0.80) w=0.429 den=2 | (-1.89,-0.27) w=0.001 den=1
+[PHERO RECV-UPD] robot1 [2]: (1.84,0.80) w=0.391 den=2 | (-1.89,-0.27) w=0.001 den=1
+[PHERO EXPIRED] robot1 [1]: (1.84,0.80) w=0.382 den=2
+[PHERO RECV-UPD] robot1 [1]: (1.84,0.80) w=0.356 den=2
+  [EMPTY_RTN] robot1 → PHERO (1.84,0.80) density=2
+[PHERO RECV-UPD] robot1 [1]: (1.84,0.80) w=0.131 den=2
+  [EMPTY_RTN] robot1 → EXPLORE
+[PHERO EXPIRED] robot1 [0]: empty
+[PHERO RECV-ADD] robot1 [1]: (1.84,0.80) w=0.126 den=2
+[PHERO RECV-UPD] robot1 [1]: (1.84,0.80) w=0.120 den=2
+[PHERO RECV-UPD] robot1 [1]: (1.84,0.80) w=0.114 den=2
+[PHERO RECV-UPD] robot1 [1]: (1.84,0.80) w=0.109 den=2
+[PHERO RECV-UPD] robot1 [1]: (1.84,0.80) w=0.104 den=2

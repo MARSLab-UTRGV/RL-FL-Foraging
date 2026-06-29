@@ -16,7 +16,7 @@ from stable_baselines3.common.callbacks import BaseCallback
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'epuck_decentralized'))
 from epuck_decentralized_v4 import (
     EpuckDecentralizedV4,
-    TARGET_ARRIVAL_DIST, PHEROMONE_MIN,
+    TARGET_ARRIVAL_DIST, PHEROMONE_MIN, MERGE_RADIUS,
     RATE_OF_LAYING_PHEROMONE,
 )
 
@@ -56,6 +56,7 @@ GOSSIP_ALPHA        = 0.2
 EMA_ALPHA           = 0.2   # EMA blend factor for performance tracking
 GOSSIP_THRESHOLD    = 0.95  # merge only if neighbor_ema >= own_ema * threshold
 LOG_STEP_EVERY      = 500
+TARGET_LINGER_STEPS = 3     # steps to wait at cluster before declaring depletion
 
 
 class EntropyScheduleCallback(BaseCallback):
@@ -158,6 +159,7 @@ class EpuckDecentralizedTrainV8(EpuckDecentralizedV4):
         self._prev_site_dist       = None
         self._prev_phero_dist      = None
         self._steps_without_pickup = 0
+        self._arrival_steps        = 0   # steps spent at cluster before declaring depletion
 
         # ── Per-episode stats ─────────────────────────────────────────
         self._ep_pickups           = 0
@@ -260,6 +262,7 @@ class EpuckDecentralizedTrainV8(EpuckDecentralizedV4):
             self._prev_base_dist     = math.sqrt(px ** 2 + py ** 2)
             self._gave_up            = False
             self._give_up_timer      = 0
+            self._arrival_steps      = 0
             self._log(f"[PICKUP] {self._robot_name} at ({px:.2f},{py:.2f}) | "
                       f"density={density} lay_prob={lay_prob:.2f} laid={laid} | "
                       f"Ep picks: {self._ep_pickups}")
@@ -292,18 +295,32 @@ class EpuckDecentralizedTrainV8(EpuckDecentralizedV4):
             self._log(f"  [TARGET]   → {t_str}")
 
         # ── Target depletion ──────────────────────────────────────────
+        # Linger TARGET_LINGER_STEPS steps before declaring cluster empty so the
+        # supervisor has time to detect adjacent tags and send a pickup signal.
         if not self.carrying and self._current_target is not None:
             gps = self.gps.getValues()
             tx, ty = self._current_target[1], self._current_target[2]
             if math.sqrt((gps[0]-tx)**2 + (gps[1]-ty)**2) < TARGET_ARRIVAL_DIST:
-                if self._current_target[0] == 'phero':
-                    for entry in self.pheromone_list:
-                        if math.sqrt((entry['x']-tx)**2 + (entry['y']-ty)**2) < 0.3:
-                            entry['weight'] = max(entry['weight'] * 0.5, PHEROMONE_MIN)
-                            break
-                self._current_target  = None
-                self._prev_site_dist  = None
-                self._prev_phero_dist = None
+                self._arrival_steps += 1
+                if self._arrival_steps >= TARGET_LINGER_STEPS:
+                    self._arrival_steps = 0
+                    if self._current_target[0] == 'phero':
+                        for entry in self.pheromone_list:
+                            if math.sqrt((entry['x']-tx)**2 + (entry['y']-ty)**2) < MERGE_RADIUS:
+                                entry['density'] = 0
+                                entry['weight']  = PHEROMONE_MIN
+                                break
+                    elif self._current_target[0] == 'site':
+                        self._site_fidelity_pos = None
+                        self._resource_density  = 0
+                    self._gave_up         = True
+                    self._current_target  = None
+                    self._prev_site_dist  = None
+                    self._prev_phero_dist = None
+                    self._assign_target()
+                    self._gave_up = False
+            else:
+                self._arrival_steps = 0
 
         # ── Search counter ────────────────────────────────────────────
         if not self.carrying:
@@ -465,6 +482,7 @@ class EpuckDecentralizedTrainV8(EpuckDecentralizedV4):
         self._prev_site_dist       = None
         self._prev_phero_dist      = None
         self._steps_without_pickup = 0
+        self._arrival_steps        = 0
         self._steps_since_pickup   = 0
         self._carrying_prev        = False
         self._gave_up              = False
@@ -563,8 +581,9 @@ class EpuckDecentralizedTrainV8(EpuckDecentralizedV4):
             self._log(f"[GOSSIP] broadcast error: {e}")
 
     def _receive_models(self):
-        """Merge neighbor models only if neighbor EMA >= own EMA × threshold.
-        Prevents poor policies from degrading stronger learners."""
+        """Merge neighbor models only if neighbor EMA is within 5% below own EMA.
+        Threshold = own_ema - |own_ema| * (1 - GOSSIP_THRESHOLD), which correctly
+        handles negative rewards (early training) without inverting the comparison."""
         merged = skipped = 0
         while self._model_receiver.getQueueLength() > 0:
             try:
@@ -575,7 +594,8 @@ class EpuckDecentralizedTrainV8(EpuckDecentralizedV4):
                     self._model_receiver.nextPacket()
                     continue
                 neighbor_avg = msg.get('avg_reward', float('-inf'))
-                threshold    = self._ema_reward * GOSSIP_THRESHOLD
+                tol          = abs(self._ema_reward) * (1.0 - GOSSIP_THRESHOLD)
+                threshold    = self._ema_reward - tol
                 if neighbor_avg >= threshold:
                     own_sd  = self._ppo.policy.state_dict()
                     nbr_sd  = msg['weights']

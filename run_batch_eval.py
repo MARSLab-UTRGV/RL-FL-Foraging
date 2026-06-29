@@ -46,8 +46,9 @@ NUM_ROBOTS       = 4
 NUM_TAGS         = None          # None = use arena default
 BASE_PORT        = 5100          # port for sample index 0; each sample adds its index
 WEBOTS_BIN       = 'webots'
-WEBOTS_STARTUP_S = 45            # seconds to wait for Webots supervisor URL
+WEBOTS_STARTUP_S = 90            # seconds to wait for Webots supervisor URL
 MAX_PARALLEL     = 10            # run all 10 samples simultaneously by default
+WEBOTS_STAGGER_S = 8             # seconds between successive Webots launches
 # ──────────────────────────────────────────────────────────────────────────────
 
 PROJECT_ROOT   = os.path.dirname(os.path.abspath(__file__))

@@ -9,10 +9,11 @@ Configs produced (all 7×7 arena, 10 samples each):
   12r / 128t → eval_sample{N}_7x7_12r.wbt
   16r / 208t → eval_sample{N}_7x7_16r.wbt  (+80 extra clustered tags)
 
-Extra robot positions (rings around nest at origin):
-  Ring 2 (robots 5-8):   r=0.30m, 45°/135°/225°/315°
-  Ring 3 (robots 9-12):  r=0.75m, 0°/90°/180°/270°
-  Ring 4 (robots 13-16): r=0.60m, 45°/135°/225°/315°
+All 16 robots staggered at 22.5° intervals (no two share an axis):
+  Robots 1-4 (base world): r=0.50m, 180°/0°/90°/270° (W/E/N/S)
+  Ring 2 (robots 5-8):     r=0.50m, 22.5°/112.5°/202.5°/292.5°
+  Ring 3 (robots 9-12):    r=0.75m, 45°/135°/225°/315°
+  Ring 4 (robots 13-16):   r=0.60m, 67.5°/157.5°/247.5°/337.5°
 
 Extra tags for 16r (80 tags, 5 clusters × 16 tags each):
   Placed randomly (seeded per sample) avoiding existing cluster positions.
@@ -41,18 +42,21 @@ def _polar(r, deg):
     return (round(r * math.cos(a), 4), round(r * math.sin(a), 4))
 
 EXTRA_ROBOT_POSITIONS = {
-    5:  _polar(0.30, 45),
-    6:  _polar(0.30, 135),
-    7:  _polar(0.30, 225),
-    8:  _polar(0.30, 315),
-    9:  _polar(0.75, 0),
-    10: _polar(0.75, 90),
-    11: _polar(0.75, 180),
-    12: _polar(0.75, 270),
-    13: _polar(0.60, 45),
-    14: _polar(0.60, 135),
-    15: _polar(0.60, 225),
-    16: _polar(0.60, 315),
+    # Ring 2: r=0.50m at 22.5°/112.5°/202.5°/292.5° — fills gaps between robots 2/3/1/4
+    5:  _polar(0.50, 22.5),
+    6:  _polar(0.50, 112.5),
+    7:  _polar(0.50, 202.5),
+    8:  _polar(0.50, 292.5),
+    # Ring 3: r=0.75m at 45°/135°/225°/315° — midway between cardinal pairs
+    9:  _polar(0.75, 45),
+    10: _polar(0.75, 135),
+    11: _polar(0.75, 225),
+    12: _polar(0.75, 315),
+    # Ring 4: r=0.60m at 67.5°/157.5°/247.5°/337.5° — fills remaining gaps
+    13: _polar(0.60, 67.5),
+    14: _polar(0.60, 157.5),
+    15: _polar(0.60, 247.5),
+    16: _polar(0.60, 337.5),
 }
 
 

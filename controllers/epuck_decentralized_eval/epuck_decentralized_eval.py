@@ -62,12 +62,14 @@ class EpuckDecentralizedEval(EpuckDecentralizedV4):
         if os.path.exists(arena_cfg):
             arena_size = open(arena_cfg).read().strip()
             self._arena_half = self._ARENA_HALF.get(arena_size, 2.5)
-        self._log(f"[{robot_name}] Arena: {getattr(self, '_arena_half', 2.5)*2:.0f}×"
-                  f"{getattr(self, '_arena_half', 2.5)*2:.0f} m "
-                  f"(half={self._arena_half} m)")
+            self._max_dist   = self._arena_half * math.sqrt(2)
+        self._log(f"[{robot_name}] Arena: {self._arena_half*2:.0f}×"
+                  f"{self._arena_half*2:.0f} m "
+                  f"(half={self._arena_half} m, max_dist={self._max_dist:.3f} m)")
 
         # Priority 1: per-robot model from independent training
-        run_cfg = os.path.join(project_root, 'current_eval_run.txt')
+        run_name = None   # initialise before use — guards cycling code below
+        run_cfg  = os.path.join(project_root, 'current_eval_run.txt')
         if os.path.exists(run_cfg):
             run_name   = open(run_cfg).read().strip()
             model_path = os.path.join(project_root, f"{robot_name}_{run_name}")
@@ -79,20 +81,21 @@ class EpuckDecentralizedEval(EpuckDecentralizedV4):
                 return
 
         # Cycle robots 5-16 → trained robots 1-4 (robot5→1, robot6→2, …)
-        try:
-            robot_num  = int(''.join(filter(str.isdigit, robot_name)))
-            mapped_num = ((robot_num - 1) % 4) + 1
-            if mapped_num != robot_num:
-                mapped_name = f"robot{mapped_num}"
-                cycle_path  = os.path.join(project_root, f"{mapped_name}_{run_name}")
-                if os.path.exists(cycle_path + '.zip'):
-                    self._open_robot_log(f"eval_{run_name}")
-                    self._log(f"[{robot_name}] No own model — cycling to {mapped_name}'s model")
-                    self._ppo = PPO.load(cycle_path, device='cpu')
-                    self._log(f"[{robot_name}] Model loaded (cycled from {mapped_name}, cpu).")
-                    return
-        except ValueError:
-            pass
+        if run_name is not None:
+            try:
+                robot_num  = int(''.join(filter(str.isdigit, robot_name)))
+                mapped_num = ((robot_num - 1) % 4) + 1
+                if mapped_num != robot_num:
+                    mapped_name = f"robot{mapped_num}"
+                    cycle_path  = os.path.join(project_root, f"{mapped_name}_{run_name}")
+                    if os.path.exists(cycle_path + '.zip'):
+                        self._open_robot_log(f"eval_{run_name}")
+                        self._log(f"[{robot_name}] No own model — cycling to {mapped_name}'s model")
+                        self._ppo = PPO.load(cycle_path, device='cpu')
+                        self._log(f"[{robot_name}] Model loaded (cycled from {mapped_name}, cpu).")
+                        return
+            except ValueError:
+                pass
 
         # Priority 2: shared model from current_eval_model.txt (CTDE / fallback)
         model_cfg = os.path.join(project_root, 'current_eval_model.txt')
@@ -281,11 +284,6 @@ class EpuckDecentralizedEval(EpuckDecentralizedV4):
         # P2: return to base when carrying
         if self.carrying:
             return self._steer_to(robot_pos, fwd, [0.0, 0.0], gain=2.5)
-
-        # P2.5: steer to site/phero target when known
-        if self._current_target is not None:
-            tx, ty = self._current_target[1], self._current_target[2]
-            return self._steer_to(robot_pos, fwd, [tx, ty], gain=2.5)
 
         return [left, right]
 
