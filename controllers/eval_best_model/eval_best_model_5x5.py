@@ -7,6 +7,8 @@ from controller import Supervisor
 from stable_baselines3 import PPO
 import gymnasium as gym
 
+MAX_DIST = 2.5 * math.sqrt(2)  # half-diagonal of 5×5 arena (normalisation scale)
+
 # =============================================================================
 # EVALUATION SUPERVISOR — CPFA-RL  (5×5m arena)
 #
@@ -15,13 +17,13 @@ import gymnasium as gym
 #
 #  [0:8]  Proximity sensors
 #  [8]    carrying
-#  [9]    dist_to_base_norm      (/ 3.5m)
+#  [9]    dist_to_base_norm      (/ MAX_DISTm)
 #  [10]   angle_to_base_norm     (/ pi)
 #  [11]   site_known             CPFA site fidelity target (assigned at nest)
-#  [12]   site_dist_norm         (/ 3.5m)
+#  [12]   site_dist_norm         (/ MAX_DISTm)
 #  [13]   site_angle_norm        (/ pi)
 #  [14]   phero_known            CPFA pheromone target (roulette-wheel, at nest)
-#  [15]   phero_dist_norm        (/ 3.5m)
+#  [15]   phero_dist_norm        (/ MAX_DISTm)
 #  [16]   phero_angle_norm       (/ pi)
 #  [17]   search_duration_norm   steps_without_pickup / 4000  (give-up signal)
 #                                saturates near E[give-up]=264s (P=0.0189 per 5s check)
@@ -391,7 +393,7 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
                     s_cross       = forward_vec[0]*s_norm[1] - forward_vec[1]*s_norm[0]
                     s_angle       = s_angle if s_cross > 0 else -s_angle
                     site_known      = 1.0
-                    site_dist_norm  = min(s_dist / 3.5, 1.0)
+                    site_dist_norm  = min(s_dist / MAX_DIST, 1.0)
                     site_angle_norm = s_angle / math.pi
 
             # ------------------------------------------------------------------
@@ -417,7 +419,7 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
                     p_cross       = forward_vec[0]*p_norm[1] - forward_vec[1]*p_norm[0]
                     p_angle       = p_angle if p_cross > 0 else -p_angle
                     phero_known      = 1.0
-                    phero_dist_norm  = min(p_dist / 3.5, 1.0)
+                    phero_dist_norm  = min(p_dist / MAX_DIST, 1.0)
                     phero_angle_norm = p_angle / math.pi
 
             # ------------------------------------------------------------------
@@ -436,7 +438,7 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
             obs = []
             obs.extend(prox)                                     # [0:8]
             obs.append(1.0 if self.carrying_state[i] else 0.0)  # [8]
-            obs.append(dist_to_base / 3.5)                      # [9]
+            obs.append(dist_to_base / MAX_DIST)                      # [9]
             obs.append(angle_to_base / math.pi)                  # [10]
             obs.extend([
                 site_known,                                      # [11]

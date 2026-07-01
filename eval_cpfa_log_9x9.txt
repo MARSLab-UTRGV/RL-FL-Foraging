@@ -15822,3 +15822,115 @@ R1[PHERO     ]: L=+1.00 R=+1.00 | carry=0 | base=1.11 ba=+0.15 | site=0 sd=0.00 
 R2[RTB       ]: L=+1.00 R=+1.00 | carry=1 | base=0.43 ba=+0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=3.24
 R3[EXPLORE   ]: L=+0.42 R=+0.33 | carry=0 | base=0.78 ba=-0.28 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=1.00 | wall=2.31
 R4[RTB       ]: L=+1.00 R=+1.00 | carry=1 | base=0.36 ba=+0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=3.40
+
+======================================================================
+Step 500 (0.3 min) | Pickups: 1 | Deposits: 0 | Rate: 0.00 tags/min | phero_entries=0 phero_max=0.000
+======================================================================
+R1[RTB       ]: L=+0.00 R=+1.00 | carry=1 | base=0.40 ba=+0.74 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=3.29
+R2[EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.69 ba=-1.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.12 | wall=2.08
+R3[EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.54 ba=-0.96 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.12 | wall=2.66
+R4[EXPLORE   ]: L=+1.00 R=+0.59 | carry=0 | base=0.30 ba=-0.02 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.12 | wall=3.46
+
+======================================================================
+Step 1000 (0.5 min) | Pickups: 2 | Deposits: 1 | Rate: 1.88 tags/min | phero_entries=1 phero_max=0.829
+======================================================================
+R1[SITE      ]: L=+1.00 R=+1.00 | carry=0 | base=0.08 ba=+0.89 | site=1 sd=0.32 sa=-0.25 | phero=0 pd=0.00 pa=+0.00 | srch=0.03 | wall=4.29
+R2[WALL_ESC  ]: L=+1.00 R=+0.00 | carry=0 | base=1.19 ba=-0.60 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.25 | wall=0.32
+R3[RTB       ]: L=+1.00 R=+1.00 | carry=1 | base=0.44 ba=-0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=2.97
+R4[EXPLORE   ]: L=+1.00 R=+0.79 | carry=0 | base=0.50 ba=-0.50 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.25 | wall=2.80
+
+======================================================================
+Step 1500 (0.8 min) | Pickups: 3 | Deposits: 2 | Rate: 2.50 tags/min | phero_entries=2 phero_max=0.775
+======================================================================
+R1[RTB       ]: L=+1.00 R=+1.00 | carry=1 | base=0.16 ba=-0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=4.07
+R2[EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.77 ba=-0.19 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.38 | wall=1.89
+R3[SITE      ]: L=+1.00 R=+1.00 | carry=0 | base=0.12 ba=+1.00 | site=1 sd=0.60 sa=+0.11 | phero=0 pd=0.00 pa=+0.00 | srch=0.04 | wall=4.10
+R4[EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.19 ba=+0.65 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.38 | wall=3.83
+
+======================================================================
+Step 2000 (1.1 min) | Pickups: 3 | Deposits: 3 | Rate: 2.81 tags/min | phero_entries=3 phero_max=0.511
+======================================================================
+R1[SITE      ]: L=+0.96 R=+1.00 | carry=0 | base=0.41 ba=+0.97 | site=1 sd=0.23 sa=+0.68 | phero=0 pd=0.00 pa=+0.00 | srch=0.10 | wall=3.10
+R2[EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.44 ba=-0.44 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.50 | wall=3.18
+R3[SITE      ]: L=+1.00 R=+0.97 | carry=0 | base=0.64 ba=+1.00 | site=1 sd=0.07 sa=-0.04 | phero=0 pd=0.00 pa=+0.00 | srch=0.16 | wall=2.33
+R4[EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.66 ba=+0.92 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.50 | wall=2.78
+
+======================================================================
+Step 2500 (1.3 min) | Pickups: 5 | Deposits: 3 | Rate: 2.25 tags/min | phero_entries=3 phero_max=0.229
+======================================================================
+R1[RTB       ]: L=+1.00 R=+1.00 | carry=1 | base=0.25 ba=+0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=3.85
+R2[EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.64 ba=-0.76 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.62 | wall=2.49
+R3[RTB       ]: L=+1.00 R=+1.00 | carry=1 | base=0.39 ba=-0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=3.15
+R4[EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=1.06 ba=-0.82 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.62 | wall=1.17
+
+======================================================================
+Step 3000 (1.6 min) | Pickups: 5 | Deposits: 5 | Rate: 3.12 tags/min | phero_entries=5 phero_max=0.719
+======================================================================
+R1[SITE      ]: L=+1.00 R=+1.00 | carry=0 | base=0.32 ba=+0.98 | site=1 sd=0.27 sa=-0.42 | phero=0 pd=0.00 pa=+0.00 | srch=0.09 | wall=3.45
+R2[EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=1.10 ba=-0.87 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.75 | wall=1.74
+R3[SITE      ]: L=+1.00 R=+1.00 | carry=0 | base=0.17 ba=+1.00 | site=1 sd=0.56 sa=+0.14 | phero=0 pd=0.00 pa=+0.00 | srch=0.05 | wall=3.91
+R4[GIVE_UP   ]: L=+1.00 R=+1.00 | carry=0 | base=1.11 ba=+0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.75 | wall=0.88
+
+======================================================================
+Step 3500 (1.9 min) | Pickups: 6 | Deposits: 5 | Rate: 2.68 tags/min | phero_entries=5 phero_max=0.323
+======================================================================
+R1[SITE      ]: L=+1.00 R=+0.95 | carry=0 | base=0.77 ba=-0.64 | site=1 sd=0.34 sa=-0.50 | phero=0 pd=0.00 pa=+0.00 | srch=0.21 | wall=2.31
+R2[GIVE_UP   ]: L=+1.00 R=+0.95 | carry=0 | base=1.42 ba=-0.02 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.88 | wall=0.53
+R3[SITE      ]: L=+1.00 R=+1.00 | carry=0 | base=0.65 ba=+0.65 | site=1 sd=0.08 sa=-0.13 | phero=0 pd=0.00 pa=+0.00 | srch=0.18 | wall=2.26
+R4[RTB       ]: L=+1.00 R=+1.00 | carry=1 | base=0.56 ba=+0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=2.67
+
+======================================================================
+Step 4000 (2.1 min) | Pickups: 7 | Deposits: 6 | Rate: 2.81 tags/min | phero_entries=6 phero_max=0.917
+======================================================================
+R1[SITE      ]: L=+1.00 R=+0.98 | carry=0 | base=0.57 ba=+0.04 | site=1 sd=0.15 sa=-0.22 | phero=0 pd=0.00 pa=+0.00 | srch=0.34 | wall=2.67
+R2[GIVE_UP   ]: L=+1.00 R=+1.00 | carry=0 | base=0.87 ba=-0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=1.00 | wall=2.06
+R3[RTB       ]: L=+1.00 R=+1.00 | carry=1 | base=0.45 ba=-0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=2.96
+R4[BASE_ESC  ]: L=+1.00 R=+0.00 | carry=0 | base=0.06 ba=+0.48 | site=1 sd=0.58 sa=-0.55 | phero=0 pd=0.00 pa=+0.00 | srch=0.01 | wall=4.30
+
+======================================================================
+Step 4500 (2.4 min) | Pickups: 9 | Deposits: 7 | Rate: 2.92 tags/min | phero_entries=7 phero_max=0.779
+======================================================================
+R1[RTB       ]: L=+1.00 R=+1.00 | carry=1 | base=0.11 ba=+0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=4.19
+R2[RTB       ]: L=+1.00 R=+1.00 | carry=1 | base=0.32 ba=-0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=3.59
+R3[SITE      ]: L=+0.97 R=+1.00 | carry=0 | base=0.11 ba=+0.95 | site=1 sd=0.63 sa=+0.05 | phero=0 pd=0.00 pa=+0.00 | srch=0.04 | wall=4.13
+R4[SITE      ]: L=+1.00 R=+1.00 | carry=0 | base=0.50 ba=-0.77 | site=1 sd=0.15 sa=+0.23 | phero=0 pd=0.00 pa=+0.00 | srch=0.14 | wall=2.88
+
+======================================================================
+Step 5000 (2.7 min) | Pickups: 10 | Deposits: 10 | Rate: 3.75 tags/min | phero_entries=10 phero_max=0.987
+======================================================================
+R1[SITE      ]: L=+1.00 R=+0.93 | carry=0 | base=0.42 ba=-0.70 | site=1 sd=0.17 sa=-0.22 | phero=0 pd=0.00 pa=+0.00 | srch=0.12 | wall=3.31
+R2[SITE      ]: L=+1.00 R=+1.00 | carry=0 | base=0.22 ba=+0.97 | site=1 sd=0.23 sa=+0.03 | phero=0 pd=0.00 pa=+0.00 | srch=0.07 | wall=3.83
+R3[SITE      ]: L=+0.58 R=+0.57 | carry=0 | base=0.48 ba=-0.99 | site=1 sd=0.27 sa=-0.10 | phero=0 pd=0.00 pa=+0.00 | srch=0.16 | wall=2.94
+R4[BASE_ESC  ]: L=+0.00 R=+1.00 | carry=0 | base=0.07 ba=-0.14 | site=1 sd=0.44 sa=+0.89 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=4.27
+
+======================================================================
+Step 5500 (2.9 min) | Pickups: 11 | Deposits: 11 | Rate: 3.75 tags/min | phero_entries=10 phero_max=0.975
+======================================================================
+R1[EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.47 ba=-0.64 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.24 | wall=2.88
+R2[BASE_ESC  ]: L=+1.00 R=+0.00 | carry=0 | base=0.07 ba=+0.17 | site=1 sd=0.28 sa=-0.88 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=4.32
+R3[EXPLORE   ]: L=+1.00 R=+0.95 | carry=0 | base=0.72 ba=-0.89 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.29 | wall=2.06
+R4[SITE      ]: L=-0.08 R=+1.00 | carry=0 | base=0.47 ba=+0.62 | site=1 sd=0.19 sa=+0.13 | phero=0 pd=0.00 pa=+0.00 | srch=0.13 | wall=2.85
+
+======================================================================
+Step 6000 (3.2 min) | Pickups: 15 | Deposits: 11 | Rate: 3.44 tags/min | phero_entries=8 phero_max=0.438
+======================================================================
+R1[RTB       ]: L=+1.00 R=+1.00 | carry=1 | base=0.12 ba=-0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=4.09
+R2[RTB       ]: L=+1.00 R=+0.93 | carry=1 | base=0.30 ba=-0.03 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=3.73
+R3[RTB       ]: L=+1.00 R=+1.00 | carry=1 | base=0.36 ba=-0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=3.25
+R4[RTB       ]: L=+1.00 R=+1.00 | carry=1 | base=0.30 ba=+0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=3.55
+
+======================================================================
+Step 6500 (3.5 min) | Pickups: 15 | Deposits: 15 | Rate: 4.33 tags/min | phero_entries=12 phero_max=0.689
+======================================================================
+R1[SITE      ]: L=+1.00 R=+1.00 | carry=0 | base=0.43 ba=+0.96 | site=1 sd=0.12 sa=+0.27 | phero=0 pd=0.00 pa=+0.00 | srch=0.11 | wall=3.17
+R2[SITE      ]: L=+1.00 R=+1.00 | carry=0 | base=0.24 ba=+0.91 | site=1 sd=0.10 sa=+0.04 | phero=0 pd=0.00 pa=+0.00 | srch=0.07 | wall=3.85
+R3[SITE      ]: L=+0.97 R=+0.96 | carry=0 | base=0.19 ba=+0.95 | site=1 sd=0.58 sa=+0.01 | phero=0 pd=0.00 pa=+0.00 | srch=0.06 | wall=3.85
+R4[SITE      ]: L=+1.00 R=+1.00 | carry=0 | base=0.24 ba=-0.96 | site=1 sd=0.27 sa=+0.02 | phero=0 pd=0.00 pa=+0.00 | srch=0.07 | wall=3.72
+
+======================================================================
+Step 7000 (3.7 min) | Pickups: 18 | Deposits: 16 | Rate: 4.29 tags/min | phero_entries=12 phero_max=0.932
+======================================================================
+R1[RTB       ]: L=+1.00 R=+1.00 | carry=1 | base=0.36 ba=+0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=3.29
+R2[BASE_ESC  ]: L=+1.00 R=+0.00 | carry=0 | base=0.06 ba=+0.40 | site=1 sd=0.29 sa=-0.67 | phero=0 pd=0.00 pa=+0.00 | srch=0.01 | wall=4.32
+R3[SITE      ]: L=+1.00 R=+0.95 | carry=0 | base=0.59 ba=+0.93 | site=1 sd=0.17 sa=-0.13 | phero=0 pd=0.00 pa=+0.00 | srch=0.18 | wall=2.52
+R4[RTB       ]: L=+1.00 R=+1.00 | carry=1 | base=0.35 ba=-0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=3.33

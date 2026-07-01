@@ -75,17 +75,26 @@ def _read_flat_yaml(path):
 
 
 class CPFABaseline(Supervisor):
-    def __init__(self, params_path):
+    def __init__(self, params_path, num_robots=4, num_tags=128):
         super().__init__()
         self.timestep = int(self.getBasicTimeStep())
 
-        self.num_robots = 4
-        self.num_tags   = 128
+        self.num_robots = num_robots
+        self.num_tags   = num_tags
 
         # --- World nodes ---
         self.robot_nodes = [self.getFromDef(f"ROBOT{i+1}") for i in range(self.num_robots)]
         self.tag_nodes   = [self.getFromDef(f"APRILTAG_{i+1}") for i in range(self.num_tags)]
         self.base_node   = self.getFromDef("BASE_STATION")
+
+        # Hide any extra tags that exist in the world but are beyond num_tags
+        _i = self.num_tags
+        while True:
+            _node = self.getFromDef(f"APRILTAG_{_i+1}")
+            if _node is None:
+                break
+            _node.getField("translation").setSFVec3f([0.0, 0.0, -10.0])
+            _i += 1
 
         # --- Communication ---
         self.emitters  = [self.getDevice(f"emitter{i+1}") for i in range(self.num_robots)]
@@ -732,7 +741,11 @@ parser.add_argument("--params", default=_default_params_path(),
                     help="Flat YAML file containing CPFA parameter values.")
 parser.add_argument("--duration-sim-min", type=float, default=None,
                     help="Stop after this many simulated minutes and print BATCH_RESULT.")
+parser.add_argument("--num-robots", type=int, default=4,
+                    help="Number of robots in the simulation (must be available in world file).")
+parser.add_argument("--num-tags", type=int, default=128,
+                    help="Number of resource tags to use (extra tags in world are hidden).")
 args, _ = parser.parse_known_args()
 
-controller = CPFABaseline(args.params)
+controller = CPFABaseline(args.params, num_robots=args.num_robots, num_tags=args.num_tags)
 controller.run(args.duration_sim_min)

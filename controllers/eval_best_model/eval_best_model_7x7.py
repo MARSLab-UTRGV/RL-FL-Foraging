@@ -7,22 +7,24 @@ from controller import Supervisor
 from stable_baselines3 import PPO
 import gymnasium as gym
 
+MAX_DIST = 3.5 * math.sqrt(2)  # half-diagonal of 7×7 arena (normalisation scale)
+
 # =============================================================================
 # EVALUATION SUPERVISOR — CPFA-RL  (7×7m arena — generalization test)
-# Obs normalizations kept at 3.5m (same as training) to test distribution shift.
+# Obs normalizations scale with arena half-diagonal (MAX_DIST) for generalization.
 #
 # Observation space matches epuck_foraging_supervisor_cpfa.py exactly:
 #   18 values per robot × 4 robots = 72 total
 #
 #  [0:8]  Proximity sensors
 #  [8]    carrying
-#  [9]    dist_to_base_norm      (/ 3.5m)
+#  [9]    dist_to_base_norm      (/ MAX_DISTm)
 #  [10]   angle_to_base_norm     (/ pi)
 #  [11]   site_known             CPFA site fidelity target (assigned at nest)
-#  [12]   site_dist_norm         (/ 3.5m)
+#  [12]   site_dist_norm         (/ MAX_DISTm)
 #  [13]   site_angle_norm        (/ pi)
 #  [14]   phero_known            CPFA pheromone target (roulette-wheel, at nest)
-#  [15]   phero_dist_norm        (/ 3.5m)
+#  [15]   phero_dist_norm        (/ MAX_DISTm)
 #  [16]   phero_angle_norm       (/ pi)
 #  [17]   search_duration_norm   steps_without_pickup / 4000  (give-up signal)
 #                                saturates near E[give-up]=264s (P=0.0189 per 5s check)
@@ -37,9 +39,9 @@ import gymnasium as gym
 # =============================================================================
 
 class EpuckForagingSupervisor(Supervisor, gym.Env):
-    def __init__(self):
-        self.num_robots            = 4
-        self.num_tags              = 128
+    def __init__(self, num_robots=4, num_tags=128):
+        self.num_robots            = num_robots
+        self.num_tags              = num_tags
         self.obs_per_robot         = 18
         self.observation_space_dim = self.obs_per_robot * self.num_robots
         self.action_space_dim      = 2 * self.num_robots
@@ -68,6 +70,15 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
         # --- Tag and base nodes ---
         self.tag_nodes = [self.getFromDef(f"APRILTAG_{i+1}") for i in range(self.num_tags)]
         self.base_node = self.getFromDef("BASE_STATION")
+
+        # Hide any tags in the world beyond num_tags (supports partial-tag experiments)
+        _i = self.num_tags
+        while True:
+            _node = self.getFromDef(f"APRILTAG_{_i+1}")
+            if _node is None:
+                break
+            _node.getField("translation").setSFVec3f([0.0, 0.0, -10.0])
+            _i += 1
 
         # --- Emitters / Receivers ---
         self.emitters  = []
@@ -392,7 +403,7 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
                     s_cross       = forward_vec[0]*s_norm[1] - forward_vec[1]*s_norm[0]
                     s_angle       = s_angle if s_cross > 0 else -s_angle
                     site_known      = 1.0
-                    site_dist_norm  = min(s_dist / 3.5, 1.0)
+                    site_dist_norm  = min(s_dist / MAX_DIST, 1.0)
                     site_angle_norm = s_angle / math.pi
 
             # ------------------------------------------------------------------
@@ -418,7 +429,7 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
                     p_cross       = forward_vec[0]*p_norm[1] - forward_vec[1]*p_norm[0]
                     p_angle       = p_angle if p_cross > 0 else -p_angle
                     phero_known      = 1.0
-                    phero_dist_norm  = min(p_dist / 3.5, 1.0)
+                    phero_dist_norm  = min(p_dist / MAX_DIST, 1.0)
                     phero_angle_norm = p_angle / math.pi
 
             # ------------------------------------------------------------------
@@ -437,7 +448,7 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
             obs = []
             obs.extend(prox)                                     # [0:8]
             obs.append(1.0 if self.carrying_state[i] else 0.0)  # [8]
-            obs.append(dist_to_base / 3.5)                      # [9]
+            obs.append(dist_to_base / MAX_DIST)                      # [9]
             obs.append(angle_to_base / math.pi)                  # [10]
             obs.extend([
                 site_known,                                      # [11]
@@ -559,7 +570,12 @@ class EpuckForagingSupervisor(Supervisor, gym.Env):
         return self._positions_finite()
 
     def reset(self):
-        positions = [[-0.5, 0, 0], [0.5, 0, 0], [0, 0.5, 0], [0, -0.5, 0]]
+        positions = [
+            [0.5 * math.cos(2 * math.pi * i / self.num_robots),
+             0.5 * math.sin(2 * math.pi * i / self.num_robots),
+             0]
+            for i in range(self.num_robots)
+        ]
         for i in range(self.num_robots):
             translation = self.robot_nodes[i].getField("translation")
             rotation    = self.robot_nodes[i].getField("rotation")
@@ -615,14 +631,27 @@ if __name__ == "__main__":
                         help="Stop after this many simulated minutes and print BATCH_RESULT.")
     parser.add_argument("--stop-on-completion", action="store_true",
                         help="Stop as soon as all tags are deposited, even with a duration cap.")
+    parser.add_argument("--num-robots", type=int, default=4,
+                        help="Number of robots in the world (default 4). "
+                             "Must be a multiple of 4 for team replication.")
+    parser.add_argument("--num-tags", type=int, default=128,
+                        help="Number of active tags (default 128). Excess tags are hidden.")
     args = parser.parse_args()
+
+    if args.num_robots % 4 != 0:
+        print(f"[ERROR] --num-robots must be a multiple of 4 (got {args.num_robots})")
+        sys.exit(1)
+
+    num_teams = args.num_robots // 4
 
     print("=" * 60)
     print("EVALUATION MODE — CPFA-RL Trained Model")
-    print("Arena: 7×7m  |  Obs space: 18 per robot × 4 robots = 72 total")
+    print(f"Arena: 7×7m  |  Robots: {args.num_robots}  "
+          f"(teams of 4: {num_teams})  |  Tags: {args.num_tags}")
+    print(f"Obs per team: 18 × 4 = 72  |  Total obs dim: {18 * args.num_robots}")
     print("=" * 60)
 
-    env = EpuckForagingSupervisor()
+    env = EpuckForagingSupervisor(num_robots=args.num_robots, num_tags=args.num_tags)
 
     if args.model:
         model_path = args.model
@@ -662,7 +691,16 @@ if __name__ == "__main__":
                 bad = np.where(~np.isfinite(obs))[0].tolist()
                 print(f"[ERROR] Non-finite observation before predict. Bad indices: {bad}")
                 sys.exit(1)
-        action, _states = model.predict(obs, deterministic=True)
+
+        # Team replication: run the same 4-robot model once per team of 4.
+        # All teams share one global pheromone list — cross-team coordination via stigmergy.
+        action = np.zeros(2 * env.num_robots, dtype=np.float32)
+        for team in range(num_teams):
+            t_start   = team * 4
+            team_obs  = obs[t_start * 18 : (t_start + 4) * 18].reshape(1, -1)
+            team_act, _ = model.predict(team_obs, deterministic=True)
+            action[t_start * 2 : (t_start + 4) * 2] = team_act[0]
+
         obs, _, done, _ = env.step(action)
         step_count += 1
 
@@ -684,17 +722,18 @@ if __name__ == "__main__":
             )
 
             base_pos = env.base_node.getPosition()
-            for ri in range(4):
+            for ri in range(env.num_robots):
                 ro     = obs[ri*18 : (ri+1)*18]
-                ra_l   = env.last_action[ri*2]    # overridden action sent to robot
+                ra_l   = env.last_action[ri*2]
                 ra_r   = env.last_action[ri*2+1]
                 rpos   = env.robot_nodes[ri].getPosition()
-                wall_d = 2.5 - max(abs(rpos[0]), abs(rpos[1]))
+                wall_d = 3.5 - max(abs(rpos[0]), abs(rpos[1]))
                 d2base = math.sqrt((rpos[0]-base_pos[0])**2 + (rpos[1]-base_pos[1])**2)
                 mode   = env._get_mode(ri, wall_d)
+                team_n = ri // 4 + 1
 
                 log_msg += (
-                    f"R{ri+1}[{mode:10s}]: L={ra_l:+.2f} R={ra_r:+.2f} | "
+                    f"R{ri+1}[T{team_n}][{mode:10s}]: L={ra_l:+.2f} R={ra_r:+.2f} | "
                     f"carry={ro[8]:.0f} | "
                     f"base={ro[9]:.2f} ba={ro[10]:+.2f} | "
                     f"site={ro[11]:.0f} sd={ro[12]:.2f} sa={ro[13]:+.2f} | "
