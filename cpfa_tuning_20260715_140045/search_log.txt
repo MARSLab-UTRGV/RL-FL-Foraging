@@ -1,0 +1,1 @@
+Trial   0 | mean=36.00 | samples=[36] | params={rate_of_laying_pheromone=9.0000, rate_of_site_fidelity=2.2900, rate_of_pheromone_decay=0.1000, probability_of_returning_to_nest=0.0800, probability_of_switching_to_searching=0.5500, uninformed_search_variation_rad=0.1300, rate_of_informed_search_decay=1.2600}

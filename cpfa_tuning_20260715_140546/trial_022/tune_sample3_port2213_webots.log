@@ -1,0 +1,2 @@
+ipc://2213/supervisor
+tcp://<ip_address>:2213/supervisor

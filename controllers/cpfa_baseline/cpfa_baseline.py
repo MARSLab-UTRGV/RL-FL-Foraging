@@ -648,6 +648,7 @@ class CPFABaseline(Supervisor):
                         self.survey_count[i] = 0
                         self.survey_steps[i] = 0
                         self.robot_mode[i]   = RETURNING
+                        action   = [0.0, 0.0]
                         modes[i] = "SURVEY"
                     else:
                         heading        = math.atan2(fwd[1], fwd[0])

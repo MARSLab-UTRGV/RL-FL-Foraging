@@ -1,6 +1,0 @@
-method,distribution,arena,sample,completed,status,completion_time_min,elapsed_time_min,steps,pickups,deposits
-cpfa_baseline,clustered,5x5,1,true,completed,77.7403,77.7403,145763,64,64
-cpfa_baseline,clustered,5x5,2,false,timeout,,120,225000,63,63
-cpfa_baseline,clustered,5x5,3,true,completed,49.9771,49.9771,93707,64,64
-cpfa_baseline,clustered,5x5,4,true,completed,57.5104,57.5104,107832,64,64
-cpfa_baseline,clustered,5x5,5,true,completed,58.6011,58.6011,109877,64,64

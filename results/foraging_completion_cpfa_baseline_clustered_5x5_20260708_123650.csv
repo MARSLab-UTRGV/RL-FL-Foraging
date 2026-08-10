@@ -1,0 +1,11 @@
+method,distribution,arena,sample,completed,status,completion_time_min,elapsed_time_min,steps,pickups,deposits
+cpfa_baseline,clustered,5x5,1,true,completed,66.8101,66.8101,125269,64,64
+cpfa_baseline,clustered,5x5,2,true,completed,52.7195,52.7195,98849,64,64
+cpfa_baseline,clustered,5x5,3,true,completed,81.5621,81.5621,152929,64,64
+cpfa_baseline,clustered,5x5,4,true,completed,42.7957,42.7957,80242,64,64
+cpfa_baseline,clustered,5x5,5,true,completed,97.3323,97.3323,182498,64,64
+cpfa_baseline,clustered,5x5,6,true,completed,78.0917,78.0917,146422,64,64
+cpfa_baseline,clustered,5x5,7,true,completed,32.76,32.76,61425,64,64
+cpfa_baseline,clustered,5x5,8,true,completed,64.5531,64.5531,121037,64,64
+cpfa_baseline,clustered,5x5,9,true,completed,48.9131,48.9131,91712,64,64
+cpfa_baseline,clustered,5x5,10,true,completed,42.9787,42.9787,80585,64,64

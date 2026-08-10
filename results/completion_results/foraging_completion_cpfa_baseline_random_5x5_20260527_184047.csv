@@ -1,6 +1,0 @@
-method,distribution,arena,sample,completed,status,completion_time_min,elapsed_time_min,steps,pickups,deposits
-cpfa_baseline,random,5x5,1,true,completed,69.9728,69.9728,131199,64,64
-cpfa_baseline,random,5x5,2,true,completed,55.248,55.248,103590,64,64
-cpfa_baseline,random,5x5,3,true,completed,65.5285,65.5285,122866,64,64
-cpfa_baseline,random,5x5,4,true,completed,41.7765,41.7765,78331,64,64
-cpfa_baseline,random,5x5,5,true,completed,79.0693,79.0693,148255,64,64

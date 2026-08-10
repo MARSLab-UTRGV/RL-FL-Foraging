@@ -1,6 +1,0 @@
-method,distribution,arena,sample,completed,status,completion_time_min,elapsed_time_min,steps,pickups,deposits
-centralized_ppo,clustered,5x5,1,true,completed,15.8789,15.8789,29773,64,64
-centralized_ppo,clustered,5x5,2,true,completed,23.1579,23.1579,43421,64,64
-centralized_ppo,clustered,5x5,3,true,completed,17.0203,17.0203,31913,64,64
-centralized_ppo,clustered,5x5,4,true,completed,14.232,14.232,26685,64,64
-centralized_ppo,clustered,5x5,5,true,completed,17.3835,17.3835,32594,64,64

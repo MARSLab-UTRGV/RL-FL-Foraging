@@ -1,0 +1,366 @@
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+Users of this version of Gym should be able to simply replace 'import gym' with 'import gymnasium as gym' in the vast majority of cases.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+=================================================================
+EXPERIMENT 4 — Central Server Disconnect Robustness
+  Arena: 5x5m | Tags: 64 | Robots: 4 | Time: 10.0 min
+  Disconnect: 0.0 → 10.0 min (10.0 min offline)
+=================================================================
+
+Loading model: ppo_cpfa_v9
+Model loaded. Starting evaluation...
+
+
+[DISCONNECT] Central server OFFLINE at 0.00 min (will reconnect at 10.0 min)
+
+[PICKUP] Robot 4 picked up tag (density=6) | Total: 1
+[GIVE-UP] R3 giving up after 312 steps
+
+======================================================================
+Step 500 (0.3 min) [DISCONNECTED] | Pickups: 1 | Deposits: 0 | Rate: 0.00 tags/min | phero=0
+======================================================================
+R1[DISCONNECTED]: carry=0 | gave_up=0
+R2[DISCONNECTED]: carry=0 | gave_up=0
+R3[DISCONNECTED]: carry=0 | gave_up=1
+R4[DISCONNECTED]: carry=1 | gave_up=0
+
+[GIVE-UP] R2 giving up after 624 steps
+
+======================================================================
+Step 1000 (0.5 min) [DISCONNECTED] | Pickups: 1 | Deposits: 0 | Rate: 0.00 tags/min | phero=0
+======================================================================
+R1[DISCONNECTED]: carry=0 | gave_up=0
+R2[DISCONNECTED]: carry=0 | gave_up=1
+R3[DISCONNECTED]: carry=0 | gave_up=1
+R4[DISCONNECTED]: carry=1 | gave_up=0
+
+
+======================================================================
+Step 1500 (0.8 min) [DISCONNECTED] | Pickups: 1 | Deposits: 0 | Rate: 0.00 tags/min | phero=0
+======================================================================
+R1[DISCONNECTED]: carry=0 | gave_up=0
+R2[DISCONNECTED]: carry=0 | gave_up=1
+R3[DISCONNECTED]: carry=0 | gave_up=1
+R4[DISCONNECTED]: carry=1 | gave_up=0
+
+[GIVE-UP] R3 giving up after 1872 steps
+
+======================================================================
+Step 2000 (1.1 min) [DISCONNECTED] | Pickups: 1 | Deposits: 0 | Rate: 0.00 tags/min | phero=0
+======================================================================
+R1[DISCONNECTED]: carry=0 | gave_up=0
+R2[DISCONNECTED]: carry=0 | gave_up=1
+R3[DISCONNECTED]: carry=0 | gave_up=1
+R4[DISCONNECTED]: carry=1 | gave_up=0
+
+
+======================================================================
+Step 2500 (1.3 min) [DISCONNECTED] | Pickups: 1 | Deposits: 0 | Rate: 0.00 tags/min | phero=0
+======================================================================
+R1[DISCONNECTED]: carry=0 | gave_up=0
+R2[DISCONNECTED]: carry=0 | gave_up=1
+R3[DISCONNECTED]: carry=0 | gave_up=1
+R4[DISCONNECTED]: carry=1 | gave_up=0
+
+[GIVE-UP] R3 giving up after 2574 steps
+
+======================================================================
+Step 3000 (1.6 min) [DISCONNECTED] | Pickups: 1 | Deposits: 0 | Rate: 0.00 tags/min | phero=0
+======================================================================
+R1[DISCONNECTED]: carry=0 | gave_up=0
+R2[DISCONNECTED]: carry=0 | gave_up=1
+R3[DISCONNECTED]: carry=0 | gave_up=1
+R4[DISCONNECTED]: carry=1 | gave_up=0
+
+
+======================================================================
+Step 3500 (1.9 min) [DISCONNECTED] | Pickups: 1 | Deposits: 0 | Rate: 0.00 tags/min | phero=0
+======================================================================
+R1[DISCONNECTED]: carry=0 | gave_up=0
+R2[DISCONNECTED]: carry=0 | gave_up=1
+R3[DISCONNECTED]: carry=0 | gave_up=1
+R4[DISCONNECTED]: carry=1 | gave_up=0
+
+
+======================================================================
+Step 4000 (2.1 min) [DISCONNECTED] | Pickups: 1 | Deposits: 0 | Rate: 0.00 tags/min | phero=0
+======================================================================
+R1[DISCONNECTED]: carry=0 | gave_up=0
+R2[DISCONNECTED]: carry=0 | gave_up=1
+R3[DISCONNECTED]: carry=0 | gave_up=1
+R4[DISCONNECTED]: carry=1 | gave_up=0
+
+
+======================================================================
+Step 4500 (2.4 min) [DISCONNECTED] | Pickups: 1 | Deposits: 0 | Rate: 0.00 tags/min | phero=0
+======================================================================
+R1[DISCONNECTED]: carry=0 | gave_up=0
+R2[DISCONNECTED]: carry=0 | gave_up=1
+R3[DISCONNECTED]: carry=0 | gave_up=1
+R4[DISCONNECTED]: carry=1 | gave_up=0
+
+
+======================================================================
+Step 5000 (2.7 min) [DISCONNECTED] | Pickups: 1 | Deposits: 0 | Rate: 0.00 tags/min | phero=0
+======================================================================
+R1[DISCONNECTED]: carry=0 | gave_up=0
+R2[DISCONNECTED]: carry=0 | gave_up=1
+R3[DISCONNECTED]: carry=0 | gave_up=1
+R4[DISCONNECTED]: carry=1 | gave_up=0
+
+
+======================================================================
+Step 5500 (2.9 min) [DISCONNECTED] | Pickups: 1 | Deposits: 0 | Rate: 0.00 tags/min | phero=0
+======================================================================
+R1[DISCONNECTED]: carry=0 | gave_up=0
+R2[DISCONNECTED]: carry=0 | gave_up=1
+R3[DISCONNECTED]: carry=0 | gave_up=1
+R4[DISCONNECTED]: carry=1 | gave_up=0
+
+
+======================================================================
+Step 6000 (3.2 min) [DISCONNECTED] | Pickups: 1 | Deposits: 0 | Rate: 0.00 tags/min | phero=0
+======================================================================
+R1[DISCONNECTED]: carry=0 | gave_up=0
+R2[DISCONNECTED]: carry=0 | gave_up=1
+R3[DISCONNECTED]: carry=0 | gave_up=1
+R4[DISCONNECTED]: carry=1 | gave_up=0
+
+
+======================================================================
+Step 6500 (3.5 min) [DISCONNECTED] | Pickups: 1 | Deposits: 0 | Rate: 0.00 tags/min | phero=0
+======================================================================
+R1[DISCONNECTED]: carry=0 | gave_up=0
+R2[DISCONNECTED]: carry=0 | gave_up=1
+R3[DISCONNECTED]: carry=0 | gave_up=1
+R4[DISCONNECTED]: carry=1 | gave_up=0
+
+
+======================================================================
+Step 7000 (3.7 min) [DISCONNECTED] | Pickups: 1 | Deposits: 0 | Rate: 0.00 tags/min | phero=0
+======================================================================
+R1[DISCONNECTED]: carry=0 | gave_up=0
+R2[DISCONNECTED]: carry=0 | gave_up=1
+R3[DISCONNECTED]: carry=0 | gave_up=1
+R4[DISCONNECTED]: carry=1 | gave_up=0
+
+[GIVE-UP] R2 giving up after 7020 steps
+
+======================================================================
+Step 7500 (4.0 min) [DISCONNECTED] | Pickups: 1 | Deposits: 0 | Rate: 0.00 tags/min | phero=0
+======================================================================
+R1[DISCONNECTED]: carry=0 | gave_up=0
+R2[DISCONNECTED]: carry=0 | gave_up=1
+R3[DISCONNECTED]: carry=0 | gave_up=1
+R4[DISCONNECTED]: carry=1 | gave_up=0
+
+[GIVE-UP] R2 giving up after 7878 steps
+
+======================================================================
+Step 8000 (4.3 min) [DISCONNECTED] | Pickups: 1 | Deposits: 0 | Rate: 0.00 tags/min | phero=0
+======================================================================
+R1[DISCONNECTED]: carry=0 | gave_up=0
+R2[DISCONNECTED]: carry=0 | gave_up=1
+R3[DISCONNECTED]: carry=0 | gave_up=1
+R4[DISCONNECTED]: carry=1 | gave_up=0
+
+[GIVE-UP] R3 giving up after 8346 steps
+[GIVE-UP] R3 giving up after 8424 steps
+
+======================================================================
+Step 8500 (4.5 min) [DISCONNECTED] | Pickups: 1 | Deposits: 0 | Rate: 0.00 tags/min | phero=0
+======================================================================
+R1[DISCONNECTED]: carry=0 | gave_up=0
+R2[DISCONNECTED]: carry=0 | gave_up=1
+R3[DISCONNECTED]: carry=0 | gave_up=1
+R4[DISCONNECTED]: carry=1 | gave_up=0
+
+
+======================================================================
+Step 9000 (4.8 min) [DISCONNECTED] | Pickups: 1 | Deposits: 0 | Rate: 0.00 tags/min | phero=0
+======================================================================
+R1[DISCONNECTED]: carry=0 | gave_up=0
+R2[DISCONNECTED]: carry=0 | gave_up=1
+R3[DISCONNECTED]: carry=0 | gave_up=1
+R4[DISCONNECTED]: carry=1 | gave_up=0
+
+
+======================================================================
+Step 9500 (5.1 min) [DISCONNECTED] | Pickups: 1 | Deposits: 0 | Rate: 0.00 tags/min | phero=0
+======================================================================
+R1[DISCONNECTED]: carry=0 | gave_up=0
+R2[DISCONNECTED]: carry=0 | gave_up=1
+R3[DISCONNECTED]: carry=0 | gave_up=1
+R4[DISCONNECTED]: carry=1 | gave_up=0
+
+[GIVE-UP] R3 giving up after 9984 steps
+
+======================================================================
+Step 10000 (5.3 min) [DISCONNECTED] | Pickups: 1 | Deposits: 0 | Rate: 0.00 tags/min | phero=0
+======================================================================
+R1[DISCONNECTED]: carry=0 | gave_up=0
+R2[DISCONNECTED]: carry=0 | gave_up=1
+R3[DISCONNECTED]: carry=0 | gave_up=1
+R4[DISCONNECTED]: carry=1 | gave_up=0
+
+[GIVE-UP] R3 giving up after 10374 steps
+
+======================================================================
+Step 10500 (5.6 min) [DISCONNECTED] | Pickups: 1 | Deposits: 0 | Rate: 0.00 tags/min | phero=0
+======================================================================
+R1[DISCONNECTED]: carry=0 | gave_up=0
+R2[DISCONNECTED]: carry=0 | gave_up=1
+R3[DISCONNECTED]: carry=0 | gave_up=1
+R4[DISCONNECTED]: carry=1 | gave_up=0
+
+
+======================================================================
+Step 11000 (5.9 min) [DISCONNECTED] | Pickups: 1 | Deposits: 0 | Rate: 0.00 tags/min | phero=0
+======================================================================
+R1[DISCONNECTED]: carry=0 | gave_up=0
+R2[DISCONNECTED]: carry=0 | gave_up=1
+R3[DISCONNECTED]: carry=0 | gave_up=1
+R4[DISCONNECTED]: carry=1 | gave_up=0
+
+[GIVE-UP] R3 giving up after 11388 steps
+
+======================================================================
+Step 11500 (6.1 min) [DISCONNECTED] | Pickups: 1 | Deposits: 0 | Rate: 0.00 tags/min | phero=0
+======================================================================
+R1[DISCONNECTED]: carry=0 | gave_up=0
+R2[DISCONNECTED]: carry=0 | gave_up=1
+R3[DISCONNECTED]: carry=0 | gave_up=1
+R4[DISCONNECTED]: carry=1 | gave_up=0
+
+[GIVE-UP] R1 giving up after 11934 steps
+
+======================================================================
+Step 12000 (6.4 min) [DISCONNECTED] | Pickups: 1 | Deposits: 0 | Rate: 0.00 tags/min | phero=0
+======================================================================
+R1[DISCONNECTED]: carry=0 | gave_up=1
+R2[DISCONNECTED]: carry=0 | gave_up=1
+R3[DISCONNECTED]: carry=0 | gave_up=1
+R4[DISCONNECTED]: carry=1 | gave_up=0
+
+
+======================================================================
+Step 12500 (6.7 min) [DISCONNECTED] | Pickups: 1 | Deposits: 0 | Rate: 0.00 tags/min | phero=0
+======================================================================
+R1[DISCONNECTED]: carry=0 | gave_up=1
+R2[DISCONNECTED]: carry=0 | gave_up=1
+R3[DISCONNECTED]: carry=0 | gave_up=1
+R4[DISCONNECTED]: carry=1 | gave_up=0
+
+[GIVE-UP] R2 giving up after 12636 steps
+
+======================================================================
+Step 13000 (6.9 min) [DISCONNECTED] | Pickups: 1 | Deposits: 0 | Rate: 0.00 tags/min | phero=0
+======================================================================
+R1[DISCONNECTED]: carry=0 | gave_up=1
+R2[DISCONNECTED]: carry=0 | gave_up=1
+R3[DISCONNECTED]: carry=0 | gave_up=1
+R4[DISCONNECTED]: carry=1 | gave_up=0
+
+
+======================================================================
+Step 13500 (7.2 min) [DISCONNECTED] | Pickups: 1 | Deposits: 0 | Rate: 0.00 tags/min | phero=0
+======================================================================
+R1[DISCONNECTED]: carry=0 | gave_up=1
+R2[DISCONNECTED]: carry=0 | gave_up=1
+R3[DISCONNECTED]: carry=0 | gave_up=1
+R4[DISCONNECTED]: carry=1 | gave_up=0
+
+
+======================================================================
+Step 14000 (7.5 min) [DISCONNECTED] | Pickups: 1 | Deposits: 0 | Rate: 0.00 tags/min | phero=0
+======================================================================
+R1[DISCONNECTED]: carry=0 | gave_up=1
+R2[DISCONNECTED]: carry=0 | gave_up=1
+R3[DISCONNECTED]: carry=0 | gave_up=1
+R4[DISCONNECTED]: carry=1 | gave_up=0
+
+
+======================================================================
+Step 14500 (7.7 min) [DISCONNECTED] | Pickups: 1 | Deposits: 0 | Rate: 0.00 tags/min | phero=0
+======================================================================
+R1[DISCONNECTED]: carry=0 | gave_up=1
+R2[DISCONNECTED]: carry=0 | gave_up=1
+R3[DISCONNECTED]: carry=0 | gave_up=1
+R4[DISCONNECTED]: carry=1 | gave_up=0
+
+
+======================================================================
+Step 15000 (8.0 min) [DISCONNECTED] | Pickups: 1 | Deposits: 0 | Rate: 0.00 tags/min | phero=0
+======================================================================
+R1[DISCONNECTED]: carry=0 | gave_up=1
+R2[DISCONNECTED]: carry=0 | gave_up=1
+R3[DISCONNECTED]: carry=0 | gave_up=1
+R4[DISCONNECTED]: carry=1 | gave_up=0
+
+[GIVE-UP] R3 giving up after 15054 steps
+
+======================================================================
+Step 15500 (8.3 min) [DISCONNECTED] | Pickups: 1 | Deposits: 0 | Rate: 0.00 tags/min | phero=0
+======================================================================
+R1[DISCONNECTED]: carry=0 | gave_up=1
+R2[DISCONNECTED]: carry=0 | gave_up=1
+R3[DISCONNECTED]: carry=0 | gave_up=1
+R4[DISCONNECTED]: carry=1 | gave_up=0
+
+
+======================================================================
+Step 16000 (8.5 min) [DISCONNECTED] | Pickups: 1 | Deposits: 0 | Rate: 0.00 tags/min | phero=0
+======================================================================
+R1[DISCONNECTED]: carry=0 | gave_up=1
+R2[DISCONNECTED]: carry=0 | gave_up=1
+R3[DISCONNECTED]: carry=0 | gave_up=1
+R4[DISCONNECTED]: carry=1 | gave_up=0
+
+
+======================================================================
+Step 16500 (8.8 min) [DISCONNECTED] | Pickups: 1 | Deposits: 0 | Rate: 0.00 tags/min | phero=0
+======================================================================
+R1[DISCONNECTED]: carry=0 | gave_up=1
+R2[DISCONNECTED]: carry=0 | gave_up=1
+R3[DISCONNECTED]: carry=0 | gave_up=1
+R4[DISCONNECTED]: carry=1 | gave_up=0
+
+
+======================================================================
+Step 17000 (9.1 min) [DISCONNECTED] | Pickups: 1 | Deposits: 0 | Rate: 0.00 tags/min | phero=0
+======================================================================
+R1[DISCONNECTED]: carry=0 | gave_up=1
+R2[DISCONNECTED]: carry=0 | gave_up=1
+R3[DISCONNECTED]: carry=0 | gave_up=1
+R4[DISCONNECTED]: carry=1 | gave_up=0
+
+
+======================================================================
+Step 17500 (9.3 min) [DISCONNECTED] | Pickups: 1 | Deposits: 0 | Rate: 0.00 tags/min | phero=0
+======================================================================
+R1[DISCONNECTED]: carry=0 | gave_up=1
+R2[DISCONNECTED]: carry=0 | gave_up=1
+R3[DISCONNECTED]: carry=0 | gave_up=1
+R4[DISCONNECTED]: carry=1 | gave_up=0
+
+
+======================================================================
+Step 18000 (9.6 min) [DISCONNECTED] | Pickups: 1 | Deposits: 0 | Rate: 0.00 tags/min | phero=0
+======================================================================
+R1[DISCONNECTED]: carry=0 | gave_up=1
+R2[DISCONNECTED]: carry=0 | gave_up=1
+R3[DISCONNECTED]: carry=0 | gave_up=1
+R4[DISCONNECTED]: carry=1 | gave_up=0
+
+
+======================================================================
+Step 18500 (9.9 min) [DISCONNECTED] | Pickups: 1 | Deposits: 0 | Rate: 0.00 tags/min | phero=0
+======================================================================
+R1[DISCONNECTED]: carry=0 | gave_up=1
+R2[DISCONNECTED]: carry=0 | gave_up=1
+R3[DISCONNECTED]: carry=0 | gave_up=1
+R4[DISCONNECTED]: carry=1 | gave_up=0
+
+TIMEOUT_RESULT pickups=1 deposits=0 steps=18750 elapsed_min=10.000000 disconnect_start=0.0 disconnect_duration=10.0
+BATCH_RESULT pickups=1 deposits=0

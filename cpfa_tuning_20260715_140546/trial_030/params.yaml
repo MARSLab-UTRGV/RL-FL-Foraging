@@ -1,0 +1,7 @@
+rate_of_laying_pheromone: 4.421507818655796
+rate_of_site_fidelity: 1.3130656867087083
+rate_of_pheromone_decay: 0.036229698119722965
+probability_of_returning_to_nest: 0.09828963937923467
+probability_of_switching_to_searching: 0.7800441212777331
+uninformed_search_variation_rad: 0.36098034347638364
+rate_of_informed_search_decay: 0.8773832701294351

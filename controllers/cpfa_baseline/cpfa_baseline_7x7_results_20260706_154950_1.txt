@@ -1,0 +1,756 @@
+CPFA BASELINE RUN (7x7)
+Params file: /home/sara/Documents/RL-FL-Foraging/controllers/cpfa_baseline/cpfa_params.yaml
+Results file: /home/sara/Documents/RL-FL-Foraging/controllers/cpfa_baseline/cpfa_baseline_7x7_results_20260706_154950_1.txt
+RateOfLayingPheromone=9.0
+RateOfSiteFidelity=2.29
+RateOfPheromoneDecay=0.1
+ProbabilityOfReturningToNest=0.08
+ProbabilityOfSwitchingToSearching=0.55
+UninformedSearchVariationRad=0.13
+UninformedSearchVariationDeg=7.448451336700702
+RateOfInformedSearchDecay=1.26
+
+======================================================================
+Step 500 (0.3 min) | Pickups: 1 | Deposits: 0 | Rate: 0.00 tags/min | phero_entries=0 max_w=0.000
+======================================================================
+R1[SEARCH    ]: carry=0 | base=1.07 | wall=2.68 | search=128 | target=none
+R2[SEARCH    ]: carry=0 | base=1.64 | wall=1.91 | search=344 | target=none
+R3[RTB       ]: carry=1 | base=0.71 | wall=2.79 | search=  0 | target=none
+R4[SEARCH    ]: carry=0 | base=1.20 | wall=2.43 | search=344 | target=none
+
+======================================================================
+Step 1000 (0.5 min) | Pickups: 2 | Deposits: 1 | Rate: 1.88 tags/min | phero_entries=1 max_w=0.360
+======================================================================
+R1[SEARCH    ]: carry=0 | base=2.81 | wall=1.41 | search=628 | target=none
+R2[SEARCH    ]: carry=0 | base=2.72 | wall=0.96 | search=844 | target=none
+R3[SURVEY    ]: carry=1 | base=0.67 | wall=2.83 | search=  0 | target=none
+R4[SEARCH    ]: carry=0 | base=2.84 | wall=0.70 | search=844 | target=none
+
+======================================================================
+Step 1500 (0.8 min) | Pickups: 2 | Deposits: 2 | Rate: 2.50 tags/min | phero_entries=2 max_w=0.666
+======================================================================
+R1[SEARCH    ]: carry=0 | base=3.81 | wall=0.36 | search=1128 | target=none
+R2[GIVE_UP   ]: carry=0 | base=1.76 | wall=1.95 | search=936 | target=none
+R3[SITE      ]: carry=0 | base=0.28 | wall=3.24 | search=  0 | target=site(0.67,-0.08)
+R4[SEARCH    ]: carry=0 | base=3.18 | wall=0.37 | search=1344 | target=none
+
+======================================================================
+Step 2000 (1.1 min) | Pickups: 2 | Deposits: 2 | Rate: 1.88 tags/min | phero_entries=2 max_w=0.134
+======================================================================
+R1[WALL_ESC  ]: carry=0 | base=3.90 | wall=0.34 | search=1628 | target=none
+R2[BASE_ESC  ]: carry=0 | base=0.24 | wall=3.26 | search=  0 | target=phero(0.67,-0.08)
+R3[SEARCH    ]: carry=0 | base=0.76 | wall=2.75 | search=382 | target=site(0.67,-0.08)
+R4[SEARCH    ]: carry=0 | base=3.17 | wall=0.38 | search=1844 | target=none
+
+======================================================================
+Step 2500 (1.3 min) | Pickups: 3 | Deposits: 2 | Rate: 1.50 tags/min | phero_entries=2 max_w=0.027
+======================================================================
+R1[SEARCH    ]: carry=0 | base=3.80 | wall=0.39 | search=2128 | target=none
+R2[GIVE_UP   ]: carry=0 | base=0.54 | wall=2.98 | search=156 | target=none
+R3[RTB       ]: carry=1 | base=1.54 | wall=1.98 | search=  0 | target=none
+R4[GIVE_UP   ]: carry=0 | base=2.11 | wall=1.45 | search=2028 | target=none
+
+======================================================================
+Step 3000 (1.6 min) | Pickups: 3 | Deposits: 3 | Rate: 1.88 tags/min | phero_entries=2 max_w=0.603
+======================================================================
+R1[WALL_ESC  ]: carry=0 | base=3.91 | wall=0.31 | search=2628 | target=none
+R2[SEARCH    ]: carry=0 | base=0.66 | wall=2.84 | search=159 | target=phero(0.67,-0.08)
+R3[SITE      ]: carry=0 | base=0.25 | wall=3.25 | search=  0 | target=site(-0.25,1.57)
+R4[GIVE_UP   ]: carry=0 | base=0.33 | wall=3.18 | search=2028 | target=none
+
+======================================================================
+Step 3500 (1.9 min) | Pickups: 3 | Deposits: 3 | Rate: 1.61 tags/min | phero_entries=2 max_w=0.122
+======================================================================
+R1[GIVE_UP   ]: carry=0 | base=3.27 | wall=0.82 | search=2964 | target=none
+R2[SEARCH    ]: carry=0 | base=1.41 | wall=2.09 | search=659 | target=phero(0.67,-0.08)
+R3[SEARCH    ]: carry=0 | base=1.57 | wall=1.94 | search= 78 | target=site(-0.25,1.57)
+R4[PHERO     ]: carry=0 | base=1.39 | wall=2.13 | search=  0 | target=phero(-0.25,1.57)
+
+======================================================================
+Step 4000 (2.1 min) | Pickups: 4 | Deposits: 3 | Rate: 1.41 tags/min | phero_entries=1 max_w=0.025
+======================================================================
+R1[GIVE_UP   ]: carry=0 | base=1.35 | wall=2.39 | search=2964 | target=none
+R2[SEARCH    ]: carry=0 | base=2.97 | wall=0.59 | search=1159 | target=phero(0.67,-0.08)
+R3[RTB       ]: carry=1 | base=1.89 | wall=1.63 | search=  0 | target=none
+R4[SEARCH    ]: carry=0 | base=2.00 | wall=1.54 | search=462 | target=phero(-0.25,1.57)
+
+======================================================================
+Step 4500 (2.4 min) | Pickups: 5 | Deposits: 4 | Rate: 1.67 tags/min | phero_entries=2 max_w=0.855
+======================================================================
+R1[RTB       ]: carry=1 | base=0.69 | wall=2.89 | search=  0 | target=none
+R2[SEARCH    ]: carry=0 | base=3.19 | wall=0.38 | search=1659 | target=phero(0.67,-0.08)
+R3[BASE_ESC  ]: carry=0 | base=0.22 | wall=3.28 | search=  0 | target=site(-0.24,1.88)
+R4[WALL_ESC  ]: carry=0 | base=3.36 | wall=0.33 | search=962 | target=phero(-0.25,1.57)
+
+======================================================================
+Step 5000 (2.7 min) | Pickups: 6 | Deposits: 5 | Rate: 1.88 tags/min | phero_entries=3 max_w=0.292
+======================================================================
+R1[RTB       ]: carry=1 | base=0.47 | wall=3.06 | search=  0 | target=none
+R2[GIVE_UP   ]: carry=0 | base=1.69 | wall=1.83 | search=1716 | target=none
+R3[SEARCH    ]: carry=0 | base=1.86 | wall=1.65 | search= 13 | target=site(-0.24,1.88)
+R4[WALL_ESC  ]: carry=0 | base=3.34 | wall=0.34 | search=1404 | target=none
+
+======================================================================
+Step 5500 (2.9 min) | Pickups: 7 | Deposits: 6 | Rate: 2.05 tags/min | phero_entries=2 max_w=0.059
+======================================================================
+R1[SEARCH    ]: carry=0 | base=0.36 | wall=3.17 | search=128 | target=site(0.42,-0.15)
+R2[PHERO     ]: carry=0 | base=0.28 | wall=3.22 | search=  0 | target=phero(0.75,-0.52)
+R3[RTB       ]: carry=1 | base=1.32 | wall=2.18 | search=  0 | target=none
+R4[GIVE_UP   ]: carry=0 | base=1.46 | wall=2.12 | search=1404 | target=none
+
+======================================================================
+Step 6000 (3.2 min) | Pickups: 8 | Deposits: 8 | Rate: 2.50 tags/min | phero_entries=3 max_w=0.493
+======================================================================
+R1[SEARCH    ]: carry=0 | base=1.74 | wall=2.01 | search=628 | target=site(0.42,-0.15)
+R2[BASE_ESC  ]: carry=0 | base=0.23 | wall=3.30 | search=  0 | target=site(0.42,-0.43)
+R3[SITE      ]: carry=0 | base=0.56 | wall=2.94 | search=  0 | target=site(-0.26,1.86)
+R4[PHERO     ]: carry=0 | base=0.48 | wall=3.02 | search=  0 | target=phero(-0.26,1.86)
+
+======================================================================
+Step 6500 (3.5 min) | Pickups: 10 | Deposits: 8 | Rate: 2.31 tags/min | phero_entries=3 max_w=0.100
+======================================================================
+R1[SEARCH    ]: carry=0 | base=3.36 | wall=0.82 | search=1128 | target=site(0.42,-0.15)
+R2[SEARCH    ]: carry=0 | base=1.18 | wall=2.60 | search=276 | target=site(0.42,-0.43)
+R3[SURVEY    ]: carry=1 | base=1.93 | wall=1.60 | search=  0 | target=none
+R4[SURVEY    ]: carry=1 | base=1.86 | wall=1.67 | search=  0 | target=none
+
+======================================================================
+Step 7000 (3.7 min) | Pickups: 10 | Deposits: 8 | Rate: 2.14 tags/min | phero_entries=1 max_w=0.020
+======================================================================
+R1[SEARCH    ]: carry=0 | base=4.33 | wall=0.38 | search=1628 | target=site(0.42,-0.15)
+R2[SEARCH    ]: carry=0 | base=2.81 | wall=1.50 | search=776 | target=site(0.42,-0.43)
+R3[RTB       ]: carry=1 | base=0.88 | wall=2.63 | search=  0 | target=none
+R4[RTB       ]: carry=1 | base=0.80 | wall=2.70 | search=  0 | target=none
+
+======================================================================
+Step 7500 (4.0 min) | Pickups: 10 | Deposits: 10 | Rate: 2.50 tags/min | phero_entries=2 max_w=0.341
+======================================================================
+R1[WALL_ESC  ]: carry=0 | base=4.45 | wall=0.31 | search=2128 | target=site(0.42,-0.15)
+R2[SEARCH    ]: carry=0 | base=3.37 | wall=0.36 | search=1276 | target=site(0.42,-0.43)
+R3[SITE      ]: carry=0 | base=1.07 | wall=2.44 | search=  0 | target=site(-0.32,1.90)
+R4[SITE      ]: carry=0 | base=1.08 | wall=2.44 | search=  0 | target=site(-0.30,1.82)
+
+======================================================================
+Step 8000 (4.3 min) | Pickups: 11 | Deposits: 10 | Rate: 2.34 tags/min | phero_entries=1 max_w=0.069
+======================================================================
+R1[SEARCH    ]: carry=0 | base=4.34 | wall=0.40 | search=2628 | target=site(0.42,-0.15)
+R2[GIVE_UP   ]: carry=0 | base=2.31 | wall=1.38 | search=1404 | target=none
+R3[SEARCH    ]: carry=0 | base=2.30 | wall=1.33 | search=285 | target=site(-0.32,1.90)
+R4[RTB       ]: carry=1 | base=1.29 | wall=2.22 | search=  0 | target=none
+
+======================================================================
+Step 8500 (4.5 min) | Pickups: 11 | Deposits: 11 | Rate: 2.43 tags/min | phero_entries=1 max_w=0.014
+======================================================================
+R1[WALL_ESC  ]: carry=0 | base=4.37 | wall=0.34 | search=3128 | target=site(0.42,-0.15)
+R2[GIVE_UP   ]: carry=0 | base=0.39 | wall=3.14 | search=1404 | target=none
+R3[SEARCH    ]: carry=0 | base=2.58 | wall=1.48 | search=785 | target=site(-0.32,1.90)
+R4[SITE      ]: carry=0 | base=0.65 | wall=2.85 | search=  0 | target=site(-0.32,1.69)
+
+======================================================================
+Step 9000 (4.8 min) | Pickups: 12 | Deposits: 11 | Rate: 2.29 tags/min | phero_entries=1 max_w=0.003
+======================================================================
+R1[GIVE_UP   ]: carry=0 | base=3.64 | wall=0.86 | search=3432 | target=none
+R2[PHERO     ]: carry=0 | base=0.26 | wall=3.25 | search=  0 | target=phero(-0.32,1.90)
+R3[SEARCH    ]: carry=0 | base=2.38 | wall=1.13 | search=1285 | target=site(-0.32,1.90)
+R4[SURVEY    ]: carry=1 | base=1.71 | wall=1.82 | search=  0 | target=none
+
+======================================================================
+Step 9500 (5.1 min) | Pickups: 13 | Deposits: 12 | Rate: 2.37 tags/min | phero_entries=1 max_w=0.817
+======================================================================
+R1[GIVE_UP   ]: carry=0 | base=1.72 | wall=2.25 | search=3432 | target=none
+R2[SURVEY    ]: carry=1 | base=1.78 | wall=1.75 | search=  0 | target=none
+R3[GIVE_UP   ]: carry=0 | base=2.57 | wall=1.51 | search=1716 | target=none
+R4[BASE_ESC  ]: carry=0 | base=0.22 | wall=3.28 | search=  0 | target=site(-0.33,1.68)
+
+======================================================================
+Step 10000 (5.3 min) | Pickups: 13 | Deposits: 12 | Rate: 2.25 tags/min | phero_entries=1 max_w=0.165
+======================================================================
+R1[PHERO     ]: carry=0 | base=0.26 | wall=3.28 | search=  0 | target=phero(-0.33,1.68)
+R2[RTB       ]: carry=1 | base=0.68 | wall=2.82 | search=  0 | target=none
+R3[GIVE_UP   ]: carry=0 | base=0.67 | wall=2.99 | search=1716 | target=none
+R4[SEARCH    ]: carry=0 | base=1.71 | wall=1.82 | search= 52 | target=site(-0.33,1.68)
+
+======================================================================
+Step 10500 (5.6 min) | Pickups: 14 | Deposits: 13 | Rate: 2.32 tags/min | phero_entries=1 max_w=0.033
+======================================================================
+R1[PHERO     ]: carry=0 | base=0.27 | wall=3.25 | search=  0 | target=phero(-0.33,1.68)
+R2[SITE      ]: carry=0 | base=1.24 | wall=2.28 | search=  0 | target=site(-0.32,1.74)
+R3[PHERO     ]: carry=0 | base=0.52 | wall=3.07 | search=  0 | target=phero(-0.33,1.68)
+R4[RTB       ]: carry=1 | base=1.03 | wall=2.49 | search=  0 | target=none
+
+======================================================================
+Step 11000 (5.9 min) | Pickups: 15 | Deposits: 14 | Rate: 2.39 tags/min | phero_entries=1 max_w=0.007
+======================================================================
+R1[SEARCH    ]: carry=0 | base=1.69 | wall=1.84 | search= 48 | target=phero(-0.33,1.68)
+R2[RTB       ]: carry=1 | base=1.79 | wall=1.75 | search=  0 | target=none
+R3[SEARCH    ]: carry=0 | base=1.62 | wall=1.89 | search=190 | target=phero(-0.33,1.68)
+R4[SITE      ]: carry=0 | base=0.91 | wall=2.60 | search=  0 | target=site(-0.40,1.65)
+
+======================================================================
+Step 11500 (6.1 min) | Pickups: 17 | Deposits: 15 | Rate: 2.45 tags/min | phero_entries=1 max_w=0.001
+======================================================================
+R1[SEARCH    ]: carry=0 | base=2.48 | wall=1.03 | search=548 | target=phero(-0.33,1.68)
+R2[BASE_ESC  ]: carry=0 | base=0.22 | wall=3.29 | search=  0 | target=site(-0.40,1.76)
+R3[RTB       ]: carry=1 | base=1.90 | wall=1.64 | search=  0 | target=none
+R4[RTB       ]: carry=1 | base=1.64 | wall=1.89 | search=  0 | target=none
+
+======================================================================
+Step 12000 (6.4 min) | Pickups: 17 | Deposits: 17 | Rate: 2.66 tags/min | phero_entries=0 max_w=0.000
+======================================================================
+R1[GIVE_UP   ]: carry=0 | base=1.29 | wall=2.23 | search=624 | target=none
+R2[SEARCH    ]: carry=0 | base=1.79 | wall=1.75 | search= 26 | target=site(-0.40,1.76)
+R3[BASE_ESC  ]: carry=0 | base=0.22 | wall=3.28 | search=  0 | target=site(-0.46,1.98)
+R4[DEPART    ]: carry=0 | base=0.27 | wall=3.27 | search=  0 | target=none
+
+======================================================================
+Step 12500 (6.7 min) | Pickups: 17 | Deposits: 17 | Rate: 2.55 tags/min | phero_entries=0 max_w=0.000
+======================================================================
+R1[BASE_ESC  ]: carry=0 | base=0.24 | wall=3.28 | search=  0 | target=none
+R2[SEARCH    ]: carry=0 | base=2.99 | wall=0.83 | search=526 | target=site(-0.40,1.76)
+R3[SITE      ]: carry=0 | base=1.92 | wall=1.63 | search=  0 | target=site(-0.46,1.98)
+R4[SEARCH    ]: carry=0 | base=0.95 | wall=2.55 | search=326 | target=none
+
+======================================================================
+Step 13000 (6.9 min) | Pickups: 18 | Deposits: 17 | Rate: 2.45 tags/min | phero_entries=0 max_w=0.000
+======================================================================
+R1[SEARCH    ]: carry=0 | base=1.31 | wall=2.31 | search=419 | target=none
+R2[WALL_ESC  ]: carry=0 | base=3.53 | wall=0.34 | search=1026 | target=site(-0.40,1.76)
+R3[SEARCH    ]: carry=0 | base=2.46 | wall=1.56 | search=483 | target=site(-0.46,1.98)
+R4[RTB       ]: carry=1 | base=1.26 | wall=2.28 | search=  0 | target=none
+
+======================================================================
+Step 13500 (7.2 min) | Pickups: 19 | Deposits: 18 | Rate: 2.50 tags/min | phero_entries=1 max_w=0.470
+======================================================================
+R1[RTB       ]: carry=1 | base=1.74 | wall=1.78 | search=  0 | target=none
+R2[WALL_ESC  ]: carry=0 | base=3.53 | wall=0.35 | search=1526 | target=site(-0.40,1.76)
+R3[GIVE_UP   ]: carry=0 | base=2.08 | wall=1.47 | search=936 | target=none
+R4[SITE      ]: carry=0 | base=0.68 | wall=2.86 | search=  0 | target=site(0.31,-1.50)
+
+======================================================================
+Step 14000 (7.5 min) | Pickups: 21 | Deposits: 19 | Rate: 2.54 tags/min | phero_entries=2 max_w=0.820
+======================================================================
+R1[BASE_ESC  ]: carry=0 | base=0.22 | wall=3.28 | search=  0 | target=site(0.24,-1.74)
+R2[SEARCH    ]: carry=0 | base=3.52 | wall=0.35 | search=2026 | target=site(-0.40,1.76)
+R3[RTB       ]: carry=1 | base=0.86 | wall=2.66 | search=  0 | target=none
+R4[SURVEY    ]: carry=1 | base=1.70 | wall=1.82 | search=  0 | target=none
+
+======================================================================
+Step 14500 (7.7 min) | Pickups: 22 | Deposits: 20 | Rate: 2.59 tags/min | phero_entries=2 max_w=0.166
+======================================================================
+R1[SEARCH    ]: carry=0 | base=1.78 | wall=1.74 | search= 61 | target=site(0.24,-1.74)
+R2[SEARCH    ]: carry=0 | base=3.52 | wall=0.35 | search=2526 | target=site(-0.40,1.76)
+R3[SURVEY    ]: carry=1 | base=0.45 | wall=3.08 | search=  0 | target=none
+R4[RTB       ]: carry=1 | base=0.66 | wall=2.86 | search=  0 | target=none
+
+======================================================================
+Step 15000 (8.0 min) | Pickups: 24 | Deposits: 22 | Rate: 2.75 tags/min | phero_entries=3 max_w=0.319
+======================================================================
+R1[RTB       ]: carry=1 | base=0.78 | wall=2.73 | search=  0 | target=none
+R2[WALL_ESC  ]: carry=0 | base=3.52 | wall=0.31 | search=3026 | target=site(-0.40,1.76)
+R3[SURVEY    ]: carry=1 | base=0.48 | wall=3.08 | search=  0 | target=none
+R4[SITE      ]: carry=0 | base=1.30 | wall=2.21 | search=  0 | target=site(0.24,-1.68)
+
+======================================================================
+Step 15500 (8.3 min) | Pickups: 24 | Deposits: 24 | Rate: 2.90 tags/min | phero_entries=2 max_w=0.064
+======================================================================
+R1[SITE      ]: carry=0 | base=1.17 | wall=2.34 | search=  0 | target=site(0.27,-1.76)
+R2[GIVE_UP   ]: carry=0 | base=2.90 | wall=0.93 | search=3276 | target=none
+R3[SEARCH    ]: carry=0 | base=0.39 | wall=3.15 | search=125 | target=site(-0.42,0.23)
+R4[SEARCH    ]: carry=0 | base=2.07 | wall=1.43 | search=409 | target=site(0.24,-1.68)
+
+======================================================================
+Step 16000 (8.5 min) | Pickups: 25 | Deposits: 24 | Rate: 2.81 tags/min | phero_entries=2 max_w=0.013
+======================================================================
+R1[RTB       ]: carry=1 | base=1.63 | wall=1.92 | search=  0 | target=none
+R2[GIVE_UP   ]: carry=0 | base=1.01 | wall=2.61 | search=3276 | target=none
+R3[SEARCH    ]: carry=0 | base=1.76 | wall=1.97 | search=625 | target=site(-0.42,0.23)
+R4[SEARCH    ]: carry=0 | base=3.46 | wall=0.40 | search=909 | target=site(0.24,-1.68)
+
+======================================================================
+Step 16500 (8.8 min) | Pickups: 25 | Deposits: 25 | Rate: 2.84 tags/min | phero_entries=2 max_w=0.639
+======================================================================
+R1[SITE      ]: carry=0 | base=0.34 | wall=3.16 | search=  0 | target=site(0.32,-1.73)
+R2[SEARCH    ]: carry=0 | base=0.40 | wall=3.12 | search=131 | target=phero(-0.41,0.18)
+R3[SEARCH    ]: carry=0 | base=3.28 | wall=0.54 | search=1125 | target=site(-0.42,0.23)
+R4[SEARCH    ]: carry=0 | base=3.99 | wall=0.38 | search=1409 | target=site(0.24,-1.68)
+
+======================================================================
+Step 17000 (9.1 min) | Pickups: 25 | Deposits: 25 | Rate: 2.76 tags/min | phero_entries=1 max_w=0.129
+======================================================================
+R1[SEARCH    ]: carry=0 | base=1.70 | wall=1.81 | search=139 | target=site(0.32,-1.73)
+R2[SEARCH    ]: carry=0 | base=1.53 | wall=2.27 | search=631 | target=phero(-0.41,0.18)
+R3[SEARCH    ]: carry=0 | base=3.36 | wall=0.38 | search=1625 | target=site(-0.42,0.23)
+R4[WALL_ESC  ]: carry=0 | base=4.00 | wall=0.31 | search=1909 | target=site(0.24,-1.68)
+
+======================================================================
+Step 17500 (9.3 min) | Pickups: 26 | Deposits: 25 | Rate: 2.68 tags/min | phero_entries=1 max_w=0.026
+======================================================================
+R1[SEARCH    ]: carry=0 | base=3.02 | wall=0.52 | search=639 | target=site(0.32,-1.73)
+R2[SURVEY    ]: carry=1 | base=2.61 | wall=1.41 | search=  0 | target=none
+R3[WALL_ESC  ]: carry=0 | base=3.45 | wall=0.31 | search=2125 | target=site(-0.42,0.23)
+R4[SEARCH    ]: carry=0 | base=3.97 | wall=0.37 | search=2409 | target=site(0.24,-1.68)
+
+======================================================================
+Step 18000 (9.6 min) | Pickups: 26 | Deposits: 25 | Rate: 2.60 tags/min | phero_entries=1 max_w=0.005
+======================================================================
+R1[WALL_ESC  ]: carry=0 | base=3.18 | wall=0.34 | search=1139 | target=site(0.32,-1.73)
+R2[RTB       ]: carry=1 | base=1.29 | wall=2.50 | search=  0 | target=none
+R3[SEARCH    ]: carry=0 | base=3.38 | wall=0.38 | search=2625 | target=site(-0.42,0.23)
+R4[SEARCH    ]: carry=0 | base=3.91 | wall=0.37 | search=2909 | target=site(0.24,-1.68)
+
+======================================================================
+Step 18500 (9.9 min) | Pickups: 26 | Deposits: 26 | Rate: 2.64 tags/min | phero_entries=2 max_w=0.482
+======================================================================
+R1[SEARCH    ]: carry=0 | base=3.14 | wall=0.38 | search=1639 | target=site(0.32,-1.73)
+R2[SITE      ]: carry=0 | base=0.67 | wall=2.92 | search=  0 | target=site(1.57,2.09)
+R3[SEARCH    ]: carry=0 | base=3.37 | wall=0.37 | search=3125 | target=site(-0.42,0.23)
+R4[GIVE_UP   ]: carry=0 | base=3.67 | wall=0.65 | search=3276 | target=none
+
+======================================================================
+Step 19000 (10.1 min) | Pickups: 26 | Deposits: 26 | Rate: 2.57 tags/min | phero_entries=1 max_w=0.097
+======================================================================
+R1[GIVE_UP   ]: carry=0 | base=1.81 | wall=1.71 | search=1716 | target=none
+R2[SEARCH    ]: carry=0 | base=2.58 | wall=1.44 | search=  6 | target=site(1.57,2.09)
+R3[GIVE_UP   ]: carry=0 | base=2.65 | wall=1.05 | search=3432 | target=none
+R4[GIVE_UP   ]: carry=0 | base=1.75 | wall=2.14 | search=3276 | target=none
+
+======================================================================
+Step 19500 (10.4 min) | Pickups: 27 | Deposits: 26 | Rate: 2.50 tags/min | phero_entries=1 max_w=0.020
+======================================================================
+R1[BASE_ESC  ]: carry=0 | base=0.23 | wall=3.29 | search=  0 | target=phero(1.57,2.09)
+R2[RTB       ]: carry=1 | base=2.20 | wall=1.76 | search=  0 | target=none
+R3[GIVE_UP   ]: carry=0 | base=0.73 | wall=2.82 | search=3432 | target=none
+R4[BASE_ESC  ]: carry=0 | base=0.25 | wall=3.30 | search=  0 | target=phero(1.57,2.09)
+
+======================================================================
+Step 20000 (10.7 min) | Pickups: 27 | Deposits: 26 | Rate: 2.44 tags/min | phero_entries=1 max_w=0.004
+======================================================================
+R1[PHERO     ]: carry=0 | base=0.28 | wall=3.30 | search=  0 | target=phero(1.57,2.09)
+R2[RTB       ]: carry=1 | base=0.28 | wall=3.28 | search=  0 | target=none
+R3[PHERO     ]: carry=0 | base=0.90 | wall=2.67 | search=  0 | target=phero(1.57,2.09)
+R4[PHERO     ]: carry=0 | base=0.26 | wall=3.25 | search=  0 | target=phero(1.57,2.09)
+
+======================================================================
+Step 20500 (10.9 min) | Pickups: 28 | Deposits: 27 | Rate: 2.47 tags/min | phero_entries=1 max_w=0.208
+======================================================================
+R1[PHERO     ]: carry=0 | base=1.86 | wall=2.07 | search=  0 | target=phero(1.57,2.09)
+R2[SITE      ]: carry=0 | base=1.67 | wall=2.12 | search=  0 | target=site(1.55,2.16)
+R3[SURVEY    ]: carry=1 | base=2.60 | wall=1.44 | search=  0 | target=none
+R4[PHERO     ]: carry=0 | base=1.62 | wall=2.26 | search=  0 | target=phero(1.57,2.09)
+
+======================================================================
+Step 21000 (11.2 min) | Pickups: 30 | Deposits: 27 | Rate: 2.41 tags/min | phero_entries=1 max_w=0.042
+======================================================================
+R1[RTB       ]: carry=1 | base=2.66 | wall=1.39 | search=  0 | target=none
+R2[SURVEY    ]: carry=1 | base=2.65 | wall=1.32 | search=  0 | target=none
+R3[RTB       ]: carry=1 | base=1.61 | wall=2.26 | search=  0 | target=none
+R4[SEARCH    ]: carry=0 | base=2.48 | wall=1.54 | search=223 | target=phero(1.57,2.09)
+
+======================================================================
+Step 21500 (11.5 min) | Pickups: 31 | Deposits: 28 | Rate: 2.44 tags/min | phero_entries=2 max_w=0.629
+======================================================================
+R1[RTB       ]: carry=1 | base=0.88 | wall=2.82 | search=  0 | target=none
+R2[RTB       ]: carry=1 | base=1.36 | wall=2.41 | search=  0 | target=none
+R3[SITE      ]: carry=0 | base=0.36 | wall=3.17 | search=  0 | target=site(1.58,2.06)
+R4[RTB       ]: carry=1 | base=1.73 | wall=2.24 | search=  0 | target=none
+
+======================================================================
+Step 22000 (11.7 min) | Pickups: 31 | Deposits: 31 | Rate: 2.64 tags/min | phero_entries=5 max_w=0.708
+======================================================================
+R1[SITE      ]: carry=0 | base=1.08 | wall=2.60 | search=  0 | target=site(1.59,2.11)
+R2[SITE      ]: carry=0 | base=0.55 | wall=3.08 | search=  0 | target=site(1.51,2.18)
+R3[SITE      ]: carry=0 | base=2.25 | wall=1.70 | search=  0 | target=site(1.58,2.06)
+R4[SITE      ]: carry=0 | base=0.25 | wall=3.27 | search=  0 | target=site(1.67,1.95)
+
+======================================================================
+Step 22500 (12.0 min) | Pickups: 32 | Deposits: 31 | Rate: 2.58 tags/min | phero_entries=4 max_w=0.143
+======================================================================
+R1[SEARCH    ]: carry=0 | base=2.65 | wall=1.35 | search=106 | target=site(1.59,2.11)
+R2[SITE      ]: carry=0 | base=2.45 | wall=1.49 | search=  0 | target=site(1.51,2.18)
+R3[SURVEY    ]: carry=1 | base=2.63 | wall=1.53 | search=  0 | target=none
+R4[SITE      ]: carry=0 | base=2.12 | wall=1.87 | search=  0 | target=site(1.67,1.95)
+
+======================================================================
+Step 23000 (12.3 min) | Pickups: 34 | Deposits: 31 | Rate: 2.53 tags/min | phero_entries=4 max_w=0.029
+======================================================================
+R1[SURVEY    ]: carry=1 | base=1.88 | wall=1.75 | search=  0 | target=none
+R2[RTB       ]: carry=1 | base=2.69 | wall=1.40 | search=  0 | target=none
+R3[RTB       ]: carry=1 | base=1.23 | wall=2.61 | search=  0 | target=none
+R4[SEARCH    ]: carry=0 | base=1.98 | wall=1.62 | search=397 | target=site(1.67,1.95)
+
+======================================================================
+Step 23500 (12.5 min) | Pickups: 34 | Deposits: 32 | Rate: 2.55 tags/min | phero_entries=5 max_w=0.458
+======================================================================
+R1[RTB       ]: carry=1 | base=0.99 | wall=2.56 | search=  0 | target=none
+R2[RTB       ]: carry=1 | base=0.83 | wall=2.86 | search=  0 | target=none
+R3[SITE      ]: carry=0 | base=0.73 | wall=2.91 | search=  0 | target=site(1.74,1.97)
+R4[BASE_ESC  ]: carry=0 | base=0.23 | wall=3.28 | search=  0 | target=phero(1.74,1.97)
+
+======================================================================
+Step 24000 (12.8 min) | Pickups: 34 | Deposits: 34 | Rate: 2.66 tags/min | phero_entries=3 max_w=0.332
+======================================================================
+R1[SITE      ]: carry=0 | base=0.96 | wall=2.62 | search=  0 | target=site(1.75,0.69)
+R2[SITE      ]: carry=0 | base=1.12 | wall=2.58 | search=  0 | target=site(1.64,2.14)
+R3[SEARCH    ]: carry=0 | base=2.60 | wall=1.56 | search= 10 | target=site(1.74,1.97)
+R4[PHERO     ]: carry=0 | base=1.66 | wall=2.19 | search=  0 | target=phero(1.74,1.97)
+
+======================================================================
+Step 24500 (13.1 min) | Pickups: 36 | Deposits: 34 | Rate: 2.60 tags/min | phero_entries=2 max_w=0.067
+======================================================================
+R1[RTB       ]: carry=1 | base=1.45 | wall=2.12 | search=  0 | target=none
+R2[SEARCH    ]: carry=0 | base=2.66 | wall=1.35 | search=102 | target=site(1.64,2.14)
+R3[SEARCH    ]: carry=0 | base=3.38 | wall=1.00 | search=510 | target=site(1.74,1.97)
+R4[RTB       ]: carry=1 | base=2.63 | wall=1.56 | search=  0 | target=none
+
+======================================================================
+Step 25000 (13.3 min) | Pickups: 37 | Deposits: 35 | Rate: 2.62 tags/min | phero_entries=3 max_w=0.550
+======================================================================
+R1[SITE      ]: carry=0 | base=0.49 | wall=3.01 | search=  0 | target=site(1.53,0.62)
+R2[RTB       ]: carry=1 | base=2.51 | wall=1.70 | search=  0 | target=none
+R3[SEARCH    ]: carry=0 | base=4.16 | wall=0.39 | search=1010 | target=site(1.74,1.97)
+R4[RTB       ]: carry=1 | base=0.79 | wall=2.93 | search=  0 | target=none
+
+======================================================================
+Step 25500 (13.6 min) | Pickups: 38 | Deposits: 36 | Rate: 2.65 tags/min | phero_entries=2 max_w=0.111
+======================================================================
+R1[SURVEY    ]: carry=1 | base=1.67 | wall=1.93 | search=  0 | target=none
+R2[RTB       ]: carry=1 | base=0.60 | wall=3.07 | search=  0 | target=none
+R3[WALL_ESC  ]: carry=0 | base=4.30 | wall=0.31 | search=1510 | target=site(1.74,1.97)
+R4[SITE      ]: carry=0 | base=1.17 | wall=2.59 | search=  0 | target=site(1.74,1.97)
+
+======================================================================
+Step 26000 (13.9 min) | Pickups: 38 | Deposits: 37 | Rate: 2.67 tags/min | phero_entries=1 max_w=0.022
+======================================================================
+R1[RTB       ]: carry=1 | base=0.26 | wall=3.25 | search=  0 | target=none
+R2[SITE      ]: carry=0 | base=1.34 | wall=2.53 | search=  0 | target=site(1.85,1.96)
+R3[GIVE_UP   ]: carry=0 | base=3.64 | wall=0.77 | search=1716 | target=none
+R4[SEARCH    ]: carry=0 | base=2.61 | wall=1.49 | search=132 | target=site(1.74,1.97)
+
+======================================================================
+Step 26500 (14.1 min) | Pickups: 39 | Deposits: 38 | Rate: 2.69 tags/min | phero_entries=2 max_w=0.204
+======================================================================
+R1[SEARCH    ]: carry=0 | base=1.66 | wall=1.95 | search= 11 | target=site(1.57,0.58)
+R2[SEARCH    ]: carry=0 | base=2.60 | wall=1.55 | search=160 | target=site(1.85,1.96)
+R3[RTB       ]: carry=1 | base=2.86 | wall=1.43 | search=  0 | target=none
+R4[GIVE_UP   ]: carry=0 | base=0.73 | wall=2.93 | search=156 | target=none
+
+======================================================================
+Step 27000 (14.4 min) | Pickups: 39 | Deposits: 38 | Rate: 2.64 tags/min | phero_entries=1 max_w=0.041
+======================================================================
+R1[SEARCH    ]: carry=0 | base=0.31 | wall=3.26 | search=511 | target=site(1.57,0.58)
+R2[SEARCH    ]: carry=0 | base=1.89 | wall=1.63 | search=660 | target=site(1.85,1.96)
+R3[RTB       ]: carry=1 | base=0.94 | wall=2.82 | search=  0 | target=none
+R4[PHERO     ]: carry=0 | base=1.24 | wall=2.35 | search=  0 | target=phero(1.57,0.58)
+
+======================================================================
+Step 27500 (14.7 min) | Pickups: 40 | Deposits: 39 | Rate: 2.66 tags/min | phero_entries=1 max_w=0.008
+======================================================================
+R1[SURVEY    ]: carry=1 | base=0.54 | wall=3.08 | search=  0 | target=none
+R2[SEARCH    ]: carry=0 | base=2.76 | wall=1.09 | search=1160 | target=site(1.85,1.96)
+R3[SITE      ]: carry=0 | base=0.94 | wall=2.81 | search=  0 | target=site(2.02,2.28)
+R4[SEARCH    ]: carry=0 | base=1.01 | wall=2.77 | search=400 | target=phero(1.57,0.58)
+
+======================================================================
+Step 28000 (14.9 min) | Pickups: 41 | Deposits: 40 | Rate: 2.68 tags/min | phero_entries=1 max_w=0.002
+======================================================================
+R1[SEARCH    ]: carry=0 | base=0.55 | wall=3.09 | search= 38 | target=site(-0.41,0.34)
+R2[SEARCH    ]: carry=0 | base=3.54 | wall=0.50 | search=1660 | target=site(1.85,1.96)
+R3[SITE      ]: carry=0 | base=2.68 | wall=1.51 | search=  0 | target=site(2.02,2.28)
+R4[SURVEY    ]: carry=1 | base=0.77 | wall=2.92 | search=  0 | target=none
+
+======================================================================
+Step 28500 (15.2 min) | Pickups: 43 | Deposits: 42 | Rate: 2.76 tags/min | phero_entries=0 max_w=0.000
+======================================================================
+R1[BASE_ESC  ]: carry=0 | base=0.22 | wall=3.34 | search=  0 | target=site(-0.50,0.35)
+R2[SEARCH    ]: carry=0 | base=3.46 | wall=0.39 | search=2160 | target=site(1.85,1.96)
+R3[RTB       ]: carry=1 | base=1.83 | wall=2.19 | search=  0 | target=none
+R4[SITE      ]: carry=0 | base=0.51 | wall=3.11 | search=  0 | target=site(-0.58,0.51)
+
+======================================================================
+Step 29000 (15.5 min) | Pickups: 44 | Deposits: 43 | Rate: 2.78 tags/min | phero_entries=0 max_w=0.000
+======================================================================
+R1[RTB       ]: carry=1 | base=0.47 | wall=3.11 | search=  0 | target=none
+R2[GIVE_UP   ]: carry=0 | base=2.91 | wall=0.85 | search=2496 | target=none
+R3[BASE_ESC  ]: carry=0 | base=0.22 | wall=3.31 | search=  0 | target=site(1.83,2.04)
+R4[SEARCH    ]: carry=0 | base=1.20 | wall=2.48 | search=440 | target=site(-0.58,0.51)
+
+======================================================================
+Step 29500 (15.7 min) | Pickups: 44 | Deposits: 44 | Rate: 2.80 tags/min | phero_entries=0 max_w=0.000
+======================================================================
+R1[SEARCH    ]: carry=0 | base=0.64 | wall=3.04 | search=227 | target=site(-0.51,0.31)
+R2[GIVE_UP   ]: carry=0 | base=0.99 | wall=2.60 | search=2496 | target=none
+R3[SITE      ]: carry=0 | base=2.04 | wall=1.96 | search=  0 | target=site(1.83,2.04)
+R4[SEARCH    ]: carry=0 | base=2.17 | wall=1.39 | search=940 | target=site(-0.58,0.51)
+
+======================================================================
+Step 30000 (16.0 min) | Pickups: 47 | Deposits: 45 | Rate: 2.81 tags/min | phero_entries=0 max_w=0.000
+======================================================================
+R1[SEARCH    ]: carry=0 | base=2.25 | wall=1.37 | search=727 | target=site(-0.51,0.31)
+R2[SITE      ]: carry=0 | base=0.28 | wall=3.29 | search=  0 | target=site(-0.86,0.39)
+R3[RTB       ]: carry=1 | base=2.55 | wall=1.67 | search=  0 | target=none
+R4[SURVEY    ]: carry=1 | base=3.10 | wall=0.41 | search=  0 | target=none
+
+======================================================================
+Step 30500 (16.3 min) | Pickups: 48 | Deposits: 46 | Rate: 2.83 tags/min | phero_entries=0 max_w=0.000
+======================================================================
+R1[SEARCH    ]: carry=0 | base=3.52 | wall=0.37 | search=1227 | target=site(-0.51,0.31)
+R2[BASE_ESC  ]: carry=0 | base=0.22 | wall=3.32 | search=  0 | target=none
+R3[RTB       ]: carry=1 | base=0.63 | wall=3.05 | search=  0 | target=none
+R4[RTB       ]: carry=1 | base=1.34 | wall=2.16 | search=  0 | target=none
+
+======================================================================
+Step 31000 (16.5 min) | Pickups: 48 | Deposits: 48 | Rate: 2.90 tags/min | phero_entries=1 max_w=0.609
+======================================================================
+R1[GIVE_UP   ]: carry=0 | base=2.02 | wall=1.75 | search=1248 | target=none
+R2[DEPART    ]: carry=0 | base=1.36 | wall=2.26 | search=  0 | target=none
+R3[SITE      ]: carry=0 | base=1.33 | wall=2.48 | search=  0 | target=site(1.83,2.04)
+R4[SITE      ]: carry=0 | base=0.38 | wall=3.12 | search=  0 | target=site(-3.09,0.26)
+
+======================================================================
+Step 31500 (16.8 min) | Pickups: 48 | Deposits: 48 | Rate: 2.86 tags/min | phero_entries=1 max_w=0.123
+======================================================================
+R1[BASE_ESC  ]: carry=0 | base=0.22 | wall=3.32 | search=  0 | target=phero(-3.09,0.26)
+R2[SEARCH    ]: carry=0 | base=3.16 | wall=0.66 | search=306 | target=none
+R3[SEARCH    ]: carry=0 | base=2.71 | wall=1.43 | search=145 | target=site(1.83,2.04)
+R4[SITE      ]: carry=0 | base=2.29 | wall=1.22 | search=  0 | target=site(-3.09,0.26)
+
+======================================================================
+Step 32000 (17.1 min) | Pickups: 49 | Deposits: 48 | Rate: 2.81 tags/min | phero_entries=1 max_w=0.025
+======================================================================
+R1[PHERO     ]: carry=0 | base=1.73 | wall=1.79 | search=  0 | target=phero(-3.09,0.26)
+R2[SEARCH    ]: carry=0 | base=3.49 | wall=0.37 | search=806 | target=none
+R3[SEARCH    ]: carry=0 | base=1.06 | wall=2.71 | search=645 | target=site(1.83,2.04)
+R4[RTB       ]: carry=1 | base=2.33 | wall=1.18 | search=  0 | target=none
+
+======================================================================
+Step 32500 (17.3 min) | Pickups: 50 | Deposits: 48 | Rate: 2.77 tags/min | phero_entries=1 max_w=0.005
+======================================================================
+R1[SURVEY    ]: carry=1 | base=2.95 | wall=0.56 | search=  0 | target=none
+R2[WALL_ESC  ]: carry=0 | base=3.48 | wall=0.33 | search=1248 | target=none
+R3[SEARCH    ]: carry=0 | base=0.27 | wall=3.29 | search=1145 | target=site(1.83,2.04)
+R4[RTB       ]: carry=1 | base=0.41 | wall=3.09 | search=  0 | target=none
+
+======================================================================
+Step 33000 (17.6 min) | Pickups: 50 | Deposits: 49 | Rate: 2.78 tags/min | phero_entries=2 max_w=0.232
+======================================================================
+R1[RTB       ]: carry=1 | base=1.43 | wall=2.08 | search=  0 | target=none
+R2[GIVE_UP   ]: carry=0 | base=1.58 | wall=2.05 | search=1248 | target=none
+R3[PHERO     ]: carry=0 | base=1.21 | wall=2.29 | search=  0 | target=phero(-2.78,0.23)
+R4[SITE      ]: carry=0 | base=1.41 | wall=2.10 | search=  0 | target=site(-2.78,0.23)
+
+======================================================================
+Step 33500 (17.9 min) | Pickups: 51 | Deposits: 50 | Rate: 2.80 tags/min | phero_entries=2 max_w=0.571
+======================================================================
+R1[SITE      ]: carry=0 | base=0.46 | wall=3.06 | search=  0 | target=site(-2.93,0.26)
+R2[PHERO     ]: carry=0 | base=0.40 | wall=3.10 | search=  0 | target=phero(-2.93,0.26)
+R3[SEARCH    ]: carry=0 | base=2.76 | wall=0.75 | search= 96 | target=phero(-2.78,0.23)
+R4[SURVEY    ]: carry=1 | base=2.86 | wall=0.65 | search=  0 | target=none
+
+======================================================================
+Step 34000 (18.1 min) | Pickups: 51 | Deposits: 50 | Rate: 2.76 tags/min | phero_entries=2 max_w=0.115
+======================================================================
+R1[SITE      ]: carry=0 | base=2.25 | wall=1.26 | search=  0 | target=site(-2.93,0.26)
+R2[PHERO     ]: carry=0 | base=1.61 | wall=1.90 | search=  0 | target=phero(-2.93,0.26)
+R3[GIVE_UP   ]: carry=0 | base=1.68 | wall=1.82 | search=156 | target=none
+R4[RTB       ]: carry=1 | base=1.72 | wall=1.78 | search=  0 | target=none
+
+======================================================================
+Step 34500 (18.4 min) | Pickups: 51 | Deposits: 51 | Rate: 2.77 tags/min | phero_entries=3 max_w=0.706
+======================================================================
+R1[GIVE_UP   ]: carry=0 | base=2.23 | wall=1.29 | search=156 | target=none
+R2[SEARCH    ]: carry=0 | base=2.92 | wall=0.59 | search= 31 | target=phero(-2.93,0.26)
+R3[PHERO     ]: carry=0 | base=0.27 | wall=3.28 | search=  0 | target=phero(-2.93,0.26)
+R4[BASE_ESC  ]: carry=0 | base=0.25 | wall=3.26 | search=  0 | target=site(-2.85,0.18)
+
+======================================================================
+Step 35000 (18.7 min) | Pickups: 52 | Deposits: 51 | Rate: 2.73 tags/min | phero_entries=2 max_w=0.142
+======================================================================
+R1[GIVE_UP   ]: carry=0 | base=0.35 | wall=3.15 | search=156 | target=none
+R2[RTB       ]: carry=1 | base=2.03 | wall=1.48 | search=  0 | target=none
+R3[PHERO     ]: carry=0 | base=2.09 | wall=1.42 | search=  0 | target=phero(-2.93,0.26)
+R4[SITE      ]: carry=0 | base=2.04 | wall=1.46 | search=  0 | target=site(-2.85,0.18)
+
+======================================================================
+Step 35500 (18.9 min) | Pickups: 52 | Deposits: 52 | Rate: 2.75 tags/min | phero_entries=2 max_w=0.897
+======================================================================
+R1[PHERO     ]: carry=0 | base=1.60 | wall=1.90 | search=  0 | target=phero(-2.85,0.18)
+R2[BASE_ESC  ]: carry=0 | base=0.22 | wall=3.28 | search=  0 | target=site(-2.92,0.21)
+R3[WALL_ESC  ]: carry=0 | base=3.21 | wall=0.31 | search=290 | target=phero(-2.93,0.26)
+R4[SEARCH    ]: carry=0 | base=2.83 | wall=0.70 | search=299 | target=site(-2.85,0.18)
+
+======================================================================
+Step 36000 (19.2 min) | Pickups: 53 | Deposits: 52 | Rate: 2.71 tags/min | phero_entries=2 max_w=0.181
+======================================================================
+R1[SURVEY    ]: carry=1 | base=2.99 | wall=0.51 | search=  0 | target=none
+R2[SITE      ]: carry=0 | base=1.83 | wall=1.68 | search=  0 | target=site(-2.92,0.21)
+R3[WALL_ESC  ]: carry=0 | base=3.18 | wall=0.35 | search=790 | target=phero(-2.93,0.26)
+R4[SEARCH    ]: carry=0 | base=3.27 | wall=0.92 | search=799 | target=site(-2.85,0.18)
+
+======================================================================
+Step 36500 (19.5 min) | Pickups: 54 | Deposits: 52 | Rate: 2.67 tags/min | phero_entries=2 max_w=0.037
+======================================================================
+R1[RTB       ]: carry=1 | base=2.36 | wall=1.14 | search=  0 | target=none
+R2[SURVEY    ]: carry=1 | base=2.96 | wall=0.55 | search=  0 | target=none
+R3[WALL_ESC  ]: carry=0 | base=3.18 | wall=0.34 | search=1290 | target=phero(-2.93,0.26)
+R4[SEARCH    ]: carry=0 | base=3.88 | wall=0.38 | search=1299 | target=site(-2.85,0.18)
+
+======================================================================
+Step 37000 (19.7 min) | Pickups: 54 | Deposits: 52 | Rate: 2.64 tags/min | phero_entries=1 max_w=0.007
+======================================================================
+R1[RTB       ]: carry=1 | base=0.44 | wall=3.06 | search=  0 | target=none
+R2[RTB       ]: carry=1 | base=1.83 | wall=1.67 | search=  0 | target=none
+R3[WALL_ESC  ]: carry=0 | base=3.18 | wall=0.34 | search=1790 | target=phero(-2.93,0.26)
+R4[GIVE_UP   ]: carry=0 | base=2.84 | wall=1.30 | search=1404 | target=none
+
+======================================================================
+Step 37500 (20.0 min) | Pickups: 54 | Deposits: 54 | Rate: 2.70 tags/min | phero_entries=3 max_w=0.757
+======================================================================
+R1[SITE      ]: carry=0 | base=1.50 | wall=2.00 | search=  0 | target=site(-2.99,0.19)
+R2[BASE_ESC  ]: carry=0 | base=0.22 | wall=3.28 | search=  0 | target=site(-2.95,0.16)
+R3[WALL_ESC  ]: carry=0 | base=3.18 | wall=0.34 | search=2290 | target=phero(-2.93,0.26)
+R4[GIVE_UP   ]: carry=0 | base=0.92 | wall=2.78 | search=1404 | target=none
+
+======================================================================
+Step 38000 (20.3 min) | Pickups: 55 | Deposits: 54 | Rate: 2.66 tags/min | phero_entries=2 max_w=0.153
+======================================================================
+R1[SURVEY    ]: carry=1 | base=2.94 | wall=0.57 | search=  0 | target=none
+R2[SITE      ]: carry=0 | base=2.03 | wall=1.47 | search=  0 | target=site(-2.95,0.16)
+R3[WALL_ESC  ]: carry=0 | base=3.18 | wall=0.33 | search=2790 | target=phero(-2.93,0.26)
+R4[PHERO     ]: carry=0 | base=1.02 | wall=2.50 | search=  0 | target=phero(-2.95,0.16)
+
+======================================================================
+Step 38500 (20.5 min) | Pickups: 56 | Deposits: 54 | Rate: 2.63 tags/min | phero_entries=2 max_w=0.031
+======================================================================
+R1[RTB       ]: carry=1 | base=1.85 | wall=1.66 | search=  0 | target=none
+R2[SURVEY    ]: carry=1 | base=2.92 | wall=0.58 | search=  0 | target=none
+R3[WALL_ESC  ]: carry=0 | base=3.18 | wall=0.34 | search=3290 | target=phero(-2.93,0.26)
+R4[SEARCH    ]: carry=0 | base=2.92 | wall=0.59 | search=  5 | target=phero(-2.95,0.16)
+
+======================================================================
+Step 39000 (20.8 min) | Pickups: 56 | Deposits: 55 | Rate: 2.64 tags/min | phero_entries=2 max_w=0.006
+======================================================================
+R1[BASE_ESC  ]: carry=0 | base=0.22 | wall=3.28 | search=  0 | target=site(-2.93,0.11)
+R2[RTB       ]: carry=1 | base=1.16 | wall=2.34 | search=  0 | target=none
+R3[WALL_ESC  ]: carry=0 | base=3.18 | wall=0.33 | search=3790 | target=phero(-2.93,0.26)
+R4[GIVE_UP   ]: carry=0 | base=1.55 | wall=1.95 | search=156 | target=none
+
+======================================================================
+Step 39500 (21.1 min) | Pickups: 56 | Deposits: 56 | Rate: 2.66 tags/min | phero_entries=2 max_w=0.431
+======================================================================
+R1[SITE      ]: carry=0 | base=2.02 | wall=1.48 | search=  0 | target=site(-2.93,0.11)
+R2[SITE      ]: carry=0 | base=0.79 | wall=2.72 | search=  0 | target=site(-2.92,0.11)
+R3[WALL_ESC  ]: carry=0 | base=3.18 | wall=0.34 | search=4290 | target=phero(-2.93,0.26)
+R4[PHERO     ]: carry=0 | base=0.40 | wall=3.11 | search=  0 | target=phero(-2.92,0.11)
+
+======================================================================
+Step 40000 (21.3 min) | Pickups: 57 | Deposits: 56 | Rate: 2.62 tags/min | phero_entries=1 max_w=0.087
+======================================================================
+R1[SURVEY    ]: carry=1 | base=3.10 | wall=0.41 | search=  0 | target=none
+R2[SITE      ]: carry=0 | base=2.70 | wall=0.80 | search=  0 | target=site(-2.92,0.11)
+R3[WALL_ESC  ]: carry=0 | base=3.17 | wall=0.34 | search=4790 | target=phero(-2.93,0.26)
+R4[PHERO     ]: carry=0 | base=2.30 | wall=1.20 | search=  0 | target=phero(-2.92,0.11)
+
+======================================================================
+Step 40500 (21.6 min) | Pickups: 59 | Deposits: 56 | Rate: 2.59 tags/min | phero_entries=1 max_w=0.018
+======================================================================
+R1[RTB       ]: carry=1 | base=1.96 | wall=1.55 | search=  0 | target=none
+R2[RTB       ]: carry=1 | base=2.38 | wall=1.12 | search=  0 | target=none
+R3[SEARCH    ]: carry=0 | base=3.16 | wall=0.35 | search=5290 | target=phero(-2.93,0.26)
+R4[SURVEY    ]: carry=1 | base=2.91 | wall=0.59 | search=  0 | target=none
+
+======================================================================
+Step 41000 (21.9 min) | Pickups: 59 | Deposits: 57 | Rate: 2.61 tags/min | phero_entries=1 max_w=0.004
+======================================================================
+R1[BASE_ESC  ]: carry=0 | base=0.22 | wall=3.28 | search=  0 | target=site(-3.09,0.19)
+R2[RTB       ]: carry=1 | base=0.46 | wall=3.04 | search=  0 | target=none
+R3[SEARCH    ]: carry=0 | base=3.16 | wall=0.36 | search=5790 | target=phero(-2.93,0.26)
+R4[RTB       ]: carry=1 | base=1.10 | wall=2.40 | search=  0 | target=none
+
+======================================================================
+Step 41500 (22.1 min) | Pickups: 59 | Deposits: 59 | Rate: 2.67 tags/min | phero_entries=0 max_w=0.000
+======================================================================
+R1[SITE      ]: carry=0 | base=1.83 | wall=1.67 | search=  0 | target=site(-3.09,0.19)
+R2[SITE      ]: carry=0 | base=1.47 | wall=2.03 | search=  0 | target=site(-2.92,0.06)
+R3[SEARCH    ]: carry=0 | base=3.15 | wall=0.36 | search=6290 | target=phero(-2.93,0.26)
+R4[SITE      ]: carry=0 | base=0.84 | wall=2.66 | search=  0 | target=site(-2.92,0.03)
+
+======================================================================
+Step 42000 (22.4 min) | Pickups: 60 | Deposits: 59 | Rate: 2.63 tags/min | phero_entries=0 max_w=0.000
+======================================================================
+R1[SEARCH    ]: carry=0 | base=3.11 | wall=0.41 | search=184 | target=site(-3.09,0.19)
+R2[SURVEY    ]: carry=1 | base=2.94 | wall=0.56 | search=  0 | target=none
+R3[WALL_ESC  ]: carry=0 | base=3.18 | wall=0.34 | search=6790 | target=phero(-2.93,0.26)
+R4[SITE      ]: carry=0 | base=2.76 | wall=0.74 | search=  0 | target=site(-2.92,0.03)
+
+======================================================================
+Step 42500 (22.7 min) | Pickups: 61 | Deposits: 59 | Rate: 2.60 tags/min | phero_entries=0 max_w=0.000
+======================================================================
+R1[SEARCH    ]: carry=0 | base=2.78 | wall=0.73 | search=684 | target=site(-3.09,0.19)
+R2[RTB       ]: carry=1 | base=1.88 | wall=1.62 | search=  0 | target=none
+R3[GIVE_UP   ]: carry=0 | base=2.80 | wall=0.71 | search=7020 | target=none
+R4[RTB       ]: carry=1 | base=2.47 | wall=1.03 | search=  0 | target=none
+
+======================================================================
+Step 43000 (22.9 min) | Pickups: 61 | Deposits: 60 | Rate: 2.62 tags/min | phero_entries=0 max_w=0.000
+======================================================================
+R1[SEARCH    ]: carry=0 | base=3.14 | wall=0.37 | search=1184 | target=site(-3.09,0.19)
+R2[BASE_ESC  ]: carry=0 | base=0.22 | wall=3.28 | search=  0 | target=site(-2.93,0.03)
+R3[GIVE_UP   ]: carry=0 | base=0.91 | wall=2.59 | search=7020 | target=none
+R4[RTB       ]: carry=1 | base=0.55 | wall=2.95 | search=  0 | target=none
+
+======================================================================
+Step 43500 (23.2 min) | Pickups: 61 | Deposits: 61 | Rate: 2.63 tags/min | phero_entries=0 max_w=0.000
+======================================================================
+R1[GIVE_UP   ]: carry=0 | base=2.08 | wall=1.42 | search=1404 | target=none
+R2[SITE      ]: carry=0 | base=1.97 | wall=1.53 | search=  0 | target=site(-2.93,0.03)
+R3[DEPART    ]: carry=0 | base=1.07 | wall=2.56 | search=  0 | target=none
+R4[SITE      ]: carry=0 | base=1.38 | wall=2.12 | search=  0 | target=site(-2.92,-0.02)
+
+======================================================================
+Step 44000 (23.5 min) | Pickups: 61 | Deposits: 61 | Rate: 2.60 tags/min | phero_entries=0 max_w=0.000
+======================================================================
+R1[BASE_ESC  ]: carry=0 | base=0.23 | wall=3.27 | search=  0 | target=none
+R2[SEARCH    ]: carry=0 | base=2.82 | wall=0.69 | search=263 | target=site(-2.93,0.03)
+R3[SEARCH    ]: carry=0 | base=2.61 | wall=0.94 | search=405 | target=none
+R4[SEARCH    ]: carry=0 | base=2.88 | wall=0.62 | search=112 | target=site(-2.92,-0.02)
+
+======================================================================
+Step 44500 (23.7 min) | Pickups: 62 | Deposits: 61 | Rate: 2.57 tags/min | phero_entries=0 max_w=0.000
+======================================================================
+R1[SEARCH    ]: carry=0 | base=1.19 | wall=2.41 | search=255 | target=none
+R2[SEARCH    ]: carry=0 | base=3.16 | wall=0.37 | search=763 | target=site(-2.93,0.03)
+R3[RTB       ]: carry=1 | base=2.81 | wall=0.69 | search=  0 | target=none
+R4[GIVE_UP   ]: carry=0 | base=1.09 | wall=2.41 | search=156 | target=none
+
+======================================================================
+Step 45000 (24.0 min) | Pickups: 62 | Deposits: 61 | Rate: 2.54 tags/min | phero_entries=0 max_w=0.000
+======================================================================
+R1[SEARCH    ]: carry=0 | base=2.52 | wall=1.39 | search=755 | target=none
+R2[SEARCH    ]: carry=0 | base=3.16 | wall=0.37 | search=1263 | target=site(-2.93,0.03)
+R3[RTB       ]: carry=1 | base=0.89 | wall=2.61 | search=  0 | target=none
+R4[DEPART    ]: carry=0 | base=0.88 | wall=2.70 | search=  0 | target=none
+
+======================================================================
+Step 45500 (24.3 min) | Pickups: 62 | Deposits: 62 | Rate: 2.55 tags/min | phero_entries=0 max_w=0.000
+======================================================================
+R1[GIVE_UP   ]: carry=0 | base=1.18 | wall=2.48 | search=780 | target=none
+R2[SEARCH    ]: carry=0 | base=3.15 | wall=0.38 | search=1763 | target=site(-2.93,0.03)
+R3[SITE      ]: carry=0 | base=1.04 | wall=2.46 | search=  0 | target=site(-3.11,0.11)
+R4[SEARCH    ]: carry=0 | base=2.71 | wall=1.15 | search=200 | target=none
+
+======================================================================
+Step 46000 (24.5 min) | Pickups: 63 | Deposits: 62 | Rate: 2.53 tags/min | phero_entries=0 max_w=0.000
+======================================================================
+R1[RTB       ]: carry=1 | base=0.54 | wall=2.99 | search=  0 | target=none
+R2[SEARCH    ]: carry=0 | base=3.14 | wall=0.38 | search=2263 | target=site(-2.93,0.03)
+R3[SITE      ]: carry=0 | base=2.96 | wall=0.54 | search=  0 | target=site(-3.11,0.11)
+R4[WALL_ESC  ]: carry=0 | base=4.00 | wall=0.30 | search=700 | target=none
+
+======================================================================
+Step 46500 (24.8 min) | Pickups: 65 | Deposits: 63 | Rate: 2.54 tags/min | phero_entries=0 max_w=0.000
+======================================================================
+R1[RTB       ]: carry=1 | base=0.54 | wall=2.98 | search=  0 | target=none
+R2[SEARCH    ]: carry=0 | base=3.14 | wall=0.38 | search=2763 | target=site(-2.93,0.03)
+R3[RTB       ]: carry=1 | base=2.38 | wall=1.12 | search=  0 | target=none
+R4[SEARCH    ]: carry=0 | base=3.96 | wall=0.38 | search=1200 | target=none
+BATCH_RESULT pickups=65 deposits=64

@@ -1,0 +1,11 @@
+method,arena,num_robots,num_tags,sample,foraging_time_min,pickups,deposits
+centralized_ppo,7x7,16,208,1,10,152,148
+centralized_ppo,7x7,16,208,2,10,182,176
+centralized_ppo,7x7,16,208,3,10,178,175
+centralized_ppo,7x7,16,208,4,10,153,145
+centralized_ppo,7x7,16,208,5,10,173,172
+centralized_ppo,7x7,16,208,6,10,157,151
+centralized_ppo,7x7,16,208,7,10,155,153
+centralized_ppo,7x7,16,208,8,10,159,153
+centralized_ppo,7x7,16,208,9,10,170,163
+centralized_ppo,7x7,16,208,10,10,165,161

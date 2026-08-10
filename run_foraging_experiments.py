@@ -41,6 +41,9 @@ CONTROLLERS = {
         "9x9": "controllers/cpfa_baseline/cpfa_baseline_9x9.py",
         "12x12": "controllers/cpfa_baseline/cpfa_baseline_12x12.py",
     },
+    "exp4_disconnect": {
+        "5x5": "controllers/eval_best_model/eval_best_model_exp4_5x5.py",
+    },
 }
 
 CSV_FIELDS = [
@@ -48,6 +51,8 @@ CSV_FIELDS = [
     "arena",
     "sample",
     "foraging_time_min",
+    "disconnect_start_min",
+    "disconnect_duration_min",
     "pickups",
     "deposits",
 ]
@@ -77,8 +82,11 @@ def format_float(value):
     return f"{value:g}"
 
 
-def default_results_csv(method, arena):
+def default_results_csv(method, arena, disconnect_start=None, disconnect_duration=None):
     stamp = time.strftime("%Y%m%d_%H%M%S")
+    if method == "exp4_disconnect" and disconnect_start is not None:
+        tag = f"_ds{disconnect_start:g}_dd{disconnect_duration:g}"
+        return RESULTS_DIR / f"foraging_{method}_{arena}{tag}_{stamp}.csv"
     return RESULTS_DIR / f"foraging_{method}_{arena}_{stamp}.csv"
 
 
@@ -136,9 +144,14 @@ def build_commands(args, sample, port, duration):
         sys.executable,
         str(controller),
     ]
-    if args.method == "centralized_ppo":
+    if args.method in ("centralized_ppo", "exp4_disconnect"):
         controller_cmd.append(args.model)
     controller_cmd.extend(["--duration-sim-min", format_float(duration)])
+    if args.method == "exp4_disconnect":
+        controller_cmd.extend([
+            "--disconnect-start-min",    format_float(args.disconnect_start_min),
+            "--disconnect-duration-min", format_float(args.disconnect_duration_min),
+        ])
 
     return world, controller, webots_cmd, controller_cmd
 
@@ -238,7 +251,7 @@ def run_sample(args, sample, port, duration, logs_dir):
     controller_env["WEBOTS_PORT"] = str(port)
     controller_env["PYTHONUNBUFFERED"] = "1"
     add_webots_controller_env(controller_env, args.webots_bin)
-    if args.method == "centralized_ppo":
+    if args.method in ("centralized_ppo", "exp4_disconnect"):
         controller_env["CUDA_VISIBLE_DEVICES"] = ""
 
     webots_proc = None
@@ -337,6 +350,8 @@ def run_sample(args, sample, port, duration, logs_dir):
         "arena": args.arena,
         "sample": sample,
         "foraging_time_min": format_float(duration),
+        "disconnect_start_min":    format_float(args.disconnect_start_min) if args.method == "exp4_disconnect" else "",
+        "disconnect_duration_min": format_float(args.disconnect_duration_min) if args.method == "exp4_disconnect" else "",
         "pickups": pickups,
         "deposits": deposits,
     }
@@ -382,7 +397,11 @@ def main():
     parser.add_argument("--foraging-time", type=float, default=None,
                         help="Simulated minutes. Defaults by arena.")
     parser.add_argument("--model", default="ppo_cpfa_v9.zip",
-                        help="Model path for centralized_ppo.")
+                        help="Model path for centralized_ppo / exp4_disconnect.")
+    parser.add_argument("--disconnect-start-min", type=float, default=5.0,
+                        help="Sim minute when server disconnects (exp4_disconnect only).")
+    parser.add_argument("--disconnect-duration-min", type=float, default=0.0,
+                        help="Duration of disconnect in sim minutes (exp4_disconnect only).")
     parser.add_argument("--base-port", type=int, default=1438)
     parser.add_argument("--max-parallel", type=int, default=None)
     parser.add_argument("--results-csv", type=Path, default=None)
@@ -404,10 +423,18 @@ def main():
     if args.max_parallel <= 0:
         parser.error("--max-parallel must be greater than 0")
 
-    if args.method == "centralized_ppo" and not model_exists(args.model):
+    if args.method == "exp4_disconnect" and args.arena != "5x5":
+        parser.error("exp4_disconnect is only supported for --arena 5x5")
+    if args.method == "exp4_disconnect" and args.disconnect_duration_min <= 0:
+        parser.error("--disconnect-duration-min must be > 0 for exp4_disconnect")
+
+    if args.method in ("centralized_ppo", "exp4_disconnect") and not model_exists(args.model):
         parser.error(f"--model not found: {args.model}")
 
-    results_csv = args.results_csv or default_results_csv(args.method, args.arena)
+    results_csv = args.results_csv or default_results_csv(
+        args.method, args.arena,
+        args.disconnect_start_min, args.disconnect_duration_min,
+    )
     if not results_csv.is_absolute():
         results_csv = PROJECT_ROOT / results_csv
 

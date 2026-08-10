@@ -1,0 +1,11 @@
+method,arena,num_robots,num_tags,sample,foraging_time_min,pickups,deposits
+cpfa_baseline,7x7,16,208,1,10,117,116
+cpfa_baseline,7x7,16,208,2,10,121,118
+cpfa_baseline,7x7,16,208,3,10,134,132
+cpfa_baseline,7x7,16,208,4,10,118,115
+cpfa_baseline,7x7,16,208,5,10,142,140
+cpfa_baseline,7x7,16,208,6,10,123,120
+cpfa_baseline,7x7,16,208,7,10,118,113
+cpfa_baseline,7x7,16,208,8,10,114,110
+cpfa_baseline,7x7,16,208,9,10,125,121
+cpfa_baseline,7x7,16,208,10,10,119,115

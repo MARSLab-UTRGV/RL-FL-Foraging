@@ -1,2 +1,0 @@
-ipc://1602/supervisor
-tcp://<ip_address>:1602/supervisor

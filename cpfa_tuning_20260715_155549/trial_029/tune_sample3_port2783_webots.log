@@ -1,0 +1,2 @@
+ipc://2783/supervisor
+tcp://<ip_address>:2783/supervisor
