@@ -1,0 +1,668 @@
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+Users of this version of Gym should be able to simply replace 'import gym' with 'import gymnasium as gym' in the vast majority of cases.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+============================================================
+EVALUATION MODE — CPFA-RL Trained Model
+Arena: 7×7m  |  Robots: 4  (teams of 4: 1)  |  Tags: 64
+Obs per team: 18 × 4 = 72  |  Total obs dim: 72
+============================================================
+
+Loading model: ppo_cpfa_v9
+Model loaded. Starting evaluation...
+
+============================================================
+
+[PICKUP] Robot 4 picked up tag (density=16) | Total: 1
+
+======================================================================
+Step 500 (0.3 min) | Pickups: 1 | Deposits: 0 | Rate: 0.00 tags/min | phero_entries=0 phero_max=0.000
+======================================================================
+R1[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.49 ba=-1.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.12 | wall=1.08
+R2[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.41 ba=-0.91 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.12 | wall=1.61
+R3[T1][EXPLORE   ]: L=+0.42 R=+1.00 | carry=0 | base=0.23 ba=+0.34 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.12 | wall=2.67
+R4[T1][RTB       ]: L=+0.85 R=+1.00 | carry=1 | base=0.29 ba=+0.06 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=2.14
+
+[GIVE-UP] R3 giving up after 780 steps
+[DEPOSIT] Robot 4 deposited! Total: 1
+  [PHERO] Laid at (1.42, -0.51) density=16 prob=1.00 total_entries=1
+  [TARGET] Robot 4 → SITE (1.42,-0.51)
+
+======================================================================
+Step 1000 (0.5 min) | Pickups: 1 | Deposits: 1 | Rate: 1.88 tags/min | phero_entries=1 phero_max=0.732
+======================================================================
+R1[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.50 ba=-0.14 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.25 | wall=1.03
+R2[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.61 ba=-0.11 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.25 | wall=0.53
+R3[T1][GIVE_UP   ]: L=+1.00 R=+1.00 | carry=0 | base=0.12 ba=+0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.25 | wall=3.04
+R4[T1][SITE      ]: L=+1.00 R=+0.99 | carry=0 | base=0.10 ba=-0.93 | site=1 sd=0.21 sa=-0.01 | phero=0 pd=0.00 pa=+0.00 | srch=0.05 | wall=3.01
+
+[EMPTY_RTN] R3 → phero(1.42,-0.51)
+[PICKUP] Robot 1 picked up tag (density=15) | Total: 2
+[PICKUP] Robot 4 picked up tag (density=14) | Total: 3
+
+======================================================================
+Step 1500 (0.8 min) | Pickups: 3 | Deposits: 1 | Rate: 1.25 tags/min | phero_entries=1 phero_max=0.329
+======================================================================
+R1[T1][RTB       ]: L=+1.00 R=+1.00 | carry=1 | base=0.14 ba=-0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=2.85
+R2[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.57 ba=+0.99 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.38 | wall=0.69
+R3[T1][PHERO     ]: L=+0.34 R=+0.34 | carry=0 | base=0.12 ba=+0.76 | site=0 sd=0.00 sa=+0.00 | phero=1 pd=0.20 pa=-0.02 | srch=0.10 | wall=3.06
+R4[T1][RTB       ]: L=+0.99 R=+1.00 | carry=1 | base=0.27 ba=+0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=2.20
+
+[DEPOSIT] Robot 1 deposited! Total: 2
+  [PHERO] Laid at (1.92, -0.47) density=15 prob=1.00 total_entries=2
+  [TARGET] Robot 1 → SITE (1.92,-0.47)
+[DEPOSIT] Robot 4 deposited! Total: 3
+  [PHERO] Laid at (1.54, -0.56) density=14 prob=1.00 total_entries=3
+  [TARGET] Robot 4 → SITE (1.54,-0.56)
+
+======================================================================
+Step 2000 (1.1 min) | Pickups: 3 | Deposits: 3 | Rate: 2.81 tags/min | phero_entries=3 phero_max=0.712
+======================================================================
+R1[T1][SITE      ]: L=+1.00 R=+1.00 | carry=0 | base=0.26 ba=+0.94 | site=1 sd=0.15 sa=+0.04 | phero=0 pd=0.00 pa=+0.00 | srch=0.10 | wall=2.30
+R2[T1][WALL_ESC  ]: L=+0.00 R=+1.00 | carry=0 | base=0.65 ba=+0.54 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.50 | wall=0.32
+R3[T1][PHERO     ]: L=+0.64 R=+0.69 | carry=0 | base=0.27 ba=+0.87 | site=0 sd=0.00 sa=+0.00 | phero=1 pd=0.05 pa=+0.12 | srch=0.23 | wall=2.32
+R4[T1][SITE      ]: L=+1.00 R=+0.98 | carry=0 | base=0.12 ba=-0.96 | site=1 sd=0.22 sa=-0.06 | phero=0 pd=0.00 pa=+0.00 | srch=0.05 | wall=2.93
+
+[PICKUP] Robot 1 picked up tag (density=13) | Total: 4
+[PICKUP] Robot 3 picked up tag (density=12) | Total: 5
+[GIVE-UP] R2 giving up after 2418 steps
+
+======================================================================
+Step 2500 (1.3 min) | Pickups: 5 | Deposits: 3 | Rate: 2.25 tags/min | phero_entries=3 phero_max=0.320
+======================================================================
+R1[T1][RTB       ]: L=+1.00 R=+1.00 | carry=1 | base=0.06 ba=+0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=3.21
+R2[T1][GIVE_UP   ]: L=+0.99 R=+1.00 | carry=0 | base=0.34 ba=+0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.62 | wall=1.82
+R3[T1][RTB       ]: L=+1.00 R=+1.00 | carry=1 | base=0.09 ba=+0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=3.05
+R4[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.49 ba=-0.94 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.18 | wall=1.30
+
+[DEPOSIT] Robot 1 deposited! Total: 4
+  [PHERO] Laid at (1.46, -0.48) density=13 prob=1.00 total_entries=4
+  [TARGET] Robot 1 → SITE (1.46,-0.48)
+[DEPOSIT] Robot 3 deposited! Total: 5
+  [PHERO] Laid at (1.54, -0.48) density=12 prob=1.00 total_entries=5
+  [TARGET] Robot 3 → SITE (1.54,-0.48)
+[EMPTY_RTN] R2 → phero(1.46,-0.48)
+
+======================================================================
+Step 3000 (1.6 min) | Pickups: 5 | Deposits: 5 | Rate: 3.12 tags/min | phero_entries=5 phero_max=0.500
+======================================================================
+R1[T1][SITE      ]: L=+1.00 R=+1.00 | carry=0 | base=0.26 ba=-0.80 | site=1 sd=0.08 sa=-0.12 | phero=0 pd=0.00 pa=+0.00 | srch=0.12 | wall=2.20
+R2[T1][BASE_ESC  ]: L=+1.00 R=+0.00 | carry=0 | base=0.04 ba=+0.54 | site=0 sd=0.00 sa=+0.00 | phero=1 pd=0.27 pa=-0.65 | srch=0.01 | wall=3.28
+R3[T1][SITE      ]: L=+1.00 R=+0.86 | carry=0 | base=0.27 ba=+0.80 | site=1 sd=0.06 sa=-0.15 | phero=0 pd=0.00 pa=+0.00 | srch=0.11 | wall=2.25
+R4[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.64 ba=-0.64 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.30 | wall=0.91
+
+[PICKUP] Robot 1 picked up tag (density=11) | Total: 6
+[PICKUP] Robot 3 picked up tag (density=10) | Total: 7
+[PICKUP] Robot 2 picked up tag (density=9) | Total: 8
+[DEPOSIT] Robot 1 deposited! Total: 6
+  [PHERO] Laid at (1.40, -0.23) density=11 prob=1.00 total_entries=6
+  [TARGET] Robot 1 → SITE (1.40,-0.23)
+
+======================================================================
+Step 3500 (1.9 min) | Pickups: 8 | Deposits: 6 | Rate: 3.21 tags/min | phero_entries=6 phero_max=0.903
+======================================================================
+R1[T1][BASE_ESC  ]: L=+0.00 R=+1.00 | carry=0 | base=0.04 ba=-0.54 | site=1 sd=0.24 sa=+0.54 | phero=0 pd=0.00 pa=+0.00 | srch=0.02 | wall=3.30
+R2[T1][RTB       ]: L=+1.00 R=+0.47 | carry=1 | base=0.30 ba=-0.20 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=2.05
+R3[T1][RTB       ]: L=+1.00 R=+1.00 | carry=1 | base=0.10 ba=-0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=3.02
+R4[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.52 ba=-0.02 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.43 | wall=1.03
+
+[DEPOSIT] Robot 3 deposited! Total: 7
+  [PHERO] Laid at (1.56, -0.47) density=10 prob=1.00 total_entries=7
+  [TARGET] Robot 3 → SITE (1.56,-0.47)
+[DEPOSIT] Robot 2 deposited! Total: 8
+  [PHERO] Laid at (1.48, -0.15) density=9 prob=1.00 total_entries=8
+  [TARGET] Robot 2 → SITE (1.48,-0.15)
+
+======================================================================
+Step 4000 (2.1 min) | Pickups: 8 | Deposits: 8 | Rate: 3.75 tags/min | phero_entries=8 phero_max=0.757
+======================================================================
+R1[T1][SITE      ]: L=+0.88 R=+1.00 | carry=0 | base=0.35 ba=+0.59 | site=1 sd=0.09 sa=+0.35 | phero=0 pd=0.00 pa=+0.00 | srch=0.14 | wall=1.90
+R2[T1][SITE      ]: L=+1.00 R=+1.00 | carry=0 | base=0.09 ba=+0.99 | site=1 sd=0.22 sa=+0.13 | phero=0 pd=0.00 pa=+0.00 | srch=0.04 | wall=3.09
+R3[T1][SITE      ]: L=+0.88 R=+0.86 | carry=0 | base=0.25 ba=+0.98 | site=1 sd=0.08 sa=-0.04 | phero=0 pd=0.00 pa=+0.00 | srch=0.11 | wall=2.33
+R4[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.66 ba=-0.98 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.55 | wall=0.66
+
+[PICKUP] Robot 1 picked up tag (density=8) | Total: 9
+[PICKUP] Robot 2 picked up tag (density=7) | Total: 10
+[DEPOSIT] Robot 1 deposited! Total: 9
+  [PHERO] Laid at (1.67, -0.50) density=8 prob=1.00 total_entries=9
+  [TARGET] Robot 1 → SITE (1.67,-0.50)
+
+======================================================================
+Step 4500 (2.4 min) | Pickups: 10 | Deposits: 9 | Rate: 3.75 tags/min | phero_entries=9 phero_max=0.979
+======================================================================
+R1[T1][BASE_ESC  ]: L=+1.00 R=+0.00 | carry=0 | base=0.05 ba=+0.14 | site=1 sd=0.31 sa=-0.88 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=3.27
+R2[T1][RTB       ]: L=+1.00 R=+1.00 | carry=1 | base=0.22 ba=+0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=2.44
+R3[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.62 ba=-0.96 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.23 | wall=0.73
+R4[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.51 ba=-0.02 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.68 | wall=1.23
+
+[DEPOSIT] Robot 2 deposited! Total: 10
+  [PHERO] Laid at (1.48, -0.32) density=7 prob=0.99 total_entries=10
+  [TARGET] Robot 2 → SITE (1.48,-0.32)
+
+======================================================================
+Step 5000 (2.7 min) | Pickups: 10 | Deposits: 10 | Rate: 3.75 tags/min | phero_entries=10 phero_max=0.632
+======================================================================
+R1[T1][SITE      ]: L=+0.78 R=+0.79 | carry=0 | base=0.29 ba=-0.89 | site=1 sd=0.07 sa=-0.01 | phero=0 pd=0.00 pa=+0.00 | srch=0.13 | wall=2.10
+R2[T1][SITE      ]: L=+1.00 R=+0.95 | carry=0 | base=0.18 ba=-0.87 | site=1 sd=0.16 sa=-0.13 | phero=0 pd=0.00 pa=+0.00 | srch=0.07 | wall=2.64
+R3[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.58 ba=-0.35 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.36 | wall=1.39
+R4[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.13 ba=-0.06 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.80 | wall=2.91
+
+[PICKUP] Robot 2 picked up tag (density=6) | Total: 11
+
+======================================================================
+Step 5500 (2.9 min) | Pickups: 11 | Deposits: 10 | Rate: 3.41 tags/min | phero_entries=9 phero_max=0.284
+======================================================================
+R1[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.65 ba=+0.99 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.25 | wall=0.41
+R2[T1][RTB       ]: L=+1.00 R=+1.00 | carry=1 | base=0.14 ba=-0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=2.83
+R3[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.53 ba=-0.58 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.48 | wall=0.88
+R4[T1][EXPLORE   ]: L=+1.00 R=+0.82 | carry=0 | base=0.06 ba=-0.76 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.93 | wall=3.24
+
+[DEPOSIT] Robot 2 deposited! Total: 11
+  [PHERO] Laid at (1.48, -0.17) density=6 prob=0.97 total_entries=10
+  [TARGET] Robot 2 → SITE (1.48,-0.17)
+
+======================================================================
+Step 6000 (3.2 min) | Pickups: 11 | Deposits: 11 | Rate: 3.44 tags/min | phero_entries=9 phero_max=0.539
+======================================================================
+R1[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.41 ba=+0.17 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.38 | wall=1.50
+R2[T1][SITE      ]: L=+0.92 R=+1.00 | carry=0 | base=0.26 ba=+0.87 | site=1 sd=0.12 sa=+0.32 | phero=0 pd=0.00 pa=+0.00 | srch=0.10 | wall=2.39
+R3[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.69 ba=-0.46 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.61 | wall=0.41
+R4[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.23 ba=-0.73 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=1.00 | wall=2.35
+
+[PICKUP] Robot 2 picked up tag (density=5) | Total: 12
+[GIVE-UP] R4 giving up after 4620 steps
+
+======================================================================
+Step 6500 (3.5 min) | Pickups: 12 | Deposits: 11 | Rate: 3.17 tags/min | phero_entries=8 phero_max=0.242
+======================================================================
+R1[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.21 ba=+0.56 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.50 | wall=2.52
+R2[T1][RTB       ]: L=+1.00 R=+1.00 | carry=1 | base=0.13 ba=+0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=2.87
+R3[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.74 ba=-0.63 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.73 | wall=0.47
+R4[T1][GIVE_UP   ]: L=+1.00 R=+0.47 | carry=0 | base=0.50 ba=-0.20 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=1.00 | wall=1.53
+
+[DEPOSIT] Robot 2 deposited! Total: 12
+  [PHERO] Laid at (1.63, -0.41) density=5 prob=0.92 total_entries=9
+  [TARGET] Robot 2 → SITE (1.63,-0.41)
+[PICKUP] Robot 3 picked up tag (density=16) | Total: 13
+
+======================================================================
+Step 7000 (3.7 min) | Pickups: 13 | Deposits: 12 | Rate: 3.21 tags/min | phero_entries=7 phero_max=0.529
+======================================================================
+R1[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.48 ba=+0.86 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.63 | wall=1.47
+R2[T1][SITE      ]: L=+1.00 R=+0.93 | carry=0 | base=0.26 ba=-0.87 | site=1 sd=0.19 sa=-0.34 | phero=0 pd=0.00 pa=+0.00 | srch=0.10 | wall=2.26
+R3[T1][RTB       ]: L=+1.00 R=+1.00 | carry=1 | base=0.45 ba=-0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=1.59
+R4[T1][GIVE_UP   ]: L=+1.00 R=+1.00 | carry=0 | base=0.11 ba=-0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=1.00 | wall=3.05
+
+[EMPTY_RTN] R4 → phero(1.63,-0.41)
+[PICKUP] Robot 2 picked up tag (density=4) | Total: 14
+
+======================================================================
+Step 7500 (4.0 min) | Pickups: 14 | Deposits: 12 | Rate: 3.00 tags/min | phero_entries=7 phero_max=0.238
+======================================================================
+R1[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.74 ba=+0.78 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.75 | wall=0.48
+R2[T1][RTB       ]: L=+1.00 R=+1.00 | carry=1 | base=0.19 ba=-0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=2.58
+R3[T1][RTB       ]: L=+1.00 R=+1.00 | carry=1 | base=0.06 ba=-0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=3.24
+R4[T1][PHERO     ]: L=+0.95 R=+1.00 | carry=0 | base=0.26 ba=+0.88 | site=0 sd=0.00 sa=+0.00 | phero=1 pd=0.17 pa=+0.30 | srch=0.10 | wall=2.56
+
+[DEPOSIT] Robot 3 deposited! Total: 13
+  [PHERO] Laid at (-3.06, -1.82) density=16 prob=1.00 total_entries=8
+  [TARGET] Robot 3 → SITE (-3.06,-1.82)
+[DEPOSIT] Robot 2 deposited! Total: 14
+  [PHERO] Laid at (1.78, -0.06) density=4 prob=0.82 total_entries=9
+  [TARGET] Robot 2 → SITE (1.78,-0.06)
+[PICKUP] Robot 4 picked up tag (density=3) | Total: 15
+
+======================================================================
+Step 8000 (4.3 min) | Pickups: 15 | Deposits: 14 | Rate: 3.28 tags/min | phero_entries=7 phero_max=0.595
+======================================================================
+R1[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.48 ba=+0.13 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.88 | wall=1.32
+R2[T1][SITE      ]: L=+1.00 R=+1.00 | carry=0 | base=0.20 ba=+0.98 | site=1 sd=0.16 sa=+0.09 | phero=0 pd=0.00 pa=+0.00 | srch=0.08 | wall=2.51
+R3[T1][SITE      ]: L=+0.80 R=+0.80 | carry=0 | base=0.32 ba=+0.93 | site=1 sd=0.40 sa=-0.05 | phero=0 pd=0.00 pa=+0.00 | srch=0.12 | wall=2.10
+R4[T1][RTB       ]: L=+1.00 R=+1.00 | carry=1 | base=0.25 ba=+0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=2.27
+
+[PICKUP] Robot 2 picked up tag (density=2) | Total: 16
+[DEPOSIT] Robot 4 deposited! Total: 15
+  [TARGET] Robot 4 → SITE (1.64,-0.40)
+
+======================================================================
+Step 8500 (4.5 min) | Pickups: 16 | Deposits: 15 | Rate: 3.31 tags/min | phero_entries=6 phero_max=0.268
+======================================================================
+R1[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.19 ba=+0.40 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=1.00 | wall=2.65
+R2[T1][RTB       ]: L=+1.00 R=+1.00 | carry=1 | base=0.22 ba=+0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=2.43
+R3[T1][SITE      ]: L=+0.29 R=+0.32 | carry=0 | base=0.55 ba=-0.96 | site=1 sd=0.17 sa=+0.06 | phero=0 pd=0.00 pa=+0.00 | srch=0.25 | wall=1.15
+R4[T1][SITE      ]: L=+1.00 R=+0.65 | carry=0 | base=0.06 ba=-0.80 | site=1 sd=0.29 sa=+0.09 | phero=0 pd=0.00 pa=+0.00 | srch=0.04 | wall=3.21
+
+[DEPOSIT] Robot 2 deposited! Total: 16
+  [TARGET] Robot 2 → SITE (1.57,-0.26)
+[PICKUP] Robot 3 picked up tag (density=15) | Total: 17
+
+======================================================================
+Step 9000 (4.8 min) | Pickups: 17 | Deposits: 16 | Rate: 3.33 tags/min | phero_entries=5 phero_max=0.120
+======================================================================
+R1[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.38 ba=+0.84 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=1.00 | wall=1.70
+R2[T1][SITE      ]: L=+1.00 R=+1.00 | carry=0 | base=0.18 ba=-0.88 | site=1 sd=0.16 sa=-0.09 | phero=0 pd=0.00 pa=+0.00 | srch=0.07 | wall=2.64
+R3[T1][RTB       ]: L=+1.00 R=+1.00 | carry=1 | base=0.50 ba=+0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=1.40
+R4[T1][EXPLORE   ]: L=+1.00 R=+0.43 | carry=0 | base=0.34 ba=+0.81 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.16 | wall=1.87
+
+[PICKUP] Robot 2 picked up tag (density=1) | Total: 18
+[GIVE-UP] R4 giving up after 1114 steps
+
+======================================================================
+Step 9500 (5.1 min) | Pickups: 18 | Deposits: 16 | Rate: 3.16 tags/min | phero_entries=4 phero_max=0.054
+======================================================================
+R1[T1][WALL_ESC  ]: L=+0.00 R=+1.00 | carry=0 | base=0.74 ba=+0.86 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=1.00 | wall=0.34
+R2[T1][RTB       ]: L=+1.00 R=+1.00 | carry=1 | base=0.18 ba=-0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=2.60
+R3[T1][RTB       ]: L=+1.00 R=+1.00 | carry=1 | base=0.11 ba=+0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=3.03
+R4[T1][GIVE_UP   ]: L=+1.00 R=+0.16 | carry=0 | base=0.40 ba=-0.33 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.29 | wall=1.62
+
+[DEPOSIT] Robot 3 deposited! Total: 17
+  [PHERO] Laid at (-2.60, -1.47) density=15 prob=1.00 total_entries=5
+  [TARGET] Robot 3 → SITE (-2.60,-1.47)
+[DEPOSIT] Robot 2 deposited! Total: 18
+  [TARGET] Robot 2 → SITE (1.64,-0.23)
+[EMPTY_RTN] R4 → phero(1.78,-0.06)
+
+======================================================================
+Step 10000 (5.3 min) | Pickups: 18 | Deposits: 18 | Rate: 3.38 tags/min | phero_entries=4 phero_max=0.509
+======================================================================
+R1[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.65 ba=+0.40 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=1.00 | wall=0.79
+R2[T1][SITE      ]: L=+1.00 R=+1.00 | carry=0 | base=0.21 ba=+0.96 | site=1 sd=0.16 sa=+0.25 | phero=0 pd=0.00 pa=+0.00 | srch=0.08 | wall=2.58
+R3[T1][SITE      ]: L=+0.60 R=+0.85 | carry=0 | base=0.27 ba=-0.95 | site=1 sd=0.35 sa=-0.11 | phero=0 pd=0.00 pa=+0.00 | srch=0.11 | wall=2.56
+R4[T1][BASE_ESC  ]: L=+0.00 R=+1.00 | carry=0 | base=0.05 ba=-0.26 | site=0 sd=0.00 sa=+0.00 | phero=1 pd=0.32 pa=+0.86 | srch=0.01 | wall=3.29
+
+[GIVE-UP] R1 giving up after 5763 steps
+
+======================================================================
+Step 10500 (5.6 min) | Pickups: 18 | Deposits: 18 | Rate: 3.21 tags/min | phero_entries=4 phero_max=0.229
+======================================================================
+R1[T1][GIVE_UP   ]: L=+1.00 R=+1.00 | carry=0 | base=0.46 ba=+0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=1.00 | wall=1.30
+R2[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.26 ba=-0.22 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.21 | wall=2.27
+R3[T1][SITE      ]: L=+0.78 R=+0.80 | carry=0 | base=0.59 ba=-0.92 | site=1 sd=0.02 sa=+0.01 | phero=0 pd=0.00 pa=+0.00 | srch=0.23 | wall=0.97
+R4[T1][PHERO     ]: L=+0.40 R=+0.41 | carry=0 | base=0.14 ba=+0.96 | site=0 sd=0.00 sa=+0.00 | phero=1 pd=0.24 pa=+0.15 | srch=0.13 | wall=2.88
+
+[PICKUP] Robot 3 picked up tag (density=14) | Total: 19
+
+======================================================================
+Step 11000 (5.9 min) | Pickups: 19 | Deposits: 18 | Rate: 3.07 tags/min | phero_entries=3 phero_max=0.103
+======================================================================
+R1[T1][GIVE_UP   ]: L=+1.00 R=+1.00 | carry=0 | base=0.11 ba=-0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=1.00 | wall=2.96
+R2[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.25 ba=-0.77 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.33 | wall=2.39
+R3[T1][RTB       ]: L=+1.00 R=+1.00 | carry=1 | base=0.34 ba=-0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=2.00
+R4[T1][PHERO     ]: L=+0.80 R=+0.89 | carry=0 | base=0.34 ba=+0.81 | site=0 sd=0.00 sa=+0.00 | phero=1 pd=0.04 pa=+0.14 | srch=0.26 | wall=1.85
+
+[EMPTY_RTN] R1 → phero(-2.60,-1.47)
+[DEPOSIT] Robot 3 deposited! Total: 19
+  [PHERO] Laid at (-2.66, -1.49) density=14 prob=1.00 total_entries=4
+  [TARGET] Robot 3 → SITE (-2.66,-1.49)
+
+======================================================================
+Step 11500 (6.1 min) | Pickups: 19 | Deposits: 19 | Rate: 3.10 tags/min | phero_entries=4 phero_max=0.819
+======================================================================
+R1[T1][PHERO     ]: L=+1.00 R=+1.00 | carry=0 | base=0.20 ba=-0.90 | site=0 sd=0.00 sa=+0.00 | phero=1 pd=0.45 pa=-0.16 | srch=0.10 | wall=2.62
+R2[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.58 ba=-0.79 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.46 | wall=1.17
+R3[T1][SITE      ]: L=+0.59 R=+1.00 | carry=0 | base=0.06 ba=-1.00 | site=1 sd=0.56 sa=+0.11 | phero=0 pd=0.00 pa=+0.00 | srch=0.03 | wall=3.23
+R4[T1][EXPLORE   ]: L=+1.00 R=+0.32 | carry=0 | base=0.38 ba=-0.93 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.38 | wall=1.64
+
+[PICKUP] Robot 2 picked up tag (density=13) | Total: 20
+
+======================================================================
+Step 12000 (6.4 min) | Pickups: 20 | Deposits: 19 | Rate: 2.97 tags/min | phero_entries=2 phero_max=0.368
+======================================================================
+R1[T1][PHERO     ]: L=+1.00 R=+1.00 | carry=0 | base=0.58 ba=-0.97 | site=0 sd=0.00 sa=+0.00 | phero=1 pd=0.22 pa=-0.50 | srch=0.23 | wall=1.26
+R2[T1][RTB       ]: L=+1.00 R=+1.00 | carry=1 | base=0.34 ba=-0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=2.08
+R3[T1][SITE      ]: L=+1.00 R=+1.00 | carry=0 | base=0.43 ba=+0.95 | site=1 sd=0.18 sa=-0.05 | phero=0 pd=0.00 pa=+0.00 | srch=0.16 | wall=1.63
+R4[T1][EXPLORE   ]: L=+1.00 R=+0.47 | carry=0 | base=0.42 ba=-0.46 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.51 | wall=1.44
+
+[PICKUP] Robot 3 picked up tag (density=12) | Total: 21
+[GIVE-UP] R4 giving up after 2329 steps
+[DEPOSIT] Robot 2 deposited! Total: 20
+  [PHERO] Laid at (-2.53, -1.67) density=13 prob=1.00 total_entries=3
+  [TARGET] Robot 2 → SITE (-2.53,-1.67)
+
+======================================================================
+Step 12500 (6.7 min) | Pickups: 21 | Deposits: 20 | Rate: 3.00 tags/min | phero_entries=3 phero_max=0.810
+======================================================================
+R1[T1][PHERO     ]: L=+1.00 R=+0.94 | carry=0 | base=0.74 ba=-0.35 | site=0 sd=0.00 sa=+0.00 | phero=1 pd=0.14 pa=-0.29 | srch=0.35 | wall=0.37
+R2[T1][SITE      ]: L=+1.00 R=+1.00 | carry=0 | base=0.07 ba=-0.92 | site=1 sd=0.55 sa=+0.21 | phero=0 pd=0.00 pa=+0.00 | srch=0.03 | wall=3.18
+R3[T1][RTB       ]: L=+1.00 R=+1.00 | carry=1 | base=0.55 ba=-0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=1.05
+R4[T1][GIVE_UP   ]: L=+1.00 R=+1.00 | carry=0 | base=0.28 ba=-0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.63 | wall=2.17
+
+[EMPTY_RTN] R4 → phero(-2.53,-1.67)
+[PICKUP] Robot 1 picked up tag (density=11) | Total: 22
+
+======================================================================
+Step 13000 (6.9 min) | Pickups: 22 | Deposits: 20 | Rate: 2.88 tags/min | phero_entries=3 phero_max=0.364
+======================================================================
+R1[T1][RTB       ]: L=+0.00 R=+1.00 | carry=1 | base=0.63 ba=+0.81 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=0.80
+R2[T1][SITE      ]: L=+0.95 R=+1.00 | carry=0 | base=0.42 ba=+0.76 | site=1 sd=0.25 sa=+0.03 | phero=0 pd=0.00 pa=+0.00 | srch=0.16 | wall=1.48
+R3[T1][RTB       ]: L=+1.00 R=+1.00 | carry=1 | base=0.17 ba=-0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=2.77
+R4[T1][PHERO     ]: L=+1.00 R=-0.94 | carry=0 | base=0.05 ba=-0.65 | site=0 sd=0.00 sa=+0.00 | phero=1 pd=0.63 pa=-0.27 | srch=0.05 | wall=3.31
+
+[DEPOSIT] Robot 3 deposited! Total: 21
+  [PHERO] Laid at (-2.72, -1.50) density=12 prob=1.00 total_entries=4
+  [TARGET] Robot 3 → SITE (-2.72,-1.50)
+[PICKUP] Robot 2 picked up tag (density=10) | Total: 23
+
+======================================================================
+Step 13500 (7.2 min) | Pickups: 23 | Deposits: 21 | Rate: 2.92 tags/min | phero_entries=4 phero_max=0.570
+======================================================================
+R1[T1][RTB       ]: L=+1.00 R=+1.00 | carry=1 | base=0.32 ba=+0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=2.16
+R2[T1][RTB       ]: L=+0.94 R=+1.00 | carry=1 | base=0.59 ba=+0.02 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=1.13
+R3[T1][SITE      ]: L=+0.99 R=+1.00 | carry=0 | base=0.23 ba=+0.94 | site=1 sd=0.41 sa=+0.01 | phero=0 pd=0.00 pa=+0.00 | srch=0.09 | wall=2.45
+R4[T1][PHERO     ]: L=+1.00 R=+1.00 | carry=0 | base=0.16 ba=-0.87 | site=0 sd=0.00 sa=+0.00 | phero=1 pd=0.45 pa=+0.05 | srch=0.18 | wall=2.91
+
+[DEPOSIT] Robot 1 deposited! Total: 22
+  [PHERO] Laid at (-2.68, -1.55) density=11 prob=1.00 total_entries=5
+  [TARGET] Robot 1 → SITE (-2.68,-1.55)
+
+======================================================================
+Step 14000 (7.5 min) | Pickups: 23 | Deposits: 22 | Rate: 2.95 tags/min | phero_entries=4 phero_max=0.782
+======================================================================
+R1[T1][SITE      ]: L=+1.00 R=+1.00 | carry=0 | base=0.08 ba=+0.93 | site=1 sd=0.55 sa=-0.22 | phero=0 pd=0.00 pa=+0.00 | srch=0.04 | wall=3.17
+R2[T1][RTB       ]: L=+1.00 R=+1.00 | carry=1 | base=0.20 ba=+0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=2.69
+R3[T1][SITE      ]: L=+0.32 R=+0.31 | carry=0 | base=0.58 ba=-0.96 | site=1 sd=0.06 sa=-0.12 | phero=0 pd=0.00 pa=+0.00 | srch=0.21 | wall=1.05
+R4[T1][PHERO     ]: L=+1.00 R=+1.00 | carry=0 | base=0.54 ba=-0.96 | site=0 sd=0.00 sa=+0.00 | phero=1 pd=0.10 pa=+0.29 | srch=0.30 | wall=1.11
+
+[PICKUP] Robot 4 picked up tag (density=9) | Total: 24
+[DEPOSIT] Robot 2 deposited! Total: 23
+  [PHERO] Laid at (-2.54, -1.70) density=10 prob=1.00 total_entries=5
+  [TARGET] Robot 2 → SITE (-2.54,-1.70)
+[PICKUP] Robot 3 picked up tag (density=8) | Total: 25
+
+======================================================================
+Step 14500 (7.7 min) | Pickups: 25 | Deposits: 23 | Rate: 2.97 tags/min | phero_entries=5 phero_max=0.616
+======================================================================
+R1[T1][SITE      ]: L=+1.00 R=+1.00 | carry=0 | base=0.42 ba=-0.85 | site=1 sd=0.22 sa=-0.01 | phero=0 pd=0.00 pa=+0.00 | srch=0.16 | wall=1.91
+R2[T1][SITE      ]: L=+1.00 R=+1.00 | carry=0 | base=0.20 ba=+0.97 | site=1 sd=0.46 sa=-0.29 | phero=0 pd=0.00 pa=+0.00 | srch=0.08 | wall=2.61
+R3[T1][RTB       ]: L=+0.92 R=+1.00 | carry=1 | base=0.61 ba=+0.03 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=0.93
+R4[T1][RTB       ]: L=+1.00 R=+1.00 | carry=1 | base=0.51 ba=+0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=1.32
+
+[PICKUP] Robot 1 picked up tag (density=7) | Total: 26
+
+======================================================================
+Step 15000 (8.0 min) | Pickups: 26 | Deposits: 23 | Rate: 2.88 tags/min | phero_entries=5 phero_max=0.277
+======================================================================
+R1[T1][RTB       ]: L=+1.00 R=+0.99 | carry=1 | base=0.59 ba=-0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=0.88
+R2[T1][SITE      ]: L=+1.00 R=+0.95 | carry=0 | base=0.54 ba=-0.78 | site=1 sd=0.17 sa=-0.16 | phero=0 pd=0.00 pa=+0.00 | srch=0.20 | wall=1.50
+R3[T1][RTB       ]: L=+1.00 R=+1.00 | carry=1 | base=0.22 ba=+0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=2.56
+R4[T1][RTB       ]: L=+1.00 R=+1.00 | carry=1 | base=0.12 ba=+0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=2.99
+
+[DEPOSIT] Robot 4 deposited! Total: 24
+  [PHERO] Laid at (-2.86, -1.46) density=9 prob=1.00 total_entries=6
+  [TARGET] Robot 4 → SITE (-2.86,-1.46)
+[PICKUP] Robot 2 picked up tag (density=6) | Total: 27
+[DEPOSIT] Robot 3 deposited! Total: 25
+  [PHERO] Laid at (-2.72, -1.58) density=8 prob=1.00 total_entries=7
+  [TARGET] Robot 3 → SITE (-2.72,-1.58)
+
+======================================================================
+Step 15500 (8.3 min) | Pickups: 27 | Deposits: 25 | Rate: 3.02 tags/min | phero_entries=7 phero_max=0.653
+======================================================================
+R1[T1][RTB       ]: L=+1.00 R=+1.00 | carry=1 | base=0.21 ba=-0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=2.59
+R2[T1][RTB       ]: L=+1.00 R=+1.00 | carry=1 | base=0.46 ba=-0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=1.62
+R3[T1][SITE      ]: L=+0.89 R=+0.89 | carry=0 | base=0.16 ba=-0.92 | site=1 sd=0.48 sa=-0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.07 | wall=2.90
+R4[T1][SITE      ]: L=+1.00 R=+1.00 | carry=0 | base=0.27 ba=-0.92 | site=1 sd=0.38 sa=+0.03 | phero=0 pd=0.00 pa=+0.00 | srch=0.10 | wall=2.39
+
+[DEPOSIT] Robot 1 deposited! Total: 26
+  [PHERO] Laid at (-2.82, -1.56) density=7 prob=0.99 total_entries=7
+  [TARGET] Robot 1 → SITE (-2.82,-1.56)
+
+======================================================================
+Step 16000 (8.5 min) | Pickups: 27 | Deposits: 26 | Rate: 3.05 tags/min | phero_entries=7 phero_max=0.619
+======================================================================
+R1[T1][SITE      ]: L=+1.00 R=+1.00 | carry=0 | base=0.20 ba=-0.97 | site=1 sd=0.49 sa=+0.27 | phero=0 pd=0.00 pa=+0.00 | srch=0.08 | wall=2.53
+R2[T1][RTB       ]: L=+1.00 R=+1.00 | carry=1 | base=0.08 ba=+0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=3.17
+R3[T1][SITE      ]: L=+0.61 R=+0.60 | carry=0 | base=0.36 ba=-0.98 | site=1 sd=0.28 sa=-0.04 | phero=0 pd=0.00 pa=+0.00 | srch=0.19 | wall=2.06
+R4[T1][SITE      ]: L=+0.82 R=+1.00 | carry=0 | base=0.64 ba=+0.87 | site=1 sd=0.05 sa=+0.34 | phero=0 pd=0.00 pa=+0.00 | srch=0.23 | wall=0.57
+
+[DEPOSIT] Robot 2 deposited! Total: 27
+  [PHERO] Laid at (-2.53, -1.82) density=6 prob=0.97 total_entries=8
+  [TARGET] Robot 2 → SITE (-2.53,-1.82)
+[PICKUP] Robot 4 picked up tag (density=5) | Total: 28
+
+======================================================================
+Step 16500 (8.8 min) | Pickups: 28 | Deposits: 27 | Rate: 3.07 tags/min | phero_entries=8 phero_max=0.477
+======================================================================
+R1[T1][SITE      ]: L=+0.95 R=+1.00 | carry=0 | base=0.58 ba=+0.88 | site=1 sd=0.32 sa=+0.40 | phero=0 pd=0.00 pa=+0.00 | srch=0.20 | wall=0.64
+R2[T1][SITE      ]: L=+1.00 R=+1.00 | carry=0 | base=0.32 ba=+0.98 | site=1 sd=0.37 sa=-0.30 | phero=0 pd=0.00 pa=+0.00 | srch=0.12 | wall=2.08
+R3[T1][SITE      ]: L=+0.24 R=+0.24 | carry=0 | base=0.53 ba=-0.96 | site=1 sd=0.11 sa=-0.08 | phero=0 pd=0.00 pa=+0.00 | srch=0.32 | wall=1.32
+R4[T1][RTB       ]: L=+1.00 R=+1.00 | carry=1 | base=0.42 ba=-0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=1.75
+
+[PICKUP] Robot 3 picked up tag (density=4) | Total: 29
+[DEPOSIT] Robot 4 deposited! Total: 28
+  [PHERO] Laid at (-2.68, -1.63) density=5 prob=0.92 total_entries=8
+  [TARGET] Robot 4 → SITE (-2.68,-1.63)
+
+======================================================================
+Step 17000 (9.1 min) | Pickups: 29 | Deposits: 28 | Rate: 3.09 tags/min | phero_entries=8 phero_max=0.961
+======================================================================
+R1[T1][SITE      ]: L=+1.00 R=+1.00 | carry=0 | base=0.58 ba=+0.60 | site=1 sd=0.08 sa=-0.24 | phero=0 pd=0.00 pa=+0.00 | srch=0.32 | wall=0.92
+R2[T1][SITE      ]: L=+1.00 R=+0.77 | carry=0 | base=0.64 ba=-0.56 | site=1 sd=0.19 sa=-0.13 | phero=0 pd=0.00 pa=+0.00 | srch=0.24 | wall=0.97
+R3[T1][RTB       ]: L=+1.00 R=+0.94 | carry=1 | base=0.62 ba=-0.02 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=0.78
+R4[T1][BASE_ESC  ]: L=+0.00 R=+1.00 | carry=0 | base=0.05 ba=-0.25 | site=1 sd=0.59 sa=+0.75 | phero=0 pd=0.00 pa=+0.00 | srch=0.01 | wall=3.31
+
+
+======================================================================
+Step 17500 (9.3 min) | Pickups: 29 | Deposits: 28 | Rate: 3.00 tags/min | phero_entries=7 phero_max=0.432
+======================================================================
+R1[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.60 ba=-0.14 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.45 | wall=0.71
+R2[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.51 ba=-0.25 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.37 | wall=1.22
+R3[T1][RTB       ]: L=+1.00 R=+1.00 | carry=1 | base=0.24 ba=+0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=2.43
+R4[T1][SITE      ]: L=+1.00 R=+1.00 | carry=0 | base=0.37 ba=+0.97 | site=1 sd=0.30 sa=+0.16 | phero=0 pd=0.00 pa=+0.00 | srch=0.13 | wall=1.75
+
+[DEPOSIT] Robot 3 deposited! Total: 29
+  [PHERO] Laid at (-2.80, -1.61) density=4 prob=0.82 total_entries=8
+  [TARGET] Robot 3 → SITE (-2.80,-1.61)
+
+======================================================================
+Step 18000 (9.6 min) | Pickups: 29 | Deposits: 29 | Rate: 3.02 tags/min | phero_entries=8 phero_max=0.671
+======================================================================
+R1[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.30 ba=-0.33 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.57 | wall=2.03
+R2[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.37 ba=-0.45 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.49 | wall=1.81
+R3[T1][SITE      ]: L=+1.00 R=+1.00 | carry=0 | base=0.15 ba=-0.91 | site=1 sd=0.51 sa=+0.01 | phero=0 pd=0.00 pa=+0.00 | srch=0.06 | wall=2.94
+R4[T1][EXPLORE   ]: L=+1.00 R=+0.93 | carry=0 | base=0.64 ba=+0.40 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.26 | wall=0.84
+
+
+======================================================================
+Step 18500 (9.9 min) | Pickups: 29 | Deposits: 29 | Rate: 2.94 tags/min | phero_entries=7 phero_max=0.302
+======================================================================
+R1[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.35 ba=-0.73 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.70 | wall=1.78
+R2[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.49 ba=-0.73 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.62 | wall=1.17
+R3[T1][SITE      ]: L=+1.00 R=+1.00 | carry=0 | base=0.53 ba=-0.98 | site=1 sd=0.12 sa=+0.04 | phero=0 pd=0.00 pa=+0.00 | srch=0.19 | wall=1.20
+R4[T1][EXPLORE   ]: L=+1.00 R=+0.78 | carry=0 | base=0.79 ba=-0.09 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.38 | wall=0.38
+
+[PICKUP] Robot 3 picked up tag (density=3) | Total: 30
+
+======================================================================
+Step 19000 (10.1 min) | Pickups: 30 | Deposits: 29 | Rate: 2.86 tags/min | phero_entries=6 phero_max=0.136
+======================================================================
+R1[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.67 ba=-0.87 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.82 | wall=0.37
+R2[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.53 ba=-0.21 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.74 | wall=0.87
+R3[T1][RTB       ]: L=+1.00 R=+1.00 | carry=1 | base=0.48 ba=+0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=1.46
+R4[T1][WALL_ESC  ]: L=+1.00 R=+1.00 | carry=0 | base=0.71 ba=+0.54 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.51 | wall=0.35
+
+
+======================================================================
+Step 19500 (10.4 min) | Pickups: 30 | Deposits: 29 | Rate: 2.79 tags/min | phero_entries=5 phero_max=0.061
+======================================================================
+R1[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.55 ba=-0.44 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.95 | wall=1.48
+R2[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.32 ba=-0.46 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.87 | wall=2.25
+R3[T1][RTB       ]: L=+1.00 R=+1.00 | carry=1 | base=0.10 ba=+0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=3.09
+R4[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.43 ba=+0.28 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.63 | wall=1.39
+
+[DEPOSIT] Robot 3 deposited! Total: 30
+  [PHERO] Laid at (-2.84, -1.63) density=3 prob=0.65 total_entries=5
+  [TARGET] Robot 3 → SITE (-2.84,-1.63)
+
+======================================================================
+Step 20000 (10.7 min) | Pickups: 30 | Deposits: 30 | Rate: 2.81 tags/min | phero_entries=5 phero_max=0.495
+======================================================================
+R1[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.63 ba=-0.15 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=1.00 | wall=0.44
+R2[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.47 ba=-0.76 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.99 | wall=1.26
+R3[T1][SITE      ]: L=+1.00 R=+1.00 | carry=0 | base=0.30 ba=+0.98 | site=1 sd=0.44 sa=-0.32 | phero=0 pd=0.00 pa=+0.00 | srch=0.11 | wall=2.18
+R4[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.38 ba=+0.63 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.76 | wall=1.97
+
+
+======================================================================
+Step 20500 (10.9 min) | Pickups: 30 | Deposits: 30 | Rate: 2.74 tags/min | phero_entries=3 phero_max=0.222
+======================================================================
+R1[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.34 ba=-0.32 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=1.00 | wall=1.91
+R2[T1][WALL_ESC  ]: L=+1.00 R=+0.00 | carry=0 | base=0.77 ba=-0.54 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=1.00 | wall=0.35
+R3[T1][SITE      ]: L=+1.00 R=+0.96 | carry=0 | base=0.62 ba=-0.73 | site=1 sd=0.13 sa=-0.16 | phero=0 pd=0.00 pa=+0.00 | srch=0.23 | wall=1.18
+R4[T1][EXPLORE   ]: L=+1.00 R=+0.89 | carry=0 | base=0.57 ba=-0.29 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.88 | wall=1.22
+
+[GIVE-UP] R1 giving up after 4818 steps
+[PICKUP] Robot 3 picked up tag (density=2) | Total: 31
+[EMPTY_RTN] R1 → phero(-2.84,-1.63)
+
+======================================================================
+Step 21000 (11.2 min) | Pickups: 31 | Deposits: 30 | Rate: 2.68 tags/min | phero_entries=3 phero_max=0.100
+======================================================================
+R1[T1][BASE_ESC  ]: L=+0.30 R=+1.00 | carry=0 | base=0.05 ba=-0.82 | site=0 sd=0.00 sa=+0.00 | phero=1 pd=0.68 pa=-0.48 | srch=0.02 | wall=3.31
+R2[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.72 ba=-0.15 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=1.00 | wall=0.50
+R3[T1][RTB       ]: L=+1.00 R=+1.00 | carry=1 | base=0.39 ba=-0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=1.92
+R4[T1][EXPLORE   ]: L=+1.00 R=+0.65 | carry=0 | base=0.21 ba=+0.10 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=1.00 | wall=2.75
+
+[GIVE-UP] R4 giving up after 4434 steps
+[DEPOSIT] Robot 3 deposited! Total: 31
+  [PHERO] Laid at (-2.63, -1.92) density=2 prob=0.42 total_entries=3
+  [TARGET] Robot 3 → SITE (-2.63,-1.92)
+
+======================================================================
+Step 21500 (11.5 min) | Pickups: 31 | Deposits: 31 | Rate: 2.70 tags/min | phero_entries=3 phero_max=0.900
+======================================================================
+R1[T1][PHERO     ]: L=+1.00 R=+1.00 | carry=0 | base=0.35 ba=-0.84 | site=0 sd=0.00 sa=+0.00 | phero=1 pd=0.44 pa=-0.20 | srch=0.15 | wall=1.91
+R2[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.40 ba=-0.24 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=1.00 | wall=1.52
+R3[T1][BASE_ESC  ]: L=+0.00 R=+1.00 | carry=0 | base=0.04 ba=-0.56 | site=1 sd=0.61 sa=+0.50 | phero=0 pd=0.00 pa=+0.00 | srch=0.02 | wall=3.31
+R4[T1][GIVE_UP   ]: L=+1.00 R=+0.27 | carry=0 | base=0.40 ba=-0.28 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=1.00 | wall=1.58
+
+[EMPTY_RTN] R4 → phero(-2.63,-1.92)
+
+======================================================================
+Step 22000 (11.7 min) | Pickups: 31 | Deposits: 31 | Rate: 2.64 tags/min | phero_entries=3 phero_max=0.404
+======================================================================
+R1[T1][PHERO     ]: L=+1.00 R=+0.53 | carry=0 | base=0.70 ba=-0.78 | site=0 sd=0.00 sa=+0.00 | phero=1 pd=0.26 pa=-0.39 | srch=0.27 | wall=0.78
+R2[T1][EXPLORE   ]: L=+1.00 R=+0.78 | carry=0 | base=0.29 ba=-0.54 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=1.00 | wall=2.30
+R3[T1][SITE      ]: L=+1.00 R=+1.00 | carry=0 | base=0.40 ba=+0.86 | site=1 sd=0.34 sa=+0.15 | phero=0 pd=0.00 pa=+0.00 | srch=0.14 | wall=1.59
+R4[T1][BASE_ESC  ]: L=+0.00 R=+1.00 | carry=0 | base=0.05 ba=-0.26 | site=0 sd=0.00 sa=+0.00 | phero=1 pd=0.68 pa=+0.03 | srch=0.01 | wall=3.29
+
+[PICKUP] Robot 3 picked up tag (density=1) | Total: 32
+
+======================================================================
+Step 22500 (12.0 min) | Pickups: 32 | Deposits: 31 | Rate: 2.58 tags/min | phero_entries=2 phero_max=0.182
+======================================================================
+R1[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.66 ba=+0.17 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.40 | wall=0.64
+R2[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.09 ba=+0.88 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=1.00 | wall=3.05
+R3[T1][RTB       ]: L=+0.48 R=+1.00 | carry=1 | base=0.65 ba=+0.20 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=0.83
+R4[T1][PHERO     ]: L=+1.00 R=+1.00 | carry=0 | base=0.19 ba=-0.92 | site=0 sd=0.00 sa=+0.00 | phero=1 pd=0.47 pa=+0.09 | srch=0.13 | wall=2.74
+
+
+======================================================================
+Step 23000 (12.3 min) | Pickups: 32 | Deposits: 31 | Rate: 2.53 tags/min | phero_entries=2 phero_max=0.082
+======================================================================
+R1[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.38 ba=+0.34 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.52 | wall=1.88
+R2[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.47 ba=+0.98 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=1.00 | wall=1.34
+R3[T1][RTB       ]: L=+1.00 R=+1.00 | carry=1 | base=0.27 ba=+0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.00 | wall=2.41
+R4[T1][PHERO     ]: L=+0.96 R=+1.00 | carry=0 | base=0.57 ba=+0.92 | site=0 sd=0.00 sa=+0.00 | phero=1 pd=0.12 pa=+0.16 | srch=0.26 | wall=1.04
+
+[GIVE-UP] R2 giving up after 7095 steps
+[DEPOSIT] Robot 3 deposited! Total: 32
+  [TARGET] Robot 3 → PHERO (-2.63,-1.92)
+
+======================================================================
+Step 23500 (12.5 min) | Pickups: 32 | Deposits: 32 | Rate: 2.55 tags/min | phero_entries=2 phero_max=0.037
+======================================================================
+R1[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.37 ba=+0.65 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.65 | wall=1.92
+R2[T1][GIVE_UP   ]: L=+1.00 R=+1.00 | carry=0 | base=0.38 ba=+0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=1.00 | wall=1.80
+R3[T1][PHERO     ]: L=+1.00 R=+1.00 | carry=0 | base=0.13 ba=-0.92 | site=0 sd=0.00 sa=+0.00 | phero=1 pd=0.53 pa=+0.04 | srch=0.06 | wall=3.04
+R4[T1][EXPLORE   ]: L=+1.00 R=+0.92 | carry=0 | base=0.73 ba=+0.76 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.38 | wall=0.52
+
+[GIVE-UP] R4 giving up after 1898 steps
+[EMPTY_RTN] R2 → phero(-2.63,-1.92)
+
+======================================================================
+Step 24000 (12.8 min) | Pickups: 32 | Deposits: 32 | Rate: 2.50 tags/min | phero_entries=1 phero_max=0.016
+======================================================================
+R1[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.65 ba=+0.83 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.77 | wall=0.62
+R2[T1][BASE_ESC  ]: L=+1.00 R=+0.00 | carry=0 | base=0.04 ba=+0.61 | site=0 sd=0.00 sa=+0.00 | phero=1 pd=0.66 pa=-0.90 | srch=0.02 | wall=3.32
+R3[T1][PHERO     ]: L=+1.00 R=+0.99 | carry=0 | base=0.46 ba=+0.85 | site=0 sd=0.00 sa=+0.00 | phero=1 pd=0.20 pa=-0.08 | srch=0.18 | wall=1.56
+R4[T1][GIVE_UP   ]: L=+1.00 R=+1.00 | carry=0 | base=0.54 ba=+0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.51 | wall=1.04
+
+
+======================================================================
+Step 24500 (13.1 min) | Pickups: 32 | Deposits: 32 | Rate: 2.45 tags/min | phero_entries=1 phero_max=0.007
+======================================================================
+R1[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.46 ba=+0.17 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.90 | wall=1.26
+R2[T1][PHERO     ]: L=+1.00 R=+1.00 | carry=0 | base=0.32 ba=-0.93 | site=0 sd=0.00 sa=+0.00 | phero=1 pd=0.37 pa=-0.13 | srch=0.14 | wall=2.19
+R3[T1][WALL_ESC  ]: L=+1.00 R=+0.37 | carry=0 | base=0.75 ba=-0.16 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.31 | wall=0.32
+R4[T1][GIVE_UP   ]: L=+1.00 R=+1.00 | carry=0 | base=0.15 ba=+0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.63 | wall=2.81
+
+[EMPTY_RTN] R4 → phero(-2.63,-1.92)
+[GIVE-UP] R1 giving up after 3934 steps
+
+======================================================================
+Step 25000 (13.3 min) | Pickups: 32 | Deposits: 32 | Rate: 2.40 tags/min | phero_entries=1 phero_max=0.003
+======================================================================
+R1[T1][GIVE_UP   ]: L=+1.00 R=+0.96 | carry=0 | base=0.36 ba=-0.02 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=1.00 | wall=1.79
+R2[T1][PHERO     ]: L=+0.65 R=+0.67 | carry=0 | base=0.55 ba=-0.87 | site=0 sd=0.00 sa=+0.00 | phero=1 pd=0.11 pa=+0.09 | srch=0.27 | wall=1.33
+R3[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.39 ba=+0.06 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.43 | wall=1.84
+R4[T1][PHERO     ]: L=+0.44 R=+0.45 | carry=0 | base=0.12 ba=-0.87 | site=0 sd=0.00 sa=+0.00 | phero=1 pd=0.55 pa=+0.00 | srch=0.09 | wall=3.03
+
+[EMPTY_RTN] R1 → phero(-2.63,-1.92)
+
+======================================================================
+Step 25500 (13.6 min) | Pickups: 32 | Deposits: 32 | Rate: 2.35 tags/min | phero_entries=1 phero_max=0.001
+======================================================================
+R1[T1][BASE_ESC  ]: L=+0.33 R=+1.00 | carry=0 | base=0.05 ba=-0.85 | site=0 sd=0.00 sa=+0.00 | phero=1 pd=0.68 pa=-0.52 | srch=0.03 | wall=3.29
+R2[T1][EXPLORE   ]: L=+0.81 R=+0.92 | carry=0 | base=0.62 ba=+0.18 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.39 | wall=1.00
+R3[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.22 ba=+0.91 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.56 | wall=2.45
+R4[T1][PHERO     ]: L=+1.00 R=+0.96 | carry=0 | base=0.33 ba=-0.84 | site=0 sd=0.00 sa=+0.00 | phero=1 pd=0.33 pa=+0.15 | srch=0.22 | wall=2.18
+
+
+======================================================================
+Step 26000 (13.9 min) | Pickups: 32 | Deposits: 32 | Rate: 2.31 tags/min | phero_entries=0 phero_max=0.000
+======================================================================
+R1[T1][PHERO     ]: L=+1.00 R=+1.00 | carry=0 | base=0.26 ba=-0.94 | site=0 sd=0.00 sa=+0.00 | phero=1 pd=0.41 pa=+0.21 | srch=0.15 | wall=2.27
+R2[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.28 ba=-0.08 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.52 | wall=2.42
+R3[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.18 ba=+0.58 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.68 | wall=2.74
+R4[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.67 ba=+0.71 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.34 | wall=0.85
+
+
+======================================================================
+Step 26500 (14.1 min) | Pickups: 32 | Deposits: 32 | Rate: 2.26 tags/min | phero_entries=0 phero_max=0.000
+======================================================================
+R1[T1][PHERO     ]: L=+1.00 R=+1.00 | carry=0 | base=0.65 ba=+1.00 | site=0 sd=0.00 sa=+0.00 | phero=1 pd=0.25 pa=+0.55 | srch=0.28 | wall=0.39
+R2[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.13 ba=-0.83 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.64 | wall=2.86
+R3[T1][EXPLORE   ]: L=+1.00 R=+0.35 | carry=0 | base=0.44 ba=-0.60 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.81 | wall=1.38
+R4[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.75 ba=+0.05 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.47 | wall=0.61
+
+
+======================================================================
+Step 27000 (14.4 min) | Pickups: 32 | Deposits: 32 | Rate: 2.22 tags/min | phero_entries=0 phero_max=0.000
+======================================================================
+R1[T1][PHERO     ]: L=+1.00 R=+0.90 | carry=0 | base=0.60 ba=+0.75 | site=0 sd=0.00 sa=+0.00 | phero=1 pd=0.06 pa=-0.36 | srch=0.40 | wall=1.16
+R2[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.50 ba=-0.96 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.77 | wall=1.13
+R3[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.34 ba=-0.56 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.93 | wall=1.99
+R4[T1][EXPLORE   ]: L=+1.00 R=+0.36 | carry=0 | base=0.66 ba=+0.21 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.59 | wall=0.88
+
+
+======================================================================
+Step 27500 (14.7 min) | Pickups: 32 | Deposits: 32 | Rate: 2.18 tags/min | phero_entries=0 phero_max=0.000
+======================================================================
+R1[T1][PHERO     ]: L=+1.00 R=+0.33 | carry=0 | base=0.68 ba=-0.58 | site=0 sd=0.00 sa=+0.00 | phero=1 pd=0.03 pa=-0.37 | srch=0.53 | wall=0.83
+R2[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.58 ba=-0.25 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.89 | wall=0.97
+R3[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.56 ba=-0.80 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=1.00 | wall=0.88
+R4[T1][EXPLORE   ]: L=+1.00 R=+0.77 | carry=0 | base=0.72 ba=-0.86 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.72 | wall=0.62
+
+[GIVE-UP] R3 giving up after 4416 steps
+
+======================================================================
+Step 28000 (14.9 min) | Pickups: 32 | Deposits: 32 | Rate: 2.14 tags/min | phero_entries=0 phero_max=0.000
+======================================================================
+R1[T1][PHERO     ]: L=+1.00 R=+0.52 | carry=0 | base=0.65 ba=+0.17 | site=0 sd=0.00 sa=+0.00 | phero=1 pd=0.02 pa=-0.49 | srch=0.65 | wall=0.86
+R2[T1][EXPLORE   ]: L=+1.00 R=+1.00 | carry=0 | base=0.41 ba=-0.48 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=1.00 | wall=1.58
+R3[T1][GIVE_UP   ]: L=+1.00 R=+1.00 | carry=0 | base=0.52 ba=-0.00 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=1.00 | wall=1.22
+R4[T1][WALL_ESC  ]: L=+1.00 R=+0.00 | carry=0 | base=0.81 ba=-0.46 | site=0 sd=0.00 sa=+0.00 | phero=0 pd=0.00 pa=+0.00 | srch=0.84 | wall=0.35
+
+TIMEOUT_RESULT pickups=32 deposits=32 steps=28125 elapsed_min=15.000000
+BATCH_RESULT pickups=32 deposits=32

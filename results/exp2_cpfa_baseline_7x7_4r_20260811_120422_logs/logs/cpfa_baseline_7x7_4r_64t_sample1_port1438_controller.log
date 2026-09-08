@@ -1,0 +1,655 @@
+=================================================================
+CPFA BASELINE — ARGoS-calibrated parameters  (7×7m arena  64 tags)
+  Params file                  = /home/sara/Documents/RL-FL-Foraging/controllers/cpfa_baseline/cpfa_params.yaml
+  Results file                 = /home/sara/Documents/RL-FL-Foraging/controllers/cpfa_baseline/cpfa_baseline_7x7_results_20260811_120425_1.txt
+  RateOfLayingPheromone        = 9.0
+  RateOfSiteFidelity           = 2.29
+  RateOfPheromoneDecay         = 0.1 /s  (lifetime ~69s)
+  ProbabilityOfReturningToNest = 0.08 (every 5 sec → E[give-up] ~62s)
+  UninformedSearchVariation    = 0.13 rad (7.4°)
+  RateOfInformedSearchDecay    = 1.26 /waypoint
+  ProbabilityOfSwitchingToSearching = 0.55 (every 5 sec in uninformed DEPARTING)
+=================================================================
+
+
+======================================================================
+Step 500 (0.3 min) | Pickups: 0 | Deposits: 0 | Rate: 0.00 tags/min | phero_entries=0 max_w=0.000
+======================================================================
+R1[SEARCH    ]: carry=0 | base=1.31 | wall=2.46 | search=182 | target=none
+R2[DEPART    ]: carry=0 | base=1.31 | wall=2.33 | search=  0 | target=none
+R3[SEARCH    ]: carry=0 | base=1.13 | wall=2.49 | search=344 | target=none
+R4[SEARCH    ]: carry=0 | base=1.22 | wall=2.37 | search=333 | target=none
+
+
+======================================================================
+Step 1000 (0.5 min) | Pickups: 0 | Deposits: 0 | Rate: 0.00 tags/min | phero_entries=0 max_w=0.000
+======================================================================
+R1[SEARCH    ]: carry=0 | base=2.61 | wall=1.42 | search=682 | target=none
+R2[DEPART    ]: carry=0 | base=3.18 | wall=1.02 | search=  0 | target=none
+R3[SEARCH    ]: carry=0 | base=2.49 | wall=1.34 | search=844 | target=none
+R4[SEARCH    ]: carry=0 | base=2.47 | wall=1.62 | search=833 | target=none
+
+
+======================================================================
+Step 1500 (0.8 min) | Pickups: 0 | Deposits: 0 | Rate: 0.00 tags/min | phero_entries=0 max_w=0.000
+======================================================================
+R1[WALL_ESC  ]: carry=0 | base=4.25 | wall=0.34 | search=1182 | target=none
+R2[GIVE_UP   ]: carry=0 | base=4.23 | wall=0.45 | search=156 | target=none
+R3[SEARCH    ]: carry=0 | base=3.77 | wall=0.71 | search=1344 | target=none
+R4[WALL_ESC  ]: carry=0 | base=3.24 | wall=0.33 | search=1333 | target=none
+
+[PICKUP] R2 picked up tag (density=16) | Total: 1
+
+======================================================================
+Step 2000 (1.1 min) | Pickups: 1 | Deposits: 0 | Rate: 0.00 tags/min | phero_entries=0 max_w=0.000
+======================================================================
+R1[SEARCH    ]: carry=0 | base=4.19 | wall=0.36 | search=1682 | target=none
+R2[RTB       ]: carry=1 | base=3.07 | wall=1.27 | search=  0 | target=none
+R3[GIVE_UP   ]: carry=0 | base=2.36 | wall=1.77 | search=1404 | target=none
+R4[WALL_ESC  ]: carry=0 | base=3.23 | wall=0.34 | search=1833 | target=none
+
+
+======================================================================
+Step 2500 (1.3 min) | Pickups: 1 | Deposits: 0 | Rate: 0.00 tags/min | phero_entries=0 max_w=0.000
+======================================================================
+R1[WALL_ESC  ]: carry=0 | base=4.35 | wall=0.33 | search=2182 | target=none
+R2[RTB       ]: carry=1 | base=1.15 | wall=2.66 | search=  0 | target=none
+R3[GIVE_UP   ]: carry=0 | base=0.44 | wall=3.18 | search=1404 | target=none
+R4[GIVE_UP   ]: carry=0 | base=2.20 | wall=1.34 | search=2028 | target=none
+
+  [GIVE-UP] R3 returned empty after 1404 searching steps
+  [TARGET] R3 → WALL (2.90, -3.42)
+[DEPOSIT] R2 deposited! Total: 1
+  [PHERO] Laid at (-2.60, 2.68) density=16 prob=0.99 entries=1
+  [TARGET] R2 → SITE (-2.60, 2.68)
+
+======================================================================
+Step 3000 (1.6 min) | Pickups: 1 | Deposits: 1 | Rate: 0.62 tags/min | phero_entries=1 max_w=0.430
+======================================================================
+R1[WALL_ESC  ]: carry=0 | base=4.32 | wall=0.31 | search=2682 | target=none
+R2[SITE      ]: carry=0 | base=0.80 | wall=2.87 | search=  0 | target=site(-2.60,2.68)
+R3[SEARCH    ]: carry=0 | base=0.99 | wall=2.60 | search= 27 | target=none
+R4[GIVE_UP   ]: carry=0 | base=0.28 | wall=3.22 | search=2028 | target=none
+
+  [GIVE-UP] R4 returned empty after 2028 searching steps
+  [TARGET] R4 → PHERO (-2.60, 2.68)
+
+======================================================================
+Step 3500 (1.9 min) | Pickups: 1 | Deposits: 1 | Rate: 0.54 tags/min | phero_entries=1 max_w=0.087
+======================================================================
+R1[SEARCH    ]: carry=0 | base=4.22 | wall=0.40 | search=3182 | target=none
+R2[SITE      ]: carry=0 | base=2.71 | wall=1.53 | search=  0 | target=site(-2.60,2.68)
+R3[SEARCH    ]: carry=0 | base=2.61 | wall=1.61 | search=527 | target=none
+R4[PHERO     ]: carry=0 | base=1.21 | wall=2.51 | search=  0 | target=phero(-2.60,2.68)
+
+[PICKUP] R2 picked up tag (density=15) | Total: 2
+
+======================================================================
+Step 4000 (2.1 min) | Pickups: 2 | Deposits: 1 | Rate: 0.47 tags/min | phero_entries=1 max_w=0.018
+======================================================================
+R1[GIVE_UP   ]: carry=0 | base=3.04 | wall=1.24 | search=3276 | target=none
+R2[RTB       ]: carry=1 | base=2.58 | wall=1.61 | search=  0 | target=none
+R3[GIVE_UP   ]: carry=0 | base=1.77 | wall=2.19 | search=624 | target=none
+R4[PHERO     ]: carry=0 | base=3.11 | wall=1.30 | search=  0 | target=phero(-2.60,2.68)
+
+[PICKUP] R4 picked up tag (density=14) | Total: 3
+  [GIVE-UP] R3 returned empty after 624 searching steps
+  [TARGET] R3 → PHERO (-2.60, 2.68)
+
+======================================================================
+Step 4500 (2.4 min) | Pickups: 3 | Deposits: 1 | Rate: 0.42 tags/min | phero_entries=1 max_w=0.004
+======================================================================
+R1[GIVE_UP   ]: carry=0 | base=1.12 | wall=2.67 | search=3276 | target=none
+R2[RTB       ]: carry=1 | base=0.66 | wall=3.02 | search=  0 | target=none
+R3[BASE_ESC  ]: carry=0 | base=0.23 | wall=3.30 | search=  0 | target=phero(-2.60,2.68)
+R4[RTB       ]: carry=1 | base=2.22 | wall=1.91 | search=  0 | target=none
+
+[DEPOSIT] R2 deposited! Total: 2
+  [PHERO] Laid at (-2.19, 2.28) density=15 prob=0.98 entries=2
+  [TARGET] R2 → SITE (-2.19, 2.28)
+  [GIVE-UP] R1 returned empty after 3276 searching steps
+  [TARGET] R1 → PHERO (-2.19, 2.28)
+
+======================================================================
+Step 5000 (2.7 min) | Pickups: 3 | Deposits: 2 | Rate: 0.75 tags/min | phero_entries=1 max_w=0.284
+======================================================================
+R1[PHERO     ]: carry=0 | base=0.26 | wall=3.24 | search=  0 | target=phero(-2.19,2.28)
+R2[SITE      ]: carry=0 | base=1.29 | wall=2.52 | search=  0 | target=site(-2.19,2.28)
+R3[PHERO     ]: carry=0 | base=1.00 | wall=2.68 | search=  0 | target=phero(-2.60,2.68)
+R4[RTB       ]: carry=1 | base=0.30 | wall=3.29 | search=  0 | target=none
+
+[DEPOSIT] R4 deposited! Total: 3
+  [PHERO] Laid at (-2.25, 2.25) density=14 prob=0.96 entries=2
+  [TARGET] R4 → SITE (-2.25, 2.25)
+
+======================================================================
+Step 5500 (2.9 min) | Pickups: 3 | Deposits: 3 | Rate: 1.02 tags/min | phero_entries=2 max_w=0.210
+======================================================================
+R1[PHERO     ]: carry=0 | base=1.43 | wall=2.40 | search=  0 | target=phero(-2.19,2.28)
+R2[SEARCH    ]: carry=0 | base=3.16 | wall=1.21 | search= 26 | target=site(-2.19,2.28)
+R3[PHERO     ]: carry=0 | base=2.90 | wall=1.44 | search=  0 | target=phero(-2.60,2.68)
+R4[SITE      ]: carry=0 | base=1.65 | wall=2.29 | search=  0 | target=site(-2.25,2.25)
+
+[PICKUP] R2 picked up tag (density=13) | Total: 4
+[PICKUP] R3 picked up tag (density=12) | Total: 5
+
+======================================================================
+Step 6000 (3.2 min) | Pickups: 5 | Deposits: 3 | Rate: 0.94 tags/min | phero_entries=2 max_w=0.042
+======================================================================
+R1[SEARCH    ]: carry=0 | base=3.12 | wall=1.25 | search= 10 | target=phero(-2.19,2.28)
+R2[RTB       ]: carry=1 | base=2.81 | wall=1.46 | search=  0 | target=none
+R3[RTB       ]: carry=1 | base=2.66 | wall=1.57 | search=  0 | target=none
+R4[SEARCH    ]: carry=0 | base=3.22 | wall=1.20 | search= 67 | target=site(-2.25,2.25)
+
+[PICKUP] R4 picked up tag (density=11) | Total: 6
+
+======================================================================
+Step 6500 (3.5 min) | Pickups: 6 | Deposits: 3 | Rate: 0.87 tags/min | phero_entries=2 max_w=0.009
+======================================================================
+R1[GIVE_UP   ]: carry=0 | base=1.78 | wall=2.23 | search=156 | target=none
+R2[RTB       ]: carry=1 | base=0.89 | wall=2.86 | search=  0 | target=none
+R3[RTB       ]: carry=1 | base=0.74 | wall=2.96 | search=  0 | target=none
+R4[RTB       ]: carry=1 | base=2.43 | wall=1.75 | search=  0 | target=none
+
+[DEPOSIT] R3 deposited! Total: 4
+  [PHERO] Laid at (-2.27, 2.32) density=12 prob=0.88 entries=3
+  [TARGET] R3 → SITE (-2.27, 2.32)
+[DEPOSIT] R2 deposited! Total: 5
+  [PHERO] Laid at (-2.27, 2.27) density=13 prob=0.93 entries=4
+  [TARGET] R2 → SITE (-2.27, 2.27)
+  [GIVE-UP] R1 returned empty after 156 searching steps
+  [TARGET] R1 → PHERO (-2.27, 2.27)
+
+======================================================================
+Step 7000 (3.7 min) | Pickups: 6 | Deposits: 5 | Rate: 1.34 tags/min | phero_entries=3 max_w=0.347
+======================================================================
+R1[BASE_ESC  ]: carry=0 | base=0.23 | wall=3.31 | search=  0 | target=phero(-2.27,2.27)
+R2[SITE      ]: carry=0 | base=1.07 | wall=2.69 | search=  0 | target=site(-2.27,2.27)
+R3[SITE      ]: carry=0 | base=1.19 | wall=2.58 | search=  0 | target=site(-2.27,2.32)
+R4[RTB       ]: carry=1 | base=0.51 | wall=3.13 | search=  0 | target=none
+
+[DEPOSIT] R4 deposited! Total: 6
+  [PHERO] Laid at (-2.36, 2.22) density=11 prob=0.80 entries=4
+  [TARGET] R4 → SITE (-2.36, 2.22)
+
+======================================================================
+Step 7500 (4.0 min) | Pickups: 6 | Deposits: 6 | Rate: 1.50 tags/min | phero_entries=3 max_w=0.251
+======================================================================
+R1[PHERO     ]: carry=0 | base=2.09 | wall=1.99 | search=  0 | target=phero(-2.27,2.27)
+R2[SITE      ]: carry=0 | base=2.99 | wall=1.38 | search=  0 | target=site(-2.27,2.27)
+R3[SITE      ]: carry=0 | base=3.10 | wall=1.28 | search=  0 | target=site(-2.27,2.32)
+R4[SITE      ]: carry=0 | base=1.44 | wall=2.47 | search=  0 | target=site(-2.36,2.22)
+
+[PICKUP] R3 picked up tag (density=10) | Total: 7
+
+======================================================================
+Step 8000 (4.3 min) | Pickups: 7 | Deposits: 6 | Rate: 1.41 tags/min | phero_entries=3 max_w=0.051
+======================================================================
+R1[SEARCH    ]: carry=0 | base=3.03 | wall=1.36 | search=222 | target=phero(-2.27,2.27)
+R2[SEARCH    ]: carry=0 | base=2.78 | wall=1.05 | search=455 | target=site(-2.27,2.27)
+R3[RTB       ]: carry=1 | base=2.55 | wall=1.65 | search=  0 | target=none
+R4[SEARCH    ]: carry=0 | base=3.21 | wall=1.15 | search= 14 | target=site(-2.36,2.22)
+
+[PICKUP] R4 picked up tag (density=9) | Total: 8
+
+======================================================================
+Step 8500 (4.5 min) | Pickups: 8 | Deposits: 6 | Rate: 1.32 tags/min | phero_entries=3 max_w=0.010
+======================================================================
+R1[GIVE_UP   ]: carry=0 | base=1.38 | wall=2.49 | search=624 | target=none
+R2[GIVE_UP   ]: carry=0 | base=2.70 | wall=0.96 | search=780 | target=none
+R3[RTB       ]: carry=1 | base=0.63 | wall=3.04 | search=  0 | target=none
+R4[RTB       ]: carry=1 | base=3.02 | wall=1.33 | search=  0 | target=none
+
+[DEPOSIT] R3 deposited! Total: 7
+  [PHERO] Laid at (-2.28, 2.31) density=10 prob=0.71 entries=4
+  [TARGET] R3 → SITE (-2.28, 2.31)
+  [GIVE-UP] R1 returned empty after 624 searching steps
+  [TARGET] R1 → PHERO (-2.28, 2.31)
+
+======================================================================
+Step 9000 (4.8 min) | Pickups: 8 | Deposits: 7 | Rate: 1.46 tags/min | phero_entries=2 max_w=0.277
+======================================================================
+R1[PHERO     ]: carry=0 | base=0.58 | wall=3.03 | search=  0 | target=phero(-2.28,2.31)
+R2[GIVE_UP   ]: carry=0 | base=0.78 | wall=2.77 | search=780 | target=none
+R3[SITE      ]: carry=0 | base=1.31 | wall=2.52 | search=  0 | target=site(-2.28,2.31)
+R4[RTB       ]: carry=1 | base=1.12 | wall=2.69 | search=  0 | target=none
+
+  [GIVE-UP] R2 returned empty after 780 searching steps
+  [TARGET] R2 → PHERO (-2.28, 2.31)
+[DEPOSIT] R4 deposited! Total: 8
+  [PHERO] Laid at (-2.32, 2.34) density=9 prob=0.59 entries=2
+  [TARGET] R4 → SITE (-2.32, 2.34)
+
+======================================================================
+Step 9500 (5.1 min) | Pickups: 8 | Deposits: 8 | Rate: 1.58 tags/min | phero_entries=2 max_w=0.419
+======================================================================
+R1[PHERO     ]: carry=0 | base=2.49 | wall=1.73 | search=  0 | target=phero(-2.28,2.31)
+R2[PHERO     ]: carry=0 | base=1.06 | wall=2.64 | search=  0 | target=phero(-2.28,2.31)
+R3[SEARCH    ]: carry=0 | base=3.21 | wall=1.21 | search=  7 | target=site(-2.28,2.31)
+R4[SITE      ]: carry=0 | base=0.82 | wall=2.86 | search=  0 | target=site(-2.32,2.34)
+
+
+======================================================================
+Step 10000 (5.3 min) | Pickups: 8 | Deposits: 8 | Rate: 1.50 tags/min | phero_entries=2 max_w=0.085
+======================================================================
+R1[SEARCH    ]: carry=0 | base=2.70 | wall=1.56 | search=316 | target=phero(-2.28,2.31)
+R2[PHERO     ]: carry=0 | base=2.85 | wall=1.48 | search=  0 | target=phero(-2.28,2.31)
+R3[GIVE_UP   ]: carry=0 | base=1.97 | wall=2.09 | search=156 | target=none
+R4[SITE      ]: carry=0 | base=2.70 | wall=1.57 | search=  0 | target=site(-2.32,2.34)
+
+[PICKUP] R2 picked up tag (density=8) | Total: 9
+  [GIVE-UP] R3 returned empty after 156 searching steps
+  [TARGET] R3 → PHERO (-2.32, 2.34)
+
+======================================================================
+Step 10500 (5.6 min) | Pickups: 9 | Deposits: 8 | Rate: 1.43 tags/min | phero_entries=2 max_w=0.017
+======================================================================
+R1[SEARCH    ]: carry=0 | base=1.06 | wall=2.63 | search=816 | target=phero(-2.28,2.31)
+R2[RTB       ]: carry=1 | base=3.05 | wall=1.29 | search=  0 | target=none
+R3[BASE_ESC  ]: carry=0 | base=0.22 | wall=3.33 | search=  0 | target=phero(-2.32,2.34)
+R4[SEARCH    ]: carry=0 | base=3.29 | wall=0.90 | search=345 | target=site(-2.32,2.34)
+
+
+======================================================================
+Step 11000 (5.9 min) | Pickups: 9 | Deposits: 8 | Rate: 1.36 tags/min | phero_entries=1 max_w=0.003
+======================================================================
+R1[SEARCH    ]: carry=0 | base=1.26 | wall=2.59 | search=1316 | target=phero(-2.28,2.31)
+R2[RTB       ]: carry=1 | base=1.16 | wall=2.67 | search=  0 | target=none
+R3[PHERO     ]: carry=0 | base=1.87 | wall=2.12 | search=  0 | target=phero(-2.32,2.34)
+R4[SEARCH    ]: carry=0 | base=3.50 | wall=0.39 | search=845 | target=site(-2.32,2.34)
+
+[DEPOSIT] R2 deposited! Total: 9
+  [PHERO] Laid at (-2.34, 2.37) density=8 prob=0.46 entries=2
+  [TARGET] R2 → SITE (-2.34, 2.37)
+
+======================================================================
+Step 11500 (6.1 min) | Pickups: 9 | Deposits: 9 | Rate: 1.47 tags/min | phero_entries=1 max_w=0.431
+======================================================================
+R1[SEARCH    ]: carry=0 | base=1.69 | wall=1.96 | search=1816 | target=phero(-2.28,2.31)
+R2[SITE      ]: carry=0 | base=0.80 | wall=2.88 | search=  0 | target=site(-2.34,2.37)
+R3[SEARCH    ]: carry=0 | base=3.24 | wall=1.09 | search=143 | target=phero(-2.32,2.34)
+R4[GIVE_UP   ]: carry=0 | base=2.48 | wall=1.37 | search=936 | target=none
+
+
+======================================================================
+Step 12000 (6.4 min) | Pickups: 9 | Deposits: 9 | Rate: 1.41 tags/min | phero_entries=1 max_w=0.087
+======================================================================
+R1[SEARCH    ]: carry=0 | base=2.69 | wall=1.07 | search=2316 | target=phero(-2.28,2.31)
+R2[SITE      ]: carry=0 | base=2.71 | wall=1.58 | search=  0 | target=site(-2.34,2.37)
+R3[SEARCH    ]: carry=0 | base=1.89 | wall=1.69 | search=643 | target=phero(-2.32,2.34)
+R4[GIVE_UP   ]: carry=0 | base=0.56 | wall=3.02 | search=936 | target=none
+
+  [GIVE-UP] R4 returned empty after 936 searching steps
+  [TARGET] R4 → PHERO (-2.34, 2.37)
+[PICKUP] R2 picked up tag (density=7) | Total: 10
+
+======================================================================
+Step 12500 (6.7 min) | Pickups: 10 | Deposits: 9 | Rate: 1.35 tags/min | phero_entries=1 max_w=0.018
+======================================================================
+R1[SEARCH    ]: carry=0 | base=3.21 | wall=0.37 | search=2816 | target=phero(-2.28,2.31)
+R2[SURVEY    ]: carry=1 | base=3.31 | wall=1.02 | search=  0 | target=none
+R3[SEARCH    ]: carry=0 | base=2.72 | wall=0.91 | search=1143 | target=phero(-2.32,2.34)
+R4[PHERO     ]: carry=0 | base=1.42 | wall=2.49 | search=  0 | target=phero(-2.34,2.37)
+
+
+======================================================================
+Step 13000 (6.9 min) | Pickups: 10 | Deposits: 9 | Rate: 1.30 tags/min | phero_entries=1 max_w=0.004
+======================================================================
+R1[GIVE_UP   ]: carry=0 | base=3.10 | wall=0.48 | search=3276 | target=none
+R2[RTB       ]: carry=1 | base=2.12 | wall=1.89 | search=  0 | target=none
+R3[WALL_ESC  ]: carry=0 | base=3.60 | wall=0.35 | search=1643 | target=phero(-2.32,2.34)
+R4[SEARCH    ]: carry=0 | base=3.30 | wall=1.15 | search= 16 | target=phero(-2.34,2.37)
+
+[PICKUP] R4 picked up tag (density=6) | Total: 11
+[PICKUP] R1 picked up tag (density=16) | Total: 12
+[DEPOSIT] R2 deposited! Total: 10
+  [PHERO] Laid at (-2.20, 2.47) density=7 prob=0.32 entries=1
+  [TARGET] R2 → SITE (-2.20, 2.47)
+
+======================================================================
+Step 13500 (7.2 min) | Pickups: 12 | Deposits: 10 | Rate: 1.39 tags/min | phero_entries=1 max_w=0.962
+======================================================================
+R1[SURVEY    ]: carry=1 | base=2.03 | wall=1.52 | search=  0 | target=none
+R2[BASE_ESC  ]: carry=0 | base=0.23 | wall=3.33 | search=  0 | target=site(-2.20,2.47)
+R3[WALL_ESC  ]: carry=0 | base=4.22 | wall=0.33 | search=2143 | target=phero(-2.32,2.34)
+R4[RTB       ]: carry=1 | base=3.39 | wall=0.96 | search=  0 | target=none
+
+
+======================================================================
+Step 14000 (7.5 min) | Pickups: 12 | Deposits: 10 | Rate: 1.34 tags/min | phero_entries=1 max_w=0.194
+======================================================================
+R1[RTB       ]: carry=1 | base=0.64 | wall=2.87 | search=  0 | target=none
+R2[SITE      ]: carry=0 | base=1.74 | wall=2.23 | search=  0 | target=site(-2.20,2.47)
+R3[WALL_ESC  ]: carry=0 | base=4.20 | wall=0.31 | search=2643 | target=phero(-2.32,2.34)
+R4[RTB       ]: carry=1 | base=1.49 | wall=2.37 | search=  0 | target=none
+
+[DEPOSIT] R1 deposited! Total: 11
+  [PHERO] Laid at (1.98, -0.46) density=16 prob=0.99 entries=2
+  [TARGET] R1 → SITE (1.98, -0.46)
+[DEPOSIT] R4 deposited! Total: 12
+  [TARGET] R4 → SITE (-2.27, 2.55)
+
+======================================================================
+Step 14500 (7.7 min) | Pickups: 12 | Deposits: 12 | Rate: 1.55 tags/min | phero_entries=2 max_w=0.280
+======================================================================
+R1[SITE      ]: carry=0 | base=1.29 | wall=2.23 | search=  0 | target=site(1.98,-0.46)
+R2[SEARCH    ]: carry=0 | base=3.36 | wall=0.95 | search=105 | target=site(-2.20,2.47)
+R3[SEARCH    ]: carry=0 | base=4.19 | wall=0.36 | search=3143 | target=phero(-2.32,2.34)
+R4[SITE      ]: carry=0 | base=0.47 | wall=3.13 | search=  0 | target=site(-2.27,2.55)
+
+[PICKUP] R2 picked up tag (density=5) | Total: 13
+[PICKUP] R1 picked up tag (density=15) | Total: 14
+
+======================================================================
+Step 15000 (8.0 min) | Pickups: 14 | Deposits: 12 | Rate: 1.50 tags/min | phero_entries=2 max_w=0.056
+======================================================================
+R1[RTB       ]: carry=1 | base=1.03 | wall=2.48 | search=  0 | target=none
+R2[RTB       ]: carry=1 | base=2.81 | wall=1.40 | search=  0 | target=none
+R3[SEARCH    ]: carry=0 | base=4.11 | wall=0.38 | search=3643 | target=phero(-2.32,2.34)
+R4[SITE      ]: carry=0 | base=2.38 | wall=1.75 | search=  0 | target=site(-2.27,2.55)
+
+[DEPOSIT] R1 deposited! Total: 13
+  [PHERO] Laid at (1.52, -0.32) density=15 prob=0.98 entries=3
+  [TARGET] R1 → SITE (1.52, -0.32)
+
+======================================================================
+Step 15500 (8.3 min) | Pickups: 14 | Deposits: 13 | Rate: 1.57 tags/min | phero_entries=3 max_w=0.388
+======================================================================
+R1[SITE      ]: carry=0 | base=0.90 | wall=2.61 | search=  0 | target=site(1.52,-0.32)
+R2[RTB       ]: carry=1 | base=0.97 | wall=2.77 | search=  0 | target=none
+R3[WALL_ESC  ]: carry=0 | base=4.22 | wall=0.31 | search=4143 | target=phero(-2.32,2.34)
+R4[SEARCH    ]: carry=0 | base=3.17 | wall=1.13 | search=215 | target=site(-2.27,2.55)
+
+[DEPOSIT] R2 deposited! Total: 14
+  [TARGET] R2 → SITE (-2.34, 2.55)
+[PICKUP] R1 picked up tag (density=14) | Total: 15
+
+======================================================================
+Step 16000 (8.5 min) | Pickups: 15 | Deposits: 14 | Rate: 1.64 tags/min | phero_entries=2 max_w=0.078
+======================================================================
+R1[RTB       ]: carry=1 | base=1.61 | wall=1.93 | search=  0 | target=none
+R2[SITE      ]: carry=0 | base=0.98 | wall=2.72 | search=  0 | target=site(-2.34,2.55)
+R3[SEARCH    ]: carry=0 | base=4.11 | wall=0.40 | search=4643 | target=phero(-2.32,2.34)
+R4[WALL_ESC  ]: carry=0 | base=3.21 | wall=0.34 | search=715 | target=site(-2.27,2.55)
+
+[DEPOSIT] R1 deposited! Total: 15
+  [PHERO] Laid at (1.54, -0.38) density=14 prob=0.96 entries=2
+  [TARGET] R1 → SITE (1.54, -0.38)
+
+======================================================================
+Step 16500 (8.8 min) | Pickups: 15 | Deposits: 15 | Rate: 1.70 tags/min | phero_entries=2 max_w=0.712
+======================================================================
+R1[BASE_ESC  ]: carry=0 | base=0.24 | wall=3.26 | search=  0 | target=site(1.54,-0.38)
+R2[SITE      ]: carry=0 | base=2.89 | wall=1.35 | search=  0 | target=site(-2.34,2.55)
+R3[WALL_ESC  ]: carry=0 | base=4.14 | wall=0.35 | search=5143 | target=phero(-2.32,2.34)
+R4[WALL_ESC  ]: carry=0 | base=3.21 | wall=0.33 | search=1215 | target=site(-2.27,2.55)
+
+[PICKUP] R2 picked up tag (density=4) | Total: 16
+[PICKUP] R1 picked up tag (density=13) | Total: 17
+
+======================================================================
+Step 17000 (9.1 min) | Pickups: 17 | Deposits: 15 | Rate: 1.65 tags/min | phero_entries=2 max_w=0.144
+======================================================================
+R1[SURVEY    ]: carry=1 | base=1.59 | wall=1.97 | search=  0 | target=none
+R2[RTB       ]: carry=1 | base=3.29 | wall=1.06 | search=  0 | target=none
+R3[WALL_ESC  ]: carry=0 | base=4.21 | wall=0.34 | search=5643 | target=phero(-2.32,2.34)
+R4[WALL_ESC  ]: carry=0 | base=3.21 | wall=0.33 | search=1715 | target=site(-2.27,2.55)
+
+
+======================================================================
+Step 17500 (9.3 min) | Pickups: 17 | Deposits: 15 | Rate: 1.61 tags/min | phero_entries=1 max_w=0.029
+======================================================================
+R1[RTB       ]: carry=1 | base=0.40 | wall=3.10 | search=  0 | target=none
+R2[RTB       ]: carry=1 | base=1.37 | wall=2.48 | search=  0 | target=none
+R3[SEARCH    ]: carry=0 | base=4.10 | wall=0.39 | search=6143 | target=phero(-2.32,2.34)
+R4[GIVE_UP   ]: carry=0 | base=2.01 | wall=1.50 | search=1872 | target=none
+
+[DEPOSIT] R1 deposited! Total: 16
+  [PHERO] Laid at (1.53, -0.40) density=13 prob=0.93 entries=2
+  [TARGET] R1 → SITE (1.53, -0.40)
+[DEPOSIT] R2 deposited! Total: 17
+  [TARGET] R2 → SITE (-2.36, 2.52)
+  [GIVE-UP] R4 returned empty after 1872 searching steps
+  [TARGET] R4 → PHERO (1.53, -0.40)
+
+======================================================================
+Step 18000 (9.6 min) | Pickups: 17 | Deposits: 17 | Rate: 1.77 tags/min | phero_entries=2 max_w=0.229
+======================================================================
+R1[SEARCH    ]: carry=0 | base=1.55 | wall=2.00 | search=  6 | target=site(1.53,-0.40)
+R2[SITE      ]: carry=0 | base=0.59 | wall=3.01 | search=  0 | target=site(-2.36,2.52)
+R3[GIVE_UP   ]: carry=0 | base=3.10 | wall=1.13 | search=6240 | target=none
+R4[BASE_ESC  ]: carry=0 | base=0.22 | wall=3.28 | search=  0 | target=phero(1.53,-0.40)
+
+
+======================================================================
+Step 18500 (9.9 min) | Pickups: 17 | Deposits: 17 | Rate: 1.72 tags/min | phero_entries=2 max_w=0.046
+======================================================================
+R1[SEARCH    ]: carry=0 | base=2.14 | wall=1.80 | search=506 | target=site(1.53,-0.40)
+R2[SITE      ]: carry=0 | base=2.50 | wall=1.65 | search=  0 | target=site(-2.36,2.52)
+R3[GIVE_UP   ]: carry=0 | base=1.18 | wall=2.60 | search=6240 | target=none
+R4[PHERO     ]: carry=0 | base=1.43 | wall=2.11 | search=  0 | target=phero(1.53,-0.40)
+
+  [GIVE-UP] R3 returned empty after 6240 searching steps
+  [TARGET] R3 → PHERO (1.53, -0.40)
+
+======================================================================
+Step 19000 (10.1 min) | Pickups: 17 | Deposits: 17 | Rate: 1.68 tags/min | phero_entries=1 max_w=0.009
+======================================================================
+R1[SEARCH    ]: carry=0 | base=3.73 | wall=0.80 | search=1006 | target=site(1.53,-0.40)
+R2[SEARCH    ]: carry=0 | base=3.34 | wall=1.00 | search=266 | target=site(-2.36,2.52)
+R3[PHERO     ]: carry=0 | base=0.43 | wall=3.16 | search=  0 | target=phero(1.53,-0.40)
+R4[SEARCH    ]: carry=0 | base=0.55 | wall=2.95 | search=472 | target=phero(1.53,-0.40)
+
+[PICKUP] R3 picked up tag (density=12) | Total: 18
+
+======================================================================
+Step 19500 (10.4 min) | Pickups: 18 | Deposits: 17 | Rate: 1.63 tags/min | phero_entries=1 max_w=0.002
+======================================================================
+R1[SEARCH    ]: carry=0 | base=3.91 | wall=0.41 | search=1506 | target=site(1.53,-0.40)
+R2[SEARCH    ]: carry=0 | base=4.00 | wall=0.36 | search=766 | target=site(-2.36,2.52)
+R3[SURVEY    ]: carry=1 | base=1.60 | wall=1.97 | search=  0 | target=none
+R4[SEARCH    ]: carry=0 | base=1.50 | wall=2.02 | search=972 | target=phero(1.53,-0.40)
+
+
+======================================================================
+Step 20000 (10.7 min) | Pickups: 18 | Deposits: 17 | Rate: 1.59 tags/min | phero_entries=0 max_w=0.000
+======================================================================
+R1[WALL_ESC  ]: carry=0 | base=4.05 | wall=0.31 | search=2006 | target=site(1.53,-0.40)
+R2[SEARCH    ]: carry=0 | base=3.95 | wall=0.37 | search=1266 | target=site(-2.36,2.52)
+R3[RTB       ]: carry=1 | base=0.48 | wall=3.04 | search=  0 | target=none
+R4[SEARCH    ]: carry=0 | base=2.04 | wall=1.84 | search=1472 | target=phero(1.53,-0.40)
+
+[DEPOSIT] R3 deposited! Total: 18
+  [PHERO] Laid at (1.53, -0.47) density=12 prob=0.88 entries=1
+  [TARGET] R3 → SITE (1.53, -0.47)
+
+======================================================================
+Step 20500 (10.9 min) | Pickups: 18 | Deposits: 18 | Rate: 1.65 tags/min | phero_entries=1 max_w=0.244
+======================================================================
+R1[GIVE_UP   ]: carry=0 | base=3.35 | wall=0.85 | search=2340 | target=none
+R2[WALL_ESC  ]: carry=0 | base=4.05 | wall=0.32 | search=1766 | target=site(-2.36,2.52)
+R3[SITE      ]: carry=0 | base=1.45 | wall=2.11 | search=  0 | target=site(1.53,-0.47)
+R4[GIVE_UP   ]: carry=0 | base=1.57 | wall=1.96 | search=1716 | target=none
+
+[PICKUP] R1 picked up tag (density=16) | Total: 19
+[PICKUP] R3 picked up tag (density=11) | Total: 20
+  [GIVE-UP] R4 returned empty after 1716 searching steps
+  [TARGET] R4 → PHERO (1.53, -0.47)
+
+======================================================================
+Step 21000 (11.2 min) | Pickups: 20 | Deposits: 18 | Rate: 1.61 tags/min | phero_entries=1 max_w=0.049
+======================================================================
+R1[RTB       ]: carry=1 | base=2.57 | wall=1.52 | search=  0 | target=none
+R2[SEARCH    ]: carry=0 | base=3.95 | wall=0.40 | search=2266 | target=site(-2.36,2.52)
+R3[RTB       ]: carry=1 | base=1.47 | wall=2.10 | search=  0 | target=none
+R4[PHERO     ]: carry=0 | base=0.27 | wall=3.23 | search=  0 | target=phero(1.53,-0.47)
+
+[DEPOSIT] R3 deposited! Total: 19
+  [PHERO] Laid at (1.50, -0.57) density=11 prob=0.80 entries=2
+  [TARGET] R3 → SITE (1.50, -0.57)
+
+======================================================================
+Step 21500 (11.5 min) | Pickups: 20 | Deposits: 19 | Rate: 1.66 tags/min | phero_entries=2 max_w=0.559
+======================================================================
+R1[RTB       ]: carry=1 | base=0.65 | wall=3.00 | search=  0 | target=none
+R2[WALL_ESC  ]: carry=0 | base=3.98 | wall=0.34 | search=2766 | target=site(-2.36,2.52)
+R3[SITE      ]: carry=0 | base=0.48 | wall=3.08 | search=  0 | target=site(1.50,-0.57)
+R4[PHERO     ]: carry=0 | base=1.22 | wall=2.35 | search=  0 | target=phero(1.53,-0.47)
+
+[DEPOSIT] R1 deposited! Total: 20
+  [PHERO] Laid at (2.04, -2.64) density=16 prob=0.99 entries=3
+  [TARGET] R1 → SITE (2.04, -2.64)
+[PICKUP] R4 picked up tag (density=10) | Total: 21
+[PICKUP] R3 picked up tag (density=9) | Total: 22
+
+======================================================================
+Step 22000 (11.7 min) | Pickups: 22 | Deposits: 20 | Rate: 1.70 tags/min | phero_entries=3 max_w=0.283
+======================================================================
+R1[SITE      ]: carry=0 | base=1.29 | wall=2.53 | search=  0 | target=site(2.04,-2.64)
+R2[WALL_ESC  ]: carry=0 | base=4.04 | wall=0.33 | search=3266 | target=site(-2.36,2.52)
+R3[SURVEY    ]: carry=1 | base=1.68 | wall=1.97 | search=  0 | target=none
+R4[RTB       ]: carry=1 | base=1.34 | wall=2.19 | search=  0 | target=none
+
+[DEPOSIT] R4 deposited! Total: 21
+  [PHERO] Laid at (1.54, -0.45) density=10 prob=0.71 entries=3
+  [TARGET] R4 → SITE (1.54, -0.45)
+[PICKUP] R1 picked up tag (density=15) | Total: 23
+
+======================================================================
+Step 22500 (12.0 min) | Pickups: 23 | Deposits: 21 | Rate: 1.75 tags/min | phero_entries=3 max_w=0.501
+======================================================================
+R1[SURVEY    ]: carry=1 | base=3.03 | wall=1.11 | search=  0 | target=none
+R2[SEARCH    ]: carry=0 | base=3.94 | wall=0.39 | search=3766 | target=site(-2.36,2.52)
+R3[RTB       ]: carry=1 | base=0.75 | wall=2.80 | search=  0 | target=none
+R4[SITE      ]: carry=0 | base=0.59 | wall=2.92 | search=  0 | target=site(1.54,-0.45)
+
+[DEPOSIT] R3 deposited! Total: 22
+  [TARGET] R3 → SITE (1.53, -0.68)
+
+======================================================================
+Step 23000 (12.3 min) | Pickups: 23 | Deposits: 22 | Rate: 1.79 tags/min | phero_entries=3 max_w=0.101
+======================================================================
+R1[RTB       ]: carry=1 | base=1.97 | wall=1.99 | search=  0 | target=none
+R2[WALL_ESC  ]: carry=0 | base=4.05 | wall=0.31 | search=4266 | target=site(-2.36,2.52)
+R3[SITE      ]: carry=0 | base=1.18 | wall=2.41 | search=  0 | target=site(1.53,-0.68)
+R4[GIVE_UP   ]: carry=0 | base=1.22 | wall=2.31 | search=156 | target=none
+
+[PICKUP] R3 picked up tag (density=8) | Total: 24
+  [GIVE-UP] R4 returned empty after 156 searching steps
+  [TARGET] R4 → PHERO (1.54, -0.45)
+[DEPOSIT] R1 deposited! Total: 23
+  [PHERO] Laid at (1.86, -2.39) density=15 prob=0.98 entries=4
+  [TARGET] R1 → SITE (1.86, -2.39)
+
+======================================================================
+Step 23500 (12.5 min) | Pickups: 24 | Deposits: 23 | Rate: 1.84 tags/min | phero_entries=3 max_w=0.847
+======================================================================
+R1[BASE_ESC  ]: carry=0 | base=0.22 | wall=3.35 | search=  0 | target=site(1.86,-2.39)
+R2[SEARCH    ]: carry=0 | base=4.00 | wall=0.37 | search=4766 | target=site(-2.36,2.52)
+R3[RTB       ]: carry=1 | base=1.62 | wall=1.97 | search=  0 | target=none
+R4[PHERO     ]: carry=0 | base=0.72 | wall=2.79 | search=  0 | target=phero(1.54,-0.45)
+
+[PICKUP] R4 picked up tag (density=7) | Total: 25
+[DEPOSIT] R3 deposited! Total: 24
+  [TARGET] R3 → SITE (1.53, -0.64)
+
+======================================================================
+Step 24000 (12.8 min) | Pickups: 25 | Deposits: 24 | Rate: 1.88 tags/min | phero_entries=2 max_w=0.171
+======================================================================
+R1[SITE      ]: carry=0 | base=1.89 | wall=2.04 | search=  0 | target=site(1.86,-2.39)
+R2[GIVE_UP   ]: carry=0 | base=3.83 | wall=0.46 | search=5148 | target=none
+R3[SITE      ]: carry=0 | base=0.33 | wall=3.23 | search=  0 | target=site(1.53,-0.64)
+R4[RTB       ]: carry=1 | base=1.67 | wall=1.88 | search=  0 | target=none
+
+[PICKUP] R1 picked up tag (density=14) | Total: 26
+[DEPOSIT] R4 deposited! Total: 25
+  [TARGET] R4 → SITE (1.61, -0.41)
+
+======================================================================
+Step 24500 (13.1 min) | Pickups: 26 | Deposits: 25 | Rate: 1.91 tags/min | phero_entries=1 max_w=0.035
+======================================================================
+R1[SURVEY    ]: carry=1 | base=3.01 | wall=1.11 | search=  0 | target=none
+R2[GIVE_UP   ]: carry=0 | base=1.91 | wall=1.98 | search=5148 | target=none
+R3[SEARCH    ]: carry=0 | base=1.57 | wall=2.02 | search=163 | target=site(1.53,-0.64)
+R4[BASE_ESC  ]: carry=0 | base=0.23 | wall=3.28 | search=  0 | target=site(1.61,-0.41)
+
+  [GIVE-UP] R2 returned empty after 5148 searching steps
+  [TARGET] R2 → PHERO (1.86, -2.39)
+
+======================================================================
+Step 25000 (13.3 min) | Pickups: 26 | Deposits: 25 | Rate: 1.88 tags/min | phero_entries=1 max_w=0.007
+======================================================================
+R1[RTB       ]: carry=1 | base=1.67 | wall=2.21 | search=  0 | target=none
+R2[BASE_ESC  ]: carry=0 | base=0.22 | wall=3.31 | search=  0 | target=phero(1.86,-2.39)
+R3[SEARCH    ]: carry=0 | base=1.94 | wall=1.61 | search=663 | target=site(1.53,-0.64)
+R4[SEARCH    ]: carry=0 | base=1.64 | wall=1.91 | search= 46 | target=site(1.61,-0.41)
+
+[PICKUP] R4 picked up tag (density=6) | Total: 27
+[DEPOSIT] R1 deposited! Total: 26
+  [PHERO] Laid at (1.83, -2.38) density=14 prob=0.96 entries=2
+  [TARGET] R1 → SITE (1.83, -2.38)
+
+======================================================================
+Step 25500 (13.6 min) | Pickups: 27 | Deposits: 26 | Rate: 1.91 tags/min | phero_entries=2 max_w=0.660
+======================================================================
+R1[SITE      ]: carry=0 | base=0.29 | wall=3.26 | search=  0 | target=site(1.83,-2.38)
+R2[PHERO     ]: carry=0 | base=0.82 | wall=2.86 | search=  0 | target=phero(1.86,-2.39)
+R3[GIVE_UP   ]: carry=0 | base=0.78 | wall=2.72 | search=780 | target=none
+R4[RTB       ]: carry=1 | base=1.73 | wall=1.86 | search=  0 | target=none
+
+  [GIVE-UP] R3 returned empty after 780 searching steps
+  [TARGET] R3 → PHERO (1.83, -2.38)
+[DEPOSIT] R4 deposited! Total: 27
+  [TARGET] R4 → SITE (1.61, -0.59)
+
+======================================================================
+Step 26000 (13.9 min) | Pickups: 27 | Deposits: 27 | Rate: 1.95 tags/min | phero_entries=1 max_w=0.133
+======================================================================
+R1[SITE      ]: carry=0 | base=2.19 | wall=1.79 | search=  0 | target=site(1.83,-2.38)
+R2[PHERO     ]: carry=0 | base=2.71 | wall=1.38 | search=  0 | target=phero(1.86,-2.39)
+R3[PHERO     ]: carry=0 | base=1.17 | wall=2.52 | search=  0 | target=phero(1.83,-2.38)
+R4[BASE_ESC  ]: carry=0 | base=0.22 | wall=3.28 | search=  0 | target=site(1.61,-0.59)
+
+[PICKUP] R4 picked up tag (density=5) | Total: 28
+
+======================================================================
+Step 26500 (14.1 min) | Pickups: 28 | Deposits: 27 | Rate: 1.91 tags/min | phero_entries=1 max_w=0.027
+======================================================================
+R1[SEARCH    ]: carry=0 | base=2.74 | wall=1.35 | search=299 | target=site(1.83,-2.38)
+R2[SEARCH    ]: carry=0 | base=2.72 | wall=0.97 | search=432 | target=phero(1.86,-2.39)
+R3[SEARCH    ]: carry=0 | base=3.02 | wall=1.10 | search= 35 | target=phero(1.83,-2.38)
+R4[SURVEY    ]: carry=1 | base=1.72 | wall=1.88 | search=  0 | target=none
+
+
+======================================================================
+Step 27000 (14.4 min) | Pickups: 28 | Deposits: 27 | Rate: 1.88 tags/min | phero_entries=1 max_w=0.005
+======================================================================
+R1[GIVE_UP   ]: carry=0 | base=0.97 | wall=2.71 | search=312 | target=none
+R2[SEARCH    ]: carry=0 | base=2.99 | wall=0.59 | search=932 | target=phero(1.86,-2.39)
+R3[SEARCH    ]: carry=0 | base=3.23 | wall=0.54 | search=535 | target=phero(1.83,-2.38)
+R4[RTB       ]: carry=1 | base=0.73 | wall=2.80 | search=  0 | target=none
+
+[DEPOSIT] R4 deposited! Total: 28
+  [TARGET] R4 → SITE (1.62, -0.58)
+  [GIVE-UP] R1 returned empty after 312 searching steps
+  [TARGET] R1 → PHERO (1.83, -2.38)
+
+======================================================================
+Step 27500 (14.7 min) | Pickups: 28 | Deposits: 28 | Rate: 1.91 tags/min | phero_entries=1 max_w=0.001
+======================================================================
+R1[PHERO     ]: carry=0 | base=1.01 | wall=2.70 | search=  0 | target=phero(1.83,-2.38)
+R2[SEARCH    ]: carry=0 | base=1.69 | wall=1.91 | search=1432 | target=phero(1.86,-2.39)
+R3[WALL_ESC  ]: carry=0 | base=3.21 | wall=0.34 | search=1035 | target=phero(1.83,-2.38)
+R4[SITE      ]: carry=0 | base=1.20 | wall=2.36 | search=  0 | target=site(1.62,-0.58)
+
+
+======================================================================
+Step 28000 (14.9 min) | Pickups: 28 | Deposits: 28 | Rate: 1.88 tags/min | phero_entries=0 max_w=0.000
+======================================================================
+R1[PHERO     ]: carry=0 | base=2.93 | wall=1.18 | search=  0 | target=phero(1.83,-2.38)
+R2[SEARCH    ]: carry=0 | base=0.92 | wall=2.84 | search=1932 | target=phero(1.86,-2.39)
+R3[WALL_ESC  ]: carry=0 | base=3.22 | wall=0.33 | search=1535 | target=phero(1.83,-2.38)
+R4[SEARCH    ]: carry=0 | base=1.25 | wall=2.55 | search=377 | target=site(1.62,-0.58)
+
+[PICKUP] R1 picked up tag (density=13) | Total: 29
+BATCH_RESULT pickups=29 deposits=28

@@ -1,0 +1,452 @@
+Gym has been unmaintained since 2022 and does not support NumPy 2.0 amongst other critical functionality.
+Please upgrade to Gymnasium, the maintained drop-in replacement of Gym, or contact the authors of your software and request that they upgrade.
+Users of this version of Gym should be able to simply replace 'import gym' with 'import gymnasium as gym' in the vast majority of cases.
+See the migration guide at https://gymnasium.farama.org/introduction/migration_guide/ for additional information.
+=================================================================
+EXPERIMENT 4 — Central Server Disconnect Robustness
+  Arena: 5x5m | Tags: 64 | Robots: 4 | Time: 10.0 min
+  Disconnect: 1.1 → 6.1 min (5.0 min offline)
+=================================================================
+
+Loading model: ppo_cpfa_v9
+Model loaded. Starting evaluation...
+
+[PICKUP] Robot 3 picked up tag (density=6) | Total: 1
+[DEPOSIT] Robot 3 deposited! Total: 1
+  [TARGET] Robot 3 → SITE (0.00,0.50)
+[PICKUP] Robot 3 picked up tag (density=5) | Total: 2
+
+======================================================================
+Step 500 (0.3 min) [ONLINE] | Pickups: 2 | Deposits: 1 | Rate: 3.75 tags/min | phero=1
+======================================================================
+R1[EXPLORE     ]: carry=0 | gave_up=0
+R2[WALL_ESC    ]: carry=0 | gave_up=0
+R3[RTB         ]: carry=1 | gave_up=0
+R4[BASE_ESC    ]: carry=0 | gave_up=0
+
+[DEPOSIT] Robot 3 deposited! Total: 2
+  [TARGET] Robot 3 → SITE (-0.01,0.51)
+[PICKUP] Robot 2 picked up tag (density=16) | Total: 3
+[PICKUP] Robot 3 picked up tag (density=12) | Total: 4
+
+======================================================================
+Step 1000 (0.5 min) [ONLINE] | Pickups: 4 | Deposits: 2 | Rate: 3.75 tags/min | phero=2
+======================================================================
+R1[EXPLORE     ]: carry=0 | gave_up=0
+R2[RTB         ]: carry=1 | gave_up=0
+R3[RTB         ]: carry=1 | gave_up=0
+R4[EXPLORE     ]: carry=0 | gave_up=0
+
+[PICKUP] Robot 1 picked up tag (density=9) | Total: 5
+[DEPOSIT] Robot 2 deposited! Total: 3
+  [TARGET] Robot 2 → SITE (2.04,-0.10)
+[GIVE-UP] R4 giving up after 1092 steps
+[PICKUP] Robot 2 picked up tag (density=9) | Total: 6
+[DEPOSIT] Robot 2 deposited! Total: 4
+  [TARGET] Robot 2 → SITE (0.28,-0.10)
+[EMPTY_RTN] R4 → phero(2.04,-0.10)
+[DEPOSIT] Robot 3 deposited! Total: 5
+  [TARGET] Robot 3 → SITE (0.31,1.11)
+
+======================================================================
+Step 1500 (0.8 min) [ONLINE] | Pickups: 6 | Deposits: 5 | Rate: 6.25 tags/min | phero=5
+======================================================================
+R1[RTB         ]: carry=1 | gave_up=0
+R2[BASE_ESC    ]: carry=0 | gave_up=0
+R3[SITE        ]: carry=0 | gave_up=0
+R4[PHERO       ]: carry=0 | gave_up=0
+
+[DEPOSIT] Robot 1 deposited! Total: 6
+  [TARGET] Robot 1 → SITE (-1.51,-1.46)
+[PICKUP] Robot 4 picked up tag (density=8) | Total: 7
+[DEPOSIT] Robot 4 deposited! Total: 7
+  [TARGET] Robot 4 → SITE (0.26,-0.31)
+[PICKUP] Robot 2 picked up tag (density=11) | Total: 8
+
+======================================================================
+Step 2000 (1.1 min) [ONLINE] | Pickups: 8 | Deposits: 7 | Rate: 6.56 tags/min | phero=7
+======================================================================
+R1[SITE        ]: carry=0 | gave_up=0
+R2[RTB         ]: carry=1 | gave_up=0
+R3[EXPLORE     ]: carry=0 | gave_up=0
+R4[EXPLORE     ]: carry=0 | gave_up=0
+
+
+[DISCONNECT] Central server OFFLINE at 1.08 min (will reconnect at 6.1 min)
+
+[PICKUP] Robot 3 picked up tag (density=10) | Total: 9
+[PICKUP] Robot 1 picked up tag (density=8) | Total: 10
+
+======================================================================
+Step 2500 (1.3 min) [DISCONNECTED] | Pickups: 10 | Deposits: 7 | Rate: 5.25 tags/min | phero=7
+======================================================================
+R1[DISCONNECTED]: carry=1 | gave_up=0
+R2[DISCONNECTED]: carry=1 | gave_up=0
+R3[DISCONNECTED]: carry=1 | gave_up=0
+R4[DISCONNECTED]: carry=0 | gave_up=0
+
+
+======================================================================
+Step 3000 (1.6 min) [DISCONNECTED] | Pickups: 10 | Deposits: 7 | Rate: 4.38 tags/min | phero=7
+======================================================================
+R1[DISCONNECTED]: carry=1 | gave_up=0
+R2[DISCONNECTED]: carry=1 | gave_up=0
+R3[DISCONNECTED]: carry=1 | gave_up=0
+R4[DISCONNECTED]: carry=0 | gave_up=0
+
+
+======================================================================
+Step 3500 (1.9 min) [DISCONNECTED] | Pickups: 10 | Deposits: 7 | Rate: 3.75 tags/min | phero=7
+======================================================================
+R1[DISCONNECTED]: carry=1 | gave_up=0
+R2[DISCONNECTED]: carry=1 | gave_up=0
+R3[DISCONNECTED]: carry=1 | gave_up=0
+R4[DISCONNECTED]: carry=0 | gave_up=0
+
+
+======================================================================
+Step 4000 (2.1 min) [DISCONNECTED] | Pickups: 10 | Deposits: 7 | Rate: 3.28 tags/min | phero=7
+======================================================================
+R1[DISCONNECTED]: carry=1 | gave_up=0
+R2[DISCONNECTED]: carry=1 | gave_up=0
+R3[DISCONNECTED]: carry=1 | gave_up=0
+R4[DISCONNECTED]: carry=0 | gave_up=0
+
+
+======================================================================
+Step 4500 (2.4 min) [DISCONNECTED] | Pickups: 10 | Deposits: 7 | Rate: 2.92 tags/min | phero=6
+======================================================================
+R1[DISCONNECTED]: carry=1 | gave_up=0
+R2[DISCONNECTED]: carry=1 | gave_up=0
+R3[DISCONNECTED]: carry=1 | gave_up=0
+R4[DISCONNECTED]: carry=0 | gave_up=0
+
+[PICKUP] Robot 4 picked up tag (density=4) | Total: 11
+[DEPOSIT] Robot 4 deposited! Total: 8
+  [TARGET] Robot 4 → SITE (-0.40,0.69)
+
+======================================================================
+Step 5000 (2.7 min) [DISCONNECTED] | Pickups: 11 | Deposits: 8 | Rate: 3.00 tags/min | phero=5
+======================================================================
+R1[DISCONNECTED]: carry=1 | gave_up=0
+R2[DISCONNECTED]: carry=1 | gave_up=0
+R3[DISCONNECTED]: carry=1 | gave_up=0
+R4[DISCONNECTED]: carry=0 | gave_up=0
+
+
+======================================================================
+Step 5500 (2.9 min) [DISCONNECTED] | Pickups: 11 | Deposits: 8 | Rate: 2.73 tags/min | phero=4
+======================================================================
+R1[DISCONNECTED]: carry=1 | gave_up=0
+R2[DISCONNECTED]: carry=1 | gave_up=0
+R3[DISCONNECTED]: carry=1 | gave_up=0
+R4[DISCONNECTED]: carry=0 | gave_up=0
+
+[PICKUP] Robot 4 picked up tag (density=15) | Total: 12
+
+======================================================================
+Step 6000 (3.2 min) [DISCONNECTED] | Pickups: 12 | Deposits: 8 | Rate: 2.50 tags/min | phero=1
+======================================================================
+R1[DISCONNECTED]: carry=1 | gave_up=0
+R2[DISCONNECTED]: carry=1 | gave_up=0
+R3[DISCONNECTED]: carry=1 | gave_up=0
+R4[DISCONNECTED]: carry=1 | gave_up=0
+
+
+======================================================================
+Step 6500 (3.5 min) [DISCONNECTED] | Pickups: 12 | Deposits: 8 | Rate: 2.31 tags/min | phero=0
+======================================================================
+R1[DISCONNECTED]: carry=1 | gave_up=0
+R2[DISCONNECTED]: carry=1 | gave_up=0
+R3[DISCONNECTED]: carry=1 | gave_up=0
+R4[DISCONNECTED]: carry=1 | gave_up=0
+
+
+======================================================================
+Step 7000 (3.7 min) [DISCONNECTED] | Pickups: 12 | Deposits: 8 | Rate: 2.14 tags/min | phero=0
+======================================================================
+R1[DISCONNECTED]: carry=1 | gave_up=0
+R2[DISCONNECTED]: carry=1 | gave_up=0
+R3[DISCONNECTED]: carry=1 | gave_up=0
+R4[DISCONNECTED]: carry=1 | gave_up=0
+
+
+======================================================================
+Step 7500 (4.0 min) [DISCONNECTED] | Pickups: 12 | Deposits: 8 | Rate: 2.00 tags/min | phero=0
+======================================================================
+R1[DISCONNECTED]: carry=1 | gave_up=0
+R2[DISCONNECTED]: carry=1 | gave_up=0
+R3[DISCONNECTED]: carry=1 | gave_up=0
+R4[DISCONNECTED]: carry=1 | gave_up=0
+
+[DEPOSIT] Robot 4 deposited! Total: 9
+  [TARGET] Robot 4 → SITE (1.95,-0.10)
+
+======================================================================
+Step 8000 (4.3 min) [DISCONNECTED] | Pickups: 12 | Deposits: 9 | Rate: 2.11 tags/min | phero=1
+======================================================================
+R1[DISCONNECTED]: carry=1 | gave_up=0
+R2[DISCONNECTED]: carry=1 | gave_up=0
+R3[DISCONNECTED]: carry=1 | gave_up=0
+R4[DISCONNECTED]: carry=0 | gave_up=0
+
+
+======================================================================
+Step 8500 (4.5 min) [DISCONNECTED] | Pickups: 12 | Deposits: 9 | Rate: 1.99 tags/min | phero=1
+======================================================================
+R1[DISCONNECTED]: carry=1 | gave_up=0
+R2[DISCONNECTED]: carry=1 | gave_up=0
+R3[DISCONNECTED]: carry=1 | gave_up=0
+R4[DISCONNECTED]: carry=0 | gave_up=0
+
+[PICKUP] Robot 4 picked up tag (density=3) | Total: 13
+
+======================================================================
+Step 9000 (4.8 min) [DISCONNECTED] | Pickups: 13 | Deposits: 9 | Rate: 1.88 tags/min | phero=1
+======================================================================
+R1[DISCONNECTED]: carry=1 | gave_up=0
+R2[DISCONNECTED]: carry=1 | gave_up=0
+R3[DISCONNECTED]: carry=1 | gave_up=0
+R4[DISCONNECTED]: carry=1 | gave_up=0
+
+
+======================================================================
+Step 9500 (5.1 min) [DISCONNECTED] | Pickups: 13 | Deposits: 9 | Rate: 1.78 tags/min | phero=1
+======================================================================
+R1[DISCONNECTED]: carry=1 | gave_up=0
+R2[DISCONNECTED]: carry=1 | gave_up=0
+R3[DISCONNECTED]: carry=1 | gave_up=0
+R4[DISCONNECTED]: carry=1 | gave_up=0
+
+
+======================================================================
+Step 10000 (5.3 min) [DISCONNECTED] | Pickups: 13 | Deposits: 9 | Rate: 1.69 tags/min | phero=1
+======================================================================
+R1[DISCONNECTED]: carry=1 | gave_up=0
+R2[DISCONNECTED]: carry=1 | gave_up=0
+R3[DISCONNECTED]: carry=1 | gave_up=0
+R4[DISCONNECTED]: carry=1 | gave_up=0
+
+
+======================================================================
+Step 10500 (5.6 min) [DISCONNECTED] | Pickups: 13 | Deposits: 9 | Rate: 1.61 tags/min | phero=1
+======================================================================
+R1[DISCONNECTED]: carry=1 | gave_up=0
+R2[DISCONNECTED]: carry=1 | gave_up=0
+R3[DISCONNECTED]: carry=1 | gave_up=0
+R4[DISCONNECTED]: carry=1 | gave_up=0
+
+[DEPOSIT] Robot 4 deposited! Total: 10
+  [TARGET] Robot 4 → SITE (-0.15,0.74)
+
+======================================================================
+Step 11000 (5.9 min) [DISCONNECTED] | Pickups: 13 | Deposits: 10 | Rate: 1.70 tags/min | phero=1
+======================================================================
+R1[DISCONNECTED]: carry=1 | gave_up=0
+R2[DISCONNECTED]: carry=1 | gave_up=0
+R3[DISCONNECTED]: carry=1 | gave_up=0
+R4[DISCONNECTED]: carry=0 | gave_up=0
+
+
+[RECONNECT] Central server ONLINE at 6.08 min
+
+
+======================================================================
+Step 11500 (6.1 min) [ONLINE] | Pickups: 13 | Deposits: 10 | Rate: 1.63 tags/min | phero=1
+======================================================================
+R1[RTB         ]: carry=1 | gave_up=0
+R2[RTB         ]: carry=1 | gave_up=0
+R3[RTB         ]: carry=1 | gave_up=0
+R4[SITE        ]: carry=0 | gave_up=0
+
+[DEPOSIT] Robot 3 deposited! Total: 11
+  [TARGET] Robot 3 → SITE (0.34,1.19)
+[DEPOSIT] Robot 2 deposited! Total: 12
+  [TARGET] Robot 2 → SITE (0.32,1.14)
+[DEPOSIT] Robot 1 deposited! Total: 13
+  [TARGET] Robot 1 → SITE (-1.19,-1.31)
+
+======================================================================
+Step 12000 (6.4 min) [ONLINE] | Pickups: 13 | Deposits: 13 | Rate: 2.03 tags/min | phero=3
+======================================================================
+R1[SITE        ]: carry=0 | gave_up=0
+R2[SITE        ]: carry=0 | gave_up=0
+R3[SITE        ]: carry=0 | gave_up=0
+R4[SITE        ]: carry=0 | gave_up=0
+
+[PICKUP] Robot 4 picked up tag (density=2) | Total: 14
+[DEPOSIT] Robot 4 deposited! Total: 14
+  [TARGET] Robot 4 → SITE (-0.38,0.41)
+[PICKUP] Robot 4 picked up tag (density=1) | Total: 15
+[PICKUP] Robot 1 picked up tag (density=7) | Total: 16
+
+======================================================================
+Step 12500 (6.7 min) [ONLINE] | Pickups: 16 | Deposits: 14 | Rate: 2.10 tags/min | phero=4
+======================================================================
+R1[RTB         ]: carry=1 | gave_up=0
+R2[EXPLORE     ]: carry=0 | gave_up=0
+R3[SITE        ]: carry=0 | gave_up=0
+R4[RTB         ]: carry=1 | gave_up=0
+
+[DEPOSIT] Robot 4 deposited! Total: 15
+  [TARGET] Robot 4 → PHERO (0.34,1.19)
+[PICKUP] Robot 2 picked up tag (density=9) | Total: 17
+[PICKUP] Robot 3 picked up tag (density=8) | Total: 18
+[DEPOSIT] Robot 1 deposited! Total: 16
+  [TARGET] Robot 1 → SITE (-1.10,-1.43)
+[DEPOSIT] Robot 2 deposited! Total: 17
+  [TARGET] Robot 2 → SITE (0.38,1.27)
+
+======================================================================
+Step 13000 (6.9 min) [ONLINE] | Pickups: 18 | Deposits: 17 | Rate: 2.45 tags/min | phero=6
+======================================================================
+R1[BASE_ESC    ]: carry=0 | gave_up=0
+R2[BASE_ESC    ]: carry=0 | gave_up=0
+R3[RTB         ]: carry=1 | gave_up=0
+R4[PHERO       ]: carry=0 | gave_up=0
+
+[PICKUP] Robot 4 picked up tag (density=7) | Total: 19
+[DEPOSIT] Robot 3 deposited! Total: 18
+  [TARGET] Robot 3 → SITE (0.34,1.27)
+[PICKUP] Robot 2 picked up tag (density=6) | Total: 20
+[DEPOSIT] Robot 4 deposited! Total: 19
+  [TARGET] Robot 4 → SITE (0.31,1.24)
+
+======================================================================
+Step 13500 (7.2 min) [ONLINE] | Pickups: 20 | Deposits: 19 | Rate: 2.64 tags/min | phero=8
+======================================================================
+R1[SITE        ]: carry=0 | gave_up=0
+R2[RTB         ]: carry=1 | gave_up=0
+R3[SITE        ]: carry=0 | gave_up=0
+R4[BASE_ESC    ]: carry=0 | gave_up=0
+
+[PICKUP] Robot 1 picked up tag (density=6) | Total: 21
+[DEPOSIT] Robot 2 deposited! Total: 20
+  [TARGET] Robot 2 → SITE (0.37,1.34)
+[PICKUP] Robot 3 picked up tag (density=5) | Total: 22
+[PICKUP] Robot 4 picked up tag (density=4) | Total: 23
+
+======================================================================
+Step 14000 (7.5 min) [ONLINE] | Pickups: 23 | Deposits: 20 | Rate: 2.68 tags/min | phero=9
+======================================================================
+R1[RTB         ]: carry=1 | gave_up=0
+R2[SITE        ]: carry=0 | gave_up=0
+R3[RTB         ]: carry=1 | gave_up=0
+R4[RTB         ]: carry=1 | gave_up=0
+
+[DEPOSIT] Robot 1 deposited! Total: 21
+  [TARGET] Robot 1 → SITE (-1.24,-1.31)
+[PICKUP] Robot 2 picked up tag (density=3) | Total: 24
+[DEPOSIT] Robot 4 deposited! Total: 22
+  [TARGET] Robot 4 → SITE (0.27,1.24)
+[DEPOSIT] Robot 3 deposited! Total: 23
+  [TARGET] Robot 3 → SITE (0.36,1.35)
+
+======================================================================
+Step 14500 (7.7 min) [ONLINE] | Pickups: 24 | Deposits: 23 | Rate: 2.97 tags/min | phero=12
+======================================================================
+R1[SITE        ]: carry=0 | gave_up=0
+R2[RTB         ]: carry=1 | gave_up=0
+R3[SITE        ]: carry=0 | gave_up=0
+R4[SITE        ]: carry=0 | gave_up=0
+
+[DEPOSIT] Robot 2 deposited! Total: 24
+  [TARGET] Robot 2 → SITE (0.03,1.35)
+[PICKUP] Robot 4 picked up tag (density=2) | Total: 25
+
+======================================================================
+Step 15000 (8.0 min) [ONLINE] | Pickups: 25 | Deposits: 24 | Rate: 3.00 tags/min | phero=12
+======================================================================
+R1[WALL_ESC    ]: carry=0 | gave_up=0
+R2[SITE        ]: carry=0 | gave_up=0
+R3[SITE        ]: carry=0 | gave_up=0
+R4[RTB         ]: carry=1 | gave_up=0
+
+[DEPOSIT] Robot 4 deposited! Total: 25
+  [TARGET] Robot 4 → SITE (0.24,1.35)
+[PICKUP] Robot 2 picked up tag (density=1) | Total: 26
+
+======================================================================
+Step 15500 (8.3 min) [ONLINE] | Pickups: 26 | Deposits: 25 | Rate: 3.02 tags/min | phero=12
+======================================================================
+R1[WALL_ESC    ]: carry=0 | gave_up=0
+R2[RTB         ]: carry=1 | gave_up=0
+R3[EXPLORE     ]: carry=0 | gave_up=0
+R4[SITE        ]: carry=0 | gave_up=0
+
+[DEPOSIT] Robot 2 deposited! Total: 26
+  [TARGET] Robot 2 → PHERO (0.19,1.35)
+[GIVE-UP] R4 giving up after 743 steps
+[GIVE-UP] R4 giving up after 821 steps
+
+======================================================================
+Step 16000 (8.5 min) [ONLINE] | Pickups: 26 | Deposits: 26 | Rate: 3.05 tags/min | phero=13
+======================================================================
+R1[EXPLORE     ]: carry=0 | gave_up=0
+R2[PHERO       ]: carry=0 | gave_up=0
+R3[EXPLORE     ]: carry=0 | gave_up=0
+R4[GIVE_UP     ]: carry=0 | gave_up=1
+
+[GIVE-UP] R3 giving up after 1920 steps
+[PICKUP] Robot 2 picked up tag (density=12) | Total: 27
+[EMPTY_RTN] R3 → phero(0.31,1.24)
+[EMPTY_RTN] R4 → phero(0.19,1.35)
+
+======================================================================
+Step 16500 (8.8 min) [ONLINE] | Pickups: 27 | Deposits: 26 | Rate: 2.95 tags/min | phero=9
+======================================================================
+R1[EXPLORE     ]: carry=0 | gave_up=0
+R2[RTB         ]: carry=1 | gave_up=0
+R3[BASE_ESC    ]: carry=0 | gave_up=0
+R4[BASE_ESC    ]: carry=0 | gave_up=0
+
+[DEPOSIT] Robot 2 deposited! Total: 27
+  [TARGET] Robot 2 → SITE (-0.90,0.68)
+
+======================================================================
+Step 17000 (9.1 min) [ONLINE] | Pickups: 27 | Deposits: 27 | Rate: 2.98 tags/min | phero=10
+======================================================================
+R1[EXPLORE     ]: carry=0 | gave_up=0
+R2[SITE        ]: carry=0 | gave_up=0
+R3[EXPLORE     ]: carry=0 | gave_up=0
+R4[PHERO       ]: carry=0 | gave_up=0
+
+[PICKUP] Robot 2 picked up tag (density=11) | Total: 28
+[DEPOSIT] Robot 2 deposited! Total: 28
+  [TARGET] Robot 2 → SITE (-0.90,0.51)
+[GIVE-UP] R4 giving up after 1001 steps
+
+======================================================================
+Step 17500 (9.3 min) [ONLINE] | Pickups: 28 | Deposits: 28 | Rate: 3.00 tags/min | phero=9
+======================================================================
+R1[EXPLORE     ]: carry=0 | gave_up=0
+R2[SITE        ]: carry=0 | gave_up=0
+R3[EXPLORE     ]: carry=0 | gave_up=0
+R4[GIVE_UP     ]: carry=0 | gave_up=1
+
+[PICKUP] Robot 2 picked up tag (density=10) | Total: 29
+
+======================================================================
+Step 18000 (9.6 min) [ONLINE] | Pickups: 29 | Deposits: 28 | Rate: 2.92 tags/min | phero=7
+======================================================================
+R1[EXPLORE     ]: carry=0 | gave_up=0
+R2[RTB         ]: carry=1 | gave_up=0
+R3[EXPLORE     ]: carry=0 | gave_up=0
+R4[GIVE_UP     ]: carry=0 | gave_up=1
+
+[EMPTY_RTN] R4 → phero(-0.90,0.51)
+[DEPOSIT] Robot 2 deposited! Total: 29
+  [TARGET] Robot 2 → SITE (-0.90,0.63)
+[PICKUP] Robot 2 picked up tag (density=9) | Total: 30
+
+======================================================================
+Step 18500 (9.9 min) [ONLINE] | Pickups: 30 | Deposits: 29 | Rate: 2.94 tags/min | phero=6
+======================================================================
+R1[EXPLORE     ]: carry=0 | gave_up=0
+R2[RTB         ]: carry=1 | gave_up=0
+R3[WALL_ESC    ]: carry=0 | gave_up=0
+R4[PHERO       ]: carry=0 | gave_up=0
+
+[PICKUP] Robot 4 picked up tag (density=8) | Total: 31
+TIMEOUT_RESULT pickups=31 deposits=29 steps=18750 elapsed_min=10.000000 disconnect_start=1.1 disconnect_duration=5.0
+BATCH_RESULT pickups=31 deposits=29

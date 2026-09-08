@@ -5,6 +5,7 @@ import argparse
 import csv
 import os
 import queue
+import random
 import re
 import shutil
 import shlex
@@ -84,8 +85,9 @@ def format_float(value):
 
 def default_results_csv(method, arena, disconnect_start=None, disconnect_duration=None):
     stamp = time.strftime("%Y%m%d_%H%M%S")
-    if method == "exp4_disconnect" and disconnect_start is not None:
-        tag = f"_ds{disconnect_start:g}_dd{disconnect_duration:g}"
+    if method == "exp4_disconnect" and disconnect_duration is not None:
+        # Start is now random per sample — only duration goes in the filename
+        tag = f"_dd{disconnect_duration:g}"
         return RESULTS_DIR / f"foraging_{method}_{arena}{tag}_{stamp}.csv"
     return RESULTS_DIR / f"foraging_{method}_{arena}_{stamp}.csv"
 
@@ -125,7 +127,7 @@ def add_webots_controller_env(env, webots_bin):
     prepend_env_path(env, "LD_LIBRARY_PATH", webots_home / "lib" / "controller")
 
 
-def build_commands(args, sample, port, duration):
+def build_commands(args, sample, port, duration, disconnect_start=None):
     world = WORLDS_DIR / f"eval_sample{sample}_{args.arena}.wbt"
     controller = PROJECT_ROOT / CONTROLLERS[args.method][args.arena]
 
@@ -149,7 +151,7 @@ def build_commands(args, sample, port, duration):
     controller_cmd.extend(["--duration-sim-min", format_float(duration)])
     if args.method == "exp4_disconnect":
         controller_cmd.extend([
-            "--disconnect-start-min",    format_float(args.disconnect_start_min),
+            "--disconnect-start-min",    format_float(disconnect_start),
             "--disconnect-duration-min", format_float(args.disconnect_duration_min),
         ])
 
@@ -228,9 +230,30 @@ def terminate_process(proc):
         proc.wait(timeout=10)
 
 
+def _random_disconnect_start(sample, duration, disconnect_duration):
+    """Reproducible random start time per sample.
+
+    Ensures the disconnect window fits within the foraging run and that
+    at least 0.5 sim-min of normal operation precedes the disconnect.
+    For a full-run disconnect (duration >= foraging time), start = 0.
+    """
+    if disconnect_duration >= duration:
+        return 0.0
+    lo = 0.5
+    hi = duration - disconnect_duration - 0.5
+    if hi <= lo:
+        return round(lo, 2)
+    rng = random.Random(sample * 31 + 17)
+    return round(rng.uniform(lo, hi), 2)
+
+
 def run_sample(args, sample, port, duration, logs_dir):
+    disconnect_start = (
+        _random_disconnect_start(sample, duration, args.disconnect_duration_min)
+        if args.method == "exp4_disconnect" else None
+    )
     world, controller, webots_cmd, controller_cmd = build_commands(
-        args, sample, port, duration
+        args, sample, port, duration, disconnect_start
     )
 
     if not world.exists():
@@ -329,16 +352,14 @@ def run_sample(args, sample, port, duration, logs_dir):
             if webots_output_thread is not None:
                 webots_output_thread.join(timeout=5)
 
-    if return_code != 0:
-        log_tail = tail_file(controller_log)
-        detail = f"\nLast controller log lines:\n{log_tail}" if log_tail else ""
-        raise RuntimeError(
-            f"controller failed for sample {sample} with exit code {return_code}; "
-            f"see {controller_log}{detail}"
-        )
     if result_match is None:
         log_tail = tail_file(controller_log)
         detail = f"\nLast controller log lines:\n{log_tail}" if log_tail else ""
+        if return_code != 0:
+            raise RuntimeError(
+                f"controller failed for sample {sample} with exit code {return_code}; "
+                f"see {controller_log}{detail}"
+            )
         raise RuntimeError(
             f"missing BATCH_RESULT for sample {sample}; see {controller_log}{detail}"
         )
@@ -350,7 +371,7 @@ def run_sample(args, sample, port, duration, logs_dir):
         "arena": args.arena,
         "sample": sample,
         "foraging_time_min": format_float(duration),
-        "disconnect_start_min":    format_float(args.disconnect_start_min) if args.method == "exp4_disconnect" else "",
+        "disconnect_start_min":    format_float(disconnect_start) if args.method == "exp4_disconnect" else "",
         "disconnect_duration_min": format_float(args.disconnect_duration_min) if args.method == "exp4_disconnect" else "",
         "pickups": pickups,
         "deposits": deposits,
@@ -398,12 +419,10 @@ def main():
                         help="Simulated minutes. Defaults by arena.")
     parser.add_argument("--model", default="ppo_cpfa_v9.zip",
                         help="Model path for centralized_ppo / exp4_disconnect.")
-    parser.add_argument("--disconnect-start-min", type=float, default=5.0,
-                        help="Sim minute when server disconnects (exp4_disconnect only).")
     parser.add_argument("--disconnect-duration-min", type=float, default=0.0,
                         help="Duration of disconnect in sim minutes (exp4_disconnect only).")
     parser.add_argument("--base-port", type=int, default=1438)
-    parser.add_argument("--max-parallel", type=int, default=None)
+    parser.add_argument("--max-parallel", type=int, default=10)
     parser.add_argument("--results-csv", type=Path, default=None)
     parser.add_argument("--webots-bin", default="webots")
     parser.add_argument("--startup-seconds", type=float, default=30.0)
@@ -419,7 +438,7 @@ def main():
         parser.error("--foraging-time must be greater than 0")
 
     if args.max_parallel is None:
-        args.max_parallel = len(args.samples)
+        args.max_parallel = 10
     if args.max_parallel <= 0:
         parser.error("--max-parallel must be greater than 0")
 
@@ -433,7 +452,7 @@ def main():
 
     results_csv = args.results_csv or default_results_csv(
         args.method, args.arena,
-        args.disconnect_start_min, args.disconnect_duration_min,
+        disconnect_duration=args.disconnect_duration_min,
     )
     if not results_csv.is_absolute():
         results_csv = PROJECT_ROOT / results_csv

@@ -77,25 +77,38 @@ def format_float(value):
     return f"{value:g}"
 
 
-def default_results_csv(method, distribution):
+DEFAULT_CPFA_PARAMS = str(
+    PROJECT_ROOT / "controllers" / "cpfa_baseline" / "cpfa_params.yaml"
+)
+
+
+def _params_tag(params_path):
+    """Return a filename tag when non-default params are used."""
+    if str(Path(params_path).resolve()) == str(Path(DEFAULT_CPFA_PARAMS).resolve()):
+        return ""
+    stem = Path(params_path).stem  # e.g. "cpfa_params_best" → "_cpfa_params_best"
+    return f"_{stem}"
+
+
+def default_results_csv(method, distribution, params_tag=""):
     stamp = time.strftime("%Y%m%d_%H%M%S")
-    return RESULTS_DIR / f"foraging_completion_{method}_{distribution}_{ARENA}_{stamp}.csv"
+    return RESULTS_DIR / f"foraging_completion_{method}{params_tag}_{distribution}_{ARENA}_{stamp}.csv"
 
 
-def default_results_csv_in(directory, method, distribution):
+def default_results_csv_in(directory, method, distribution, params_tag=""):
     stamp = time.strftime("%Y%m%d_%H%M%S")
-    return directory / f"foraging_completion_{method}_{distribution}_{ARENA}_{stamp}.csv"
+    return directory / f"foraging_completion_{method}{params_tag}_{distribution}_{ARENA}_{stamp}.csv"
 
 
-def resolve_results_csv(results_csv, method, distribution):
+def resolve_results_csv(results_csv, method, distribution, params_tag=""):
     if results_csv is None:
-        return default_results_csv(method, distribution)
+        return default_results_csv(method, distribution, params_tag)
     if not results_csv.is_absolute():
         results_csv = PROJECT_ROOT / results_csv
     if results_csv.exists() and results_csv.is_dir():
-        return default_results_csv_in(results_csv, method, distribution)
+        return default_results_csv_in(results_csv, method, distribution, params_tag)
     if not results_csv.exists() and results_csv.suffix == "":
-        return default_results_csv_in(results_csv, method, distribution)
+        return default_results_csv_in(results_csv, method, distribution, params_tag)
     return results_csv
 
 
@@ -164,6 +177,8 @@ def build_commands(args, sample, port):
             "--stop-on-completion",
         ]
     )
+    if args.method == "cpfa_baseline":
+        controller_cmd.extend(["--params", args.params])
 
     return world, controller, webots_cmd, controller_cmd
 
@@ -362,16 +377,14 @@ def run_sample(args, sample, port, logs_dir):
             if webots_output_thread is not None:
                 webots_output_thread.join(timeout=5)
 
-    if return_code != 0:
-        log_tail = tail_file(controller_log)
-        detail = f"\nLast controller log lines:\n{log_tail}" if log_tail else ""
-        raise RuntimeError(
-            f"controller failed for sample {sample} with exit code {return_code}; "
-            f"see {controller_log}{detail}"
-        )
     if result_match is None:
         log_tail = tail_file(controller_log)
         detail = f"\nLast controller log lines:\n{log_tail}" if log_tail else ""
+        if return_code != 0:
+            raise RuntimeError(
+                f"controller failed for sample {sample} with exit code {return_code}; "
+                f"see {controller_log}{detail}"
+            )
         raise RuntimeError(
             f"missing COMPLETION_RESULT/TIMEOUT_RESULT for sample {sample}; "
             f"see {controller_log}{detail}"
@@ -420,6 +433,9 @@ def main():
     parser.add_argument("--samples", type=parse_sample_range, default=parse_sample_range("1-5"))
     parser.add_argument("--max-sim-min", type=float, default=DEFAULT_MAX_SIM_MIN,
                         help="Safety cap in simulated minutes.")
+    parser.add_argument("--params", default=DEFAULT_CPFA_PARAMS,
+                        help="CPFA params YAML (cpfa_baseline only). "
+                             "Default: cpfa_params.yaml")
     parser.add_argument("--model", default="ppo_cpfa_v9.zip",
                         help="Model path for centralized_ppo.")
     parser.add_argument("--base-port", type=int, default=1438)
@@ -443,7 +459,8 @@ def main():
     if args.method == "centralized_ppo" and not model_exists(args.model):
         parser.error(f"--model not found: {args.model}")
 
-    results_csv = resolve_results_csv(args.results_csv, args.method, args.distribution)
+    tag = _params_tag(args.params) if args.method == "cpfa_baseline" else ""
+    results_csv = resolve_results_csv(args.results_csv, args.method, args.distribution, tag)
 
     if args.dry_run:
         print_dry_run(args, args.samples, results_csv)

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Generate 10 power-law distribution world files for 5x5 arena.
+Generate power-law distribution world files for 5x5 arena.
 
 Matches paper figure (b) Powerlaw pattern:
   1 large cluster  (~20 tags)
@@ -8,9 +8,11 @@ Matches paper figure (b) Powerlaw pattern:
   2-4 small clusters (~3-6 tags each)
   ~15-20 individual singletons scattered throughout arena
 
-Replaces eval_powerlaw{1-10}_5x5.wbt in the worlds directory.
+Pass --start and --end to control the sample range (default 1-10).
+  python generate_powerlaw_worlds.py --start 11 --end 20
 """
 
+import argparse
 import math
 import random
 import re
@@ -18,7 +20,6 @@ import os
 
 TEMPLATE    = os.path.join(os.path.dirname(__file__), "worlds", "eval_powerlaw1_5x5.wbt")
 OUT_DIR     = os.path.join(os.path.dirname(__file__), "worlds")
-NUM_SAMPLES = 10
 NUM_TAGS    = 64
 ARENA_HALF  = 2.1      # safe placement bounds (2.5m arena - 0.4m margin)
 NEST_RADIUS = 0.55     # min distance from nest (0,0) for any placed item
@@ -150,10 +151,15 @@ def generate_world(sample_idx, template_content, rng):
 
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--start", type=int, default=1)
+    parser.add_argument("--end",   type=int, default=10)
+    args = parser.parse_args()
+
     with open(TEMPLATE) as f:
         template_content = f.read()
 
-    for sample in range(1, NUM_SAMPLES + 1):
+    for sample in range(args.start, args.end + 1):
         rng = random.Random(sample * 42 + 7)
         content, sizes = generate_world(sample, template_content, rng)
 

@@ -2,10 +2,10 @@
 """Exp 2 — vary robot swarm size in 7×7 arena.
 
 Centralized PPO: same v9 model loaded once per team of 4 (team replication).
-  4  robots → 1 team  → 32  tags
-  8  robots → 2 teams → 64  tags
-  12 robots → 3 teams → 128 tags
-  16 robots → 4 teams → 208 tags
+  4  robots → 1 team  → 64  tags  (1.31/m²)
+  8  robots → 2 teams → 128 tags  (2.61/m²)
+  12 robots → 3 teams → 192 tags  (3.92/m²)
+  16 robots → 4 teams → 256 tags  (5.22/m²)
 
 Usage:
     python run_exp2_robots.py --method centralized_ppo --num-robots 8
@@ -36,12 +36,12 @@ RESULTS_DIR  = PROJECT_ROOT / "results"
 ARENA                 = "7x7"
 DEFAULT_FORAGING_TIME = 10.0
 
-# Exp 2 fixed mapping: num_robots → num_tags
+# Exp 2 fixed mapping: num_robots → num_tags  (density = n_tags/49 m²)
 ROBOT_CONFIGS = {
-    4:  32,
-    8:  64,
-    12: 128,
-    16: 208,
+    4:  64,    # 1.31 /m²
+    8:  128,   # 2.61 /m²
+    12: 192,   # 3.92 /m²
+    16: 256,   # 5.22 /m²
 }
 
 CONTROLLERS = {
@@ -350,16 +350,14 @@ def run_sample(args, sample, port, logs_dir):
             if webots_output_thread is not None:
                 webots_output_thread.join(timeout=5)
 
-    if return_code != 0:
-        log_tail = tail_file(controller_log)
-        detail = f"\nLast controller log lines:\n{log_tail}" if log_tail else ""
-        raise RuntimeError(
-            f"Controller failed for sample {sample} (exit {return_code}); "
-            f"see {controller_log}{detail}"
-        )
     if result_match is None:
         log_tail = tail_file(controller_log)
         detail = f"\nLast controller log lines:\n{log_tail}" if log_tail else ""
+        if return_code != 0:
+            raise RuntimeError(
+                f"Controller failed for sample {sample} (exit {return_code}); "
+                f"see {controller_log}{detail}"
+            )
         raise RuntimeError(
             f"Missing BATCH_RESULT for sample {sample}; see {controller_log}{detail}"
         )
@@ -431,7 +429,7 @@ def main():
     parser.add_argument("--num-robots",  required=True, type=int,
                         choices=sorted(ROBOT_CONFIGS),
                         help="Swarm size. Tags are fixed per config: "
-                             "4→32, 8→64, 12→128, 16→208.")
+                             "4→64, 8→128, 12→192, 16→256.")
     parser.add_argument("--samples",     type=parse_sample_range,
                         default=parse_sample_range("1-10"))
     parser.add_argument("--foraging-time", type=float, default=DEFAULT_FORAGING_TIME,
@@ -439,7 +437,7 @@ def main():
     parser.add_argument("--model",       default="ppo_cpfa_v9.zip",
                         help="Model path for centralized_ppo (default ppo_cpfa_v9.zip).")
     parser.add_argument("--base-port",   type=int, default=1438)
-    parser.add_argument("--max-parallel", type=int, default=None,
+    parser.add_argument("--max-parallel", type=int, default=10,
                         help="Max parallel Webots instances (default = number of samples).")
     parser.add_argument("--results-csv", type=Path, default=None)
     parser.add_argument("--webots-bin",  default="webots")
@@ -452,7 +450,7 @@ def main():
     if args.foraging_time <= 0:
         parser.error("--foraging-time must be greater than 0")
     if args.max_parallel is None:
-        args.max_parallel = len(args.samples)
+        args.max_parallel = 10
     if args.max_parallel <= 0:
         parser.error("--max-parallel must be greater than 0")
     if args.method == "centralized_ppo" and not model_exists(args.model):
