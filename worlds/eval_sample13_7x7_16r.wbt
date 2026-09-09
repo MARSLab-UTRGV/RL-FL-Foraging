@@ -1,0 +1,942 @@
+#VRML_SIM R2023b utf8
+
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackground.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/objects/backgrounds/protos/TexturedBackgroundLight.proto"
+EXTERNPROTO "https://raw.githubusercontent.com/cyberbotics/webots/R2023b/projects/robots/gctronic/e-puck/protos/E-puck.proto"
+
+WorldInfo {
+  title "Multi-Agent AprilTag Foraging - EVAL 7x7 16R Sample 13"
+  basicTimeStep 32
+}
+Viewpoint {
+  orientation -0.5773502691896258 0.5773502691896258 0.5773502691896258 2.0944
+  position 0 0 14
+}
+TexturedBackground {
+}
+TexturedBackgroundLight {
+  castShadows FALSE
+}
+DirectionalLight {
+  ambientIntensity 0.5
+  direction -1 0 0
+  intensity 0.8
+}
+DirectionalLight {
+  ambientIntensity 0.5
+  direction 1 0 0
+  intensity 0.8
+}
+DirectionalLight {
+  ambientIntensity 0.5
+  direction 0 -1 0
+  intensity 0.8
+}
+DirectionalLight {
+  ambientIntensity 0.5
+  direction 0 1 0
+  intensity 0.8
+}
+Solid {
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.85 0.85 0.85
+        roughness 1
+        metalness 0
+      }
+      geometry Box {
+        size 7 7 0.001
+      }
+    }
+  ]
+  name "floor"
+  boundingObject Box {
+    size 7 7 0.001
+  }
+}
+
+Solid {
+  translation 0 3.5 0.05
+  children [
+    Shape {
+      appearance PBRAppearance { baseColor 0.3 0.3 0.3 roughness 1 metalness 0 }
+      geometry Box { size 7.1 0.04 0.1 }
+    }
+  ]
+  name "wall_north"
+  boundingObject Box { size 7.1 0.04 0.1 }
+}
+Solid {
+  translation 0 -3.5 0.05
+  children [
+    Shape {
+      appearance PBRAppearance { baseColor 0.3 0.3 0.3 roughness 1 metalness 0 }
+      geometry Box { size 7.1 0.04 0.1 }
+    }
+  ]
+  name "wall_south"
+  boundingObject Box { size 7.1 0.04 0.1 }
+}
+Solid {
+  translation 3.5 0 0.05
+  children [
+    Shape {
+      appearance PBRAppearance { baseColor 0.3 0.3 0.3 roughness 1 metalness 0 }
+      geometry Box { size 0.04 7.1 0.1 }
+    }
+  ]
+  name "wall_east"
+  boundingObject Box { size 0.04 7.1 0.1 }
+}
+Solid {
+  translation -3.5 0 0.05
+  children [
+    Shape {
+      appearance PBRAppearance { baseColor 0.3 0.3 0.3 roughness 1 metalness 0 }
+      geometry Box { size 0.04 7.1 0.1 }
+    }
+  ]
+  name "wall_west"
+  boundingObject Box { size 0.04 7.1 0.1 }
+}
+
+# Base Station (Red Cylinder)
+DEF BASE_STATION Solid {
+  translation 0 0 0.001
+  children [
+    Shape {
+      appearance PBRAppearance {
+        baseColor 0.8 0.1 0.1
+        roughness 0.5
+        metalness 0
+        emissiveColor 0.3 0 0
+      }
+      geometry Cylinder {
+        height 0.002
+        radius 0.1
+      }
+    }
+  ]
+  name "base_station"
+  boundingObject Cylinder {
+    height 0.002
+    radius 0.1
+  }
+}
+
+
+# ---------------------------------------------------------
+# AprilTags (256 Total) — 16 clusters × 16 tags (4×4 grid)
+# Density: 5.22 /m²  |  Arena: 7×7 m
+# ---------------------------------------------------------
+
+# Cluster 1  center=(1.5135, 1.8717)
+DEF APRILTAG_1 Solid { translation 1.3972 1.7555 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_1" }
+DEF APRILTAG_2 Solid { translation 1.4747 1.7555 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_2" }
+DEF APRILTAG_3 Solid { translation 1.5522 1.7555 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_3" }
+DEF APRILTAG_4 Solid { translation 1.6297 1.7555 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_4" }
+DEF APRILTAG_5 Solid { translation 1.3972 1.8330 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_5" }
+DEF APRILTAG_6 Solid { translation 1.4747 1.8330 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_6" }
+DEF APRILTAG_7 Solid { translation 1.5522 1.8330 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_7" }
+DEF APRILTAG_8 Solid { translation 1.6297 1.8330 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_8" }
+DEF APRILTAG_9 Solid { translation 1.3972 1.9105 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_9" }
+DEF APRILTAG_10 Solid { translation 1.4747 1.9105 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_10" }
+DEF APRILTAG_11 Solid { translation 1.5522 1.9105 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_11" }
+DEF APRILTAG_12 Solid { translation 1.6297 1.9105 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_12" }
+DEF APRILTAG_13 Solid { translation 1.3972 1.9880 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_13" }
+DEF APRILTAG_14 Solid { translation 1.4747 1.9880 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_14" }
+DEF APRILTAG_15 Solid { translation 1.5522 1.9880 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_15" }
+DEF APRILTAG_16 Solid { translation 1.6297 1.9880 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_16" }
+
+# Cluster 2  center=(1.1049, -0.7821)
+DEF APRILTAG_17 Solid { translation 0.9887 -0.8984 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_17" }
+DEF APRILTAG_18 Solid { translation 1.0662 -0.8984 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_18" }
+DEF APRILTAG_19 Solid { translation 1.1437 -0.8984 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_19" }
+DEF APRILTAG_20 Solid { translation 1.2212 -0.8984 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_20" }
+DEF APRILTAG_21 Solid { translation 0.9887 -0.8209 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_21" }
+DEF APRILTAG_22 Solid { translation 1.0662 -0.8209 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_22" }
+DEF APRILTAG_23 Solid { translation 1.1437 -0.8209 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_23" }
+DEF APRILTAG_24 Solid { translation 1.2212 -0.8209 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_24" }
+DEF APRILTAG_25 Solid { translation 0.9887 -0.7434 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_25" }
+DEF APRILTAG_26 Solid { translation 1.0662 -0.7434 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_26" }
+DEF APRILTAG_27 Solid { translation 1.1437 -0.7434 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_27" }
+DEF APRILTAG_28 Solid { translation 1.2212 -0.7434 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_28" }
+DEF APRILTAG_29 Solid { translation 0.9887 -0.6659 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_29" }
+DEF APRILTAG_30 Solid { translation 1.0662 -0.6659 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_30" }
+DEF APRILTAG_31 Solid { translation 1.1437 -0.6659 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_31" }
+DEF APRILTAG_32 Solid { translation 1.2212 -0.6659 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_32" }
+
+# Cluster 3  center=(2.7711, -0.8521)
+DEF APRILTAG_33 Solid { translation 2.6549 -0.9683 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_33" }
+DEF APRILTAG_34 Solid { translation 2.7324 -0.9683 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_34" }
+DEF APRILTAG_35 Solid { translation 2.8099 -0.9683 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_35" }
+DEF APRILTAG_36 Solid { translation 2.8874 -0.9683 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_36" }
+DEF APRILTAG_37 Solid { translation 2.6549 -0.8908 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_37" }
+DEF APRILTAG_38 Solid { translation 2.7324 -0.8908 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_38" }
+DEF APRILTAG_39 Solid { translation 2.8099 -0.8908 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_39" }
+DEF APRILTAG_40 Solid { translation 2.8874 -0.8908 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_40" }
+DEF APRILTAG_41 Solid { translation 2.6549 -0.8133 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_41" }
+DEF APRILTAG_42 Solid { translation 2.7324 -0.8133 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_42" }
+DEF APRILTAG_43 Solid { translation 2.8099 -0.8133 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_43" }
+DEF APRILTAG_44 Solid { translation 2.8874 -0.8133 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_44" }
+DEF APRILTAG_45 Solid { translation 2.6549 -0.7358 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_45" }
+DEF APRILTAG_46 Solid { translation 2.7324 -0.7358 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_46" }
+DEF APRILTAG_47 Solid { translation 2.8099 -0.7358 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_47" }
+DEF APRILTAG_48 Solid { translation 2.8874 -0.7358 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_48" }
+
+# Cluster 4  center=(-0.2456, 0.8380)
+DEF APRILTAG_49 Solid { translation -0.3619 0.7218 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_49" }
+DEF APRILTAG_50 Solid { translation -0.2844 0.7218 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_50" }
+DEF APRILTAG_51 Solid { translation -0.2069 0.7218 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_51" }
+DEF APRILTAG_52 Solid { translation -0.1294 0.7218 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_52" }
+DEF APRILTAG_53 Solid { translation -0.3619 0.7993 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_53" }
+DEF APRILTAG_54 Solid { translation -0.2844 0.7993 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_54" }
+DEF APRILTAG_55 Solid { translation -0.2069 0.7993 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_55" }
+DEF APRILTAG_56 Solid { translation -0.1294 0.7993 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_56" }
+DEF APRILTAG_57 Solid { translation -0.3619 0.8768 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_57" }
+DEF APRILTAG_58 Solid { translation -0.2844 0.8768 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_58" }
+DEF APRILTAG_59 Solid { translation -0.2069 0.8768 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_59" }
+DEF APRILTAG_60 Solid { translation -0.1294 0.8768 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_60" }
+DEF APRILTAG_61 Solid { translation -0.3619 0.9543 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_61" }
+DEF APRILTAG_62 Solid { translation -0.2844 0.9543 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_62" }
+DEF APRILTAG_63 Solid { translation -0.2069 0.9543 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_63" }
+DEF APRILTAG_64 Solid { translation -0.1294 0.9543 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_64" }
+
+# Cluster 5  center=(0.2095, -1.5222)
+DEF APRILTAG_65 Solid { translation 0.0932 -1.6384 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_65" }
+DEF APRILTAG_66 Solid { translation 0.1707 -1.6384 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_66" }
+DEF APRILTAG_67 Solid { translation 0.2482 -1.6384 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_67" }
+DEF APRILTAG_68 Solid { translation 0.3257 -1.6384 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_68" }
+DEF APRILTAG_69 Solid { translation 0.0932 -1.5609 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_69" }
+DEF APRILTAG_70 Solid { translation 0.1707 -1.5609 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_70" }
+DEF APRILTAG_71 Solid { translation 0.2482 -1.5609 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_71" }
+DEF APRILTAG_72 Solid { translation 0.3257 -1.5609 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_72" }
+DEF APRILTAG_73 Solid { translation 0.0932 -1.4834 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_73" }
+DEF APRILTAG_74 Solid { translation 0.1707 -1.4834 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_74" }
+DEF APRILTAG_75 Solid { translation 0.2482 -1.4834 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_75" }
+DEF APRILTAG_76 Solid { translation 0.3257 -1.4834 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_76" }
+DEF APRILTAG_77 Solid { translation 0.0932 -1.4059 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_77" }
+DEF APRILTAG_78 Solid { translation 0.1707 -1.4059 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_78" }
+DEF APRILTAG_79 Solid { translation 0.2482 -1.4059 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_79" }
+DEF APRILTAG_80 Solid { translation 0.3257 -1.4059 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_80" }
+
+# Cluster 6  center=(-1.6168, 1.5106)
+DEF APRILTAG_81 Solid { translation -1.7331 1.3944 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_81" }
+DEF APRILTAG_82 Solid { translation -1.6556 1.3944 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_82" }
+DEF APRILTAG_83 Solid { translation -1.5781 1.3944 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_83" }
+DEF APRILTAG_84 Solid { translation -1.5006 1.3944 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_84" }
+DEF APRILTAG_85 Solid { translation -1.7331 1.4719 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_85" }
+DEF APRILTAG_86 Solid { translation -1.6556 1.4719 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_86" }
+DEF APRILTAG_87 Solid { translation -1.5781 1.4719 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_87" }
+DEF APRILTAG_88 Solid { translation -1.5006 1.4719 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_88" }
+DEF APRILTAG_89 Solid { translation -1.7331 1.5494 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_89" }
+DEF APRILTAG_90 Solid { translation -1.6556 1.5494 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_90" }
+DEF APRILTAG_91 Solid { translation -1.5781 1.5494 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_91" }
+DEF APRILTAG_92 Solid { translation -1.5006 1.5494 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_92" }
+DEF APRILTAG_93 Solid { translation -1.7331 1.6269 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_93" }
+DEF APRILTAG_94 Solid { translation -1.6556 1.6269 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_94" }
+DEF APRILTAG_95 Solid { translation -1.5781 1.6269 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_95" }
+DEF APRILTAG_96 Solid { translation -1.5006 1.6269 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_96" }
+
+# Cluster 7  center=(-0.4569, -0.6092)
+DEF APRILTAG_97 Solid { translation -0.5732 -0.7255 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_97" }
+DEF APRILTAG_98 Solid { translation -0.4957 -0.7255 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_98" }
+DEF APRILTAG_99 Solid { translation -0.4182 -0.7255 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_99" }
+DEF APRILTAG_100 Solid { translation -0.3407 -0.7255 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_100" }
+DEF APRILTAG_101 Solid { translation -0.5732 -0.6480 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_101" }
+DEF APRILTAG_102 Solid { translation -0.4957 -0.6480 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_102" }
+DEF APRILTAG_103 Solid { translation -0.4182 -0.6480 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_103" }
+DEF APRILTAG_104 Solid { translation -0.3407 -0.6480 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_104" }
+DEF APRILTAG_105 Solid { translation -0.5732 -0.5705 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_105" }
+DEF APRILTAG_106 Solid { translation -0.4957 -0.5705 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_106" }
+DEF APRILTAG_107 Solid { translation -0.4182 -0.5705 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_107" }
+DEF APRILTAG_108 Solid { translation -0.3407 -0.5705 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_108" }
+DEF APRILTAG_109 Solid { translation -0.5732 -0.4930 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_109" }
+DEF APRILTAG_110 Solid { translation -0.4957 -0.4930 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_110" }
+DEF APRILTAG_111 Solid { translation -0.4182 -0.4930 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_111" }
+DEF APRILTAG_112 Solid { translation -0.3407 -0.4930 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_112" }
+
+# Cluster 8  center=(1.7634, -2.1380)
+DEF APRILTAG_113 Solid { translation 1.6472 -2.2542 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_113" }
+DEF APRILTAG_114 Solid { translation 1.7247 -2.2542 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_114" }
+DEF APRILTAG_115 Solid { translation 1.8022 -2.2542 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_115" }
+DEF APRILTAG_116 Solid { translation 1.8797 -2.2542 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_116" }
+DEF APRILTAG_117 Solid { translation 1.6472 -2.1767 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_117" }
+DEF APRILTAG_118 Solid { translation 1.7247 -2.1767 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_118" }
+DEF APRILTAG_119 Solid { translation 1.8022 -2.1767 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_119" }
+DEF APRILTAG_120 Solid { translation 1.8797 -2.1767 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_120" }
+DEF APRILTAG_121 Solid { translation 1.6472 -2.0992 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_121" }
+DEF APRILTAG_122 Solid { translation 1.7247 -2.0992 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_122" }
+DEF APRILTAG_123 Solid { translation 1.8022 -2.0992 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_123" }
+DEF APRILTAG_124 Solid { translation 1.8797 -2.0992 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_124" }
+DEF APRILTAG_125 Solid { translation 1.6472 -2.0217 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_125" }
+DEF APRILTAG_126 Solid { translation 1.7247 -2.0217 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_126" }
+DEF APRILTAG_127 Solid { translation 1.8022 -2.0217 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_127" }
+DEF APRILTAG_128 Solid { translation 1.8797 -2.0217 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_128" }
+
+# Cluster 9  center=(-1.3263, -0.6440)
+DEF APRILTAG_129 Solid { translation -1.4425 -0.7603 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_129" }
+DEF APRILTAG_130 Solid { translation -1.3650 -0.7603 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_130" }
+DEF APRILTAG_131 Solid { translation -1.2875 -0.7603 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_131" }
+DEF APRILTAG_132 Solid { translation -1.2100 -0.7603 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_132" }
+DEF APRILTAG_133 Solid { translation -1.4425 -0.6828 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_133" }
+DEF APRILTAG_134 Solid { translation -1.3650 -0.6828 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_134" }
+DEF APRILTAG_135 Solid { translation -1.2875 -0.6828 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_135" }
+DEF APRILTAG_136 Solid { translation -1.2100 -0.6828 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_136" }
+DEF APRILTAG_137 Solid { translation -1.4425 -0.6053 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_137" }
+DEF APRILTAG_138 Solid { translation -1.3650 -0.6053 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_138" }
+DEF APRILTAG_139 Solid { translation -1.2875 -0.6053 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_139" }
+DEF APRILTAG_140 Solid { translation -1.2100 -0.6053 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_140" }
+DEF APRILTAG_141 Solid { translation -1.4425 -0.5278 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_141" }
+DEF APRILTAG_142 Solid { translation -1.3650 -0.5278 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_142" }
+DEF APRILTAG_143 Solid { translation -1.2875 -0.5278 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_143" }
+DEF APRILTAG_144 Solid { translation -1.2100 -0.5278 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_144" }
+
+# Cluster 10  center=(-2.5340, -0.7120)
+DEF APRILTAG_145 Solid { translation -2.6503 -0.8282 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_145" }
+DEF APRILTAG_146 Solid { translation -2.5728 -0.8282 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_146" }
+DEF APRILTAG_147 Solid { translation -2.4953 -0.8282 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_147" }
+DEF APRILTAG_148 Solid { translation -2.4178 -0.8282 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_148" }
+DEF APRILTAG_149 Solid { translation -2.6503 -0.7507 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_149" }
+DEF APRILTAG_150 Solid { translation -2.5728 -0.7507 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_150" }
+DEF APRILTAG_151 Solid { translation -2.4953 -0.7507 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_151" }
+DEF APRILTAG_152 Solid { translation -2.4178 -0.7507 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_152" }
+DEF APRILTAG_153 Solid { translation -2.6503 -0.6732 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_153" }
+DEF APRILTAG_154 Solid { translation -2.5728 -0.6732 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_154" }
+DEF APRILTAG_155 Solid { translation -2.4953 -0.6732 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_155" }
+DEF APRILTAG_156 Solid { translation -2.4178 -0.6732 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_156" }
+DEF APRILTAG_157 Solid { translation -2.6503 -0.5957 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_157" }
+DEF APRILTAG_158 Solid { translation -2.5728 -0.5957 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_158" }
+DEF APRILTAG_159 Solid { translation -2.4953 -0.5957 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_159" }
+DEF APRILTAG_160 Solid { translation -2.4178 -0.5957 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_160" }
+
+# Cluster 11  center=(-2.7187, 0.5345)
+DEF APRILTAG_161 Solid { translation -2.8349 0.4182 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_161" }
+DEF APRILTAG_162 Solid { translation -2.7574 0.4182 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_162" }
+DEF APRILTAG_163 Solid { translation -2.6799 0.4182 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_163" }
+DEF APRILTAG_164 Solid { translation -2.6024 0.4182 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_164" }
+DEF APRILTAG_165 Solid { translation -2.8349 0.4957 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_165" }
+DEF APRILTAG_166 Solid { translation -2.7574 0.4957 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_166" }
+DEF APRILTAG_167 Solid { translation -2.6799 0.4957 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_167" }
+DEF APRILTAG_168 Solid { translation -2.6024 0.4957 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_168" }
+DEF APRILTAG_169 Solid { translation -2.8349 0.5732 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_169" }
+DEF APRILTAG_170 Solid { translation -2.7574 0.5732 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_170" }
+DEF APRILTAG_171 Solid { translation -2.6799 0.5732 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_171" }
+DEF APRILTAG_172 Solid { translation -2.6024 0.5732 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_172" }
+DEF APRILTAG_173 Solid { translation -2.8349 0.6507 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_173" }
+DEF APRILTAG_174 Solid { translation -2.7574 0.6507 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_174" }
+DEF APRILTAG_175 Solid { translation -2.6799 0.6507 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_175" }
+DEF APRILTAG_176 Solid { translation -2.6024 0.6507 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_176" }
+
+# Cluster 12  center=(1.1842, -2.7450)
+DEF APRILTAG_177 Solid { translation 1.0680 -2.8612 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_177" }
+DEF APRILTAG_178 Solid { translation 1.1455 -2.8612 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_178" }
+DEF APRILTAG_179 Solid { translation 1.2230 -2.8612 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_179" }
+DEF APRILTAG_180 Solid { translation 1.3005 -2.8612 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_180" }
+DEF APRILTAG_181 Solid { translation 1.0680 -2.7837 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_181" }
+DEF APRILTAG_182 Solid { translation 1.1455 -2.7837 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_182" }
+DEF APRILTAG_183 Solid { translation 1.2230 -2.7837 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_183" }
+DEF APRILTAG_184 Solid { translation 1.3005 -2.7837 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_184" }
+DEF APRILTAG_185 Solid { translation 1.0680 -2.7062 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_185" }
+DEF APRILTAG_186 Solid { translation 1.1455 -2.7062 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_186" }
+DEF APRILTAG_187 Solid { translation 1.2230 -2.7062 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_187" }
+DEF APRILTAG_188 Solid { translation 1.3005 -2.7062 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_188" }
+DEF APRILTAG_189 Solid { translation 1.0680 -2.6287 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_189" }
+DEF APRILTAG_190 Solid { translation 1.1455 -2.6287 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_190" }
+DEF APRILTAG_191 Solid { translation 1.2230 -2.6287 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_191" }
+DEF APRILTAG_192 Solid { translation 1.3005 -2.6287 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_192" }
+
+# Cluster 13  center=(1.6500, 0.6500)
+DEF APRILTAG_193 Solid { translation 1.5337 0.5337 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_193" }
+DEF APRILTAG_194 Solid { translation 1.6112 0.5337 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_194" }
+DEF APRILTAG_195 Solid { translation 1.6887 0.5337 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_195" }
+DEF APRILTAG_196 Solid { translation 1.7662 0.5337 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_196" }
+DEF APRILTAG_197 Solid { translation 1.5337 0.6112 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_197" }
+DEF APRILTAG_198 Solid { translation 1.6112 0.6112 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_198" }
+DEF APRILTAG_199 Solid { translation 1.6887 0.6112 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_199" }
+DEF APRILTAG_200 Solid { translation 1.7662 0.6112 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_200" }
+DEF APRILTAG_201 Solid { translation 1.5337 0.6887 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_201" }
+DEF APRILTAG_202 Solid { translation 1.6112 0.6887 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_202" }
+DEF APRILTAG_203 Solid { translation 1.6887 0.6887 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_203" }
+DEF APRILTAG_204 Solid { translation 1.7662 0.6887 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_204" }
+DEF APRILTAG_205 Solid { translation 1.5337 0.7662 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_205" }
+DEF APRILTAG_206 Solid { translation 1.6112 0.7662 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_206" }
+DEF APRILTAG_207 Solid { translation 1.6887 0.7662 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_207" }
+DEF APRILTAG_208 Solid { translation 1.7662 0.7662 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_208" }
+
+# Cluster 14  center=(-2.1583, -2.8325)
+DEF APRILTAG_209 Solid { translation -2.2745 -2.9487 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_209" }
+DEF APRILTAG_210 Solid { translation -2.1970 -2.9487 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_210" }
+DEF APRILTAG_211 Solid { translation -2.1195 -2.9487 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_211" }
+DEF APRILTAG_212 Solid { translation -2.0420 -2.9487 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_212" }
+DEF APRILTAG_213 Solid { translation -2.2745 -2.8712 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_213" }
+DEF APRILTAG_214 Solid { translation -2.1970 -2.8712 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_214" }
+DEF APRILTAG_215 Solid { translation -2.1195 -2.8712 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_215" }
+DEF APRILTAG_216 Solid { translation -2.0420 -2.8712 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_216" }
+DEF APRILTAG_217 Solid { translation -2.2745 -2.7937 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_217" }
+DEF APRILTAG_218 Solid { translation -2.1970 -2.7937 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_218" }
+DEF APRILTAG_219 Solid { translation -2.1195 -2.7937 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_219" }
+DEF APRILTAG_220 Solid { translation -2.0420 -2.7937 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_220" }
+DEF APRILTAG_221 Solid { translation -2.2745 -2.7162 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_221" }
+DEF APRILTAG_222 Solid { translation -2.1970 -2.7162 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_222" }
+DEF APRILTAG_223 Solid { translation -2.1195 -2.7162 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_223" }
+DEF APRILTAG_224 Solid { translation -2.0420 -2.7162 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_224" }
+
+# Cluster 15  center=(2.2891, 0.0431)
+DEF APRILTAG_225 Solid { translation 2.1729 -0.0731 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_225" }
+DEF APRILTAG_226 Solid { translation 2.2504 -0.0731 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_226" }
+DEF APRILTAG_227 Solid { translation 2.3279 -0.0731 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_227" }
+DEF APRILTAG_228 Solid { translation 2.4054 -0.0731 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_228" }
+DEF APRILTAG_229 Solid { translation 2.1729 0.0044 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_229" }
+DEF APRILTAG_230 Solid { translation 2.2504 0.0044 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_230" }
+DEF APRILTAG_231 Solid { translation 2.3279 0.0044 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_231" }
+DEF APRILTAG_232 Solid { translation 2.4054 0.0044 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_232" }
+DEF APRILTAG_233 Solid { translation 2.1729 0.0819 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_233" }
+DEF APRILTAG_234 Solid { translation 2.2504 0.0819 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_234" }
+DEF APRILTAG_235 Solid { translation 2.3279 0.0819 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_235" }
+DEF APRILTAG_236 Solid { translation 2.4054 0.0819 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_236" }
+DEF APRILTAG_237 Solid { translation 2.1729 0.1594 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_237" }
+DEF APRILTAG_238 Solid { translation 2.2504 0.1594 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_238" }
+DEF APRILTAG_239 Solid { translation 2.3279 0.1594 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_239" }
+DEF APRILTAG_240 Solid { translation 2.4054 0.1594 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_240" }
+
+# Cluster 16  center=(-1.8315, -1.3936)
+DEF APRILTAG_241 Solid { translation -1.9477 -1.5099 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_241" }
+DEF APRILTAG_242 Solid { translation -1.8702 -1.5099 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_242" }
+DEF APRILTAG_243 Solid { translation -1.7927 -1.5099 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_243" }
+DEF APRILTAG_244 Solid { translation -1.7152 -1.5099 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_244" }
+DEF APRILTAG_245 Solid { translation -1.9477 -1.4324 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_245" }
+DEF APRILTAG_246 Solid { translation -1.8702 -1.4324 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_246" }
+DEF APRILTAG_247 Solid { translation -1.7927 -1.4324 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_247" }
+DEF APRILTAG_248 Solid { translation -1.7152 -1.4324 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_248" }
+DEF APRILTAG_249 Solid { translation -1.9477 -1.3549 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_249" }
+DEF APRILTAG_250 Solid { translation -1.8702 -1.3549 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_250" }
+DEF APRILTAG_251 Solid { translation -1.7927 -1.3549 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_251" }
+DEF APRILTAG_252 Solid { translation -1.7152 -1.3549 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_252" }
+DEF APRILTAG_253 Solid { translation -1.9477 -1.2774 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_253" }
+DEF APRILTAG_254 Solid { translation -1.8702 -1.2774 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_254" }
+DEF APRILTAG_255 Solid { translation -1.7927 -1.2774 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_255" }
+DEF APRILTAG_256 Solid { translation -1.7152 -1.2774 0.01375 children [ Shape { appearance PBRAppearance { baseColorMap ImageTexture { url [ "textures/real_tag36h11_id0.png" ] } roughness 1 metalness 0 } geometry Box { size 0.0275 0.0275 0.0275 } } ] name "apriltag_256" }
+
+
+DEF ROBOT1 E-puck {
+  translation -0.5 0.0 0
+  name "robot1"
+  controller "epuck_decentralized_eval"
+  emitter_channel 1
+  receiver_channel 1
+  camera_fieldOfView 1
+  camera_width 512
+  camera_height 512
+  turretSlot [
+    GPS {
+      name "gps"
+      accuracy 0
+    }
+    InertialUnit {
+      name "inertial_unit"
+    }
+    Emitter {
+      name "phero_emitter"
+      range 0.5
+      channel 10
+    }
+    Receiver {
+      name "phero_receiver"
+      channel 10
+      bufferSize 1024
+    }
+  ]
+}
+
+DEF ROBOT2 E-puck {
+  translation 0.5 0.0 0
+  name "robot2"
+  controller "epuck_decentralized_eval"
+  emitter_channel 2
+  receiver_channel 2
+  camera_fieldOfView 1
+  camera_width 512
+  camera_height 512
+  turretSlot [
+    GPS {
+      name "gps"
+      accuracy 0
+    }
+    InertialUnit {
+      name "inertial_unit"
+    }
+    Emitter {
+      name "phero_emitter"
+      range 0.5
+      channel 10
+    }
+    Receiver {
+      name "phero_receiver"
+      channel 10
+      bufferSize 1024
+    }
+  ]
+}
+
+DEF ROBOT3 E-puck {
+  translation 0.0 0.5 0
+  name "robot3"
+  controller "epuck_decentralized_eval"
+  emitter_channel 3
+  receiver_channel 3
+  camera_fieldOfView 1
+  camera_width 512
+  camera_height 512
+  turretSlot [
+    GPS {
+      name "gps"
+      accuracy 0
+    }
+    InertialUnit {
+      name "inertial_unit"
+    }
+    Emitter {
+      name "phero_emitter"
+      range 0.5
+      channel 10
+    }
+    Receiver {
+      name "phero_receiver"
+      channel 10
+      bufferSize 1024
+    }
+  ]
+}
+
+DEF ROBOT4 E-puck {
+  translation 0.0 -0.5 0
+  name "robot4"
+  controller "epuck_decentralized_eval"
+  emitter_channel 4
+  receiver_channel 4
+  camera_fieldOfView 1
+  camera_width 512
+  camera_height 512
+  turretSlot [
+    GPS {
+      name "gps"
+      accuracy 0
+    }
+    InertialUnit {
+      name "inertial_unit"
+    }
+    Emitter {
+      name "phero_emitter"
+      range 0.5
+      channel 10
+    }
+    Receiver {
+      name "phero_receiver"
+      channel 10
+      bufferSize 1024
+    }
+  ]
+}
+
+DEF ROBOT5 E-puck {
+  translation 0.4619 0.1913 0
+  name "robot5"
+  controller "epuck_decentralized_eval"
+  emitter_channel 5
+  receiver_channel 5
+  camera_fieldOfView 1
+  camera_width 512
+  camera_height 512
+  turretSlot [
+    GPS {
+      name "gps"
+      accuracy 0
+    }
+    InertialUnit {
+      name "inertial_unit"
+    }
+    Emitter {
+      name "phero_emitter"
+      range 0.5
+      channel 10
+    }
+    Receiver {
+      name "phero_receiver"
+      channel 10
+      bufferSize 1024
+    }
+  ]
+}
+
+DEF ROBOT6 E-puck {
+  translation -0.1913 0.4619 0
+  name "robot6"
+  controller "epuck_decentralized_eval"
+  emitter_channel 6
+  receiver_channel 6
+  camera_fieldOfView 1
+  camera_width 512
+  camera_height 512
+  turretSlot [
+    GPS {
+      name "gps"
+      accuracy 0
+    }
+    InertialUnit {
+      name "inertial_unit"
+    }
+    Emitter {
+      name "phero_emitter"
+      range 0.5
+      channel 10
+    }
+    Receiver {
+      name "phero_receiver"
+      channel 10
+      bufferSize 1024
+    }
+  ]
+}
+
+DEF ROBOT7 E-puck {
+  translation -0.4619 -0.1913 0
+  name "robot7"
+  controller "epuck_decentralized_eval"
+  emitter_channel 7
+  receiver_channel 7
+  camera_fieldOfView 1
+  camera_width 512
+  camera_height 512
+  turretSlot [
+    GPS {
+      name "gps"
+      accuracy 0
+    }
+    InertialUnit {
+      name "inertial_unit"
+    }
+    Emitter {
+      name "phero_emitter"
+      range 0.5
+      channel 10
+    }
+    Receiver {
+      name "phero_receiver"
+      channel 10
+      bufferSize 1024
+    }
+  ]
+}
+
+DEF ROBOT8 E-puck {
+  translation 0.1913 -0.4619 0
+  name "robot8"
+  controller "epuck_decentralized_eval"
+  emitter_channel 8
+  receiver_channel 8
+  camera_fieldOfView 1
+  camera_width 512
+  camera_height 512
+  turretSlot [
+    GPS {
+      name "gps"
+      accuracy 0
+    }
+    InertialUnit {
+      name "inertial_unit"
+    }
+    Emitter {
+      name "phero_emitter"
+      range 0.5
+      channel 10
+    }
+    Receiver {
+      name "phero_receiver"
+      channel 10
+      bufferSize 1024
+    }
+  ]
+}
+
+DEF ROBOT9 E-puck {
+  translation 0.5303 0.5303 0
+  name "robot9"
+  controller "epuck_decentralized_eval"
+  emitter_channel 9
+  receiver_channel 9
+  camera_fieldOfView 1
+  camera_width 512
+  camera_height 512
+  turretSlot [
+    GPS {
+      name "gps"
+      accuracy 0
+    }
+    InertialUnit {
+      name "inertial_unit"
+    }
+    Emitter {
+      name "phero_emitter"
+      range 0.5
+      channel 10
+    }
+    Receiver {
+      name "phero_receiver"
+      channel 10
+      bufferSize 1024
+    }
+  ]
+}
+
+DEF ROBOT10 E-puck {
+  translation -0.5303 0.5303 0
+  name "robot10"
+  controller "epuck_decentralized_eval"
+  emitter_channel 50
+  receiver_channel 50
+  camera_fieldOfView 1
+  camera_width 512
+  camera_height 512
+  turretSlot [
+    GPS {
+      name "gps"
+      accuracy 0
+    }
+    InertialUnit {
+      name "inertial_unit"
+    }
+    Emitter {
+      name "phero_emitter"
+      range 0.5
+      channel 10
+    }
+    Receiver {
+      name "phero_receiver"
+      channel 10
+      bufferSize 1024
+    }
+  ]
+}
+
+DEF ROBOT11 E-puck {
+  translation -0.5303 -0.5303 0
+  name "robot11"
+  controller "epuck_decentralized_eval"
+  emitter_channel 51
+  receiver_channel 51
+  camera_fieldOfView 1
+  camera_width 512
+  camera_height 512
+  turretSlot [
+    GPS {
+      name "gps"
+      accuracy 0
+    }
+    InertialUnit {
+      name "inertial_unit"
+    }
+    Emitter {
+      name "phero_emitter"
+      range 0.5
+      channel 10
+    }
+    Receiver {
+      name "phero_receiver"
+      channel 10
+      bufferSize 1024
+    }
+  ]
+}
+
+DEF ROBOT12 E-puck {
+  translation 0.5303 -0.5303 0
+  name "robot12"
+  controller "epuck_decentralized_eval"
+  emitter_channel 12
+  receiver_channel 12
+  camera_fieldOfView 1
+  camera_width 512
+  camera_height 512
+  turretSlot [
+    GPS {
+      name "gps"
+      accuracy 0
+    }
+    InertialUnit {
+      name "inertial_unit"
+    }
+    Emitter {
+      name "phero_emitter"
+      range 0.5
+      channel 10
+    }
+    Receiver {
+      name "phero_receiver"
+      channel 10
+      bufferSize 1024
+    }
+  ]
+}
+
+DEF ROBOT13 E-puck {
+  translation 0.2296 0.5543 0
+  name "robot13"
+  controller "epuck_decentralized_eval"
+  emitter_channel 13
+  receiver_channel 13
+  camera_fieldOfView 1
+  camera_width 512
+  camera_height 512
+  turretSlot [
+    GPS {
+      name "gps"
+      accuracy 0
+    }
+    InertialUnit {
+      name "inertial_unit"
+    }
+    Emitter {
+      name "phero_emitter"
+      range 0.5
+      channel 10
+    }
+    Receiver {
+      name "phero_receiver"
+      channel 10
+      bufferSize 1024
+    }
+  ]
+}
+
+DEF ROBOT14 E-puck {
+  translation -0.5543 0.2296 0
+  name "robot14"
+  controller "epuck_decentralized_eval"
+  emitter_channel 14
+  receiver_channel 14
+  camera_fieldOfView 1
+  camera_width 512
+  camera_height 512
+  turretSlot [
+    GPS {
+      name "gps"
+      accuracy 0
+    }
+    InertialUnit {
+      name "inertial_unit"
+    }
+    Emitter {
+      name "phero_emitter"
+      range 0.5
+      channel 10
+    }
+    Receiver {
+      name "phero_receiver"
+      channel 10
+      bufferSize 1024
+    }
+  ]
+}
+
+DEF ROBOT15 E-puck {
+  translation -0.2296 -0.5543 0
+  name "robot15"
+  controller "epuck_decentralized_eval"
+  emitter_channel 15
+  receiver_channel 15
+  camera_fieldOfView 1
+  camera_width 512
+  camera_height 512
+  turretSlot [
+    GPS {
+      name "gps"
+      accuracy 0
+    }
+    InertialUnit {
+      name "inertial_unit"
+    }
+    Emitter {
+      name "phero_emitter"
+      range 0.5
+      channel 10
+    }
+    Receiver {
+      name "phero_receiver"
+      channel 10
+      bufferSize 1024
+    }
+  ]
+}
+
+DEF ROBOT16 E-puck {
+  translation 0.5543 -0.2296 0
+  name "robot16"
+  controller "epuck_decentralized_eval"
+  emitter_channel 16
+  receiver_channel 16
+  camera_fieldOfView 1
+  camera_width 512
+  camera_height 512
+  turretSlot [
+    GPS {
+      name "gps"
+      accuracy 0
+    }
+    InertialUnit {
+      name "inertial_unit"
+    }
+    Emitter {
+      name "phero_emitter"
+      range 0.5
+      channel 10
+    }
+    Receiver {
+      name "phero_receiver"
+      channel 10
+      bufferSize 1024
+    }
+  ]
+}
+
+Robot {
+  translation 0 0 0
+  children [
+    Emitter { name "emitter1" channel 1 }
+    Receiver { name "receiver1" channel 1 }
+    Emitter { name "emitter2" channel 2 }
+    Receiver { name "receiver2" channel 2 }
+    Emitter { name "emitter3" channel 3 }
+    Receiver { name "receiver3" channel 3 }
+    Emitter { name "emitter4" channel 4 }
+    Receiver { name "receiver4" channel 4 }
+    Emitter { name "emitter5" channel 5 }
+    Receiver { name "receiver5" channel 5 }
+    Emitter { name "emitter6" channel 6 }
+    Receiver { name "receiver6" channel 6 }
+    Emitter { name "emitter7" channel 7 }
+    Receiver { name "receiver7" channel 7 }
+    Emitter { name "emitter8" channel 8 }
+    Receiver { name "receiver8" channel 8 }
+    Emitter { name "emitter9" channel 9 }
+    Receiver { name "receiver9" channel 9 }
+    Emitter { name "emitter10" channel 50 }
+    Receiver { name "receiver10" channel 50 }
+    Emitter { name "emitter11" channel 51 }
+    Receiver { name "receiver11" channel 51 }
+    Emitter { name "emitter12" channel 12 }
+    Receiver { name "receiver12" channel 12 }
+    Emitter { name "emitter13" channel 13 }
+    Receiver { name "receiver13" channel 13 }
+    Emitter { name "emitter14" channel 14 }
+    Receiver { name "receiver14" channel 14 }
+    Emitter { name "emitter15" channel 15 }
+    Receiver { name "receiver15" channel 15 }
+    Emitter { name "emitter16" channel 16 }
+    Receiver { name "receiver16" channel 16 }
+  ]
+  name "supervisor"
+  controller "<extern>"
+  supervisor TRUE
+}

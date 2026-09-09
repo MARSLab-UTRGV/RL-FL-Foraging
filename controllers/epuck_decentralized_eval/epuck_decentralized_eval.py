@@ -8,7 +8,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'epuck_decentra
 from epuck_decentralized_v4 import (
     EpuckDecentralizedV4,
     TARGET_ARRIVAL_DIST, PHEROMONE_MIN, MERGE_RADIUS,
-    RATE_OF_LAYING_PHEROMONE,
+    RATE_OF_LAYING_PHEROMONE, PHEROMONE_DECAY_RATE,
 )
 
 from stable_baselines3 import PPO
@@ -38,6 +38,44 @@ OBS_DIM             = 19
 SEARCH_DURATION_MAX = 4000
 TARGET_LINGER_STEPS = 3      # steps to stay at cluster before declaring depletion
 
+# =============================================================================
+# COMPETITION-AWARE SPREADING FIX (eval-only, does not affect training)
+#
+# Problem: 12-16 robots all run the same roulette independently and converge
+# on the same cluster. Root cause: density-weighted roulette amplifies the
+# best cluster 4-16× so all robots pick it.
+#
+# Fix layer 1 (12r): weight-only roulette — removes density amplification.
+#
+# Fix layer 2 (16r): 'claimed' counter stored inside each pheromone entry.
+#   When robot A receives B's broadcast saying "I'm targeting cluster X",
+#   A increments 'claimed' on cluster X's pheromone entry (+1 per message).
+#   'claimed' decays at the same rate as pheromone weight (slow, ~20s τ).
+#   At roulette: score = weight * density / (1 + CONGESTION_LAMBDA * claimed)
+#   Density in numerator rewards valuable clusters; linear claimed penalty
+#   controls over-recruitment. At 16r, claimed propagates sparsely (0.5m
+#   range → 0.26 expected neighbours), so squared penalty over-penalised.
+#   Linear with CONGESTION_LAMBDA=0.4 gives gentler, density-aware spreading.
+#
+# Fix layer 3 (gossip relay): broadcast message extended to 7 floats:
+#   [cx, cy, weight, density, tx, ty, claimed_cx]
+#   claimed_cx = sender's known claimed count for cluster (cx,cy).
+#   On receive: claimed = max(local, received_claimed_cx).
+#   Effect: claimed counts propagate hop-by-hop across the full swarm,
+#   not just within the 0.5m emitter range. A robot 3m away eventually
+#   learns that cluster X is already claimed by 3 robots via intermediate
+#   relay hops, even though it never heard the original broadcaster.
+#
+# Broadcast: always sends the best (highest-weight) active entry.
+#   claimed_cx travels with that entry for gossip relay (Fix layer 3).
+#   Cycling broadcast was tested and reverted — hurt 12r performance
+#   by broadcasting low-weight decayed entries to nearby robots.
+#
+# TO REVERT: set COMPETITION_AWARE = False → pure weight-only roulette, no claims.
+# =============================================================================
+COMPETITION_AWARE   = True
+CONGESTION_LAMBDA   = 0.4   # linear claimed penalty coefficient in roulette score
+
 
 class EpuckDecentralizedEval(EpuckDecentralizedV4):
 
@@ -50,6 +88,7 @@ class EpuckDecentralizedEval(EpuckDecentralizedV4):
         self._steps_without_pickup = 0
         self._arrival_steps        = 0   # steps spent within TARGET_ARRIVAL_DIST of current target
         self._arena_half           = 2.5  # default 5x5; overridden in _load_ppo
+
 
     def _load_ppo(self):
         project_root = os.path.abspath(
@@ -175,6 +214,7 @@ class EpuckDecentralizedEval(EpuckDecentralizedV4):
             sf_str = f"({sf[0]:.2f},{sf[1]:.2f}) density={self._resource_density}" if sf else "None"
             self._log(f"[DEPOSIT]  {self.getName()} | site={sf_str}")
             self._assign_target()   # prints [TARGET] / [EMPTY_RTN] via _log in base class
+            self._broadcast_pheromone()  # immediate claim broadcast so rivals see new target
 
         # ── Target depletion: arrived at cluster, no food found ───────
         # Linger TARGET_LINGER_STEPS steps before declaring depleted so the
@@ -206,6 +246,7 @@ class EpuckDecentralizedEval(EpuckDecentralizedV4):
                     self._current_target = None
                     self._assign_target()
                     self._gave_up = False
+                    self._broadcast_pheromone()  # immediate claim broadcast after depletion reassign
             else:
                 self._arrival_steps = 0   # reset if robot moves away from target
 
@@ -255,6 +296,128 @@ class EpuckDecentralizedEval(EpuckDecentralizedV4):
             max(min(right_cmd * scale_factor, max_speed), -max_speed))
 
     # =========================================================================
+    # Competition-aware spreading (COMPETITION_AWARE flag gates new code)
+    # =========================================================================
+
+    def _decay_pheromone(self):
+        """Extends base decay to also decay 'claimed' field at same rate as weight."""
+        super()._decay_pheromone()
+        if COMPETITION_AWARE:
+            dt    = self.time_step / 1000.0
+            decay = math.exp(-PHEROMONE_DECAY_RATE * dt)
+            for e in self.pheromone_list:
+                if e.get('claimed', 0.0) > 0:
+                    e['claimed'] *= decay
+                    if e['claimed'] < 0.01:
+                        e['claimed'] = 0.0
+
+    def _receive_pheromone(self):
+        """
+        Extended receive: parses 7-float messages [cx,cy,weight,density,tx,ty,claimed_cx].
+        claimed_cx: sender's known claimed count for cluster (cx,cy) — relay gossip.
+          Received claimed is merged with max(local, received) so counts propagate
+          hop-by-hop across the full swarm, not just within 0.5m of the originator.
+        tx,ty: sender's current target — increments claimed on that cluster by +1.
+        Falls back gracefully to 6-float and 4-float legacy formats.
+        """
+        while self.phero_receiver.getQueueLength() > 0:
+            try:
+                msg   = self.phero_receiver.getString()
+                parts = [float(p) for p in msg.split(',')]
+                if len(parts) >= 3:
+                    rx, ry, rw = parts[0], parts[1], parts[2]
+                    rd = int(parts[3]) if len(parts) >= 4 else 1
+                    if rw >= PHEROMONE_MIN:
+                        self._add_pheromone(rx, ry, rw, rd, source="RECV")
+                    if COMPETITION_AWARE:
+                        # Relay gossip: update claimed for (cx,cy) cluster using max merge
+                        if len(parts) >= 7:
+                            recv_claimed = parts[6]
+                            for entry in self.pheromone_list:
+                                if math.sqrt((entry['x'] - rx)**2 +
+                                             (entry['y'] - ry)**2) < MERGE_RADIUS:
+                                    entry['claimed'] = max(
+                                        entry.get('claimed', 0.0), recv_claimed)
+                                    break
+                        # Target claim: sender is heading to (tx,ty) → +1 on that cluster
+                        if len(parts) >= 6:
+                            tx, ty = parts[4], parts[5]
+                            if tx != -99.0:
+                                for entry in self.pheromone_list:
+                                    if math.sqrt((entry['x'] - tx)**2 +
+                                                 (entry['y'] - ty)**2) < MERGE_RADIUS:
+                                        entry['claimed'] = entry.get('claimed', 0.0) + 1.0
+                                        break
+            except (ValueError, IndexError):
+                pass
+            finally:
+                self.phero_receiver.nextPacket()
+
+    def _broadcast_pheromone(self):
+        """
+        Best-entry broadcast: sends [cx,cy,weight,density,tx,ty,claimed_cx].
+        Always broadcasts the highest-weight active entry.
+        claimed_cx travels with the entry for gossip relay (Fix layer 3).
+        Falls back to 4-float format when COMPETITION_AWARE is False.
+        """
+        if not self.pheromone_list:
+            return
+        best = max(self.pheromone_list, key=lambda e: e['weight'])
+        if best['weight'] <= PHEROMONE_MIN:
+            return
+        if COMPETITION_AWARE:
+            tx, ty = -99.0, -99.0
+            if self._current_target is not None:
+                tx = self._current_target[1]
+                ty = self._current_target[2]
+            claimed_cx = best.get('claimed', 0.0)
+            self.phero_emitter.send(
+                f"{best['x']},{best['y']},{best['weight']},"
+                f"{best.get('density', 1)},{tx},{ty},{claimed_cx:.3f}".encode('utf-8')
+            )
+        else:
+            self.phero_emitter.send(
+                f"{best['x']},{best['y']},{best['weight']},"
+                f"{best.get('density', 1)}".encode('utf-8')
+            )
+
+    def _roulette_select(self):
+        """
+        Congestion-aware roulette selection.
+        COMPETITION_AWARE=True:
+          score = weight * density / (1 + CONGESTION_LAMBDA * claimed)
+          Density in numerator rewards high-value clusters; linear claimed
+          penalty in denominator spreads robots away from crowded ones.
+          Density amplification is controlled by the congestion denominator:
+          a crowded high-density cluster scores lower than an uncrowded
+          medium-density one, achieving natural load balancing.
+        COMPETITION_AWARE=False: score = weight (pure weight-only roulette).
+        """
+        active = [e for e in self.pheromone_list
+                  if e['weight'] > PHEROMONE_MIN and e.get('density', 1) > 0]
+        if not active:
+            return None
+        if COMPETITION_AWARE:
+            scores = [
+                e['weight'] * max(e.get('density', 1), 1)
+                / (1.0 + CONGESTION_LAMBDA * e.get('claimed', 0.0))
+                for e in active
+            ]
+        else:
+            scores = [e['weight'] for e in active]
+        total = sum(scores)
+        if total <= 0:
+            return None
+        r     = random.random() * total
+        cumul = 0.0
+        for e, sc in zip(active, scores):
+            cumul += sc
+            if r <= cumul:
+                return (e['x'], e['y'], e.get('density', 1))
+        last = active[-1]
+        return (last['x'], last['y'], last.get('density', 1))
+
+    # =========================================================================
     # Overrides — identical to training robot
     # =========================================================================
 
@@ -266,13 +429,13 @@ class EpuckDecentralizedEval(EpuckDecentralizedV4):
         wall_dist = self._arena_half - max(abs(pos_x), abs(pos_y))
         prox      = [s.getValue() / 4096.0 for s in self.ps]
 
-        # P1: wall / obstacle escape
+        # P1: wall or robot obstacle escape → steer to arena centre
         if wall_dist < 0.35 or max(prox) > 0.55:
             return self._steer_to(robot_pos, fwd, [0.0, 0.0], gain=4.0)
 
         dist_to_base = math.sqrt(pos_x ** 2 + pos_y ** 2)
 
-        # BASE_ESC: nudge away from nest after deposit
+        # BASE_ESC: nudge away from nest after deposit.
         if not self.carrying and dist_to_base < 0.25:
             if dist_to_base > 0.001:
                 esc_x = pos_x + (pos_x / dist_to_base) * 0.5

@@ -158,14 +158,20 @@ def write_config(arena_size, run_name):
 
 def run_sample(sample_num, arena_size, run_name, duration_sim_min,
                sample_csv, num_robots, num_tags,
-               port, webots_bin, startup_s):
+               port, webots_bin, startup_s,
+               until_complete=False, distribution='clustered', world_suffix=None):
     """
     Launch one Webots instance + one supervisor process for a single sample.
     Returns True on success.
     """
-    suffix = f'_{num_robots}r' if num_robots > 4 else ''
+    prefix_map = {'clustered': 'eval_sample', 'powerlaw': 'eval_powerlaw', 'random': 'eval_random'}
+    prefix = prefix_map.get(distribution, 'eval_sample')
+    if world_suffix is not None:
+        suffix = world_suffix
+    else:
+        suffix = f'_{num_robots}r' if num_robots > 4 else ''
     world  = os.path.join(WORLDS_DIR,
-                          f'eval_sample{sample_num}_{arena_size}{suffix}.wbt')
+                          f'{prefix}{sample_num}_{arena_size}{suffix}.wbt')
     if not os.path.exists(world):
         print(f'[s{sample_num}] World not found, skipping: {world}')
         return False
@@ -223,6 +229,8 @@ def run_sample(sample_num, arena_size, run_name, duration_sim_min,
         ]
         if num_tags is not None:
             sup_cmd += ['--num_tags', str(num_tags)]
+        if until_complete:
+            sup_cmd.append('--until_complete')
 
         ctrl_env = os.environ.copy()
         ctrl_env['WEBOTS_CONTROLLER_URL'] = ctrl_url
@@ -282,7 +290,7 @@ def merge_sample_csvs(samples, results_csv):
 
 # ── Summary / boxplot ─────────────────────────────────────────────────────────
 
-def print_summary(results_csv, arena_size, num_robots, duration):
+def print_summary(results_csv, arena_size, num_robots, duration, until_complete=False):
     if not os.path.exists(results_csv):
         print('[BATCH] No results CSV found.')
         return
@@ -296,36 +304,61 @@ def print_summary(results_csv, arena_size, num_robots, duration):
 
     print(f'\n{"="*60}')
     print('BATCH EVAL RESULTS')
-    print(f'Arena: {arena_size} | Robots: {num_robots} | Duration: {duration} sim-min')
+    if until_complete:
+        print(f'Arena: {arena_size} | Robots: {num_robots} | Mode: UNTIL COMPLETE')
+    else:
+        print(f'Arena: {arena_size} | Robots: {num_robots} | Duration: {duration} sim-min')
     print(f'{"="*60}')
-    print(f'{"Sample":>8} {"Deposits":>10} {"SimRate":>10} {"Wall(min)":>10}')
-    print('-' * 42)
 
-    deposits = []
-    for r in sorted(rows, key=lambda r: (len(r['sample']), r['sample'])):
-        d = int(r['deposits'])
-        deposits.append(d)
-        print(f'{r["sample"]:>8} {d:>10} {r["sim_rate"]:>10} {r["wall_time_min"]:>10}')
+    if until_complete:
+        print(f'{"Sample":>8} {"Deposits":>10} {"TimeMIN":>10} {"Done%":>8} {"Wall(min)":>10}')
+        print('-' * 52)
+        times = []
+        for r in sorted(rows, key=lambda r: (len(r['sample']), r['sample'])):
+            d   = int(r['deposits'])
+            t   = float(r['sim_time_min'])
+            pct = r.get('pct_collected', '?')
+            times.append(t)
+            print(f'{r["sample"]:>8} {d:>10} {t:>10.2f} {pct:>8} {r["wall_time_min"]:>10}')
+        if times:
+            mean = sum(times) / len(times)
+            std  = (sum((x - mean) ** 2 for x in times) / len(times)) ** 0.5
+            print('-' * 52)
+            print(f'{"mean":>8} {"":>10} {mean:>10.2f}')
+            print(f'{"std":>8} {"":>10} {std:>10.2f}')
+            print(f'{"min":>8} {"":>10} {min(times):>10.2f}')
+            print(f'{"max":>8} {"":>10} {max(times):>10.2f}')
+        values = times
+        ylabel = 'Time to 100% collection (sim-min)'
+    else:
+        print(f'{"Sample":>8} {"Deposits":>10} {"SimRate":>10} {"Wall(min)":>10}')
+        print('-' * 42)
+        deposits = []
+        for r in sorted(rows, key=lambda r: (len(r['sample']), r['sample'])):
+            d = int(r['deposits'])
+            deposits.append(d)
+            print(f'{r["sample"]:>8} {d:>10} {r["sim_rate"]:>10} {r["wall_time_min"]:>10}')
+        if deposits:
+            mean = sum(deposits) / len(deposits)
+            std  = (sum((x - mean) ** 2 for x in deposits) / len(deposits)) ** 0.5
+            print('-' * 42)
+            print(f'{"mean":>8} {mean:>10.1f}')
+            print(f'{"std":>8} {std:>10.1f}')
+            print(f'{"min":>8} {min(deposits):>10}')
+            print(f'{"max":>8} {max(deposits):>10}')
+        values = deposits
+        ylabel = f'Deposits in {duration} sim-min'
 
-    if not deposits:
-        return
-    mean = sum(deposits) / len(deposits)
-    std  = (sum((x - mean) ** 2 for x in deposits) / len(deposits)) ** 0.5
-    print('-' * 42)
-    print(f'{"mean":>8} {mean:>10.1f}')
-    print(f'{"std":>8} {std:>10.1f}')
-    print(f'{"min":>8} {min(deposits):>10}')
-    print(f'{"max":>8} {max(deposits):>10}')
     print(f'\nCSV: {results_csv}')
 
     try:
         import matplotlib.pyplot as plt
         fig, ax = plt.subplots(figsize=(5, 5))
-        ax.boxplot(deposits, patch_artist=True,
+        ax.boxplot(values, patch_artist=True,
                    boxprops=dict(facecolor='steelblue', alpha=0.7))
-        ax.set_ylabel(f'Deposits in {duration} sim-min')
+        ax.set_ylabel(ylabel)
         ax.set_title(f'Decentralized RL  |  {arena_size}  |  '
-                     f'{num_robots} robots  |  {len(deposits)} samples')
+                     f'{num_robots} robots  |  {len(values)} samples')
         ax.set_xticks([1])
         ax.set_xticklabels([f'{num_robots}r'])
         plot_path = results_csv.replace('.csv', '_boxplot.png')
@@ -370,16 +403,27 @@ def main():
     parser.add_argument('--webots_bin',   default=WEBOTS_BIN)
     parser.add_argument('--startup_s',    type=float, default=WEBOTS_STARTUP_S,
                         help='Seconds to wait for Webots supervisor URL')
+    parser.add_argument('--until_complete', action='store_true',
+                        help='Stop each sample when 100%% of tags are collected; '
+                             '--duration acts as safety timeout')
+    parser.add_argument('--distribution', default='clustered',
+                        choices=['clustered', 'powerlaw', 'random'],
+                        help='Tag distribution type — selects world file prefix '
+                             '(clustered=eval_sample, powerlaw=eval_powerlaw, random=eval_random)')
+    parser.add_argument('--world_suffix', default=None,
+                        help='Override world file suffix, e.g. "_4r" for EX2 Option B 4r worlds')
     args = parser.parse_args()
 
     samples     = parse_sample_range(args.samples)
     max_workers = min(args.max_parallel, len(samples))
 
-    tag_str = f'_t{args.num_tags}' if args.num_tags else ''
-    r_str   = f'_{args.num_robots}r' if args.num_robots != 4 else ''
+    tag_str   = f'_t{args.num_tags}' if args.num_tags else ''
+    r_str     = f'_{args.num_robots}r' if args.num_robots != 4 else ''
+    dist_str  = f'_{args.distribution}' if args.distribution != 'clustered' else ''
+    comp_str  = '_complete' if args.until_complete else ''
     results_csv = os.path.join(
         PROJECT_ROOT,
-        f'batch_results_{args.arena_size}{r_str}{tag_str}_{args.run_name}.csv'
+        f'batch_results_{args.arena_size}{r_str}{tag_str}{dist_str}{comp_str}_{args.run_name}.csv'
     )
 
     # Clean old CSV and temp files
@@ -395,8 +439,9 @@ def main():
 
     print(f'\n{"="*60}')
     print(f'BATCH EVAL  |  Arena: {args.arena_size}  |  Robots: {args.num_robots}  |  '
-          f'Tags: {args.num_tags or "default"}')
-    print(f'Samples: {samples}  |  Duration: {args.duration} sim-min')
+          f'Tags: {args.num_tags or "default"}  |  Distribution: {args.distribution}')
+    mode_str = f'UNTIL COMPLETE (timeout {args.duration} sim-min)' if args.until_complete else f'{args.duration} sim-min'
+    print(f'Samples: {samples}  |  Mode: {mode_str}')
     print(f'Parallel: {max_workers}  |  Base port: {args.base_port}')
     print(f'Model: {args.run_name}')
     print(f'Results: {results_csv}')
@@ -416,6 +461,7 @@ def main():
                 args.duration, sample_csv,
                 args.num_robots, args.num_tags,
                 port, args.webots_bin, args.startup_s,
+                args.until_complete, args.distribution, args.world_suffix,
             )
             future_map[future] = sample
 
@@ -435,7 +481,8 @@ def main():
           + (f', failed: {sorted(failed)}' if failed else ''))
 
     merge_sample_csvs(samples, results_csv)
-    print_summary(results_csv, args.arena_size, args.num_robots, args.duration)
+    print_summary(results_csv, args.arena_size, args.num_robots, args.duration,
+                  until_complete=args.until_complete)
 
 
 if __name__ == '__main__':

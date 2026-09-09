@@ -163,7 +163,7 @@ class DecentralizedEvalSupervisor:
             1 for t in self.tag_nodes
             if t.getPosition()[2] >= 0 and
                math.sqrt((t.getPosition()[0] - pos[0])**2 +
-                         (t.getPosition()[1] - pos[1])**2) < 0.5
+                         (t.getPosition()[1] - pos[1])**2) < DENSITY_RADIUS
         )
 
     # =========================================================================
@@ -223,18 +223,22 @@ class DecentralizedEvalSupervisor:
             return False
         return True
 
-    def run(self, duration_sim_min=0.0, results_csv=None, sample_id=None):
+    def run(self, duration_sim_min=0.0, until_complete=False, results_csv=None, sample_id=None):
+        num_active_tags = len(self.tag_nodes)
         print("=" * 60)
         print(f"DECENTRALIZED EVAL SUPERVISOR  "
               f"(arena: {self.arena_size} | robots: {self.num_robots} | "
-              f"tags: {len(self.tag_nodes)})")
+              f"tags: {num_active_tags})")
         print(f"Arena half: {self.arena_half} m")
-        if duration_sim_min > 0:
+        if until_complete:
+            print(f"Mode: UNTIL COMPLETE (100% collection)"
+                  + (f" | timeout: {duration_sim_min} sim-min" if duration_sim_min > 0 else ""))
+        elif duration_sim_min > 0:
             print(f"Duration: {duration_sim_min} sim-min | Fast mode ON")
         print("=" * 60 + "\n")
         print(f"[SUPERVISOR] Logging to: {self._log_path}\n")
 
-        if duration_sim_min > 0:
+        if duration_sim_min > 0 or until_complete:
             self.supervisor.simulationSetMode(self.supervisor.SIMULATION_MODE_FAST)
 
         while True:
@@ -243,6 +247,9 @@ class DecentralizedEvalSupervisor:
             self.step += 1
 
             sim_time_min = (self.step * self.timestep / 1000.0) / 60.0
+
+            if until_complete and self.total_deposits >= num_active_tags:
+                break
 
             if duration_sim_min > 0 and sim_time_min >= duration_sim_min:
                 break
@@ -309,14 +316,18 @@ class DecentralizedEvalSupervisor:
         # ── Write single CSV row ──────────────────────────────────────
         if results_csv:
             write_header = not os.path.exists(results_csv)
+            completed     = 1 if self.total_deposits >= num_active_tags else 0
+            pct_collected = round(100.0 * self.total_deposits / num_active_tags, 1) if num_active_tags else 0.0
             with open(results_csv, 'a', newline='') as f:
                 w = csv.writer(f)
                 if write_header:
                     w.writerow(['sample', 'arena', 'num_robots', 'deposits',
-                                'sim_time_min', 'sim_rate', 'wall_time_min'])
+                                'sim_time_min', 'sim_rate', 'wall_time_min',
+                                'completed', 'pct_collected'])
                 w.writerow([sample_id, self.arena_size, self.num_robots,
                             self.total_deposits, round(sim_time_min, 2),
-                            round(sim_rate, 4), round(elapsed_min, 2)])
+                            round(sim_rate, 4), round(elapsed_min, 2),
+                            completed, pct_collected])
 
         if duration_sim_min > 0:
             self.supervisor.simulationQuit(0)
@@ -340,6 +351,8 @@ if __name__ == "__main__":
                         help='Override active tag count (hides excess tags; default: arena default)')
     parser.add_argument('--duration_sim_min', type=float, default=0.0,
                         help='Stop after N simulation minutes (0 = run forever)')
+    parser.add_argument('--until_complete', action='store_true',
+                        help='Stop when 100%% of tags are collected (use --duration_sim_min as timeout)')
     parser.add_argument('--results_csv', type=str, default=None,
                         help='Append per-minute rows to this CSV')
     parser.add_argument('--sample_id', type=str, default=None,
@@ -379,6 +392,7 @@ if __name__ == "__main__":
     )
     sup.run(
         duration_sim_min=args.duration_sim_min,
+        until_complete=args.until_complete,
         results_csv=args.results_csv,
         sample_id=args.sample_id,
     )
