@@ -1,0 +1,11 @@
+method,distribution,arena,sample,completed,status,completion_time_min,elapsed_time_min,steps,pickups,deposits
+cpfa_baseline,powerlaw,5x5,1,true,completed,39.5493,39.5493,74155,64,64
+cpfa_baseline,powerlaw,5x5,2,true,completed,35.4901,35.4901,66544,64,64
+cpfa_baseline,powerlaw,5x5,3,true,completed,87.3323,87.3323,163748,64,64
+cpfa_baseline,powerlaw,5x5,4,true,completed,74.2021,74.2021,139129,64,64
+cpfa_baseline,powerlaw,5x5,5,true,completed,59.2219,59.2219,111041,64,64
+cpfa_baseline,powerlaw,5x5,6,true,completed,31.2779,31.2779,58646,64,64
+cpfa_baseline,powerlaw,5x5,7,true,completed,51.68,51.68,96900,64,64
+cpfa_baseline,powerlaw,5x5,8,true,completed,85.9856,85.9856,161223,64,64
+cpfa_baseline,powerlaw,5x5,9,true,completed,32.4341,32.4341,60814,64,64
+cpfa_baseline,powerlaw,5x5,10,true,completed,58.5216,58.5216,109728,64,64

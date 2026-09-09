@@ -1,0 +1,11 @@
+method,distribution,arena,sample,completed,status,completion_time_min,elapsed_time_min,steps,pickups,deposits
+centralized_ppo,clustered,5x5,1,true,completed,15.7429,15.7429,29518,64,64
+centralized_ppo,clustered,5x5,2,true,completed,17.2512,17.2512,32346,64,64
+centralized_ppo,clustered,5x5,3,true,completed,17.8843,17.8843,33533,64,64
+centralized_ppo,clustered,5x5,4,true,completed,16.2224,16.2224,30417,64,64
+centralized_ppo,clustered,5x5,5,true,completed,13.768,13.768,25815,64,64
+centralized_ppo,clustered,5x5,6,true,completed,16.4565,16.4565,30856,64,64
+centralized_ppo,clustered,5x5,7,true,completed,15.7504,15.7504,29532,64,64
+centralized_ppo,clustered,5x5,8,true,completed,18.8725,18.8725,35386,64,64
+centralized_ppo,clustered,5x5,9,true,completed,16.6619,16.6619,31241,64,64
+centralized_ppo,clustered,5x5,10,true,completed,19.5632,19.5632,36681,64,64

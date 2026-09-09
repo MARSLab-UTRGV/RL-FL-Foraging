@@ -1,0 +1,179 @@
+import os
+from pathlib import Path
+
+os.environ.setdefault("MPLCONFIGDIR", str(Path(__file__).resolve().parent / ".mplconfig"))
+
+import matplotlib.pyplot as plt
+import pandas as pd
+from matplotlib.patches import Patch
+
+
+ROOT = Path(__file__).resolve().parent
+
+plt.rcParams.update(
+    {
+        "font.family": "serif",
+        "font.serif": ["Times New Roman", "Times", "DejaVu Serif"],
+        "font.size": 8,
+        "axes.labelsize": 8,
+        "xtick.labelsize": 7.5,
+        "ytick.labelsize": 7.5,
+        "legend.fontsize": 7.5,
+        "pdf.fonttype": 42,
+        "ps.fonttype": 42,
+    }
+)
+
+ARENAS = [
+    ("5×5", "10 min"),
+    ("7×7", "25 min"),
+    ("9×9", "50 min"),
+    ("12×12", "95 min"),
+]
+
+MODELS = [
+    (
+        "CPFA Baseline",
+        "#D55E00",
+        "",
+        {
+            "5×5": "foraging_cpfa_baseline_5x5_20260706_151602.csv",
+            "7×7": "foraging_cpfa_baseline_7x7_20260706_154946.csv",
+            "9×9": "foraging_cpfa_baseline_9x9_20260706_173344.csv",
+            "12×12": "foraging_cpfa_baseline_12x12_20260706_192528.csv",
+        },
+    ),
+    (
+        "Centralized RL",
+        "#56B4E9",
+        "",
+        {
+            "5×5": "foraging_centralized_ppo_5x5_20260704_114002.csv",
+            "7×7": "foraging_centralized_ppo_7x7_20260704_121112.csv",
+            "9×9": "foraging_centralized_ppo_9x9_20260704_123938.csv",
+            "12×12": "foraging_centralized_ppo_12x12_20260704_131920.csv",
+        },
+    ),
+    (
+        "Decentralized RL",
+        "#B3DE69",
+        "",
+        {
+            "5×5": "batch_results_5x5_decentralized_indep_v10.csv",
+            "7×7": "batch_results_7x7_t128_decentralized_indep_v10.csv",
+            "9×9": "batch_results_9x9_t208_decentralized_indep_v10.csv",
+            "12×12": "batch_results_12x12_t368_decentralized_indep_v10.csv",
+        },
+    ),
+]
+
+
+FULL_RESOURCES = {"5×5": 64, "7×7": 128, "9×9": 208, "12×12": 368}
+
+
+def read_percentages(csv_name: str, arena: str) -> list[float]:
+    frame = pd.read_csv(ROOT / csv_name)
+    if "pct_collected" in frame.columns:
+        percentages = frame["pct_collected"].dropna().tolist()
+    else:
+        if "deposits" not in frame.columns:
+            raise ValueError(f"{csv_name} does not contain a deposits column")
+        percentages = (frame["deposits"] / FULL_RESOURCES[arena] * 100).dropna().tolist()
+
+    if len(percentages) != 20:
+        raise ValueError(f"{csv_name} has {len(percentages)} samples, expected 20")
+
+    return percentages
+
+
+def main() -> None:
+    data = []
+    positions = []
+    colors = []
+    hatches = []
+
+    group_centers = [1.0, 2.15, 3.30, 4.45]
+    offsets = [-0.30, 0.0, 0.30]
+
+    for arena_index, (arena, _) in enumerate(ARENAS):
+        center = group_centers[arena_index]
+        for model_index, (_, color, hatch, files_by_arena) in enumerate(MODELS):
+            data.append(read_percentages(files_by_arena[arena], arena))
+            positions.append(center + offsets[model_index])
+            colors.append(color)
+            hatches.append(hatch)
+
+    fig, ax = plt.subplots(figsize=(7.16, 4.2), dpi=600)
+
+    plot = ax.boxplot(
+        data,
+        positions=positions,
+        widths=0.24,
+        patch_artist=True,
+        showmeans=True,
+        meanprops={
+            "marker": "o",
+            "markerfacecolor": "white",
+            "markeredgecolor": "#333333",
+            "markersize": 2.5,
+            "markeredgewidth": 0.7,
+        },
+        medianprops={"color": "#222222", "linewidth": 1.0},
+        whiskerprops={"color": "#222222", "linewidth": 0.8},
+        capprops={"color": "#222222", "linewidth": 0.8},
+        flierprops={
+            "marker": "x",
+            "markeredgecolor": "#333333",
+            "markerfacecolor": "#333333",
+            "markersize": 2.8,
+            "markeredgewidth": 0.7,
+        },
+    )
+
+    for patch, color, hatch in zip(plot["boxes"], colors, hatches):
+        patch.set_facecolor(color)
+        patch.set_edgecolor("#222222")
+        patch.set_linewidth(0.8)
+        patch.set_hatch(hatch)
+
+    for flier, color in zip(plot["fliers"], colors):
+        flier.set_markeredgecolor(color)
+
+    ax.set_xticks(group_centers)
+    ax.set_xticklabels([f"{arena}, {minutes}" for arena, minutes in ARENAS])
+    ax.set_xlabel("Arena size and foraging time")
+    ax.set_ylabel("Resources collected (%)")
+
+    ax.yaxis.grid(True, linestyle="-", color="#d9d9d9", linewidth=0.45)
+    ax.set_axisbelow(True)
+    ax.set_xlim(group_centers[0] - 0.45, group_centers[-1] + 0.45)
+    ax.set_ylim(0, 100)
+    ax.set_yticks(range(0, 101, 20))
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
+    ax.spines["left"].set_linewidth(0.8)
+    ax.spines["bottom"].set_linewidth(0.8)
+
+    legend_handles = [
+        Patch(facecolor=color, edgecolor="#222222", hatch=hatch, label=name)
+        for name, color, hatch, _ in MODELS
+    ]
+    ax.legend(
+        handles=legend_handles,
+        loc="lower left",
+        bbox_to_anchor=(0.0, 1.01),
+        ncol=1,
+        frameon=False,
+        handlelength=1.5,
+        borderpad=0.0,
+        labelspacing=0.25,
+    )
+
+    fig.tight_layout(pad=0.4)
+    fig.savefig(ROOT / "percentage_boxplot.png", bbox_inches="tight", dpi=600)
+    fig.savefig(ROOT / "percentage_boxplot.pdf", bbox_inches="tight")
+    fig.savefig(ROOT / "percentage_boxplot.eps", bbox_inches="tight")
+
+
+if __name__ == "__main__":
+    main()

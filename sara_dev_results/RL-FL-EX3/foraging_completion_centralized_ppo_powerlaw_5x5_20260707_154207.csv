@@ -1,0 +1,11 @@
+method,distribution,arena,sample,completed,status,completion_time_min,elapsed_time_min,steps,pickups,deposits
+centralized_ppo,powerlaw,5x5,1,true,completed,18.5685,18.5685,34816,64,64
+centralized_ppo,powerlaw,5x5,2,true,completed,20.4485,20.4485,38341,64,64
+centralized_ppo,powerlaw,5x5,3,true,completed,17.6523,17.6523,33098,64,64
+centralized_ppo,powerlaw,5x5,4,true,completed,17.5771,17.5771,32957,64,64
+centralized_ppo,powerlaw,5x5,5,true,completed,20.9424,20.9424,39267,64,64
+centralized_ppo,powerlaw,5x5,6,true,completed,17.0053,17.0053,31885,64,64
+centralized_ppo,powerlaw,5x5,7,true,completed,21.2949,21.2949,39928,64,64
+centralized_ppo,powerlaw,5x5,8,true,completed,18.4555,18.4555,34604,64,64
+centralized_ppo,powerlaw,5x5,9,true,completed,21.6144,21.6144,40527,64,64
+centralized_ppo,powerlaw,5x5,10,true,completed,28.928,28.928,54240,64,64
