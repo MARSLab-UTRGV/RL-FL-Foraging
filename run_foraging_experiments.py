@@ -45,6 +45,12 @@ CONTROLLERS = {
     "exp4_disconnect": {
         "5x5": "controllers/eval_best_model/eval_best_model_exp4_5x5.py",
     },
+    "exp4b_fault": {
+        "5x5": "controllers/eval_best_model/eval_best_model_exp4b_5x5.py",
+    },
+    "exp4b_2fault": {
+        "5x5": "controllers/eval_best_model/eval_best_model_exp4b_2fault_5x5.py",
+    },
 }
 
 CSV_FIELDS = [
@@ -54,6 +60,10 @@ CSV_FIELDS = [
     "foraging_time_min",
     "disconnect_start_min",
     "disconnect_duration_min",
+    "fault_robot",
+    "failure_time_min",
+    "fault_robot_2",
+    "failure_time_min_2",
     "pickups",
     "deposits",
 ]
@@ -127,7 +137,9 @@ def add_webots_controller_env(env, webots_bin):
     prepend_env_path(env, "LD_LIBRARY_PATH", webots_home / "lib" / "controller")
 
 
-def build_commands(args, sample, port, duration, disconnect_start=None):
+def build_commands(args, sample, port, duration, disconnect_start=None,
+                   fault_robot=None, failure_time_min=None,
+                   fault_robot_2=None, failure_time_min_2=None):
     world = WORLDS_DIR / f"eval_sample{sample}_{args.arena}.wbt"
     controller = PROJECT_ROOT / CONTROLLERS[args.method][args.arena]
 
@@ -146,13 +158,24 @@ def build_commands(args, sample, port, duration, disconnect_start=None):
         sys.executable,
         str(controller),
     ]
-    if args.method in ("centralized_ppo", "exp4_disconnect"):
+    if args.method in ("centralized_ppo", "exp4_disconnect", "exp4b_fault"):
         controller_cmd.append(args.model)
     controller_cmd.extend(["--duration-sim-min", format_float(duration)])
     if args.method == "exp4_disconnect":
         controller_cmd.extend([
             "--disconnect-start-min",    format_float(disconnect_start),
             "--disconnect-duration-min", format_float(args.disconnect_duration_min),
+        ])
+    if args.method == "exp4b_fault" and fault_robot is not None:
+        controller_cmd.extend(["--fault-robot", str(fault_robot)])
+    if args.method == "exp4b_fault" and failure_time_min is not None:
+        controller_cmd.extend(["--failure-time-min", format_float(failure_time_min)])
+    if args.method == "exp4b_2fault" and fault_robot is not None:
+        controller_cmd.extend([
+            "--fault-robot-1",      str(fault_robot),
+            "--failure-time-min-1", format_float(failure_time_min),
+            "--fault-robot-2",      str(fault_robot_2),
+            "--failure-time-min-2", format_float(failure_time_min_2),
         ])
 
     return world, controller, webots_cmd, controller_cmd
@@ -252,8 +275,23 @@ def run_sample(args, sample, port, duration, logs_dir):
         _random_disconnect_start(sample, duration, args.disconnect_duration_min)
         if args.method == "exp4_disconnect" else None
     )
+    fault_robot        = None
+    failure_time_min   = None
+    fault_robot_2      = None
+    failure_time_min_2 = None
+    if args.method == "exp4b_fault":
+        entry            = args.failure_schedule[sample]
+        fault_robot      = entry["failed_robot"] - 1
+        failure_time_min = entry["failure_time_min"]
+    elif args.method == "exp4b_2fault":
+        entry              = args.failure_schedule[sample]
+        fault_robot        = entry["failed_robot_1"] - 1
+        failure_time_min   = entry["failure_time_min_1"]
+        fault_robot_2      = entry["failed_robot_2"] - 1
+        failure_time_min_2 = entry["failure_time_min_2"]
     world, controller, webots_cmd, controller_cmd = build_commands(
-        args, sample, port, duration, disconnect_start
+        args, sample, port, duration, disconnect_start,
+        fault_robot, failure_time_min, fault_robot_2, failure_time_min_2
     )
 
     if not world.exists():
@@ -274,7 +312,7 @@ def run_sample(args, sample, port, duration, logs_dir):
     controller_env["WEBOTS_PORT"] = str(port)
     controller_env["PYTHONUNBUFFERED"] = "1"
     add_webots_controller_env(controller_env, args.webots_bin)
-    if args.method in ("centralized_ppo", "exp4_disconnect"):
+    if args.method in ("centralized_ppo", "exp4_disconnect", "exp4b_fault", "exp4b_2fault"):
         controller_env["CUDA_VISIBLE_DEVICES"] = ""
 
     webots_proc = None
@@ -373,6 +411,14 @@ def run_sample(args, sample, port, duration, logs_dir):
         "foraging_time_min": format_float(duration),
         "disconnect_start_min":    format_float(disconnect_start) if args.method == "exp4_disconnect" else "",
         "disconnect_duration_min": format_float(args.disconnect_duration_min) if args.method == "exp4_disconnect" else "",
+        "fault_robot": (
+            str(args.failure_schedule[sample]["failed_robot"])   if args.method == "exp4b_fault"
+            else str(args.failure_schedule[sample]["failed_robot_1"]) if args.method == "exp4b_2fault"
+            else ""
+        ),
+        "failure_time_min": format_float(failure_time_min) if args.method in ("exp4b_fault", "exp4b_2fault") else "",
+        "fault_robot_2":      str(args.failure_schedule[sample]["failed_robot_2"]) if args.method == "exp4b_2fault" else "",
+        "failure_time_min_2": format_float(failure_time_min_2) if args.method == "exp4b_2fault" else "",
         "pickups": pickups,
         "deposits": deposits,
     }
@@ -446,8 +492,42 @@ def main():
         parser.error("exp4_disconnect is only supported for --arena 5x5")
     if args.method == "exp4_disconnect" and args.disconnect_duration_min <= 0:
         parser.error("--disconnect-duration-min must be > 0 for exp4_disconnect")
+    if args.method in ("exp4b_fault", "exp4b_2fault") and args.arena != "5x5":
+        parser.error(f"{args.method} is only supported for --arena 5x5")
 
-    if args.method in ("centralized_ppo", "exp4_disconnect") and not model_exists(args.model):
+    args.failure_schedule = {}
+    if args.method == "exp4b_fault":
+        schedule_path = PROJECT_ROOT / "failure_schedule_exp4b.csv"
+        if not schedule_path.exists():
+            parser.error(f"failure schedule not found: {schedule_path}")
+        with open(schedule_path) as f:
+            for row in csv.DictReader(f):
+                s = int(row["sample"])
+                args.failure_schedule[s] = {
+                    "failed_robot":    int(row["failed_robot"]),
+                    "failure_time_min": float(row["failure_time_min"]),
+                }
+        missing = [s for s in args.samples if s not in args.failure_schedule]
+        if missing:
+            parser.error(f"samples {missing} not found in failure_schedule_exp4b.csv")
+    elif args.method == "exp4b_2fault":
+        schedule_path = PROJECT_ROOT / "failure_schedule_exp4b_2fault.csv"
+        if not schedule_path.exists():
+            parser.error(f"failure schedule not found: {schedule_path}")
+        with open(schedule_path) as f:
+            for row in csv.DictReader(f):
+                s = int(row["sample"])
+                args.failure_schedule[s] = {
+                    "failed_robot_1":    int(row["failed_robot_1"]),
+                    "failure_time_min_1": float(row["failure_time_min_1"]),
+                    "failed_robot_2":    int(row["failed_robot_2"]),
+                    "failure_time_min_2": float(row["failure_time_min_2"]),
+                }
+        missing = [s for s in args.samples if s not in args.failure_schedule]
+        if missing:
+            parser.error(f"samples {missing} not found in failure_schedule_exp4b_2fault.csv")
+
+    if args.method in ("centralized_ppo", "exp4_disconnect", "exp4b_fault", "exp4b_2fault") and not model_exists(args.model):
         parser.error(f"--model not found: {args.model}")
 
     results_csv = args.results_csv or default_results_csv(
