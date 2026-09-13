@@ -167,6 +167,13 @@ class EpuckDecentralizedEval(EpuckDecentralizedV4):
         except (ValueError, IndexError):
             return
 
+        # EX4b fault injection: supervisor sends -99.0 to halt this robot.
+        # Regular eval never sends values below -1.0, so this is a no-op in normal runs.
+        if pickup_signal < -50.0:
+            self.left_motor.setVelocity(0.0)
+            self.right_motor.setVelocity(0.0)
+            return
+
         # ── Pickup ────────────────────────────────────────────────────
         if pickup_signal > 0.0 and not self.carrying:
             self.carrying = True
